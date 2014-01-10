@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>873011dd-9a16-4981-986b-522d1c79e3de</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>thermodynamics.py</StartupFile>
+    <SearchPath>..\..\component-contribution</SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>thermodynamics</Name>
+    <RootNamespace>thermodynamics</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="data\__init__.py" />
+    <Compile Include="thermodynamics.py" />
+    <Compile Include="gim3e\core\gim3e.py" />
+    <Compile Include="gim3e\core\__init__.py" />
+    <Compile Include="gim3e\examples\01_run_gim3e_with_salmonella.py" />
+    <Compile Include="gim3e\examples\02_sample_core_gim3e.py" />
+    <Compile Include="gim3e\sampling\gms.py" />
+    <Compile Include="gim3e\sampling\__init__.py" />
+    <Compile Include="gim3e\test\unit_tests.py" />
+    <Compile Include="gim3e\test\__init__.py" />
+    <Compile Include="gim3e\test_all.py" />
+    <Compile Include="gim3e\test_debut_DM.py" />
+    <Compile Include="gim3e\__init__.py" />
+    <Compile Include="thermodynamics\thermodynamics_analysis.py" />
+    <Compile Include="thermodynamics\thermodynamics_analysis_helper.py" />
+    <Compile Include="thermodynamics\thermodynamics_dG0_f_data.py" />
+    <Compile Include="thermodynamics\__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="data\" />
+    <Folder Include="gim3e\" />
+    <Folder Include="gim3e\core\" />
+    <Folder Include="gim3e\data\" />
+    <Folder Include="gim3e\examples\" />
+    <Folder Include="gim3e\sampling\" />
+    <Folder Include="gim3e\test\" />
+    <Folder Include="thermodynamics\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\cc_debug.xlsx" />
+    <Content Include="data\compounds_dG0_f.json" />
+    <Content Include="data\dG0_f_rc.csv" />
+    <Content Include="data\id2KEGGID.csv" />
+    <Content Include="data\iJO1366.xml" />
+    <Content Include="data\ijo1366_dG_f.json" />
+    <Content Include="data\ijo1366_dG_f_std.json" />
+    <Content Include="data\ijo1366_fva_glyc.json" />
+    <Content Include="data\ijo1366_server.xml" />
+    <Content Include="data\ijo1366_srd_glyc.json" />
+    <Content Include="data\kegg_pseudoisomers.json" />
+    <Content Include="data\rpomut01_OxicWTGlyc_0.json" />
+    <Content Include="data\rpomut01_OxicWTGlyc_0_geo.json" />
+    <Content Include="data\test_sampling.json" />
+    <Content Include="data\__init__.pyc" />
+    <Content Include="gim3e\core\gim3e.pyc" />
+    <Content Include="gim3e\core\gim3e.pyo" />
+    <Content Include="gim3e\core\__init__.pyc" />
+    <Content Include="gim3e\core\__init__.pyo" />
+    <Content Include="gim3e\data\E_coli_core_M9.xml" />
+    <Content Include="gim3e\data\metabolomics_dict.pickle" />
+    <Content Include="gim3e\data\salmonella_gem.pickle" />
+    <Content Include="gim3e\data\STM_LB_FVA_reference.pickle" />
+    <Content Include="gim3e\data\STM_LB_metabolite_ko_reference.pickle" />
+    <Content Include="gim3e\data\transcriptomics_dict.pickle" />
+    <Content Include="gim3e\examples\01_run_gim3e_with_salmonella.pyc" />
+    <Content Include="gim3e\examples\01_run_gim3e_with_salmonella.pyo" />
+    <Content Include="gim3e\examples\02_sample_core_gim3e.pyc" />
+    <Content Include="gim3e\examples\02_sample_core_gim3e.pyo" />
+    <Content Include="gim3e\gurobi.log" />
+    <Content Include="gim3e\LICENSE" />
+    <Content Include="gim3e\sampling\gms.pyc" />
+    <Content Include="gim3e\sampling\gms.pyo" />
+    <Content Include="gim3e\sampling\__init__.pyc" />
+    <Content Include="gim3e\sampling\__init__.pyo" />
+    <Content Include="gim3e\test\gurobi.log" />
+    <Content Include="gim3e\test\unit_tests.pyc" />
+    <Content Include="gim3e\test\unit_tests.pyo" />
+    <Content Include="gim3e\test\__init__.pyc" />
+    <Content Include="gim3e\test\__init__.pyo" />
+    <Content Include="gim3e\test_all.pyc" />
+    <Content Include="gim3e\test_all.pyo" />
+    <Content Include="gim3e\__init__.pyc" />
+    <Content Include="gim3e\__init__.pyo" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+</Project>

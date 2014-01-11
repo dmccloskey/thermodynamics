@@ -281,7 +281,8 @@ class thermodynamics_dG0_f_data(object):
         model.ccache.dump()
 
     def _get_pseudoisomer_priority2_pH0(self):
-        compounds = json.load(open('cobra\\thermodynamics\\component_contribution\\cache\\compounds.json'))
+       # compounds = json.load(open('cobra\\thermodynamics\\component_contribution\\cache\\compounds.json'))
+        compounds = json.load(open('data\\compounds.json'))
         pseudo = json.load(open('data\\kegg_pseudoisomers.json'))
         # units: dG0_f: kJ/mol
         #        variance = (kJ/mol)^2

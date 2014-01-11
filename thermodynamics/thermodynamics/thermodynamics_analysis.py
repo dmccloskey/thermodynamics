@@ -429,8 +429,23 @@ def thermodynamic_analysis(cobra_model, reaction_bounds,
             thermodynamic_consistency_check[r.id]['measured_dG_r_coverage']>measured_dG_f_coverage_criteria:
             infeasible_reactions.append(r);
 
+    # analysis summary:
     print 'thermodynamically infeasible reactions identified:';
     for r in infeasible_reactions:
         print r.id, r.build_reaction_string();
 
-    return;
+    conc_coverage_cnt = 0;
+    for k,v in thermodynamic_consistency_check.iteritems():
+        if v['measured_concentration_coverage'] > measured_concentration_coverage_criteria:
+            conc_coverage_cnt += 1;
+            print k, v['measured_concentration_coverage']
+    print ('total # of reactions with required coverage = ' + str(conc_coverage_cnt))
+
+    dG_f_coverage_cnt = 0;
+    for k,v in thermodynamic_consistency_check.iteritems():
+        if v['measured_dG_r_coverage'] > measured_dG_f_coverage_criteria:
+            dG_f_coverage_cnt += 1;
+            print k, v['measured_dG_r_coverage']
+    print ('total # of reactions with required coverage = ' + str(dG_f_coverage_cnt))
+
+    return thermodynamic_consistency_check, dG0_r, dG_r

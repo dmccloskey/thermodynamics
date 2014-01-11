@@ -4109,10 +4109,10 @@
         "dG_f_units": "kJ/mol", 
         "dG_f_var": 17.8
     }, 
-    "tyrtrna_p": {
-        "dG_f": 9.1500000000000001e-14, 
+    "preq1_c": {
+        "dG_f": 644.39055498434834, 
         "dG_f_units": "kJ/mol", 
-        "dG_f_var": 17.8
+        "dG_f_var": 62.0
     }, 
     "chor_c": {
         "dG_f": 284.50832277948086, 
@@ -4499,10 +4499,10 @@
         "dG_f_units": "kJ/mol", 
         "dG_f_var": 17.8
     }, 
-    "preq1_c": {
-        "dG_f": 644.39055498434834, 
+    "tyrtrna_p": {
+        "dG_f": 9.1500000000000001e-14, 
         "dG_f_units": "kJ/mol", 
-        "dG_f_var": 62.0
+        "dG_f_var": 17.8
     }, 
     "frulys_c": {
         "dG_f": 87.152150716583833, 

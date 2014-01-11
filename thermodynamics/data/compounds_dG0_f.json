@@ -4193,13 +4193,13 @@
             "dG0_f": 26.932088272998186
         }
     ], 
-    "C07708": [
+    "C11189": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -704.5464117663773
+            "dG0_f": 619.3150143340953
         }
     ], 
     "C00203": [
@@ -4281,15 +4281,6 @@
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
             "dG0_f": 785.7056822565089
-        }
-    ], 
-    "C19535": [
-        {
-            "priority": 2, 
-            "source": "Group Contribution", 
-            "dG0_f_var": 62.0, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": -25.28455517377249
         }
     ], 
     "C06918": [
@@ -5101,15 +5092,6 @@
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
             "dG0_f": 368.8399612612701
-        }
-    ], 
-    "C18224": [
-        {
-            "priority": 2, 
-            "source": "Group Contribution", 
-            "dG0_f_var": 62.0, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": 412.9327427240521
         }
     ], 
     "C18558": [
@@ -5988,13 +5970,13 @@
             "dG0_f": 216.93808013105868
         }
     ], 
-    "C07231": [
+    "C08270": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -872.6117224269003
+            "dG0_f": -494.792392349931
         }
     ], 
     "C08271": [
@@ -6022,6 +6004,22 @@
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
             "dG0_f": -165.3380809421601
+        }
+    ], 
+    "C80005": [
+        {
+            "priority": 0, 
+            "source": "Reactant Contribution", 
+            "dG0_f_var": 17.8, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": 78.32275074
+        }, 
+        {
+            "priority": 2, 
+            "source": "Group Contribution", 
+            "dG0_f_var": 62.0, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": 83.91433545869884
         }
     ], 
     "C06842": [
@@ -6618,6 +6616,22 @@
             "dG0_f": -196.67318203926143
         }
     ], 
+    "C80052": [
+        {
+            "priority": 0, 
+            "source": "Reactant Contribution", 
+            "dG0_f_var": 17.8, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": -45.59881083
+        }, 
+        {
+            "priority": 2, 
+            "source": "Group Contribution", 
+            "dG0_f_var": 62.0, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": -29.191841610059512
+        }
+    ], 
     "C16807": [
         {
             "priority": 2, 
@@ -6814,6 +6828,22 @@
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
             "dG0_f": 96.24561929002326
+        }
+    ], 
+    "C01157": [
+        {
+            "priority": 0, 
+            "source": "Reactant Contribution", 
+            "dG0_f_var": 17.8, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": -0.012450489
+        }, 
+        {
+            "priority": 2, 
+            "source": "Group Contribution", 
+            "dG0_f_var": 62.0, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": -426.6116363692761
         }
     ], 
     "C10820": [
@@ -10123,13 +10153,13 @@
             "dG0_f": -379.59592373552385
         }
     ], 
-    "C07219": [
+    "C08298": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": 160.68548178766358
+            "dG0_f": -632.4664693414754
         }
     ], 
     "C07218": [
@@ -13837,13 +13867,13 @@
             "dG0_f": -498.54810267444736
         }
     ], 
-    "C05568": [
+    "C09234": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -498.58713741814904
+            "dG0_f": 1407.900384331283
         }
     ], 
     "C03979": [
@@ -15009,13 +15039,13 @@
             "dG0_f": 361.35744779625554
         }
     ], 
-    "C08501": [
+    "C07632": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -227.82440312436293
+            "dG0_f": -13.512015015377614
         }
     ], 
     "C08507": [
@@ -15813,13 +15843,13 @@
             "dG0_f": 121.36632987040633
         }
     ], 
-    "C06511": [
+    "C06047": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": 80.60892486129691
+            "dG0_f": -627.4539972065744
         }
     ], 
     "C06046": [
@@ -17621,13 +17651,13 @@
             "dG0_f": -310.0526946812421
         }
     ], 
-    "C01405": [
+    "C14997": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -575.0018307598349
+            "dG0_f": -395.63096184730523
         }
     ], 
     "C14990": [
@@ -18814,13 +18844,13 @@
             "dG0_f": -263.48553903935743
         }
     ], 
-    "C06853": [
+    "C08969": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -379.4811913839116
+            "dG0_f": -1538.2081469678747
         }
     ], 
     "C12428": [
@@ -19722,6 +19752,22 @@
             "dG0_f": -648.8658691086564
         }
     ], 
+    "C80004": [
+        {
+            "priority": 0, 
+            "source": "Reactant Contribution", 
+            "dG0_f_var": 17.8, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": 81.82275074
+        }, 
+        {
+            "priority": 2, 
+            "source": "Group Contribution", 
+            "dG0_f_var": 62.0, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": 83.91433545869884
+        }
+    ], 
     "C07819": [
         {
             "priority": 2, 
@@ -20184,15 +20230,6 @@
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
             "dG0_f": -366.6268069687539
-        }
-    ], 
-    "C03539": [
-        {
-            "priority": 2, 
-            "source": "Group Contribution", 
-            "dG0_f_var": 62.0, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": -891.5323787865946
         }
     ], 
     "C15144": [
@@ -21154,20 +21191,13 @@
             "dG0_f": -1326.0902143913008
         }
     ], 
-    "C80005": [
-        {
-            "priority": 0, 
-            "source": "Reactant Contribution", 
-            "dG0_f_var": 17.8, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": 78.32275074
-        }, 
+    "C19398": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": 83.91433545869884
+            "dG0_f": 13.019240669067784
         }
     ], 
     "C11650": [
@@ -21735,15 +21765,6 @@
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
             "dG0_f": -331.0942111362763
-        }
-    ], 
-    "C17471": [
-        {
-            "priority": 2, 
-            "source": "Group Contribution", 
-            "dG0_f_var": 62.0, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": -41.326490571147474
         }
     ], 
     "C15036": [
@@ -22392,13 +22413,13 @@
             "dG0_f": -2360.61262838595
         }
     ], 
-    "C07122": [
+    "C08611": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -92.7940568432754
+            "dG0_f": 1026.095206734664
         }
     ], 
     "C19247": [
@@ -22579,15 +22600,6 @@
             "dG0_f": -10.115533673512886
         }
     ], 
-    "C11189": [
-        {
-            "priority": 2, 
-            "source": "Group Contribution", 
-            "dG0_f_var": 62.0, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": 619.3150143340953
-        }
-    ], 
     "C02004": [
         {
             "priority": 2, 
@@ -22642,13 +22654,13 @@
             "dG0_f": 243.211082363481
         }
     ], 
-    "C02008": [
+    "C08169": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -300.5173868979613
+            "dG0_f": 114.85842230331912
         }
     ], 
     "C06720": [
@@ -24703,6 +24715,15 @@
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
             "dG0_f": -949.0816967395192
+        }
+    ], 
+    "C17421": [
+        {
+            "priority": 2, 
+            "source": "Group Contribution", 
+            "dG0_f_var": 62.0, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": -246.2799564608196
         }
     ], 
     "C02922": [
@@ -27279,6 +27300,15 @@
             "dG0_f": -783.320626283876
         }
     ], 
+    "C15644": [
+        {
+            "priority": 2, 
+            "source": "Group Contribution", 
+            "dG0_f_var": 62.0, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": 343.5476913593284
+        }
+    ], 
     "C09839": [
         {
             "priority": 2, 
@@ -29183,13 +29213,13 @@
             "dG0_f": -759.6596580693929
         }
     ], 
-    "C08351": [
+    "C07192": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -912.4570577407228
+            "dG0_f": 494.6254928084545
         }
     ], 
     "C08350": [
@@ -32584,6 +32614,15 @@
             "dG0_f": -404.33356459177025
         }
     ], 
+    "C17471": [
+        {
+            "priority": 2, 
+            "source": "Group Contribution", 
+            "dG0_f_var": 62.0, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": -41.326490571147474
+        }
+    ], 
     "C01987": [
         {
             "priority": 2, 
@@ -34598,22 +34637,6 @@
             "dG0_f": -776.1369249415657
         }
     ], 
-    "C80004": [
-        {
-            "priority": 0, 
-            "source": "Reactant Contribution", 
-            "dG0_f_var": 17.8, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": 81.82275074
-        }, 
-        {
-            "priority": 2, 
-            "source": "Group Contribution", 
-            "dG0_f_var": 62.0, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": 83.91433545869884
-        }
-    ], 
     "C07952": [
         {
             "priority": 2, 
@@ -34918,13 +34941,13 @@
             "dG0_f": -823.578001708917
         }
     ], 
-    "C08270": [
+    "C07231": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -494.792392349931
+            "dG0_f": -872.6117224269003
         }
     ], 
     "C13739": [
@@ -37161,6 +37184,15 @@
             "dG0_f": 30.674086232647852
         }
     ], 
+    "C17809": [
+        {
+            "priority": 2, 
+            "source": "Group Contribution", 
+            "dG0_f_var": 62.0, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": -589.4714072674411
+        }
+    ], 
     "C19129": [
         {
             "priority": 2, 
@@ -37962,13 +37994,27 @@
             "dG0_f": -1430.1110803019758
         }
     ], 
-    "C09192": [
+    "C00313": [
+        {
+            "priority": 0, 
+            "source": "Reactant Contribution", 
+            "dG0_f_var": 17.8, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": -349.1441595
+        }, 
+        {
+            "priority": 1, 
+            "source": "Alberty (2006)", 
+            "dG0_f_var": 31.0, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": -509.96
+        }, 
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -472.28460352992624
+            "dG0_f": -3671.1714666912144
         }
     ], 
     "C00312": [
@@ -38558,6 +38604,15 @@
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
             "dG0_f": -3182.6257015435804
+        }
+    ], 
+    "C18433": [
+        {
+            "priority": 2, 
+            "source": "Group Contribution", 
+            "dG0_f_var": 62.0, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": -173.50915401679896
         }
     ], 
     "C16963": [
@@ -43287,13 +43342,13 @@
             "dG0_f": -296.2586550647719
         }
     ], 
-    "C08521": [
+    "C07616": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": 135.9080983961342
+            "dG0_f": 216.47585143616507
         }
     ], 
     "C16655": [
@@ -43501,13 +43556,13 @@
             "dG0_f": -992.7820774987104
         }
     ], 
-    "C07348": [
+    "C08529": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -3272.618823080134
+            "dG0_f": -1226.8153946535624
         }
     ], 
     "C11813": [
@@ -48284,13 +48339,13 @@
             "dG0_f": -1099.976548557512
         }
     ], 
-    "C07204": [
+    "C08267": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -356.7255509035095
+            "dG0_f": -261.480826750952
         }
     ], 
     "C08266": [
@@ -48311,13 +48366,13 @@
             "dG0_f": 193.39962629866832
         }
     ], 
-    "C08264": [
+    "C07207": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -527.4137038333341
+            "dG0_f": -160.06419529730917
         }
     ], 
     "C06450": [
@@ -48329,13 +48384,13 @@
             "dG0_f": -971.6626041977895
         }
     ], 
-    "C03174": [
+    "C06454": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -1257.8860658039914
+            "dG0_f": -962.6275524672781
         }
     ], 
     "C03175": [
@@ -48554,13 +48609,13 @@
             "dG0_f": -1463.5603462131417
         }
     ], 
-    "C06454": [
+    "C03174": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -962.6275524672781
+            "dG0_f": -1257.8860658039914
         }
     ], 
     "C06455": [
@@ -49987,6 +50042,15 @@
             "dG0_f": -772.3527937282942
         }
     ], 
+    "C18224": [
+        {
+            "priority": 2, 
+            "source": "Group Contribution", 
+            "dG0_f_var": 62.0, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": 412.9327427240521
+        }
+    ], 
     "C13326": [
         {
             "priority": 2, 
@@ -50012,15 +50076,6 @@
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
             "dG0_f": 548.1000757344767
-        }
-    ], 
-    "C17421": [
-        {
-            "priority": 2, 
-            "source": "Group Contribution", 
-            "dG0_f_var": 62.0, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": -246.2799564608196
         }
     ], 
     "C10858": [
@@ -50320,15 +50375,6 @@
             "dG0_f": 242.9699158736056
         }
     ], 
-    "C11380": [
-        {
-            "priority": 2, 
-            "source": "Group Contribution", 
-            "dG0_f_var": 62.0, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": -296.3594497000922
-        }
-    ], 
     "C08623": [
         {
             "priority": 2, 
@@ -50444,6 +50490,15 @@
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
             "dG0_f": -743.1199734451121
+        }
+    ], 
+    "C15213": [
+        {
+            "priority": 2, 
+            "source": "Group Contribution", 
+            "dG0_f_var": 62.0, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": 70.56700600096477
         }
     ], 
     "C06661": [
@@ -51043,13 +51098,13 @@
             "dG0_f": -653.1876389946432
         }
     ], 
-    "C08885": [
+    "C07534": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -788.4438928100303
+            "dG0_f": 151.41397715194793
         }
     ], 
     "C08884": [
@@ -51695,15 +51750,6 @@
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
             "dG0_f": -345.5724350794394
-        }
-    ], 
-    "C12432": [
-        {
-            "priority": 2, 
-            "source": "Group Contribution", 
-            "dG0_f_var": 62.0, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": -623.5098498508471
         }
     ], 
     "C17661": [
@@ -52834,15 +52880,6 @@
             "dG0_f": 470.8444403530741
         }
     ], 
-    "C17809": [
-        {
-            "priority": 2, 
-            "source": "Group Contribution", 
-            "dG0_f_var": 62.0, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": -589.4714072674411
-        }
-    ], 
     "C11595": [
         {
             "priority": 2, 
@@ -53210,13 +53247,13 @@
             "dG0_f": -116.34547940596664
         }
     ], 
-    "C08169": [
+    "C07708": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": 114.85842230331912
+            "dG0_f": -704.5464117663773
         }
     ], 
     "C08164": [
@@ -53561,13 +53598,13 @@
             "dG0_f": 22.320738657852246
         }
     ], 
-    "C15213": [
+    "C02057": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": 70.56700600096477
+            "dG0_f": -228.08344671648268
         }
     ], 
     "C12260": [
@@ -53631,22 +53668,6 @@
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
             "dG0_f": -395.38086555201926
-        }
-    ], 
-    "C80052": [
-        {
-            "priority": 0, 
-            "source": "Reactant Contribution", 
-            "dG0_f_var": 17.8, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": -45.59881083
-        }, 
-        {
-            "priority": 2, 
-            "source": "Group Contribution", 
-            "dG0_f_var": 62.0, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": -29.191841610059512
         }
     ], 
     "C15015": [
@@ -54579,13 +54600,13 @@
             "dG0_f": 103.34800060482499
         }
     ], 
-    "C07192": [
+    "C08351": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": 494.6254928084545
+            "dG0_f": -912.4570577407228
         }
     ], 
     "C19432": [
@@ -57412,15 +57433,6 @@
             "dG0_f": -823.2522301610237
         }
     ], 
-    "C15504": [
-        {
-            "priority": 2, 
-            "source": "Group Contribution", 
-            "dG0_f_var": 62.0, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": -865.1645629999803
-        }
-    ], 
     "C17928": [
         {
             "priority": 2, 
@@ -58651,20 +58663,13 @@
             "dG0_f": 44.47621228648907
         }
     ], 
-    "C00645": [
-        {
-            "priority": 0, 
-            "source": "Reactant Contribution", 
-            "dG0_f_var": 17.8, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": 159.5152629
-        }, 
+    "C15253": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -880.6083318724968
+            "dG0_f": -137.2802450865861
         }
     ], 
     "C15556": [
@@ -59349,15 +59354,6 @@
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
             "dG0_f": -279.5149226110543
-        }
-    ], 
-    "C00642": [
-        {
-            "priority": 2, 
-            "source": "Group Contribution", 
-            "dG0_f_var": 62.0, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": -407.7073988199186
         }
     ], 
     "C18769": [
@@ -60729,13 +60725,13 @@
             "dG0_f": -274.8818442957097
         }
     ], 
-    "C08298": [
+    "C07219": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -632.4664693414754
+            "dG0_f": 160.68548178766358
         }
     ], 
     "C03160": [
@@ -61209,15 +61205,6 @@
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
             "dG0_f": -297.5128577447971
-        }
-    ], 
-    "C08936": [
-        {
-            "priority": 2, 
-            "source": "Group Contribution", 
-            "dG0_f_var": 62.0, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": -1938.2027750006002
         }
     ], 
     "C15517": [
@@ -61873,6 +61860,15 @@
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
             "dG0_f": -887.4943873135986
+        }
+    ], 
+    "C12432": [
+        {
+            "priority": 2, 
+            "source": "Group Contribution", 
+            "dG0_f_var": 62.0, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": -623.5098498508471
         }
     ], 
     "C10626": [
@@ -64326,13 +64322,13 @@
             "dG0_f": 134.73898943889742
         }
     ], 
-    "C08158": [
+    "C07717": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -152.84322919421496
+            "dG0_f": 193.40231091237897
         }
     ], 
     "C09260": [
@@ -67455,13 +67451,13 @@
             "dG0_f": 1.2226185860426995
         }
     ], 
-    "C07182": [
+    "C08323": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -436.2230326353913
+            "dG0_f": -162.430525316576
         }
     ], 
     "C02470": [
@@ -68701,13 +68697,13 @@
             "dG0_f": -68.5724899041071
         }
     ], 
-    "C08267": [
+    "C07204": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -261.480826750952
+            "dG0_f": -356.7255509035095
         }
     ], 
     "C07205": [
@@ -68728,13 +68724,13 @@
             "dG0_f": 203.3163301836539
         }
     ], 
-    "C07207": [
+    "C08264": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -160.06419529730917
+            "dG0_f": -527.4137038333341
         }
     ], 
     "C07208": [
@@ -69520,15 +69516,6 @@
             "dG0_f": 233.50831728414462
         }
     ], 
-    "C15644": [
-        {
-            "priority": 2, 
-            "source": "Group Contribution", 
-            "dG0_f_var": 62.0, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": 343.5476913593284
-        }
-    ], 
     "C09499": [
         {
             "priority": 2, 
@@ -69907,20 +69894,13 @@
             "dG0_f": 166.9403043
         }
     ], 
-    "C01157": [
-        {
-            "priority": 0, 
-            "source": "Reactant Contribution", 
-            "dG0_f_var": 17.8, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": -0.012450489
-        }, 
+    "C01405": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -426.6116363692761
+            "dG0_f": -575.0018307598349
         }
     ], 
     "C01407": [
@@ -70137,15 +70117,6 @@
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
             "dG0_f": -182.66800072433605
-        }
-    ], 
-    "C07534": [
-        {
-            "priority": 2, 
-            "source": "Group Contribution", 
-            "dG0_f_var": 62.0, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": 151.41397715194793
         }
     ], 
     "C02868": [
@@ -72186,6 +72157,15 @@
             "dG0_f": 16.841833028392642
         }
     ], 
+    "C18225": [
+        {
+            "priority": 2, 
+            "source": "Group Contribution", 
+            "dG0_f_var": 62.0, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": 352.73772197129733
+        }
+    ], 
     "C08644": [
         {
             "priority": 2, 
@@ -72995,27 +72975,13 @@
             "dG0_f": -356.68876583354836
         }
     ], 
-    "C00065": [
-        {
-            "priority": 0, 
-            "source": "Reactant Contribution", 
-            "dG0_f_var": 17.8, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": -521.964064
-        }, 
-        {
-            "priority": 1, 
-            "source": "Alberty (2006)", 
-            "dG0_f_var": 31.0, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": -458.7
-        }, 
+    "C09084": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -528.2027310928613
+            "dG0_f": 143.3801592972545
         }
     ], 
     "C00064": [
@@ -73397,38 +73363,22 @@
             "dG0_f": -456.04781646431667
         }
     ], 
-    "C08931": [
+    "C06887": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -524.4117126024643
+            "dG0_f": -753.1136194408077
         }
     ], 
-    "C06886": [
+    "C08930": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -729.4618501972839
-        }
-    ], 
-    "C80055": [
-        {
-            "priority": 0, 
-            "source": "Reactant Contribution", 
-            "dG0_f_var": 17.8, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": 37.36656825
-        }, 
-        {
-            "priority": 2, 
-            "source": "Group Contribution", 
-            "dG0_f_var": 62.0, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": 37.3999999999979
+            "dG0_f": -1893.5568556150565
         }
     ], 
     "C15058": [
@@ -74095,13 +74045,27 @@
             "dG0_f": 35.55786907094503
         }
     ], 
-    "C09084": [
+    "C00065": [
+        {
+            "priority": 0, 
+            "source": "Reactant Contribution", 
+            "dG0_f_var": 17.8, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": -521.964064
+        }, 
+        {
+            "priority": 1, 
+            "source": "Alberty (2006)", 
+            "dG0_f_var": 31.0, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": -458.7
+        }, 
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": 143.3801592972545
+            "dG0_f": -528.2027310928613
         }
     ], 
     "C09591": [
@@ -74635,13 +74599,13 @@
             "dG0_f": -670.2833651372339
         }
     ], 
-    "C03577": [
+    "C06057": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -550.3407706434097
+            "dG0_f": -291.50046635257746
         }
     ], 
     "C03574": [
@@ -75876,13 +75840,13 @@
             "dG0_f": -1240.2079490580438
         }
     ], 
-    "C04592": [
+    "C08936": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -174.7333082935721
+            "dG0_f": -1938.2027750006002
         }
     ], 
     "C04599": [
@@ -76045,22 +76009,22 @@
             "dG0_f": -1865.7218971659108
         }
     ], 
-    "C06887": [
+    "C08931": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -753.1136194408077
+            "dG0_f": -524.4117126024643
         }
     ], 
-    "C08930": [
+    "C06886": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -1893.5568556150565
+            "dG0_f": -729.4618501972839
         }
     ], 
     "C01412": [
@@ -77120,13 +77084,13 @@
             "dG0_f": -903.0326343736259
         }
     ], 
-    "C08211": [
+    "C07522": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": 272.22114429756584
+            "dG0_f": -93.34962468527253
         }
     ], 
     "C17780": [
@@ -77264,13 +77228,13 @@
             "dG0_f": -1234.0461043356534
         }
     ], 
-    "C08954": [
+    "C04608": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -1386.7720498443105
+            "dG0_f": -820.5931177517086
         }
     ], 
     "C08957": [
@@ -79934,13 +79898,13 @@
             "dG0_f": -1564.1950669125445
         }
     ], 
-    "C01092": [
+    "C01720": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -446.63833555864085
+            "dG0_f": -993.355531607853
         }
     ], 
     "C01091": [
@@ -80155,22 +80119,6 @@
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
             "dG0_f": 8.53291987500765
-        }
-    ], 
-    "C80002": [
-        {
-            "priority": 0, 
-            "source": "Reactant Contribution", 
-            "dG0_f_var": 17.8, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": 102.2784384
-        }, 
-        {
-            "priority": 2, 
-            "source": "Group Contribution", 
-            "dG0_f_var": 62.0, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": 99.88683612226092
         }
     ], 
     "C01541": [
@@ -82973,20 +82921,13 @@
             "dG0_f": -2815.195300455752
         }
     ], 
-    "C06019": [
-        {
-            "priority": 0, 
-            "source": "Reactant Contribution", 
-            "dG0_f_var": 17.8, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": -1746.670939
-        }, 
+    "C03539": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -1796.310326090825
+            "dG0_f": -891.5323787865946
         }
     ], 
     "C17411": [
@@ -83106,13 +83047,13 @@
             "dG0_f": 474.6266238829292
         }
     ], 
-    "C07632": [
+    "C08501": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -13.512015015377614
+            "dG0_f": -227.82440312436293
         }
     ], 
     "C07635": [
@@ -83442,6 +83383,15 @@
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
             "dG0_f": 66.81753730430289
+        }
+    ], 
+    "C02008": [
+        {
+            "priority": 2, 
+            "source": "Group Contribution", 
+            "dG0_f_var": 62.0, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": -300.5173868979613
         }
     ], 
     "C03057": [
@@ -84421,13 +84371,13 @@
             "dG0_f": -42.1915890095796
         }
     ], 
-    "C06057": [
+    "C03577": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -291.50046635257746
+            "dG0_f": -550.3407706434097
         }
     ], 
     "C01569": [
@@ -85112,13 +85062,13 @@
             "dG0_f": 304.3209272641709
         }
     ], 
-    "C09234": [
+    "C05568": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": 1407.900384331283
+            "dG0_f": -498.58713741814904
         }
     ], 
     "C07288": [
@@ -85506,13 +85456,13 @@
             "dG0_f": -821.5264601308847
         }
     ], 
-    "C18433": [
+    "C15407": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -173.50915401679896
+            "dG0_f": -176.8611412906458
         }
     ], 
     "C15046": [
@@ -87411,15 +87361,6 @@
             "dG0_f": -368.28009439079705
         }
     ], 
-    "C18225": [
-        {
-            "priority": 2, 
-            "source": "Group Contribution", 
-            "dG0_f_var": 62.0, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": 352.73772197129733
-        }
-    ], 
     "C17533": [
         {
             "priority": 2, 
@@ -87805,13 +87746,13 @@
             "dG0_f": -55.20779087787079
         }
     ], 
-    "C07616": [
+    "C08521": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": 216.47585143616507
+            "dG0_f": 135.9080983961342
         }
     ], 
     "C08522": [
@@ -87859,13 +87800,13 @@
             "dG0_f": -172.98478013076803
         }
     ], 
-    "C08529": [
+    "C07348": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -1226.8153946535624
+            "dG0_f": -3272.618823080134
         }
     ], 
     "C09123": [
@@ -88578,6 +88519,15 @@
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
             "dG0_f": -295.22188128765686
+        }
+    ], 
+    "C09192": [
+        {
+            "priority": 2, 
+            "source": "Group Contribution", 
+            "dG0_f_var": 62.0, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": -472.28460352992624
         }
     ], 
     "C18747": [
@@ -89476,13 +89426,13 @@
             "dG0_f": -3046.839805039329
         }
     ], 
-    "C02057": [
+    "C09195": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -228.08344671648268
+            "dG0_f": 593.2292290182454
         }
     ], 
     "C06646": [
@@ -90988,6 +90938,15 @@
             "dG0_f": 250.6800219598419
         }
     ], 
+    "C15504": [
+        {
+            "priority": 2, 
+            "source": "Group Contribution", 
+            "dG0_f_var": 62.0, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": -865.1645629999803
+        }
+    ], 
     "C15957": [
         {
             "priority": 2, 
@@ -91524,13 +91483,13 @@
             "dG0_f": -227.86138344236565
         }
     ], 
-    "C08323": [
+    "C07182": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -162.430525316576
+            "dG0_f": -436.2230326353913
         }
     ], 
     "C08320": [
@@ -92267,6 +92226,15 @@
             "dG0_f": -3326.897061910737
         }
     ], 
+    "C17926": [
+        {
+            "priority": 2, 
+            "source": "Group Contribution", 
+            "dG0_f_var": 62.0, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": 156.87541455986056
+        }
+    ], 
     "C14059": [
         {
             "priority": 2, 
@@ -92949,6 +92917,15 @@
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
             "dG0_f": -35.1362966279099
+        }
+    ], 
+    "C04592": [
+        {
+            "priority": 2, 
+            "source": "Group Contribution", 
+            "dG0_f_var": 62.0, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": -174.7333082935721
         }
     ], 
     "C19768": [
@@ -95195,6 +95172,15 @@
             "dG0_f": -316.22426511719436
         }
     ], 
+    "C11380": [
+        {
+            "priority": 2, 
+            "source": "Group Contribution", 
+            "dG0_f_var": 62.0, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": -296.3594497000922
+        }
+    ], 
     "C15791": [
         {
             "priority": 2, 
@@ -96393,13 +96379,13 @@
             "dG0_f": -81.44886290646642
         }
     ], 
-    "C04145": [
+    "C08879": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -1021.7571044622784
+            "dG0_f": -1144.901503062944
         }
     ], 
     "C10486": [
@@ -96474,13 +96460,13 @@
             "dG0_f": -1240.3925269124793
         }
     ], 
-    "C08879": [
+    "C04145": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -1144.901503062944
+            "dG0_f": -1021.7571044622784
         }
     ], 
     "C18894": [
@@ -96784,15 +96770,6 @@
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
             "dG0_f": -747.1858325985447
-        }
-    ], 
-    "C19398": [
-        {
-            "priority": 2, 
-            "source": "Group Contribution", 
-            "dG0_f_var": 62.0, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": 13.019240669067784
         }
     ], 
     "C15030": [
@@ -97263,13 +97240,13 @@
             "dG0_f": -140.0129723576604
         }
     ], 
-    "C06047": [
+    "C06511": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -627.4539972065744
+            "dG0_f": 80.60892486129691
         }
     ], 
     "C07941": [
@@ -99795,6 +99772,15 @@
             "dG0_f": 491.8515289472405
         }
     ], 
+    "C08885": [
+        {
+            "priority": 2, 
+            "source": "Group Contribution", 
+            "dG0_f_var": 62.0, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": -788.4438928100303
+        }
+    ], 
     "C18597": [
         {
             "priority": 2, 
@@ -101420,13 +101406,13 @@
             "dG0_f": -266.64274798857593
         }
     ], 
-    "C04608": [
+    "C08954": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -820.5931177517086
+            "dG0_f": -1386.7720498443105
         }
     ], 
     "C18778": [
@@ -102977,15 +102963,6 @@
             "dG0_f": -372.4880621283115
         }
     ], 
-    "C15407": [
-        {
-            "priority": 2, 
-            "source": "Group Contribution", 
-            "dG0_f_var": 62.0, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": -176.8611412906458
-        }
-    ], 
     "C14758": [
         {
             "priority": 2, 
@@ -104497,13 +104474,13 @@
             "dG0_f": -500.5565484432153
         }
     ], 
-    "C08611": [
+    "C07122": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": 1026.095206734664
+            "dG0_f": -92.7940568432754
         }
     ], 
     "C08616": [
@@ -107012,6 +106989,22 @@
             "dG0_f": -279.7640084237046
         }
     ], 
+    "C06019": [
+        {
+            "priority": 0, 
+            "source": "Reactant Contribution", 
+            "dG0_f_var": 17.8, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": -1746.670939
+        }, 
+        {
+            "priority": 2, 
+            "source": "Group Contribution", 
+            "dG0_f_var": 62.0, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": -1796.310326090825
+        }
+    ], 
     "C18892": [
         {
             "priority": 2, 
@@ -108106,15 +108099,6 @@
             "dG0_f": 260.07588256702195
         }
     ], 
-    "C17926": [
-        {
-            "priority": 2, 
-            "source": "Group Contribution", 
-            "dG0_f_var": 62.0, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": 156.87541455986056
-        }
-    ], 
     "C06991": [
         {
             "priority": 2, 
@@ -108230,15 +108214,6 @@
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
             "dG0_f": 216.3952778906311
-        }
-    ], 
-    "C14997": [
-        {
-            "priority": 2, 
-            "source": "Group Contribution", 
-            "dG0_f_var": 62.0, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": -395.63096184730523
         }
     ], 
     "C17101": [
@@ -109796,27 +109771,29 @@
             "dG0_f": -1569.935388561017
         }
     ], 
-    "C00313": [
+    "C19535": [
+        {
+            "priority": 2, 
+            "source": "Group Contribution", 
+            "dG0_f_var": 62.0, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": -25.28455517377249
+        }
+    ], 
+    "C00645": [
         {
             "priority": 0, 
             "source": "Reactant Contribution", 
             "dG0_f_var": 17.8, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -349.1441595
-        }, 
-        {
-            "priority": 1, 
-            "source": "Alberty (2006)", 
-            "dG0_f_var": 31.0, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": -509.96
+            "dG0_f": 159.5152629
         }, 
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -3671.1714666912144
+            "dG0_f": -880.6083318724968
         }
     ], 
     "C00644": [
@@ -109968,13 +109945,13 @@
             "dG0_f": -279.5509296568006
         }
     ], 
-    "C09195": [
+    "C00642": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": 593.2292290182454
+            "dG0_f": -407.7073988199186
         }
     ], 
     "C07767": [
@@ -111544,13 +111521,13 @@
             "dG0_f": 279.1754135423655
         }
     ], 
-    "C07717": [
+    "C08158": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": 193.40231091237897
+            "dG0_f": -152.84322919421496
         }
     ], 
     "C07715": [
@@ -113665,13 +113642,13 @@
             "dG0_f": -46.455268571306334
         }
     ], 
-    "C07522": [
+    "C08211": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -93.34962468527253
+            "dG0_f": 272.22114429756584
         }
     ], 
     "C07529": [
@@ -113976,13 +113953,13 @@
             "dG0_f": -542.3751203281134
         }
     ], 
-    "C08969": [
+    "C06853": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -1538.2081469678747
+            "dG0_f": -379.4811913839116
         }
     ], 
     "C09746": [
@@ -115890,6 +115867,22 @@
             "dG0_f": -863.3189364154375
         }
     ], 
+    "C80002": [
+        {
+            "priority": 0, 
+            "source": "Reactant Contribution", 
+            "dG0_f_var": 17.8, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": 102.2784384
+        }, 
+        {
+            "priority": 2, 
+            "source": "Group Contribution", 
+            "dG0_f_var": 62.0, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": 99.88683612226092
+        }
+    ], 
     "C03850": [
         {
             "priority": 2, 
@@ -116379,6 +116372,22 @@
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
             "dG0_f": 160.59625345962255
+        }
+    ], 
+    "C80055": [
+        {
+            "priority": 0, 
+            "source": "Reactant Contribution", 
+            "dG0_f_var": 17.8, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": 37.36656825
+        }, 
+        {
+            "priority": 2, 
+            "source": "Group Contribution", 
+            "dG0_f_var": 62.0, 
+            "dG0_f_units": "kJ/mol", 
+            "dG0_f": 37.3999999999979
         }
     ], 
     "C10882": [
@@ -118970,13 +118979,13 @@
             "dG0_f": -50.74656190730795
         }
     ], 
-    "C01720": [
+    "C01092": [
         {
             "priority": 2, 
             "source": "Group Contribution", 
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
-            "dG0_f": -993.355531607853
+            "dG0_f": -446.63833555864085
         }
     ], 
     "C04883": [
@@ -119733,15 +119742,6 @@
             "dG0_f_var": 62.0, 
             "dG0_f_units": "kJ/mol", 
             "dG0_f": -551.1553195042203
-        }
-    ], 
-    "C15253": [
-        {
-            "priority": 2, 
-            "source": "Group Contribution", 
-            "dG0_f_var": 62.0, 
-            "dG0_f_units": "kJ/mol", 
-            "dG0_f": -137.2802450865861
         }
     ], 
     "C07752": [

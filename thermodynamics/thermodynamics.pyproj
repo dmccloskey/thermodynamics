@@ -38,6 +38,7 @@
     <Compile Include="thermodynamics\thermodynamics_analysis_helper.py" />
     <Compile Include="thermodynamics\thermodynamics_dG0_f_data.py" />
     <Compile Include="thermodynamics\__init__.py" />
+    <Compile Include="workspace\rpomut01_OxicWTGlyc_0.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="data\" />
@@ -47,6 +48,7 @@
     <Folder Include="gim3e\examples\" />
     <Folder Include="gim3e\sampling\" />
     <Folder Include="gim3e\test\" />
+    <Folder Include="workspace\" />
     <Folder Include="thermodynamics\" />
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +96,8 @@
     <Content Include="gim3e\test_all.pyo" />
     <Content Include="gim3e\__init__.pyc" />
     <Content Include="gim3e\__init__.pyo" />
+    <Content Include="NOTES.txt" />
+    <Content Include="README.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>

@@ -1,0 +1,35 @@
+formation energies for dnxps and nxps other than amp, adp, and atp from reactant contribution method are bad
+use formation enerigeis from group contribution method instead
+
+"g1p_c": {
+        "dG_f": -1259.9827650909947, 
+        "dG_f_units": "kJ/mol", 
+        "dG_f_var": 17.8
+		
+"g6p_c": {
+	"dG_f": -1267.4118422315819, 
+	"dG_f_units": "kJ/mol", 
+	"dG_f_var": 17.8
+		
+"dttp_c": {
+	"dG_f": 512.51544226560327, 
+	"dG_f_units": "kJ/mol", 
+	"dG_f_var": 17.8
+		
+"dtdp_c": {
+	"dG_f": 168.30393216253793, 
+	"dG_f_units": "kJ/mol", 
+	"dG_f_var": 17.8
+	
+"atp_c": {
+	"dG_f": -2239.5482909459361, 
+	"dG_f_units": "kJ/mol", 
+	"dG_f_var": 17.8
+	
+"adp_c": {
+    "dG_f": -1365.8182422464965, 
+    "dG_f_units": "kJ/mol", 
+    "dG_f_var": 17.8
+
+current concentration coverage = 93
+previous concentration coverage = 76

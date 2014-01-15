@@ -361,7 +361,7 @@ class thermodynamics_dG0_f_data(object):
         #           doi:10.1371/journal.pcbi.1003098 page 10
 
         dG0_f = {};
-        with open('data\\dG0_f_rc.csv','r') as infile:
+        with open('data\\dG0_f_rc_v2.csv','r') as infile:
             reader = csv.reader(infile)
             headers = reader.next();
             for r in reader:

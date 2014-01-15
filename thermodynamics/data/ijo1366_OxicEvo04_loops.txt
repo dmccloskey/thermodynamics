@@ -1,0 +1,18 @@
+set direction of F6PA, VALTA, VPAMTr
+
+cannot set direction of ACS, ICHORS, ICHORSi, CA2t3pp', 183.84161573370173, CAt6pp'
+
+CYTDt2rpp	CYTDt2pp
+INSt2pp	INSt2rpp
+URIt2pp	URIt2rpp
+URAt2pp	URAt2rpp
+ADNt2pp	ADNt2rpp
+THMDt2pp	THMDt2rpp
+ASPt2pp	ASPt2rpp
+ALAt2rpp	ALATA_L	ALAt2pp	1 other
+GLYt2rpp	2 others
+GLCtex	GLCtexi
+PROt4pp	PROt2rpp
+O2tpp	O2tex
+GLYCLTt4pp	GLYCLTt2rpp
+SERt4pp	SERt2rpp

@@ -21,6 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ALEWt01_OxicWTGlc.py" />
     <Compile Include="data\__init__.py" />
     <Compile Include="thermodynamics.py" />
     <Compile Include="gim3e\core\gim3e.py" />
@@ -35,8 +36,10 @@
     <Compile Include="gim3e\test_debut_DM.py" />
     <Compile Include="gim3e\__init__.py" />
     <Compile Include="thermodynamics\thermodynamics_analysis.py" />
-    <Compile Include="thermodynamics\thermodynamics_analysis_helper.py" />
     <Compile Include="thermodynamics\thermodynamics_dG0_f_data.py" />
+    <Compile Include="thermodynamics\thermodynamics_formatter.py" />
+    <Compile Include="thermodynamics\thermodynamics_io.py" />
+    <Compile Include="thermodynamics\thermodynamics_utility.py" />
     <Compile Include="thermodynamics\__init__.py" />
     <Compile Include="workspace\rpomut01_OxicWTGlyc_0.py" />
   </ItemGroup>

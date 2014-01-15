@@ -6,15 +6,14 @@ from cobra.flux_analysis.objective import update_objective
 # Dependencies from thermodynamics
 from thermodynamics.thermodynamics_dG0_f_data import thermodynamics_dG0_f_data
 from thermodynamics.thermodynamics_analysis import thermodynamic_analysis
-from thermodynamics.thermodynamics_analysis_helper import import_values_json,\
-                                                                convert_fluxBounds2var,\
+from thermodynamics.thermodynamics_io import import_values_json, checkInput_concentrations, \
+                                                                checkInput_dG_f
+from thermodynamics.thermodynamics_formatter import convert_fluxBounds2var,\
                                                                 convert_cv2varAndmM2M_concentrations, \
                                                                 compartementalize_concentrations, \
                                                                 convert_var2lbub_dG_f, \
                                                                 generalize_compartment2all_concentration,\
-                                                                generalize_compartment2all_dG_f, \
-                                                                checkInput_concentrations, \
-                                                                checkInput_dG_f
+                                                                generalize_compartment2all_dG_f
 # Other dependencies
 import csv
 import json
@@ -31,22 +30,22 @@ data_srd = 'data\\ijo1366_srd_glc.json';
 #data_ta = 'data\\ALEWt01_OxicEvo03Glc_ta.json';
 #data_dG0 = 'data\\ALEWt01_OxicEvo03Glc_dG0.json';
 #data_dG = 'data\\ALEWt01_OxicEvo03Glc_dG.json';
-#data_concentrations = 'data\\ALEWt01_OxicEvo04Glc_0_geo.json';
-#data_ta = 'data\\ALEWt01_OxicEvo04Glc_ta.json';
-#data_dG0 = 'data\\ALEWt01_OxicEvo04Glc_dG0.json';
-#data_dG = 'data\\ALEWt01_OxicEvo04Glc_dG.json';
+data_concentrations = 'data\\ALEWt01_OxicEvo04Glc_0_geo.json';
+data_ta = 'data\\ALEWt01_OxicEvo04Glc_ta4.json';
+data_dG0 = 'data\\ALEWt01_OxicEvo04Glc_dG04.json';
+data_dG = 'data\\ALEWt01_OxicEvo04Glc_dG4.json';
 #data_concentrations = 'data\\ALEWt01_OxicEvo08Glc_0_geo.json';
 #data_ta = 'data\\ALEWt01_OxicEvo08Glc_ta.json';
 #data_dG0 = 'data\\ALEWt01_OxicEvo08Glc_dG0.json';
 #data_dG = 'data\\ALEWt01_OxicEvo08Glc_dG.json';
-data_concentrations = 'data\\ALEWt01_OxicEvo09Glc_0_geo.json';
-data_ta = 'data\\ALEWt01_OxicEvo09Glc_ta.json';
-data_dG0 = 'data\\ALEWt01_OxicEvo09Glc_dG0.json';
-data_dG = 'data\\ALEWt01_OxicEvo09Glc_dG.json';
+#data_concentrations = 'data\\ALEWt01_OxicEvo09Glc_0_geo.json';
+#data_ta = 'data\\ALEWt01_OxicEvo09Glc_ta.json';
+#data_dG0 = 'data\\ALEWt01_OxicEvo09Glc_dG0.json';
+#data_dG = 'data\\ALEWt01_OxicEvo09Glc_dG.json';
 
 # binary variables:
 calc_fva = False;
-calc_srd = True
+calc_srd = False;
  
 # Read in the sbml file and define the model conditions
 ijo1366_sbml = "data\\iJO1366.xml"
@@ -74,7 +73,7 @@ temperature['e'] = {'temperature': 310.15,'temperature_units': 'K'}
 
 # calculate the dG_f for each compound in each compartment
 dG_f_data = thermodynamics_dG0_f_data(id2KEGGID_filename_I='data\\id2KEGGID.csv');
-#dG_f_data.make_dG0_f_pH0(); 
+dG_f_data.make_dG0_f_pH0(); 
 dG_f_data.get_transformed_dG_f('data\\compounds_dG0_f.json',cobra_model,pH,temperature,ionic_strength);
 dG_f_data.export_dG_f(data_dG0_transformed);
 

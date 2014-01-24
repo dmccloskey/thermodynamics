@@ -4,6 +4,26 @@ import json, csv
 from math import sqrt,exp,pow
 from numpy import average, var, log
 
+class thermodynamics_io:
+    '''base class for the input and output of data'''
+
+    #def __init__(self, data_I = None):
+    #    if not data_I:
+    #        self.data = {};
+    #    else:
+    #        self.data = data_I;
+
+    def import_values_json(self, filename):
+        '''import values from a json file'''
+        data = json.load(open(filename))
+        return data;
+
+    def export_values_json(self, filename, data):
+        '''export values to a json file'''
+        
+        with open(filename, 'w') as outfile:
+            json.dump(data, outfile, indent=4);
+
 def checkInput_concentrations(measured_values_I):
     """
     check concentration data input

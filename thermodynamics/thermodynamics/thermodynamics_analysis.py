@@ -1,6 +1,4 @@
 from __future__ import with_statement
-#cobra.flux_analysis.variablity.py
-#runs flux variablity analysis on a Model object.
 from math import floor,ceil,log,sqrt,pow,exp,fabs
 from copy import deepcopy
 from cobra.core.Metabolite import Metabolite
@@ -121,12 +119,6 @@ def thermodynamic_analysis(cobra_model, reaction_bounds,
     F = 96.485; # faraday's constant [kJ/V/mol]
     Rkcal = 1.9858775e-3; # gas constant 8.3144621 [kcal/K/mol]
     Fkcal = 23.062e-3; # faraday's constant [kcal/mV/mol]
-
-    # initialize hydrogens:
-    hydrogens = [];
-    compartments = list(set(cobra_model.metabolites.list_attr('compartment')));
-    for compart in compartments:
-         hydrogens.append('h_' + compart);
 
     # initialize return variables
     dG_r = {};
@@ -258,6 +250,12 @@ def thermodynamic_analysis(cobra_model, reaction_bounds,
     # Output:
     #   dG_r
     #   thermodynamic_consistency_check
+    
+    # initialize hydrogens:
+    hydrogens = [];
+    compartments = list(set(cobra_model.metabolites.list_attr('compartment')));
+    for compart in compartments:
+         hydrogens.append('h_' + compart);
 
     dG_r = {};
     for r in cobra_model.reactions:

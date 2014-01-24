@@ -8,13 +8,18 @@ from python.kegg_model import KeggModel
 from python.compound_cacher import CompoundCacher
 from python.compound_model import compound_model
 
+from thermodynamics_io import thermodynamics_io
+
 import csv
 import re
 from math import sqrt
 import json
 
-class thermodynamics_dG0_f_data(object):
-    """description of class"""
+class thermodynamics_dG_f_data(thermodynamics_io):
+    """Class for handling dG_f data
+    #1: make the reactant contribution (RC) data from the component_contribution method
+    #2: combine the RC data with the bibliomic and GC data taken from the equilibrator database
+    #3: transform the thermodynamic data to the desired pH, ionic strength and temperature"""
 
     def __init__(self,id2KEGGID_filename_I=None):
         '''
@@ -33,6 +38,9 @@ class thermodynamics_dG0_f_data(object):
 
         self.dG0_f = {}; # units of kJ/mol
         self.dG_f = {}; # units of kJ/mol
+
+        self.measured_dG_f = {}
+        self.estimated_dG_f = {}
 
     def _get_id2KEGGID_csv(self, id2KEGGID_filename_I):
         #Read in the id2KEGGID mapping
@@ -396,7 +404,7 @@ class thermodynamics_dG0_f_data(object):
     ### 2 End ###
 
     ### 3 Start ###
-    # upload the combined dG0_f data file and transorm to the desired ph, temp, and ionic strength         
+    # upload the combined dG0_f data file and tranfsorm to the desired ph, temp, and ionic strength         
     def get_transformed_dG_f(self,filename_dG0_f_I, cobra_model_I, pH_I,temperature_I,ionic_strength_I):
         '''get the transformed Gibbs free energies of formation
 
@@ -486,4 +494,207 @@ class thermodynamics_dG0_f_data(object):
         dG_f = c_model.get_transformed_dG0_f(pH=pH_I, I=ionic_strength_I, T=temperature_I)
 
         return dG_f;
-        
+    ### 3 END ###
+
+    ### 4 START ###
+    # load, format, and check data
+
+    def import_dG_f(self, dG_f_filename_I):
+        '''import measured values required for analysis'''
+
+        self.dG_f = {};
+        self.dG_f = self._checkInput_dG_f(self.import_values_json(dG_f_filename_I));
+
+    def format_dG_f(self):
+        '''format data'''
+
+        self.measured_dG_f = self._convert_var2lbub_dG_f(self.dG_f);
+
+    def generate_estimated_dG_f(self, cobra_model):
+        '''generate estimated values'''
+
+        self.estimated_dG_f = self._generalize_compartment2all_dG_f(cobra_model);
+
+    def check_data(self):
+        '''check data integrity'''
+        return;
+
+    def _checkInput_dG_f(self, measured_values_I):
+        """
+        check dG_O_f data input
+
+        measured_values: measured values with variances
+                                 {metabolite.id: {'dG_f': float,
+                                                 'dG_f_var': float,
+                                                 'dG_f_lb': float,
+                                                 'dG_f_ub': float,
+                                                 'dG_f_units': 'kJ/mol'}
+        returns a dictionary: measured_values_O:
+                                 {metabolite.id: {'dG_f': float,
+                                                 'dG_f_var': float,
+                                                 'dG_f_lb': float,
+                                                 'dG_f_ub': float,
+                                                 'dG_f_units': 'kJ/mol'}
+        """
+        # check units
+    
+        measured_values_O = {};
+        for k,v in measured_values_I.iteritems():
+            if v['dG_f_units'] == 'kJ/mol':
+                measured_values_O[k] = v
+            else:
+                print (str(k) + ' has invalid units of ' + str(v) + ' and will be ignored')
+        return measured_values_O;
+
+    def _convert_var2lbub_dG_f(self, measured_values):
+        """
+        convert measured dG_f values with a stadard deviation
+        currently use +/- SD
+        lb = ave - sqrt(var)
+        ub = ave + sqrt(var)
+
+        measured_values: measured values with variances
+                                 {metabolite.id: {'dG_f': float,
+                                                 'dG_f_var': float,
+                                                 'dG_f_units': 'kJ/mol'}
+        returns a dictionary: measured_values_O:
+                                 {metabolite.id: {'dG_f': float,
+                                                 'dG_f_var': float,
+                                                 'dG_f_lb': float,
+                                                 'dG_f_ub': float,
+                                                 'dG_f_units': 'kJ/mol'}
+        """
+        measured_values_O = {};
+        for k,v in measured_values.iteritems():
+             concMlb = 0.0;
+             concMub = 0.0;
+             if v['dG_f_var']:
+                 concMlb = v['dG_f'] - sqrt(v['dG_f_var']);
+                 concMub = v['dG_f'] + sqrt(v['dG_f_var']);
+             else:
+                 concMlb = v['dG_f'];
+                 concMub = v['dG_f'];
+             #if concMlb<0: concMlb = min_value;
+             measured_values_O[k] = {'dG_f': v['dG_f'],
+                                     'dG_f_var': v['dG_f_var'],
+                                     'dG_f_lb': concMlb,
+                                                 'dG_f_ub': concMub,
+                                                 'dG_f_units': 'kJ/mol'}
+        return measured_values_O
+
+    def _convert_std2lbub_dG_f(self, measured_values,min_value):
+        """
+        convert measured values with a standard deviation
+        (CV = SD/Ave*100; SD = CV/100*AVE) to lb and ub
+        currently use +/- SD
+        lb = ave - sqrt(var) NOTE: if < 0 min_value is used instead
+        ub = ave + sqrt(var)
+
+        measured_values: measured values with variances
+                                 {metabolite.id: {'dG_f': float,
+                                                 'dG_f_cv': float,
+                                                 'dG_f_units': 'mM'}
+        returns a dictionary: measured_values_O:
+                                 {metabolite.id: {'dG_f_lb': float,
+                                                 'dG_f_ub': float,
+                                                 'dG_f_units': 'M'}
+        """
+        measured_values_O = {};
+        for k,v in measured_values.iteritems():
+             concMlb = 0.0;
+             concMub = 0.0;
+             concMlb = v['dG_f'] - v['dG_f_var'];
+             concMub = v['dG_f'] + v['dG_f_var'];
+             if concMlb<0: concMlb = min_value;
+             measured_values_O[k] = {'dG_f_lb': concMlb,
+                                                 'dG_f_ub': concMub,
+                                                 'dG_f_units': 'M'}
+        return measured_values_O
+
+    def _generalize_compartmentLBUB2all_dG_f(self, cobra_model, lbub=None, exceptions=None):
+        """
+        takes a compartment and lb/ub for that compartment
+        and updates each metabolite in that compartment
+
+        allows for exceptions to the generalization as input
+
+        cobra_model: a Model object
+
+        lbub: metabolite.compartment: {'dG_f_lb': float,
+                               'dG_f_ub': float,
+                               'dG_f_units': 'kJ/mol'}
+
+        returns a dictionary: metabolite.id {'dG_f_lb': float,
+                               'dG_f_ub': float,
+                               'dG_f_units': string}
+        """
+        if not(lbub):
+            lbub = {};
+            compartments = list(set(cobra_model.metabolites.list_attr('compartment')));
+            for c in compartments:
+                lbub[c] = {'dG_f_lb':0.0,
+                                       'dG_f_ub':0.0,
+                                       'dG_f_units':'kJ/mol'};
+        default_values = {};
+        for m in cobra_model.metabolites:
+            default_values[m.id] = {'dG_f_lb': lbub[m.compartment]['dG_f_lb'],
+                                   'dG_f_ub': lbub[m.compartment]['dG_f_ub'],
+                                   'dG_f_units': lbub[m.compartment]['dG_f_units']};
+            if exceptions:    
+                for k,v in exceptions.iteritems():
+                    if k in m.id:
+                        default_values[m.id] = {'dG_f_lb':v['dG_f_lb'],
+                                       'dG_f_ub':v['dG_f_ub'],
+                                       'dG_f_units':v['dG_f_units']};
+    
+        return default_values;
+
+    def _generalize_compartment2all_dG_f(self, cobra_model, dG_f=None, exceptions=None):
+        """
+        takes a compartment and lb/ub for that compartment
+        and updates each metabolite in that compartment
+
+        allows for exceptions to the generalization as input
+
+        the lower bounds and upper bounds are estimated as
+        lb = mean - sqrt(var)
+        ub = mean + sqrt(var)
+
+        cobra_model: a Model object
+
+        lbub: metabolite.compartment: {'dG_f': float,
+                               'dG_f_var': float,
+                               'dG_f_units': 'kJ/mol'}
+
+        returns a dictionary: metabolite.id {'dG_f': float,
+                               'dG_f_var': float,
+                               'dG_f_lb': float,
+                               'dG_f_ub': float,
+                               'dG_f_units': 'kJ/mol'}
+        """
+        if not(dG_f):
+            dG_f = {};
+            compartments = list(set(cobra_model.metabolites.list_attr('compartment')));
+            for c in compartments:
+                dG_f[c] = {'dG_f':0.0,
+                                       'dG_f_var':1e12, # based on the convention described in
+                                                       # doi:10.1371/journal.pcbi.1003098
+                                       'dG_f_units':'kJ/mol'};
+        default_values = {};
+        for m in cobra_model.metabolites:
+            default_values[m.id] = {'dG_f': dG_f[m.compartment]['dG_f'],
+                                   'dG_f_var': dG_f[m.compartment]['dG_f_var'],
+                                   'dG_f_lb': dG_f[m.compartment]['dG_f'] - sqrt(dG_f[m.compartment]['dG_f_var']),
+                                   'dG_f_ub': dG_f[m.compartment]['dG_f'] + sqrt(dG_f[m.compartment]['dG_f_var']),
+                                   'dG_f_units': dG_f[m.compartment]['dG_f_units']};
+            if exceptions:    
+                for k,v in exceptions.iteritems():
+                    if k in m.id:
+                        default_values[m.id] = {'dG_f':v['dG_f'],
+                                       'dG_f_var':v['dG_f_var'],
+                                       'dG_f_lb':v['dG_f_lb'],
+                                       'dG_f_ub':v['dG_f_ub'],
+                                       'dG_f_units':v['dG_f_units']};
+    
+        return default_values;
+

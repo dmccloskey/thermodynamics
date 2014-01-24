@@ -4,12 +4,11 @@ use formation enerigeis from group contribution method instead
 current concentration coverage = 93
 previous concentration coverage = 76
 
-thermodynamically infeasible reactions identified:
-DTMPK 1.0 dtmp_c + 1.0 atp_c <=> 1.0 dtdp_c + 1.0 adp_c
-G1PTT 1.0 dttp_c + 1.0 h_c + 1.0 g1p_c -> 1.0 dtdpglu_c + 1.0 ppi_c
-GK1 1.0 gmp_c + 1.0 atp_c <=> 1.0 gdp_c + 1.0 adp_c
-PGMT 1.0 g1p_c <=> 1.0 g6p_c
-UMPK 1.0 ump_c + 1.0 atp_c <=> 1.0 udp_c + 1.0 adp_c
+add method to remove data from simulation_data,
+	thermodynamics_dG_f_data
+	metabolomics_data, thermodynamics_dG_r_data
 
--132563.11779834906 475621.919225586	343058.801427231
--131191.133736542	-216858.44219491846	-348049.5759314604
+make a method to concisely summarize the consistency check
+
+make a method to calculate the dG_r for an arbitrary pathway
+	e.g. calculate_dG_pathway(cobra_model, reaction_list, reaction_stoich)

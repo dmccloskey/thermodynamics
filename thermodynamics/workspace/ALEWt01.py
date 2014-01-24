@@ -21,34 +21,10 @@ update_objective(cobra_model,{'Ec_biomass_iJO1366_WT_53p95M':1.0})
 # Change uptake reactions for growth on glycerol
 cobra_model.reactions.get_by_id('EX_glc_LPAREN_e_RPAREN_').lower_bound = -10.0;
 
-# pathways:
-pathways = {};
-pathways['de novo Purine Biosynthesis'] = {'reactions':['GLUPRT','PRAGSr','GARFT','PRFGS','PRAIS','AIRC2','AIRC3','PRASCSi','ADSL2r','AICART','IMPC'],
-                                           'stoichiometry':[1,1,1,1,1,1,-1,1,1,1,-1]};
-pathways['do novo Pyrimidine Biosynthesis (aerobic)'] = {'reactions':['ASPCT','DHORTS','DHORD2','ORPT','OMPDC','UMPK','NDPK2','CTPS2'],
-                                               'stoichiometry':[1,-1,1,-1,1,1,1,1]}
-pathways['do novo Pyrimidine Biosynthesis (anaerobic)'] = {'reactions':['ASPCT','DHORTS','DHORD5','ORPT','OMPDC','UMPK','NDPK2','CTPS2'],
-                                               'stoichiometry':[1,-1,1,-1,1,1,1,1]}
-pathways['FAD Biosynthesis'] = {'reactions':['GTPCII2','DHPPDA2','APRAUR','PMDPHT','DB4PS','RBFSa','RBFSb','RBFK','FMNAT'],
-                                               'stoichiometry':[1,1,1,1,1,1,1,1,1]}
-pathways['NAD Biosynthesis (aerobic)'] = {'reactions':['ASPO6','QULNS','NNDPR','NNATr','NADS1','NADK','NADPPPS'],
-                                               'stoichiometry':[1,1,1,1,1,1,1]}
-pathways['NAD Biosynthesis (anaerobic)'] = {'reactions':['ASPO5','QULNS','NNDPR','NNATr','NADS1','NADK','NADPPPS'],
-                                               'stoichiometry':[1,1,1,1,1,1,1]}
-pathways['Glutathione Biosynthesis'] = {'reactions':['GLUCYS','GTHS','GTHOr'],
-                                               'stoichiometry':[1,1,1]}
-pathways['NAD Salvage'] = {'reactions':['NADN','NNAM','NMNN','NAMNPP','NMNDA','NMNAT','NADDP'],
-                           'stoichiometry':[1,1,1,1,1,1,1]}
-
-for r in pathways['NAD Salvage']['reactions']:
-    print r, cobra_model.reactions.get_by_id(r).build_reaction_string()
-for r in pathways['Glutathione Biosynthesis']['reactions']:
-    print r, cobra_model.reactions.get_by_id(r).build_reaction_string()
-
 data_fva = 'data\\ijo1366_fva_glc.json';
 data_srd = 'data\\ijo1366_srd_glc.json';
 # make/load simulated data
-simulated_data = thermodynamics_simulatedData();
+#simulated_data = thermodynamics_simulatedData();
 #simulated_data.generate_sra_data(cobra_model);
 #simulated_data.generate_fva_data(cobra_model);
 #simulated_data.export_sra_data(data_srd);

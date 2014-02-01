@@ -23,26 +23,64 @@ cobra_model.reactions.get_by_id('EX_glc_LPAREN_e_RPAREN_').lower_bound = -10.0;
 
 # pathways:
 pathways = {};
-pathways['de novo Purine Biosynthesis'] = {'reactions':['GLUPRT','PRAGSr','GARFT','PRFGS','PRAIS','AIRC2','AIRC3','PRASCSi','ADSL2r','AICART','IMPC'],
+pathways['de novo purine biosynthesis'] = {'reactions':['GLUPRT','PRAGSr','GARFT','PRFGS','PRAIS','AIRC2','AIRC3','PRASCSi','ADSL2r','AICART','IMPC'],
                                            'stoichiometry':[1,1,1,1,1,1,-1,1,1,1,-1]};
-pathways['do novo Pyrimidine Biosynthesis (aerobic)'] = {'reactions':['ASPCT','DHORTS','DHORD2','ORPT','OMPDC','UMPK','NDPK2','CTPS2'],
+pathways['do novo pyrimidine biosynthesis (aerobic)'] = {'reactions':['ASPCT','DHORTS','DHORD2','ORPT','OMPDC','UMPK','NDPK2','CTPS2'],
                                                'stoichiometry':[1,-1,1,-1,1,1,1,1]}
-pathways['do novo Pyrimidine Biosynthesis (anaerobic)'] = {'reactions':['ASPCT','DHORTS','DHORD5','ORPT','OMPDC','UMPK','NDPK2','CTPS2'],
+pathways['do novo pyrimidine biosynthesis (anaerobic)'] = {'reactions':['ASPCT','DHORTS','DHORD5','ORPT','OMPDC','UMPK','NDPK2','CTPS2'],
                                                'stoichiometry':[1,-1,1,-1,1,1,1,1]}
-pathways['FAD Biosynthesis'] = {'reactions':['GTPCII2','DHPPDA2','APRAUR','PMDPHT','DB4PS','RBFSa','RBFSb','RBFK','FMNAT'],
+pathways['fad biosynthesis'] = {'reactions':['GTPCII2','DHPPDA2','APRAUR','PMDPHT','DB4PS','RBFSa','RBFSb','RBFK','FMNAT'],
                                                'stoichiometry':[1,1,1,1,1,1,1,1,1]}
-pathways['NAD Biosynthesis (aerobic)'] = {'reactions':['ASPO6','QULNS','NNDPR','NNATr','NADS1','NADK','NADPPPS'],
+pathways['nad biosynthesis (aerobic)'] = {'reactions':['ASPO6','QULNS','NNDPR','NNATr','NADS1','NADK','NADPPPS'],
                                                'stoichiometry':[1,1,1,1,1,1,1]}
-pathways['NAD Biosynthesis (anaerobic)'] = {'reactions':['ASPO5','QULNS','NNDPR','NNATr','NADS1','NADK','NADPPPS'],
+pathways['nad biosynthesis (anaerobic)'] = {'reactions':['ASPO5','QULNS','NNDPR','NNATr','NADS1','NADK','NADPPPS'],
                                                'stoichiometry':[1,1,1,1,1,1,1]}
-pathways['Glutathione Biosynthesis'] = {'reactions':['GLUCYS','GTHS','GTHOr'],
+pathways['gth biosynthesis'] = {'reactions':['GLUCYS','GTHS','GTHOr'],
                                                'stoichiometry':[1,1,1]}
-pathways['NAD Salvage'] = {'reactions':['NADN','NNAM','NMNN','NAMNPP','NMNDA','NMNAT','NADDP'],
+pathways['nad salvage'] = {'reactions':['NADN','NNAM','NMNN','NAMNPP','NMNDA','NMNAT','NADDP'],
                            'stoichiometry':[1,1,1,1,1,1,1]}
+pathways['e4p and prpp to skm'] = {'reactions':['DDPA', 'DHQS', 'SHK3Dr'],
+                                    'stoichiometry':[1,1,1]}
+pathways['asp-L to thr-L'] = {'reactions':['ASPK', 'ASAD', 'HSDy','HSK','THRS'],
+                              'stoichiometry':[1,-1,-1,1,1]}
+pathways['hom-L and cyst-L to met-L'] = {'reactions':['HSST', 'SHSL1', 'CYSTL', 'METS'],
+                              'stoichiometry':[1,1,1,1]}
+pathways['methylglyoxal bypass'] = {'reactions':['MGSA', 'LGTHL', 'GLYOX'],
+                              'stoichiometry':[1,1,1]}
+pathways['hom-L to thr-L'] = {'reactions':['HSK','THRS'],
+                              'stoichiometry':[1,1]}
+pathways['3pg to ser-L'] = {'reactions':['PGCD', 'PSERT', 'PSP_L'],
+                              'stoichiometry':[1,1,1]}
+pathways['prpp to his-L'] = {'reactions':['ATPPRT', 'PRATPP', 'PRAMPC', 'PRMICI', 'IG3PS', 'IGPDH', 'HSTPT', 'HISTP', 'HISTD'],
+                              'stoichiometry':[1,1,1,1,1,1,1,1,1]}
+pathways['dttp synthesis (anaerobic)'] = {'reactions':['RNTR4c', 'DUTPDP', 'TMDS', 'DTMPK', 'NDPK4'],
+                              'stoichiometry':[1,1,1,1,1]}
+pathways['dttp synthesis (aerobic)'] = {'reactions':['RNDR4', 'URIDK2r', 'TMDS', 'DTMPK', 'NDPK4'],
+                              'stoichiometry':[1,-1,1,1,1]}
+pathways['coa biosynthesis'] = {'reactions':['MOHMT', 'DPR', 'PANTS', 'PNTK', 'PPNCL2', 'PPCDC', 'PTPATi', 'DPCOAK'],
+                              'stoichiometry':[1,1,1,1,1,1,1,1]}
+pathways['thf biosynthesis'] = {'reactions':['GTPCI', 'DNTPPA', 'DNMPPA', 'DHNPA2', 'GCALDD', 'DHNPA2', 'HPPK2', 'ADCS', 'ADCL', 'DHPS2', 'DHFS', 'DHFR'],
+                              'stoichiometry':[1,1,1,1,1,1,1,1,1,1,1,1]}
+pathways['thr-L to ile-L'] = {'reactions':['THRD_L','ACHBS','KARA2','DHAD2','ILETA'],
+                              'stoichiometry':[1,1,1,1,-1]}
+pathways['akg to glu-L'] = {'reactions':['GLNS','GLUSy'],
+                              'stoichiometry':[1,1]}
+pathways['chor to trp-L'] = {'reactions':['ANPRT', 'ANS', 'IGPS', 'PRAIi', 'TRPS2', 'TRPS3'],
+                              'stoichiometry':[1,1,1,1,1,1]}
+pathways['chor to tyr-L'] = {'reactions':['CHORM', 'PPND', 'TYRTA'],
+                              'stoichiometry':[1,1,-1]}
+pathways['chor to phe-L'] = {'reactions':['CHORM', 'PPNDH', 'PHETA1'],
+                              'stoichiometry':[1,1,-1]}
+pathways['OPPP'] = {'reactions':['G6PDH2r', 'GND', 'PGL', 'RPI'],
+                              'stoichiometry':[1,1,1,-1]}
+pathways['Glycolysis'] = {'reactions':['PGI', 'PFK', 'FBA', 'TPI', 'GAPD', 'PGK', 'PGM', 'ENO'],
+                              'stoichiometry':[1,1,1,1,1,-1,-1,1]}
+pathways['glu-L to arg-L'] = {'reactions':['ACGS','ACGK','AGPR','ACOTA','ACODA','OCBT','ARGSS','ARGS','ARGSL'],
+                              'stoichiometry':[1,1,-1,-1,1,1,1,1,-1]}
 
-for r in pathways['NAD Salvage']['reactions']:
+for r in pathways['nad salvage']['reactions']:
     print r, cobra_model.reactions.get_by_id(r).build_reaction_string()
-for r in pathways['Glutathione Biosynthesis']['reactions']:
+for r in pathways['gth biosynthesis']['reactions']:
     print r, cobra_model.reactions.get_by_id(r).build_reaction_string()
 
 data_fva = 'data\\ijo1366_fva_glc.json';

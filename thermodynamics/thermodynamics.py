@@ -55,8 +55,8 @@ pathways['prpp to his-L'] = {'reactions':['ATPPRT', 'PRATPP', 'PRAMPC', 'PRMICI'
                               'stoichiometry':[1,1,1,1,1,1,1,1,1]}
 pathways['dttp synthesis (anaerobic)'] = {'reactions':['RNTR4c', 'DUTPDP', 'TMDS', 'DTMPK', 'NDPK4'],
                               'stoichiometry':[1,1,1,1,1]}
-pathways['dttp synthesis (aerobic)'] = {'reactions':['RNDR4', 'URIDK2r', 'TMDS', 'DTMPK', 'NDPK4'],
-                              'stoichiometry':[1,-1,1,1,1]}
+pathways['dttp synthesis (aerobic)'] = {'reactions':['RNDR4','NDPK6','DUTPDP', 'TMDS', 'DTMPK', 'NDPK4'],
+                              'stoichiometry':[1,-1,1,1,1,1]}
 pathways['coa biosynthesis'] = {'reactions':['MOHMT', 'DPR', 'PANTS', 'PNTK', 'PPNCL2', 'PPCDC', 'PTPATi', 'DPCOAK'],
                               'stoichiometry':[1,1,1,1,1,1,1,1]}
 pathways['thf biosynthesis'] = {'reactions':['GTPCI', 'DNTPPA', 'DNMPPA', 'DHNPA2', 'GCALDD', 'DHNPA2', 'HPPK2', 'ADCS', 'ADCL', 'DHPS2', 'DHFS', 'DHFR'],

@@ -12,3 +12,40 @@ make a method to concisely summarize the consistency check
 
 make a method to calculate the dG_r for an arbitrary pathway
 	e.g. calculate_dG_pathway(cobra_model, reaction_list, reaction_stoich)
+
+>>> import csv,json
+>>> io = base_importData()
+>>> io.read_csv('data\\aerobicAnaerobic01_oxic.csv')
+>>> io_out = base_exportData(io.data)
+>>> io_out.write_dict2json('data\\aerobicAnaerobic01_oxic.json')
+>>> io.clear_data()
+>>> io.read_csv('data\\aerobicAnaerobic01_anoxic.csv')
+>>> io_out = base_exportData(io.data)
+>>> io_out.write_dict2json('data\\aerobicAnaerobic01_anoxic.json')
+
+>>> data = json.load(open('data\\aerobicAnaerobic01_oxic.json'))
+>>> data_O = {};
+>>> for d in data:
+...     data_O[d['met_id']] = {'concentration':float(d['concentration']),'concentration_var':float(d['concentration_var']),'concentration_units':d['concentration_units'],'concentration_lb':float(d['concentration_lb']),'concentration_ub':float(d['concentration_ub'])}
+>>> with open('data\\aerobicAnaerobic01_oxic.json', 'w') as outfile:
+...     json.dump(data_O,outfile,indent=4)
+>>> with open('data\\aerobicAnaerobic01_oxic.json', 'w') as outfile:
+...     json.dump(data_O,outfile,indent=4)
+>>> data = json.load(open('data\\aerobicAnaerobic01_anoxic.json'))
+>>> data_O = {};
+>>> for d in data:
+...     data_O[d['met_id']] = {'concentration':float(d['concentration']),'concentration_var':float(d['concentration_var']),'concentration_units':d['concentration_units'],'concentration_lb':float(d['concentration_lb']),'concentration_ub':float(d['concentration_ub'])}
+>>> with open('data\\aerobicAnaerobic01_anoxic.json', 'w') as outfile:
+...     json.dump(data_O,outfile,indent=4)
+
+
+>>> tcc_oxic.dG0_r['PGCD']
+>>> tcc_oxic.dG0_r['ACACT1r']
+>>> tcc_anoxic.dG0_r['PGCD']
+>>> tcc_anoxic.dG0_r['ACACT1r']
+>>> tcc_anoxic.dG0_r['NDPK2']
+>>> tcc_oxic.dG_r['PGCD']
+>>> tcc_oxic.dG_r['ACACT1r']
+>>> tcc_anoxic.dG_r['PGCD']
+>>> tcc_anoxic.dG_r['ACACT1r']
+>>> tcc_anoxic.dG_r['NDPK2']

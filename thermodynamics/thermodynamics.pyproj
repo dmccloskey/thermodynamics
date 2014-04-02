@@ -36,6 +36,7 @@
     <Compile Include="gim3e\__init__.py" />
     <Compile Include="thermodynamics\thermodynamics_analysis.py" />
     <Compile Include="thermodynamics\thermodynamics_dG_f_data.py" />
+    <Compile Include="thermodynamics\thermodynamics_dG_p_data.py" />
     <Compile Include="thermodynamics\thermodynamics_dG_r_data.py" />
     <Compile Include="thermodynamics\thermodynamics_formatter.py" />
     <Compile Include="thermodynamics\thermodynamics_metabolomicsData.py" />
@@ -44,6 +45,7 @@
     <Compile Include="thermodynamics\thermodynamics_io.py" />
     <Compile Include="thermodynamics\thermodynamics_utility.py" />
     <Compile Include="thermodynamics\__init__.py" />
+    <Compile Include="workspace\aerobicAnaerobic01.py" />
     <Compile Include="workspace\ALEWt01.py" />
     <Compile Include="workspace\rpomut01_OxicWTGlyc_0.py" />
   </ItemGroup>

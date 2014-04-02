@@ -174,23 +174,23 @@ class thermodynamics_dG_r_data():
                 if p.id in measured_dG_f.keys():
                     dG0_r_product = dG0_r_product + measured_dG_f[p.id]['dG_f']*r.get_coefficient(p.id)
                     dG0_r_product_var = dG0_r_product_var + measured_dG_f[p.id]['dG_f_var']
-
-                    #dG0_r_product_lb = dG0_r_product_lb + measured_dG_f[p.id]['dG_f_lb']*r.get_coefficient(p.id)
-                    #dG0_r_product_ub = dG0_r_product_ub + measured_dG_f[p.id]['dG_f_ub']*r.get_coefficient(p.id)
-
+                    # calculate the lb and ub for dG implementation #1
                     dG0_r_product_lb = dG0_r_product_lb + measured_dG_f[p.id]['dG_f_lb']*r.get_coefficient(p.id)
                     dG0_r_product_ub = dG0_r_product_ub + measured_dG_f[p.id]['dG_f_ub']*r.get_coefficient(p.id)
+                    ## calculate the lb and ub for dG implementation #2 
+                    #dG0_r_product_lb = dG0_r_product_lb + measured_dG_f[p.id]['dG_f_lb']*r.get_coefficient(p.id)
+                    #dG0_r_product_ub = dG0_r_product_ub + measured_dG_f[p.id]['dG_f_ub']*r.get_coefficient(p.id)
                     nMets = nMets + 1.0;
                     nMets_measured = nMets_measured + 1.0;
                 elif p.id in estimated_dG_f.keys():
                     dG0_r_product = dG0_r_product + estimated_dG_f[p.id]['dG_f']*r.get_coefficient(p.id)
                     dG0_r_product_var = dG0_r_product_var + estimated_dG_f[p.id]['dG_f_var']
-
-                    #dG0_r_product_lb = dG0_r_product_lb + estimated_dG_f[p.id]['dG_f_lb']*r.get_coefficient(p.id)
-                    #dG0_r_product_ub = dG0_r_product_ub + estimated_dG_f[p.id]['dG_f_ub']*r.get_coefficient(p.id)
-
+                    # calculate the lb and ub for dG implementation #1
                     dG0_r_product_lb = dG0_r_product_lb + estimated_dG_f[p.id]['dG_f_lb']*r.get_coefficient(p.id)
                     dG0_r_product_ub = dG0_r_product_ub + estimated_dG_f[p.id]['dG_f_ub']*r.get_coefficient(p.id)
+                    ## calculate the lb and ub for dG implementation #2 
+                    #dG0_r_product_lb = dG0_r_product_lb + estimated_dG_f[p.id]['dG_f_lb']*r.get_coefficient(p.id)
+                    #dG0_r_product_ub = dG0_r_product_ub + estimated_dG_f[p.id]['dG_f_ub']*r.get_coefficient(p.id)
                     nMets = nMets + 1.0;
                 else:
                     # raise error
@@ -204,23 +204,23 @@ class thermodynamics_dG_r_data():
                 if react.id in measured_dG_f.keys():
                     dG0_r_reactant = dG0_r_reactant + measured_dG_f[react.id]['dG_f']*r.get_coefficient(react.id)
                     dG0_r_reactant_var = dG0_r_reactant_var + measured_dG_f[react.id]['dG_f_var']
-
-                    #dG0_r_reactant_lb = dG0_r_reactant_lb + measured_dG_f[react.id]['dG_f_lb']*r.get_coefficient(react.id)
-                    #dG0_r_reactant_ub = dG0_r_reactant_ub + measured_dG_f[react.id]['dG_f_ub']*r.get_coefficient(react.id)
-
-                    dG0_r_reactant_lb = dG0_r_reactant_lb + measured_dG_f[react.id]['dG_f_ub']*r.get_coefficient(react.id)
-                    dG0_r_reactant_ub = dG0_r_reactant_ub + measured_dG_f[react.id]['dG_f_lb']*r.get_coefficient(react.id)
+                    # calculate the lb and ub for dG implementation #1
+                    dG0_r_reactant_lb = dG0_r_reactant_lb + measured_dG_f[react.id]['dG_f_lb']*r.get_coefficient(react.id)
+                    dG0_r_reactant_ub = dG0_r_reactant_ub + measured_dG_f[react.id]['dG_f_ub']*r.get_coefficient(react.id)
+                    ## calculate the lb and ub for dG implementation #2
+                    #dG0_r_reactant_lb = dG0_r_reactant_lb + measured_dG_f[react.id]['dG_f_ub']*r.get_coefficient(react.id)
+                    #dG0_r_reactant_ub = dG0_r_reactant_ub + measured_dG_f[react.id]['dG_f_lb']*r.get_coefficient(react.id)
                     nMets = nMets + 1.0;
                     nMets_measured = nMets_measured + 1.0;
                 elif react.id in estimated_dG_f.keys():
                     dG0_r_reactant = dG0_r_reactant + estimated_dG_f[react.id]['dG_f']*r.get_coefficient(react.id)
                     dG0_r_reactant_var = dG0_r_reactant_var + estimated_dG_f[react.id]['dG_f_var']
-
-                    #dG0_r_reactant_lb = dG0_r_reactant_lb + estimated_dG_f[react.id]['dG_f_lb']*r.get_coefficient(react.id)
-                    #dG0_r_reactant_ub = dG0_r_reactant_ub + estimated_dG_f[react.id]['dG_f_ub']*r.get_coefficient(react.id)
-
-                    dG0_r_reactant_lb = dG0_r_reactant_lb + estimated_dG_f[react.id]['dG_f_ub']*r.get_coefficient(react.id)
-                    dG0_r_reactant_ub = dG0_r_reactant_ub + estimated_dG_f[react.id]['dG_f_lb']*r.get_coefficient(react.id)
+                    # calculate the lb and ub for dG implementation #1
+                    dG0_r_reactant_lb = dG0_r_reactant_lb + estimated_dG_f[react.id]['dG_f_lb']*r.get_coefficient(react.id)
+                    dG0_r_reactant_ub = dG0_r_reactant_ub + estimated_dG_f[react.id]['dG_f_ub']*r.get_coefficient(react.id)
+                    ## calculate the lb and ub for dG implementation #2
+                    #dG0_r_reactant_lb = dG0_r_reactant_lb + estimated_dG_f[react.id]['dG_f_ub']*r.get_coefficient(react.id)
+                    #dG0_r_reactant_ub = dG0_r_reactant_ub + estimated_dG_f[react.id]['dG_f_lb']*r.get_coefficient(react.id)
                     nMets = nMets + 1.0;
                 else:
                     # raise error
@@ -312,22 +312,25 @@ class thermodynamics_dG_r_data():
                 if not(p.id in hydrogens): # exclude hydrogen because it has already been accounted for when adjusting for the pH
                     if p.id in measured_concentration.keys():
                         # calculate the dG_r of the reactants using measured concentrations
-                        #   NOTE: since the geometric mean is linear with respect to dG, no adjust needs to be made
+                        #   NOTE: since the geometric mean is linear with respect to dG, no adjustments needs to be made
                         dG_r_product = dG_r_product + self.R*temperature[p.compartment]['temperature']*\
                                                             log(measured_concentration[p.id]['concentration'])*r.get_coefficient(p.id);
+                        # calculate the variance contributed to dG_r by the uncertainty in the measured concentrations
+                        #   NOTE: provides an estimate only...
+                        #         i.e. improvements need to be made
                         #dG_r_product_var = dG_r_product_var + pow(self.R*temperature[p.compartment]['temperature']*fabs(r.get_coefficient(p.id)),2)/measured_concentration[p.id]['concentration']*measured_concentration[p.id]['concentration_var'];
-                        dG_r_product_var = dG_r_product_var + exp(self.R*temperature[p.compartment]['temperature']*fabs(r.get_coefficient(p.id))/log(measured_concentration[p.id]['concentration'])*log(measured_concentration[p.id]['concentration_var']));
+                        #dG_r_product_var = dG_r_product_var + exp(self.R*temperature[p.compartment]['temperature']*fabs(r.get_coefficient(p.id))/log(measured_concentration[p.id]['concentration'])*log(measured_concentration[p.id]['concentration_var']));
                     
                         # calculate the lb and ub for dG implementation #1
-                        #dG_r_product_lb = dG_r_product_lb + self.R*temperature[p.compartment]['temperature']*\
-                        #                                    log(measured_concentration[p.id]['concentration_lb'])*r.get_coefficient(p.id);
-                        #dG_r_product_ub = dG_r_product_ub + self.R*temperature[react.compartment]['temperature']*\
-                        #                                    log(measured_concentration[p.id]['concentration_ub'])*r.get_coefficient(p.id);
-                        # calculate the lb and ub for dG implementation #2
                         dG_r_product_lb = dG_r_product_lb + self.R*temperature[p.compartment]['temperature']*\
                                                             log(measured_concentration[p.id]['concentration_lb'])*r.get_coefficient(p.id);
                         dG_r_product_ub = dG_r_product_ub + self.R*temperature[react.compartment]['temperature']*\
                                                             log(measured_concentration[p.id]['concentration_ub'])*r.get_coefficient(p.id);
+                        ## calculate the lb and ub for dG implementation #2
+                        #dG_r_product_lb = dG_r_product_lb + self.R*temperature[p.compartment]['temperature']*\
+                        #                                    log(measured_concentration[p.id]['concentration_lb'])*r.get_coefficient(p.id);
+                        #dG_r_product_ub = dG_r_product_ub + self.R*temperature[react.compartment]['temperature']*\
+                        #                                    log(measured_concentration[p.id]['concentration_ub'])*r.get_coefficient(p.id);
 
                         # calculate the contribution of charge transfer accross the membrane to dG_r
                         #   NOTE: dG_r_mem = c*F*deltaPsi = c*F*(33.33*deltaPH-143.33)
@@ -355,28 +358,27 @@ class thermodynamics_dG_r_data():
 
                     elif p.id in estimated_concentration.keys():
                         # calculate the dG_r of the reactants using estimated concentrations
-                        #   NOTE: since the geometric mean is linear with respect to dG, no adjust needs to be made
+                        #   NOTE: since the geometric mean is linear with respect to dG, no adjustments needs to be made
                         dG_r_product = dG_r_product + self.R*temperature[p.compartment]['temperature']*\
                                                             log(estimated_concentration[p.id]['concentration'])*r.get_coefficient(p.id);
-
                         # calculate the variance contributed to dG_r by the uncertainty in the measured concentrations
                         #   NOTE: provides an estimate only...
                         #         i.e. improvements need to be made
                         #dG_r_product_var = dG_r_product_var + self.R*temperature[p.compartment]['temperature']*fabs(r.get_coefficient(p.id))/estimated_concentration[p.id]['concentration']*\
                         #                                        estimated_concentration[p.id]['concentration_var'];
-                        dG_r_product_var = dG_r_product_var + exp(self.R*temperature[p.compartment]['temperature']*fabs(r.get_coefficient(p.id))/log(estimated_concentration[p.id]['concentration'])*\
-                                                                log(estimated_concentration[p.id]['concentration_var']));
+                        #dG_r_product_var = dG_r_product_var + exp(self.R*temperature[p.compartment]['temperature']*fabs(r.get_coefficient(p.id))/log(estimated_concentration[p.id]['concentration'])*\
+                        #                                        log(estimated_concentration[p.id]['concentration_var']));
 
-                        # calculate the lb and ub for dG implementation #1
-                        #dG_r_product_lb = dG_r_product_lb + self.R*temperature[p.compartment]['temperature']*\
-                        #                                    log(estimated_concentration[p.id]['concentration_lb'])*r.get_coefficient(p.id);
-                        #dG_r_product_ub = dG_r_product_ub + self.R*temperature[p.compartment]['temperature']*\
-                        #                                    log(estimated_concentration[p.id]['concentration_ub'])*r.get_coefficient(p.id);
                         # calculate the lb and ub for dG implementation #1
                         dG_r_product_lb = dG_r_product_lb + self.R*temperature[p.compartment]['temperature']*\
                                                             log(estimated_concentration[p.id]['concentration_lb'])*r.get_coefficient(p.id);
                         dG_r_product_ub = dG_r_product_ub + self.R*temperature[p.compartment]['temperature']*\
                                                             log(estimated_concentration[p.id]['concentration_ub'])*r.get_coefficient(p.id);
+                        ## calculate the lb and ub for dG implementation #1
+                        #dG_r_product_lb = dG_r_product_lb + self.R*temperature[p.compartment]['temperature']*\
+                        #                                    log(estimated_concentration[p.id]['concentration_lb'])*r.get_coefficient(p.id);
+                        #dG_r_product_ub = dG_r_product_ub + self.R*temperature[p.compartment]['temperature']*\
+                        #                                    log(estimated_concentration[p.id]['concentration_ub'])*r.get_coefficient(p.id);
                     
                         # calculate the contribution of charge transfer accross the membrane to dG_r
                         if p.name in mets_trans: dG_r_mem += fabs(r.get_coefficient(p.id))/2.0*p.charge/2.0*self.F*(33.3*r.get_coefficient(p.id)/fabs(r.get_coefficient(p.id))*pH[p.compartment]['pH']-143.33/2.0);
@@ -404,26 +406,25 @@ class thermodynamics_dG_r_data():
                 if not(react.id in hydrogens): # exclude hydrogen because it has already been accounted for when adjusting for the pH
                     if react.id in measured_concentration.keys():
                         # calculate the dG_r of the reactants using measured concentrations
-                        #   NOTE: since the geometric mean is linear with respect to dG, no adjust needs to be made
+                        #   NOTE: since the geometric mean is linear with respect to dG, no adjustments needs to be made
                         dG_r_reactant = dG_r_reactant + self.R*temperature[react.compartment]['temperature']*\
                                                             log(measured_concentration[react.id]['concentration'])*r.get_coefficient(react.id);
-
                         # calculate the variance contributed to dG_r by the uncertainty in the measured concentrations
                         #   NOTE: provides an estimate only...
                         #         i.e. improvements need to be made
                         #dG_r_reactant_var = dG_r_reactant_var + self.R*temperature[react.compartment]['temperature']*fabs(r.get_coefficient(react.id))/measured_concentration[react.id]['concentration']*measured_concentration[react.id]['concentration_var'];
-                        dG_r_reactant_var = dG_r_reactant_var + exp(self.R*temperature[react.compartment]['temperature']*fabs(r.get_coefficient(react.id))/log(measured_concentration[react.id]['concentration'])*log(measured_concentration[react.id]['concentration_var']));
+                        #dG_r_reactant_var = dG_r_reactant_var + exp(self.R*temperature[react.compartment]['temperature']*fabs(r.get_coefficient(react.id))/log(measured_concentration[react.id]['concentration'])*log(measured_concentration[react.id]['concentration_var']));
                     
                         # calculate the lb and ub for dG implementation #1
-                        #dG_r_reactant_lb = dG_r_reactant_lb + self.R*temperature[react.compartment]['temperature']*\
-                        #                                    log(measured_concentration[react.id]['concentration_lb'])*r.get_coefficient(react.id);
-                        #dG_r_reactant_ub = dG_r_reactant_ub + self.R*temperature[react.compartment]['temperature']*\
-                        #                                    log(measured_concentration[react.id]['concentration_ub'])*r.get_coefficient(react.id);
-                        # calculate the lb and ub for dG implementation #2
                         dG_r_reactant_lb = dG_r_reactant_lb + self.R*temperature[react.compartment]['temperature']*\
-                                                            log(measured_concentration[react.id]['concentration_ub'])*r.get_coefficient(react.id);
-                        dG_r_reactant_ub = dG_r_reactant_ub + self.R*temperature[react.compartment]['temperature']*\
                                                             log(measured_concentration[react.id]['concentration_lb'])*r.get_coefficient(react.id);
+                        dG_r_reactant_ub = dG_r_reactant_ub + self.R*temperature[react.compartment]['temperature']*\
+                                                            log(measured_concentration[react.id]['concentration_ub'])*r.get_coefficient(react.id);
+                        ## calculate the lb and ub for dG implementation #2
+                        #dG_r_reactant_lb = dG_r_reactant_lb + self.R*temperature[react.compartment]['temperature']*\
+                        #                                    log(measured_concentration[react.id]['concentration_ub'])*r.get_coefficient(react.id);
+                        #dG_r_reactant_ub = dG_r_reactant_ub + self.R*temperature[react.compartment]['temperature']*\
+                        #                                    log(measured_concentration[react.id]['concentration_lb'])*r.get_coefficient(react.id);
 
                         # calculate the contribution of charge transfer accross the membrane to dG_r
                         #   NOTE: dG_r_mem = c*F*deltaPsi = c*F*(33.33*deltaPH-143.33)
@@ -449,24 +450,27 @@ class thermodynamics_dG_r_data():
 
                     elif react.id in estimated_concentration.keys():
                         # calculate the dG_r of the reactants using estimated concentrations
-                        #   NOTE: since the geometric mean is linear with respect to dG, no adjust needs to be made
+                        #   NOTE: since the geometric mean is linear with respect to dG, no adjustments needs to be made
                         dG_r_reactant = dG_r_reactant + self.R*temperature[react.compartment]['temperature']*\
                                                             log(estimated_concentration[react.id]['concentration'])*r.get_coefficient(react.id);
+                        # calculate the variance contributed to dG_r by the uncertainty in the measured concentrations
+                        #   NOTE: provides an estimate only...
+                        #         i.e. improvements need to be made
                         #dG_r_reactant_var = dG_r_reactant_var + self.R*temperature[react.compartment]['temperature']*fabs(r.get_coefficient(react.id))/estimated_concentration[react.id]['concentration']*\
                         #                                        estimated_concentration[react.id]['concentration_var'];
-                        dG_r_reactant_var = dG_r_reactant_var + exp(self.R*temperature[react.compartment]['temperature']*fabs(r.get_coefficient(react.id))/log(estimated_concentration[react.id]['concentration'])*\
-                                                                log(estimated_concentration[react.id]['concentration_var']));
+                        #dG_r_reactant_var = dG_r_reactant_var + exp(self.R*temperature[react.compartment]['temperature']*fabs(r.get_coefficient(react.id))/log(estimated_concentration[react.id]['concentration'])*\
+                        #                                        log(estimated_concentration[react.id]['concentration_var']));
                     
                         # calculate the lb and ub for dG implementation #1
-                        #dG_r_reactant_lb = dG_r_reactant_lb + self.R*temperature[react.compartment]['temperature']*\
-                        #                                    log(estimated_concentration[react.id]['concentration_lb'])*r.get_coefficient(react.id);
-                        #dG_r_reactant_ub = dG_r_reactant_ub + self.R*temperature[react.compartment]['temperature']*\
-                        #                                    log(estimated_concentration[react.id]['concentration_ub'])*r.get_coefficient(react.id);
-                        # calculate the lb and ub for dG implementation #1
                         dG_r_reactant_lb = dG_r_reactant_lb + self.R*temperature[react.compartment]['temperature']*\
-                                                            log(estimated_concentration[react.id]['concentration_ub'])*r.get_coefficient(react.id);
-                        dG_r_reactant_ub = dG_r_reactant_ub + self.R*temperature[react.compartment]['temperature']*\
                                                             log(estimated_concentration[react.id]['concentration_lb'])*r.get_coefficient(react.id);
+                        dG_r_reactant_ub = dG_r_reactant_ub + self.R*temperature[react.compartment]['temperature']*\
+                                                            log(estimated_concentration[react.id]['concentration_ub'])*r.get_coefficient(react.id);
+                        ## calculate the lb and ub for dG implementation #2
+                        #dG_r_reactant_lb = dG_r_reactant_lb + self.R*temperature[react.compartment]['temperature']*\
+                        #                                    log(estimated_concentration[react.id]['concentration_ub'])*r.get_coefficient(react.id);
+                        #dG_r_reactant_ub = dG_r_reactant_ub + self.R*temperature[react.compartment]['temperature']*\
+                        #                                    log(estimated_concentration[react.id]['concentration_lb'])*r.get_coefficient(react.id);
                     
                         # calculate the contribution of charge transfer accross the membrane to dG_r
                         if react.name in mets_trans: dG_r_mem += fabs(r.get_coefficient(react.id))/2.0*react.charge/2.0*self.F*(33.3*r.get_coefficient(react.id)/fabs(r.get_coefficient(react.id))*pH[react.compartment]['pH']-143.33/2.0);

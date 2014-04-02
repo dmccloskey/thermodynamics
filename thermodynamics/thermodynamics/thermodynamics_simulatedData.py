@@ -97,5 +97,3 @@ class thermodynamics_simulatedData(thermodynamics_io):
                                 'flux_lb': v['minimum'], 'flux_ub': v['maximum']};
 
         return flux_bounds_O
-
-

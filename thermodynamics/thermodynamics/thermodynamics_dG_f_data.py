@@ -385,9 +385,9 @@ class thermodynamics_dG_f_data(thermodynamics_io):
         '''
         compounds_dG0_f = {};
         keys = [];
-        keys.extend(dG0_f_0.keys())
-        keys.extend(dG0_f_1.keys())
-        keys.extend(dG0_f_2.keys())
+        if dG0_f_0:keys.extend(dG0_f_0.keys())
+        if dG0_f_1:keys.extend(dG0_f_1.keys())
+        if dG0_f_2: keys.extend(dG0_f_2.keys())
         keys = sorted(list(set(keys)));
         # add the data into a single json file
         for k in keys:

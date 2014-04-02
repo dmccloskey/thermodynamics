@@ -286,6 +286,17 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
                                    'concentration_lb':1.4e-3,
                                    'concentration_ub':1.4e-3,
                                    'concentration_units': 'M'};
+        ## estimation implementation #1
+        #if not(concentration):
+        #    concentration = {};
+        #    compartments = list(set(cobra_model.metabolites.list_attr('compartment')));
+        #    for c in compartments:
+        #        concentration[c] = {'concentration':5.0e-5,
+        #                               'concentration_var':4.99e-5,
+        #                               'concentration_lb':2e-8,
+        #                               'concentration_ub':0.02,
+        #                               'concentration_units':'M'};
+        # estimation implementation #2
         # define the span
         y = 1000.0
         conc = 5.0e-5

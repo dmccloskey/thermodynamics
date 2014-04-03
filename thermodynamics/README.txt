@@ -2,6 +2,11 @@ thermodynamics module for quantitative metabolomics data
 
 Douglas McCloskey
 
+###NOTE###
+Please note that the package is not yet ready for large-scale use.
+There are a few bugs that I am still working out.
+###ENDNOTE###
+
 Methods are based off of following work:
 Henry CS, Broadbelt LJ, Hatzimanikatis V (2007) Thermodynamics-based metabolic flux analysis. Biophysical journal 92: 1792–805.
 Noor E, Bar-Even A, Flamholz A, Lubling Y, Davidi D, et al. (2012) An integrated open framework for thermodynamics of reactions that combines accuracy and coverage. Bioinformatics (Oxford, England) 28: 2037–2044.

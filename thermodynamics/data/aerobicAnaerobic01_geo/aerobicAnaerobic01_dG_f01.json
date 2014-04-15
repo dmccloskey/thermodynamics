@@ -163,21 +163,21 @@
     }, 
     "pyr_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -342.7, 
-        "KEGGID": "", 
+        "met_name": "Pyruvate", 
+        "dG_f_lb": -344.3, 
+        "KEGGID": "C00022", 
         "dG_f_var": 0.0, 
-        "dG_f": -342.7, 
-        "dG_f_ub": -342.7
+        "dG_f": -344.3, 
+        "dG_f_ub": -344.3
     }, 
     "pyr_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -351.2, 
-        "KEGGID": "", 
+        "met_name": "Pyruvate", 
+        "dG_f_lb": -352.9, 
+        "KEGGID": "C00022", 
         "dG_f_var": 0.0, 
-        "dG_f": -351.2, 
-        "dG_f_ub": -351.2
+        "dG_f": -352.9, 
+        "dG_f_ub": -352.9
     }, 
     "acg5sa_p": {
         "dG_f_units": "kJ/mol", 
@@ -307,12 +307,12 @@
     }, 
     "adn_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 332.6, 
-        "KEGGID": "", 
+        "met_name": "Adenosine", 
+        "dG_f_lb": 334.8, 
+        "KEGGID": "C00212", 
         "dG_f_var": 0.0, 
-        "dG_f": 332.6, 
-        "dG_f_ub": 332.6
+        "dG_f": 334.8, 
+        "dG_f_ub": 334.8
     }, 
     "8aonn_c": {
         "dG_f_units": "kJ/mol", 
@@ -415,12 +415,12 @@
     }, 
     "atp_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -2292.4, 
-        "KEGGID": "", 
+        "met_name": "ATP", 
+        "dG_f_lb": -2301.5, 
+        "KEGGID": "C00002", 
         "dG_f_var": 0.0, 
-        "dG_f": -2292.4, 
-        "dG_f_ub": -2292.4
+        "dG_f": -2301.5, 
+        "dG_f_ub": -2301.5
     }, 
     "ump_c": {
         "dG_f_units": "kJ/mol", 
@@ -433,21 +433,21 @@
     }, 
     "glyc_DASH_R_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -458.9, 
-        "KEGGID": "", 
+        "met_name": "D-Glycerate", 
+        "dG_f_lb": -462.8, 
+        "KEGGID": "C00258", 
         "dG_f_var": 0.0, 
-        "dG_f": -458.9, 
-        "dG_f_ub": -458.9
+        "dG_f": -462.8, 
+        "dG_f_ub": -462.8
     }, 
     "glyc_DASH_R_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -444.6, 
-        "KEGGID": "", 
+        "met_name": "D-Glycerate", 
+        "dG_f_lb": -448.6, 
+        "KEGGID": "C00258", 
         "dG_f_var": 0.0, 
-        "dG_f": -444.6, 
-        "dG_f_ub": -444.6
+        "dG_f": -448.6, 
+        "dG_f_ub": -448.6
     }, 
     "kynate_e": {
         "dG_f_units": "kJ/mol", 
@@ -460,12 +460,12 @@
     }, 
     "atp_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -2257.5, 
-        "KEGGID": "", 
+        "met_name": "ATP", 
+        "dG_f_lb": -2266.8, 
+        "KEGGID": "C00002", 
         "dG_f_var": 0.0, 
-        "dG_f": -2257.5, 
-        "dG_f_ub": -2257.5
+        "dG_f": -2266.8, 
+        "dG_f_ub": -2266.8
     }, 
     "ump_e": {
         "dG_f_units": "kJ/mol", 
@@ -856,9 +856,9 @@
     }, 
     "no2_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Nitrite", 
         "dG_f_lb": -32.8, 
-        "KEGGID": "", 
+        "KEGGID": "C00088", 
         "dG_f_var": 0.0, 
         "dG_f": -32.8, 
         "dG_f_ub": -32.8
@@ -901,9 +901,9 @@
     }, 
     "no2_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Nitrite", 
         "dG_f_lb": -32.8, 
-        "KEGGID": "", 
+        "KEGGID": "C00088", 
         "dG_f_var": 0.0, 
         "dG_f": -32.8, 
         "dG_f_ub": -32.8
@@ -955,12 +955,12 @@
     }, 
     "val_DASH_L_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -297.5, 
-        "KEGGID": "", 
+        "met_name": "Valine", 
+        "dG_f_lb": 94.8, 
+        "KEGGID": "C16436", 
         "dG_f_var": 0.0, 
-        "dG_f": -297.5, 
-        "dG_f_ub": -297.5
+        "dG_f": 94.8, 
+        "dG_f_ub": 94.8
     }, 
     "f5hoxkyn_p": {
         "dG_f_units": "kJ/mol", 
@@ -973,12 +973,12 @@
     }, 
     "val_DASH_L_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -263.3, 
-        "KEGGID": "", 
+        "met_name": "Valine", 
+        "dG_f_lb": 126.2, 
+        "KEGGID": "C16436", 
         "dG_f_var": 0.0, 
-        "dG_f": -263.3, 
-        "dG_f_ub": -263.3
+        "dG_f": 126.2, 
+        "dG_f_ub": 126.2
     }, 
     "ncam_p": {
         "dG_f_units": "kJ/mol", 
@@ -1187,29 +1187,11 @@
         "dG_f": 148.1, 
         "dG_f_ub": 148.1
     }, 
-    "i_e": {
-        "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -52.2, 
-        "KEGGID": "", 
-        "dG_f_var": 0.0, 
-        "dG_f": -52.2, 
-        "dG_f_ub": -52.2
-    }, 
-    "i_c": {
-        "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -52.2, 
-        "KEGGID": "", 
-        "dG_f_var": 0.0, 
-        "dG_f": -52.2, 
-        "dG_f_ub": -52.2
-    }, 
     "h2o2_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Hydrogen peroxide", 
         "dG_f_lb": -47.2, 
-        "KEGGID": "", 
+        "KEGGID": "C00027", 
         "dG_f_var": 0.0, 
         "dG_f": -47.2, 
         "dG_f_ub": -47.2
@@ -1225,9 +1207,9 @@
     }, 
     "h2o2_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Hydrogen peroxide", 
         "dG_f_lb": -52.9, 
-        "KEGGID": "", 
+        "KEGGID": "C00027", 
         "dG_f_var": 0.0, 
         "dG_f": -52.9, 
         "dG_f_ub": -52.9
@@ -1450,21 +1432,21 @@
     }, 
     "glyc_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -173.1, 
-        "KEGGID": "", 
+        "met_name": "Glycerol", 
+        "dG_f_lb": -161.0, 
+        "KEGGID": "C00116", 
         "dG_f_var": 0.0, 
-        "dG_f": -173.1, 
-        "dG_f_ub": -173.1
+        "dG_f": -161.0, 
+        "dG_f_ub": -161.0
     }, 
     "glyc_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -150.3, 
-        "KEGGID": "", 
+        "met_name": "Glycerol", 
+        "dG_f_lb": -138.1, 
+        "KEGGID": "C00116", 
         "dG_f_var": 0.0, 
-        "dG_f": -150.3, 
-        "dG_f_ub": -150.3
+        "dG_f": -138.1, 
+        "dG_f_ub": -138.1
     }, 
     "ura_e": {
         "dG_f_units": "kJ/mol", 
@@ -1567,21 +1549,21 @@
     }, 
     "tre_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -628.0, 
-        "KEGGID": "", 
+        "met_name": "alpha,alpha-Trehalose", 
+        "dG_f_lb": -618.8, 
+        "KEGGID": "C01083", 
         "dG_f_var": 0.0, 
-        "dG_f": -628.0, 
-        "dG_f_ub": -628.0
+        "dG_f": -618.8, 
+        "dG_f_ub": -618.8
     }, 
     "tre_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -690.7, 
-        "KEGGID": "", 
+        "met_name": "alpha,alpha-Trehalose", 
+        "dG_f_lb": -681.6, 
+        "KEGGID": "C01083", 
         "dG_f_var": 0.0, 
-        "dG_f": -690.7, 
-        "dG_f_ub": -690.7
+        "dG_f": -681.6, 
+        "dG_f_ub": -681.6
     }, 
     "dopasf_e": {
         "dG_f_units": "kJ/mol", 
@@ -1630,21 +1612,21 @@
     }, 
     "3php_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1367.4, 
-        "KEGGID": "", 
+        "met_name": "3-Phosphonooxypyruvate", 
+        "dG_f_lb": -1391.5, 
+        "KEGGID": "C03232", 
         "dG_f_var": 0.0, 
-        "dG_f": -1367.4, 
-        "dG_f_ub": -1367.4
+        "dG_f": -1391.5, 
+        "dG_f_ub": -1391.5
     }, 
     "3php_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1373.2, 
-        "KEGGID": "", 
+        "met_name": "3-Phosphonooxypyruvate", 
+        "dG_f_lb": -1397.3, 
+        "KEGGID": "C03232", 
         "dG_f_var": 0.0, 
-        "dG_f": -1373.2, 
-        "dG_f_ub": -1373.2
+        "dG_f": -1397.3, 
+        "dG_f_ub": -1397.3
     }, 
     "23dhmb_e": {
         "dG_f_units": "kJ/mol", 
@@ -1684,21 +1666,21 @@
     }, 
     "ac_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -239.7, 
-        "KEGGID": "", 
+        "met_name": "Acetate", 
+        "dG_f_lb": -229.0, 
+        "KEGGID": "C00033", 
         "dG_f_var": 0.0, 
-        "dG_f": -239.7, 
-        "dG_f_ub": -239.7
+        "dG_f": -229.0, 
+        "dG_f_ub": -229.0
     }, 
     "ac_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -248.3, 
-        "KEGGID": "", 
+        "met_name": "Acetate", 
+        "dG_f_lb": -237.5, 
+        "KEGGID": "C00033", 
         "dG_f_var": 0.0, 
-        "dG_f": -248.3, 
-        "dG_f_ub": -248.3
+        "dG_f": -237.5, 
+        "dG_f_ub": -237.5
     }, 
     "Lcystin_p": {
         "dG_f_units": "kJ/mol", 
@@ -1765,12 +1747,12 @@
     }, 
     "acetone_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 83.6, 
-        "KEGGID": "", 
+        "met_name": "Acetone", 
+        "dG_f_lb": 101.7, 
+        "KEGGID": "C00207", 
         "dG_f_var": 0.0, 
-        "dG_f": 83.6, 
-        "dG_f_ub": 83.6
+        "dG_f": 101.7, 
+        "dG_f_ub": 101.7
     }, 
     "Lcystin_e": {
         "dG_f_units": "kJ/mol", 
@@ -1783,12 +1765,12 @@
     }, 
     "acetone_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 100.7, 
-        "KEGGID": "", 
+        "met_name": "Acetone", 
+        "dG_f_lb": 118.8, 
+        "KEGGID": "C00207", 
         "dG_f_var": 0.0, 
-        "dG_f": 100.7, 
-        "dG_f_ub": 100.7
+        "dG_f": 118.8, 
+        "dG_f_ub": 118.8
     }, 
     "Lcystin_c": {
         "dG_f_units": "kJ/mol", 
@@ -1873,12 +1855,12 @@
     }, 
     "acald_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 34.6, 
-        "KEGGID": "", 
+        "met_name": "Acetaldehyde", 
+        "dG_f_lb": 35.7, 
+        "KEGGID": "C00084", 
         "dG_f_var": 0.0, 
-        "dG_f": 34.6, 
-        "dG_f_ub": 34.6
+        "dG_f": 35.7, 
+        "dG_f_ub": 35.7
     }, 
     "rhcys_p": {
         "dG_f_units": "kJ/mol", 
@@ -2071,21 +2053,21 @@
     }, 
     "thr_DASH_L_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -138.4, 
-        "KEGGID": "", 
+        "met_name": "L-Threonine", 
+        "dG_f_lb": -127.1, 
+        "KEGGID": "C00188", 
         "dG_f_var": 0.0, 
-        "dG_f": -138.4, 
-        "dG_f_ub": -138.4
+        "dG_f": -127.1, 
+        "dG_f_ub": -127.1
     }, 
     "thr_DASH_L_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -164.0, 
-        "KEGGID": "", 
+        "met_name": "L-Threonine", 
+        "dG_f_lb": -152.7, 
+        "KEGGID": "C00188", 
         "dG_f_var": 0.0, 
-        "dG_f": -164.0, 
-        "dG_f_ub": -164.0
+        "dG_f": -152.7, 
+        "dG_f_ub": -152.7
     }, 
     "rhcys_e": {
         "dG_f_units": "kJ/mol", 
@@ -2116,12 +2098,12 @@
     }, 
     "q8_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 3649.2, 
-        "KEGGID": "", 
+        "met_name": "Ubiquinone", 
+        "dG_f_lb": 1054.2, 
+        "KEGGID": "C00399", 
         "dG_f_var": 0.0, 
-        "dG_f": 3649.2, 
-        "dG_f_ub": 3649.2
+        "dG_f": 1054.2, 
+        "dG_f_ub": 1054.2
     }, 
     "dhptd_c": {
         "dG_f_units": "kJ/mol", 
@@ -2134,12 +2116,12 @@
     }, 
     "xyl_DASH_D_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -316.5, 
-        "KEGGID": "", 
+        "met_name": "L-Arabinose", 
+        "dG_f_lb": -317.7, 
+        "KEGGID": "C11476", 
         "dG_f_var": 0.0, 
-        "dG_f": -316.5, 
-        "dG_f_ub": -316.5
+        "dG_f": -317.7, 
+        "dG_f_ub": -317.7
     }, 
     "26dap_DASH_LL_p": {
         "dG_f_units": "kJ/mol", 
@@ -2161,12 +2143,12 @@
     }, 
     "xyl_DASH_D_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -345.0, 
-        "KEGGID": "", 
+        "met_name": "L-Arabinose", 
+        "dG_f_lb": -346.2, 
+        "KEGGID": "C11476", 
         "dG_f_var": 0.0, 
-        "dG_f": -345.0, 
-        "dG_f_ub": -345.0
+        "dG_f": -346.2, 
+        "dG_f_ub": -346.2
     }, 
     "thr_DASH_L_p": {
         "dG_f_units": "kJ/mol", 
@@ -2197,12 +2179,12 @@
     }, 
     "ins_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 77.4, 
-        "KEGGID": "", 
+        "met_name": "Inosine", 
+        "dG_f_lb": 71.1, 
+        "KEGGID": "C00294", 
         "dG_f_var": 0.0, 
-        "dG_f": 77.4, 
-        "dG_f_ub": 77.4
+        "dG_f": 71.1, 
+        "dG_f_ub": 71.1
     }, 
     "xyl_DASH_D_p": {
         "dG_f_units": "kJ/mol", 
@@ -2233,27 +2215,27 @@
     }, 
     "ins_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 111.5, 
-        "KEGGID": "", 
+        "met_name": "Inosine", 
+        "dG_f_lb": 105.2, 
+        "KEGGID": "C00294", 
         "dG_f_var": 0.0, 
-        "dG_f": 111.5, 
-        "dG_f_ub": 111.5
+        "dG_f": 105.2, 
+        "dG_f_ub": 105.2
     }, 
     "nh4_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 82.3, 
-        "KEGGID": "", 
+        "met_name": "NH4+", 
+        "dG_f_lb": 82.2, 
+        "KEGGID": "C01342", 
         "dG_f_var": 0.0, 
-        "dG_f": 82.3, 
-        "dG_f_ub": 82.3
+        "dG_f": 82.2, 
+        "dG_f_ub": 82.2
     }, 
     "nh4_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "NH4+", 
         "dG_f_lb": 93.6, 
-        "KEGGID": "", 
+        "KEGGID": "C01342", 
         "dG_f_var": 0.0, 
         "dG_f": 93.6, 
         "dG_f_ub": 93.6
@@ -2287,21 +2269,21 @@
     }, 
     "2dr5p_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1085.9, 
-        "KEGGID": "", 
+        "met_name": "2-Deoxy-D-ribose 5-phosphate", 
+        "dG_f_lb": -1070.2, 
+        "KEGGID": "C00673", 
         "dG_f_var": 0.0, 
-        "dG_f": -1085.9, 
-        "dG_f_ub": -1085.9
+        "dG_f": -1070.2, 
+        "dG_f_ub": -1070.2
     }, 
     "2dr5p_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1059.9, 
-        "KEGGID": "", 
+        "met_name": "2-Deoxy-D-ribose 5-phosphate", 
+        "dG_f_lb": -1044.4, 
+        "KEGGID": "C00673", 
         "dG_f_var": 0.0, 
-        "dG_f": -1059.9, 
-        "dG_f_ub": -1059.9
+        "dG_f": -1044.4, 
+        "dG_f_ub": -1044.4
     }, 
     "dhpmp_p": {
         "dG_f_units": "kJ/mol", 
@@ -2395,9 +2377,9 @@
     }, 
     "nad_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "NAD+", 
         "dG_f_lb": 1053.6, 
-        "KEGGID": "", 
+        "KEGGID": "C00003", 
         "dG_f_var": 0.0, 
         "dG_f": 1053.6, 
         "dG_f_ub": 1053.6
@@ -2428,15 +2410,6 @@
         "dG_f_var": 0.0, 
         "dG_f": -1573.3, 
         "dG_f_ub": -1573.3
-    }, 
-    "no_e": {
-        "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 86.5, 
-        "KEGGID": "", 
-        "dG_f_var": 0.0, 
-        "dG_f": 86.5, 
-        "dG_f_ub": 86.5
     }, 
     "5mta_p": {
         "dG_f_units": "kJ/mol", 
@@ -3061,12 +3034,12 @@
     }, 
     "hxan_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 251.6, 
-        "KEGGID": "", 
+        "met_name": "Hypoxanthine", 
+        "dG_f_lb": 257.7, 
+        "KEGGID": "C00262", 
         "dG_f_var": 0.0, 
-        "dG_f": 251.6, 
-        "dG_f_ub": 251.6
+        "dG_f": 257.7, 
+        "dG_f_ub": 257.7
     }, 
     "gullac_p": {
         "dG_f_units": "kJ/mol", 
@@ -3079,12 +3052,12 @@
     }, 
     "hxan_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 262.9, 
-        "KEGGID": "", 
+        "met_name": "Hypoxanthine", 
+        "dG_f_lb": 268.9, 
+        "KEGGID": "C00262", 
         "dG_f_var": 0.0, 
-        "dG_f": 262.9, 
-        "dG_f_ub": 262.9
+        "dG_f": 268.9, 
+        "dG_f_ub": 268.9
     }, 
     "ntm2amep_p": {
         "dG_f_units": "kJ/mol", 
@@ -3259,12 +3232,12 @@
     }, 
     "acon_DASH_C_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -801.0, 
-        "KEGGID": "", 
+        "met_name": "cis-Aconitate", 
+        "dG_f_lb": -807.5, 
+        "KEGGID": "C00417", 
         "dG_f_var": 0.0, 
-        "dG_f": -801.0, 
-        "dG_f_ub": -801.0
+        "dG_f": -807.5, 
+        "dG_f_ub": -807.5
     }, 
     "bz_c": {
         "dG_f_units": "kJ/mol", 
@@ -3277,12 +3250,12 @@
     }, 
     "acon_DASH_C_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -792.4, 
-        "KEGGID": "", 
+        "met_name": "cis-Aconitate", 
+        "dG_f_lb": -799.0, 
+        "KEGGID": "C00417", 
         "dG_f_var": 0.0, 
-        "dG_f": -792.4, 
-        "dG_f_ub": -792.4
+        "dG_f": -799.0, 
+        "dG_f_ub": -799.0
     }, 
     "dcmp_c": {
         "dG_f_units": "kJ/mol", 
@@ -3349,12 +3322,12 @@
     }, 
     "ppi_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1936.2, 
-        "KEGGID": "", 
+        "met_name": "Diphosphate", 
+        "dG_f_lb": -1939.2, 
+        "KEGGID": "C00013", 
         "dG_f_var": 0.0, 
-        "dG_f": -1936.2, 
-        "dG_f_ub": -1936.2
+        "dG_f": -1939.2, 
+        "dG_f_ub": -1939.2
     }, 
     "oxam_c": {
         "dG_f_units": "kJ/mol", 
@@ -3367,12 +3340,12 @@
     }, 
     "ppi_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1939.2, 
-        "KEGGID": "", 
+        "met_name": "Diphosphate", 
+        "dG_f_lb": -1940.5, 
+        "KEGGID": "C00013", 
         "dG_f_var": 0.0, 
-        "dG_f": -1939.2, 
-        "dG_f_ub": -1939.2
+        "dG_f": -1940.5, 
+        "dG_f_ub": -1940.5
     }, 
     "oxam_e": {
         "dG_f_units": "kJ/mol", 
@@ -3430,21 +3403,21 @@
     }, 
     "asn_DASH_L_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -178.9, 
-        "KEGGID": "", 
+        "met_name": "Asparagine", 
+        "dG_f_lb": -160.7, 
+        "KEGGID": "C16438", 
         "dG_f_var": 0.0, 
-        "dG_f": -178.9, 
-        "dG_f_ub": -178.9
+        "dG_f": -160.7, 
+        "dG_f_ub": -160.7
     }, 
     "asn_DASH_L_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -201.6, 
-        "KEGGID": "", 
+        "met_name": "Asparagine", 
+        "dG_f_lb": -183.3, 
+        "KEGGID": "C16438", 
         "dG_f_var": 0.0, 
-        "dG_f": -201.6, 
-        "dG_f_ub": -201.6
+        "dG_f": -183.3, 
+        "dG_f_ub": -183.3
     }, 
     "uaagmda_e": {
         "dG_f_units": "kJ/mol", 
@@ -3466,12 +3439,12 @@
     }, 
     "ser_DASH_L_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -227.1, 
-        "KEGGID": "", 
+        "met_name": "DL-Serine", 
+        "dG_f_lb": -232.8, 
+        "KEGGID": "C00716", 
         "dG_f_var": 0.0, 
-        "dG_f": -227.1, 
-        "dG_f_ub": -227.1
+        "dG_f": -232.8, 
+        "dG_f_ub": -232.8
     }, 
     "5apru_e": {
         "dG_f_units": "kJ/mol", 
@@ -3583,27 +3556,27 @@
     }, 
     "gal_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -388.1, 
-        "KEGGID": "", 
+        "met_name": "D-Galactose", 
+        "dG_f_lb": -391.6, 
+        "KEGGID": "C00124", 
         "dG_f_var": 0.0, 
-        "dG_f": -388.1, 
-        "dG_f_ub": -388.1
+        "dG_f": -391.6, 
+        "dG_f_ub": -391.6
     }, 
     "gal_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -422.4, 
-        "KEGGID": "", 
+        "met_name": "D-Galactose", 
+        "dG_f_lb": -425.8, 
+        "KEGGID": "C00124", 
         "dG_f_var": 0.0, 
-        "dG_f": -422.4, 
-        "dG_f_ub": -422.4
+        "dG_f": -425.8, 
+        "dG_f_ub": -425.8
     }, 
     "meoh_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Methanol", 
         "dG_f_lb": -13.1, 
-        "KEGGID": "", 
+        "KEGGID": "C00132", 
         "dG_f_var": 0.0, 
         "dG_f": -13.1, 
         "dG_f_ub": -13.1
@@ -3637,9 +3610,9 @@
     }, 
     "meoh_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Methanol", 
         "dG_f_lb": -1.7, 
-        "KEGGID": "", 
+        "KEGGID": "C00132", 
         "dG_f_var": 0.0, 
         "dG_f": -1.7, 
         "dG_f_ub": -1.7
@@ -3736,12 +3709,12 @@
     }, 
     "gthox_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 1214.0, 
-        "KEGGID": "", 
+        "met_name": "Glutathione disulfide", 
+        "dG_f_lb": -278.4, 
+        "KEGGID": "C00127", 
         "dG_f_var": 0.0, 
-        "dG_f": 1214.0, 
-        "dG_f_ub": 1214.0
+        "dG_f": -278.4, 
+        "dG_f_ub": -278.4
     }, 
     "arbt_p": {
         "dG_f_units": "kJ/mol", 
@@ -3916,30 +3889,21 @@
     }, 
     "trdox_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Oxidized thioredoxin", 
         "dG_f_lb": 0.0, 
-        "KEGGID": "", 
-        "dG_f_var": 0.0, 
-        "dG_f": 0.0, 
-        "dG_f_ub": 0.0
-    }, 
-    "trdox_e": {
-        "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 0.0, 
-        "KEGGID": "", 
+        "KEGGID": "C00343", 
         "dG_f_var": 0.0, 
         "dG_f": 0.0, 
         "dG_f_ub": 0.0
     }, 
     "crtn_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 280.6, 
-        "KEGGID": "", 
+        "met_name": "Creatinine", 
+        "dG_f_lb": 268.2, 
+        "KEGGID": "C00791", 
         "dG_f_var": 0.0, 
-        "dG_f": 280.6, 
-        "dG_f_ub": 280.6
+        "dG_f": 268.2, 
+        "dG_f_ub": 268.2
     }, 
     "dhptdn_p": {
         "dG_f_units": "kJ/mol", 
@@ -3952,12 +3916,12 @@
     }, 
     "crtn_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 260.6, 
-        "KEGGID": "", 
+        "met_name": "Creatinine", 
+        "dG_f_lb": 248.1, 
+        "KEGGID": "C00791", 
         "dG_f_var": 0.0, 
-        "dG_f": 260.6, 
-        "dG_f_ub": 260.6
+        "dG_f": 248.1, 
+        "dG_f_ub": 248.1
     }, 
     "malt6p_p": {
         "dG_f_units": "kJ/mol", 
@@ -4123,12 +4087,12 @@
     }, 
     "adn_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 369.7, 
-        "KEGGID": "", 
+        "met_name": "Adenosine", 
+        "dG_f_lb": 371.9, 
+        "KEGGID": "C00212", 
         "dG_f_var": 0.0, 
-        "dG_f": 369.7, 
-        "dG_f_ub": 369.7
+        "dG_f": 371.9, 
+        "dG_f_ub": 371.9
     }, 
     "melatn_e": {
         "dG_f_units": "kJ/mol", 
@@ -4213,12 +4177,12 @@
     }, 
     "lcts_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -612.5, 
-        "KEGGID": "", 
+        "met_name": "Lactose", 
+        "dG_f_lb": -618.8, 
+        "KEGGID": "C00243", 
         "dG_f_var": 0.0, 
-        "dG_f": -612.5, 
-        "dG_f_ub": -612.5
+        "dG_f": -618.8, 
+        "dG_f_ub": -618.8
     }, 
     "fe3dcit_p": {
         "dG_f_units": "kJ/mol", 
@@ -4240,27 +4204,27 @@
     }, 
     "lcts_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -675.3, 
-        "KEGGID": "", 
+        "met_name": "Lactose", 
+        "dG_f_lb": -681.6, 
+        "KEGGID": "C00243", 
         "dG_f_var": 0.0, 
-        "dG_f": -675.3, 
-        "dG_f_ub": -675.3
+        "dG_f": -681.6, 
+        "dG_f_ub": -681.6
     }, 
     "h_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "H+", 
         "dG_f_lb": 39.9, 
-        "KEGGID": "", 
+        "KEGGID": "C00080", 
         "dG_f_var": 0.0, 
         "dG_f": 39.9, 
         "dG_f_ub": 39.9
     }, 
     "h_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "H+", 
         "dG_f_lb": 42.8, 
-        "KEGGID": "", 
+        "KEGGID": "C00080", 
         "dG_f_var": 0.0, 
         "dG_f": 42.8, 
         "dG_f_ub": 42.8
@@ -4366,12 +4330,12 @@
     }, 
     "adp_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1425.8, 
-        "KEGGID": "", 
+        "met_name": "ADP", 
+        "dG_f_lb": -1427.2, 
+        "KEGGID": "C00008", 
         "dG_f_var": 0.0, 
-        "dG_f": -1425.8, 
-        "dG_f_ub": -1425.8
+        "dG_f": -1427.2, 
+        "dG_f_ub": -1427.2
     }, 
     "dtdp4d6dm_c": {
         "dG_f_units": "kJ/mol", 
@@ -4411,12 +4375,12 @@
     }, 
     "adp_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1391.1, 
-        "KEGGID": "", 
+        "met_name": "ADP", 
+        "dG_f_lb": -1392.2, 
+        "KEGGID": "C00008", 
         "dG_f_var": 0.0, 
-        "dG_f": -1391.1, 
-        "dG_f_ub": -1391.1
+        "dG_f": -1392.2, 
+        "dG_f_ub": -1392.2
     }, 
     "mhista_e": {
         "dG_f_units": "kJ/mol", 
@@ -4438,9 +4402,9 @@
     }, 
     "gthox_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Glutathione disulfide", 
         "dG_f_lb": 1299.5, 
-        "KEGGID": "", 
+        "KEGGID": "C00127", 
         "dG_f_var": 0.0, 
         "dG_f": 1299.5, 
         "dG_f_ub": 1299.5
@@ -4564,21 +4528,21 @@
     }, 
     "fum_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -517.5, 
-        "KEGGID": "", 
+        "met_name": "Fumarate", 
+        "dG_f_lb": -512.6, 
+        "KEGGID": "C00122", 
         "dG_f_var": 0.0, 
-        "dG_f": -517.5, 
-        "dG_f_ub": -517.5
+        "dG_f": -512.6, 
+        "dG_f_ub": -512.6
     }, 
     "fum_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -523.2, 
-        "KEGGID": "", 
+        "met_name": "Fumarate", 
+        "dG_f_lb": -518.3, 
+        "KEGGID": "C00122", 
         "dG_f_var": 0.0, 
-        "dG_f": -523.2, 
-        "dG_f_ub": -523.2
+        "dG_f": -518.3, 
+        "dG_f_ub": -518.3
     }, 
     "2mop_c": {
         "dG_f_units": "kJ/mol", 
@@ -4699,21 +4663,21 @@
     }, 
     "r5p_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1207.8, 
-        "KEGGID": "", 
+        "met_name": "D-Ribose 5-phosphate", 
+        "dG_f_lb": -1214.7, 
+        "KEGGID": "C00117", 
         "dG_f_var": 0.0, 
-        "dG_f": -1207.8, 
-        "dG_f_ub": -1207.8
+        "dG_f": -1214.7, 
+        "dG_f_ub": -1214.7
     }, 
     "r5p_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1233.7, 
-        "KEGGID": "", 
+        "met_name": "D-Ribose 5-phosphate", 
+        "dG_f_lb": -1240.5, 
+        "KEGGID": "C00117", 
         "dG_f_var": 0.0, 
-        "dG_f": -1233.7, 
-        "dG_f_ub": -1233.7
+        "dG_f": -1240.5, 
+        "dG_f_ub": -1240.5
     }, 
     "aacald_e": {
         "dG_f_units": "kJ/mol", 
@@ -4807,39 +4771,39 @@
     }, 
     "ala_DASH_L_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -67.2, 
-        "KEGGID": "", 
+        "met_name": "Alanine", 
+        "dG_f_lb": -60.1, 
+        "KEGGID": "C01401", 
         "dG_f_var": 0.0, 
-        "dG_f": -67.2, 
-        "dG_f_ub": -67.2
+        "dG_f": -60.1, 
+        "dG_f_ub": -60.1
     }, 
     "ala_DASH_L_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -87.2, 
-        "KEGGID": "", 
+        "met_name": "Alanine", 
+        "dG_f_lb": -80.1, 
+        "KEGGID": "C01401", 
         "dG_f_var": 0.0, 
-        "dG_f": -87.2, 
-        "dG_f_ub": -87.2
+        "dG_f": -80.1, 
+        "dG_f_ub": -80.1
     }, 
     "ade_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 530.4, 
-        "KEGGID": "", 
+        "met_name": "Adenine", 
+        "dG_f_lb": 535.7, 
+        "KEGGID": "C00147", 
         "dG_f_var": 0.0, 
-        "dG_f": 530.4, 
-        "dG_f_ub": 530.4
+        "dG_f": 535.7, 
+        "dG_f_ub": 535.7
     }, 
     "ade_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 516.1, 
-        "KEGGID": "", 
+        "met_name": "Adenine", 
+        "dG_f_lb": 521.4, 
+        "KEGGID": "C00147", 
         "dG_f_var": 0.0, 
-        "dG_f": 516.1, 
-        "dG_f_ub": 516.1
+        "dG_f": 521.4, 
+        "dG_f_ub": 521.4
     }, 
     "galt_p": {
         "dG_f_units": "kJ/mol", 
@@ -5140,21 +5104,21 @@
     }, 
     "gthrd_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 634.4, 
-        "KEGGID": "", 
+        "met_name": "Glutathione", 
+        "dG_f_lb": -113.9, 
+        "KEGGID": "C00051", 
         "dG_f_var": 0.0, 
-        "dG_f": 634.4, 
-        "dG_f_ub": 634.4
+        "dG_f": -113.9, 
+        "dG_f_ub": -113.9
     }, 
     "gthrd_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 679.5, 
-        "KEGGID": "", 
+        "met_name": "Glutathione", 
+        "dG_f_lb": 680.3, 
+        "KEGGID": "C00051", 
         "dG_f_var": 0.0, 
-        "dG_f": 679.5, 
-        "dG_f_ub": 679.5
+        "dG_f": 680.3, 
+        "dG_f_ub": 680.3
     }, 
     "3mop_p": {
         "dG_f_units": "kJ/mol", 
@@ -5365,21 +5329,21 @@
     }, 
     "mnl1p_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1269.2, 
-        "KEGGID": "", 
+        "met_name": "D-Mannitol 1-phosphate", 
+        "dG_f_lb": -1268.1, 
+        "KEGGID": "C00644", 
         "dG_f_var": 0.0, 
-        "dG_f": -1269.2, 
-        "dG_f_ub": -1269.2
+        "dG_f": -1268.1, 
+        "dG_f_ub": -1268.1
     }, 
     "mnl1p_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1231.9, 
-        "KEGGID": "", 
+        "met_name": "D-Mannitol 1-phosphate", 
+        "dG_f_lb": -1230.8, 
+        "KEGGID": "C00644", 
         "dG_f_var": 0.0, 
-        "dG_f": -1231.9, 
-        "dG_f_ub": -1231.9
+        "dG_f": -1230.8, 
+        "dG_f_ub": -1230.8
     }, 
     "ptrc_c": {
         "dG_f_units": "kJ/mol", 
@@ -5509,12 +5473,12 @@
     }, 
     "cys_DASH_L_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -55.2, 
-        "KEGGID": "", 
+        "met_name": "Cysteine", 
+        "dG_f_lb": -60.1, 
+        "KEGGID": "C00736", 
         "dG_f_var": 0.0, 
-        "dG_f": -55.2, 
-        "dG_f_ub": -55.2
+        "dG_f": -60.1, 
+        "dG_f_ub": -60.1
     }, 
     "cenchddd_c": {
         "dG_f_units": "kJ/mol", 
@@ -5590,12 +5554,12 @@
     }, 
     "13dpg_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -2205.8, 
-        "KEGGID": "", 
+        "met_name": "3-Phospho-D-glyceroyl phosphate", 
+        "dG_f_lb": -2220.7, 
+        "KEGGID": "C00236", 
         "dG_f_var": 0.0, 
-        "dG_f": -2205.8, 
-        "dG_f_ub": -2205.8
+        "dG_f": -2220.7, 
+        "dG_f_ub": -2220.7
     }, 
     "2sephchc_e": {
         "dG_f_units": "kJ/mol", 
@@ -5608,12 +5572,12 @@
     }, 
     "13dpg_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -2193.2, 
-        "KEGGID": "", 
+        "met_name": "3-Phospho-D-glyceroyl phosphate", 
+        "dG_f_lb": -2209.1, 
+        "KEGGID": "C00236", 
         "dG_f_var": 0.0, 
-        "dG_f": -2193.2, 
-        "dG_f_ub": -2193.2
+        "dG_f": -2209.1, 
+        "dG_f_ub": -2209.1
     }, 
     "tolbutamide_p": {
         "dG_f_units": "kJ/mol", 
@@ -5842,12 +5806,12 @@
     }, 
     "cit_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -965.6, 
-        "KEGGID": "", 
+        "met_name": "Citrate", 
+        "dG_f_lb": -972.1, 
+        "KEGGID": "C00158", 
         "dG_f_var": 0.0, 
-        "dG_f": -965.6, 
-        "dG_f_ub": -965.6
+        "dG_f": -972.1, 
+        "dG_f_ub": -972.1
     }, 
     "preq0_p": {
         "dG_f_units": "kJ/mol", 
@@ -5869,12 +5833,12 @@
     }, 
     "cit_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -951.2, 
-        "KEGGID": "", 
+        "met_name": "Citrate", 
+        "dG_f_lb": -957.8, 
+        "KEGGID": "C00158", 
         "dG_f_var": 0.0, 
-        "dG_f": -951.2, 
-        "dG_f_ub": -951.2
+        "dG_f": -957.8, 
+        "dG_f_ub": -957.8
     }, 
     "glcr_p": {
         "dG_f_units": "kJ/mol", 
@@ -5887,12 +5851,12 @@
     }, 
     "fdp_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -2205.9, 
-        "KEGGID": "", 
+        "met_name": "D-Fructose 1,6-bisphosphate", 
+        "dG_f_lb": -2209.4, 
+        "KEGGID": "C00354", 
         "dG_f_var": 0.0, 
-        "dG_f": -2205.9, 
-        "dG_f_ub": -2205.9
+        "dG_f": -2209.4, 
+        "dG_f_ub": -2209.4
     }, 
     "cit_p": {
         "dG_f_units": "kJ/mol", 
@@ -5905,12 +5869,12 @@
     }, 
     "fdp_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -2177.3, 
-        "KEGGID": "", 
+        "met_name": "D-Fructose 1,6-bisphosphate", 
+        "dG_f_lb": -2180.8, 
+        "KEGGID": "C00354", 
         "dG_f_var": 0.0, 
-        "dG_f": -2177.3, 
-        "dG_f_ub": -2177.3
+        "dG_f": -2180.8, 
+        "dG_f_ub": -2180.8
     }, 
     "isetac_c": {
         "dG_f_units": "kJ/mol", 
@@ -5950,12 +5914,12 @@
     }, 
     "aacoa_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 1320.4, 
-        "KEGGID": "", 
+        "met_name": "Acetoacetyl-CoA", 
+        "dG_f_lb": -1771.9, 
+        "KEGGID": "C00332", 
         "dG_f_var": 0.0, 
-        "dG_f": 1320.4, 
-        "dG_f_ub": 1320.4
+        "dG_f": -1771.9, 
+        "dG_f_ub": -1771.9
     }, 
     "isetac_p": {
         "dG_f_units": "kJ/mol", 
@@ -5995,12 +5959,12 @@
     }, 
     "aacoa_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 1214.9, 
-        "KEGGID": "", 
+        "met_name": "Acetoacetyl-CoA", 
+        "dG_f_lb": -1874.6, 
+        "KEGGID": "C00332", 
         "dG_f_var": 0.0, 
-        "dG_f": 1214.9, 
-        "dG_f_ub": 1214.9
+        "dG_f": -1874.6, 
+        "dG_f_ub": -1874.6
     }, 
     "lipa_p": {
         "dG_f_units": "kJ/mol", 
@@ -6346,21 +6310,21 @@
     }, 
     "urate_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -196.3, 
-        "KEGGID": "", 
+        "met_name": "Urate", 
+        "dG_f_lb": -197.8, 
+        "KEGGID": "C00366", 
         "dG_f_var": 0.0, 
-        "dG_f": -196.3, 
-        "dG_f_ub": -196.3
+        "dG_f": -197.8, 
+        "dG_f_ub": -197.8
     }, 
     "urate_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -204.9, 
-        "KEGGID": "", 
+        "met_name": "Urate", 
+        "dG_f_lb": -208.0, 
+        "KEGGID": "C00366", 
         "dG_f_var": 0.0, 
-        "dG_f": -204.9, 
-        "dG_f_ub": -204.9
+        "dG_f": -208.0, 
+        "dG_f_ub": -208.0
     }, 
     "urate_p": {
         "dG_f_units": "kJ/mol", 
@@ -6436,27 +6400,27 @@
     }, 
     "4h2oglt_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -792.0, 
-        "KEGGID": "", 
+        "met_name": "4-Hydroxy-2-oxoglutarate", 
+        "dG_f_lb": -793.7, 
+        "KEGGID": "C01127", 
         "dG_f_var": 0.0, 
-        "dG_f": -792.0, 
-        "dG_f_ub": -792.0
+        "dG_f": -793.7, 
+        "dG_f_ub": -793.7
     }, 
     "etoh_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Ethanol", 
         "dG_f_lb": 61.6, 
-        "KEGGID": "", 
+        "KEGGID": "C00469", 
         "dG_f_var": 0.0, 
         "dG_f": 61.6, 
         "dG_f_ub": 61.6
     }, 
     "etoh_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Ethanol", 
         "dG_f_lb": 78.8, 
-        "KEGGID": "", 
+        "KEGGID": "C00469", 
         "dG_f_var": 0.0, 
         "dG_f": 78.8, 
         "dG_f_ub": 78.8
@@ -6499,12 +6463,12 @@
     }, 
     "4h2oglt_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -780.6, 
-        "KEGGID": "", 
+        "met_name": "4-Hydroxy-2-oxoglutarate", 
+        "dG_f_lb": -782.3, 
+        "KEGGID": "C01127", 
         "dG_f_var": 0.0, 
-        "dG_f": -780.6, 
-        "dG_f_ub": -780.6
+        "dG_f": -782.3, 
+        "dG_f_ub": -782.3
     }, 
     "galct_DASH_D_c": {
         "dG_f_units": "kJ/mol", 
@@ -6940,12 +6904,12 @@
     }, 
     "glyald_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -196.7, 
-        "KEGGID": "", 
+        "met_name": "Glyceraldehyde", 
+        "dG_f_lb": -201.1, 
+        "KEGGID": "C02154", 
         "dG_f_var": 0.0, 
-        "dG_f": -196.7, 
-        "dG_f_ub": -196.7
+        "dG_f": -201.1, 
+        "dG_f_ub": -201.1
     }, 
     "fruur_p": {
         "dG_f_units": "kJ/mol", 
@@ -6985,21 +6949,21 @@
     }, 
     "man1p_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1279.7, 
-        "KEGGID": "", 
+        "met_name": "Hexose 1-phosphate", 
+        "dG_f_lb": -1275.8, 
+        "KEGGID": "C01002", 
         "dG_f_var": 0.0, 
-        "dG_f": -1279.7, 
-        "dG_f_ub": -1279.7
+        "dG_f": -1275.8, 
+        "dG_f_ub": -1275.8
     }, 
     "man1p_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1311.2, 
-        "KEGGID": "", 
+        "met_name": "Hexose 1-phosphate", 
+        "dG_f_lb": -1307.3, 
+        "KEGGID": "C01002", 
         "dG_f_var": 0.0, 
-        "dG_f": -1311.2, 
-        "dG_f_ub": -1311.2
+        "dG_f": -1307.3, 
+        "dG_f_ub": -1307.3
     }, 
     "hdcoa_p": {
         "dG_f_units": "kJ/mol", 
@@ -7030,21 +6994,21 @@
     }, 
     "mal_DASH_L_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -671.5, 
-        "KEGGID": "", 
+        "met_name": "2-Hydroxydicarboxylic acid", 
+        "dG_f_lb": -666.9, 
+        "KEGGID": "C03668", 
         "dG_f_var": 0.0, 
-        "dG_f": -671.5, 
-        "dG_f_ub": -671.5
+        "dG_f": -666.9, 
+        "dG_f_ub": -666.9
     }, 
     "mal_DASH_L_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -682.9, 
-        "KEGGID": "", 
+        "met_name": "2-Hydroxydicarboxylic acid", 
+        "dG_f_lb": -678.3, 
+        "KEGGID": "C03668", 
         "dG_f_var": 0.0, 
-        "dG_f": -682.9, 
-        "dG_f_ub": -682.9
+        "dG_f": -678.3, 
+        "dG_f_ub": -678.3
     }, 
     "ptrc_p": {
         "dG_f_units": "kJ/mol", 
@@ -7102,21 +7066,21 @@
     }, 
     "camp_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -326.5, 
-        "KEGGID": "", 
+        "met_name": "3',5'-Cyclic AMP", 
+        "dG_f_lb": -318.2, 
+        "KEGGID": "C00575", 
         "dG_f_var": 0.0, 
-        "dG_f": -326.5, 
-        "dG_f_ub": -326.5
+        "dG_f": -318.2, 
+        "dG_f_ub": -318.2
     }, 
     "camp_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -346.5, 
-        "KEGGID": "", 
+        "met_name": "3',5'-Cyclic AMP", 
+        "dG_f_lb": -349.6, 
+        "KEGGID": "C00575", 
         "dG_f_var": 0.0, 
-        "dG_f": -346.5, 
-        "dG_f_ub": -346.5
+        "dG_f": -349.6, 
+        "dG_f_ub": -349.6
     }, 
     "phaccoa_e": {
         "dG_f_units": "kJ/mol", 
@@ -7354,21 +7318,21 @@
     }, 
     "fmn_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 767.9, 
-        "KEGGID": "", 
+        "met_name": "FMN", 
+        "dG_f_lb": 723.7, 
+        "KEGGID": "C00061", 
         "dG_f_var": 0.0, 
-        "dG_f": 767.9, 
-        "dG_f_ub": 767.9
+        "dG_f": 723.7, 
+        "dG_f_ub": 723.7
     }, 
     "fmn_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 822.1, 
-        "KEGGID": "", 
+        "met_name": "FMN", 
+        "dG_f_lb": 775.5, 
+        "KEGGID": "C00061", 
         "dG_f_var": 0.0, 
-        "dG_f": 822.1, 
-        "dG_f_ub": 822.1
+        "dG_f": 775.5, 
+        "dG_f_ub": 775.5
     }, 
     "1pipdn2c_e": {
         "dG_f_units": "kJ/mol", 
@@ -7442,15 +7406,6 @@
         "dG_f": -98.0, 
         "dG_f_ub": -98.0
     }, 
-    "fe3_c": {
-        "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -10.2, 
-        "KEGGID": "", 
-        "dG_f_var": 0.0, 
-        "dG_f": -10.2, 
-        "dG_f_ub": -10.2
-    }, 
     "phom_p": {
         "dG_f_units": "kJ/mol", 
         "met_name": "O-Phosphorylhomoserine", 
@@ -7469,29 +7424,20 @@
         "dG_f": 1571.3, 
         "dG_f_ub": 1571.3
     }, 
-    "fe3_e": {
-        "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -10.2, 
-        "KEGGID": "", 
-        "dG_f_var": 0.0, 
-        "dG_f": -10.2, 
-        "dG_f_ub": -10.2
-    }, 
     "cynt_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Cyanate", 
         "dG_f_lb": -98.0, 
-        "KEGGID": "", 
+        "KEGGID": "C01417", 
         "dG_f_var": 0.0, 
         "dG_f": -98.0, 
         "dG_f_ub": -98.0
     }, 
     "cynt_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Cyanate", 
         "dG_f_lb": -98.0, 
-        "KEGGID": "", 
+        "KEGGID": "C01417", 
         "dG_f_var": 0.0, 
         "dG_f": -98.0, 
         "dG_f_ub": -98.0
@@ -7507,12 +7453,12 @@
     }, 
     "hpyr_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -479.0, 
-        "KEGGID": "", 
+        "met_name": "Hydroxypyruvate", 
+        "dG_f_lb": -497.1, 
+        "KEGGID": "C00168", 
         "dG_f_var": 0.0, 
-        "dG_f": -479.0, 
-        "dG_f_ub": -479.0
+        "dG_f": -497.1, 
+        "dG_f_ub": -497.1
     }, 
     "lald_DASH_L_c": {
         "dG_f_units": "kJ/mol", 
@@ -7534,12 +7480,12 @@
     }, 
     "hpyr_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -487.5, 
-        "KEGGID": "", 
+        "met_name": "Hydroxypyruvate", 
+        "dG_f_lb": -505.6, 
+        "KEGGID": "C00168", 
         "dG_f_var": 0.0, 
-        "dG_f": -487.5, 
-        "dG_f_ub": -487.5
+        "dG_f": -505.6, 
+        "dG_f_ub": -505.6
     }, 
     "arach_c": {
         "dG_f_units": "kJ/mol", 
@@ -7651,12 +7597,12 @@
     }, 
     "indole_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 507.6, 
-        "KEGGID": "", 
+        "met_name": "Indole", 
+        "dG_f_lb": 510.3, 
+        "KEGGID": "C00463", 
         "dG_f_var": 0.0, 
-        "dG_f": 507.6, 
-        "dG_f_ub": 507.6
+        "dG_f": 510.3, 
+        "dG_f_ub": 510.3
     }, 
     "23doguln_c": {
         "dG_f_units": "kJ/mol", 
@@ -7669,12 +7615,12 @@
     }, 
     "indole_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 527.6, 
-        "KEGGID": "", 
+        "met_name": "Indole", 
+        "dG_f_lb": 530.3, 
+        "KEGGID": "C00463", 
         "dG_f_var": 0.0, 
-        "dG_f": 527.6, 
-        "dG_f_ub": 527.6
+        "dG_f": 530.3, 
+        "dG_f_ub": 530.3
     }, 
     "3oodcoa_e": {
         "dG_f_units": "kJ/mol", 
@@ -7786,12 +7732,12 @@
     }, 
     "trdrd_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 60.3, 
-        "KEGGID": "", 
+        "met_name": "Reduced thioredoxin", 
+        "dG_f_lb": 69.88, 
+        "KEGGID": "C00342", 
         "dG_f_var": 0.0, 
-        "dG_f": 60.3, 
-        "dG_f_ub": 60.3
+        "dG_f": 69.88, 
+        "dG_f_ub": 69.88
     }, 
     "sucglu_p": {
         "dG_f_units": "kJ/mol", 
@@ -7822,12 +7768,12 @@
     }, 
     "imp_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -780.7, 
-        "KEGGID": "", 
+        "met_name": "IMP", 
+        "dG_f_lb": -787.1, 
+        "KEGGID": "C00130", 
         "dG_f_var": 0.0, 
-        "dG_f": -780.7, 
-        "dG_f_ub": -780.7
+        "dG_f": -787.1, 
+        "dG_f_ub": -787.1
     }, 
     "2mahmp_p": {
         "dG_f_units": "kJ/mol", 
@@ -7885,12 +7831,12 @@
     }, 
     "ser_DASH_L_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -207.2, 
-        "KEGGID": "", 
+        "met_name": "DL-Serine", 
+        "dG_f_lb": -213.0, 
+        "KEGGID": "C00716", 
         "dG_f_var": 0.0, 
-        "dG_f": -207.2, 
-        "dG_f_ub": -207.2
+        "dG_f": -213.0, 
+        "dG_f_ub": -213.0
     }, 
     "u3hga_c": {
         "dG_f_units": "kJ/mol", 
@@ -7975,12 +7921,12 @@
     }, 
     "nmn_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 1405.0, 
-        "KEGGID": "", 
+        "met_name": "Nicotinamide D-ribonucleotide", 
+        "dG_f_lb": -842.7, 
+        "KEGGID": "C00455", 
         "dG_f_var": 0.0, 
-        "dG_f": 1405.0, 
-        "dG_f_ub": 1405.0
+        "dG_f": -842.7, 
+        "dG_f_ub": -842.7
     }, 
     "dutp_e": {
         "dG_f_units": "kJ/mol", 
@@ -7993,12 +7939,12 @@
     }, 
     "nmn_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 1445.1, 
-        "KEGGID": "", 
+        "met_name": "Nicotinamide D-ribonucleotide", 
+        "dG_f_lb": -802.6, 
+        "KEGGID": "C00455", 
         "dG_f_var": 0.0, 
-        "dG_f": 1445.1, 
-        "dG_f_ub": 1445.1
+        "dG_f": -802.6, 
+        "dG_f_ub": -802.6
     }, 
     "dutp_c": {
         "dG_f_units": "kJ/mol", 
@@ -8092,12 +8038,12 @@
     }, 
     "cys_DASH_L_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -35.5, 
-        "KEGGID": "", 
+        "met_name": "Cysteine", 
+        "dG_f_lb": -40.2, 
+        "KEGGID": "C00736", 
         "dG_f_var": 0.0, 
-        "dG_f": -35.5, 
-        "dG_f_ub": -35.5
+        "dG_f": -40.2, 
+        "dG_f_ub": -40.2
     }, 
     "uacmamu_e": {
         "dG_f_units": "kJ/mol", 
@@ -8272,12 +8218,12 @@
     }, 
     "xylt_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -254.0, 
-        "KEGGID": "", 
+        "met_name": "D-Arabitol", 
+        "dG_f_lb": -271.9, 
+        "KEGGID": "C01904", 
         "dG_f_var": 0.0, 
-        "dG_f": -254.0, 
-        "dG_f_ub": -254.0
+        "dG_f": -271.9, 
+        "dG_f_ub": -271.9
     }, 
     "2obut_c": {
         "dG_f_units": "kJ/mol", 
@@ -8299,12 +8245,12 @@
     }, 
     "xylt_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -288.2, 
-        "KEGGID": "", 
+        "met_name": "D-Arabitol", 
+        "dG_f_lb": -306.1, 
+        "KEGGID": "C01904", 
         "dG_f_var": 0.0, 
-        "dG_f": -288.2, 
-        "dG_f_ub": -288.2
+        "dG_f": -306.1, 
+        "dG_f_ub": -306.1
     }, 
     "3spyr_e": {
         "dG_f_units": "kJ/mol", 
@@ -8317,21 +8263,21 @@
     }, 
     "hdca_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 996.9, 
-        "KEGGID": "", 
+        "met_name": "Hexadecanoic acid", 
+        "dG_f_lb": 989.0, 
+        "KEGGID": "C00249", 
         "dG_f_var": 0.0, 
-        "dG_f": 996.9, 
-        "dG_f_ub": 996.9
+        "dG_f": 989.0, 
+        "dG_f_ub": 989.0
     }, 
     "hdca_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 1085.4, 
-        "KEGGID": "", 
+        "met_name": "Hexadecanoic acid", 
+        "dG_f_lb": 1077.5, 
+        "KEGGID": "C00249", 
         "dG_f_var": 0.0, 
-        "dG_f": 1085.4, 
-        "dG_f_ub": 1085.4
+        "dG_f": 1077.5, 
+        "dG_f_ub": 1077.5
     }, 
     "3spyr_c": {
         "dG_f_units": "kJ/mol", 
@@ -8452,9 +8398,9 @@
     }, 
     "nad_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "NAD+", 
         "dG_f_lb": 1127.8, 
-        "KEGGID": "", 
+        "KEGGID": "C00003", 
         "dG_f_var": 0.0, 
         "dG_f": 1127.8, 
         "dG_f_ub": 1127.8
@@ -8981,15 +8927,6 @@
         "dG_f": -763.9, 
         "dG_f_ub": -763.9
     }, 
-    "iodine_c": {
-        "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 0.0, 
-        "KEGGID": "", 
-        "dG_f_var": 0.0, 
-        "dG_f": 0.0, 
-        "dG_f_ub": 0.0
-    }, 
     "dd2coa_e": {
         "dG_f_units": "kJ/mol", 
         "met_name": "2-trans-Dodecenoyl-CoA", 
@@ -9091,21 +9028,21 @@
     }, 
     "dadp_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1243.2, 
-        "KEGGID": "", 
+        "met_name": "dADP", 
+        "dG_f_lb": -1221.9, 
+        "KEGGID": "C00206", 
         "dG_f_var": 0.0, 
-        "dG_f": -1243.2, 
-        "dG_f_ub": -1243.2
+        "dG_f": -1221.9, 
+        "dG_f_ub": -1221.9
     }, 
     "dadp_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1278.0, 
-        "KEGGID": "", 
+        "met_name": "dADP", 
+        "dG_f_lb": -1256.9, 
+        "KEGGID": "C00206", 
         "dG_f_var": 0.0, 
-        "dG_f": -1278.0, 
-        "dG_f_ub": -1278.0
+        "dG_f": -1256.9, 
+        "dG_f_ub": -1256.9
     }, 
     "agm_p": {
         "dG_f_units": "kJ/mol", 
@@ -9136,12 +9073,12 @@
     }, 
     "phe_DASH_L_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 238.9, 
-        "KEGGID": "", 
+        "met_name": "Phenylalanine", 
+        "dG_f_lb": 217.9, 
+        "KEGGID": "C02057", 
         "dG_f_var": 0.0, 
-        "dG_f": 238.9, 
-        "dG_f_ub": 238.9
+        "dG_f": 217.9, 
+        "dG_f_ub": 217.9
     }, 
     "dhgly_e": {
         "dG_f_units": "kJ/mol", 
@@ -9199,12 +9136,12 @@
     }, 
     "phe_DASH_L_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 270.2, 
-        "KEGGID": "", 
+        "met_name": "Phenylalanine", 
+        "dG_f_lb": 249.3, 
+        "KEGGID": "C02057", 
         "dG_f_var": 0.0, 
-        "dG_f": 270.2, 
-        "dG_f_ub": 270.2
+        "dG_f": 249.3, 
+        "dG_f_ub": 249.3
     }, 
     "prpp_p": {
         "dG_f_units": "kJ/mol", 
@@ -9235,12 +9172,12 @@
     }, 
     "prpp_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -2975.5, 
-        "KEGGID": "", 
+        "met_name": "5-Phospho-alpha-D-ribose 1-diphosphate", 
+        "dG_f_lb": -3001.1, 
+        "KEGGID": "C00119", 
         "dG_f_var": 0.0, 
-        "dG_f": -2975.5, 
-        "dG_f_ub": -2975.5
+        "dG_f": -3001.1, 
+        "dG_f_ub": -3001.1
     }, 
     "methf_c": {
         "dG_f_units": "kJ/mol", 
@@ -9253,12 +9190,12 @@
     }, 
     "prpp_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -2952.5, 
-        "KEGGID": "", 
+        "met_name": "5-Phospho-alpha-D-ribose 1-diphosphate", 
+        "dG_f_lb": -2977.9, 
+        "KEGGID": "C00119", 
         "dG_f_var": 0.0, 
-        "dG_f": -2952.5, 
-        "dG_f_ub": -2952.5
+        "dG_f": -2977.9, 
+        "dG_f_ub": -2977.9
     }, 
     "e4p_p": {
         "dG_f_units": "kJ/mol", 
@@ -9388,12 +9325,12 @@
     }, 
     "ile_DASH_L_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 183.2, 
-        "KEGGID": "", 
+        "met_name": "Isoleucine", 
+        "dG_f_lb": 182.4, 
+        "KEGGID": "C16434", 
         "dG_f_var": 0.0, 
-        "dG_f": 183.2, 
-        "dG_f_ub": 183.2
+        "dG_f": 182.4, 
+        "dG_f_ub": 182.4
     }, 
     "asp_DASH_L_p": {
         "dG_f_units": "kJ/mol", 
@@ -9406,12 +9343,12 @@
     }, 
     "ile_DASH_L_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 220.3, 
-        "KEGGID": "", 
+        "met_name": "Isoleucine", 
+        "dG_f_lb": 219.5, 
+        "KEGGID": "C16434", 
         "dG_f_var": 0.0, 
-        "dG_f": 220.3, 
-        "dG_f_ub": 220.3
+        "dG_f": 219.5, 
+        "dG_f_ub": 219.5
     }, 
     "preq1_e": {
         "dG_f_units": "kJ/mol", 
@@ -9514,12 +9451,12 @@
     }, 
     "accoa_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 1238.8, 
-        "KEGGID": "", 
+        "met_name": "Acetyl-CoA", 
+        "dG_f_lb": -1846.9, 
+        "KEGGID": "C00024", 
         "dG_f_var": 0.0, 
-        "dG_f": 1238.8, 
-        "dG_f_ub": 1238.8
+        "dG_f": -1846.9, 
+        "dG_f_ub": -1846.9
     }, 
     "6hoxmelatn_p": {
         "dG_f_units": "kJ/mol", 
@@ -9532,12 +9469,12 @@
     }, 
     "accoa_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 1338.6, 
-        "KEGGID": "", 
+        "met_name": "Acetyl-CoA", 
+        "dG_f_lb": -1749.9, 
+        "KEGGID": "C00024", 
         "dG_f_var": 0.0, 
-        "dG_f": 1338.6, 
-        "dG_f_ub": 1338.6
+        "dG_f": -1749.9, 
+        "dG_f_ub": -1749.9
     }, 
     "thmmp_p": {
         "dG_f_units": "kJ/mol", 
@@ -9622,12 +9559,12 @@
     }, 
     "hco3_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -544.1, 
-        "KEGGID": "", 
+        "met_name": "HCO3-", 
+        "dG_f_lb": -544.0, 
+        "KEGGID": "C00288", 
         "dG_f_var": 0.0, 
-        "dG_f": -544.1, 
-        "dG_f_ub": -544.1
+        "dG_f": -544.0, 
+        "dG_f_ub": -544.0
     }, 
     "ctbt_p": {
         "dG_f_units": "kJ/mol", 
@@ -9640,12 +9577,12 @@
     }, 
     "hco3_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -547.2, 
-        "KEGGID": "", 
+        "met_name": "HCO3-", 
+        "dG_f_lb": -547.0, 
+        "KEGGID": "C00288", 
         "dG_f_var": 0.0, 
-        "dG_f": -547.2, 
-        "dG_f_ub": -547.2
+        "dG_f": -547.0, 
+        "dG_f_ub": -547.0
     }, 
     "ac_p": {
         "dG_f_units": "kJ/mol", 
@@ -9730,12 +9667,12 @@
     }, 
     "fadh2_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 1390.8, 
-        "KEGGID": "", 
+        "met_name": "FADH2", 
+        "dG_f_lb": 1439.6, 
+        "KEGGID": "C01352", 
         "dG_f_var": 0.0, 
-        "dG_f": 1390.8, 
-        "dG_f_ub": 1390.8
+        "dG_f": 1439.6, 
+        "dG_f_ub": 1439.6
     }, 
     "acnam_e": {
         "dG_f_units": "kJ/mol", 
@@ -9748,12 +9685,12 @@
     }, 
     "fadh2_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 1296.7, 
-        "KEGGID": "", 
+        "met_name": "FADH2", 
+        "dG_f_lb": 1346.1, 
+        "KEGGID": "C01352", 
         "dG_f_var": 0.0, 
-        "dG_f": 1296.7, 
-        "dG_f_ub": 1296.7
+        "dG_f": 1346.1, 
+        "dG_f_ub": 1346.1
     }, 
     "acnam_c": {
         "dG_f_units": "kJ/mol", 
@@ -9863,23 +9800,14 @@
         "dG_f": -51.0, 
         "dG_f_ub": -51.0
     }, 
-    "trdrd_e": {
-        "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 55.4, 
-        "KEGGID": "", 
-        "dG_f_var": 0.0, 
-        "dG_f": 55.4, 
-        "dG_f_ub": 55.4
-    }, 
     "q8h2_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 3902.8, 
-        "KEGGID": "", 
+        "met_name": "Ubiquinol", 
+        "dG_f_lb": 1113.5, 
+        "KEGGID": "C00390", 
         "dG_f_var": 0.0, 
-        "dG_f": 3902.8, 
-        "dG_f_ub": 3902.8
+        "dG_f": 1113.5, 
+        "dG_f_ub": 1113.5
     }, 
     "gcald_e": {
         "dG_f_units": "kJ/mol", 
@@ -9937,21 +9865,21 @@
     }, 
     "btal_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 217.3, 
-        "KEGGID": "", 
+        "met_name": "Butanal", 
+        "dG_f_lb": 222.3, 
+        "KEGGID": "C01412", 
         "dG_f_var": 0.0, 
-        "dG_f": 217.3, 
-        "dG_f_ub": 217.3
+        "dG_f": 222.3, 
+        "dG_f_ub": 222.3
     }, 
     "btal_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 194.5, 
-        "KEGGID": "", 
+        "met_name": "Butanal", 
+        "dG_f_lb": 199.5, 
+        "KEGGID": "C01412", 
         "dG_f_var": 0.0, 
-        "dG_f": 194.5, 
-        "dG_f_ub": 194.5
+        "dG_f": 199.5, 
+        "dG_f_ub": 199.5
     }, 
     "1mncam_e": {
         "dG_f_units": "kJ/mol", 
@@ -10180,18 +10108,18 @@
     }, 
     "h2_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Hydrogen", 
         "dG_f_lb": 98.7, 
-        "KEGGID": "", 
+        "KEGGID": "C00282", 
         "dG_f_var": 0.0, 
         "dG_f": 98.7, 
         "dG_f_ub": 98.7
     }, 
     "h2_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Hydrogen", 
         "dG_f_lb": 104.4, 
-        "KEGGID": "", 
+        "KEGGID": "C00282", 
         "dG_f_var": 0.0, 
         "dG_f": 104.4, 
         "dG_f_ub": 104.4
@@ -10486,12 +10414,12 @@
     }, 
     "nadp_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 173.0, 
-        "KEGGID": "", 
+        "met_name": "NADP+", 
+        "dG_f_lb": 1041.3, 
+        "KEGGID": "C00006", 
         "dG_f_var": 0.0, 
-        "dG_f": 173.0, 
-        "dG_f_ub": 173.0
+        "dG_f": 1041.3, 
+        "dG_f_ub": 1041.3
     }, 
     "23dhdp_p": {
         "dG_f_units": "kJ/mol", 
@@ -10657,12 +10585,12 @@
     }, 
     "acald_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 23.2, 
-        "KEGGID": "", 
+        "met_name": "Acetaldehyde", 
+        "dG_f_lb": 24.2, 
+        "KEGGID": "C00084", 
         "dG_f_var": 0.0, 
-        "dG_f": 23.2, 
-        "dG_f_ub": 23.2
+        "dG_f": 24.2, 
+        "dG_f_ub": 24.2
     }, 
     "mql8_e": {
         "dG_f_units": "kJ/mol", 
@@ -10675,18 +10603,18 @@
     }, 
     "co2_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "CO2", 
         "dG_f_lb": -386.0, 
-        "KEGGID": "", 
+        "KEGGID": "C00011", 
         "dG_f_var": 0.0, 
         "dG_f": -386.0, 
         "dG_f_ub": -386.0
     }, 
     "co2_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "CO2", 
         "dG_f_lb": -386.0, 
-        "KEGGID": "", 
+        "KEGGID": "C00011", 
         "dG_f_var": 0.0, 
         "dG_f": -386.0, 
         "dG_f_ub": -386.0
@@ -10756,21 +10684,21 @@
     }, 
     "glx_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -428.7, 
-        "KEGGID": "", 
+        "met_name": "Glyoxylate", 
+        "dG_f_lb": -430.4, 
+        "KEGGID": "C00048", 
         "dG_f_var": 0.0, 
-        "dG_f": -428.7, 
-        "dG_f_ub": -428.7
+        "dG_f": -430.4, 
+        "dG_f_ub": -430.4
     }, 
     "glx_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -425.8, 
-        "KEGGID": "", 
+        "met_name": "Glyoxylate", 
+        "dG_f_lb": -427.5, 
+        "KEGGID": "C00048", 
         "dG_f_var": 0.0, 
-        "dG_f": -425.8, 
-        "dG_f_ub": -425.8
+        "dG_f": -427.5, 
+        "dG_f_ub": -427.5
     }, 
     "2omph_e": {
         "dG_f_units": "kJ/mol", 
@@ -10855,21 +10783,21 @@
     }, 
     "dad_DASH_2_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 480.5, 
-        "KEGGID": "", 
+        "met_name": "Deoxyadenosine", 
+        "dG_f_lb": 505.0, 
+        "KEGGID": "C00559", 
         "dG_f_var": 0.0, 
-        "dG_f": 480.5, 
-        "dG_f_ub": 480.5
+        "dG_f": 505.0, 
+        "dG_f_ub": 505.0
     }, 
     "dad_DASH_2_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 517.5, 
-        "KEGGID": "", 
+        "met_name": "Deoxyadenosine", 
+        "dG_f_lb": 542.1, 
+        "KEGGID": "C00559", 
         "dG_f_var": 0.0, 
-        "dG_f": 517.5, 
-        "dG_f_ub": 517.5
+        "dG_f": 542.1, 
+        "dG_f_ub": 542.1
     }, 
     "dmbzid_c": {
         "dG_f_units": "kJ/mol", 
@@ -11125,21 +11053,21 @@
     }, 
     "succ_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -519.3, 
-        "KEGGID": "", 
+        "met_name": "Succinate", 
+        "dG_f_lb": -506.7, 
+        "KEGGID": "C00042", 
         "dG_f_var": 0.0, 
-        "dG_f": -519.3, 
-        "dG_f_ub": -519.3
+        "dG_f": -506.7, 
+        "dG_f_ub": -506.7
     }, 
     "succ_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -530.7, 
-        "KEGGID": "", 
+        "met_name": "Succinate", 
+        "dG_f_lb": -518.2, 
+        "KEGGID": "C00042", 
         "dG_f_var": 0.0, 
-        "dG_f": -530.7, 
-        "dG_f_ub": -530.7
+        "dG_f": -518.2, 
+        "dG_f_ub": -518.2
     }, 
     "3oocoa_e": {
         "dG_f_units": "kJ/mol", 
@@ -11197,12 +11125,12 @@
     }, 
     "man_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -423.4, 
-        "KEGGID": "", 
+        "met_name": "D-Hexose", 
+        "dG_f_lb": -425.8, 
+        "KEGGID": "C00738", 
         "dG_f_var": 0.0, 
-        "dG_f": -423.4, 
-        "dG_f_ub": -423.4
+        "dG_f": -425.8, 
+        "dG_f_ub": -425.8
     }, 
     "thmpp_p": {
         "dG_f_units": "kJ/mol", 
@@ -11215,12 +11143,12 @@
     }, 
     "man_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -389.2, 
-        "KEGGID": "", 
+        "met_name": "D-Hexose", 
+        "dG_f_lb": -391.6, 
+        "KEGGID": "C00738", 
         "dG_f_var": 0.0, 
-        "dG_f": -389.2, 
-        "dG_f_ub": -389.2
+        "dG_f": -391.6, 
+        "dG_f_ub": -391.6
     }, 
     "aps_e": {
         "dG_f_units": "kJ/mol", 
@@ -11260,18 +11188,18 @@
     }, 
     "nadph_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 234.7, 
-        "KEGGID": "", 
+        "met_name": "NADPH", 
+        "dG_f_lb": 1100.2, 
+        "KEGGID": "C00005", 
         "dG_f_var": 0.0, 
-        "dG_f": 234.7, 
-        "dG_f_ub": 234.7
+        "dG_f": 1100.2, 
+        "dG_f_ub": 1100.2
     }, 
     "nadph_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "NADPH", 
         "dG_f_lb": 308.9, 
-        "KEGGID": "", 
+        "KEGGID": "C00005", 
         "dG_f_var": 0.0, 
         "dG_f": 308.9, 
         "dG_f_ub": 308.9
@@ -11395,18 +11323,18 @@
     }, 
     "no3_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Nitrate", 
         "dG_f_lb": -109.4, 
-        "KEGGID": "", 
+        "KEGGID": "C00244", 
         "dG_f_var": 0.0, 
         "dG_f": -109.4, 
         "dG_f_ub": -109.4
     }, 
     "no3_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Nitrate", 
         "dG_f_lb": -109.4, 
-        "KEGGID": "", 
+        "KEGGID": "C00244", 
         "dG_f_var": 0.0, 
         "dG_f": -109.4, 
         "dG_f_ub": -109.4
@@ -11521,12 +11449,12 @@
     }, 
     "3pg_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1347.3, 
-        "KEGGID": "", 
+        "met_name": "3-Phospho-DL-glycerate", 
+        "dG_f_lb": -1354.6, 
+        "KEGGID": "C00597", 
         "dG_f_var": 0.0, 
-        "dG_f": -1347.3, 
-        "dG_f_ub": -1347.3
+        "dG_f": -1354.6, 
+        "dG_f_ub": -1354.6
     }, 
     "f6p_p": {
         "dG_f_units": "kJ/mol", 
@@ -11548,12 +11476,12 @@
     }, 
     "f6p_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1317.4, 
-        "KEGGID": "", 
+        "met_name": "D-Fructose 6-phosphate", 
+        "dG_f_lb": -1315.4, 
+        "KEGGID": "C00085", 
         "dG_f_var": 0.0, 
-        "dG_f": -1317.4, 
-        "dG_f_ub": -1317.4
+        "dG_f": -1315.4, 
+        "dG_f_ub": -1315.4
     }, 
     "23cump_c": {
         "dG_f_units": "kJ/mol", 
@@ -11719,12 +11647,12 @@
     }, 
     "but_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -69.4, 
-        "KEGGID": "", 
+        "met_name": "Butanoic acid", 
+        "dG_f_lb": -62.3, 
+        "KEGGID": "C00246", 
         "dG_f_var": 0.0, 
-        "dG_f": -69.4, 
-        "dG_f_ub": -69.4
+        "dG_f": -62.3, 
+        "dG_f_ub": -62.3
     }, 
     "uri_p": {
         "dG_f_units": "kJ/mol", 
@@ -11755,12 +11683,12 @@
     }, 
     "but_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -49.4, 
-        "KEGGID": "", 
+        "met_name": "Butanoic acid", 
+        "dG_f_lb": -42.4, 
+        "KEGGID": "C00246", 
         "dG_f_var": 0.0, 
-        "dG_f": -49.4, 
-        "dG_f_ub": -49.4
+        "dG_f": -42.4, 
+        "dG_f_ub": -42.4
     }, 
     "q8_p": {
         "dG_f_units": "kJ/mol", 
@@ -11872,21 +11800,21 @@
     }, 
     "tyr_DASH_L_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 75.3, 
-        "KEGGID": "", 
+        "met_name": "DL-Tyrosine", 
+        "dG_f_lb": 55.8, 
+        "KEGGID": "C01536", 
         "dG_f_var": 0.0, 
-        "dG_f": 75.3, 
-        "dG_f_ub": 75.3
+        "dG_f": 55.8, 
+        "dG_f_ub": 55.8
     }, 
     "tyr_DASH_L_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 106.6, 
-        "KEGGID": "", 
+        "met_name": "DL-Tyrosine", 
+        "dG_f_lb": 87.1, 
+        "KEGGID": "C01536", 
         "dG_f_var": 0.0, 
-        "dG_f": 106.6, 
-        "dG_f_ub": 106.6
+        "dG_f": 87.1, 
+        "dG_f_ub": 87.1
     }, 
     "uacgam_c": {
         "dG_f_units": "kJ/mol", 
@@ -11962,12 +11890,12 @@
     }, 
     "q8_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 3905.9, 
-        "KEGGID": "", 
+        "met_name": "Ubiquinone", 
+        "dG_f_lb": 1128.4, 
+        "KEGGID": "C00399", 
         "dG_f_var": 0.0, 
-        "dG_f": 3905.9, 
-        "dG_f_ub": 3905.9
+        "dG_f": 1128.4, 
+        "dG_f_ub": 1128.4
     }, 
     "bamppald_p": {
         "dG_f_units": "kJ/mol", 
@@ -12088,18 +12016,18 @@
     }, 
     "creat_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Creatine", 
         "dG_f_lb": 105.7, 
-        "KEGGID": "", 
+        "KEGGID": "C00300", 
         "dG_f_var": 0.0, 
         "dG_f": 105.7, 
         "dG_f_ub": 105.7
     }, 
     "creat_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Creatine", 
         "dG_f_lb": 131.4, 
-        "KEGGID": "", 
+        "KEGGID": "C00300", 
         "dG_f_var": 0.0, 
         "dG_f": 131.4, 
         "dG_f_ub": 131.4
@@ -12322,12 +12250,12 @@
     }, 
     "gln_DASH_L_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -122.6, 
-        "KEGGID": "", 
+        "met_name": "Glutamine", 
+        "dG_f_lb": -95.5, 
+        "KEGGID": "C00303", 
         "dG_f_var": 0.0, 
-        "dG_f": -122.6, 
-        "dG_f_ub": -122.6
+        "dG_f": -95.5, 
+        "dG_f_ub": -95.5
     }, 
     "lipidAds_c": {
         "dG_f_units": "kJ/mol", 
@@ -12340,12 +12268,12 @@
     }, 
     "gln_DASH_L_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -94.0, 
-        "KEGGID": "", 
+        "met_name": "Glutamine", 
+        "dG_f_lb": -67.0, 
+        "KEGGID": "C00303", 
         "dG_f_var": 0.0, 
-        "dG_f": -94.0, 
-        "dG_f_ub": -94.0
+        "dG_f": -67.0, 
+        "dG_f_ub": -67.0
     }, 
     "udpgal_c": {
         "dG_f_units": "kJ/mol", 
@@ -12430,12 +12358,12 @@
     }, 
     "acac_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -265.5, 
-        "KEGGID": "", 
+        "met_name": "Acetoacetate", 
+        "dG_f_lb": -251.0, 
+        "KEGGID": "C00164", 
         "dG_f_var": 0.0, 
-        "dG_f": -265.5, 
-        "dG_f_ub": -265.5
+        "dG_f": -251.0, 
+        "dG_f_ub": -251.0
     }, 
     "adprib_p": {
         "dG_f_units": "kJ/mol", 
@@ -12448,12 +12376,12 @@
     }, 
     "acac_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -279.8, 
-        "KEGGID": "", 
+        "met_name": "Acetoacetate", 
+        "dG_f_lb": -265.3, 
+        "KEGGID": "C00164", 
         "dG_f_var": 0.0, 
-        "dG_f": -279.8, 
-        "dG_f_ub": -279.8
+        "dG_f": -265.3, 
+        "dG_f_ub": -265.3
     }, 
     "homoval_p": {
         "dG_f_units": "kJ/mol", 
@@ -12484,12 +12412,12 @@
     }, 
     "pep_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1182.5, 
-        "KEGGID": "", 
+        "met_name": "Phosphoenolpyruvate", 
+        "dG_f_lb": -1190.2, 
+        "KEGGID": "C00074", 
         "dG_f_var": 0.0, 
-        "dG_f": -1182.5, 
-        "dG_f_ub": -1182.5
+        "dG_f": -1190.2, 
+        "dG_f_ub": -1190.2
     }, 
     "homoval_c": {
         "dG_f_units": "kJ/mol", 
@@ -12511,12 +12439,12 @@
     }, 
     "pep_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1188.6, 
-        "KEGGID": "", 
+        "met_name": "Phosphoenolpyruvate", 
+        "dG_f_lb": -1195.9, 
+        "KEGGID": "C00074", 
         "dG_f_var": 0.0, 
-        "dG_f": -1188.6, 
-        "dG_f_ub": -1188.6
+        "dG_f": -1195.9, 
+        "dG_f_ub": -1195.9
     }, 
     "ppgpp_c": {
         "dG_f_units": "kJ/mol", 
@@ -12610,12 +12538,12 @@
     }, 
     "glyald_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -179.6, 
-        "KEGGID": "", 
+        "met_name": "Glyceraldehyde", 
+        "dG_f_lb": -183.9, 
+        "KEGGID": "C02154", 
         "dG_f_var": 0.0, 
-        "dG_f": -179.6, 
-        "dG_f_ub": -179.6
+        "dG_f": -183.9, 
+        "dG_f_ub": -183.9
     }, 
     "4pyrdx_p": {
         "dG_f_units": "kJ/mol", 
@@ -12628,21 +12556,21 @@
     }, 
     "malt_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -619.9, 
-        "KEGGID": "", 
+        "met_name": "Maltose", 
+        "dG_f_lb": -618.8, 
+        "KEGGID": "C00208", 
         "dG_f_var": 0.0, 
-        "dG_f": -619.9, 
-        "dG_f_ub": -619.9
+        "dG_f": -618.8, 
+        "dG_f_ub": -618.8
     }, 
     "malt_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -682.7, 
-        "KEGGID": "", 
+        "met_name": "Maltose", 
+        "dG_f_lb": -681.6, 
+        "KEGGID": "C00208", 
         "dG_f_var": 0.0, 
-        "dG_f": -682.7, 
-        "dG_f_ub": -682.7
+        "dG_f": -681.6, 
+        "dG_f_ub": -681.6
     }, 
     "56dura_p": {
         "dG_f_units": "kJ/mol", 
@@ -13150,9 +13078,9 @@
     }, 
     "for_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Formate", 
         "dG_f_lb": -311.1, 
-        "KEGGID": "", 
+        "KEGGID": "C00058", 
         "dG_f_var": 0.0, 
         "dG_f": -311.1, 
         "dG_f_ub": -311.1
@@ -13168,9 +13096,9 @@
     }, 
     "for_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Formate", 
         "dG_f_lb": -308.2, 
-        "KEGGID": "", 
+        "KEGGID": "C00058", 
         "dG_f_var": 0.0, 
         "dG_f": -308.2, 
         "dG_f_ub": -308.2
@@ -13276,9 +13204,9 @@
     }, 
     "nadp_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "NADP+", 
         "dG_f_lb": 244.3, 
-        "KEGGID": "", 
+        "KEGGID": "C00006", 
         "dG_f_var": 0.0, 
         "dG_f": 244.3, 
         "dG_f_ub": 244.3
@@ -13465,12 +13393,12 @@
     }, 
     "f6p_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1285.9, 
-        "KEGGID": "", 
+        "met_name": "D-Fructose 6-phosphate", 
+        "dG_f_lb": -1283.9, 
+        "KEGGID": "C00085", 
         "dG_f_var": 0.0, 
-        "dG_f": -1285.9, 
-        "dG_f_ub": -1285.9
+        "dG_f": -1283.9, 
+        "dG_f_ub": -1283.9
     }, 
     "nadh_p": {
         "dG_f_units": "kJ/mol", 
@@ -13492,12 +13420,12 @@
     }, 
     "coa_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 1290.0, 
-        "KEGGID": "", 
+        "met_name": "CoA", 
+        "dG_f_lb": -1792.5, 
+        "KEGGID": "C00010", 
         "dG_f_var": 0.0, 
-        "dG_f": 1290.0, 
-        "dG_f_ub": 1290.0
+        "dG_f": -1792.5, 
+        "dG_f_ub": -1792.5
     }, 
     "5aprbu_e": {
         "dG_f_units": "kJ/mol", 
@@ -13510,12 +13438,12 @@
     }, 
     "coa_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 1383.9, 
-        "KEGGID": "", 
+        "met_name": "CoA", 
+        "dG_f_lb": -1701.3, 
+        "KEGGID": "C00010", 
         "dG_f_var": 0.0, 
-        "dG_f": 1383.9, 
-        "dG_f_ub": 1383.9
+        "dG_f": -1701.3, 
+        "dG_f_ub": -1701.3
     }, 
     "5aprbu_c": {
         "dG_f_units": "kJ/mol", 
@@ -13537,21 +13465,21 @@
     }, 
     "nadh_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 1192.0, 
-        "KEGGID": "", 
+        "met_name": "NADH", 
+        "dG_f_lb": 1191.1, 
+        "KEGGID": "C00004", 
         "dG_f_var": 0.0, 
-        "dG_f": 1192.0, 
-        "dG_f_ub": 1192.0
+        "dG_f": 1191.1, 
+        "dG_f_ub": 1191.1
     }, 
     "nadh_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 1115.0, 
-        "KEGGID": "", 
+        "met_name": "NADH", 
+        "dG_f_lb": 1114.1, 
+        "KEGGID": "C00004", 
         "dG_f_var": 0.0, 
-        "dG_f": 1115.0, 
-        "dG_f_ub": 1115.0
+        "dG_f": 1114.1, 
+        "dG_f_ub": 1114.1
     }, 
     "acglc_DASH_D_c": {
         "dG_f_units": "kJ/mol", 
@@ -13582,21 +13510,21 @@
     }, 
     "cbm_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -297.2, 
-        "KEGGID": "", 
+        "met_name": "Carbamate", 
+        "dG_f_lb": -312.8, 
+        "KEGGID": "C01563", 
         "dG_f_var": 0.0, 
-        "dG_f": -297.2, 
-        "dG_f_ub": -297.2
+        "dG_f": -312.8, 
+        "dG_f_ub": -312.8
     }, 
     "cbm_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -291.5, 
-        "KEGGID": "", 
+        "met_name": "Carbamate", 
+        "dG_f_lb": -307.1, 
+        "KEGGID": "C01563", 
         "dG_f_var": 0.0, 
-        "dG_f": -291.5, 
-        "dG_f_ub": -291.5
+        "dG_f": -307.1, 
+        "dG_f_ub": -307.1
     }, 
     "sbt_DASH_D_p": {
         "dG_f_units": "kJ/mol", 
@@ -13627,21 +13555,21 @@
     }, 
     "sbt_DASH_D_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -377.1, 
-        "KEGGID": "", 
+        "met_name": "L-Glucitol", 
+        "dG_f_lb": -378.7, 
+        "KEGGID": "C01722", 
         "dG_f_var": 0.0, 
-        "dG_f": -377.1, 
-        "dG_f_ub": -377.1
+        "dG_f": -378.7, 
+        "dG_f_ub": -378.7
     }, 
     "sbt_DASH_D_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -337.1, 
-        "KEGGID": "", 
+        "met_name": "L-Glucitol", 
+        "dG_f_lb": -338.7, 
+        "KEGGID": "C01722", 
         "dG_f_var": 0.0, 
-        "dG_f": -337.1, 
-        "dG_f_ub": -337.1
+        "dG_f": -338.7, 
+        "dG_f_ub": -338.7
     }, 
     "gudac_e": {
         "dG_f_units": "kJ/mol", 
@@ -13726,12 +13654,12 @@
     }, 
     "oaa_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -714.6, 
-        "KEGGID": "", 
+        "met_name": "Oxaloacetate", 
+        "dG_f_lb": -721.1, 
+        "KEGGID": "C00036", 
         "dG_f_var": 0.0, 
-        "dG_f": -714.6, 
-        "dG_f_ub": -714.6
+        "dG_f": -721.1, 
+        "dG_f_ub": -721.1
     }, 
     "dopa_p": {
         "dG_f_units": "kJ/mol", 
@@ -13744,12 +13672,12 @@
     }, 
     "oaa_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -708.9, 
-        "KEGGID": "", 
+        "met_name": "Oxaloacetate", 
+        "dG_f_lb": -715.4, 
+        "KEGGID": "C00036", 
         "dG_f_var": 0.0, 
-        "dG_f": -708.9, 
-        "dG_f_ub": -708.9
+        "dG_f": -715.4, 
+        "dG_f_ub": -715.4
     }, 
     "orot_p": {
         "dG_f_units": "kJ/mol", 
@@ -13807,21 +13735,21 @@
     }, 
     "oxalcoa_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 878.2, 
-        "KEGGID": "", 
+        "met_name": "Oxalyl-CoA", 
+        "dG_f_lb": -2217.9, 
+        "KEGGID": "C00313", 
         "dG_f_var": 0.0, 
-        "dG_f": 878.2, 
-        "dG_f_ub": 878.2
+        "dG_f": -2217.9, 
+        "dG_f_ub": -2217.9
     }, 
     "oxalcoa_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 786.9, 
-        "KEGGID": "", 
+        "met_name": "Oxalyl-CoA", 
+        "dG_f_lb": -2306.4, 
+        "KEGGID": "C00313", 
         "dG_f_var": 0.0, 
-        "dG_f": 786.9, 
-        "dG_f_ub": 786.9
+        "dG_f": -2306.4, 
+        "dG_f_ub": -2306.4
     }, 
     "dcyt_p": {
         "dG_f_units": "kJ/mol", 
@@ -14086,12 +14014,12 @@
     }, 
     "fru_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -428.9, 
-        "KEGGID": "", 
+        "met_name": "D-Fructose", 
+        "dG_f_lb": -426.1, 
+        "KEGGID": "C00095", 
         "dG_f_var": 0.0, 
-        "dG_f": -428.9, 
-        "dG_f_ub": -428.9
+        "dG_f": -426.1, 
+        "dG_f_ub": -426.1
     }, 
     "methf_e": {
         "dG_f_units": "kJ/mol", 
@@ -14113,12 +14041,12 @@
     }, 
     "fru_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -394.7, 
-        "KEGGID": "", 
+        "met_name": "D-Fructose", 
+        "dG_f_lb": -391.8, 
+        "KEGGID": "C00095", 
         "dG_f_var": 0.0, 
-        "dG_f": -394.7, 
-        "dG_f_ub": -394.7
+        "dG_f": -391.8, 
+        "dG_f_ub": -391.8
     }, 
     "ara5p_p": {
         "dG_f_units": "kJ/mol", 
@@ -14167,21 +14095,21 @@
     }, 
     "ara5p_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1210.3, 
-        "KEGGID": "", 
+        "met_name": "D-Arabinose 5-phosphate", 
+        "dG_f_lb": -1209.7, 
+        "KEGGID": "C01112", 
         "dG_f_var": 0.0, 
-        "dG_f": -1210.3, 
-        "dG_f_ub": -1210.3
+        "dG_f": -1209.7, 
+        "dG_f_ub": -1209.7
     }, 
     "trp_DASH_L_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 406.0, 
-        "KEGGID": "", 
+        "met_name": "Tryptophan", 
+        "dG_f_lb": 403.3, 
+        "KEGGID": "C00806", 
         "dG_f_var": 0.0, 
-        "dG_f": 406.0, 
-        "dG_f_ub": 406.0
+        "dG_f": 403.3, 
+        "dG_f_ub": 403.3
     }, 
     "pmtcoa_p": {
         "dG_f_units": "kJ/mol", 
@@ -14509,9 +14437,9 @@
     }, 
     "urea_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Urea", 
         "dG_f_lb": -40.6, 
-        "KEGGID": "", 
+        "KEGGID": "C00086", 
         "dG_f_var": 0.0, 
         "dG_f": -40.6, 
         "dG_f_ub": -40.6
@@ -14545,21 +14473,21 @@
     }, 
     "pi_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1055.6, 
-        "KEGGID": "", 
+        "met_name": "Orthophosphate", 
+        "dG_f_lb": -1055.4, 
+        "KEGGID": "C00009", 
         "dG_f_var": 0.0, 
-        "dG_f": -1055.6, 
-        "dG_f_ub": -1055.6
+        "dG_f": -1055.4, 
+        "dG_f_ub": -1055.4
     }, 
     "pi_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1059.2, 
-        "KEGGID": "", 
+        "met_name": "Orthophosphate", 
+        "dG_f_lb": -1058.7, 
+        "KEGGID": "C00009", 
         "dG_f_var": 0.0, 
-        "dG_f": -1059.2, 
-        "dG_f_ub": -1059.2
+        "dG_f": -1058.7, 
+        "dG_f_ub": -1058.7
     }, 
     "grdp_e": {
         "dG_f_units": "kJ/mol", 
@@ -15103,30 +15031,30 @@
     }, 
     "damp_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -374.4, 
-        "KEGGID": "", 
+        "met_name": "dAMP", 
+        "dG_f_lb": -349.9, 
+        "KEGGID": "C00360", 
         "dG_f_var": 0.0, 
-        "dG_f": -374.4, 
-        "dG_f_ub": -374.4
+        "dG_f": -349.9, 
+        "dG_f_ub": -349.9
     }, 
     "damp_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -408.9, 
-        "KEGGID": "", 
+        "met_name": "dAMP", 
+        "dG_f_lb": -384.3, 
+        "KEGGID": "C00360", 
         "dG_f_var": 0.0, 
-        "dG_f": -408.9, 
-        "dG_f_ub": -408.9
+        "dG_f": -384.3, 
+        "dG_f_ub": -384.3
     }, 
     "idp_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1681.3, 
-        "KEGGID": "", 
+        "met_name": "IDP", 
+        "dG_f_lb": -1691.0, 
+        "KEGGID": "C00104", 
         "dG_f_var": 0.0, 
-        "dG_f": -1681.3, 
-        "dG_f_ub": -1681.3
+        "dG_f": -1691.0, 
+        "dG_f_ub": -1691.0
     }, 
     "mi1p_DASH_D_c": {
         "dG_f_units": "kJ/mol", 
@@ -15148,12 +15076,12 @@
     }, 
     "idp_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1649.5, 
-        "KEGGID": "", 
+        "met_name": "IDP", 
+        "dG_f_lb": -1659.3, 
+        "KEGGID": "C00104", 
         "dG_f_var": 0.0, 
-        "dG_f": -1649.5, 
-        "dG_f_ub": -1649.5
+        "dG_f": -1659.3, 
+        "dG_f_ub": -1659.3
     }, 
     "mi1p_DASH_D_p": {
         "dG_f_units": "kJ/mol", 
@@ -15202,12 +15130,12 @@
     }, 
     "rib_DASH_D_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -318.0, 
-        "KEGGID": "", 
+        "met_name": "D-Ribose", 
+        "dG_f_lb": -322.6, 
+        "KEGGID": "C00121", 
         "dG_f_var": 0.0, 
-        "dG_f": -318.0, 
-        "dG_f_ub": -318.0
+        "dG_f": -322.6, 
+        "dG_f_ub": -322.6
     }, 
     "2dh3dgal_p": {
         "dG_f_units": "kJ/mol", 
@@ -15310,21 +15238,21 @@
     }, 
     "actp_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1107.7, 
-        "KEGGID": "", 
+        "met_name": "Acetyl phosphate", 
+        "dG_f_lb": -1100.4, 
+        "KEGGID": "C00227", 
         "dG_f_var": 0.0, 
-        "dG_f": -1107.7, 
-        "dG_f_ub": -1107.7
+        "dG_f": -1100.4, 
+        "dG_f_ub": -1100.4
     }, 
     "actp_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1096.5, 
-        "KEGGID": "", 
+        "met_name": "Acetyl phosphate", 
+        "dG_f_lb": -1091.7, 
+        "KEGGID": "C00227", 
         "dG_f_var": 0.0, 
-        "dG_f": -1096.5, 
-        "dG_f_ub": -1096.5
+        "dG_f": -1091.7, 
+        "dG_f_ub": -1091.7
     }, 
     "lyx_DASH_L_p": {
         "dG_f_units": "kJ/mol", 
@@ -15598,21 +15526,21 @@
     }, 
     "icit_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -944.6, 
-        "KEGGID": "", 
+        "met_name": "Isocitrate", 
+        "dG_f_lb": -946.2, 
+        "KEGGID": "C00311", 
         "dG_f_var": 0.0, 
-        "dG_f": -944.6, 
-        "dG_f_ub": -944.6
+        "dG_f": -946.2, 
+        "dG_f_ub": -946.2
     }, 
     "icit_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -959.0, 
-        "KEGGID": "", 
+        "met_name": "Isocitrate", 
+        "dG_f_lb": -960.5, 
+        "KEGGID": "C00311", 
         "dG_f_var": 0.0, 
-        "dG_f": -959.0, 
-        "dG_f_ub": -959.0
+        "dG_f": -960.5, 
+        "dG_f_ub": -960.5
     }, 
     "xylu_DASH_D_p": {
         "dG_f_units": "kJ/mol", 
@@ -15679,39 +15607,39 @@
     }, 
     "g6p_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1289.1, 
-        "KEGGID": "", 
+        "met_name": "D-Glucose 6-phosphate", 
+        "dG_f_lb": -1283.6, 
+        "KEGGID": "C00092", 
         "dG_f_var": 0.0, 
-        "dG_f": -1289.1, 
-        "dG_f_ub": -1289.1
+        "dG_f": -1283.6, 
+        "dG_f_ub": -1283.6
     }, 
     "xylu_DASH_D_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -340.7, 
-        "KEGGID": "", 
+        "met_name": "D-Xylulose", 
+        "dG_f_lb": -351.2, 
+        "KEGGID": "C00310", 
         "dG_f_var": 0.0, 
-        "dG_f": -340.7, 
-        "dG_f_ub": -340.7
+        "dG_f": -351.2, 
+        "dG_f_ub": -351.2
     }, 
     "g6p_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1320.6, 
-        "KEGGID": "", 
+        "met_name": "D-Glucose 6-phosphate", 
+        "dG_f_lb": -1315.1, 
+        "KEGGID": "C00092", 
         "dG_f_var": 0.0, 
-        "dG_f": -1320.6, 
-        "dG_f_ub": -1320.6
+        "dG_f": -1315.1, 
+        "dG_f_ub": -1315.1
     }, 
     "xylu_DASH_D_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -312.2, 
-        "KEGGID": "", 
+        "met_name": "D-Xylulose", 
+        "dG_f_lb": -322.7, 
+        "KEGGID": "C00310", 
         "dG_f_var": 0.0, 
-        "dG_f": -312.2, 
-        "dG_f_ub": -312.2
+        "dG_f": -322.7, 
+        "dG_f_ub": -322.7
     }, 
     "udpLa4fn_e": {
         "dG_f_units": "kJ/mol", 
@@ -15796,21 +15724,21 @@
     }, 
     "g1p_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1313.6, 
-        "KEGGID": "", 
+        "met_name": "D-Glucose 1-phosphate", 
+        "dG_f_lb": -1307.3, 
+        "KEGGID": "C00103", 
         "dG_f_var": 0.0, 
-        "dG_f": -1313.6, 
-        "dG_f_ub": -1313.6
+        "dG_f": -1307.3, 
+        "dG_f_ub": -1307.3
     }, 
     "g1p_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1282.0, 
-        "KEGGID": "", 
+        "met_name": "D-Glucose 1-phosphate", 
+        "dG_f_lb": -1275.8, 
+        "KEGGID": "C00103", 
         "dG_f_var": 0.0, 
-        "dG_f": -1282.0, 
-        "dG_f_ub": -1282.0
+        "dG_f": -1275.8, 
+        "dG_f_ub": -1275.8
     }, 
     "xylt_p": {
         "dG_f_units": "kJ/mol", 
@@ -15868,21 +15796,21 @@
     }, 
     "glu_DASH_L_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -350.9, 
-        "KEGGID": "", 
+        "met_name": "DL-Glutamate", 
+        "dG_f_lb": -336.7, 
+        "KEGGID": "C00302", 
         "dG_f_var": 0.0, 
-        "dG_f": -350.9, 
-        "dG_f_ub": -350.9
+        "dG_f": -336.7, 
+        "dG_f_ub": -336.7
     }, 
     "glu_DASH_L_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -373.7, 
-        "KEGGID": "", 
+        "met_name": "DL-Glutamate", 
+        "dG_f_lb": -359.5, 
+        "KEGGID": "C00302", 
         "dG_f_var": 0.0, 
-        "dG_f": -373.7, 
-        "dG_f_ub": -373.7
+        "dG_f": -359.5, 
+        "dG_f_ub": -359.5
     }, 
     "lald_DASH_D_c": {
         "dG_f_units": "kJ/mol", 
@@ -15949,12 +15877,12 @@
     }, 
     "glc_DASH_D_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -429.3, 
-        "KEGGID": "", 
+        "met_name": "D-Glucose", 
+        "dG_f_lb": -425.8, 
+        "KEGGID": "C00031", 
         "dG_f_var": 0.0, 
-        "dG_f": -429.3, 
-        "dG_f_ub": -429.3
+        "dG_f": -425.8, 
+        "dG_f_ub": -425.8
     }, 
     "cys_DASH_D_e": {
         "dG_f_units": "kJ/mol", 
@@ -15967,12 +15895,12 @@
     }, 
     "glc_DASH_D_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -395.1, 
-        "KEGGID": "", 
+        "met_name": "D-Glucose", 
+        "dG_f_lb": -391.6, 
+        "KEGGID": "C00031", 
         "dG_f_var": 0.0, 
-        "dG_f": -395.1, 
-        "dG_f_ub": -395.1
+        "dG_f": -391.6, 
+        "dG_f_ub": -391.6
     }, 
     "cys_DASH_D_c": {
         "dG_f_units": "kJ/mol", 
@@ -16138,21 +16066,21 @@
     }, 
     "n2o_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 104.2, 
-        "KEGGID": "", 
+        "met_name": "Nitrous oxide", 
+        "dG_f_lb": 103.6, 
+        "KEGGID": "C00887", 
         "dG_f_var": 0.0, 
-        "dG_f": 104.2, 
-        "dG_f_ub": 104.2
+        "dG_f": 103.6, 
+        "dG_f_ub": 103.6
     }, 
     "n2o_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 104.2, 
-        "KEGGID": "", 
+        "met_name": "Nitrous oxide", 
+        "dG_f_lb": 103.6, 
+        "KEGGID": "C00887", 
         "dG_f_var": 0.0, 
-        "dG_f": 104.2, 
-        "dG_f_ub": 104.2
+        "dG_f": 103.6, 
+        "dG_f_ub": 103.6
     }, 
     "56dthm_c": {
         "dG_f_units": "kJ/mol", 
@@ -16327,21 +16255,21 @@
     }, 
     "fmnh2_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 870.1, 
-        "KEGGID": "", 
+        "met_name": "Reduced FMN", 
+        "dG_f_lb": 820.8, 
+        "KEGGID": "C01847", 
         "dG_f_var": 0.0, 
-        "dG_f": 870.1, 
-        "dG_f_ub": 870.1
+        "dG_f": 820.8, 
+        "dG_f_ub": 820.8
     }, 
     "itp_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -2547.8, 
-        "KEGGID": "", 
+        "met_name": "ITP", 
+        "dG_f_lb": -2565.5, 
+        "KEGGID": "C00081", 
         "dG_f_var": 0.0, 
-        "dG_f": -2547.8, 
-        "dG_f_ub": -2547.8
+        "dG_f": -2565.5, 
+        "dG_f_ub": -2565.5
     }, 
     "glu_DASH_D_c": {
         "dG_f_units": "kJ/mol", 
@@ -16372,30 +16300,30 @@
     }, 
     "fmnh2_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 810.2, 
-        "KEGGID": "", 
+        "met_name": "Reduced FMN", 
+        "dG_f_lb": 761.3, 
+        "KEGGID": "C01847", 
         "dG_f_var": 0.0, 
-        "dG_f": 810.2, 
-        "dG_f_ub": 810.2
+        "dG_f": 761.3, 
+        "dG_f_ub": 761.3
     }, 
     "3hpp_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -302.0, 
-        "KEGGID": "", 
+        "met_name": "3-Hydroxypropanoate", 
+        "dG_f_lb": -288.4, 
+        "KEGGID": "C01013", 
         "dG_f_var": 0.0, 
-        "dG_f": -302.0, 
-        "dG_f_ub": -302.0
+        "dG_f": -288.4, 
+        "dG_f_ub": -288.4
     }, 
     "3hpp_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -316.3, 
-        "KEGGID": "", 
+        "met_name": "3-Hydroxypropanoate", 
+        "dG_f_lb": -302.7, 
+        "KEGGID": "C01013", 
         "dG_f_var": 0.0, 
-        "dG_f": -316.3, 
-        "dG_f_ub": -316.3
+        "dG_f": -302.7, 
+        "dG_f_ub": -302.7
     }, 
     "3ohdcoa_p": {
         "dG_f_units": "kJ/mol", 
@@ -16453,12 +16381,12 @@
     }, 
     "itp_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -2515.8, 
-        "KEGGID": "", 
+        "met_name": "ITP", 
+        "dG_f_lb": -2534.2, 
+        "KEGGID": "C00081", 
         "dG_f_var": 0.0, 
-        "dG_f": -2515.8, 
-        "dG_f_ub": -2515.8
+        "dG_f": -2534.2, 
+        "dG_f_ub": -2534.2
     }, 
     "3ohdcoa_c": {
         "dG_f_units": "kJ/mol", 
@@ -16480,21 +16408,21 @@
     }, 
     "asp_DASH_L_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -453.2, 
-        "KEGGID": "", 
+        "met_name": "Aspartate", 
+        "dG_f_lb": -447.1, 
+        "KEGGID": "C16433", 
         "dG_f_var": 0.0, 
-        "dG_f": -453.2, 
-        "dG_f_ub": -453.2
+        "dG_f": -447.1, 
+        "dG_f_ub": -447.1
     }, 
     "asp_DASH_L_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -436.1, 
-        "KEGGID": "", 
+        "met_name": "Aspartate", 
+        "dG_f_lb": -430.0, 
+        "KEGGID": "C16433", 
         "dG_f_var": 0.0, 
-        "dG_f": -436.1, 
-        "dG_f_ub": -436.1
+        "dG_f": -430.0, 
+        "dG_f_ub": -430.0
     }, 
     "tym_p": {
         "dG_f_units": "kJ/mol", 
@@ -16777,12 +16705,12 @@
     }, 
     "trp_DASH_L_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 371.8, 
-        "KEGGID": "", 
+        "met_name": "Tryptophan", 
+        "dG_f_lb": 369.1, 
+        "KEGGID": "C00806", 
         "dG_f_var": 0.0, 
-        "dG_f": 371.8, 
-        "dG_f_ub": 371.8
+        "dG_f": 369.1, 
+        "dG_f_ub": 369.1
     }, 
     "orn_e": {
         "dG_f_units": "kJ/mol", 
@@ -16795,12 +16723,12 @@
     }, 
     "amp_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -556.8, 
-        "KEGGID": "", 
+        "met_name": "AMP", 
+        "dG_f_lb": -554.5, 
+        "KEGGID": "C00020", 
         "dG_f_var": 0.0, 
-        "dG_f": -556.8, 
-        "dG_f_ub": -556.8
+        "dG_f": -554.5, 
+        "dG_f_ub": -554.5
     }, 
     "orn_c": {
         "dG_f_units": "kJ/mol", 
@@ -16813,12 +16741,12 @@
     }, 
     "amp_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -522.3, 
-        "KEGGID": "", 
+        "met_name": "AMP", 
+        "dG_f_lb": -520.2, 
+        "KEGGID": "C00020", 
         "dG_f_var": 0.0, 
-        "dG_f": -522.3, 
-        "dG_f_ub": -522.3
+        "dG_f": -520.2, 
+        "dG_f_ub": -520.2
     }, 
     "dhf_p": {
         "dG_f_units": "kJ/mol", 
@@ -16858,12 +16786,12 @@
     }, 
     "leu_DASH_L_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 211.9, 
-        "KEGGID": "", 
+        "met_name": "Leucine", 
+        "dG_f_lb": 219.5, 
+        "KEGGID": "C16439", 
         "dG_f_var": 0.0, 
-        "dG_f": 211.9, 
-        "dG_f_ub": 211.9
+        "dG_f": 219.5, 
+        "dG_f_ub": 219.5
     }, 
     "idon_DASH_L_e": {
         "dG_f_units": "kJ/mol", 
@@ -16876,12 +16804,12 @@
     }, 
     "leu_DASH_L_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 174.9, 
-        "KEGGID": "", 
+        "met_name": "Leucine", 
+        "dG_f_lb": 182.4, 
+        "KEGGID": "C16439", 
         "dG_f_var": 0.0, 
-        "dG_f": 174.9, 
-        "dG_f_ub": 174.9
+        "dG_f": 182.4, 
+        "dG_f_ub": 182.4
     }, 
     "aps_c": {
         "dG_f_units": "kJ/mol", 
@@ -16903,21 +16831,21 @@
     }, 
     "mnl_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -335.0, 
-        "KEGGID": "", 
+        "met_name": "Mannitol", 
+        "dG_f_lb": -338.7, 
+        "KEGGID": "C00392", 
         "dG_f_var": 0.0, 
-        "dG_f": -335.0, 
-        "dG_f_ub": -335.0
+        "dG_f": -338.7, 
+        "dG_f_ub": -338.7
     }, 
     "mnl_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -375.0, 
-        "KEGGID": "", 
+        "met_name": "Mannitol", 
+        "dG_f_lb": -378.7, 
+        "KEGGID": "C00392", 
         "dG_f_var": 0.0, 
-        "dG_f": -375.0, 
-        "dG_f_ub": -375.0
+        "dG_f": -378.7, 
+        "dG_f_ub": -378.7
     }, 
     "23camp_p": {
         "dG_f_units": "kJ/mol", 
@@ -16957,12 +16885,12 @@
     }, 
     "ara5p_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1236.3, 
-        "KEGGID": "", 
+        "met_name": "D-Arabinose 5-phosphate", 
+        "dG_f_lb": -1235.5, 
+        "KEGGID": "C01112", 
         "dG_f_var": 0.0, 
-        "dG_f": -1236.3, 
-        "dG_f_ub": -1236.3
+        "dG_f": -1235.5, 
+        "dG_f_ub": -1235.5
     }, 
     "dcyt_e": {
         "dG_f_units": "kJ/mol", 
@@ -17056,30 +16984,30 @@
     }, 
     "so3_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -489.4, 
-        "KEGGID": "", 
+        "met_name": "Sulfite", 
+        "dG_f_lb": -494.8, 
+        "KEGGID": "C00094", 
         "dG_f_var": 0.0, 
-        "dG_f": -489.4, 
-        "dG_f_ub": -489.4
+        "dG_f": -494.8, 
+        "dG_f_ub": -494.8
     }, 
     "so3_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -490.2, 
-        "KEGGID": "", 
+        "met_name": "Sulfite", 
+        "dG_f_lb": -497.5, 
+        "KEGGID": "C00094", 
         "dG_f_var": 0.0, 
-        "dG_f": -490.2, 
-        "dG_f_ub": -490.2
+        "dG_f": -497.5, 
+        "dG_f_ub": -497.5
     }, 
     "dha_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -207.7, 
-        "KEGGID": "", 
+        "met_name": "Glycerone", 
+        "dG_f_lb": -203.7, 
+        "KEGGID": "C00184", 
         "dG_f_var": 0.0, 
-        "dG_f": -207.7, 
-        "dG_f_ub": -207.7
+        "dG_f": -203.7, 
+        "dG_f_ub": -203.7
     }, 
     "3oddcoa_p": {
         "dG_f_units": "kJ/mol", 
@@ -17110,12 +17038,12 @@
     }, 
     "dha_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -190.6, 
-        "KEGGID": "", 
+        "met_name": "Glycerone", 
+        "dG_f_lb": -186.6, 
+        "KEGGID": "C00184", 
         "dG_f_var": 0.0, 
-        "dG_f": -190.6, 
-        "dG_f_ub": -190.6
+        "dG_f": -186.6, 
+        "dG_f_ub": -186.6
     }, 
     "so3_p": {
         "dG_f_units": "kJ/mol", 
@@ -17182,18 +17110,18 @@
     }, 
     "fald_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Formaldehyde", 
         "dG_f_lb": -49.4, 
-        "KEGGID": "", 
+        "KEGGID": "C00067", 
         "dG_f_var": 0.0, 
         "dG_f": -49.4, 
         "dG_f_ub": -49.4
     }, 
     "fald_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Formaldehyde", 
         "dG_f_lb": -43.7, 
-        "KEGGID": "", 
+        "KEGGID": "C00067", 
         "dG_f_var": 0.0, 
         "dG_f": -43.7, 
         "dG_f_ub": -43.7
@@ -17272,21 +17200,21 @@
     }, 
     "man6p_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1285.0, 
-        "KEGGID": "", 
+        "met_name": "D-Hexose 6-phosphate", 
+        "dG_f_lb": -1283.6, 
+        "KEGGID": "C02965", 
         "dG_f_var": 0.0, 
-        "dG_f": -1285.0, 
-        "dG_f_ub": -1285.0
+        "dG_f": -1283.6, 
+        "dG_f_ub": -1283.6
     }, 
     "man6p_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1316.5, 
-        "KEGGID": "", 
+        "met_name": "D-Hexose 6-phosphate", 
+        "dG_f_lb": -1315.1, 
+        "KEGGID": "C02965", 
         "dG_f_var": 0.0, 
-        "dG_f": -1316.5, 
-        "dG_f_ub": -1316.5
+        "dG_f": -1315.1, 
+        "dG_f_ub": -1315.1
     }, 
     "42A3HP24DB_p": {
         "dG_f_units": "kJ/mol", 
@@ -17299,12 +17227,12 @@
     }, 
     "fad_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 1254.5, 
-        "KEGGID": "", 
+        "met_name": "FAD", 
+        "dG_f_lb": 1322.8, 
+        "KEGGID": "C00016", 
         "dG_f_var": 0.0, 
-        "dG_f": 1254.5, 
-        "dG_f_ub": 1254.5
+        "dG_f": 1322.8, 
+        "dG_f_ub": 1322.8
     }, 
     "3gmp_p": {
         "dG_f_units": "kJ/mol", 
@@ -17335,12 +17263,12 @@
     }, 
     "fad_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 1342.9, 
-        "KEGGID": "", 
+        "met_name": "FAD", 
+        "dG_f_lb": 1411.7, 
+        "KEGGID": "C00016", 
         "dG_f_var": 0.0, 
-        "dG_f": 1342.9, 
-        "dG_f_ub": 1342.9
+        "dG_f": 1411.7, 
+        "dG_f_ub": 1411.7
     }, 
     "fecrm_p": {
         "dG_f_units": "kJ/mol", 
@@ -17416,9 +17344,9 @@
     }, 
     "so4_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Sulfate", 
         "dG_f_lb": -747.0, 
-        "KEGGID": "", 
+        "KEGGID": "C00059", 
         "dG_f_var": 0.0, 
         "dG_f": -747.0, 
         "dG_f_ub": -747.0
@@ -17443,9 +17371,9 @@
     }, 
     "so4_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Sulfate", 
         "dG_f_lb": -747.0, 
-        "KEGGID": "", 
+        "KEGGID": "C00059", 
         "dG_f_var": 0.0, 
         "dG_f": -747.0, 
         "dG_f_ub": -747.0
@@ -17470,9 +17398,9 @@
     }, 
     "urea_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Urea", 
         "dG_f_lb": -29.2, 
-        "KEGGID": "", 
+        "KEGGID": "C00086", 
         "dG_f_var": 0.0, 
         "dG_f": -29.2, 
         "dG_f_ub": -29.2
@@ -17569,21 +17497,21 @@
     }, 
     "4mop_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -80.8, 
-        "KEGGID": "", 
+        "met_name": "4-Methyl-2-oxopentanoate", 
+        "dG_f_lb": -90.4, 
+        "KEGGID": "C00233", 
         "dG_f_var": 0.0, 
-        "dG_f": -80.8, 
-        "dG_f_ub": -80.8
+        "dG_f": -90.4, 
+        "dG_f_ub": -90.4
     }, 
     "4mop_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -55.2, 
-        "KEGGID": "", 
+        "met_name": "4-Methyl-2-oxopentanoate", 
+        "dG_f_lb": -64.7, 
+        "KEGGID": "C00233", 
         "dG_f_var": 0.0, 
-        "dG_f": -55.2, 
-        "dG_f_ub": -55.2
+        "dG_f": -64.7, 
+        "dG_f_ub": -64.7
     }, 
     "23dpg_p": {
         "dG_f_units": "kJ/mol", 
@@ -17650,9 +17578,9 @@
     }, 
     "o2_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Oxygen", 
         "dG_f_lb": 16.4, 
-        "KEGGID": "", 
+        "KEGGID": "C00007", 
         "dG_f_var": 0.0, 
         "dG_f": 16.4, 
         "dG_f_ub": 16.4
@@ -17695,9 +17623,9 @@
     }, 
     "o2_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "Oxygen", 
         "dG_f_lb": 16.4, 
-        "KEGGID": "", 
+        "KEGGID": "C00007", 
         "dG_f_var": 0.0, 
         "dG_f": 16.4, 
         "dG_f_ub": 16.4
@@ -17794,12 +17722,12 @@
     }, 
     "mma_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 219.9, 
-        "KEGGID": "", 
+        "met_name": "Methylamine", 
+        "dG_f_lb": 215.5, 
+        "KEGGID": "C00218", 
         "dG_f_var": 0.0, 
-        "dG_f": 219.9, 
-        "dG_f_ub": 219.9
+        "dG_f": 215.5, 
+        "dG_f_ub": 215.5
     }, 
     "35cgmp_p": {
         "dG_f_units": "kJ/mol", 
@@ -17830,12 +17758,12 @@
     }, 
     "mma_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 202.8, 
-        "KEGGID": "", 
+        "met_name": "Methylamine", 
+        "dG_f_lb": 198.4, 
+        "KEGGID": "C00218", 
         "dG_f_var": 0.0, 
-        "dG_f": 202.8, 
-        "dG_f_ub": 202.8
+        "dG_f": 198.4, 
+        "dG_f_ub": 198.4
     }, 
     "galt1p_p": {
         "dG_f_units": "kJ/mol", 
@@ -17893,18 +17821,18 @@
     }, 
     "h2o_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "H2O", 
         "dG_f_lb": -150.4, 
-        "KEGGID": "", 
+        "KEGGID": "C00001", 
         "dG_f_var": 0.0, 
         "dG_f": -150.4, 
         "dG_f_ub": -150.4
     }, 
     "h2o_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
+        "met_name": "H2O", 
         "dG_f_lb": -156.1, 
-        "KEGGID": "", 
+        "KEGGID": "C00001", 
         "dG_f_var": 0.0, 
         "dG_f": -156.1, 
         "dG_f_ub": -156.1
@@ -18064,12 +17992,12 @@
     }, 
     "2pg_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1341.4, 
-        "KEGGID": "", 
+        "met_name": "2-Phospho-D-glycerate", 
+        "dG_f_lb": -1347.4, 
+        "KEGGID": "C00631", 
         "dG_f_var": 0.0, 
-        "dG_f": -1341.4, 
-        "dG_f_ub": -1341.4
+        "dG_f": -1347.4, 
+        "dG_f_ub": -1347.4
     }, 
     "glycogen_p": {
         "dG_f_units": "kJ/mol", 
@@ -18082,12 +18010,12 @@
     }, 
     "2pg_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1329.0, 
-        "KEGGID": "", 
+        "met_name": "2-Phospho-D-glycerate", 
+        "dG_f_lb": -1335.9, 
+        "KEGGID": "C00631", 
         "dG_f_var": 0.0, 
-        "dG_f": -1329.0, 
-        "dG_f_ub": -1329.0
+        "dG_f": -1335.9, 
+        "dG_f_ub": -1335.9
     }, 
     "3hhcoa_c": {
         "dG_f_units": "kJ/mol", 
@@ -18181,21 +18109,21 @@
     }, 
     "glyc3p_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1057.7, 
-        "KEGGID": "", 
+        "met_name": "DL-Glycerol 1-phosphate", 
+        "dG_f_lb": -1030.2, 
+        "KEGGID": "C03189", 
         "dG_f_var": 0.0, 
-        "dG_f": -1057.7, 
-        "dG_f_ub": -1057.7
+        "dG_f": -1030.2, 
+        "dG_f_ub": -1030.2
     }, 
     "glyc3p_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1078.0, 
-        "KEGGID": "", 
+        "met_name": "DL-Glycerol 1-phosphate", 
+        "dG_f_lb": -1050.4, 
+        "KEGGID": "C03189", 
         "dG_f_var": 0.0, 
-        "dG_f": -1078.0, 
-        "dG_f_ub": -1078.0
+        "dG_f": -1050.4, 
+        "dG_f_ub": -1050.4
     }, 
     "thrp_p": {
         "dG_f_units": "kJ/mol", 
@@ -18226,12 +18154,12 @@
     }, 
     "succoa_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 949.3, 
-        "KEGGID": "", 
+        "met_name": "Succinyl-CoA", 
+        "dG_f_lb": -2131.1, 
+        "KEGGID": "C00091", 
         "dG_f_var": 0.0, 
-        "dG_f": 949.3, 
-        "dG_f_ub": 949.3
+        "dG_f": -2131.1, 
+        "dG_f_ub": -2131.1
     }, 
     "2ddg6p_e": {
         "dG_f_units": "kJ/mol", 
@@ -18244,12 +18172,12 @@
     }, 
     "succoa_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 1052.0, 
-        "KEGGID": "", 
+        "met_name": "Succinyl-CoA", 
+        "dG_f_lb": -2031.3, 
+        "KEGGID": "C00091", 
         "dG_f_var": 0.0, 
-        "dG_f": 1052.0, 
-        "dG_f_ub": 1052.0
+        "dG_f": -2031.3, 
+        "dG_f_ub": -2031.3
     }, 
     "2ddg6p_c": {
         "dG_f_units": "kJ/mol", 
@@ -18361,12 +18289,12 @@
     }, 
     "sbt6p_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1268.7, 
-        "KEGGID": "", 
+        "met_name": "Sorbitol 6-phosphate", 
+        "dG_f_lb": -1268.1, 
+        "KEGGID": "C01096", 
         "dG_f_var": 0.0, 
-        "dG_f": -1268.7, 
-        "dG_f_ub": -1268.7
+        "dG_f": -1268.1, 
+        "dG_f_ub": -1268.1
     }, 
     "ribflv_p": {
         "dG_f_units": "kJ/mol", 
@@ -18379,12 +18307,12 @@
     }, 
     "sbt6p_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1231.4, 
-        "KEGGID": "", 
+        "met_name": "Sorbitol 6-phosphate", 
+        "dG_f_lb": -1230.8, 
+        "KEGGID": "C01096", 
         "dG_f_var": 0.0, 
-        "dG_f": -1231.4, 
-        "dG_f_ub": -1231.4
+        "dG_f": -1230.8, 
+        "dG_f_ub": -1230.8
     }, 
     "dca_e": {
         "dG_f_units": "kJ/mol", 
@@ -18493,15 +18421,6 @@
         "dG_f_var": 0.0, 
         "dG_f": 354.9, 
         "dG_f_ub": 354.9
-    }, 
-    "iodine_e": {
-        "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 0.0, 
-        "KEGGID": "", 
-        "dG_f_var": 0.0, 
-        "dG_f": 0.0, 
-        "dG_f_ub": 0.0
     }, 
     "feenter_e": {
         "dG_f_units": "kJ/mol", 
@@ -18649,12 +18568,12 @@
     }, 
     "h2s_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 50.8, 
-        "KEGGID": "", 
+        "met_name": "Hydrogen sulfide", 
+        "dG_f_lb": 51.4, 
+        "KEGGID": "C00283", 
         "dG_f_var": 0.0, 
-        "dG_f": 50.8, 
-        "dG_f_ub": 50.8
+        "dG_f": 51.4, 
+        "dG_f_ub": 51.4
     }, 
     "kdo2lipid4_p": {
         "dG_f_units": "kJ/mol", 
@@ -18667,12 +18586,12 @@
     }, 
     "h2s_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 54.4, 
-        "KEGGID": "", 
+        "met_name": "Hydrogen sulfide", 
+        "dG_f_lb": 54.7, 
+        "KEGGID": "C00283", 
         "dG_f_var": 0.0, 
-        "dG_f": 54.4, 
-        "dG_f_ub": 54.4
+        "dG_f": 54.7, 
+        "dG_f_ub": 54.7
     }, 
     "4pyrdx_e": {
         "dG_f_units": "kJ/mol", 
@@ -18793,12 +18712,12 @@
     }, 
     "pser_DASH_L_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1102.9, 
-        "KEGGID": "", 
+        "met_name": "O-Phospho-L-serine", 
+        "dG_f_lb": -1105.1, 
+        "KEGGID": "C01005", 
         "dG_f_var": 0.0, 
-        "dG_f": -1102.9, 
-        "dG_f_ub": -1102.9
+        "dG_f": -1105.1, 
+        "dG_f_ub": -1105.1
     }, 
     "mana_c": {
         "dG_f_units": "kJ/mol", 
@@ -18865,12 +18784,12 @@
     }, 
     "cinnm_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 174.4, 
-        "KEGGID": "", 
+        "met_name": "trans-Cinnamate", 
+        "dG_f_lb": 167.9, 
+        "KEGGID": "C00423", 
         "dG_f_var": 0.0, 
-        "dG_f": 174.4, 
-        "dG_f_ub": 174.4
+        "dG_f": 167.9, 
+        "dG_f_ub": 167.9
     }, 
     "thf_e": {
         "dG_f_units": "kJ/mol", 
@@ -18892,12 +18811,12 @@
     }, 
     "cinnm_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 154.5, 
-        "KEGGID": "", 
+        "met_name": "trans-Cinnamate", 
+        "dG_f_lb": 147.9, 
+        "KEGGID": "C00423", 
         "dG_f_var": 0.0, 
-        "dG_f": 154.5, 
-        "dG_f_ub": 154.5
+        "dG_f": 147.9, 
+        "dG_f_ub": 147.9
     }, 
     "1mpyr_c": {
         "dG_f_units": "kJ/mol", 
@@ -19232,15 +19151,6 @@
         "dG_f": -648.0, 
         "dG_f_ub": -648.0
     }, 
-    "no_c": {
-        "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 86.5, 
-        "KEGGID": "", 
-        "dG_f_var": 0.0, 
-        "dG_f": 86.5, 
-        "dG_f_ub": 86.5
-    }, 
     "4crsol_c": {
         "dG_f_units": "kJ/mol", 
         "met_name": "4-Cresol", 
@@ -19378,12 +19288,12 @@
     }, 
     "ru5p_DASH_D_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1207.3, 
-        "KEGGID": "", 
+        "met_name": "D-Ribulose 5-phosphate", 
+        "dG_f_lb": -1212.4, 
+        "KEGGID": "C00199", 
         "dG_f_var": 0.0, 
-        "dG_f": -1207.3, 
-        "dG_f_ub": -1207.3
+        "dG_f": -1212.4, 
+        "dG_f_ub": -1212.4
     }, 
     "peracd_p": {
         "dG_f_units": "kJ/mol", 
@@ -19396,12 +19306,12 @@
     }, 
     "ru5p_DASH_D_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1233.3, 
-        "KEGGID": "", 
+        "met_name": "D-Ribulose 5-phosphate", 
+        "dG_f_lb": -1238.2, 
+        "KEGGID": "C00199", 
         "dG_f_var": 0.0, 
-        "dG_f": -1233.3, 
-        "dG_f_ub": -1233.3
+        "dG_f": -1238.2, 
+        "dG_f_ub": -1238.2
     }, 
     "2oph_c": {
         "dG_f_units": "kJ/mol", 
@@ -19423,12 +19333,12 @@
     }, 
     "akg_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -622.3, 
-        "KEGGID": "", 
+        "met_name": "2-Oxoglutarate", 
+        "dG_f_lb": -622.1, 
+        "KEGGID": "C00026", 
         "dG_f_var": 0.0, 
-        "dG_f": -622.3, 
-        "dG_f_ub": -622.3
+        "dG_f": -622.1, 
+        "dG_f_ub": -622.1
     }, 
     "thm_c": {
         "dG_f_units": "kJ/mol", 
@@ -19468,21 +19378,21 @@
     }, 
     "fe2_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -81.3, 
-        "KEGGID": "", 
+        "met_name": "Iron", 
+        "dG_f_lb": 0.0, 
+        "KEGGID": "C00023", 
         "dG_f_var": 0.0, 
-        "dG_f": -81.3, 
-        "dG_f_ub": -81.3
+        "dG_f": 0.0, 
+        "dG_f_ub": 0.0
     }, 
     "fe2_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -81.3, 
-        "KEGGID": "", 
+        "met_name": "Iron", 
+        "dG_f_lb": 0.0, 
+        "KEGGID": "C00023", 
         "dG_f_var": 0.0, 
-        "dG_f": -81.3, 
-        "dG_f_ub": -81.3
+        "dG_f": 0.0, 
+        "dG_f_ub": 0.0
     }, 
     "udcpdp_c": {
         "dG_f_units": "kJ/mol", 
@@ -19585,12 +19495,12 @@
     }, 
     "co_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -119.9, 
-        "KEGGID": "", 
+        "met_name": "CO", 
+        "dG_f_lb": -122.3, 
+        "KEGGID": "C00237", 
         "dG_f_var": 0.0, 
-        "dG_f": -119.9, 
-        "dG_f_ub": -119.9
+        "dG_f": -122.3, 
+        "dG_f_ub": -122.3
     }, 
     "uacmam_c": {
         "dG_f_units": "kJ/mol", 
@@ -19630,12 +19540,12 @@
     }, 
     "co_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -119.9, 
-        "KEGGID": "", 
+        "met_name": "CO", 
+        "dG_f_lb": -122.3, 
+        "KEGGID": "C00237", 
         "dG_f_var": 0.0, 
-        "dG_f": -119.9, 
-        "dG_f_ub": -119.9
+        "dG_f": -122.3, 
+        "dG_f_ub": -122.3
     }, 
     "betald_p": {
         "dG_f_units": "kJ/mol", 
@@ -20413,12 +20323,12 @@
     }, 
     "q8h2_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 3640.4, 
-        "KEGGID": "", 
+        "met_name": "Ubiquinol", 
+        "dG_f_lb": 1033.6, 
+        "KEGGID": "C00390", 
         "dG_f_var": 0.0, 
-        "dG_f": 3640.4, 
-        "dG_f_ub": 3640.4
+        "dG_f": 1033.6, 
+        "dG_f_ub": 1033.6
     }, 
     "fna5moxam_e": {
         "dG_f_units": "kJ/mol", 
@@ -20503,21 +20413,21 @@
     }, 
     "ppcoa_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 1321.1, 
-        "KEGGID": "", 
+        "met_name": "Propanoyl-CoA", 
+        "dG_f_lb": -1759.3, 
+        "KEGGID": "C00100", 
         "dG_f_var": 0.0, 
-        "dG_f": 1321.1, 
-        "dG_f_ub": 1321.1
+        "dG_f": -1759.3, 
+        "dG_f_ub": -1759.3
     }, 
     "ppcoa_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": 1426.6, 
-        "KEGGID": "", 
+        "met_name": "Propanoyl-CoA", 
+        "dG_f_lb": -1656.6, 
+        "KEGGID": "C00100", 
         "dG_f_var": 0.0, 
-        "dG_f": 1426.6, 
-        "dG_f_ub": 1426.6
+        "dG_f": -1656.6, 
+        "dG_f_ub": -1656.6
     }, 
     "2mcit_p": {
         "dG_f_units": "kJ/mol", 
@@ -20539,21 +20449,21 @@
     }, 
     "6pgl_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1358.0, 
-        "KEGGID": "", 
+        "met_name": "D-Glucono-1,5-lactone 6-phosphate", 
+        "dG_f_lb": -1361.0, 
+        "KEGGID": "C01236", 
         "dG_f_var": 0.0, 
-        "dG_f": -1358.0, 
-        "dG_f_ub": -1358.0
+        "dG_f": -1361.0, 
+        "dG_f_ub": -1361.0
     }, 
     "6pgl_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1383.8, 
-        "KEGGID": "", 
+        "met_name": "D-Glucono-1,5-lactone 6-phosphate", 
+        "dG_f_lb": -1386.8, 
+        "KEGGID": "C01236", 
         "dG_f_var": 0.0, 
-        "dG_f": -1383.8, 
-        "dG_f_ub": -1383.8
+        "dG_f": -1386.8, 
+        "dG_f_ub": -1386.8
     }, 
     "kdolipid4_e": {
         "dG_f_units": "kJ/mol", 
@@ -20602,21 +20512,21 @@
     }, 
     "gly_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -177.2, 
-        "KEGGID": "", 
+        "met_name": "Glycine", 
+        "dG_f_lb": -167.4, 
+        "KEGGID": "C00037", 
         "dG_f_var": 0.0, 
-        "dG_f": -177.2, 
-        "dG_f_ub": -177.2
+        "dG_f": -167.4, 
+        "dG_f_ub": -167.4
     }, 
     "gly_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -162.9, 
-        "KEGGID": "", 
+        "met_name": "Glycine", 
+        "dG_f_lb": -153.1, 
+        "KEGGID": "C00037", 
         "dG_f_var": 0.0, 
-        "dG_f": -162.9, 
-        "dG_f_ub": -162.9
+        "dG_f": -153.1, 
+        "dG_f_ub": -153.1
     }, 
     "sprm_p": {
         "dG_f_units": "kJ/mol", 
@@ -20647,12 +20557,12 @@
     }, 
     "oxa_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -676.3, 
-        "KEGGID": "", 
+        "met_name": "Oxalate", 
+        "dG_f_lb": -693.4, 
+        "KEGGID": "C00209", 
         "dG_f_var": 0.0, 
-        "dG_f": -676.3, 
-        "dG_f_ub": -676.3
+        "dG_f": -693.4, 
+        "dG_f_ub": -693.4
     }, 
     "2mcacn_c": {
         "dG_f_units": "kJ/mol", 
@@ -20665,12 +20575,12 @@
     }, 
     "dhap_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1081.7, 
-        "KEGGID": "", 
+        "met_name": "Glycerone phosphate", 
+        "dG_f_lb": -1078.7, 
+        "KEGGID": "C00111", 
         "dG_f_var": 0.0, 
-        "dG_f": -1081.7, 
-        "dG_f_ub": -1081.7
+        "dG_f": -1078.7, 
+        "dG_f_ub": -1078.7
     }, 
     "2mcacn_e": {
         "dG_f_units": "kJ/mol", 
@@ -20683,12 +20593,12 @@
     }, 
     "dhap_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1096.0, 
-        "KEGGID": "", 
+        "met_name": "Glycerone phosphate", 
+        "dG_f_lb": -1093.0, 
+        "KEGGID": "C00111", 
         "dG_f_var": 0.0, 
-        "dG_f": -1096.0, 
-        "dG_f_ub": -1096.0
+        "dG_f": -1093.0, 
+        "dG_f_ub": -1093.0
     }, 
     "nformanth_e": {
         "dG_f_units": "kJ/mol", 
@@ -20701,12 +20611,12 @@
     }, 
     "oxa_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -676.4, 
-        "KEGGID": "", 
+        "met_name": "Oxalate", 
+        "dG_f_lb": -693.4, 
+        "KEGGID": "C00209", 
         "dG_f_var": 0.0, 
-        "dG_f": -676.4, 
-        "dG_f_ub": -676.4
+        "dG_f": -693.4, 
+        "dG_f_ub": -693.4
     }, 
     "sprm_c": {
         "dG_f_units": "kJ/mol", 
@@ -20989,12 +20899,12 @@
     }, 
     "lac_DASH_L_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -300.3, 
-        "KEGGID": "", 
+        "met_name": "Lactate", 
+        "dG_f_lb": -295.8, 
+        "KEGGID": "C01432", 
         "dG_f_var": 0.0, 
-        "dG_f": -300.3, 
-        "dG_f_ub": -300.3
+        "dG_f": -295.8, 
+        "dG_f_ub": -295.8
     }, 
     "srtn_c": {
         "dG_f_units": "kJ/mol", 
@@ -21025,12 +20935,12 @@
     }, 
     "lac_DASH_L_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -314.6, 
-        "KEGGID": "", 
+        "met_name": "Lactate", 
+        "dG_f_lb": -310.1, 
+        "KEGGID": "C01432", 
         "dG_f_var": 0.0, 
-        "dG_f": -314.6, 
-        "dG_f_ub": -314.6
+        "dG_f": -310.1, 
+        "dG_f_ub": -310.1
     }, 
     "srtn_e": {
         "dG_f_units": "kJ/mol", 
@@ -21142,12 +21052,12 @@
     }, 
     "datp_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -2109.6, 
-        "KEGGID": "", 
+        "met_name": "dATP", 
+        "dG_f_lb": -2096.5, 
+        "KEGGID": "C00131", 
         "dG_f_var": 0.0, 
-        "dG_f": -2109.6, 
-        "dG_f_ub": -2109.6
+        "dG_f": -2096.5, 
+        "dG_f_ub": -2096.5
     }, 
     "3sala_p": {
         "dG_f_units": "kJ/mol", 
@@ -21169,12 +21079,12 @@
     }, 
     "datp_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -2144.6, 
-        "KEGGID": "", 
+        "met_name": "dATP", 
+        "dG_f_lb": -2131.2, 
+        "KEGGID": "C00131", 
         "dG_f_var": 0.0, 
-        "dG_f": -2144.6, 
-        "dG_f_ub": -2144.6
+        "dG_f": -2131.2, 
+        "dG_f_ub": -2131.2
     }, 
     "2ameph_p": {
         "dG_f_units": "kJ/mol", 
@@ -21205,21 +21115,21 @@
     }, 
     "sucr_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -609.9, 
-        "KEGGID": "", 
+        "met_name": "Sucrose", 
+        "dG_f_lb": -607.1, 
+        "KEGGID": "C00089", 
         "dG_f_var": 0.0, 
-        "dG_f": -609.9, 
-        "dG_f_ub": -609.9
+        "dG_f": -607.1, 
+        "dG_f_ub": -607.1
     }, 
     "sucr_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -672.7, 
-        "KEGGID": "", 
+        "met_name": "Sucrose", 
+        "dG_f_lb": -669.9, 
+        "KEGGID": "C00089", 
         "dG_f_var": 0.0, 
-        "dG_f": -672.7, 
-        "dG_f_ub": -672.7
+        "dG_f": -669.9, 
+        "dG_f_ub": -669.9
     }, 
     "3sala_c": {
         "dG_f_units": "kJ/mol", 
@@ -21250,12 +21160,12 @@
     }, 
     "rib_DASH_D_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -346.5, 
-        "KEGGID": "", 
+        "met_name": "D-Ribose", 
+        "dG_f_lb": -351.1, 
+        "KEGGID": "C00121", 
         "dG_f_var": 0.0, 
-        "dG_f": -346.5, 
-        "dG_f_ub": -346.5
+        "dG_f": -351.1, 
+        "dG_f_ub": -351.1
     }, 
     "dhcinnm_c": {
         "dG_f_units": "kJ/mol", 
@@ -21493,12 +21403,12 @@
     }, 
     "3pg_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1335.0, 
-        "KEGGID": "", 
+        "met_name": "3-Phospho-DL-glycerate", 
+        "dG_f_lb": -1343.1, 
+        "KEGGID": "C00597", 
         "dG_f_var": 0.0, 
-        "dG_f": -1335.0, 
-        "dG_f_ub": -1335.0
+        "dG_f": -1343.1, 
+        "dG_f_ub": -1343.1
     }, 
     "2mop_p": {
         "dG_f_units": "kJ/mol", 
@@ -21583,12 +21493,12 @@
     }, 
     "imp_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -812.3, 
-        "KEGGID": "", 
+        "met_name": "IMP", 
+        "dG_f_lb": -818.3, 
+        "KEGGID": "C00130", 
         "dG_f_var": 0.0, 
-        "dG_f": -812.3, 
-        "dG_f_ub": -812.3
+        "dG_f": -818.3, 
+        "dG_f_ub": -818.3
     }, 
     "1p2cbxl_p": {
         "dG_f_units": "kJ/mol", 
@@ -21745,21 +21655,21 @@
     }, 
     "glyclt_c": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -401.4, 
-        "KEGGID": "", 
+        "met_name": "omega-Hydroxy fatty acid", 
+        "dG_f_lb": -381.7, 
+        "KEGGID": "C03547", 
         "dG_f_var": 0.0, 
-        "dG_f": -401.4, 
-        "dG_f_ub": -401.4
+        "dG_f": -381.7, 
+        "dG_f_ub": -381.7
     }, 
     "glyclt_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -409.9, 
-        "KEGGID": "", 
+        "met_name": "omega-Hydroxy fatty acid", 
+        "dG_f_lb": -390.3, 
+        "KEGGID": "C03547", 
         "dG_f_var": 0.0, 
-        "dG_f": -409.9, 
-        "dG_f_ub": -409.9
+        "dG_f": -390.3, 
+        "dG_f_ub": -390.3
     }, 
     "coa_p": {
         "dG_f_units": "kJ/mol", 
@@ -21790,12 +21700,12 @@
     }, 
     "akg_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -633.7, 
-        "KEGGID": "", 
+        "met_name": "2-Oxoglutarate", 
+        "dG_f_lb": -633.5, 
+        "KEGGID": "C00026", 
         "dG_f_var": 0.0, 
-        "dG_f": -633.7, 
-        "dG_f_ub": -633.7
+        "dG_f": -633.5, 
+        "dG_f_ub": -633.5
     }, 
     "akg_p": {
         "dG_f_units": "kJ/mol", 
@@ -22177,12 +22087,12 @@
     }, 
     "pser_DASH_L_e": {
         "dG_f_units": "kJ/mol", 
-        "met_name": "", 
-        "dG_f_lb": -1120.2, 
-        "KEGGID": "", 
+        "met_name": "O-Phospho-L-serine", 
+        "dG_f_lb": -1122.3, 
+        "KEGGID": "C01005", 
         "dG_f_var": 0.0, 
-        "dG_f": -1120.2, 
-        "dG_f_ub": -1120.2
+        "dG_f": -1122.3, 
+        "dG_f_ub": -1122.3
     }, 
     "2oxoadp_e": {
         "dG_f_units": "kJ/mol", 

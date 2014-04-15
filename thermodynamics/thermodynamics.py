@@ -25,8 +25,8 @@ cobra_model_oxic = load_thermoModel(anoxic = False);
 #convert_to_irreversible(cobra_model_oxic);
 
 # make/load simulated data for anaerobic conditions
-data_fva_anoxic = 'data\\aerobicAnaerobic01_fva_anoxic.json';
-data_srd_anoxic = 'data\\aerobicAnaerobic01_srd_anoxic.json';
+data_fva_anoxic = 'data\\aerobicAnaerobic01_geo\\aerobicAnaerobic01_fva_anoxic.json';
+data_srd_anoxic = 'data\\aerobicAnaerobic01_geo\\aerobicAnaerobic01_srd_anoxic.json';
 simulated_data_anoxic = thermodynamics_simulatedData();
 #simulated_data_anoxic.generate_sra_data(cobra_model_anoxic); # perform single reaction deletion analysis
 #simulated_data_anoxic.generate_fva_data(cobra_model_anoxic); # perform flux variability analysis
@@ -37,8 +37,8 @@ simulated_data_anoxic.import_fva_data(data_fva_anoxic);
 simulated_data_anoxic.check_data();
 
 # make/load simulated data for aerobic conditions
-data_fva_oxic = 'data\\aerobicAnaerobic01_fva_oxic.json';
-data_srd_oxic = 'data\\aerobicAnaerobic01_srd_oxic.json';
+data_fva_oxic = 'data\\aerobicAnaerobic01_geo\\aerobicAnaerobic01_fva_oxic.json';
+data_srd_oxic = 'data\\aerobicAnaerobic01_geo\\aerobicAnaerobic01_srd_oxic.json';
 simulated_data_oxic = thermodynamics_simulatedData();
 #simulated_data_oxic.generate_sra_data(cobra_model_oxic); # perform single reaction deletion analysis
 #simulated_data_oxic.generate_fva_data(cobra_model_oxic); # perform flux variability analysis
@@ -57,7 +57,7 @@ other_data.check_data();
 # calculate the dG_f for each compound in each compartment
 # export/load and check the dG_f data
 #data_dG0_transformed = 'data\\ijo1366_dG_f.json';
-data_dG0_transformed = 'data\\aerobicAnaerobic01_dG_f01.json';
+data_dG0_transformed = 'data\\aerobicAnaerobic01_geo\\aerobicAnaerobic01_dG_f01.json';
 dG_f_data = thermodynamics_dG_f_data(id2KEGGID_filename_I='data\\id2KEGGID.csv');
 ##dG_f_data.make_dG0_f_pH0(); # only if the data has not been generated previously!
 #dG_f_data.get_transformed_dG_f('data\\compounds_dG0_f.json',cobra_model_oxic,other_data.pH,other_data.temperature,other_data.ionic_strength); # adjust the non-transformed dG0_f data to physiological pH, temperature, and ionic strength (this step has already been completed)
@@ -68,23 +68,23 @@ dG_f_data.generate_estimated_dG_f(cobra_model_oxic)
 dG_f_data.check_data()
 
 # load metabolomics data for anoxic conditions
-data_concentrations_anoxic = 'data\\aerobicAnaerobic01_anoxic_geo01.json';
+data_concentrations_anoxic = 'data\\aerobicAnaerobic01_geo\\aerobicAnaerobic01_anoxic_geo01.json';
 metabolomics_data_anoxic = thermodynamics_metabolomicsData();
 metabolomics_data_anoxic.import_metabolomics_data(data_concentrations_anoxic);
 metabolomics_data_anoxic.format_metabolomics_data(); # add compartment identifiers to metabolite ids
 metabolomics_data_anoxic.generate_estimated_metabolomics_data(cobra_model_anoxic);
 # load metabolomics data for oxic conditions
-data_concentrations_oxic = 'data\\aerobicAnaerobic01_oxic_geo01.json';
+data_concentrations_oxic = 'data\\aerobicAnaerobic01_geo\\aerobicAnaerobic01_oxic_geo01.json';
 metabolomics_data_oxic = thermodynamics_metabolomicsData();
 metabolomics_data_oxic.import_metabolomics_data(data_concentrations_oxic);
 metabolomics_data_oxic.format_metabolomics_data(); # add compartment identifiers to metabolite ids
 metabolomics_data_oxic.generate_estimated_metabolomics_data(cobra_model_oxic);
 
 # calculate dG_r and perform a consistency check based on model simulations for anoxic conditions
-data_ta_anoxic = 'data\\aerobicAnaerobic01_anoxic_ta.csv';
-data_dG0_anoxic = 'data\\aerobicAnaerobic01_anoxic_dG0.json';
-data_dG_anoxic = 'data\\aerobicAnaerobic01_anoxic_dG.json';
-data_tcc_anoxic = 'data\\aerobicAnaerobic01_anoxic_tcc.json';
+data_ta_anoxic = 'data\\aerobicAnaerobic01_geo\\aerobicAnaerobic01_anoxic_ta.csv';
+data_dG0_anoxic = 'data\\aerobicAnaerobic01_geo\\aerobicAnaerobic01_anoxic_dG0.json';
+data_dG_anoxic = 'data\\aerobicAnaerobic01_geo\\aerobicAnaerobic01_anoxic_dG.json';
+data_tcc_anoxic = 'data\\aerobicAnaerobic01_geo\\aerobicAnaerobic01_anoxic_tcc.json';
 tcc_anoxic = thermodynamics_dG_r_data();
 tcc_anoxic.calculate_dG0_r(cobra_model_anoxic, dG_f_data.measured_dG_f, dG_f_data.estimated_dG_f); # calculate the change in free energy of reaction without accounting for metabolite concentrations
 tcc_anoxic.calculate_dG_r(cobra_model_anoxic,metabolomics_data_anoxic.measured_concentrations, metabolomics_data_anoxic.estimated_concentrations,
@@ -99,10 +99,10 @@ tcc_anoxic.export_tcc_json(data_ta_anoxic); # save for later use
 tcc_anoxic.export_summary(cobra_model_anoxic,simulated_data_anoxic.fva_data,data_ta_anoxic); # write summary of the analysis to csv file
 
 # calculate dG_r and perform a consistency check based on model simulations for oxic conditions
-data_ta_oxic = 'data\\aerobicAnaerobic01_oxic_ta.csv';
-data_dG0_oxic = 'data\\aerobicAnaerobic01_oxic_dG0.json';
-data_dG_oxic = 'data\\aerobicAnaerobic01_oxic_dG.json';
-data_tcc_oxic = 'data\\aerobicAnaerobic01_oxic_tcc.json';
+data_ta_oxic = 'data\\aerobicAnaerobic01_geo\\aerobicAnaerobic01_oxic_ta.csv';
+data_dG0_oxic = 'data\\aerobicAnaerobic01_geo\\aerobicAnaerobic01_oxic_dG0.json';
+data_dG_oxic = 'data\\aerobicAnaerobic01_geo\\aerobicAnaerobic01_oxic_dG.json';
+data_tcc_oxic = 'data\\aerobicAnaerobic01_geo\\aerobicAnaerobic01_oxic_tcc.json';
 tcc_oxic = thermodynamics_dG_r_data();
 tcc_oxic.calculate_dG0_r(cobra_model_oxic, dG_f_data.measured_dG_f, dG_f_data.estimated_dG_f); # calculate the change in free energy of reaction without accounting for metabolite concentrations
 tcc_oxic.calculate_dG_r(cobra_model_oxic,metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
@@ -122,10 +122,10 @@ tcc_oxic.export_summary(cobra_model_oxic,simulated_data_oxic.fva_data,data_ta_ox
 gr_analysis_anoxic = simulate_thermoConstraints(cobra_model_anoxic,['PGCD','ACACT1r','NDPK2']);
 gr_analysis_oxic = simulate_thermoConstraints(cobra_model_oxic,['PGCD','ACACT1r']);
 
-# calculate the dG_r for biosynthetic pathways for anoxic conditions
+# calculate the dG for biosynthetic pathways for anoxic conditions
 tccp_anoxic = thermodynamics_dG_p_data();
 tccp_anoxic.calculate_dG_p(cobra_model_anoxic,tcc_anoxic.dG0_r,tcc_anoxic.dG_r);
-# calculate the dG_r for biosynthetic pathways for oxic conditions
+# calculate the dG for biosynthetic pathways for oxic conditions
 tccp_oxic = thermodynamics_dG_p_data();
 tccp_oxic.calculate_dG_p(cobra_model_oxic,tcc_oxic.dG0_r,tcc_oxic.dG_r);
 
@@ -135,3 +135,8 @@ gr_analysis_anoxic = simulate_thermoConstraints(cobra_model_anoxic,['PGCD','ACAC
 
 # visualize the results
 ###TODO
+# Start a python server
+# Designate the biochemical map
+# Set the reaction arrows using the calculated dG_r
+# Set the nodes using the measured metabolie concentrations
+# View the map in the web browser (localhost:8000)

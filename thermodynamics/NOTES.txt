@@ -4,15 +4,6 @@ use formation enerigeis from group contribution method instead
 current concentration coverage = 93
 previous concentration coverage = 76
 
-add method to remove data from simulation_data,
-	thermodynamics_dG_f_data
-	metabolomics_data, thermodynamics_dG_r_data
-
-make a method to concisely summarize the consistency check
-
-make a method to calculate the dG_r for an arbitrary pathway
-	e.g. calculate_dG_pathway(cobra_model, reaction_list, reaction_stoich)
-
 >>> import csv,json
 >>> io = base_importData()
 >>> io.read_csv('data\\aerobicAnaerobic01_oxic.csv')

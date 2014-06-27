@@ -43,7 +43,7 @@
     <Compile Include="thermodynamics\thermodynamics_otherData.py" />
     <Compile Include="thermodynamics\thermodynamics_simulatedData.py" />
     <Compile Include="thermodynamics\thermodynamics_io.py" />
-    <Compile Include="thermodynamics\thermodynamics_tmfa.py" />
+    <Compile Include="thermodynamics\thermodynamics_tfba.py" />
     <Compile Include="thermodynamics\thermodynamics_utility.py" />
     <Compile Include="thermodynamics\thermodynamics_visualization.py" />
     <Compile Include="thermodynamics\__init__.py" />

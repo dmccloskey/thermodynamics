@@ -17,8 +17,8 @@ class thermodynamics_otherData(thermodynamics_io):
     def load_data(self,pH_I,ionic_strength_I,temperature_I):
         '''load pH, ionic_strength, and temperature'''
         self.pH = pH_I
-        self.temperature = ionic_strength_I
-        self.ionic_strength = temperature_I
+        self.ionic_strength = ionic_strength_I
+        self.temperature = temperature_I
 
     def check_data(self):
         '''check data integrity'''

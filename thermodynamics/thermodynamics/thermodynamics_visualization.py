@@ -1,3 +1,3 @@
-# Dependencies from visbio
-import visbio
+# Dependencies from escher
+import escher
 

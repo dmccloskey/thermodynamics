@@ -139,4 +139,6 @@ tcc_oxic.export_summary(cobra_model_oxic,simulated_data_oxic.fva_data,data_ta_ox
 
 #tfba test
 tfba = thermodynamics_tfba()
-tfba.tfba(cobra_model_anoxic,tcc_anoxic.dG_r);
+#tfba.tfba(cobra_model_anoxic,tcc_anoxic.dG_r);
+tfba.tfba_conc_ln(cobra_model_anoxic, metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
+                  tcc_anoxic.dG0_r, other_data.temperature);

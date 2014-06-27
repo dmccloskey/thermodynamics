@@ -63,10 +63,10 @@ class thermodynamics_tfba():
         # set min/max for metabolite activity
         y = 1000.0
         conc = 5.0e-5
-        self.conc_lb = 1/sqrt(y)*conc;
-        self.conc_ub = sqrt(y)*conc;
-        self.conc_lb_ln = log(self.conc_lb);
-        self.conc_ub_ln = log(self.conc_ub);
+        self.conc_min = 1/sqrt(y)*conc;
+        self.conc_max = sqrt(y)*conc;
+        self.conc_min_ln = log(self.conc_min);
+        self.conc_max_ln = log(self.conc_max);
         # initialize constants
         self.R = 8.314e-3; # gas constant 8.3144621 [kJ/K/mol]
         self.K=10*self.dG_r_max; # an arbitrary constant larger than dG_r_max
@@ -80,15 +80,15 @@ class thermodynamics_tfba():
             if v['dG_r_ub']>self.dG_r_max:
                 dG_r[k]['dG_r_ub']=self.dG_r_max;  
         return dG_r;
-    def _scale_conc(self,measured_concentrations):
+    def _scale_conc(self,concentrations):
         '''scale conc lb/ub to be within pre-defined bounds'''
         # scale down the magnitude of conc
-        for k,v in conc.iteritems():
+        for k,v in concentrations.iteritems():
             if v['concentration_lb']<self.conc_min:
-                conc[k]['concentration_lb']=self.conc_min;
+                concentrations[k]['concentration_lb']=self.conc_min;
             if v['concentration_ub']>self.conc_max:
-                conc[k]['concentration_ub']=self.conc_max;  
-        return conc;
+                concentrations[k]['concentration_ub']=self.conc_max;  
+        return concentrations;
     def tfba(self, cobra_model_irreversible, dG_r):
         '''performs thermodynamic flux balance analysis'''
 
@@ -115,11 +115,14 @@ class thermodynamics_tfba():
         dG_r = self._scale_dG_r(dG_r);
         # bounds
         dG_r_indicator_constraint = 1-1e-6;
+        # find system boundaries and the objective reaction
+        system_boundaries = [x.id for x in cobra_model_irreversible.reactions if x.boundary == 'system_boundary'];
+        objectives = [x.id for x in cobra_model_irreversible.reactions if x.objective_coefficient == 1];
         # add variables and constraints to model for tfba
         reactions = [r for r in cobra_model_irreversible.reactions];
         for i,r in enumerate(reactions):
-            ## temperature
-            #T = temperature[r.get_compartments()[0]]['temperature'];
+            if r.id in system_boundaries or r.id in objectives:
+                continue;
             # make a boolean indicator variable
             indicator = Reaction('indicator_' + r.id);
             indicator.lower_bound = 0;
@@ -152,9 +155,7 @@ class thermodynamics_tfba():
             cobra_model_irreversible.add_reaction(dG_rv);
         # optimize
         cobra_model_irreversible.optimize(solver='gurobi');
-
-        return;
-    def tfba_conc_ln(self,cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, pH, ionic_strength, temperature):
+    def tfba_conc_ln(self,cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, temperature):
         '''performs thermodynamic flux balance analysis with bounds on metabolite activity insteady of dG_r'''
 
         """based on the method described in 10.1529/biophysj.106.093138
@@ -182,14 +183,24 @@ class thermodynamics_tfba():
         K is always large enough such that dG_ri-K<0 or K>dG_ri
         """    
         # pre-process the data
-        dG0_r = self._scale_dG_r(dG_r);
+        dG0_r = self._scale_dG_r(dG0_r);
         measured_concentration = self._scale_conc(measured_concentration);
         estimated_concentration = self._scale_conc(estimated_concentration);
+        # initialize hydrogens:
+        hydrogens = [];
+        compartments = list(set(cobra_model_irreversible.metabolites.list_attr('compartment')));
+        for compart in compartments:
+             hydrogens.append('h_' + compart);
+        # find system boundaries and the objective reaction
+        system_boundaries = [x.id for x in cobra_model_irreversible.reactions if x.boundary == 'system_boundary'];
+        objectives = [x.id for x in cobra_model_irreversible.reactions if x.objective_coefficient == 1];
         # bounds
         dG_r_indicator_constraint = 1-1e-6;
         # add variables and constraints to model for tfba
         reactions = [r for r in cobra_model_irreversible.reactions];
         for i,r in enumerate(reactions):
+            if r.id in system_boundaries or r.id in objectives:
+                continue;
             # create a constraint for vi-zi*vmax<=0
             indicator_plus = Metabolite(r.id + '_plus');
             indicator_plus._constraint_sense = 'L';
@@ -200,6 +211,36 @@ class thermodynamics_tfba():
             conc_ln_constraint = Metabolite(r.id + '_conc');
             conc_ln_constraint._constraint_sense = 'L';
             conc_ln_constraint._bound = dG_r_indicator_constraint
+            # make continuous variables for conc
+            metabolites = [p for p in r.products] + [react for react in r.reactants];
+            for met in metabolites:
+                if not(met.id in hydrogens): # exclude hydrogen because it has already been accounted for when adjusting for the pH
+                    #if met.id in measured_concentration.keys():
+                    #    conc_lnv = Reaction('conc_lnv_' + r.id + '_' + met.id);
+                    #    conc_lnv.lower_bound = log(measured_concentration[met.id]['concentration_lb']);
+                    #    conc_lnv.upper_bound = log(measured_concentration[met.id]['concentration_ub']);
+                    #    conc_lnv.variable_kind = 'continuous';
+                    #    # add constraints
+                    #    concv.add_metabolites({conc_ln_constraint:self.R*temperature[met.compartment]['temperature']*r.get_coefficient(met.id)/self.K});
+                    #    # add indicator reactions to the model
+                    #    cobra_model_irreversible.add_reaction(conc_lnv);
+                    #elif met.id in estimated_concentration.keys():
+                    #    conc_lnv = Reaction('conc_lnv_' + r.id + '_' + met.id);
+                    #    conc_lnv.lower_bound = log(estimated_concentration[met.id]['concentration_lb']);
+                    #    conc_lnv.upper_bound = log(estimated_concentration[met.id]['concentration_ub']);
+                    #    conc_lnv.variable_kind = 'continuous';
+                    #    # add constraints
+                    #    conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[met.compartment]['temperature']*r.get_coefficient(met.id)/self.K});
+                    #    # add indicator reactions to the model
+                    #    cobra_model_irreversible.add_reaction(conc_lnv);
+                    conc_lnv = Reaction('conc_lnv_' + r.id + '_' + met.id);
+                    conc_lnv.lower_bound = self.conc_min_ln;
+                    conc_lnv.upper_bound = self.conc_max_ln;
+                    conc_lnv.variable_kind = 'continuous';
+                    # add constraints
+                    conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[met.compartment]['temperature']*r.get_coefficient(met.id)/self.K});
+                    # add indicator reactions to the model
+                    cobra_model_irreversible.add_reaction(conc_lnv);
             # make a boolean indicator variable
             indicator = Reaction('indicator_' + r.id);
             indicator.lower_bound = 0;
@@ -226,71 +267,36 @@ class thermodynamics_tfba():
             dG0_rv.add_metabolites({conc_ln_constraint: 1.0/self.K})
             # add indicator reactions to the model
             cobra_model_irreversible.add_reaction(dG0_rv);
-            # make continuous variables for conc
-            for p in r.products:
-                if not(p.id in hydrogens): # exclude hydrogen because it has already been accounted for when adjusting for the pH
-                    #if p.id in measured_concentration.keys():
-                    #    conc_lnv = Reaction('conc_lnv_' + r.id);
-                    #    conc_lnv.lower_bound = log(measured_concentration[p.id]['concentration_lb']);
-                    #    conc_lnv.upper_bound = log(measured_concentration[p.id]['concentration_ub']);
-                    #    conc_lnv.variable_kind = 'continuous';
-                    #    # add constraints
-                    #    concv.add_metabolites({conc_ln_constraint:self.R*temperature[p.compartment]['temperature']*r.get_coefficient(p.id)/self.K});
-                    #    # add indicator reactions to the model
-                    #    cobra_model_irreversible.add_reaction(conc_lnv);
-                    #elif p.id in estimated_concentration.keys():
-                    #    conc_lnv = Reaction('conc_lnv_' + r.id);
-                    #    conc_lnv.lower_bound = log(estimated_concentration[p.id]['concentration_lb']);
-                    #    conc_lnv.upper_bound = log(estimated_concentration[p.id]['concentration_ub']);
-                    #    conc_lnv.variable_kind = 'continuous';
-                    #    # add constraints
-                    #    conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[p.compartment]['temperature']*r.get_coefficient(p.id)/self.K});
-                    #    # add indicator reactions to the model
-                    #    cobra_model_irreversible.add_reaction(conc_lnv);
-                    conc_lnv = Reaction('concv_' + r.id);
-                    conc_lnv.lower_bound = self.conc_ln_min;
-                    conc_lnv.upper_bound = self.conc_ln_max;
-                    conc_lnv.variable_kind = 'continuous';
-                    # add constraints
-                    conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[p.compartment]['temperature']*r.get_coefficient(p.id)/self.K});
-                    # add indicator reactions to the model
-                    cobra_model_irreversible.add_reaction(conc_lnv);
-            for react in r.products:
-                if not(react.id in hydrogens): # exclude hydrogen because it has already been accounted for when adjusting for the pH
-                    #if react.id in measured_concentration.keys():
-                    #    conc_lnv = Reaction('conc_lnv_' + r.id);
-                    #    conc_lnv.lower_bound = log(measured_concentration[react.id]['concentration_lb']);
-                    #    conc_lnv.upper_bound = log(measured_concentration[react.id]['concentration_ub']);
-                    #    conc_lnv.variable_kind = 'continuous';
-                    #    # add constraints
-                    #    concv.add_metabolites({conc_ln_constraint:self.R*temperature[react.compartment]['temperature']*r.get_coefficient(react.id)/self.K});
-                    #    # add indicator reactions to the model
-                    #    cobra_model_irreversible.add_reaction(conc_lnv);
-                    #elif react.id in estimated_concentration.keys():
-                    #    conc_lnv = Reaction('conc_lnv_' + r.id);
-                    #    conc_lnv.lower_bound = log(estimated_concentration[react.id]['concentration_lb']);
-                    #    conc_lnv.upper_bound = log(estimated_concentration[react.id]['concentration_ub']);
-                    #    conc_lnv.variable_kind = 'continuous';
-                    #    # add constraints
-                    #    conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[react.compartment]['temperature']*r.get_coefficient(react.id)/self.K});
-                    #    # add indicator reactions to the model
-                    #    cobra_model_irreversible.add_reaction(conc_lnv);
-                    conc_lnv = Reaction('concv_' + r.id);
-                    conc_lnv.lower_bound = self.conc_ln_min;
-                    conc_lnv.upper_bound = self.conc_ln_max;
-                    conc_lnv.variable_kind = 'continuous';
-                    # add constraints
-                    conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[react.compartment]['temperature']*r.get_coefficient(react.id)/self.K});
-                    # add indicator reactions to the model
-                    cobra_model_irreversible.add_reaction(conc_lnv);
         # optimize
         cobra_model_irreversible.optimize(solver='gurobi');
 
-    def tfva(self, cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, dG_r, temperature):
+    def tfva(self, cobra_model_irreversible, dG_r):
         '''performs thermodynamic flux variability analysis'''
         return;
     def tfva_dG_r(self, cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, dG_r, temperature):
         '''performs thermodynamic dG_r variability analysis'''
+
+        """based on the method described in 10.1529/biophysj.106.093138
+        
+        max/min dG_ri
+        Sv=0
+        Biomass=optimal
+        0<=vi<=zi*vmax, {i=1,...,r}
+        dG_ri-K+K*zi<0, {i=1,...,r}
+        dG0_ri+RT*SUM[sij*ln(xj)]=dG_ri, {i=1,...,r}
+
+        simplified:
+        vi>=0, {i=1,...,r}
+        vi-zi*vmax<=0, {i=1,...,r}
+
+        dG_ri-K+K*zi<0, {i=1,...,r}
+        dG_ri/K-1+zi<0, {i=1,...,r}
+        dG_ri/K+zi<1, {i=1,...,r}
+        dG_ri/K+zi<=1-1e-6, {i=1,...,r}        
+        where:
+        zi is a binary variable, zi {0,1}
+        K is always large enough such that dG_ri-K<0 or K>dG_ri
+        """    
         return;
     def tfva_concentrations(self, cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, dG_r, temperature):
         '''performs thermodynamic metabolite concentration variability analysis'''

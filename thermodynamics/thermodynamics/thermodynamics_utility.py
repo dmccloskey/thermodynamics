@@ -90,6 +90,7 @@ def load_thermoModel(anoxic = False):
             cobra_model.reactions.get_by_id(d).upper_bound = 1000.0;
     # Change the objective
     update_objective(cobra_model,{'Ec_biomass_iJO1366_WT_53p95M':1.0})
+    cobra_model.remove_reactions(['Ec_biomass_iJO1366_core_53p95M'])
     # Assign KOs
 
     # Specify media composition (M9 glucose):

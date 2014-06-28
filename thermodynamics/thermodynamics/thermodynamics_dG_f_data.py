@@ -632,8 +632,8 @@ class thermodynamics_dG_f_data(thermodynamics_io):
             lbub = {};
             compartments = list(set(cobra_model.metabolites.list_attr('compartment')));
             for c in compartments:
-                lbub[c] = {'dG_f_lb':0.0,
-                                       'dG_f_ub':0.0,
+                lbub[c] = {'dG_f_lb':-1e6,
+                                       'dG_f_ub':1e6,
                                        'dG_f_units':'kJ/mol'};
         default_values = {};
         for m in cobra_model.metabolites:

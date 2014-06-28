@@ -140,5 +140,22 @@ tcc_oxic.export_summary(cobra_model_oxic,simulated_data_oxic.fva_data,data_ta_ox
 #tfba test
 tfba = thermodynamics_tfba()
 #tfba.tfba(cobra_model_anoxic,tcc_anoxic.dG_r);
-tfba.tfba_conc_ln(cobra_model_anoxic, metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
-                  tcc_anoxic.dG0_r, other_data.temperature);
+#tfba.tfba_conc_ln(cobra_model_anoxic, metabolomics_data_anoxic.measured_concentrations, metabolomics_data_anoxic.estimated_concentrations,
+#                  tcc_anoxic.dG0_r, other_data.temperature,False,False, solver='gurobi');
+#tfba.tfva(cobra_model_anoxic, tcc_anoxic.dG_r, use_measured_dG_r=False, solver='gurobi');
+#tfba.tfva_dG_r(cobra_model_anoxic, tcc_anoxic.dG_r, use_measured_dG_r=False, solver='gurobi');
+tfba.tfva_concentrations(cobra_model_anoxic, metabolomics_data_anoxic.measured_concentrations, metabolomics_data_anoxic.estimated_concentrations,
+                  tcc_anoxic.dG0_r, other_data.temperature, use_measured_concentrations=False,use_measured_dG0_r=True,solver='gurobi');
+
+rxn_ids = tfba.tfva_dG_r_data.keys();
+print ('rxn_id\tfva_min\tfva_max\ttfva_min\ttfvamax')
+for rxn in rxn_ids:
+    print ('%s\t%s\t%s\t%s\t%s' %(rxn,simulated_data_anoxic.fva_data[rxn]['flux_lb'],simulated_data_anoxic.fva_data[rxn]['flux_ub'],fva_results[rxn]['flux_lb'],fva_results[rxn]['flux_ub']))
+rxn_ids = fva_results.keys();
+print ('rxn_id\tdG_r_min\tdG_r_max')
+for rxn in rxn_ids:
+    print ('%s\t%s\t%s' %(rxn,tfba.tfva_dG_r_data[rxn]['dG_r_lb'],tfba.tfva_dG_r_data[rxn]['dG_r_ub']))
+met_ids = tfba.tfva_concentrations_data.keys();
+print ('met_id\tconcentration_min\tconcentration_max')
+for met in met_ids:
+    print ('%s\t%s\t%s' %(met,tfba.tfva_concentrations_data[met]['concentrations_lb'],tfba.tfva_concentrations_data[met]['concentrations_ub']))

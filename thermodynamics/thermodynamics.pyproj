@@ -34,7 +34,7 @@
     <Compile Include="gim3e\test_all.py" />
     <Compile Include="gim3e\test_debut_DM.py" />
     <Compile Include="gim3e\__init__.py" />
-    <Compile Include="thermodynamics\thermodynamics_analysis.py" />
+    <Compile Include="thermodynamics\thermodynamics_analysis_deprecated.py" />
     <Compile Include="thermodynamics\thermodynamics_dG_f_data.py" />
     <Compile Include="thermodynamics\thermodynamics_dG_p_data.py" />
     <Compile Include="thermodynamics\thermodynamics_dG_r_data.py" />

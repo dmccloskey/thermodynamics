@@ -34,6 +34,26 @@ def find_transportMets(cobra_model_I, reaction_id_I):
     met_O = [k for k,v in Counter(met_names).items() if v>1]
     return met_O;
 
+def find_transportRxns(cobra_model_I):
+    # transport reaction definition:
+    # 1. the metabolite satisfies the critera for a transport metabolite
+    #	1. different id (same base id but different compartment)
+    #	2. same name
+    #	3. different compartment
+    # 2. the reaction is not a system boundary reaction
+
+    rxn_O = [];
+    for rxn in cobra_model_I.reactions:
+        mets = [];
+        mets = find_transportMets(cobra_model_I, rxn.id);
+        #products = rxn.get_products();
+        #reactants = rxn.get_reactants();
+        #product_names = [x.name for x in products];
+        #reactant_names = [x.name for x in reactants];
+        if mets:
+            rxn_O.append(rxn.id);
+    return rxn_O;
+
 def load_thermoModel(anoxic = False):
     ijo1366_sbml = "data\\iJO1366.xml"
     # Read in the sbml file and define the model conditions

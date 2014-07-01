@@ -3,15 +3,31 @@ from math import floor,ceil,log,sqrt,pow,exp,fabs
 from copy import deepcopy
 from cobra.core.Metabolite import Metabolite
 from cobra.core.Reaction import Reaction
+from cobra.io import save_matlab_model
 from collections import Counter
 from math import log, exp
 from warnings import warn
+import numpy
+import scipy
 
 from six import iteritems, string_types
 from cobra.solvers import solver_dict, get_solver_name
+from thermodynamics_utility import find_transportRxns
 
 # Other dependencies
 import csv,json,sys
+
+def null(A, eps=1e-6):
+    u, s, vh = numpy.linalg.svd(A,full_matrices=1,compute_uv=1)
+    null_rows = [];
+    rank = numpy.linalg.matrix_rank(A)
+    for i in range(A.shape[1]):
+        if i<rank:
+            null_rows.append(False);
+        else:
+            null_rows.append(True);
+    null_space = scipy.compress(null_rows, vh, axis=0)
+    return null_space.T
 
 class thermodynamics_tfba():    
     """1. Runs thermodynamic flux balance analysis analysis on a cobra.Model object
@@ -83,7 +99,19 @@ class thermodynamics_tfba():
         self.tfva_dG_r_data = {};
         self.tfva_concentration_data = {};
         self.tfva_analysis = {};
-
+        
+    def export_tfva_data(self, filename):
+        '''export tfva data'''
+        self.export_values_json(filename, self.tfva_data);
+    def export_tfva_dG_r_data(self, filename):
+        '''export tfva_dG_r data'''
+        self.export_values_json(filename, self.tfva_dG_r_data);
+    def export_tfva_concentrations_data(self, filename):
+        '''export tfva_concentrations data'''
+        self.export_values_json(filename, self.tfva_concentrations_data);
+    def export_tfva_analysis(self, filename):
+        '''export tfva_analysis'''
+        self.export_values_json(filename, self.tfva_analysis);
     def _scale_dG_r(self,dG_r):
         '''scale dG_r lb/ub to be within pre-defined bounds'''
         # scale down the magnitude of dG_r
@@ -102,7 +130,8 @@ class thermodynamics_tfba():
             if v['concentration_ub']>self.conc_max:
                 concentrations[k]['concentration_ub']=self.conc_max;  
         return concentrations;
-    def _add_dG_r_constraints(self, cobra_model_irreversible, dG_r, use_measured_dG_r=True, return_dG_r_variables=False):
+    def _add_dG_r_constraints(self, cobra_model_irreversible, dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,
+                              measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99, use_measured_dG_r=True, return_dG_r_variables=False):
         '''add constraints for dG_r to the model'''
         # pre-process the data
         dG_r = self._scale_dG_r(dG_r);
@@ -111,11 +140,13 @@ class thermodynamics_tfba():
         # find system boundaries and the objective reaction
         system_boundaries = [x.id for x in cobra_model_irreversible.reactions if x.boundary == 'system_boundary'];
         objectives = [x.id for x in cobra_model_irreversible.reactions if x.objective_coefficient == 1];
+        transporters = find_transportRxns(cobra_model_irreversible);
         # add variables and constraints to model for tfba
         reactions = [r for r in cobra_model_irreversible.reactions];
         dG_r_variables = {};
         for i,r in enumerate(reactions):
-            if r.id in system_boundaries or r.id in objectives:
+            # ignore system_boundary, objective, and transport reactions
+            if r.id in system_boundaries or r.id in objectives or r.id in transporters:
                 continue;
             # make a boolean indicator variable
             indicator = Reaction('indicator_' + r.id);
@@ -124,12 +155,20 @@ class thermodynamics_tfba():
             indicator.variable_kind = 'integer';
             # make a continuous variable for dG_r
             dG_rv = Reaction('dG_rv_' + r.id);
-            if use_measured_dG_r:
-                dG_rv.lower_bound = dG_r[r.id]['dG_r_lb'];
-                dG_rv.upper_bound = dG_r[r.id]['dG_r_ub'];
+            if use_measured_dG_r and thermodynamic_consistency_check[r.id]: # ignore inconsistent reactions
+                if metabolomics_coverage[r.id] > measured_concentration_coverage_criteria and \
+                dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
+                    dG_rv.lower_bound = dG_r[r.id]['dG_r_lb'];
+                    dG_rv.upper_bound = dG_r[r.id]['dG_r_ub'];
+                    dG_rv.objective_coefficient = 0;
+                else: 
+                    dG_rv.lower_bound = self.dG_r_min;
+                    dG_rv.upper_bound = self.dG_r_max;
+                    dG_rv.objective_coefficient = 0;
             else:
                 dG_rv.lower_bound = self.dG_r_min;
                 dG_rv.upper_bound = self.dG_r_max;
+                dG_rv.objective_coefficient = 0;
             dG_rv.variable_kind = 'continuous';
             # create a constraint for vi-zi*vmax<=0
             indicator_plus = Metabolite(r.id + '_plus');
@@ -153,7 +192,7 @@ class thermodynamics_tfba():
             dG_r_variables[r.id] = dG_rv;
         if return_dG_r_variables:
             return dG_r_variables;
-    def _add_conc_ln_constraints(self,cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, temperature,
+    def _add_conc_ln_constraints(self,cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, temperature, dG_r_coverage, measured_dG_f_coverage_criteria = 0.99,
                      use_measured_concentrations=True,use_measured_dG0_r=True,return_concentration_variables=False,return_dG0_r_variables=False):
         # pre-process the data
         dG0_r = self._scale_dG_r(dG0_r);
@@ -167,6 +206,7 @@ class thermodynamics_tfba():
         # find system boundaries and the objective reaction
         system_boundaries = [x.id for x in cobra_model_irreversible.reactions if x.boundary == 'system_boundary'];
         objectives = [x.id for x in cobra_model_irreversible.reactions if x.objective_coefficient == 1];
+        transporters = find_transportRxns(cobra_model_irreversible);
         # bounds
         dG_r_indicator_constraint = 1-1e-6;
         # add variables and constraints to model for tfba
@@ -174,7 +214,7 @@ class thermodynamics_tfba():
         conc_lnv_dict = {}; # dictionary to record conc_ln variables
         dG0_r_dict = {};
         for i,r in enumerate(reactions):
-            if r.id in system_boundaries or r.id in objectives:
+            if r.id in system_boundaries or r.id in objectives or r.id in transporters:
                 continue;
             # create a constraint for vi-zi*vmax<=0
             indicator_plus = Metabolite(r.id + '_plus');
@@ -201,6 +241,7 @@ class thermodynamics_tfba():
                                 conc_lnv.lower_bound = log(measured_concentration[met.id]['concentration_lb']);
                                 conc_lnv.upper_bound = log(measured_concentration[met.id]['concentration_ub']);
                                 conc_lnv.variable_kind = 'continuous';
+                                conc_lnv.objective_coefficient = 0;
                                 # add constraints
                                 conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[met.compartment]['temperature']*r.get_coefficient(met.id)/self.K});
                                 # record the new variable
@@ -215,6 +256,7 @@ class thermodynamics_tfba():
                                 conc_lnv.lower_bound = log(estimated_concentration[met.id]['concentration_lb']);
                                 conc_lnv.upper_bound = log(estimated_concentration[met.id]['concentration_ub']);
                                 conc_lnv.variable_kind = 'continuous';
+                                conc_lnv.objective_coefficient = 0;
                                 # add constraints
                                 conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[met.compartment]['temperature']*r.get_coefficient(met.id)/self.K});
                                 # record the new variable
@@ -229,6 +271,7 @@ class thermodynamics_tfba():
                             conc_lnv.lower_bound = self.conc_min_ln;
                             conc_lnv.upper_bound = self.conc_max_ln;
                             conc_lnv.variable_kind = 'continuous';
+                            conc_lnv.objective_coefficient = 0;
                             # add constraints
                             conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[met.compartment]['temperature']*r.get_coefficient(met.id)/self.K});
                             # record the new variable
@@ -249,13 +292,20 @@ class thermodynamics_tfba():
             #dG_rv = Reaction('dG_rv_' + r.id);
             #dG_rv.variable_kind = 'continuous';
             # make a continuous variable for dG0_r
-            dG0_rv = Reaction('dG_rv_' + r.id);
+            dG0_rv = Reaction('dG0_rv_' + r.id);
             if use_measured_dG0_r:
-                dG0_rv.lower_bound = dG0_r[r.id]['dG_r_lb'];
-                dG0_rv.upper_bound = dG0_r[r.id]['dG_r_ub'];
+                if dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
+                    dG0_rv.lower_bound = dG0_r[r.id]['dG_r_lb'];
+                    dG0_rv.upper_bound = dG0_r[r.id]['dG_r_ub'];
+                    dG0_rv.objective_coefficient = 0;
+                else:
+                    dG0_rv.lower_bound = self.dG0_r_min;
+                    dG0_rv.upper_bound = self.dG0_r_max;
+                    dG0_rv.objective_coefficient = 0;
             else:
                 dG0_rv.lower_bound = self.dG0_r_min;
                 dG0_rv.upper_bound = self.dG0_r_max;
+                dG0_rv.objective_coefficient = 0;
             dG0_rv.variable_kind = 'continuous';
             # add constraints
             dG0_rv.add_metabolites({conc_ln_constraint: 1.0/self.K})
@@ -270,8 +320,23 @@ class thermodynamics_tfba():
             return dG0_r_dict;
         if return_concentration_variables and return_dG0_r_variables:
             return conc_lnv_dict,dG0_r_dict;
+    def _copy_solution(self,cobra_model_irreversible,cobra_model_copy):
+        '''copy out the model solution'''
+        x_dict_copy = {};
+        #y_dict_copy = {};
+        solution_copy = cobra_model_copy.solution.f;
+        status_copy = cobra_model_copy.solution.status;
+        cobra_model_irreversible.solution.f = solution_copy;
+        cobra_model_irreversible.solution.status = status_copy;
+        if solution_copy:
+            for rxn in cobra_model_irreversible.reactions:
+                x_dict_copy[rxn.id]=cobra_model_copy.solution.x_dict[rxn.id];
+            #for met in cobra_model_irreversible.metabolites:
+            #    y_dict_copy[met.id]=cobra_model_copy.solution.y_dict[met.id];
+            cobra_model_irreversible.solution.x_dict = x_dict_copy;
+            #cobra_model_irreversible.solution.y_dict = y_dict_copy;
 
-    def tfba(self, cobra_model_irreversible, dG_r, use_measured_dG_r=True, solver=None):
+    def tfba(self, cobra_model_irreversible, dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99, use_measured_dG_r=True, solver=None):
         '''performs thermodynamic flux balance analysis'''
 
         """based on the method described in 10.1529/biophysj.106.093138
@@ -296,10 +361,12 @@ class thermodynamics_tfba():
         # copy the model:
         cobra_model_copy = cobra_model_irreversible.copy();
         # add constraints
-        self._add_dG_r_constraints(cobra_model_copy,dG_r,False);
+        self._add_dG_r_constraints(cobra_model_copy,dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria, use_measured_dG_r);
         # optimize
         cobra_model_copy.optimize(solver='gurobi');
-    def tfba_conc_ln(self,cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, temperature,
+        # record the results
+        self._copy_solution(cobra_model_irreversible,cobra_model_copy);
+    def tfba_conc_ln(self,cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, temperature, dG_r_coverage, measured_dG_f_coverage_criteria = 0.99,
                      use_measured_concentrations=True,use_measured_dG0_r=True, solver=None):
         '''performs thermodynamic flux balance analysis with bounds on metabolite activity insteady of dG_r'''
 
@@ -330,12 +397,13 @@ class thermodynamics_tfba():
         # copy the model:
         cobra_model_copy = cobra_model_irreversible.copy();
         # add constraints
-        self._add_conc_ln_constraints(cobra_model_copy,measured_concentration, estimated_concentration, dG0_r, temperature,
+        self._add_conc_ln_constraints(cobra_model_copy,measured_concentration, estimated_concentration, dG0_r, temperature, dG_r_coverage, measured_dG_f_coverage_criteria,
                      use_measured_concentrations,use_measured_dG0_r);
         # optimize
         cobra_model_copy.optimize(solver='gurobi');
-        print cobra_model_copy.solution.f;
-    def tfva(self, cobra_model_irreversible, dG_r, use_measured_dG_r=True,
+        # record the results
+        self._copy_solution(cobra_model_irreversible,cobra_model_copy);
+    def tfva(self, cobra_model_irreversible, dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99, use_measured_dG_r=True,
              reaction_list=None,fraction_of_optimum=1.0, solver=None,
              objective_sense="maximize", **solver_args):
         """performs thermodynamic flux variability analysis to find max/min flux values
@@ -366,7 +434,7 @@ class thermodynamics_tfba():
         else:
             reaction_list = [cobra_model_copy.reactions.get_by_id(i) if isinstance(i, string_types) else i for i in reaction_list]
         # add dG_r constraints: # adding constraints here is slower!
-        self._add_dG_r_constraints(cobra_model_copy,dG_r,False);
+        self._add_dG_r_constraints(cobra_model_copy,dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,use_measured_dG_r);
 
         solver = solver_dict[get_solver_name() if solver is None else solver]
         lp = solver.create_problem(cobra_model_copy)
@@ -383,7 +451,7 @@ class thermodynamics_tfba():
                 solver.change_variable_bounds(lp, i, min(new_bounds), max(new_bounds))
                 solver.change_variable_objective(lp, i, 0.)
         ## add dG_r constraints: # adding constraints here is faster!
-        #self._add_dG_r_constraints(cobra_model_copy,dG_r,False);
+        #self._add_dG_r_constraints(cobra_model_copy,dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,use_measured_dG_r);
         # perform fva
         for r in reaction_list:
             ## print reaction for debugging
@@ -392,14 +460,14 @@ class thermodynamics_tfba():
             self.tfva_data[r.id] = {}
             solver.change_variable_objective(lp, i, 1.)
             solver.solve_problem(lp, objective_sense="maximize", **solver_args)
-            self.tfva_data[r.id]["flux_lb"] = solver.get_objective_value(lp)
-            solver.solve_problem(lp, objective_sense="minimize", **solver_args)
             self.tfva_data[r.id]["flux_ub"] = solver.get_objective_value(lp)
+            solver.solve_problem(lp, objective_sense="minimize", **solver_args)
+            self.tfva_data[r.id]["flux_lb"] = solver.get_objective_value(lp)
             self.tfva_data[r.id]['flux_units']= 'mmol*gDW-1*hr-1';
             # revert the problem to how it was before
             solver.change_variable_objective(lp, i, 0.)
 
-    def tfva_dG_r(self, cobra_model_irreversible, dG_r, use_measured_dG_r=True,
+    def tfva_dG_r(self, cobra_model_irreversible, dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99, use_measured_dG_r=True,
              reaction_list=None,fraction_of_optimum=1.0, solver=None,
              objective_sense="maximize", **solver_args):
         """performs thermodynamic dG_r variability analysis to find max/min dG_r values
@@ -430,7 +498,7 @@ class thermodynamics_tfba():
         else:
             reaction_list = [cobra_model_copy.reactions.get_by_id(i) if isinstance(i, string_types) else i for i in reaction_list]
         # add dG_r constraints: # adding constraints here is slower!
-        dG_r_variables = self._add_dG_r_constraints(cobra_model_copy,dG_r,False,True);
+        dG_r_variables = self._add_dG_r_constraints(cobra_model_copy,dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,use_measured_dG_r,True);
 
         solver = solver_dict[get_solver_name() if solver is None else solver]
         lp = solver.create_problem(cobra_model_copy)
@@ -447,7 +515,7 @@ class thermodynamics_tfba():
                 solver.change_variable_bounds(lp, i, min(new_bounds), max(new_bounds))
                 solver.change_variable_objective(lp, i, 0.)
         ## add dG_r constraints: # adding constraints here is faster!
-        #dG_r_variables = self._add_dG_r_constraints(cobra_model_copy,dG_r,False,True);
+        #dG_r_variables = self._add_dG_r_constraints(cobra_model_copy,dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,use_measured_dG_r,True);
         # perform tfva on dG_r
         for r in dG_r_variables.values():
             # print reaction for debugging
@@ -456,13 +524,14 @@ class thermodynamics_tfba():
             self.tfva_dG_r_data[r.id] = {}
             solver.change_variable_objective(lp, i, 1.)
             solver.solve_problem(lp, objective_sense="maximize", **solver_args)
-            self.tfva_dG_r_data[r.id]["dG_r_lb"] = solver.get_objective_value(lp)
-            solver.solve_problem(lp, objective_sense="minimize", **solver_args)
             self.tfva_dG_r_data[r.id]["dG_r_ub"] = solver.get_objective_value(lp)
+            solver.solve_problem(lp, objective_sense="minimize", **solver_args)
+            self.tfva_dG_r_data[r.id]["dG_r_lb"] = solver.get_objective_value(lp)
             self.tfva_dG_r_data[r.id]['flux_units']= 'mmol*gDW-1*hr-1';
             # revert the problem to how it was before
             solver.change_variable_objective(lp, i, 0.)
-    def tfva_concentrations(self, cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, temperature,
+
+    def tfva_concentrations(self, cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, temperature, dG_r_coverage, measured_dG_f_coverage_criteria = 0.99,
                      use_measured_concentrations=True,use_measured_dG0_r=True, reaction_list=None,fraction_of_optimum=1.0, solver=None,
                      objective_sense="maximize", **solver_args):
         '''performs thermodynamic metabolite concentration variability analysis'''
@@ -478,7 +547,7 @@ class thermodynamics_tfba():
         else:
             reaction_list = [cobra_model_copy.reactions.get_by_id(i) if isinstance(i, string_types) else i for i in reaction_list]
         # add constraints
-        conc_ln_variables = self._add_conc_ln_constraints(cobra_model_copy,measured_concentration, estimated_concentration, dG0_r, temperature,
+        conc_ln_variables = self._add_conc_ln_constraints(cobra_model_copy,measured_concentration, estimated_concentration, dG0_r, temperature, dG_r_coverage, measured_dG_f_coverage_criteria,
                      use_measured_concentrations,use_measured_dG0_r,True,False);
 
         solver = solver_dict[get_solver_name() if solver is None else solver]
@@ -496,8 +565,8 @@ class thermodynamics_tfba():
                 solver.change_variable_bounds(lp, i, min(new_bounds), max(new_bounds))
                 solver.change_variable_objective(lp, i, 0.)
         ## add constraints
-        #conc_ln_variables = self._add_conc_ln_constraints(cobra_model_copy,measured_concentration, estimated_concentration, dG0_r, temperature,
-        #             use_measured_concentrations,use_measured_dG0_r, True, False);
+        #conc_ln_variables = self._add_conc_ln_constraints(cobra_model_copy,measured_concentration, estimated_concentration, dG0_r, temperature, dG_r_coverage, measured_dG_f_coverage_criteria,
+        #             use_measured_concentrations,use_measured_dG0_r, True,False);
         # perform tfva on dG_r
         for r in conc_ln_variables.values():
             # print reaction for debugging
@@ -506,9 +575,9 @@ class thermodynamics_tfba():
             self.tfva_concentration_data[r.id] = {}
             solver.change_variable_objective(lp, i, 1.)
             solver.solve_problem(lp, objective_sense="maximize", **solver_args)
-            self.tfva_concentration_data[r.id]["concentration_lb"] = exp(solver.get_objective_value(lp)) #convert from ln
-            solver.solve_problem(lp, objective_sense="minimize", **solver_args)
             self.tfva_concentration_data[r.id]["concentration_ub"] = exp(solver.get_objective_value(lp)) #convert from ln
+            solver.solve_problem(lp, objective_sense="minimize", **solver_args)
+            self.tfva_concentration_data[r.id]["concentration_lb"] = exp(solver.get_objective_value(lp)) #convert from ln
             self.tfva_concentration_data[r.id]['flux_units']= 'M';
             # revert the problem to how it was before
             solver.change_variable_objective(lp, i, 0.)
@@ -558,16 +627,159 @@ class thermodynamics_tfba():
         print "essential reactions (" + str(essential_cnt) + "): " + essential_list;
         print "substitutable reactions (" + str(substitutable_cnt) + "): " + substitutable_list;
         print "constrained reactions (" + str(constrained_cnt) + "): " + constrained_list;
-    def export_tfva_data(self, filename):
-        '''export tfva data'''
-        self.export_values_json(filename, self.tfva_data);
-    def export_tfva_dG_r_data(self, filename):
-        '''export tfva_dG_r data'''
-        self.export_values_json(filename, self.tfva_dG_r_data);
-    def export_tfva_concentrations_data(self, filename):
-        '''export tfva_concentrations data'''
-        self.export_values_json(filename, self.tfva_concentrations_data);
-    def export_tfva_analysis(self, filename):
-        '''export tfva_analysis'''
-        self.export_values_json(filename, self.tfva_analysis);
-        
+
+    def tsampling(self, cobra_model_irreversible, dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99, use_measured_dG_r=True, solver=None):
+        '''performs thermodynamic flux balance analysis'''
+
+        # copy the model:
+        cobra_model_copy = cobra_model_irreversible.copy();
+        # add constraints
+        self._add_dG_r_constraints(cobra_model_copy,dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria, use_measured_dG_r);
+        # optimize
+        cobra_model_copy.optimize(solver='gurobi');
+        # confine the objective to a fraction of maximum optimal
+        objective = [x.id for x in cobra_model_copy.reactions if x.objective_coefficient == 1]
+        fraction = 0.9;
+        cobra_model_copy.reaction.get_by_id(objective[0]).upper_bound = fraction * cobra_model_copy.solution.f;
+        # write model to mat
+        save_matlab_model(cobra_model_copy,'data\\tsampling\\tsampler.mat');
+        # write the sampling script to file\
+        mat_script = "% initialize with Tomlab_CPLEX\n"+\
+                      "load('C:\\Users\\dmccloskey-sbrg\\Documents\\MATLAB\\tsampling\\tsampler.mat')\n"+\
+                      "initCobraToolbox();\n"+\
+                      "% sample\n"+\
+                      "[tsampler_out, mixedFrac] = gpSampler(iJO1366, [], [], [], [], [], true);\n"+\
+                      "[tsampler_out, mixedFrac] = gpSampler(tsampler_out, [], [], [], 10000, [], true);";
+        with open('data\\tsampling\\tsampler_run.m','w') as f:
+            f.write(mat_script);
+
+    def tsampling_conc_ln(self,cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, temperature, dG_r_coverage, measured_dG_f_coverage_criteria = 0.99,
+                     use_measured_concentrations=True,use_measured_dG0_r=True, solver=None):
+        '''performs thermodynamic flux balance analysis with bounds on metabolite activity insteady of dG_r'''
+
+       
+        # copy the model:
+        cobra_model_copy = cobra_model_irreversible.copy();
+        # add constraints
+        self._add_conc_ln_constraints(cobra_model_copy,measured_concentration, estimated_concentration, dG0_r, temperature, dG_r_coverage, measured_dG_f_coverage_criteria,
+                     use_measured_concentrations,use_measured_dG0_r);
+        # optimize
+        cobra_model_copy.optimize(solver='gurobi');
+        # confine the objective to a fraction of maximum optimal
+        objective = [x.id for x in cobra_model_copy.reactions if x.objective_coefficient == 1]
+        fraction = 0.9;
+        cobra_model_copy.reaction.get_by_id(objective[0]).upper_bound = fraction * cobra_model_copy.solution.f;
+        # write model to mat
+        save_matlab_model(cobra_model_copy,'data\\tsampling\\tsampler_conc_ln.mat');
+        # write the sampling script to file\
+        mat_script = "% initialize with Tomlab_CPLEX\n"+\
+                      "load('C:\\Users\\dmccloskey-sbrg\\Documents\\MATLAB\\tsampling\\tsampler_conc_ln.mat')\n"+\
+                      "initCobraToolbox();\n"+\
+                      "% sample\n"+\
+                      "[tsampler_out, mixedFrac] = gpSampler(iJO1366, [], [], [], [], [], true);\n"+\
+                      "[tsampler_out, mixedFrac] = gpSampler(tsampler_out, [], [], [], 10000, [], true);";
+        with open('data\\tsampling\\tsampler_conc_ln_run.m','w') as f:
+            f.write(mat_script);
+
+    def tfba_looplaw(self, cobra_model_irreversible, solver=None):
+        '''performs thermodynamic flux balance analysis using the looplaw'''
+
+        #TODO: Constrain formulation is not yet correct
+
+        """based on the method described in 0006-3495/11/02/0544/10
+        """    
+        # copy the model:
+        cobra_model_copy = cobra_model_irreversible.copy();
+        # add constraints
+        self._add_looplaw_constraints(cobra_model_copy);
+        # optimize
+        cobra_model_copy.optimize(solver='gurobi');
+        # record the results
+        self._copy_solution(cobra_model_irreversible,cobra_model_copy);
+    def _add_looplaw_constraints(self, cobra_model_irreversible, return_looplaw_variables=False):
+        '''add constraints for looplaw to the model'''
+
+        # TODO: Correct constraints
+
+        # find system boundaries and the objective reaction
+        system_boundaries = [x.id for x in cobra_model_irreversible.reactions if x.boundary == 'system_boundary'];
+        transporters = find_transportRxns(cobra_model_irreversible);
+        ## determine the compartments:
+        #compartments = list(set(cobra_model_irreversible.metabolites.list_attr('compartment')));
+        # add variables and constraints to model for tfba
+        reactions = [r for r in cobra_model_irreversible.reactions];
+        looplaw_variables = {};
+        internal_dict = {};
+        # calculate the null basis:
+        cobra_model_array = cobra_model_irreversible.to_array_based_model();
+        N = null(cobra_model_array.S.todense()) #convert S from sparse to full and compute the nullspace
+        not_in_null = [];
+        for i in range(N.shape[0]):
+            met_j = N[i,:];
+            met_sum = met_j.sum();
+            if met_sum<1e-6: not_in_null.append(cobra_model_array.reactions[i].id)
+        # make constraints for Nint*looplaw=0
+        internal_constraint = Metabolite('internal');
+        internal_constraint._constraint_sense = 'E';
+        internal_constraint._bound = 0.0;
+        for i,r in enumerate(reactions):
+            # ignore system_boundary, objective, and transport reactions
+            if r.id in system_boundaries or r.id in not_in_null: #r.id in transporters:
+                continue;
+            # create a constraint for vi-zi*vmax<=0
+            indicator_plus = Metabolite(r.id + '_plus');
+            indicator_plus._constraint_sense = 'L';
+            # create a constraint for vi+zi*vmax>=0
+            indicator_minus = Metabolite(r.id + '_minus');
+            indicator_minus._constraint_sense = 'G';
+            # create additional constraint for looplawi <= zi - 1000(1-zi) if zi = 1, gi <=1 
+            # create additional constraint for looplawi <= 1001*zi - 1000
+            # create additional constraint for looplawi -1001*zi <= -1000
+            looplaw_constraint_plus = Metabolite(r.id + '_looplaw_plus');
+            looplaw_constraint_plus._constraint_sense = 'L';
+            looplaw_constraint_plus._bound = -1000.0;
+            # create additional constraint for looplawi >= -1000*zi + (1-zi)
+            # create additional constraint for looplawi >= -1001*zi + 1
+            # create additional constraint for looplawi + 1001*zi >= 1
+            looplaw_constraint_minus = Metabolite(r.id + '_looplaw_minus');
+            looplaw_constraint_minus._constraint_sense = 'G';
+            looplaw_constraint_minus._bound = 1;
+            ## create additional constraint for looplaw >= 1
+            #looplaw_constraint_gzero = Metabolite(r.id + '_looplaw_gzero');
+            #looplaw_constraint_gzero._constraint_sense = 'G';
+            #looplaw_constraint_gzero._bound = 1;
+            ## create additional constraint for looplaw <= -1
+            #looplaw_constraint_lzero = Metabolite(r.id + '_looplaw_lzero');
+            #looplaw_constraint_lzero._constraint_sense = 'L';
+            #looplaw_constraint_lzero._bound = -1;
+            # make a boolean indicator variable
+            indicator = Reaction('indicator_' + r.id);
+            indicator.lower_bound = 0;
+            indicator.upper_bound = 1;
+            indicator.variable_kind = 'integer';
+            # make a continuous variable for looplaw
+            looplaw = Reaction('looplaw_' + r.id);
+            looplaw.lower_bound = -999.0;
+            looplaw.upper_bound = 999.0;
+            looplaw.objective_coefficient = 0;
+            looplaw.variable_kind = 'continuous';
+            # add constraints to the variables
+            indicator.add_metabolites({indicator_plus: -r.upper_bound});#,indicator_minus: -r.lower_bound});
+            indicator.add_metabolites({looplaw_constraint_plus: -1001});
+            indicator.add_metabolites({looplaw_constraint_minus: 1001});
+            looplaw.add_metabolites({looplaw_constraint_plus: 1.0})
+            looplaw.add_metabolites({looplaw_constraint_minus: 1.0})
+            for j in range(N[i,:].shape[1]):
+                met_stoich = N[i,j]
+                if met_stoich>1e-6 or met_stoich<-1e-6:
+                    looplaw.add_metabolites({internal_constraint: met_stoich})
+            #looplaw.add_metabolites({looplaw_constraint_gzero: 1.0})
+            #looplaw.add_metabolites({looplaw_constraint_lzero: 1.0})
+            cobra_model_irreversible.reactions.get_by_id(r.id).add_metabolites({indicator_plus: 1.0},{indicator_minus: 1.0});
+            # add indicator reactions to the model
+            cobra_model_irreversible.add_reaction(indicator);
+            cobra_model_irreversible.add_reaction(looplaw);
+            # record looplaw_plus variables
+            looplaw_variables[r.id] = looplaw;
+        if return_looplaw_variables:
+            return looplaw_variables;

@@ -8,7 +8,9 @@ from collections import Counter
 # Other dependencies
 import csv,json,sys
 
-class thermodynamics_dG_r_data():
+from thermodynamics_io import thermodynamics_io
+
+class thermodynamics_dG_r_data(thermodynamics_io):
     """Runs thermodynamic analysis analysis on a cobra.Model object
 
     #1 Calculate reaction thermodynamics
@@ -119,6 +121,7 @@ class thermodynamics_dG_r_data():
         self.dG_r_coverage = {}
         self.metabolomics_coverage = {}
         self.thermodynamic_consistency_check = {}
+        self.displacement = {};
 
     def export_dG0_r_json(self, filename_I):
         # save the results to json file
@@ -135,7 +138,90 @@ class thermodynamics_dG_r_data():
         with open(filename_I, 'w') as outfile:
             json.dump(self.thermodynamic_consistency_check, outfile, indent=4);
 
-    def calculate_dG0_r(self, cobra_model, measured_dG_f, estimated_dG_f):
+    def export_summary(self,cobra_model,reaction_bounds,filename):
+        '''Summarize the results of the thermodynamics analysis'''
+        # make header
+        header = ["reaction_id","reaction_formula","dG0_r","dG_r_lb","dG_r_ub","flux_lb","flux_ub","metabolomics_coverage","dG_coverage","is_feasible"];
+        # make rows
+        rows = []; 
+        for rxn in self.dG_r:
+            row = [];
+            row = [rxn,cobra_model.reactions.get_by_id(rxn).build_reaction_string(),\
+                self.dG0_r[rxn]['dG_r'],self.dG_r[rxn]['dG_r_lb'],self.dG_r[rxn]['dG_r_ub'],\
+                reaction_bounds[rxn]['flux_lb'],reaction_bounds[rxn]['flux_ub'],\
+                self.metabolomics_coverage[rxn],self.dG_r_coverage[rxn],self.thermodynamic_consistency_check[rxn]];
+            rows.append(row);
+
+            #print "reaction_id\treaction_formula\tdG0_r\tdG_r_lb\tdG_r_ub\tflux_lb\tflux_ub\tmetabolomics_coverage\tdG_coverage\tis_feasible"
+            #print rxn,\
+            #    cobra_model.reactions.get_by_id(rxn).build_reaction_string(),\
+            #    self.dG0_r[rxn]['dG_r'],self.dG_r[rxn]['dG_r_lb'],self.dG_r[rxn]['dG_r_ub'],\
+            #    reaction_bounds[rxn]['flux_lb'],reaction_bounds[rxn]['flux_ub'],\
+            #    self.metabolomics_coverage[rxn],self.dG_r_coverage[rxn],self.thermodynamic_consistency_check[rxn];
+
+        with open(filename, 'wb') as f:
+            writer = csv.writer(f);
+            try:
+                writer.writerow(header);
+                writer.writerows(rows);
+            except csv.Error as e:
+                sys.exit(e);
+
+    def export_dG_r_escher(self, filename_I):
+        '''plot confidence intervals from dGr calculations using escher'''
+        data = [];
+        flux1 = {};
+        flux2 = {};
+        for k,v in self.dG_r.iteritems():
+            flux1[k] = v['dG_r_lb'];
+            flux2[k] = v['dG_r_ub'];
+        data.append(flux1);
+        data.append(flux2);
+        self.export_values_json(filename_I, data);
+        
+    def export_displacement_escher(self, filename_I):
+        '''plot confidence intervals from displacement calculations using escher'''
+        data = [];
+        flux1 = {};
+        flux2 = {};
+        for k,v in self.displacement.iteritems():
+            flux1[k] = v['displacement_lb'];
+            flux2[k] = v['displacement_ub'];
+        data.append(flux1);
+        data.append(flux2);
+        self.export_values_json(filename_I, data);
+                
+    def export_concentrations_escher(self, filename_I, measured_concentrations):
+        '''plot confidence intervals from concentrations calculations using escher'''
+        data = [];
+        flux1 = {};
+        flux2 = {};
+        for k,v in measured_concentrations.iteritems():
+            flux1[k] = v['concentration_lb'];
+            flux2[k] = v['concentration_ub'];
+        data.append(flux1);
+        data.append(flux2);
+        self.export_values_json(filename_I, data);
+    
+    def import_dG0_r_json(self, dG0_r_filename_I):
+        '''import previous analysis'''
+
+        self.dG0_r = {};
+        self.dG0_r = self.import_values_json(dG0_r_filename_I);
+    
+    def import_dG_r_json(self, dG_r_filename_I):
+        '''import previous analysis'''
+
+        self.dG_r = {};
+        self.dG_r = self.import_values_json(dG_r_filename_I);
+        
+    def import_tcc_json(self, tcc_filename_I):
+        '''import previous analysis'''
+
+        self.thermodynamic_consistency_check = {};
+        self.thermodynamic_consistency_check = self.import_values_json(tcc_filename_I);
+
+    def calculate_dG0_r(self, cobra_model, measured_dG_f, estimated_dG_f, temperature):
         """calculate the standard Gibbs free energy of reaction"""
         # Input:
         #   dG_f (adjusted from dG0_f to in vivo conditions)
@@ -163,11 +249,14 @@ class thermodynamics_dG_r_data():
                            'dG_r_var': None,
                            'dG_r_lb': None,
                            'dG_r_ub': None,
-                           'dG_r_units': None};
+                           'dG_r_units': None,
+                           'Keq_lb': None,
+                           'Keq_ub': None};
             dG_r_coverage_I[r.id] = None; # will determine the coverage of thermodynamic
         
             nMets = 0.0; # number of metabolites in each reaction
             nMets_measured = 0.0; # number of measured metabolites in each reaction
+            temperatures = [];
             # calculate dG0_r for products
             dG0_r_product = 0.0;
             dG0_r_product_var = 0.0;
@@ -185,6 +274,7 @@ class thermodynamics_dG_r_data():
                     #dG0_r_product_ub = dG0_r_product_ub + measured_dG_f[p.id]['dG_f_ub']*r.get_coefficient(p.id)
                     nMets = nMets + 1.0;
                     nMets_measured = nMets_measured + 1.0;
+                    temperatures.append(temperature[p.compartment]['temperature']);
                 elif p.id in estimated_dG_f.keys():
                     dG0_r_product = dG0_r_product + estimated_dG_f[p.id]['dG_f']*r.get_coefficient(p.id)
                     dG0_r_product_var = dG0_r_product_var + estimated_dG_f[p.id]['dG_f_var']
@@ -195,6 +285,7 @@ class thermodynamics_dG_r_data():
                     #dG0_r_product_lb = dG0_r_product_lb + estimated_dG_f[p.id]['dG_f_lb']*r.get_coefficient(p.id)
                     #dG0_r_product_ub = dG0_r_product_ub + estimated_dG_f[p.id]['dG_f_ub']*r.get_coefficient(p.id)
                     nMets = nMets + 1.0;
+                    temperatures.append(temperature[p.compartment]['temperature']);
                 else:
                     # raise error
                     return
@@ -215,6 +306,7 @@ class thermodynamics_dG_r_data():
                     #dG0_r_reactant_ub = dG0_r_reactant_ub + measured_dG_f[react.id]['dG_f_lb']*r.get_coefficient(react.id)
                     nMets = nMets + 1.0;
                     nMets_measured = nMets_measured + 1.0;
+                    temperatures.append(temperature[react.compartment]['temperature']);
                 elif react.id in estimated_dG_f.keys():
                     dG0_r_reactant = dG0_r_reactant + estimated_dG_f[react.id]['dG_f']*r.get_coefficient(react.id)
                     dG0_r_reactant_var = dG0_r_reactant_var + estimated_dG_f[react.id]['dG_f_var']
@@ -225,6 +317,7 @@ class thermodynamics_dG_r_data():
                     #dG0_r_reactant_lb = dG0_r_reactant_lb + estimated_dG_f[react.id]['dG_f_ub']*r.get_coefficient(react.id)
                     #dG0_r_reactant_ub = dG0_r_reactant_ub + estimated_dG_f[react.id]['dG_f_lb']*r.get_coefficient(react.id)
                     nMets = nMets + 1.0;
+                    temperatures.append(temperature[react.compartment]['temperature']);
                 else:
                     # raise error
                     return
@@ -238,6 +331,16 @@ class thermodynamics_dG_r_data():
             dG0_r_I[r.id]['dG_r_lb'] = dG0_r_product_lb + dG0_r_reactant_lb;
             dG0_r_I[r.id]['dG_r_ub'] = dG0_r_product_ub + dG0_r_reactant_ub;
             dG0_r_I[r.id]['dG_r_units'] = 'kJ/mol';
+            
+            # not the best way to calculate the Keq
+            Keq_exp_lb = -dG0_r_I[r.id]['dG_r_lb']/(sum(temperatures)/len(temperatures)*self.R);
+            if Keq_exp_lb>100: Keq_exp_lb = 100;
+            elif Keq_exp_lb<-100: Keq_exp_lb = -100;
+            dG0_r_I[r.id]['Keq_lb'] = exp(Keq_exp_lb);
+            Keq_exp_ub = -dG0_r_I[r.id]['dG_r_ub']/(sum(temperatures)/len(temperatures)*self.R);
+            if Keq_exp_ub>100: Keq_exp_ub = 100;
+            elif Keq_exp_ub<-100: Keq_exp_ub = -100;
+            dG0_r_I[r.id]['Keq_ub'] = exp(Keq_exp_ub);
 
             # determine the thermodynamic coverage
             if nMets == 0:  dG_r_coverage_tmp = 0;
@@ -287,8 +390,9 @@ class thermodynamics_dG_r_data():
                            'dG_r_var': None,
                            'dG_r_units': None,
                            'dG_r_lb': None,
-                           'dG_r_ub': None
-                           #'Keq': None,
+                           'dG_r_ub': None,
+                           'Keq_lb': None,
+                           'Keq_ub': None
                            #'ri_estimate': None,
                            #'ri': None,
                            #'Q_estimate': None,
@@ -360,6 +464,7 @@ class thermodynamics_dG_r_data():
 
                         nMets = nMets + 1.0;
                         nMets_measured = nMets_measured + 1.0;
+                        temperatures.append(temperature[p.compartment]['temperature']);
 
                         #dG_r_ionic = dG_r_ionic - log(10)*self.R*temperature[p.compartment]['temperature']*A*\
                         #                (p.charge*p.charge*r.get_coefficient(p.id)*ionic_strength[p.compartment]['ionic_strength'])/(1+B*ionic_strength[p.compartment]['ionic_strength']);
@@ -393,6 +498,7 @@ class thermodynamics_dG_r_data():
                         if p.name in mets_trans: dG_r_mem += fabs(r.get_coefficient(p.id))/2.0*p.charge/2.0*self.F*(33.3*r.get_coefficient(p.id)/fabs(r.get_coefficient(p.id))*pH[p.compartment]['pH']-143.33/2.0);
 
                         nMets = nMets + 1.0;
+                        temperatures.append(temperature[p.compartment]['temperature']);
                         #dG_r_ionic = dG_r_ionic - log(10)*self.R*temperature[p.compartment]['temperature']*A*\
                         #                (p.charge*p.charge*r.get_coefficient(p.id)*ionic_strength[p.compartment]['ionic_strength'])/(1+B*ionic_strength[p.compartment]['ionic_strength']);
                         #dG_r_pH = dG_r_pH + log(10)*self.R*temperature[p.compartment]['temperature']*p.charge*pH[p.compartment]['pH'];
@@ -452,6 +558,7 @@ class thermodynamics_dG_r_data():
 
                         nMets = nMets + 1.0;
                         nMets_measured = nMets_measured + 1.0;
+                        temperatures.append(temperature[react.compartment]['temperature']);
 
                         #dG_r_ionic = dG_r_ionic - log(10)*self.R*temperature[react.compartment]['temperature']*A*\
                         #                (react.charge*react.charge*r.get_coefficient(react.id)*ionic_strength[react.compartment]['ionic_strength'])/(1+B*ionic_strength[react.compartment]['ionic_strength']);
@@ -485,6 +592,7 @@ class thermodynamics_dG_r_data():
                         if react.name in mets_trans: dG_r_mem += fabs(r.get_coefficient(react.id))/2.0*react.charge/2.0*self.F*(33.3*r.get_coefficient(react.id)/fabs(r.get_coefficient(react.id))*pH[react.compartment]['pH']-143.33/2.0);
 
                         nMets = nMets + 1.0;
+                        temperatures.append(temperature[react.compartment]['temperature']);
                         #dG_r_ionic = dG_r_ionic - log(10)*self.R*temperature[react.compartment]['temperature']*A*\
                         #                (react.charge*react.charge*r.get_coefficient(react.id)*ionic_strength[react.compartment]['ionic_strength'])/(1+B*ionic_strength[react.compartment]['ionic_strength']);
                     else:
@@ -506,10 +614,15 @@ class thermodynamics_dG_r_data():
             dG_r_I[r.id]['dG_r_ub'] = self.dG0_r[r.id]['dG_r_ub'] + dG_r_product_ub + dG_r_reactant_ub + dG_r_trans;
             dG_r_I[r.id]['dG_r_units'] = 'kJ/mol';
 
-            ## not the best way to calculate the "in vivo" Keq
-            #Keq_exp = -self.dG0_r[r.id]['dG_r']/(sum(temperatures)/len(temperatures)*self.R);
-            #if Keq_exp>100: Keq_exp = 100;
-            #dG_r_I[r.id]['Keq'] = exp(Keq_exp);
+            # not the best way to calculate the Keq
+            Keq_exp_lb = -dG_r_I[r.id]['dG_r_lb']/(sum(temperatures)/len(temperatures)*self.R);
+            if Keq_exp_lb>100: Keq_exp_lb = 100;
+            elif Keq_exp_lb<-100: Keq_exp_lb = -100;
+            dG_r_I[r.id]['Keq_lb'] = exp(Keq_exp_lb);
+            Keq_exp_ub = -dG_r_I[r.id]['dG_r_ub']/(sum(temperatures)/len(temperatures)*self.R);
+            if Keq_exp_ub>100: Keq_exp_ub = 100;
+            elif Keq_exp_ub<-100: Keq_exp_ub = -100;
+            dG_r_I[r.id]['Keq_ub'] = exp(Keq_exp_ub);
 
             # determine the thermodynamic coverage
             if nMets == 0:  conc_coverage = 0;
@@ -519,7 +632,7 @@ class thermodynamics_dG_r_data():
         self.dG_r = dG_r_I;
         self.metabolomics_coverage = metabolomics_coverage_I;
 
-    def calculate_dG0_r_v2(self, cobra_model, measured_dG_f, estimated_dG_f):
+    def calculate_dG0_r_v2(self, cobra_model, measured_dG_f, estimated_dG_f, temperature):
         """calculate the standard Gibbs free energy of reaction"""
         # Input:
         #   dG_f (adjusted from dG0_f to in vivo conditions)
@@ -547,11 +660,14 @@ class thermodynamics_dG_r_data():
                            'dG_r_var': None,
                            'dG_r_lb': None,
                            'dG_r_ub': None,
-                           'dG_r_units': None};
+                           'dG_r_units': None,
+                           'Keq_lb': None,
+                           'Keq_ub': None};
             dG_r_coverage_I[r.id] = None; # will determine the coverage of thermodynamic
         
             nMets = 0.0; # number of metabolites in each reaction
             nMets_measured = 0.0; # number of measured metabolites in each reaction
+            temperatures = [];
             # calculate dG0_r for products
             dG0_r_product = 0.0;
             dG0_r_product_var = 0.0;
@@ -569,6 +685,7 @@ class thermodynamics_dG_r_data():
                     dG0_r_product_ub = dG0_r_product_ub + measured_dG_f[p.id]['dG_f_ub']*r.get_coefficient(p.id)
                     nMets = nMets + 1.0;
                     nMets_measured = nMets_measured + 1.0;
+                    temperatures.append(temperature[p.compartment]['temperature']);
                 elif p.id in estimated_dG_f.keys():
                     dG0_r_product = dG0_r_product + estimated_dG_f[p.id]['dG_f']*r.get_coefficient(p.id)
                     #dG0_r_product_var = dG0_r_product_var + estimated_dG_f[p.id]['dG_f_var']
@@ -579,6 +696,7 @@ class thermodynamics_dG_r_data():
                     dG0_r_product_lb = dG0_r_product_lb + estimated_dG_f[p.id]['dG_f_lb']*r.get_coefficient(p.id)
                     dG0_r_product_ub = dG0_r_product_ub + estimated_dG_f[p.id]['dG_f_ub']*r.get_coefficient(p.id)
                     nMets = nMets + 1.0;
+                    temperatures.append(temperature[p.compartment]['temperature']);
                 else:
                     # raise error
                     return
@@ -599,6 +717,7 @@ class thermodynamics_dG_r_data():
                     dG0_r_reactant_ub = dG0_r_reactant_ub + measured_dG_f[react.id]['dG_f_lb']*r.get_coefficient(react.id)
                     nMets = nMets + 1.0;
                     nMets_measured = nMets_measured + 1.0;
+                    temperatures.append(temperature[react.compartment]['temperature']);
                 elif react.id in estimated_dG_f.keys():
                     dG0_r_reactant = dG0_r_reactant + estimated_dG_f[react.id]['dG_f']*r.get_coefficient(react.id)
                     dG0_r_reactant_var = dG0_r_reactant_var + estimated_dG_f[react.id]['dG_f_var']
@@ -609,6 +728,7 @@ class thermodynamics_dG_r_data():
                     dG0_r_reactant_lb = dG0_r_reactant_lb + estimated_dG_f[react.id]['dG_f_ub']*r.get_coefficient(react.id)
                     dG0_r_reactant_ub = dG0_r_reactant_ub + estimated_dG_f[react.id]['dG_f_lb']*r.get_coefficient(react.id)
                     nMets = nMets + 1.0;
+                    temperatures.append(temperature[react.compartment]['temperature']);
                 else:
                     # raise error
                     return
@@ -622,6 +742,16 @@ class thermodynamics_dG_r_data():
             dG0_r_I[r.id]['dG_r_lb'] = dG0_r_product_lb + dG0_r_reactant_lb;
             dG0_r_I[r.id]['dG_r_ub'] = dG0_r_product_ub + dG0_r_reactant_ub;
             dG0_r_I[r.id]['dG_r_units'] = 'kJ/mol';
+
+            # not the best way to calculate the Keq
+            Keq_exp_lb = -dG0_r_I[r.id]['dG_r_lb']/(sum(temperatures)/len(temperatures)*self.R);
+            if Keq_exp_lb>100: Keq_exp_lb = 100;
+            elif Keq_exp_lb<-100: Keq_exp_lb = -100;
+            dG0_r_I[r.id]['Keq_lb'] = exp(Keq_exp_lb);
+            Keq_exp_ub = -dG0_r_I[r.id]['dG_r_ub']/(sum(temperatures)/len(temperatures)*self.R);
+            if Keq_exp_ub>100: Keq_exp_ub = 100;
+            elif Keq_exp_ub<-100: Keq_exp_ub = -100;
+            dG0_r_I[r.id]['Keq_ub'] = exp(Keq_exp_ub);
 
             # determine the thermodynamic coverage
             if nMets == 0:  dG_r_coverage_tmp = 0;
@@ -671,8 +801,9 @@ class thermodynamics_dG_r_data():
                            'dG_r_var': None,
                            'dG_r_units': None,
                            'dG_r_lb': None,
-                           'dG_r_ub': None
-                           #'Keq': None,
+                           'dG_r_ub': None,
+                           'Keq_lb': None,
+                           'Keq_ub': None
                            #'ri_estimate': None,
                            #'ri': None,
                            #'Q_estimate': None,
@@ -744,6 +875,7 @@ class thermodynamics_dG_r_data():
 
                         nMets = nMets + 1.0;
                         nMets_measured = nMets_measured + 1.0;
+                        temperatures.append(temperature[p.compartment]['temperature']);
 
                         #dG_r_ionic = dG_r_ionic - log(10)*self.R*temperature[p.compartment]['temperature']*A*\
                         #                (p.charge*p.charge*r.get_coefficient(p.id)*ionic_strength[p.compartment]['ionic_strength'])/(1+B*ionic_strength[p.compartment]['ionic_strength']);
@@ -777,6 +909,7 @@ class thermodynamics_dG_r_data():
                         if p.name in mets_trans: dG_r_mem += fabs(r.get_coefficient(p.id))/2.0*p.charge/2.0*self.F*(33.3*r.get_coefficient(p.id)/fabs(r.get_coefficient(p.id))*pH[p.compartment]['pH']-143.33/2.0);
 
                         nMets = nMets + 1.0;
+                        temperatures.append(temperature[p.compartment]['temperature']);
                         #dG_r_ionic = dG_r_ionic - log(10)*self.R*temperature[p.compartment]['temperature']*A*\
                         #                (p.charge*p.charge*r.get_coefficient(p.id)*ionic_strength[p.compartment]['ionic_strength'])/(1+B*ionic_strength[p.compartment]['ionic_strength']);
                         #dG_r_pH = dG_r_pH + log(10)*self.R*temperature[p.compartment]['temperature']*p.charge*pH[p.compartment]['pH'];
@@ -836,6 +969,7 @@ class thermodynamics_dG_r_data():
 
                         nMets = nMets + 1.0;
                         nMets_measured = nMets_measured + 1.0;
+                        temperatures.append(temperature[react.compartment]['temperature']);
 
                         #dG_r_ionic = dG_r_ionic - log(10)*self.R*temperature[react.compartment]['temperature']*A*\
                         #                (react.charge*react.charge*r.get_coefficient(react.id)*ionic_strength[react.compartment]['ionic_strength'])/(1+B*ionic_strength[react.compartment]['ionic_strength']);
@@ -869,6 +1003,7 @@ class thermodynamics_dG_r_data():
                         if react.name in mets_trans: dG_r_mem += fabs(r.get_coefficient(react.id))/2.0*react.charge/2.0*self.F*(33.3*r.get_coefficient(react.id)/fabs(r.get_coefficient(react.id))*pH[react.compartment]['pH']-143.33/2.0);
 
                         nMets = nMets + 1.0;
+                        temperatures.append(temperature[react.compartment]['temperature']);
                         #dG_r_ionic = dG_r_ionic - log(10)*self.R*temperature[react.compartment]['temperature']*A*\
                         #                (react.charge*react.charge*r.get_coefficient(react.id)*ionic_strength[react.compartment]['ionic_strength'])/(1+B*ionic_strength[react.compartment]['ionic_strength']);
                     else:
@@ -889,11 +1024,16 @@ class thermodynamics_dG_r_data():
             dG_r_I[r.id]['dG_r_lb'] = self.dG0_r[r.id]['dG_r_lb'] + dG_r_product_lb + dG_r_reactant_lb + dG_r_trans;
             dG_r_I[r.id]['dG_r_ub'] = self.dG0_r[r.id]['dG_r_ub'] + dG_r_product_ub + dG_r_reactant_ub + dG_r_trans;
             dG_r_I[r.id]['dG_r_units'] = 'kJ/mol';
-
-            ## not the best way to calculate the "in vivo" Keq
-            #Keq_exp = -self.dG0_r[r.id]['dG_r']/(sum(temperatures)/len(temperatures)*self.R);
-            #if Keq_exp>100: Keq_exp = 100;
-            #dG_r_I[r.id]['Keq'] = exp(Keq_exp);
+            
+            # not the best way to calculate the Keq
+            Keq_exp_lb = -dG_r_I[r.id]['dG_r_lb']/(sum(temperatures)/len(temperatures)*self.R);
+            if Keq_exp_lb>100: Keq_exp_lb = 100;
+            elif Keq_exp_lb<-100: Keq_exp_lb = -100;
+            dG_r_I[r.id]['Keq_lb'] = exp(Keq_exp_lb);
+            Keq_exp_ub = -dG_r_I[r.id]['dG_r_ub']/(sum(temperatures)/len(temperatures)*self.R);
+            if Keq_exp_ub>100: Keq_exp_ub = 100;
+            elif Keq_exp_ub<-100: Keq_exp_ub = -100;
+            dG_r_I[r.id]['Keq_ub'] = exp(Keq_exp_ub);
 
             # determine the thermodynamic coverage
             if nMets == 0:  conc_coverage = 0;
@@ -1000,35 +1140,6 @@ class thermodynamics_dG_r_data():
                 dG_f_coverage_cnt += 1;
                 print k, v
         print ('total # of reactions with required thermodynamic coverage = ' + str(dG_f_coverage_cnt))
-
-    def export_summary(self,cobra_model,reaction_bounds,filename):
-        '''Summarize the results of the thermodynamics analysis'''
-        # make header
-        header = ["reaction_id","reaction_formula","dG0_r","dG_r_lb","dG_r_ub","flux_lb","flux_ub","metabolomics_coverage","dG_coverage","is_feasible"];
-        # make rows
-        rows = []; 
-        for rxn in self.dG_r:
-            row = [];
-            row = [rxn,cobra_model.reactions.get_by_id(rxn).build_reaction_string(),\
-                self.dG0_r[rxn]['dG_r'],self.dG_r[rxn]['dG_r_lb'],self.dG_r[rxn]['dG_r_ub'],\
-                reaction_bounds[rxn]['flux_lb'],reaction_bounds[rxn]['flux_ub'],\
-                self.metabolomics_coverage[rxn],self.dG_r_coverage[rxn],self.thermodynamic_consistency_check[rxn]];
-            rows.append(row);
-
-            #print "reaction_id\treaction_formula\tdG0_r\tdG_r_lb\tdG_r_ub\tflux_lb\tflux_ub\tmetabolomics_coverage\tdG_coverage\tis_feasible"
-            #print rxn,\
-            #    cobra_model.reactions.get_by_id(rxn).build_reaction_string(),\
-            #    self.dG0_r[rxn]['dG_r'],self.dG_r[rxn]['dG_r_lb'],self.dG_r[rxn]['dG_r_ub'],\
-            #    reaction_bounds[rxn]['flux_lb'],reaction_bounds[rxn]['flux_ub'],\
-            #    self.metabolomics_coverage[rxn],self.dG_r_coverage[rxn],self.thermodynamic_consistency_check[rxn];
-
-        with open(filename, 'wb') as f:
-            writer = csv.writer(f);
-            try:
-                writer.writerow(header);
-                writer.writerows(rows);
-            except csv.Error as e:
-                sys.exit(e);
     
     def find_transportMets(self, cobra_model_I, reaction_id_I):
         # transport metabolite definition:
@@ -1052,4 +1163,70 @@ class thermodynamics_dG_r_data():
             met_names.append(m.name);
         met_O = [k for k,v in Counter(met_names).items() if v>1]
         return met_O;
+
+    def calculate_displacement(self, cobra_model, measured_concentration, estimated_concentration):
+        '''calculate the thermodynamic displacement from equilibrium
+        
+        displacement = 1 - Q/Keq
+                       1 - (PI(products^stoichiometry)/PI(reactants^stoichiometry))/Keq
+
+        '''
+        
+        # initialize hydrogens:
+        hydrogens = [];
+        compartments = list(set(cobra_model.metabolites.list_attr('compartment')));
+        for compart in compartments:
+             hydrogens.append('h_' + compart);
+
+        # calculate Q and displacements
+        displacement_I = {}
+        for r in cobra_model.reactions:
+            displacement_I[r.id] = {'displacement_lb':None,
+                                    'displacement_ub':None,
+                                    'Q_lb':None,
+                                    'Q_ub':None};
+            products_pi_lb = 1.0;
+            products_pi_ub = 1.0;
+            for p in r.products:
+                if not(p.id in hydrogens): # exclude hydrogen
+                    if p.id in measured_concentration.keys():
+                        # calculate Q using the geometric mean
+                        products_pi_lb *= pow(measured_concentration[p.id]['concentration_lb'],r.get_coefficient(p.id));
+                        products_pi_ub *= pow(measured_concentration[p.id]['concentration_ub'],r.get_coefficient(p.id));
+
+                    elif p.id in estimated_concentration.keys():
+                        products_pi_lb *= pow(estimated_concentration[p.id]['concentration_lb'],r.get_coefficient(p.id));
+                        products_pi_ub *= pow(estimated_concentration[p.id]['concentration_ub'],r.get_coefficient(p.id));
+
+            reactants_pi_lb = 1.0;
+            reactants_pi_ub = 1.0;
+            for react in r.reactants:
+                if not(react.id in hydrogens): # exclude hydrogen
+                    if react.id in measured_concentration.keys():
+                        # Method 1
+                        # calculate Q using the geometric mean
+                        reactants_pi_lb *= pow(measured_concentration[react.id]['concentration_lb'],r.get_coefficient(react.id));
+                        reactants_pi_ub *= pow(measured_concentration[react.id]['concentration_ub'],r.get_coefficient(react.id));
+                        # Method 2
+                        # calculate Q using the geometric mean
+                        reactants_pi_lb *= pow(measured_concentration[react.id]['concentration_ub'],r.get_coefficient(react.id));
+                        reactants_pi_ub *= pow(measured_concentration[react.id]['concentration_lb'],r.get_coefficient(react.id));
+
+                    elif react.id in estimated_concentration.keys():
+                        # Method 1
+                        # calculate Q using the geometric mean
+                        reactants_pi_lb *= pow(estimated_concentration[react.id]['concentration_lb'],r.get_coefficient(react.id));
+                        reactants_pi_ub *= pow(estimated_concentration[react.id]['concentration_ub'],r.get_coefficient(react.id));
+                        # Method 2
+                        # calculate Q using the geometric mean
+                        reactants_pi_lb *= pow(estimated_concentration[react.id]['concentration_ub'],r.get_coefficient(react.id));
+                        reactants_pi_ub *= pow(estimated_concentration[react.id]['concentration_lb'],r.get_coefficient(react.id));
+
+            displacement_I[r.id]['displacement_lb'] = 1/self.dG0_r[r.id]['Keq_lb']*products_pi_lb*reactants_pi_lb;
+            displacement_I[r.id]['displacement_ub'] = 1/self.dG0_r[r.id]['Keq_ub']*products_pi_ub*reactants_pi_ub;
+            displacement_I[r.id]['Q_lb'] = products_pi_lb*reactants_pi_lb;
+            displacement_I[r.id]['Q_ub'] = products_pi_ub*reactants_pi_ub;
+
+        self.displacement = displacement_I;
+
 

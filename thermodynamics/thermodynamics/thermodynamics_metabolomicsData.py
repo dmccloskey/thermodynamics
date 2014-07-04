@@ -338,6 +338,8 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
     
         return default_values;
 
+    def remove_measured_concentrations(self,mets_I):
+        '''Remove measured metabolite concentrations'''
 
-
-
+        for met in mets_I:
+            v=self.measured_concentrations.pop(met);

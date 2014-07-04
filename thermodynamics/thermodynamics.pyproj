@@ -41,6 +41,7 @@
     <Compile Include="thermodynamics\thermodynamics_formatter.py" />
     <Compile Include="thermodynamics\thermodynamics_metabolomicsData.py" />
     <Compile Include="thermodynamics\thermodynamics_otherData.py" />
+    <Compile Include="thermodynamics\thermodynamics_sampling.py" />
     <Compile Include="thermodynamics\thermodynamics_simulatedData.py" />
     <Compile Include="thermodynamics\thermodynamics_io.py" />
     <Compile Include="thermodynamics\thermodynamics_tfba.py" />
@@ -48,6 +49,7 @@
     <Compile Include="thermodynamics\thermodynamics_visualization.py" />
     <Compile Include="thermodynamics\__init__.py" />
     <Compile Include="workspace\aerobicAnaerobic01.py" />
+    <Compile Include="workspace\aerobicAnaerobic01_irrev.py" />
     <Compile Include="workspace\ALEWt01.py" />
     <Compile Include="workspace\rpomut01_OxicWTGlyc_0.py" />
   </ItemGroup>

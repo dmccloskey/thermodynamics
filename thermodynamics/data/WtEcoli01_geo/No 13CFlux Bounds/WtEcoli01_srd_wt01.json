@@ -1,0 +1,2434 @@
+{
+    "CSND": {
+        "gr": 0.7165897189523535, 
+        "gr_ratio": 1.000000000000155
+    }, 
+    "G6PDH2r": {
+        "gr": 0.7102760789779732, 
+        "gr_ratio": 0.9911893238107008
+    }, 
+    "MEOHtrpp_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "NTD5": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "ACt2rpp_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "GUAPRT": {
+        "gr": 0.716589718952351, 
+        "gr_ratio": 1.0000000000001517
+    }, 
+    "NTD10": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "NTD11": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "NTD12": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "NACODA": {
+        "gr": 0.7165897189523376, 
+        "gr_ratio": 1.000000000000133
+    }, 
+    "3pg_to_ser_DASH_L": {
+        "gr": 0.7021696738027635, 
+        "gr_ratio": 0.9798768461672002
+    }, 
+    "P5CD": {
+        "gr": 0.7165897189522524, 
+        "gr_ratio": 1.000000000000014
+    }, 
+    "NTD2": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "FBA_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "EX_cobalt2_LPAREN_e_RPAREN__reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "PG161abcpp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "METSOXR2": {
+        "gr": 0.7165897189523456, 
+        "gr_ratio": 1.000000000000144
+    }, 
+    "ADK4_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "ATPM": {
+        "gr": 0.7291475153005126, 
+        "gr_ratio": 1.0175243881068117
+    }, 
+    "METSOXR1": {
+        "gr": 0.7165897189523376, 
+        "gr_ratio": 1.000000000000133
+    }, 
+    "GLCtexi": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "PHETA1_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "MN2tpp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "DAPE_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "KAS15": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "FOMETRi": {
+        "gr": 0.716589718952345, 
+        "gr_ratio": 1.0000000000001432
+    }, 
+    "G5SADs": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "PSCVT_reverse": {
+        "gr": 0.7165897189522662, 
+        "gr_ratio": 1.0000000000000333
+    }, 
+    "PHETA1": {
+        "gr": 0.716589718952261, 
+        "gr_ratio": 1.000000000000026
+    }, 
+    "SUCOAS_reverse": {
+        "gr": 0.71489602066155, 
+        "gr_ratio": 0.9976364462873277
+    }, 
+    "PYNP2r": {
+        "gr": 0.7165897189522639, 
+        "gr_ratio": 1.00000000000003
+    }, 
+    "EX_etoh_LPAREN_e_RPAREN_": {
+        "gr": 0.7165897189522613, 
+        "gr_ratio": 1.0000000000000264
+    }, 
+    "PGM_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "hom_DASH_L_and_cyst_DASH_L_to_pyr_hcys_DASH_L": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "NTPP9": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "NTPP8": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "EX_meoh_LPAREN_e_RPAREN_": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "NTPP6": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "NTPP5": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "NTPP4": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "NTPP3": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "NTPP2": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "NTPP1": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "ACODA": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ACOTA_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "NADPHQR4": {
+        "gr": 0.7165897189523456, 
+        "gr_ratio": 1.000000000000144
+    }, 
+    "MOX_reverse": {
+        "gr": 0.7165653052158479, 
+        "gr_ratio": 0.9999659306633228
+    }, 
+    "MEOHtex_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "RPE_reverse": {
+        "gr": 0.7165897189522662, 
+        "gr_ratio": 1.0000000000000333
+    }, 
+    "NDPK8_reverse": {
+        "gr": 0.7165897189522653, 
+        "gr_ratio": 1.000000000000032
+    }, 
+    "GUACYC": {
+        "gr": 0.716589718952351, 
+        "gr_ratio": 1.0000000000001517
+    }, 
+    "PUNP2": {
+        "gr": 0.716589718952257, 
+        "gr_ratio": 1.0000000000000204
+    }, 
+    "5MTRtpp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "CMPN": {
+        "gr": 0.7165897189523542, 
+        "gr_ratio": 1.000000000000156
+    }, 
+    "GLBRAN2": {
+        "gr": 0.7165897189523532, 
+        "gr_ratio": 1.0000000000001548
+    }, 
+    "CYTBO3_4pp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "GHBDHx_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "PE160abcpp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "PPND": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "e4p_and_pep_to_3dhq": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "LSERDHr": {
+        "gr": 0.7165897189523375, 
+        "gr_ratio": 1.0000000000001328
+    }, 
+    "ASPTA": {
+        "gr": 0.7165897189522644, 
+        "gr_ratio": 1.0000000000000309
+    }, 
+    "GART": {
+        "gr": 0.716589718952353, 
+        "gr_ratio": 1.0000000000001545
+    }, 
+    "LDH_D_reverse": {
+        "gr": 0.7165897189522653, 
+        "gr_ratio": 1.000000000000032
+    }, 
+    "EX_pi_LPAREN_e_RPAREN__reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "METOX1s": {
+        "gr": 0.7165897189523376, 
+        "gr_ratio": 1.000000000000133
+    }, 
+    "CYTDK2": {
+        "gr": 0.7165897189523508, 
+        "gr_ratio": 1.0000000000001514
+    }, 
+    "PPK2r": {
+        "gr": 0.716589718952261, 
+        "gr_ratio": 1.000000000000026
+    }, 
+    "PFK": {
+        "gr": 0.7165897189522521, 
+        "gr_ratio": 1.0000000000000135
+    }, 
+    "ADK3_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "MDDCP2pp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ABTA": {
+        "gr": 0.716589718952255, 
+        "gr_ratio": 1.0000000000000178
+    }, 
+    "NDPK4_reverse": {
+        "gr": 0.7165897189522653, 
+        "gr_ratio": 1.000000000000032
+    }, 
+    "LEUTAi": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "RPI_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "MG2t3_2pp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "PIt2rpp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "PE161abcpp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "GSNK": {
+        "gr": 0.7165897189523394, 
+        "gr_ratio": 1.0000000000001354
+    }, 
+    "MDH": {
+        "gr": 0.7068182861803701, 
+        "gr_ratio": 0.9863639785592243
+    }, 
+    "PPBNGS": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "QUINDH_reverse": {
+        "gr": 0.7165897189522662, 
+        "gr_ratio": 1.0000000000000333
+    }, 
+    "SHK3Dr": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "DAAD": {
+        "gr": 0.7165897189523508, 
+        "gr_ratio": 1.0000000000001514
+    }, 
+    "ASPK": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ASPT": {
+        "gr": 0.7165897189522691, 
+        "gr_ratio": 1.0000000000000373
+    }, 
+    "PTAr": {
+        "gr": 0.7106233696230891, 
+        "gr_ratio": 0.9916739674441927
+    }, 
+    "EX_co_LPAREN_e_RPAREN_": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "CYTBDpp": {
+        "gr": 0.7165897189523508, 
+        "gr_ratio": 1.0000000000001514
+    }, 
+    "DTMPK_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "CBPS": {
+        "gr": 0.716589718952357, 
+        "gr_ratio": 1.00000000000016
+    }, 
+    "SADT2": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "HCYSMT": {
+        "gr": 0.7165897189523395, 
+        "gr_ratio": 1.0000000000001357
+    }, 
+    "EX_succ_LPAREN_e_RPAREN_": {
+        "gr": 0.7165897189522835, 
+        "gr_ratio": 1.0000000000000575
+    }, 
+    "NTP10": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "DHAD1": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "TMDK1": {
+        "gr": 0.7165897189522613, 
+        "gr_ratio": 1.0000000000000264
+    }, 
+    "ADPT": {
+        "gr": 0.7165897189522691, 
+        "gr_ratio": 1.0000000000000373
+    }, 
+    "EX_for_LPAREN_e_RPAREN_": {
+        "gr": 0.7165897189522835, 
+        "gr_ratio": 1.0000000000000575
+    }, 
+    "THFSYN": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "EDA": {
+        "gr": 0.7165897189523542, 
+        "gr_ratio": 1.000000000000156
+    }, 
+    "MNtex": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "EDD": {
+        "gr": 0.7165897189523508, 
+        "gr_ratio": 1.0000000000001514
+    }, 
+    "TMDPP": {
+        "gr": 0.7165897189522572, 
+        "gr_ratio": 1.0000000000000207
+    }, 
+    "DURADx": {
+        "gr": 0.7165897189523542, 
+        "gr_ratio": 1.000000000000156
+    }, 
+    "ALAGLUE_reverse": {
+        "gr": 0.7165897189522616, 
+        "gr_ratio": 1.0000000000000269
+    }, 
+    "THFAT": {
+        "gr": 0.7165897189522679, 
+        "gr_ratio": 1.0000000000000355
+    }, 
+    "COASYN": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "PRPPS": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "SDPDS": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "DHFR": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ACKr": {
+        "gr": 0.7165897189522561, 
+        "gr_ratio": 1.0000000000000193
+    }, 
+    "EX_cu2_LPAREN_e_RPAREN__reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "VALTA_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "NH4tpp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "VALTA": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "HEX1": {
+        "gr": 0.716589718952351, 
+        "gr_ratio": 1.0000000000001517
+    }, 
+    "FTHFD": {
+        "gr": 0.716589718952352, 
+        "gr_ratio": 1.000000000000153
+    }, 
+    "PGMT_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "imp_to_gmp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "PPNDH": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ICHORS": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "PGL": {
+        "gr": 0.7102760789778875, 
+        "gr_ratio": 0.9911893238105811
+    }, 
+    "PGM": {
+        "gr": 0.7165897189522541, 
+        "gr_ratio": 1.0000000000000164
+    }, 
+    "ADK3": {
+        "gr": 0.7165897189522691, 
+        "gr_ratio": 1.0000000000000373
+    }, 
+    "ADK1": {
+        "gr": 0.7165897189522916, 
+        "gr_ratio": 1.0000000000000688
+    }, 
+    "HXPRT": {
+        "gr": 0.716589718952351, 
+        "gr_ratio": 1.0000000000001517
+    }, 
+    "ACKr_reverse": {
+        "gr": 0.7106233696230934, 
+        "gr_ratio": 0.9916739674441986
+    }, 
+    "EX_fe2_LPAREN_e_RPAREN__reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ptrc_to_4abut_1": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "PUNP3_reverse": {
+        "gr": 0.7165897189522662, 
+        "gr_ratio": 1.0000000000000333
+    }, 
+    "OCTDPS": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "OCBT": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "FADRx": {
+        "gr": 0.7165891654559063, 
+        "gr_ratio": 0.9999992275965991
+    }, 
+    "FTHFLi": {
+        "gr": 0.716589718952352, 
+        "gr_ratio": 1.000000000000153
+    }, 
+    "CRNCDH": {
+        "gr": 0.7165897189523508, 
+        "gr_ratio": 1.0000000000001514
+    }, 
+    "ICYSDS": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ASNS1": {
+        "gr": 0.7165897189522644, 
+        "gr_ratio": 1.0000000000000309
+    }, 
+    "EX_mobd_LPAREN_e_RPAREN__reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "PPM_reverse": {
+        "gr": 0.71658971895227, 
+        "gr_ratio": 1.0000000000000386
+    }, 
+    "CO2tpp_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "G3PD2_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ALATA_L_reverse": {
+        "gr": 0.7165897189522653, 
+        "gr_ratio": 1.000000000000032
+    }, 
+    "PUNP4_reverse": {
+        "gr": 0.7165897189522662, 
+        "gr_ratio": 1.0000000000000333
+    }, 
+    "GLCP2": {
+        "gr": 0.7165897189523538, 
+        "gr_ratio": 1.0000000000001557
+    }, 
+    "COtex": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "CBL1abcpp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "FUM_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "ADK4": {
+        "gr": 0.7165897189522691, 
+        "gr_ratio": 1.0000000000000373
+    }, 
+    "CYSS": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "IPMD": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "PGK": {
+        "gr": 0.7165897189522541, 
+        "gr_ratio": 1.0000000000000164
+    }, 
+    "PAPSR": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "5DOAN": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "PGI": {
+        "gr": 0.7095920439428665, 
+        "gr_ratio": 0.9902347538287216
+    }, 
+    "DURADx_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "SO4tex": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "SERt2rpp_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "5MTRtex_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "GLYCtpp_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ASAD_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "FBA3_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "2obut_and_pyr_to_3mop": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "PPKr": {
+        "gr": 0.7165897189522503, 
+        "gr_ratio": 1.000000000000011
+    }, 
+    "TPI": {
+        "gr": 0.6821905348173248, 
+        "gr_ratio": 0.9519959842778458
+    }, 
+    "ACONTa": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "SUCOAS": {
+        "gr": 0.7165897189522588, 
+        "gr_ratio": 1.0000000000000229
+    }, 
+    "ACONTb": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "DURIPP": {
+        "gr": 0.7165897189523508, 
+        "gr_ratio": 1.0000000000001514
+    }, 
+    "DALAt2pp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "CO2tex_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "G6PDH2r_reverse": {
+        "gr": 0.7165897189522605, 
+        "gr_ratio": 1.0000000000000253
+    }, 
+    "PGK_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "NDPK1_reverse": {
+        "gr": 0.7165897189522653, 
+        "gr_ratio": 1.000000000000032
+    }, 
+    "DAPDC": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "chor_and_prpp_to_3ig3p": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "GLCptspp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "PSCVT": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "DSERDHr_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "PYK": {
+        "gr": 0.7126140150109612, 
+        "gr_ratio": 0.99445191043615
+    }, 
+    "SPMS": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "CYTK1": {
+        "gr": 0.7151887125313882, 
+        "gr_ratio": 0.9980448974025156
+    }, 
+    "ATPS4rpp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "PDE4": {
+        "gr": 0.716589718952259, 
+        "gr_ratio": 1.0000000000000233
+    }, 
+    "LCARR": {
+        "gr": 0.7165897189523375, 
+        "gr_ratio": 1.0000000000001328
+    }, 
+    "PDE1": {
+        "gr": 0.7165897189522524, 
+        "gr_ratio": 1.000000000000014
+    }, 
+    "METOX2s": {
+        "gr": 0.7165897189523456, 
+        "gr_ratio": 1.000000000000144
+    }, 
+    "CLtex": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "CYTK2": {
+        "gr": 0.7165897189523524, 
+        "gr_ratio": 1.0000000000001534
+    }, 
+    "CRNCAR": {
+        "gr": 0.7165897189523508, 
+        "gr_ratio": 1.0000000000001514
+    }, 
+    "NTP3": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "CRNCAR_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "NTP1": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "NTP5": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "PUNP2_reverse": {
+        "gr": 0.7165897189522662, 
+        "gr_ratio": 1.0000000000000333
+    }, 
+    "DXPS": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "PPKr_reverse": {
+        "gr": 0.7073598083656053, 
+        "gr_ratio": 0.9871196720486969
+    }, 
+    "FUM": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ICDHyr_reverse": {
+        "gr": 0.7165897189522605, 
+        "gr_ratio": 1.0000000000000253
+    }, 
+    "DAPE": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "PUNP6_reverse": {
+        "gr": 0.7165897189522662, 
+        "gr_ratio": 1.0000000000000333
+    }, 
+    "O2tex": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "CBL1tonex": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "CELLENV_10": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "EX_ni2_LPAREN_e_RPAREN__reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ZN2tpp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ILETA": {
+        "gr": 0.7165897189523375, 
+        "gr_ratio": 1.0000000000001328
+    }, 
+    "COFACTOR_3_amet": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ENO": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "NTPP7": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "g1p_to_glycogen": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "EX_cl_LPAREN_e_RPAREN__reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "EX_h_LPAREN_e_RPAREN_": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "IPPMIb": {
+        "gr": 0.716589718952351, 
+        "gr_ratio": 1.0000000000001517
+    }, 
+    "IPPMIa": {
+        "gr": 0.7165897189523375, 
+        "gr_ratio": 1.0000000000001328
+    }, 
+    "IPPMIb_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ICDHyr": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "EX_mg2_LPAREN_e_RPAREN__reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "CRNBTCT_reverse": {
+        "gr": 0.7165897189522653, 
+        "gr_ratio": 1.000000000000032
+    }, 
+    "NDPK5_reverse": {
+        "gr": 0.7165897189522653, 
+        "gr_ratio": 1.000000000000032
+    }, 
+    "ALCD2x_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "MCTP1App": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "DM_4CRSOL": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "FRD2": {
+        "gr": 0.716589718952352, 
+        "gr_ratio": 1.000000000000153
+    }, 
+    "FRD3": {
+        "gr": 0.7165897189523456, 
+        "gr_ratio": 1.000000000000144
+    }, 
+    "ALAGLUE": {
+        "gr": 0.7165897189522663, 
+        "gr_ratio": 1.0000000000000335
+    }, 
+    "MTHFR2": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "glu_DASH_L_to_glu5sa": {
+        "gr": 0.7159766180505398, 
+        "gr_ratio": 0.9991444185068703
+    }, 
+    "PPA2": {
+        "gr": 0.716589718952261, 
+        "gr_ratio": 1.000000000000026
+    }, 
+    "H2Otpp_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "CRNBTCT": {
+        "gr": 0.7165897189523542, 
+        "gr_ratio": 1.000000000000156
+    }, 
+    "CELLENV_11": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ADSK": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "imp_to_amp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "LDH_D2": {
+        "gr": 0.716589718952351, 
+        "gr_ratio": 1.0000000000001517
+    }, 
+    "GSPMDA": {
+        "gr": 0.716589718952351, 
+        "gr_ratio": 1.0000000000001517
+    }, 
+    "PUNP1_reverse": {
+        "gr": 0.7165897189522662, 
+        "gr_ratio": 1.0000000000000333
+    }, 
+    "ALATA_L": {
+        "gr": 0.7165897189522663, 
+        "gr_ratio": 1.0000000000000335
+    }, 
+    "CYTK1_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "GSPMDS": {
+        "gr": 0.716589718952351, 
+        "gr_ratio": 1.0000000000001517
+    }, 
+    "ADNCYC": {
+        "gr": 0.7165897189522663, 
+        "gr_ratio": 1.0000000000000335
+    }, 
+    "TRPAS2": {
+        "gr": 0.7165897189522588, 
+        "gr_ratio": 1.0000000000000229
+    }, 
+    "EX_zn2_LPAREN_e_RPAREN__reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "MPTG": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "CYSDS": {
+        "gr": 0.7165897189523542, 
+        "gr_ratio": 1.000000000000156
+    }, 
+    "TMDS": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "GLYCL": {
+        "gr": 0.716589718952356, 
+        "gr_ratio": 1.0000000000001585
+    }, 
+    "PDH": {
+        "gr": 0.646885066008486, 
+        "gr_ratio": 0.9027272494982561
+    }, 
+    "PUNP5_reverse": {
+        "gr": 0.7165897189522662, 
+        "gr_ratio": 1.0000000000000333
+    }, 
+    "MLDCP1App": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "GLYCPHOSPHOLIPID_9": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "GLYCPHOSPHOLIPID_8": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "GALUi": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "MOBDtex": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "NADSYN_aerobic": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "GLYCPHOSPHOLIPID_1": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "I2FE2SS": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "GLYCPHOSPHOLIPID_3": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "NI2tpp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "GLYCPHOSPHOLIPID_5": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "GLYCPHOSPHOLIPID_4": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "I2FE2ST": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "SSALy": {
+        "gr": 0.7165897189522572, 
+        "gr_ratio": 1.0000000000000207
+    }, 
+    "COFACTOR_11_amet": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "SERD_D": {
+        "gr": 0.7165897189522634, 
+        "gr_ratio": 1.0000000000000295
+    }, 
+    "ASPTA_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "SDPTA_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "DADK_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "SERD_L": {
+        "gr": 0.7165897189522586, 
+        "gr_ratio": 1.0000000000000229
+    }, 
+    "GHBDHx": {
+        "gr": 0.7165897189523545, 
+        "gr_ratio": 1.0000000000001565
+    }, 
+    "EX_fe3_LPAREN_e_RPAREN__reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "EX_pyr_LPAREN_e_RPAREN_": {
+        "gr": 0.716589718952255, 
+        "gr_ratio": 1.0000000000000178
+    }, 
+    "DM_MTHTHF": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "NADPHQR2": {
+        "gr": 0.7165897189523456, 
+        "gr_ratio": 1.000000000000144
+    }, 
+    "NADH17pp": {
+        "gr": 0.7165897189523456, 
+        "gr_ratio": 1.000000000000144
+    }, 
+    "UPPRT": {
+        "gr": 0.7165897189522588, 
+        "gr_ratio": 1.0000000000000229
+    }, 
+    "SUCDi": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "GAPD_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "POX": {
+        "gr": 0.7165897189522524, 
+        "gr_ratio": 1.000000000000014
+    }, 
+    "CLt3_2pp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "CYTD": {
+        "gr": 0.716589718952357, 
+        "gr_ratio": 1.00000000000016
+    }, 
+    "NDPK8": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "RPE": {
+        "gr": 0.7115869554204715, 
+        "gr_ratio": 0.9930186501432289
+    }, 
+    "DSERDHr": {
+        "gr": 0.7165897189523542, 
+        "gr_ratio": 1.000000000000156
+    }, 
+    "NDPK2": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "NDPK3": {
+        "gr": 0.7154780590156391, 
+        "gr_ratio": 0.9984486800365645
+    }, 
+    "NDPK1": {
+        "gr": 0.7165897189522503, 
+        "gr_ratio": 1.000000000000011
+    }, 
+    "TRDR": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "NDPK7": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "NDPK4": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "NDPK5": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "MCOATA": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "LIPOPOLYSACCHARIDE_1": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "LIPOPOLYSACCHARIDE_2": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "LIPOPOLYSACCHARIDE_3": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "LIPOPOLYSACCHARIDE_4": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "AGPR_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "RHCCE": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "DTMPK": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "G3PD7": {
+        "gr": 0.7165897189523508, 
+        "gr_ratio": 1.0000000000001514
+    }, 
+    "G3PD6": {
+        "gr": 0.7165897189523508, 
+        "gr_ratio": 1.0000000000001514
+    }, 
+    "G3PD5": {
+        "gr": 0.7165897189523491, 
+        "gr_ratio": 1.000000000000149
+    }, 
+    "PFK_3": {
+        "gr": 0.7165897189522528, 
+        "gr_ratio": 1.0000000000000147
+    }, 
+    "PRPPS_reverse": {
+        "gr": 0.7165897189522662, 
+        "gr_ratio": 1.0000000000000333
+    }, 
+    "NI2tex": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "MDDEP3pp": {
+        "gr": 0.7165897189523376, 
+        "gr_ratio": 1.000000000000133
+    }, 
+    "GARFT_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "TALA_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "CITL": {
+        "gr": 0.7165897189523542, 
+        "gr_ratio": 1.000000000000156
+    }, 
+    "GLYCLTDy": {
+        "gr": 0.7165897189523538, 
+        "gr_ratio": 1.0000000000001557
+    }, 
+    "GLYK": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "aspsa_to_sl2a6o": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ACCOAC": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "OCBT_reverse": {
+        "gr": 0.7165897189522653, 
+        "gr_ratio": 1.000000000000032
+    }, 
+    "GHMT2r": {
+        "gr": 0.7071471903669618, 
+        "gr_ratio": 0.9868229639142928
+    }, 
+    "MLDCP1Bpp": {
+        "gr": 0.7165897189523376, 
+        "gr_ratio": 1.000000000000133
+    }, 
+    "MLDCP3App": {
+        "gr": 0.716587797787721, 
+        "gr_ratio": 0.9999973190174649
+    }, 
+    "AKGDH": {
+        "gr": 0.7145834125236753, 
+        "gr_ratio": 0.9972002020465762
+    }, 
+    "ADA": {
+        "gr": 0.7165897189522832, 
+        "gr_ratio": 1.000000000000057
+    }, 
+    "DATPHs": {
+        "gr": 0.7165897189523542, 
+        "gr_ratio": 1.000000000000156
+    }, 
+    "MDDEP2pp": {
+        "gr": 0.716589718952351, 
+        "gr_ratio": 1.0000000000001517
+    }, 
+    "ATPHs": {
+        "gr": 0.7165897189522644, 
+        "gr_ratio": 1.0000000000000309
+    }, 
+    "LCARR_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "NADH18pp": {
+        "gr": 0.7165897189523378, 
+        "gr_ratio": 1.0000000000001332
+    }, 
+    "Htex_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "UDCPDPS": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "DHQTi": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "IPDPS": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ACOTA": {
+        "gr": 0.7165897189522619, 
+        "gr_ratio": 1.0000000000000273
+    }, 
+    "SULRi": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "GLDBRAN2": {
+        "gr": 0.716589718952353, 
+        "gr_ratio": 1.0000000000001545
+    }, 
+    "FE2tpp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ALCD2x": {
+        "gr": 0.7165897189522648, 
+        "gr_ratio": 1.0000000000000313
+    }, 
+    "EX_mn2_LPAREN_e_RPAREN__reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ATPS4rpp_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "GAPD": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "TRPS3": {
+        "gr": 0.7162348668727271, 
+        "gr_ratio": 0.9995048043948578
+    }, 
+    "CRNCDH_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "ASNS2": {
+        "gr": 0.7159211990652825, 
+        "gr_ratio": 0.9990670813866305
+    }, 
+    "THIAMIN": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "GHMT2r_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "ASPK_reverse": {
+        "gr": 0.7165897189522653, 
+        "gr_ratio": 1.000000000000032
+    }, 
+    "FBP": {
+        "gr": 0.716589718952352, 
+        "gr_ratio": 1.000000000000153
+    }, 
+    "LDH_D": {
+        "gr": 0.716589718952351, 
+        "gr_ratio": 1.0000000000001517
+    }, 
+    "CU2tex": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "GMPR": {
+        "gr": 0.7165897189523545, 
+        "gr_ratio": 1.0000000000001565
+    }, 
+    "EX_co2_LPAREN_e_RPAREN__reverse": {
+        "gr": 0.7165897189522616, 
+        "gr_ratio": 1.0000000000000269
+    }, 
+    "Kt2pp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "NADPPPS": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "THRD_L": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "EX_k_LPAREN_e_RPAREN__reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ACtex_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ARGSL_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "BPNT": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "DM_AMOB": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "MDH_reverse": {
+        "gr": 0.7165897189522653, 
+        "gr_ratio": 1.000000000000032
+    }, 
+    "URIK2": {
+        "gr": 0.7165897189522572, 
+        "gr_ratio": 1.0000000000000207
+    }, 
+    "SSALx": {
+        "gr": 0.7165897189522588, 
+        "gr_ratio": 1.0000000000000229
+    }, 
+    "PGI_reverse": {
+        "gr": 0.7165897189522653, 
+        "gr_ratio": 1.000000000000032
+    }, 
+    "GLYCPHOSPHOLIPID_6": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "CBMKr": {
+        "gr": 0.7131341085996384, 
+        "gr_ratio": 0.995177700347618
+    }, 
+    "FBA3": {
+        "gr": 0.7165897189523456, 
+        "gr_ratio": 1.000000000000144
+    }, 
+    "GTHSYN": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "GK1": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "MALS": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "FE2tex": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "UMPK_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "EX_h_LPAREN_e_RPAREN__reverse": {
+        "gr": 0.7165897189522616, 
+        "gr_ratio": 1.0000000000000269
+    }, 
+    "COFACTOR_10": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "EX_so4_LPAREN_e_RPAREN__reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "DURIPP_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "CU2tpp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "GLYCLTDx": {
+        "gr": 0.7165897189523538, 
+        "gr_ratio": 1.0000000000001557
+    }, 
+    "UMPK": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "EX_glc_LPAREN_e_RPAREN_": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ADK1_reverse": {
+        "gr": 0.7165897189522621, 
+        "gr_ratio": 1.0000000000000275
+    }, 
+    "GCALDD": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "udp_to_dump_aerobic": {
+        "gr": 0.7165188640763087, 
+        "gr_ratio": 0.9999011221148453
+    }, 
+    "ENO_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "POR5": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "MLDCP2Bpp": {
+        "gr": 0.7165897189523456, 
+        "gr_ratio": 1.000000000000144
+    }, 
+    "PE181abcpp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "TYRTA": {
+        "gr": 0.7165897189522616, 
+        "gr_ratio": 1.0000000000000269
+    }, 
+    "CAt6pp_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "DHPTDCs2": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "A5PISO": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ARGSL": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "CTPS2": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "THRAi": {
+        "gr": 0.7165897189522679, 
+        "gr_ratio": 1.0000000000000355
+    }, 
+    "EX_fum_LPAREN_e_RPAREN_": {
+        "gr": 0.7165897189522835, 
+        "gr_ratio": 1.0000000000000575
+    }, 
+    "Ec_biomass_iJO1366_WT_53p95M": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "GARFT": {
+        "gr": 0.7156767439054346, 
+        "gr_ratio": 0.9987259445360971
+    }, 
+    "ARGSS": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "UMPSYN_aerobic": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "CYTK2_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "NADH16pp": {
+        "gr": 0.7165897189523378, 
+        "gr_ratio": 1.0000000000001332
+    }, 
+    "CLPNS160pp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ATHRDHr_reverse": {
+        "gr": 0.7165897189522618, 
+        "gr_ratio": 1.000000000000027
+    }, 
+    "LSERDHr_reverse": {
+        "gr": 0.7165897189522653, 
+        "gr_ratio": 1.000000000000032
+    }, 
+    "GLCP": {
+        "gr": 0.7165897189523538, 
+        "gr_ratio": 1.0000000000001557
+    }, 
+    "MOX": {
+        "gr": 0.7165897189523376, 
+        "gr_ratio": 1.000000000000133
+    }, 
+    "CS": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "SHK3Dr_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "PUNP4": {
+        "gr": 0.716589718952257, 
+        "gr_ratio": 1.0000000000000204
+    }, 
+    "PUNP5": {
+        "gr": 0.716589718952257, 
+        "gr_ratio": 1.0000000000000204
+    }, 
+    "PUNP6": {
+        "gr": 0.716589718952257, 
+        "gr_ratio": 1.0000000000000204
+    }, 
+    "PUNP7": {
+        "gr": 0.7165897189522639, 
+        "gr_ratio": 1.00000000000003
+    }, 
+    "PUNP1": {
+        "gr": 0.7165897189522639, 
+        "gr_ratio": 1.00000000000003
+    }, 
+    "PTAr_reverse": {
+        "gr": 0.7165897189522662, 
+        "gr_ratio": 1.0000000000000333
+    }, 
+    "PUNP3": {
+        "gr": 0.716589718952257, 
+        "gr_ratio": 1.0000000000000204
+    }, 
+    "ASNN": {
+        "gr": 0.7165897189522644, 
+        "gr_ratio": 1.0000000000000309
+    }, 
+    "SO4t2pp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "dhap_to_lac_DASH_D": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "ALAR_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "THD2pp": {
+        "gr": 0.7165897189522679, 
+        "gr_ratio": 1.0000000000000355
+    }, 
+    "INSK": {
+        "gr": 0.716589718952351, 
+        "gr_ratio": 1.0000000000001517
+    }, 
+    "DURIK1": {
+        "gr": 0.7165897189523508, 
+        "gr_ratio": 1.0000000000001514
+    }, 
+    "MDH3": {
+        "gr": 0.7165897189523456, 
+        "gr_ratio": 1.000000000000144
+    }, 
+    "MDH2": {
+        "gr": 0.7165897189523457, 
+        "gr_ratio": 1.0000000000001443
+    }, 
+    "GND": {
+        "gr": 0.7102760789779732, 
+        "gr_ratio": 0.9911893238107008
+    }, 
+    "ILETA_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "prpp_to_his_DASH_L": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "NADH10": {
+        "gr": 0.7165897189523456, 
+        "gr_ratio": 1.000000000000144
+    }, 
+    "PPC": {
+        "gr": 0.7141041035229934, 
+        "gr_ratio": 0.9965313269734273
+    }, 
+    "PPA": {
+        "gr": 0.716589718952261, 
+        "gr_ratio": 1.000000000000026
+    }, 
+    "PYNP2r_reverse": {
+        "gr": 0.7165897189522662, 
+        "gr_ratio": 1.0000000000000333
+    }, 
+    "TKT2_reverse": {
+        "gr": 0.7165897189522653, 
+        "gr_ratio": 1.000000000000032
+    }, 
+    "PPS": {
+        "gr": 0.7165897189522498, 
+        "gr_ratio": 1.0000000000000104
+    }, 
+    "EX_cbl1_LPAREN_e_RPAREN__reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ATHRDHr": {
+        "gr": 0.7165897189522644, 
+        "gr_ratio": 1.0000000000000309
+    }, 
+    "NADTRHD": {
+        "gr": 0.7165897189523376, 
+        "gr_ratio": 1.000000000000133
+    }, 
+    "MDDCP1pp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "IPPS": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "EX_ac_LPAREN_e_RPAREN_": {
+        "gr": 0.7662647733641063, 
+        "gr_ratio": 1.069321472382406
+    }, 
+    "NDPK3_reverse": {
+        "gr": 0.7165897189522653, 
+        "gr_ratio": 1.000000000000032
+    }, 
+    "PG181abcpp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ALAALAD": {
+        "gr": 0.7165897189522691, 
+        "gr_ratio": 1.0000000000000373
+    }, 
+    "ASTPathway": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "P5CR": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "VITB6": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "DADK": {
+        "gr": 0.7165897189523508, 
+        "gr_ratio": 1.0000000000001514
+    }, 
+    "SDPTA": {
+        "gr": 0.7165897189522634, 
+        "gr_ratio": 1.0000000000000295
+    }, 
+    "GLUSy": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "DADA": {
+        "gr": 0.7165897189523508, 
+        "gr_ratio": 1.0000000000001514
+    }, 
+    "ALAALAr": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "MCTP2App": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "CRNCBCT": {
+        "gr": 0.7165897189523508, 
+        "gr_ratio": 1.0000000000001514
+    }, 
+    "ACALD_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "PUNP7_reverse": {
+        "gr": 0.7165897189522662, 
+        "gr_ratio": 1.0000000000000333
+    }, 
+    "NTPTP1": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "NTPTP2": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "NTPP10": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "MG2tex": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "CA2tex": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "PPK2r_reverse": {
+        "gr": 0.7165890818957971, 
+        "gr_ratio": 0.9999991109885776
+    }, 
+    "APPLDHr": {
+        "gr": 0.7165897189522648, 
+        "gr_ratio": 1.0000000000000313
+    }, 
+    "GLNS": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "MTHFC_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "ALAALAabcpp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "EX_lac_DASH_L_LPAREN_e_RPAREN_": {
+        "gr": 0.7165897189522512, 
+        "gr_ratio": 1.0000000000000124
+    }, 
+    "FADSYN_1": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "FADSYN_2": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "FADSYN_3": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "MDDEP1pp": {
+        "gr": 0.7165897189523432, 
+        "gr_ratio": 1.0000000000001408
+    }, 
+    "DGK1_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "CLPNS161pp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "RPI": {
+        "gr": 0.7165897189522679, 
+        "gr_ratio": 1.0000000000000355
+    }, 
+    "Zn2tex": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "AHCYSNS": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "EX_o2_LPAREN_e_RPAREN__reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "NDPK7_reverse": {
+        "gr": 0.7165897189522653, 
+        "gr_ratio": 1.000000000000032
+    }, 
+    "TKT2": {
+        "gr": 0.7122863023934243, 
+        "gr_ratio": 0.9939945879141131
+    }, 
+    "TKT1": {
+        "gr": 0.7108889803858969, 
+        "gr_ratio": 0.9920446269105273
+    }, 
+    "MOLYBDOPTERIN_1": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "MOLYBDOPTERIN_2": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "MOLYBDOPTERIN_3": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "VPAMTr": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "SERt4pp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "RNDR3": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "RNDR2": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "RNDR1": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "FE3tex": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "MTHTHFSs": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "METS": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "SERAT": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "PROD2": {
+        "gr": 0.7165897189522598, 
+        "gr_ratio": 1.0000000000000244
+    }, 
+    "GLUN": {
+        "gr": 0.716589718952351, 
+        "gr_ratio": 1.0000000000001517
+    }, 
+    "NH4tex": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "POR5_reverse": {
+        "gr": 0.7165897189522626, 
+        "gr_ratio": 1.0000000000000284
+    }, 
+    "MLDEP1pp": {
+        "gr": 0.716587797787721, 
+        "gr_ratio": 0.9999973190174649
+    }, 
+    "AP4AS": {
+        "gr": 0.7165897189522648, 
+        "gr_ratio": 1.0000000000000313
+    }, 
+    "TMDPP_reverse": {
+        "gr": 0.7165897189522653, 
+        "gr_ratio": 1.000000000000032
+    }, 
+    "MOBDabcpp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ACALD": {
+        "gr": 0.71658971895226, 
+        "gr_ratio": 1.0000000000000246
+    }, 
+    "NTD6": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "COtpp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "CLPNS181pp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "NTD7": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "AP4AH": {
+        "gr": 0.7165897189522648, 
+        "gr_ratio": 1.0000000000000313
+    }, 
+    "MDDCP5pp": {
+        "gr": 0.7165897189523381, 
+        "gr_ratio": 1.0000000000001337
+    }, 
+    "COFACTOR_8_amet": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "SHKK": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "H2Otex_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "MPTG2": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "GLYCPHOSPHOLIPID_2": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ADNK1": {
+        "gr": 0.7165897189522727, 
+        "gr_ratio": 1.0000000000000424
+    }, 
+    "AMPN": {
+        "gr": 0.7165897189522648, 
+        "gr_ratio": 1.0000000000000313
+    }, 
+    "NADH5": {
+        "gr": 0.7165897189523456, 
+        "gr_ratio": 1.000000000000144
+    }, 
+    "NADH9": {
+        "gr": 0.7165897189523456, 
+        "gr_ratio": 1.000000000000144
+    }, 
+    "CHORM": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "GLYCTO2": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "PG160abcpp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "Ktex": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "NADPHQR3": {
+        "gr": 0.7165897189523456, 
+        "gr_ratio": 1.000000000000144
+    }, 
+    "CHORS": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "EX_5mtr_LPAREN_e_RPAREN_": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "MCTP1Bpp": {
+        "gr": 0.716587797787721, 
+        "gr_ratio": 0.9999973190174649
+    }, 
+    "FE3abcpp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "HCO3E": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "DM_5DRIB": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "G6PP": {
+        "gr": 0.716589718952345, 
+        "gr_ratio": 1.0000000000001432
+    }, 
+    "OMCDC": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "AGPR": {
+        "gr": 0.7165897189522663, 
+        "gr_ratio": 1.0000000000000335
+    }, 
+    "pyr_to_23dhmb": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "SERAT_reverse": {
+        "gr": 0.7165897189522605, 
+        "gr_ratio": 1.0000000000000253
+    }, 
+    "GK1_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "CRNCBCT_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "ACS": {
+        "gr": 0.7165897189522832, 
+        "gr_ratio": 1.000000000000057
+    }, 
+    "ORNDC": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ALAR": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ME1": {
+        "gr": 0.7165897189523456, 
+        "gr_ratio": 1.000000000000144
+    }, 
+    "PItex": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ME2": {
+        "gr": 0.7165897189523456, 
+        "gr_ratio": 1.000000000000144
+    }, 
+    "DCYTD": {
+        "gr": 0.7165897189523508, 
+        "gr_ratio": 1.0000000000001514
+    }, 
+    "GLUDC": {
+        "gr": 0.7165897189523394, 
+        "gr_ratio": 1.0000000000001354
+    }, 
+    "VPAMTr_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "MOCOS": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "TALA": {
+        "gr": 0.716589718952263, 
+        "gr_ratio": 1.0000000000000289
+    }, 
+    "CELLENV_5": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "CELLENV_4": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "CELLENV_7": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "CELLENV_6": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "CELLENV_1": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "GLYCPHOSPHOLIPID_7": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "CELLENV_3": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "CELLENV_2": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "MLDCP2App": {
+        "gr": 0.7165897189523456, 
+        "gr_ratio": 1.000000000000144
+    }, 
+    "CELLENV_9": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "CELLENV_8": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "glu_DASH_L_to_acg5p": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "ADD": {
+        "gr": 0.7165897189522832, 
+        "gr_ratio": 1.000000000000057
+    }, 
+    "COFACTOR_9_amet": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "IPPMIa_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "XPPT": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "MTHFC": {
+        "gr": 0.7088099331840448, 
+        "gr_ratio": 0.9891433193047025
+    }, 
+    "MTHFD": {
+        "gr": 0.7088099331840463, 
+        "gr_ratio": 0.9891433193047044
+    }, 
+    "TRPS2": {
+        "gr": 0.7165897189522572, 
+        "gr_ratio": 1.0000000000000207
+    }, 
+    "MTHFD_reverse": {
+        "gr": 0.7165897189522653, 
+        "gr_ratio": 1.000000000000032
+    }, 
+    "TRPS1": {
+        "gr": 0.7165897189522572, 
+        "gr_ratio": 1.0000000000000207
+    }, 
+    "PPCK": {
+        "gr": 0.7165897189523397, 
+        "gr_ratio": 1.000000000000136
+    }, 
+    "IMPSYN_1": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "IMPSYN_3": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "IMPSYN_2": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "COBALT2tpp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "HSDy_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "FBA": {
+        "gr": 0.7165897189523456, 
+        "gr_ratio": 1.000000000000144
+    }, 
+    "EX_h2o_LPAREN_e_RPAREN_": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "COBALT2tex": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "NDPK2_reverse": {
+        "gr": 0.7165897189522653, 
+        "gr_ratio": 1.000000000000032
+    }, 
+    "CYTBD2pp": {
+        "gr": 0.7165897189523542, 
+        "gr_ratio": 1.000000000000156
+    }, 
+    "ASAD": {
+        "gr": 0.7165897189522663, 
+        "gr_ratio": 1.0000000000000335
+    }, 
+    "O2tpp": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "hom_DASH_L_to_thr_DASH_L": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "NTD9": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "ADMDC": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "OAADC": {
+        "gr": 0.716589718952259, 
+        "gr_ratio": 1.0000000000000233
+    }, 
+    "COFACTOR_4": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "COFACTOR_5": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "COFACTOR_6": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "COFACTOR_7": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "COFACTOR_1": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "COFACTOR_2": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "EX_nh4_LPAREN_e_RPAREN__reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "thr_DASH_L_to_gly": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "ACONTa_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "TPI_reverse": {
+        "gr": 0.7165897189522653, 
+        "gr_ratio": 1.000000000000032
+    }, 
+    "MTAN": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "NTD8": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "ICL": {
+        "gr": 0.7165897189523375, 
+        "gr_ratio": 1.0000000000001328
+    }, 
+    "MDDCP4pp": {
+        "gr": 0.7165897189523378, 
+        "gr_ratio": 1.0000000000001332
+    }, 
+    "TRPAS2_reverse": {
+        "gr": 0.7162348668727226, 
+        "gr_ratio": 0.9995048043948516
+    }, 
+    "NTD4": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "DGK1": {
+        "gr": 0.7165897189523508, 
+        "gr_ratio": 1.0000000000001514
+    }, 
+    "ACONTb_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "NTD3": {
+        "gr": 0.7165897189522592, 
+        "gr_ratio": 1.0000000000000235
+    }, 
+    "NTD1": {
+        "gr": 0.7165897189522521, 
+        "gr_ratio": 1.0000000000000135
+    }, 
+    "MLDEP2pp": {
+        "gr": 0.7165897189523421, 
+        "gr_ratio": 1.0000000000001392
+    }, 
+    "HSDy": {
+        "gr": 0.716589718952351, 
+        "gr_ratio": 1.0000000000001517
+    }, 
+    "METAT": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "TKT1_reverse": {
+        "gr": 0.7165897189522653, 
+        "gr_ratio": 1.000000000000032
+    }, 
+    "APPLDHr_reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "QUINDH": {
+        "gr": 0.716589718952257, 
+        "gr_ratio": 1.0000000000000204
+    }, 
+    "EX_h2o_LPAREN_e_RPAREN__reverse": {
+        "gr": 0.7165897189522608, 
+        "gr_ratio": 1.0000000000000258
+    }, 
+    "TYRTA_reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "PFL": {
+        "gr": 0.7165494980570178, 
+        "gr_ratio": 0.9999438717941931
+    }, 
+    "EX_co2_LPAREN_e_RPAREN_": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "EX_ca2_LPAREN_e_RPAREN__reverse": {
+        "gr": null, 
+        "gr_ratio": null
+    }, 
+    "MDDCP3pp": {
+        "gr": 0.7165897189523375, 
+        "gr_ratio": 1.0000000000001328
+    }
+}

@@ -1,0 +1,21 @@
+Constraints on thermodynamic and metabolite coverage were used
+
+
+            # make a continuous variable for dG_r
+            dG_rv = Reaction('dG_rv_' + r.id);
+            if use_measured_dG_r and thermodynamic_consistency_check[r.id]: # ignore inconsistent reactions
+                #if dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
+                if metabolomics_coverage[r.id] > measured_concentration_coverage_criteria and \
+                dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
+                    dG_rv.lower_bound = dG_r[r.id]['dG_r_lb'];
+                    dG_rv.upper_bound = dG_r[r.id]['dG_r_ub'];
+                    dG_rv.objective_coefficient = 0;
+                else: 
+                    dG_rv.lower_bound = self.dG_r_min;
+                    dG_rv.upper_bound = self.dG_r_max;
+                    dG_rv.objective_coefficient = 0;
+            else:
+                dG_rv.lower_bound = self.dG_r_min;
+                dG_rv.upper_bound = self.dG_r_max;
+                dG_rv.objective_coefficient = 0;
+            dG_rv.variable_kind = 'continuous';

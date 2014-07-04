@@ -1131,14 +1131,14 @@ class thermodynamics_dG_r_data(thermodynamics_io):
         for k,v in self.metabolomics_coverage.iteritems():
             if v > measured_concentration_coverage_criteria:
                 conc_coverage_cnt += 1;
-                print k, v
+                #print k, v
         print ('total # of reactions with required metabolomic coverage = ' + str(conc_coverage_cnt))
 
         dG_f_coverage_cnt = 0;
         for k,v in self.dG_r_coverage.iteritems():
             if v > measured_dG_f_coverage_criteria:
                 dG_f_coverage_cnt += 1;
-                print k, v
+                #print k, v
         print ('total # of reactions with required thermodynamic coverage = ' + str(dG_f_coverage_cnt))
     
     def find_transportMets(self, cobra_model_I, reaction_id_I):

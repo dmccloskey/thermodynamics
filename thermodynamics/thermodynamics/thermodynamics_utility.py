@@ -553,7 +553,8 @@ def simulate_thermoConstraints(cobra_model_I,reactions_id_I):
         # simulate growth with the constraint
         cobra_model_I.optimize();
         gr = cobra_model_I.solution.f
-        gr_O[rxn] = [gr, gr/gr_original*100];
+        if gr: gr_O[rxn] = [gr, gr/gr_original*100];
+        else: gr_O[rxn] = [0.0, 0.0/gr_original*100];
         # reset reaction constraint
         cobra_model_I.reactions.get_by_id(rxn).upper_bound = ub;
 
@@ -603,3 +604,27 @@ def add_pykA(cobra_model_I):
     pyka = Reaction('pyk_dttp');
     pyka.add_metabolites(pyka_mets);
     cobra_model_I.add_reactions([pyka]);
+
+def mean_confidence_interval(data, confidence=0.95):
+    '''calculate the mean and confidence intervals'''
+    import numpy
+    import scipy
+    import scipy.stats
+    a = 1.0*numpy.array(data)
+    n = len(a)
+    m, se = numpy.mean(a), scipy.stats.sem(a)
+    h = se * scipy.stats.t._ppf((1+confidence)/2., n-1)
+    return m, m-h, m+h
+
+def null(A, eps=1e-6):
+    import numpy
+    u, s, vh = numpy.linalg.svd(A,full_matrices=1,compute_uv=1)
+    null_rows = [];
+    rank = numpy.linalg.matrix_rank(A)
+    for i in range(A.shape[1]):
+        if i<rank:
+            null_rows.append(False);
+        else:
+            null_rows.append(True);
+    null_space = scipy.compress(null_rows, vh, axis=0)
+    return null_space.T

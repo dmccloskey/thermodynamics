@@ -22,25 +22,21 @@ class thermodynamics_simulatedData(thermodynamics_io):
         return
 
     def generate_sra_data(self, cobra_model, element_list=None,
-                            method='fba', the_problem='return',
-                            element_type='reaction', solver='gurobi',
-                            error_reporting=None):
+                            method='fba', element_type='reaction', solver='gurobi'):
 
         print 'Single Reaction Deletion...'
 
         # single reaction deletion
         single_reaction_deletions = single_deletion(cobra_model, element_list=None,
-                            method='fba', the_problem='return',
-                            element_type='reaction', solver='gurobi',
-                            error_reporting=None);
+                            method='fba', element_type='reaction', solver='gurobi');
 
         # FBA
         cobra_model.optimize(solver='gurobi');
 
         for k,v in single_reaction_deletions[0].iteritems():
-            self.sra_data[k.id] = {'gr':None,'gr_ratio':None};
+            self.sra_data[k] = {'gr':None,'gr_ratio':None};
             if v:
-                self.sra_data[k.id] = {'gr':v,'gr_ratio':v/cobra_model.solution.f};
+                self.sra_data[k] = {'gr':v,'gr_ratio':v/cobra_model.solution.f};
 
     def export_sra_data(self, filename):
         '''export sra data'''

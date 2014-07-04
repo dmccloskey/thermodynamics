@@ -696,5 +696,11 @@ class thermodynamics_dG_f_data(thermodynamics_io):
                                        'dG_f_ub':v['dG_f_ub'],
                                        'dG_f_units':v['dG_f_units']};
     
-        return default_values;
+        return default_values;    
+
+    def remove_measured_dG_f(self,mets_I):
+        '''Remove measured metabolite dG_f'''
+
+        for met in mets_I:
+            v=self.measured_dG_f.pop(met);
 

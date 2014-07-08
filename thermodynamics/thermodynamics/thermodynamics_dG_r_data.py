@@ -122,6 +122,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
         self.metabolomics_coverage = {}
         self.thermodynamic_consistency_check = {}
         self.displacement = {};
+        self.inconsistent_reactions = {};
 
     def export_dG0_r_json(self, filename_I):
         # save the results to json file
@@ -1120,6 +1121,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                 self.metabolomics_coverage[r.id] > measured_concentration_coverage_criteria and \
                 self.dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
                 infeasible_reactions.append(r);
+                self.inconsistent_reactions[r.id] = {};
 
         '''Summarize the thermodynamic consistency check'''
         # analysis summary:
@@ -1228,5 +1230,87 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             displacement_I[r.id]['Q_ub'] = products_pi_ub*reactants_pi_ub;
 
         self.displacement = displacement_I;
+
+    def simulate_infeasibleReactions(self,cobra_model_I):
+        '''simulate the effect of constraining thermodynamically infeasible reactions to
+        thermodynamically determined directions'''
+        # Input:
+        #   cobra_model_I
+        #   reactions_id_I = cobra model reaction ids
+        # Output:
+        #   gr_O = {'reaction_id 1':{gr:float, gr_ratio:% change in growth},
+        #           'reaction_id 2':{gr:float, gr_ratio:% change in growth},...}
+
+        gr_O = {};
+        reactions_id_I = self.inconsistent_reactions.keys();
+        # determine the orginal growth rate of the model
+        cobra_model_I.optimize();
+        gr_original = cobra_model_I.solution.f;
+        #gr_O['original'] = gr_original;
+        # iterate through each reaction
+        for rxn in reactions_id_I:
+            gr_O[rxn] = None;
+            # constrain the upper reaction bounds of the model
+            ub = cobra_model_I.reactions.get_by_id(rxn).upper_bound;
+            cobra_model_I.reactions.get_by_id(rxn).upper_bound = 0.0;
+            # check that the lower bounds are not higher than the upper bounds
+            lb = cobra_model_I.reactions.get_by_id(rxn).lower_bound;
+            if lb>0.0:
+                cobra_model_I.reactions.get_by_id(rxn).lower_bound = 0.0;
+            # simulate growth with the constraint
+            cobra_model_I.optimize();
+            gr = cobra_model_I.solution.f
+            if gr: gr_O[rxn] = {'gr':gr, 'gr_ratio':gr/gr_original*100};
+            else: gr_O[rxn] = {'gr':0.0, 'gr_ratio':0.0/gr_original*100};
+            # reset reaction constraint
+            cobra_model_I.reactions.get_by_id(rxn).upper_bound = ub;
+
+        self.inconsistent_reactions = gr_O;
+
+    def constrain_infeasibleReactions(self,cobra_model_irreversible):
+        '''constrain the bounds of thermodynamically infeasible reactions
+        that do not impact growth'''
+        # Input:
+        #   cobra_model
+        # Output:
+        #   cobra_model with reactions removed
+
+        for k,v in self.inconsistent_reactions.iteritems():
+            #remove the reaction from the model
+            if v['gr_ratio'] > 0.0:
+                rxn = cobra_model_irreversible.reactions.get_by_id(k)
+                # constrain the upper reaction bounds of the model
+                ub = cobra_model_irreversible.reactions.get_by_id(k).upper_bound;
+                cobra_model_irreversible.reactions.get_by_id(k).upper_bound = 0.0;
+                # check that the lower bounds are not higher than the upper bounds
+                lb = cobra_model_irreversible.reactions.get_by_id(k).lower_bound;
+                if lb>0.0:
+                    cobra_model_irreversible.reactions.get_by_id(k).lower_bound = 0.0;
+                #check for growth
+                cobra_model_irreversible.optimize(solver='gurobi');
+                if not cobra_model_irreversible.solution.f:
+                    print rxn.id + ' broke the model!';
+                    cobra_model_irreversible.reactions.get_by_id(k).upper_bound = ub;
+                    cobra_model_irreversible.reactions.get_by_id(k).lower_bound = lb;
+
+    def remove_infeasibleReactions(self,cobra_model):
+        '''remove thermodynamically infeasible reactions
+        that do not impact growth'''
+        # Input:
+        #   cobra_model
+        # Output:
+        #   cobra_model with reactions removed
+
+        for k,v in self.inconsistent_reactions.iteritems():
+            #remove the reaction from the model
+            if v['gr_ratio'] > 0.0:
+                rxn = cobra_model.reactions.get_by_id(k)
+                cobra_model.remove_reactions(rxn);
+                #check for growth
+                cobra_model.optimize(solver='gurobi');
+                if not cobra_model.solution.f:
+                    print rxn.id + ' broke the model!';
+                    cobra_model.add_reaction(rxn);
+
 
 

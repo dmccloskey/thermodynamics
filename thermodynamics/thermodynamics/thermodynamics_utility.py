@@ -550,6 +550,10 @@ def simulate_thermoConstraints(cobra_model_I,reactions_id_I):
         # constrain the upper reaction bounds of the model
         ub = cobra_model_I.reactions.get_by_id(rxn).upper_bound;
         cobra_model_I.reactions.get_by_id(rxn).upper_bound = 0.0;
+        # check that the lower bounds are not higher than the upper bounds
+        lb = cobra_model_I.reactions.get_by_id(rxn).lower_bound;
+        if lb>0.0:
+            cobra_model_I.reactions.get_by_id(rxn).lower_bound = 0.0;
         # simulate growth with the constraint
         cobra_model_I.optimize();
         gr = cobra_model_I.solution.f

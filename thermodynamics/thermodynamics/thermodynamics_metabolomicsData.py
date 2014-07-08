@@ -2,6 +2,7 @@
 import json, csv
 from math import sqrt,exp,pow
 from numpy import average, var, log
+from copy import copy
 
 from thermodynamics_io import thermodynamics_io
 
@@ -20,7 +21,8 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
         
     def format_metabolomics_data(self):
         '''format data'''
-
+        
+        self.measured_concentrations = self._convert_metabolomics_names(self.measured_concentrations);
         self.measured_concentrations = self._compartementalize_concentrations(self.measured_concentrations);
         
     def generate_estimated_metabolomics_data(self, cobra_model):
@@ -343,3 +345,17 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
 
         for met in mets_I:
             v=self.measured_concentrations.pop(met);
+
+    def _convert_metabolomics_names(self, measured_values):
+        '''Format measured metabolite names'''
+        # convert names:
+        measured_concentrations_converted = {};
+        for met in measured_values.keys():
+            met_conv = copy(met);
+            met_conv = met_conv.replace('-','_DASH_');
+            met_conv = met_conv.replace('(','_LPAREN_');
+            met_conv = met_conv.replace(')','_RPAREN_');
+            measured_concentrations_converted[met_conv] = measured_values[met];
+        #self.measured_concentrations = measured_concentrations_converted;
+        return measured_concentrations_converted;
+            

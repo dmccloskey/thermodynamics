@@ -66,15 +66,19 @@ dG_f_data = thermodynamics_dG_f_data(id2KEGGID_filename_I='data\\id2KEGGID.csv')
 dG_f_data.import_dG_f(data_dG0_transformed);
 dG_f_data.format_dG_f();
 dG_f_data.generate_estimated_dG_f(cobra_model_wt01)
-dG_f_data.check_data()
+dG_f_data.check_data();
 #inconsistent_dG_f = ['damp_c','dadp_c','dcdp_c','dcmp_c','dctp_c','dgdp_c','dttp_c','dtdprmn_c','acg5p_c','ribflv_c','fad_c']
 #dG_f_data.remove_measured_dG_f(inconsistent_dG_f)
 
 # load metabolomics data for wt01 conditions
 data_concentrations_wt01 = 'data\\WtEcoli01_geo\\ALEWt01_OxicWtGlc_0_geo.json';
+data_glcM9 = 'data\\WtEcoli01_geo\\glcM9.json';
 metabolomics_data_wt01 = thermodynamics_metabolomicsData();
-metabolomics_data_wt01.import_metabolomics_data(data_concentrations_wt01);
-metabolomics_data_wt01.format_metabolomics_data(); # add compartment identifiers to metabolite ids
+metabolomics_data_wt01.import_metabolomics_data_intracellular(data_concentrations_wt01);
+metabolomics_data_wt01.import_metabolomics_data_extracellular(data_glcM9);
+metabolomics_data_wt01.format_metabolomics_data_intracellular(); # add compartment identifiers to metabolite ids
+metabolomics_data_wt01.format_metabolomics_data_extracellular(); # add compartment identifiers to metabolite ids
+metabolomics_data_wt01.combine_measured_concentrations(); # combine intracellular and extracellular concentrations
 metabolomics_data_wt01.generate_estimated_metabolomics_data(cobra_model_wt01);
 ## reset bounds on inconsistent metabolites
 #inconsistent_concentrations = ['damp_c','dadp_c','dcdp_c','dcmp_c','dctp_c','dgdp_c','dttp_c','g1p_c','fad_c','s7p_c'];
@@ -166,7 +170,7 @@ tfba = thermodynamics_tfba()
 #tfba.tfba_looplaw(cobra_model_wt01); # constraints need some work
 #tfba.tsampling_matlab_export(cobra_model_wt01,tcc_wt01.dG_r, tcc_wt01.metabolomics_coverage, tcc_wt01.dG_r_coverage, tcc_wt01.thermodynamic_consistency_check, 0.5, 0.99,use_measured_dG_r=True);
 tfba.tsampling_conc_ln_matlab_export(cobra_model_wt01, metabolomics_data_wt01.measured_concentrations, metabolomics_data_wt01.estimated_concentrations, tcc_wt01.dG0_r,
-                  other_data.temperature,tcc_wt01.metabolomics_coverage, tcc_wt01.dG_r_coverage, tcc_wt01.thermodynamic_consistency_check, 0.5, 0.99, use_measured_concentrations=True,use_measured_dG0_r=True, solver='gurobi');
+                  other_data.pH,other_data.temperature,tcc_wt01.metabolomics_coverage, tcc_wt01.dG_r_coverage, tcc_wt01.thermodynamic_consistency_check, 0.5, 0.99, use_measured_concentrations=True,use_measured_dG0_r=True, solver='gurobi');
 #tfba.tsampling_matlab_import(cobra_model_wt01,tcc_wt01.dG_r, tcc_wt01.metabolomics_coverage, tcc_wt01.dG_r_coverage, tcc_wt01.thermodynamic_consistency_check, 0.5, 0.99,use_measured_dG_r=True,
 #                             plot_reactions=['DADK','NDPK5','NDPK7','PFK_3','CELLENV_8','glu_DASH_L_to_acg5p','FADSYN_3']);
 #tfba.tfba(cobra_model_wt01,tcc_wt01.dG_r, tcc_wt01.metabolomics_coverage, tcc_wt01.dG_r_coverage, tcc_wt01.thermodynamic_consistency_check, 0.5, 0.99,use_measured_dG_r=True);

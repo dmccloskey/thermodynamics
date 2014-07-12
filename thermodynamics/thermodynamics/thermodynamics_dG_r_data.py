@@ -838,8 +838,8 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                     if p.id in measured_concentration.keys():
                         # calculate the dG_r of the reactants using measured concentrations
                         #   NOTE: since the geometric mean is linear with respect to dG, no adjustments needs to be made
-                        dG_r_product = dG_r_product + self.R*temperature[p.compartment]['temperature']*\
-                                                            log(measured_concentration[p.id]['concentration'])*r.get_coefficient(p.id);
+                        #dG_r_product = dG_r_product + self.R*temperature[p.compartment]['temperature']*\
+                        #                                    log(measured_concentration[p.id]['concentration'])*r.get_coefficient(p.id);
                         # calculate the variance contributed to dG_r by the uncertainty in the measured concentrations
                         #   NOTE: provides an estimate only...
                         #         i.e. improvements need to be made
@@ -885,8 +885,8 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                     elif p.id in estimated_concentration.keys():
                         # calculate the dG_r of the reactants using estimated concentrations
                         #   NOTE: since the geometric mean is linear with respect to dG, no adjustments needs to be made
-                        dG_r_product = dG_r_product + self.R*temperature[p.compartment]['temperature']*\
-                                                            log(estimated_concentration[p.id]['concentration'])*r.get_coefficient(p.id);
+                        #dG_r_product = dG_r_product + self.R*temperature[p.compartment]['temperature']*\
+                        #                                    log(estimated_concentration[p.id]['concentration'])*r.get_coefficient(p.id);
                         # calculate the variance contributed to dG_r by the uncertainty in the measured concentrations
                         #   NOTE: provides an estimate only...
                         #         i.e. improvements need to be made
@@ -934,8 +934,8 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                     if react.id in measured_concentration.keys():
                         # calculate the dG_r of the reactants using measured concentrations
                         #   NOTE: since the geometric mean is linear with respect to dG, no adjustments needs to be made
-                        dG_r_reactant = dG_r_reactant + self.R*temperature[react.compartment]['temperature']*\
-                                                            log(measured_concentration[react.id]['concentration'])*r.get_coefficient(react.id);
+                        #dG_r_reactant = dG_r_reactant + self.R*temperature[react.compartment]['temperature']*\
+                        #                                    log(measured_concentration[react.id]['concentration'])*r.get_coefficient(react.id);
                         # calculate the variance contributed to dG_r by the uncertainty in the measured concentrations
                         #   NOTE: provides an estimate only...
                         #         i.e. improvements need to be made
@@ -979,8 +979,8 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                     elif react.id in estimated_concentration.keys():
                         # calculate the dG_r of the reactants using estimated concentrations
                         #   NOTE: since the geometric mean is linear with respect to dG, no adjustments needs to be made
-                        dG_r_reactant = dG_r_reactant + self.R*temperature[react.compartment]['temperature']*\
-                                                            log(estimated_concentration[react.id]['concentration'])*r.get_coefficient(react.id);
+                        #dG_r_reactant = dG_r_reactant + self.R*temperature[react.compartment]['temperature']*\
+                        #                                    log(estimated_concentration[react.id]['concentration'])*r.get_coefficient(react.id);
                         # calculate the variance contributed to dG_r by the uncertainty in the measured concentrations
                         #   NOTE: provides an estimate only...
                         #         i.e. improvements need to be made

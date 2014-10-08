@@ -23,17 +23,6 @@
   <ItemGroup>
     <Compile Include="data\__init__.py" />
     <Compile Include="thermodynamics.py" />
-    <Compile Include="gim3e\core\gim3e.py" />
-    <Compile Include="gim3e\core\__init__.py" />
-    <Compile Include="gim3e\examples\01_run_gim3e_with_salmonella.py" />
-    <Compile Include="gim3e\examples\02_sample_core_gim3e.py" />
-    <Compile Include="gim3e\sampling\gms.py" />
-    <Compile Include="gim3e\sampling\__init__.py" />
-    <Compile Include="gim3e\test\unit_tests.py" />
-    <Compile Include="gim3e\test\__init__.py" />
-    <Compile Include="gim3e\test_all.py" />
-    <Compile Include="gim3e\test_debut_DM.py" />
-    <Compile Include="gim3e\__init__.py" />
     <Compile Include="thermodynamics\thermodynamics_analysis_deprecated.py" />
     <Compile Include="thermodynamics\thermodynamics_dG_f_data.py" />
     <Compile Include="thermodynamics\thermodynamics_dG_p_data.py" />
@@ -50,17 +39,17 @@
     <Compile Include="thermodynamics\__init__.py" />
     <Compile Include="workspace\aerobicAnaerobic01.py" />
     <Compile Include="workspace\aerobicAnaerobic01_irrev.py" />
-    <Compile Include="workspace\ALEWt01.py" />
+    <Compile Include="workspace\ALEWt01.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="workspace\ALEWt01_v1.py" />
     <Compile Include="workspace\rpomut01_OxicWTGlyc_0.py" />
+    <Compile Include="workspace\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="data\" />
-    <Folder Include="gim3e\" />
-    <Folder Include="gim3e\core\" />
-    <Folder Include="gim3e\data\" />
-    <Folder Include="gim3e\examples\" />
-    <Folder Include="gim3e\sampling\" />
-    <Folder Include="gim3e\test\" />
     <Folder Include="workspace\" />
     <Folder Include="thermodynamics\" />
   </ItemGroup>
@@ -80,35 +69,6 @@
     <Content Include="data\rpomut01_OxicWTGlyc_0_geo.json" />
     <Content Include="data\test_sampling.json" />
     <Content Include="data\__init__.pyc" />
-    <Content Include="gim3e\core\gim3e.pyc" />
-    <Content Include="gim3e\core\gim3e.pyo" />
-    <Content Include="gim3e\core\__init__.pyc" />
-    <Content Include="gim3e\core\__init__.pyo" />
-    <Content Include="gim3e\data\E_coli_core_M9.xml" />
-    <Content Include="gim3e\data\metabolomics_dict.pickle" />
-    <Content Include="gim3e\data\salmonella_gem.pickle" />
-    <Content Include="gim3e\data\STM_LB_FVA_reference.pickle" />
-    <Content Include="gim3e\data\STM_LB_metabolite_ko_reference.pickle" />
-    <Content Include="gim3e\data\transcriptomics_dict.pickle" />
-    <Content Include="gim3e\examples\01_run_gim3e_with_salmonella.pyc" />
-    <Content Include="gim3e\examples\01_run_gim3e_with_salmonella.pyo" />
-    <Content Include="gim3e\examples\02_sample_core_gim3e.pyc" />
-    <Content Include="gim3e\examples\02_sample_core_gim3e.pyo" />
-    <Content Include="gim3e\gurobi.log" />
-    <Content Include="gim3e\LICENSE" />
-    <Content Include="gim3e\sampling\gms.pyc" />
-    <Content Include="gim3e\sampling\gms.pyo" />
-    <Content Include="gim3e\sampling\__init__.pyc" />
-    <Content Include="gim3e\sampling\__init__.pyo" />
-    <Content Include="gim3e\test\gurobi.log" />
-    <Content Include="gim3e\test\unit_tests.pyc" />
-    <Content Include="gim3e\test\unit_tests.pyo" />
-    <Content Include="gim3e\test\__init__.pyc" />
-    <Content Include="gim3e\test\__init__.pyo" />
-    <Content Include="gim3e\test_all.pyc" />
-    <Content Include="gim3e\test_all.pyo" />
-    <Content Include="gim3e\__init__.pyc" />
-    <Content Include="gim3e\__init__.pyo" />
     <Content Include="NOTES.txt" />
     <Content Include="README.txt" />
   </ItemGroup>

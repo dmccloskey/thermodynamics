@@ -11,11 +11,17 @@ from numpy import average, var, log
 from thermodynamics_io import thermodynamics_io
 
 class thermodynamics_simulatedData(thermodynamics_io):
-    """Class to hand input of simulated Data"""
+    """Class to handle input of simulated Data"""
 
-    def __init__(self):
-        self.fva_data = {}
-        self.sra_data = {}
+    def __init__(self,fva_data_I={},sra_data_I={}):
+        if fva_data_I:
+            self.fva_data = self._convert_fluxBounds2var(fva_data_I);
+        else:
+            self.fva_data = {}
+        if sra_data_I:
+            self.sra_data = sra_data_I;
+        else:
+            self.sra_data = {}
 
     def check_data(self):
         '''check data integrity'''

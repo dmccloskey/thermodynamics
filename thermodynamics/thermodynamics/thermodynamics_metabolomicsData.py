@@ -9,10 +9,16 @@ from thermodynamics_io import thermodynamics_io
 class thermodynamics_metabolomicsData(thermodynamics_io):
     """Class to handle metabolomics data"""
 
-    def __init__(self):
+    def __init__(self,measured_concentrations_I={},estimated_concentrations_I={}):
         
-        self.measured_concentrations = {}
-        self.estimated_concentrations = {}
+        if measured_concentrations_I:
+            self.measured_concentrations = measured_concentrations_I
+        else:
+            self.measured_concentrations = {}
+        if estimated_concentrations_I:
+            self.estimated_concentrations = estimated_concentrations_I
+        else:
+            self.estimated_concentrations = {}
         self.measured_concentrations_intracellular = {}
         self.measured_concentrations_extracellular = {}
 

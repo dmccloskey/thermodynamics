@@ -8,11 +8,13 @@ from thermodynamics_io import thermodynamics_io
 class thermodynamics_otherData(thermodynamics_io):
     """Class to handle other input data"""
 
-    def __init__(self):
-        
-        self.pH = {}
-        self.temperature = {}
-        self.ionic_strength = {}
+    def __init__(self,pH_I={},temperature_I={},ionic_strength_I={}):
+        if pH_I: self.pH = pH_I;
+        else: self.pH = {};
+        if temperature_I: self.temperature = temperature_I;
+        else: self.temperature = {};
+        if ionic_strength_I: self.ionic_strength = ionic_strength_I;
+        else: self.ionic_strength = {};
 
     def load_data(self,pH_I,ionic_strength_I,temperature_I):
         '''load pH, ionic_strength, and temperature'''

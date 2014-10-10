@@ -22,7 +22,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
     #3: transform the thermodynamic data to the desired pH, ionic strength and temperature
     #4: load, format, and check the data"""
 
-    def __init__(self,id2KEGGID_filename_I=None):
+    def __init__(self,id2KEGGID_filename_I=None,id2KEGGID_I={},dG0_f_I={},dG_f_I={},measured_dG_f_I={},estimated_dG_f_I={}):
         '''
         cobra_model_I = cobra model object
                                                     
@@ -33,15 +33,30 @@ class thermodynamics_dG_f_data(thermodynamics_io):
                                      
                                      '''
 
-        if id2KEGGID_filename_I: self.id2KEGGID = self._get_id2KEGGID_csv(id2KEGGID_filename_I);
+        if id2KEGGID_filename_I: 
+            self.id2KEGGID = self._get_id2KEGGID_csv(id2KEGGID_filename_I);
+            self.KEGGID2id = self._make_invDict(self.id2KEGGID);
+        elif id2KEGGID_I: 
+            self.id2KEGGID = id2KEGGID_I;
+            self.KEGGID2id = self._make_invDict(self.id2KEGGID);
         else: print('no id2KEGGID mapping provided')
-        self.KEGGID2id = self._make_invDict(self.id2KEGGID);
 
-        self.dG0_f = {}; # units of kJ/mol
-        self.dG_f = {}; # units of kJ/mol
-
-        self.measured_dG_f = {}
-        self.estimated_dG_f = {}
+        if dG0_f_I:
+            self.dG0_f = dG0_f_I
+        else:
+            self.dG0_f = {}; # units of kJ/mol
+        if dG_f_I:
+            self.dG_f = self._checkInput_dG_f(dG_f_I)
+        else:
+            self.dG_f = {}; # units of kJ/mol
+        if measured_dG_f_I:
+            self.measured_dG_f = measured_dG_f_I
+        else:
+            self.measured_dG_f = {}; # units of kJ/mol
+        if estimated_dG_f_I:
+            self.estimated_dG_f = estimated_dG_f_I
+        else:
+            self.estimated_dG_f = {}; # units of kJ/mol
 
     def _get_id2KEGGID_csv(self, id2KEGGID_filename_I):
         #Read in the id2KEGGID mapping
@@ -406,7 +421,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
 
     ### 3 Start ###
     # upload the combined dG0_f data file and tranfsorm to the desired ph, temp, and ionic strength         
-    def get_transformed_dG_f(self,filename_dG0_f_I, cobra_model_I, pH_I,temperature_I,ionic_strength_I):
+    def get_transformed_dG_f(self,dG0_f_I, cobra_model_I, pH_I,temperature_I,ionic_strength_I):
         '''get the transformed Gibbs free energies of formation
 
         relies on RC data taken from the component_contribution: doi:10.1371/journal.pcbi.1003098
@@ -424,11 +439,13 @@ class thermodynamics_dG_f_data(thermodynamics_io):
 
         # upload dG0_f values
         dG0_f_KEGG_all = {};
-        try:
-            dG0_f_KEGG_all = json.load(open(filename_dG0_f_I));
-        except IOError as e:
-            print(e);
-            return;
+        if type(dG0_f_I) == type({}): dG0_f_KEGG_all=dG0_f_I
+        elif type(dG0_f_I) == type(''):
+            try:
+                dG0_f_KEGG_all = json.load(open(filename_dG0_f_I));
+            except IOError as e:
+                print(e);
+                return;
 
         # extract out dG0_f values in the model
         for m in cobra_model_I.metabolites:

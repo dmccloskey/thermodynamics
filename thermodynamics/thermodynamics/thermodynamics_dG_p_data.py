@@ -53,13 +53,22 @@ class thermodynamics_dG_p_data():
                                          'measured_dG_p_coverage': float}
     """
 
-    def __init__(self):
+    def __init__(self,pathways_I = {}, dG0_p_I = {}, dG_p_I = {}):
         # initialize pathways
-        self.pathways = self.init_pathways();
+        if pathways_I:
+            self.pathways = pathways_I;
+        else:
+            self.pathways = self.init_pathways();
 
         # output
-        self.dG0_p = {}
-        self.dG_p = {}
+        if dG0_p_I:
+            self.dG0_p = dG0_p_I;
+        else:
+            self.dG0_p = {};
+        if dG_p_I:
+            self.dG_p = dG_p_I;
+        else:
+            self.dG_p = {};
         self.dG_p_coverage = {}
         self.metabolomics_coverage = {}
         self.thermodynamic_consistency_check = {}
@@ -138,7 +147,7 @@ class thermodynamics_dG_p_data():
             dG0_p_dict['dG0_p_var'] = dG0_p_var_tmp;
             dG0_p_dict['dG0_p_lb'] = dG0_p_lb_tmp;
             dG0_p_dict['dG0_p_ub'] = dG0_p_ub_tmp;
-            dG0_p_dict['dG0_r_units'] = 'kJ/mol';
+            dG0_p_dict['dG0_p_units'] = 'kJ/mol';
             dG0_p[path] = dG0_p_dict;
             # copy information into dG
             dG_p_dict['reactions'] = v['reactions'];
@@ -147,7 +156,7 @@ class thermodynamics_dG_p_data():
             dG_p_dict['dG_p_var'] = dG_p_var_tmp;
             dG_p_dict['dG_p_lb'] = dG_p_lb_tmp;
             dG_p_dict['dG_p_ub'] = dG_p_ub_tmp;
-            dG_p_dict['dG_r_units'] = 'kJ/mol';
+            dG_p_dict['dG_p_units'] = 'kJ/mol';
             dG_p[path] = dG_p_dict;
         # return dG0 and dG for all pathways
         self.dG0_p = dG0_p;
@@ -272,7 +281,11 @@ class thermodynamics_dG_p_data():
         'ASTPathway':{'reactions':['AST','SADH','SGDS','SGSAD','SOTA'],'stoichiometry':[1,1,1,1,1]},
         'OPPP':{'reactions':['G6PDH2r', 'GND', 'PGL', 'RPI_reverse'],'stoichiometry':[1,1,1,1]},
         'Glycolysis':{'reactions':['PGI', 'PFK', 'FBA', 'TPI', 'GAPD', 'PGK_reverse', 'PGM_reverse', 'ENO'],
-                              'stoichiometry':[1,1,1,1,1,1,1,1]}
+                              'stoichiometry':[1,1,1,1,1,1,1,1]},
+        'ED_pathway':{'reactions':['G6PDH2r', 'PGL', 'EDD', 'EDA'],
+                                      'stoichiometry':[1,1,1,1]},
+        'ED_branch':{'reactions':['EDD', 'EDA'],
+                                      'stoichiometry':[1,1]}
         };
         pathways = {
         'ptrc_to_4abut_1':{'reactions':['PTRCTA','ABUTD'],
@@ -391,7 +404,11 @@ class thermodynamics_dG_p_data():
         'ASTPathway':{'reactions':['AST','SADH','SGDS','SGSAD','SOTA'],'stoichiometry':[1,1,1,1,1]},
         'OPPP':{'reactions':['G6PDH2r', 'GND', 'PGL', 'RPI'],'stoichiometry':[1,1,1,-1]},
         'Glycolysis':{'reactions':['PGI', 'PFK', 'FBA', 'TPI', 'GAPD', 'PGK', 'PGM', 'ENO'],
-                              'stoichiometry':[1,1,1,1,1,-1,-1,1]}
+                              'stoichiometry':[1,1,1,1,1,-1,-1,1]},
+        'ED_pathway':{'reactions':['G6PDH2r', 'PGL', 'EDD', 'EDA'],
+                                      'stoichiometry':[1,1,1,1]},
+        'ED_branch':{'reactions':['EDD', 'EDA'],
+                                      'stoichiometry':[1,1]}
         };
         return pathways;
 

@@ -108,15 +108,15 @@ tcc_wt01.check_thermodynamicConsistency(cobra_model_wt01,simulated_data_wt01.fva
                    metabolomics_data_wt01.estimated_concentrations,
                    other_data.pH,other_data.ionic_strength,other_data.temperature); # check the thermodynamic consistency of the data
 tcc_wt01.calculate_displacement(cobra_model_wt01,metabolomics_data_wt01.measured_concentrations, metabolomics_data_wt01.estimated_concentrations); # calculate the displacements from equillibrium
-tcc_wt01.simulate_infeasibleReactions(cobra_model_wt01); # simulate thermodynamically inconsistent data
-tcc_wt01.constrain_infeasibleReactions(cobra_model_wt01); # remove thermodynamically inconsistent reactions from the model
-tcc_wt01.export_dG0_r_json(data_dG0_wt01); # save for later use
-tcc_wt01.export_dG_r_json(data_dG_wt01); # save for later use
-tcc_wt01.export_tcc_json(data_ta_wt01); # save for later use
-tcc_wt01.export_summary(cobra_model_wt01,simulated_data_wt01.fva_data,data_ta_wt01); # write summary of the analysis to csv file
-tcc_wt01.export_dG_r_escher(data_dG_escher_wt01); # save for later use
-tcc_wt01.export_displacement_escher(data_displacement_escher_wt01); # save for later use
-tcc_wt01.export_concentrations_escher(data_concentrations_escher_wt01,metabolomics_data_wt01.measured_concentrations); # save for later use
+#tcc_wt01.simulate_infeasibleReactions(cobra_model_wt01); # simulate thermodynamically inconsistent data
+#tcc_wt01.constrain_infeasibleReactions(cobra_model_wt01); # remove thermodynamically inconsistent reactions from the model
+#tcc_wt01.export_dG0_r_json(data_dG0_wt01); # save for later use
+#tcc_wt01.export_dG_r_json(data_dG_wt01); # save for later use
+#tcc_wt01.export_tcc_json(data_ta_wt01); # save for later use
+#tcc_wt01.export_summary(cobra_model_wt01,simulated_data_wt01.fva_data,data_ta_wt01); # write summary of the analysis to csv file
+#tcc_wt01.export_dG_r_escher(data_dG_escher_wt01); # save for later use
+#tcc_wt01.export_displacement_escher(data_displacement_escher_wt01); # save for later use
+#tcc_wt01.export_concentrations_escher(data_concentrations_escher_wt01,metabolomics_data_wt01.measured_concentrations); # save for later use
 #tcc_wt01.import_dG0_r_json(data_dG0_wt01); 
 #tcc_wt01.import_dG_r_json(data_dG_wt01);
 #tcc_wt01.import_tcc_json(data_ta_wt01);
@@ -151,12 +151,12 @@ tcc_wt01.export_concentrations_escher(data_concentrations_escher_wt01,metabolomi
 
 # inspect the thermodynamic analysis results
 
-## calculate the dG for biosynthetic pathways for wt01 conditions
-#tccp_wt01 = thermodynamics_dG_p_data();
-#tccp_wt01.calculate_dG_p(cobra_model_wt01,tcc_wt01.dG0_r,tcc_wt01.dG_r);
-## calculate the dG for biosynthetic pathways for evo04 conditions
-#tccp_evo04 = thermodynamics_dG_p_data();
-#tccp_evo04.calculate_dG_p(cobra_model_evo04,tcc_evo04.dG0_r,tcc_evo04.dG_r);
+# calculate the dG for biosynthetic pathways for wt01 conditions
+tccp_wt01 = thermodynamics_dG_p_data();
+tccp_wt01.calculate_dG_p(cobra_model_wt01,tcc_wt01.dG0_r,tcc_wt01.dG_r);
+# calculate the dG for biosynthetic pathways for evo04 conditions
+tccp_evo04 = thermodynamics_dG_p_data();
+tccp_evo04.calculate_dG_p(cobra_model_evo04,tcc_evo04.dG0_r,tcc_evo04.dG_r);
 
 # visualize the results
 ###TODO

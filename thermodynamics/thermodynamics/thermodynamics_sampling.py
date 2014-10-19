@@ -2,7 +2,7 @@
 import operator, json, csv
 # Dependencies from 3rd party
 import scipy.io
-from numpy import histogram, mean, std, loadtxt
+from numpy import histogram, mean, std, loadtxt, savetxt
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 # Dependencies from cobra
@@ -47,7 +47,6 @@ class thermodynamics_sampling(thermodynamics_io):
                                  'ub':ub}
 
         self.points = points_dict;
-        #return points_dict;
 
     def get_points_numpy(self,numpy_data,ijo1366_sbml):
         '''load sampling points from numpy file'''
@@ -69,7 +68,6 @@ class thermodynamics_sampling(thermodynamics_io):
                                  'ub':ub}
 
         self.points = points_dict;
-        #return points_dict;
 
     def plot_points(self,reaction_lst=None):
         '''plot sampling points from MATLAB'''
@@ -178,7 +176,30 @@ class thermodynamics_sampling(thermodynamics_io):
         #return points_loopless_mean;
         self.points = points_loopless;
 
-    def export_points(self,filename):
+    def export_points_numpy(self,filename):
         '''export sampling points'''
-        #TODO: cannot export numpy.array object as json
-        self.export_values_json(filename, self.points)
+
+        savetxt(filename,self.points);
+
+    def export_sampling_matlab(self,cobra_model,filename_model='C:\\Users\\Public\\Documents\\sample_model.mat',filename_script='C:\\Users\\Public\\Documents\\sample_script.m'):
+        '''export model and script for sampling using matlab cobra_toolbox'''
+        # copy the model:
+        cobra_model_copy = cobra_model.copy();
+        # optimize
+        cobra_model_copy.optimize(solver='gurobi');
+        # confine the objective to a fraction of maximum optimal
+        objective = [x.id for x in cobra_model_copy.reactions if x.objective_coefficient == 1]
+        cobra_model_copy.reactions.get_by_id(objective[0]).upper_bound = fraction_optimal * cobra_model_copy.solution.f;
+        # write model to mat
+        save_matlab_model(cobra_model_copy,filename_model);
+        ## write model to xml
+        #write_sbml_model(cobra_model_copy,'data\\tsampling\\tsampler_conc_ln.xml');
+        # write the sampling script to file\
+        mat_script = "% initialize with Tomlab_CPLEX\n"+\
+                      "load('" + filename_model + "')\n"+\
+                      "initCobraToolbox();\n"+\
+                      "% sample\n"+\
+                      "[tsampler_out, mixedFrac] = gpSampler(" + cobra_model_copy.description + ", [], [], [], [], [], true);\n"+\
+                      "[tsampler_out, mixedFrac] = gpSampler(tsampler_out, [], [], [], 20000, [], true);";
+        with open(filename_script,'w') as f:
+            f.write(mat_script);

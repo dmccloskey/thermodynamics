@@ -549,8 +549,8 @@ class thermodynamics_tfba():
                 x_dict_copy[rxn.id]=cobra_model_copy.solution.x_dict[rxn.id];
             #for met in cobra_model_irreversible.metabolites:
             #    y_dict_copy[met.id]=cobra_model_copy.solution.y_dict[met.id];
-            cobra_model_irreversible.solution.x_dict = x_dict_copy;
             #cobra_model_irreversible.solution.y_dict = y_dict_copy;
+            cobra_model_irreversible.solution.x_dict = x_dict_copy;
 
     def tfba(self, cobra_model_irreversible, dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99, use_measured_dG_r=True, solver=None):
         '''performs thermodynamic flux balance analysis'''
@@ -939,109 +939,6 @@ class thermodynamics_tfba():
                       "[tsampler_out, mixedFrac] = gpSampler(tsampler_out, [], [], [], 20000, [], true);";
         with open('data\\tsampling\\tsampler_conc_ln_run.m','w') as f:
             f.write(mat_script);
-
-    def tfba_looplaw(self, cobra_model_irreversible, solver=None):
-        '''performs thermodynamic flux balance analysis using the looplaw'''
-
-        #TODO: Constraint formulation is not yet correct
-
-        """based on the method described in 0006-3495/11/02/0544/10
-        """    
-        # copy the model:
-        cobra_model_copy = cobra_model_irreversible.copy();
-        # add constraints
-        self._add_looplaw_constraints(cobra_model_copy);
-        # optimize
-        cobra_model_copy.optimize(solver='gurobi');
-        # record the results
-        self._copy_solution(cobra_model_irreversible,cobra_model_copy);
-    def _add_looplaw_constraints(self, cobra_model_irreversible, return_looplaw_variables=False):
-        '''add constraints for looplaw to the model'''
-
-        # TODO: Correct constraints
-
-        # find system boundaries and the objective reaction
-        system_boundaries = [x.id for x in cobra_model_irreversible.reactions if x.boundary == 'system_boundary'];
-        transporters = find_transportRxns(cobra_model_irreversible);
-        ## determine the compartments:
-        #compartments = list(set(cobra_model_irreversible.metabolites.list_attr('compartment')));
-        # add variables and constraints to model for tfba
-        reactions = [r for r in cobra_model_irreversible.reactions];
-        looplaw_variables = {};
-        internal_dict = {};
-        # calculate the null basis:
-        cobra_model_array = cobra_model_irreversible.to_array_based_model();
-        N = null(cobra_model_array.S.todense()) #convert S from sparse to full and compute the nullspace
-        not_in_null = [];
-        for i in range(N.shape[0]):
-            met_j = N[i,:];
-            met_sum = met_j.sum();
-            if met_sum<1e-6: not_in_null.append(cobra_model_array.reactions[i].id)
-        # make constraints for Nint*looplaw=0
-        internal_constraint = Metabolite('internal');
-        internal_constraint._constraint_sense = 'E';
-        internal_constraint._bound = 0.0;
-        for i,r in enumerate(reactions):
-            # ignore system_boundary, objective, and transport reactions
-            if r.id in system_boundaries or r.id in not_in_null: #r.id in transporters:
-                continue;
-            # create a constraint for vi-zi*vmax<=0
-            indicator_plus = Metabolite(r.id + '_plus');
-            indicator_plus._constraint_sense = 'L';
-            # create a constraint for vi+zi*vmax>=0
-            indicator_minus = Metabolite(r.id + '_minus');
-            indicator_minus._constraint_sense = 'G';
-            # create additional constraint for looplawi <= zi - 1000(1-zi) if zi = 1, gi <=1 
-            # create additional constraint for looplawi <= 1001*zi - 1000
-            # create additional constraint for looplawi -1001*zi <= -1000
-            looplaw_constraint_plus = Metabolite(r.id + '_looplaw_plus');
-            looplaw_constraint_plus._constraint_sense = 'L';
-            looplaw_constraint_plus._bound = -1000.0;
-            # create additional constraint for looplawi >= -1000*zi + (1-zi)
-            # create additional constraint for looplawi >= -1001*zi + 1
-            # create additional constraint for looplawi + 1001*zi >= 1
-            looplaw_constraint_minus = Metabolite(r.id + '_looplaw_minus');
-            looplaw_constraint_minus._constraint_sense = 'G';
-            looplaw_constraint_minus._bound = 1;
-            ## create additional constraint for looplaw >= 1
-            #looplaw_constraint_gzero = Metabolite(r.id + '_looplaw_gzero');
-            #looplaw_constraint_gzero._constraint_sense = 'G';
-            #looplaw_constraint_gzero._bound = 1;
-            ## create additional constraint for looplaw <= -1
-            #looplaw_constraint_lzero = Metabolite(r.id + '_looplaw_lzero');
-            #looplaw_constraint_lzero._constraint_sense = 'L';
-            #looplaw_constraint_lzero._bound = -1;
-            # make a boolean indicator variable
-            indicator = Reaction('indicator_' + r.id);
-            indicator.lower_bound = 0;
-            indicator.upper_bound = 1;
-            indicator.variable_kind = 'integer';
-            # make a continuous variable for looplaw
-            looplaw = Reaction('looplaw_' + r.id);
-            looplaw.lower_bound = -999.0;
-            looplaw.upper_bound = 999.0;
-            looplaw.objective_coefficient = 0;
-            looplaw.variable_kind = 'continuous';
-            # add constraints to the variables
-            indicator.add_metabolites({indicator_plus: -r.upper_bound});#,indicator_minus: -r.lower_bound});
-            indicator.add_metabolites({looplaw_constraint_plus: -1001});
-            indicator.add_metabolites({looplaw_constraint_minus: 1001});
-            looplaw.add_metabolites({looplaw_constraint_plus: 1.0})
-            looplaw.add_metabolites({looplaw_constraint_minus: 1.0})
-            for j in range(N[i,:].shape[1]):
-                met_stoich = N[i,j]
-                if met_stoich>1e-6 or met_stoich<-1e-6:
-                    looplaw.add_metabolites({internal_constraint: met_stoich})
-            #looplaw.add_metabolites({looplaw_constraint_gzero: 1.0})
-            #looplaw.add_metabolites({looplaw_constraint_lzero: 1.0})
-            cobra_model_irreversible.reactions.get_by_id(r.id).add_metabolites({indicator_plus: 1.0},{indicator_minus: 1.0});
-            # add indicator reactions to the model
-            cobra_model_irreversible.add_reaction(indicator);
-            cobra_model_irreversible.add_reaction(looplaw);
-            # record looplaw_plus variables
-            looplaw_variables[r.id] = looplaw;
-        if return_looplaw_variables:
-            return looplaw_variables;
     def _add_conc_ln_constraints(self,cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,
                               measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,use_measured_concentrations=True,use_measured_dG0_r=True,return_concentration_variables=False,return_dG0_r_variables=False):
         # pre-process the data
@@ -1060,11 +957,11 @@ class thermodynamics_tfba():
         # bounds
         dG_r_indicator_constraint = 1-1e-6;
         # add variables and constraints to model for tfba
-        reactions = [r for r in cobra_model_irreversible.reactions];
+        original_metabolites = cobra_model_irreversible.metabolites[:];
         conc_lnv_dict = {}; # dictionary to record conc_ln variables
         dG0_r_dict = {};
         variables_break = [];
-        for i,r in enumerate(reactions):
+        for i,r in enumerate(cobra_model_irreversible.reactions[:]):
             if r.id in system_boundaries or r.id in objectives or r.id in transporters:
                 continue;
             # create a constraint for vi-zi*vmax<=0

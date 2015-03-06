@@ -89,7 +89,10 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                                          'measured_dG_r_coverage': float}
     """
 
-    def __init__(self, dG0_r_I = {},dG_r_I = {}, displacement_I = {}):
+    def __init__(self, dG0_r_I = {},dG_r_I = {}, displacement_I = {},
+                 dG_r_coverage_I = {},metabolomics_coverage_I = {},
+                 thermodynamic_consistency_check_I = {},
+                 inconsistent_reactions_I = {}):
         """
         Estimate of reaction bounds:
 
@@ -128,10 +131,22 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             self.displacement = displacement_I;
         else:
             self.displacement = {}
-        self.dG_r_coverage = {}
-        self.metabolomics_coverage = {}
-        self.thermodynamic_consistency_check = {}
-        self.inconsistent_reactions = {};
+        if dG_r_coverage_I:
+            self.dG_r_coverage = dG_r_coverage_I;
+        else:
+            self.dG_r_coverage = {};
+        if metabolomics_coverage_I:
+            self.metabolomics_coverage = metabolomics_coverage_I;
+        else:
+            self.metabolomics_coverage = {};
+        if thermodynamic_consistency_check_I:
+            self.thermodynamic_consistency_check = thermodynamic_consistency_check_I;
+        else:
+            self.thermodynamic_consistency_check = {};
+        if inconsistent_reactions_I:
+            self.inconsistent_reactions = inconsistent_reactions_I;
+        else:
+            self.inconsistent_reactions = {};
 
     def export_dG0_r_json(self, filename_I):
         # save the results to json file

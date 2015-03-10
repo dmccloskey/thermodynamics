@@ -1881,5 +1881,18 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                     print rxn.id + ' broke the model!';
                     cobra_model.add_reaction(rxn);
 
+    def change_feasibleReactions(self,infeasible_reactions_I):
+        '''change thermodynamically feasible reactions
+        to thermodynamically infeasible'''
+
+        #Input:
+        #   infeasible_reactions_I = list of strings of reaction ids
+        
+        for rxn in infeasible_reactions_I:
+            if self.thermodynamic_consistency_check.has_key(rxn):
+                self.thermodynamic_consistency_check[rxn]['feasible']=False;
+            else:
+                print "reaction " + rxn + " not found in variable inconsistent_reactions";
+
 
 

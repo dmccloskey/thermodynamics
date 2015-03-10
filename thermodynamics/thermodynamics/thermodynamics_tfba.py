@@ -1533,7 +1533,7 @@ class thermodynamics_tfba():
         dG_r_pH_dict = {};
         variables_break = [];
         for i,r in enumerate(reactions[:]):
-            if r.id in system_boundaries or r.id in objectives:# or r.id in transporters:
+            if r.id in system_boundaries or r.id in objectives or r.id in transporters:
                 continue;
             # create a constraint for vi-zi*vmax<=0
             indicator_plus = Metabolite(r.id + '_plus');
@@ -1846,13 +1846,32 @@ class thermodynamics_tfba():
             return conc_lnv_dict,dG0_r_dict;
 
     def _add_conc_ln_constraints_transport(self,cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, pH, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,
-                              measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,use_measured_concentrations=True,use_measured_dG0_r=True,return_concentration_variables=False,return_dG0_r_variables=False):
+                              measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,use_measured_concentrations=True,use_measured_dG0_r=True,return_concentration_variables=False,return_dG0_r_variables=False,
+                              diagnose_I=False,diagnose_solver_I='glpk',diagnose_threshold_I=0.98,diagnose_break_I=0.1):
+        #Input:
+        #   cobra_model_irreversible = irreversible cobra model
+        #   diagnose_I = check the growth rate after each constrain is added
+        #   return_concentration_variables = return added concentration variables?
+        #   return_dG0_r_variables = False add dG0_r variables?
+        #   diagnose_solver_I = solver used in the diagnose FBA
+        #   diagnose_threshold_I = % of orginal growth rate to flag a constrain
+        #   diagnose_break_I = % of original growth rate to stop the diagnosis
+        #Output:
+        #   cobra_model_irreversible = irreversible cobra model with dG0r and conc_ln constraints added
+        #   conc_lnv_dict = dictionary of conc_ln variables
+        #   dG0_r_dict = dictionary of dG0_r variables
+        #   diagnosed_variables_O = dictionary of constraints that reduce the model solution by diagnose_threshold_I
+        
         # pre-process the data
         dG0_r = self._scale_dG_r(dG0_r);
         #measured_concentration = self._scale_conc(measured_concentration);
         #estimated_concentration = self._scale_conc(estimated_concentration);
-        # original solution:
-        sol = cobra_model_irreversible.optimize();
+        if diagnose_I:
+            diagnosed_variables_O = {};
+            # original solution:
+            cobra_model_irreversible.optimize(solver=diagnose_solver_I);
+            sol_original = cobra_model_irreversible.solution.f
+            diagnose_sol = cobra_model_irreversible.solution.f;
         # initialize hydrogens:
         hydrogens = [];
         compartments = list(set(cobra_model_irreversible.metabolites.list_attr('compartment')));
@@ -1875,7 +1894,7 @@ class thermodynamics_tfba():
         dG_r_pH_dict = {};
         variables_break = [];
         for i,r in enumerate(reactions[:]):
-            if r.id in system_boundaries or r.id in objectives:# or r.id in transporters:
+            if r.id in system_boundaries or r.id in objectives or r.id in transporters:
                 continue;
             # create a constraint for vi-zi*vmax<=0
             indicator_plus = Metabolite(r.id + '_plus');
@@ -2138,19 +2157,101 @@ class thermodynamics_tfba():
             cobra_model_irreversible.add_reaction(dG0_rv);
             # record dG_rv variables
             dG0_r_dict[r.id] = dG0_rv
-            # check to see if the model broke
-            cobra_model_irreversible.optimize(solver='gurobi');
-            print r.id + " solution: "+ str(cobra_model_irreversible.solution.f);
-            if cobra_model_irreversible.solution.f<0.9:
-                print 'check'
-            #if not cobra_model_irreversible.solution.f:
-            #    print dG0_rv.id + ' broke the model!';
-            #    variables_break.append(dG_rv.id);
-            #    #cobra_model_irreversible.remove_reactions(indicator)
-            #    cobra_model_irreversible.remove_reactions(dG_rv)
+            if diagnose_I:
+                # check to see if the model broke
+                cobra_model_irreversible.optimize(solver = diagnose_solver_I);
+                print r.id + " solution: "+ str(cobra_model_irreversible.solution.f);
+                if cobra_model_irreversible.solution.f<sol_original*diagnose_break_I:
+                    diagnosed_variables_O[r.id]={'solution_before':diagnose_sol,
+                                                 'solution_after':cobra_model_irreversible.solution.f};
+                    return diagnosed_variables_O;
+                elif cobra_model_irreversible.solution.f<diagnose_sol*diagnose_threshold_I:
+                    diagnosed_variables_O[r.id]={'solution_before':diagnose_sol,
+                                                 'solution_after':cobra_model_irreversible.solution.f};
+                    diagnose_sol=cobra_model_irreversible.solution.f;
+
+        #output:
+        if diagnose_I:
+            return diagnosed_variables_O;
         if return_concentration_variables and not return_dG0_r_variables:
             return conc_lnv_dict;
         if return_dG0_r_variables and not return_concentration_variables:
             return dG0_r_dict;
         if return_concentration_variables and return_dG0_r_variables:
             return conc_lnv_dict,dG0_r_dict;
+
+    def check_conc_ln_constraints_transport(self,cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, pH, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,
+                              measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
+                              n_checks_I = 5,
+                              diagnose_solver_I='glpk',diagnose_threshold_I=0.98,diagnose_break_I=0.1):
+        '''Check conc_ln_constraints_trasport
+        1. check without using measured concentrations or measured dG0_r
+        2. check without using measured concentrations, but using measured dG0_r
+        3. check using both measured concentrations and measured dG0_r
+        reactions involved with variables found to break the model are
+        changed from "feasible:True" to "feasible:False"'''
+        # input:
+        #   n_checks_I = number of loops per check
+        #   diagnose_solver_I = solver used in the diagnose FBA
+        #   diagnose_threshold_I = % of orginal growth rate to flag a constrain
+        #   diagnose_break_I = % of original growth rate to stop the diagnosis
+        # output:
+        #   thermodynamic_constraints_check = thermodynamic_consistency_check updated from the check
+        #   inconsistent_tcc = list of feasible reactions that break the model when tfba constraints are added
+        #   diagnose_variables_1 = results of check 1
+        #   diagnose_variables_2 = results of check 2
+        #   diagnose_variables_3 = results of check 3
+
+        thermodynamic_constraints_check = thermodynamic_consistency_check;
+        # check 1:
+        diagnose_variables_1 = {}
+        for i in range(n_checks_I):
+            cobra_model_check = cobra_model_irreversible.copy();
+            diagnose_variables_tmp = {}
+            diagnose_variables_tmp = self._add_conc_ln_constraints_transport(cobra_model_check, measured_concentration, estimated_concentration, dG0_r, pH, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,
+                                  measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
+                                  use_measured_concentrations=False,use_measured_dG0_r=False,
+                                  diagnose_I=True,diagnose_solver_I=diagnose_solver_I,
+                                  diagnose_threshold_I=diagnose_threshold_I,diagnose_break_I=diagnose_break_I);
+            if diagnose_variables_tmp:
+                for k,v in diagnose_variables_tmp.iteritems():
+                    thermodynamic_constraints_check[k]['feasible'] = False;
+                    diagnose_variables_1.update(diagnose_variables_tmp)
+            else:
+                break;
+        # check 2:
+        diagnose_variables_2 = {}
+        for i in range(n_checks_I):
+            cobra_model_check = cobra_model_irreversible.copy();
+            diagnose_variables_tmp = {}
+            diagnose_variables_tmp = self._add_conc_ln_constraints_transport(cobra_model_check, measured_concentration, estimated_concentration, dG0_r, pH, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,
+                                  measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
+                                  use_measured_concentrations=False,use_measured_dG0_r=True,
+                                  diagnose_I=True,diagnose_solver_I=diagnose_solver_I,
+                                  diagnose_threshold_I=diagnose_threshold_I,diagnose_break_I=diagnose_break_I);
+            if diagnose_variables_tmp:
+                for k,v in diagnose_variables_tmp.iteritems():
+                    thermodynamic_constraints_check[k]['feasible'] = False;
+                    diagnose_variables_2.update(diagnose_variables_tmp)
+            else:
+                break;
+        # check 3:
+        diagnose_variables_3 = {}
+        for i in range(n_checks_I):
+            cobra_model_check = cobra_model_irreversible.copy();
+            diagnose_variables_tmp = {}
+            diagnose_variables_tmp = self._add_conc_ln_constraints_transport(cobra_model_check, measured_concentration, estimated_concentration, dG0_r, pH, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,
+                                      measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
+                                      use_measured_concentrations=True,use_measured_dG0_r=True,
+                                      diagnose_I=True,diagnose_solver_I=diagnose_solver_I,
+                                      diagnose_threshold_I=diagnose_threshold_I,diagnose_break_I=diagnose_break_I);
+            if diagnose_variables_tmp:
+                for k,v in diagnose_variables_tmp.iteritems():
+                    thermodynamic_constraints_check[k]['feasible'] = False;
+                    diagnose_variables_3.update(diagnose_variables_tmp)
+            else:
+                break;
+
+        # list out all identified reactions
+        inconsistent_tcc = thermodynamic_constraints_check.keys();
+        return thermodynamic_constraints_check,inconsistent_tcc,diagnose_variables_1,diagnose_variables_2,diagnose_variables_3;

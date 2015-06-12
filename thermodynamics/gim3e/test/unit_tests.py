@@ -1,4 +1,4 @@
-from __future__ import with_statement
+
 import sys
 from warnings import warn  # TODO - catch known warnings
 from unittest import TestCase, TestLoader, TextTestRunner
@@ -218,7 +218,7 @@ class TestGim3eCore(Gim3eTestCase):
         expression_dict = {x.id: 1. for x in self.model.genes}
         expression_dict.pop('s0001')
         penalties = gim3e.evaluate_penalties(self.model, milp_model, expression_dict, 2)
-        for the_key in penalties.keys():
+        for the_key in list(penalties.keys()):
             if len(milp_model.reactions.get_by_id(the_key).gene_reaction_rule) > 0:
                 if 's0001' not in (milp_model.reactions.get_by_id(the_key).gene_reaction_rule):
                     self.assertEqual(penalties[the_key], 1.)

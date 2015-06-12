@@ -120,11 +120,11 @@ for the_key in shared_keys:
 
 # Check how many optimizations were not be solved in one case;
 # This should be 0
-print(len(unsolved_max_one.keys()))
-print(len(unsolved_min_one.keys()))
+print((len(list(unsolved_max_one.keys()))))
+print((len(list(unsolved_min_one.keys()))))
 
-hist(delta_dict_max.values())
-hist(delta_dict_min.values())
+hist(list(delta_dict_max.values()))
+hist(list(delta_dict_min.values()))
 
 # We can also test for required metabolites
 test_metabolites = {x.id: [x] for x in gim3e_model.reactions if x.id.startswith("TMS_")}
@@ -146,7 +146,7 @@ fp.close()
 the_cutoff = selected_tolerance
 required_list = []
 the_dict = metabolite_ko_result
-for ko_key in the_dict.keys():
+for ko_key in list(the_dict.keys()):
     not_required = False
     if the_dict[ko_key]['maximum_status'] not in ['failed']:
         if the_dict[ko_key]['maximum'] > the_cutoff:
@@ -157,7 +157,7 @@ for ko_key in the_dict.keys():
 # Also check against the reference dataset
 required_list_ref = []
 the_dict = metabolite_ko_result_ref
-for ko_key in the_dict.keys():
+for ko_key in list(the_dict.keys()):
     not_required = False
     if the_dict[ko_key]['maximum_status'] not in ['failed']:
         if the_dict[ko_key]['maximum'] > the_cutoff:
@@ -166,5 +166,5 @@ for ko_key in the_dict.keys():
         required_list_ref.append(ko_key)
 
 # These should match
-print(len(required_list))
-print(len(required_list_ref))
+print((len(required_list)))
+print((len(required_list_ref)))

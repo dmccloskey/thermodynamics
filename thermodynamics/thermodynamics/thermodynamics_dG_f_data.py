@@ -8,7 +8,7 @@ from python.kegg_model import KeggModel
 from python.compound_cacher import CompoundCacher
 from python.compound_model import compound_model
 
-from thermodynamics_io import thermodynamics_io
+from .thermodynamics_io import thermodynamics_io
 
 import csv
 import re
@@ -77,7 +77,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
         if len(dict_I) == len(list(set(dict_I.values()))):
             invDict = {}
             #create the inverse mapping
-            invDict = {v: k for k, v in dict_I.items()}
+            invDict = {v: k for k, v in list(dict_I.items())}
             return invDict;
         else:
             raise Exception('Non-unique values present');
@@ -111,19 +111,19 @@ class thermodynamics_dG_f_data(thermodynamics_io):
             dG_var_f_intkeys = {};
             dG_f_strkeys = {};
             dG_var_f_strkeys = {};
-            dG_f_intkeys, dG_var_f_intkeys = self._component_contribution_wrapper(reaction_list.values(),
+            dG_f_intkeys, dG_var_f_intkeys = self._component_contribution_wrapper(list(reaction_list.values()),
                                                                   pH_I[c]['pH'],
                                                                   temperature_I[c]['temperature'],
                                                                   ionic_strength_I[c]['ionic_strength']);
             # convert integer KEGGID to string KEGGID
-            for key,value in dG_f_intkeys.iteritems():
+            for key,value in dG_f_intkeys.items():
                 dG_f_strkeys['C%05d' % key] = value;
 
-            for key,value in dG_var_f_intkeys.iteritems():
+            for key,value in dG_var_f_intkeys.items():
                 dG_var_f_strkeys['C%05d' % key] = value;     
                 
             # convert KEGGID to metabolite.id
-            for key,value in dG_f_strkeys.iteritems():
+            for key,value in dG_f_strkeys.items():
                 id = self.KEGGID2id[key];
                 if id:
                     id_compartment = id + '_' + c;
@@ -152,7 +152,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
         for met in cobra_model_I.metabolites:
              id = met.id.replace('_DASH_','-')
              id = id.split('_')[0]
-             if id in self.id2KEGGID.keys():
+             if id in list(self.id2KEGGID.keys()):
                  cobra_model_I.metabolites.get_by_id(met.id).notes['KEGGID'] = self.id2KEGGID[id];
              else: cobra_model_I.metabolites.get_by_id(met.id).notes['KEGGID'] = None;
 
@@ -191,7 +191,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
             if add2rxnlist: reaction_list_tmp[rxn.id] = r_tmp;
 
         # check for empty reaction
-        for key,value in reaction_list_tmp.iteritems():
+        for key,value in reaction_list_tmp.items():
             check = value.replace(" ", "");
             if not(check == '<=>') and len(check.split('<=>')[0])>0 and len(check.split('<=>')[1])>0:
                 reaction_list[key] = value
@@ -333,17 +333,17 @@ class thermodynamics_dG_f_data(thermodynamics_io):
 
         dG0_f = {};
         for item in pseudo:
-            if 'pmaps' in item.keys():
+            if 'pmaps' in list(item.keys()):
                 pmaps = item['pmaps'];
                 for p in pmaps:
-                    if 'priority' in p.keys():
+                    if 'priority' in list(p.keys()):
                         if p['priority'] == 2:
                             species = p['species'];
                             for s in species:
                                 if s['z']==zs_min[item['CID']]['z_min']:
                                     value = s['dG0_f'];
                                     if not(value==type(0.0)): value = float(value);                        
-                                    if 'source' in p.keys() and p['priority'] == 2:
+                                    if 'source' in list(p.keys()) and p['priority'] == 2:
                                         dG0_f[item['CID']] = {'priority':2,'source':p['source'], 'dG0_f':value, 'dG0_f_units': 'kJ/mol', 'dG0_f_var':62.0};
                                     else:
                                         dG0_f[item['CID']] = {'priority':2,'source':'', 'dG0_f':value, 'dG0_f_units': 'kJ/mol', 'dG0_f_var':62.0};
@@ -358,10 +358,10 @@ class thermodynamics_dG_f_data(thermodynamics_io):
 
         dG0_f = {};
         for item in pseudo:
-            if 'pmaps' in item.keys():
+            if 'pmaps' in list(item.keys()):
                 pmaps = item['pmaps'];
                 for p in pmaps:
-                    if 'priority' in p.keys():
+                    if 'priority' in list(p.keys()):
                         if p['priority'] == 1:
                             species = p['species'];
                             zs_min = [];
@@ -372,7 +372,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
                                 if s['z']==z_min:
                                     value = s['dG0_f'];
                                     if not(value==type(0.0)): value = float(value);
-                                    if 'source' in p.keys() and p['priority'] == 1:
+                                    if 'source' in list(p.keys()) and p['priority'] == 1:
                                         dG0_f[item['CID']] = {'priority':1,'source':p['source'], 'dG0_f':value, 'dG0_f_units': 'kJ/mol', 'dG0_f_var':31.0};
                                     else:
                                         dG0_f[item['CID']] = {'priority':1,'source':'', 'dG0_f':value, 'dG0_f_units': 'kJ/mol', 'dG0_f_var':31.0};
@@ -387,7 +387,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
         dG0_f = {};
         with open('data\\dG0_f_rc_v2.csv','r') as infile:
             reader = csv.reader(infile)
-            headers = reader.next();
+            headers = next(reader);
             for r in reader:
                 value = r[1];
                 if not(value==type(0.0)): value = float(value);
@@ -401,18 +401,18 @@ class thermodynamics_dG_f_data(thermodynamics_io):
         '''
         compounds_dG0_f = {};
         keys = [];
-        if dG0_f_0:keys.extend(dG0_f_0.keys())
-        if dG0_f_1:keys.extend(dG0_f_1.keys())
-        if dG0_f_2: keys.extend(dG0_f_2.keys())
+        if dG0_f_0:keys.extend(list(dG0_f_0.keys()))
+        if dG0_f_1:keys.extend(list(dG0_f_1.keys()))
+        if dG0_f_2: keys.extend(list(dG0_f_2.keys()))
         keys = sorted(list(set(keys)));
         # add the data into a single json file
         for k in keys:
             compounds_dG0_f[k] = [];
-            if k in dG0_f_0.keys():
+            if k in list(dG0_f_0.keys()):
                 compounds_dG0_f[k].append(dG0_f_0[k])
-            if k in dG0_f_1.keys():
+            if k in list(dG0_f_1.keys()):
                 compounds_dG0_f[k].append(dG0_f_1[k])
-            if k in dG0_f_2.keys():
+            if k in list(dG0_f_2.keys()):
                 compounds_dG0_f[k].append(dG0_f_2[k])
         with open(filename,'w') as outfile:
             json.dump(compounds_dG0_f, outfile, indent=4);
@@ -451,11 +451,11 @@ class thermodynamics_dG_f_data(thermodynamics_io):
         for m in cobra_model_I.metabolites:
             m_id_model = m.id[:-2] # assuming that the compartment is a 1 letter abbreviation!
             m_id_kegg = '';
-            if m_id_model in self.id2KEGGID.keys():
+            if m_id_model in list(self.id2KEGGID.keys()):
                 m_id_kegg = self.id2KEGGID[m_id_model];
             else: 
                 continue;
-            if m_id_kegg and m_id_kegg in dG0_f_KEGG_all.keys() and not(m_id_model in self.dG0_f.keys()):
+            if m_id_kegg and m_id_kegg in list(dG0_f_KEGG_all.keys()) and not(m_id_model in list(self.dG0_f.keys())):
                 # get minimum priority value
                 priority = [];
                 min_priority = 0;
@@ -478,7 +478,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
             dG0_f_var = [];
             dG0_f_units = [];
 
-            for key,value in self.dG0_f.iteritems():
+            for key,value in self.dG0_f.items():
                 #id_compartment = key + '_' + c;
                 #dG0_f_ids.append(id_compartment);
                 dG0_f_ids.append(key);
@@ -557,11 +557,11 @@ class thermodynamics_dG_f_data(thermodynamics_io):
         # check units
     
         measured_values_O = {};
-        for k,v in measured_values_I.iteritems():
+        for k,v in measured_values_I.items():
             if v['dG_f_units'] == 'kJ/mol':
                 measured_values_O[k] = v
             else:
-                print (str(k) + ' has invalid units of ' + str(v) + ' and will be ignored')
+                print((str(k) + ' has invalid units of ' + str(v) + ' and will be ignored'))
         return measured_values_O;
 
     def _convert_var2lbub_dG_f(self, measured_values):
@@ -583,7 +583,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
                                                  'dG_f_units': 'kJ/mol'}
         """
         measured_values_O = {};
-        for k,v in measured_values.iteritems():
+        for k,v in measured_values.items():
              concMlb = 0.0;
              concMub = 0.0;
              if v['dG_f_var']:
@@ -618,7 +618,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
                                                  'dG_f_units': 'M'}
         """
         measured_values_O = {};
-        for k,v in measured_values.iteritems():
+        for k,v in measured_values.items():
              concMlb = 0.0;
              concMub = 0.0;
              concMlb = v['dG_f'] - v['dG_f_var'];
@@ -659,7 +659,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
                                    'dG_f_ub': lbub[m.compartment]['dG_f_ub'],
                                    'dG_f_units': lbub[m.compartment]['dG_f_units']};
             if exceptions:    
-                for k,v in exceptions.iteritems():
+                for k,v in exceptions.items():
                     if k in m.id:
                         default_values[m.id] = {'dG_f_lb':v['dG_f_lb'],
                                        'dG_f_ub':v['dG_f_ub'],
@@ -706,7 +706,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
                                    'dG_f_ub': dG_f[m.compartment]['dG_f'] + sqrt(dG_f[m.compartment]['dG_f_var']),
                                    'dG_f_units': dG_f[m.compartment]['dG_f_units']};
             if exceptions:    
-                for k,v in exceptions.iteritems():
+                for k,v in exceptions.items():
                     if k in m.id:
                         default_values[m.id] = {'dG_f':v['dG_f'],
                                        'dG_f_var':v['dG_f_var'],

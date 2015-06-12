@@ -17,7 +17,7 @@ def convert_fluxBounds2var(flux_bounds):
     """
 
     flux_bounds_O = {};
-    for k,v in flux_bounds.iteritems():
+    for k,v in flux_bounds.items():
         median = (v['maximum'] - v['minimum'])/2;
         variance = (v['maximum'] - median)*(v['maximum'] - median);
         flux_bounds_O[k] = {'flux': median, 'flux_var': variance, 'flux_units': 'mmol*gDW-1*hr-1',
@@ -42,7 +42,7 @@ def convert_cv2varAndmM2M_concentrations(measured_values):
                                              'concentration_units': 'M'}
     """
     measured_values_O = {};
-    for k,v in measured_values.iteritems():
+    for k,v in measured_values.items():
          concM = v['concentration']*1e-3;
          concMvar = v['concentration_cv']/100*(v['concentration']*1e-3)*v['concentration_cv']/100*(v['concentration']*1e-3);
          measured_values_O[k + '_c'] = {'concentration': concM,
@@ -64,7 +64,7 @@ def compartementalize_concentrations(measured_values):
                                              'concentration_units': 'M'}
     """
     measured_values_O = {};
-    for k,v in measured_values.iteritems():
+    for k,v in measured_values.items():
          measured_values_O[k + '_c'] = v
 
     return measured_values_O
@@ -89,7 +89,7 @@ def convert_cv2lbubAndmM2M_concentrations(measured_values,min_value):
                                              'concentration_units': 'M'}
     """
     measured_values_O = {};
-    for k,v in measured_values.iteritems():
+    for k,v in measured_values.items():
          concMlb = 0.0;
          concMub = 0.0;
          concMlb = v['concentration']*1e-3 - v['concentration_cv']/100*(v['concentration']*1e-3);
@@ -119,7 +119,7 @@ def convert_var2lbub_dG_f(measured_values):
                                              'dG_f_units': 'kJ/mol'}
     """
     measured_values_O = {};
-    for k,v in measured_values.iteritems():
+    for k,v in measured_values.items():
          concMlb = 0.0;
          concMub = 0.0;
          if v['dG_f_var']:
@@ -154,7 +154,7 @@ def convert_std2lbub_dG_f(measured_values,min_value):
                                              'dG_f_units': 'M'}
     """
     measured_values_O = {};
-    for k,v in measured_values.iteritems():
+    for k,v in measured_values.items():
          concMlb = 0.0;
          concMub = 0.0;
          concMlb = v['dG_f'] - v['dG_f_var'];
@@ -218,7 +218,7 @@ def generalize_compartmentLBUB2all_concentration(cobra_model, lbub=None, excepti
                                'concentration_ub': lbub[m.compartment]['concentration_ub'],
                                'concentration_units': lbub[m.compartment]['concentration_units']};
         if exceptions:        
-            for k,v in exceptions.iteritems():
+            for k,v in exceptions.items():
                 if k in m.id:
                     default_values[m.id] = {'concentration_lb':v['concentration_lb'],
                                    'concentration_ub':v['concentration_ub'],
@@ -353,7 +353,7 @@ def generalize_compartment2all_concentration(cobra_model, concentration=None, ex
                                'concentration_ub': concentration[m.compartment]['concentration_ub'],
                                'concentration_units': concentration[m.compartment]['concentration_units']};
         if exceptions:        
-            for k,v in exceptions.iteritems():
+            for k,v in exceptions.items():
                 if k in m.id:
                     default_values[m.id] = {'concentration':v['concentration'],
                                    'concentration_var':v['concentration_var'],
@@ -393,7 +393,7 @@ def generalize_compartmentLBUB2all_dG_f(cobra_model, lbub=None, exceptions=None)
                                'dG_f_ub': lbub[m.compartment]['dG_f_ub'],
                                'dG_f_units': lbub[m.compartment]['dG_f_units']};
         if exceptions:    
-            for k,v in exceptions.iteritems():
+            for k,v in exceptions.items():
                 if k in m.id:
                     default_values[m.id] = {'dG_f_lb':v['dG_f_lb'],
                                    'dG_f_ub':v['dG_f_ub'],
@@ -440,7 +440,7 @@ def generalize_compartment2all_dG_f(cobra_model, dG_f=None, exceptions=None):
                                'dG_f_ub': dG_f[m.compartment]['dG_f'] + sqrt(dG_f[m.compartment]['dG_f_var']),
                                'dG_f_units': dG_f[m.compartment]['dG_f_units']};
         if exceptions:    
-            for k,v in exceptions.iteritems():
+            for k,v in exceptions.items():
                 if k in m.id:
                     default_values[m.id] = {'dG_f':v['dG_f'],
                                    'dG_f_var':v['dG_f_var'],

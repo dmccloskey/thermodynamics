@@ -39,11 +39,11 @@ def checkInput_concentrations(measured_values_I):
     """
     # check units
     measured_values_O = {};
-    for k,v in measured_values_I.iteritems():
+    for k,v in measured_values_I.items():
         if v['concentration_units'] == 'M':
             measured_values_O[k] = v
         else:
-            print (str(k) + ' has invalid units of ' + str(v) + ' and will be ignored')
+            print((str(k) + ' has invalid units of ' + str(v) + ' and will be ignored'))
     return measured_values_O;
 
 def checkInput_dG_f(measured_values_I):
@@ -64,11 +64,11 @@ def checkInput_dG_f(measured_values_I):
     # check units
     
     measured_values_O = {};
-    for k,v in measured_values_I.iteritems():
+    for k,v in measured_values_I.items():
         if v['dG_f_units'] == 'kJ/mol':
             measured_values_O[k] = v
         else:
-            print (str(k) + ' has invalid units of ' + str(v) + ' and will be ignored')
+            print((str(k) + ' has invalid units of ' + str(v) + ' and will be ignored'))
     return measured_values_O;
 
 def import_values_json(filename):

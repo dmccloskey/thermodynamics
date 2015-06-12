@@ -8,7 +8,7 @@ import json, csv
 from math import sqrt,exp,pow
 from numpy import average, var, log
 
-from thermodynamics_io import thermodynamics_io
+from .thermodynamics_io import thermodynamics_io
 
 class thermodynamics_simulatedData(thermodynamics_io):
     """Class to handle input of simulated Data"""
@@ -30,7 +30,7 @@ class thermodynamics_simulatedData(thermodynamics_io):
     def generate_sra_data(self, cobra_model, element_list=None,
                             method='fba', element_type='reaction', solver='gurobi'):
 
-        print 'Single Reaction Deletion...'
+        print('Single Reaction Deletion...')
 
         # single reaction deletion
         single_reaction_deletions = single_deletion(cobra_model, element_list=None,
@@ -39,7 +39,7 @@ class thermodynamics_simulatedData(thermodynamics_io):
         # FBA
         cobra_model.optimize(solver='gurobi');
 
-        for k,v in single_reaction_deletions[0].iteritems():
+        for k,v in single_reaction_deletions[0].items():
             self.sra_data[k] = {'gr':None,'gr_ratio':None};
             if v:
                 self.sra_data[k] = {'gr':v,'gr_ratio':v/cobra_model.solution.f};
@@ -57,7 +57,7 @@ class thermodynamics_simulatedData(thermodynamics_io):
                                       relax_b=None, error_reporting=None,
                                       number_of_processes=1, copy_model=True):
 
-        print 'FVA...'
+        print('FVA...')
         # calculate the reaction bounds using FVA
         self.fva_data = flux_variability_analysis(cobra_model, fraction_of_optimum=0.9,
                                       objective_sense='maximize', the_reactions=None,
@@ -92,7 +92,7 @@ class thermodynamics_simulatedData(thermodynamics_io):
         """
 
         flux_bounds_O = {};
-        for k,v in flux_bounds.iteritems():
+        for k,v in flux_bounds.items():
             median = (v['maximum'] - v['minimum'])/2;
             variance = (v['maximum'] - median)*(v['maximum'] - median);
             flux_bounds_O[k] = {'flux': median, 'flux_var': variance, 'flux_units': 'mmol*gDW-1*hr-1',

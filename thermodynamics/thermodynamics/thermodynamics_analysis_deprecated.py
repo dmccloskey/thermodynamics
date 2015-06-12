@@ -1,4 +1,4 @@
-from __future__ import with_statement
+
 from math import floor,ceil,log,sqrt,pow,exp,fabs
 from copy import deepcopy
 from cobra.core.Metabolite import Metabolite
@@ -163,7 +163,7 @@ def thermodynamic_analysis(cobra_model, reaction_bounds,
         dG0_r_product_lb = 0.0;
         dG0_r_product_ub = 0.0;
         for p in r.get_products():
-            if p.id in measured_dG_f.keys():
+            if p.id in list(measured_dG_f.keys()):
                 dG0_r_product = dG0_r_product + measured_dG_f[p.id]['dG_f']*r.get_coefficient(p.id)
                 dG0_r_product_var = dG0_r_product_var + measured_dG_f[p.id]['dG_f_var']
 
@@ -174,7 +174,7 @@ def thermodynamic_analysis(cobra_model, reaction_bounds,
                 dG0_r_product_ub = dG0_r_product_ub + measured_dG_f[p.id]['dG_f_ub']*r.get_coefficient(p.id)
                 nMets = nMets + 1.0;
                 nMets_measured = nMets_measured + 1.0;
-            elif p.id in estimated_dG_f.keys():
+            elif p.id in list(estimated_dG_f.keys()):
                 dG0_r_product = dG0_r_product + estimated_dG_f[p.id]['dG_f']*r.get_coefficient(p.id)
                 dG0_r_product_var = dG0_r_product_var + estimated_dG_f[p.id]['dG_f_var']
 
@@ -193,7 +193,7 @@ def thermodynamic_analysis(cobra_model, reaction_bounds,
         dG0_r_reactant_lb = 0.0;
         dG0_r_reactant_ub = 0.0;
         for react in r.get_reactants():
-            if react.id in measured_dG_f.keys():
+            if react.id in list(measured_dG_f.keys()):
                 dG0_r_reactant = dG0_r_reactant + measured_dG_f[react.id]['dG_f']*r.get_coefficient(react.id)
                 dG0_r_reactant_var = dG0_r_reactant_var + measured_dG_f[react.id]['dG_f_var']
 
@@ -204,7 +204,7 @@ def thermodynamic_analysis(cobra_model, reaction_bounds,
                 dG0_r_reactant_ub = dG0_r_reactant_ub + measured_dG_f[react.id]['dG_f_lb']*r.get_coefficient(react.id)
                 nMets = nMets + 1.0;
                 nMets_measured = nMets_measured + 1.0;
-            elif react.id in estimated_dG_f.keys():
+            elif react.id in list(estimated_dG_f.keys()):
                 dG0_r_reactant = dG0_r_reactant + estimated_dG_f[react.id]['dG_f']*r.get_coefficient(react.id)
                 dG0_r_reactant_var = dG0_r_reactant_var + estimated_dG_f[react.id]['dG_f_var']
 
@@ -293,7 +293,7 @@ def thermodynamic_analysis(cobra_model, reaction_bounds,
         dG_r_product_ub = 0.0;
         for p in r.get_products():
             if not(p.id in hydrogens): # exclude hydrogen because it has already been accounted for when adjusting for the pH
-                if p.id in measured_concentration.keys():
+                if p.id in list(measured_concentration.keys()):
                     # calculate the dG_r of the reactants using measured concentrations
                     #   NOTE: since the geometric mean is linear with respect to dG, no adjust needs to be made
                     dG_r_product = dG_r_product + R*temperature[p.compartment]['temperature']*\
@@ -336,7 +336,7 @@ def thermodynamic_analysis(cobra_model, reaction_bounds,
                     #                (p.charge*p.charge*r.get_coefficient(p.id)*ionic_strength[p.compartment]['ionic_strength'])/(1+B*ionic_strength[p.compartment]['ionic_strength']);
                     #dG_r_pH = dG_r_pH + log(10)*R*temperature[p.compartment]['temperature']*p.charge*pH[p.compartment]['pH'];
 
-                elif p.id in estimated_concentration.keys():
+                elif p.id in list(estimated_concentration.keys()):
                     # calculate the dG_r of the reactants using estimated concentrations
                     #   NOTE: since the geometric mean is linear with respect to dG, no adjust needs to be made
                     dG_r_product = dG_r_product + R*temperature[p.compartment]['temperature']*\
@@ -385,7 +385,7 @@ def thermodynamic_analysis(cobra_model, reaction_bounds,
         dG_r_reactant_ub = 0.0;
         for react in r.get_reactants():
             if not(react.id in hydrogens): # exclude hydrogen because it has already been accounted for when adjusting for the pH
-                if react.id in measured_concentration.keys():
+                if react.id in list(measured_concentration.keys()):
                     # calculate the dG_r of the reactants using measured concentrations
                     #   NOTE: since the geometric mean is linear with respect to dG, no adjust needs to be made
                     dG_r_reactant = dG_r_reactant + R*temperature[react.compartment]['temperature']*\
@@ -430,7 +430,7 @@ def thermodynamic_analysis(cobra_model, reaction_bounds,
                     #                (react.charge*react.charge*r.get_coefficient(react.id)*ionic_strength[react.compartment]['ionic_strength'])/(1+B*ionic_strength[react.compartment]['ionic_strength']);
                     #dG_r_pH = dG_r_pH + log(10)*R*temperature[react.compartment]['temperature']*react.charge*pH[react.compartment]['pH']*r.get_coefficient(react.id);
 
-                elif react.id in estimated_concentration.keys():
+                elif react.id in list(estimated_concentration.keys()):
                     # calculate the dG_r of the reactants using estimated concentrations
                     #   NOTE: since the geometric mean is linear with respect to dG, no adjust needs to be made
                     dG_r_reactant = dG_r_reactant + R*temperature[react.compartment]['temperature']*\
@@ -498,11 +498,11 @@ def thermodynamic_analysis(cobra_model, reaction_bounds,
         Q = 0.0;
         for p in r.get_products():
             if not(p.id in hydrogens): # exclude hydrogen because it has already been accounted for when adjusting for the pH
-                if p.id in measured_concentration.keys():
+                if p.id in list(measured_concentration.keys()):
                     Q += log(measured_concentration[p.id]['concentration'])*r.get_coefficient(p.id);
                     Q_estimate += log(estimated_concentration[p.id]['concentration'])*r.get_coefficient(p.id);
                     np += 1.0;
-                elif p.id in estimated_concentration.keys():
+                elif p.id in list(estimated_concentration.keys()):
                     Q += log(estimated_concentration[p.id]['concentration'])*r.get_coefficient(p.id);
                     Q_estimate += log(estimated_concentration[p.id]['concentration'])*r.get_coefficient(p.id);
                     np += 1.0;
@@ -512,11 +512,11 @@ def thermodynamic_analysis(cobra_model, reaction_bounds,
         
         for react in r.get_reactants():
             if not(react.id in hydrogens): # exclude hydrogen because it has already been accounted for when adjusting for the pH
-                if react.id in measured_concentration.keys():
+                if react.id in list(measured_concentration.keys()):
                     Q += log(measured_concentration[react.id]['concentration'])*r.get_coefficient(react.id);
                     Q_estimate += log(estimated_concentration[react.id]['concentration'])*r.get_coefficient(react.id);
                     nr += 1.0;
-                elif react.id in estimated_concentration.keys():
+                elif react.id in list(estimated_concentration.keys()):
                     Q += log(estimated_concentration[react.id]['concentration'])*r.get_coefficient(react.id);
                     Q_estimate += log(estimated_concentration[react.id]['concentration'])*r.get_coefficient(react.id);
                     nr += 1.0;
@@ -550,22 +550,22 @@ def thermodynamic_analysis(cobra_model, reaction_bounds,
 
     '''Summarize the thermodynamic consistency check'''
     # analysis summary:
-    print 'thermodynamically infeasible reactions identified:';
+    print('thermodynamically infeasible reactions identified:');
     for r in infeasible_reactions:
-        print r.id, r.build_reaction_string();
+        print(r.id, r.build_reaction_string());
 
     conc_coverage_cnt = 0;
-    for k,v in thermodynamic_consistency_check.iteritems():
+    for k,v in thermodynamic_consistency_check.items():
         if v['measured_concentration_coverage'] > measured_concentration_coverage_criteria:
             conc_coverage_cnt += 1;
-            print k, v['measured_concentration_coverage']
-    print ('total # of reactions with required coverage = ' + str(conc_coverage_cnt))
+            print(k, v['measured_concentration_coverage'])
+    print(('total # of reactions with required coverage = ' + str(conc_coverage_cnt)))
 
     dG_f_coverage_cnt = 0;
-    for k,v in thermodynamic_consistency_check.iteritems():
+    for k,v in thermodynamic_consistency_check.items():
         if v['measured_dG_r_coverage'] > measured_dG_f_coverage_criteria:
             dG_f_coverage_cnt += 1;
-            print k, v['measured_dG_r_coverage']
-    print ('total # of reactions with required coverage = ' + str(dG_f_coverage_cnt))
+            print(k, v['measured_dG_r_coverage'])
+    print(('total # of reactions with required coverage = ' + str(dG_f_coverage_cnt)))
 
     return thermodynamic_consistency_check, dG0_r, dG_r

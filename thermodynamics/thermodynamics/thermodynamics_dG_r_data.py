@@ -1,4 +1,4 @@
-from __future__ import with_statement
+
 from math import floor,ceil,log,sqrt,pow,exp,fabs
 from copy import deepcopy
 from cobra.core.Metabolite import Metabolite
@@ -8,7 +8,7 @@ from collections import Counter
 # Other dependencies
 import csv,json,sys
 
-from thermodynamics_io import thermodynamics_io
+from .thermodynamics_io import thermodynamics_io
 
 class thermodynamics_dG_r_data(thermodynamics_io):
     """Runs thermodynamic analysis analysis on a cobra.Model object
@@ -197,7 +197,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
         data = [];
         flux1 = {};
         flux2 = {};
-        for k,v in self.dG_r.iteritems():
+        for k,v in self.dG_r.items():
             flux1[k] = v['dG_r_lb'];
             flux2[k] = v['dG_r_ub'];
         data.append(flux1);
@@ -209,7 +209,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
         data = [];
         flux1 = {};
         flux2 = {};
-        for k,v in self.displacement.iteritems():
+        for k,v in self.displacement.items():
             flux1[k] = v['displacement_lb'];
             flux2[k] = v['displacement_ub'];
         data.append(flux1);
@@ -221,7 +221,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
         data = [];
         flux1 = {};
         flux2 = {};
-        for k,v in measured_concentrations.iteritems():
+        for k,v in measured_concentrations.items():
             flux1[k] = v['concentration_lb'];
             flux2[k] = v['concentration_ub'];
         data.append(flux1);
@@ -288,7 +288,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             dG0_r_product_lb = 0.0;
             dG0_r_product_ub = 0.0;
             for p in r.products:
-                if p.id in measured_dG_f.keys():
+                if p.id in list(measured_dG_f.keys()):
                     dG0_r_product = dG0_r_product + measured_dG_f[p.id]['dG_f']*r.get_coefficient(p.id)
                     dG0_r_product_var = dG0_r_product_var + measured_dG_f[p.id]['dG_f_var']
                     # calculate the lb and ub for dG implementation #1
@@ -300,7 +300,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                     nMets = nMets + 1.0;
                     nMets_measured = nMets_measured + 1.0;
                     temperatures.append(temperature[p.compartment]['temperature']);
-                elif p.id in estimated_dG_f.keys():
+                elif p.id in list(estimated_dG_f.keys()):
                     dG0_r_product = dG0_r_product + estimated_dG_f[p.id]['dG_f']*r.get_coefficient(p.id)
                     dG0_r_product_var = dG0_r_product_var + estimated_dG_f[p.id]['dG_f_var']
                     # calculate the lb and ub for dG implementation #1
@@ -320,7 +320,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             dG0_r_reactant_lb = 0.0;
             dG0_r_reactant_ub = 0.0;
             for react in r.reactants:
-                if react.id in measured_dG_f.keys():
+                if react.id in list(measured_dG_f.keys()):
                     dG0_r_reactant = dG0_r_reactant + measured_dG_f[react.id]['dG_f']*r.get_coefficient(react.id)
                     dG0_r_reactant_var = dG0_r_reactant_var + measured_dG_f[react.id]['dG_f_var']
                     # calculate the lb and ub for dG implementation #1
@@ -332,7 +332,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                     nMets = nMets + 1.0;
                     nMets_measured = nMets_measured + 1.0;
                     temperatures.append(temperature[react.compartment]['temperature']);
-                elif react.id in estimated_dG_f.keys():
+                elif react.id in list(estimated_dG_f.keys()):
                     dG0_r_reactant = dG0_r_reactant + estimated_dG_f[react.id]['dG_f']*r.get_coefficient(react.id)
                     dG0_r_reactant_var = dG0_r_reactant_var + estimated_dG_f[react.id]['dG_f_var']
                     # calculate the lb and ub for dG implementation #1
@@ -448,7 +448,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             dG_r_product_ub = 0.0;
             for p in r.products:
                 if not(p.id in hydrogens): # exclude hydrogen because it has already been accounted for when adjusting for the pH
-                    if p.id in measured_concentration.keys():
+                    if p.id in list(measured_concentration.keys()):
                         # calculate the dG_r of the reactants using measured concentrations
                         #   NOTE: since the geometric mean is linear with respect to dG, no adjustments needs to be made
                         dG_r_product = dG_r_product + self.R*temperature[p.compartment]['temperature']*\
@@ -495,7 +495,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                         #                (p.charge*p.charge*r.get_coefficient(p.id)*ionic_strength[p.compartment]['ionic_strength'])/(1+B*ionic_strength[p.compartment]['ionic_strength']);
                         #dG_r_pH = dG_r_pH + log(10)*self.R*temperature[p.compartment]['temperature']*p.charge*pH[p.compartment]['pH'];
 
-                    elif p.id in estimated_concentration.keys():
+                    elif p.id in list(estimated_concentration.keys()):
                         # calculate the dG_r of the reactants using estimated concentrations
                         #   NOTE: since the geometric mean is linear with respect to dG, no adjustments needs to be made
                         dG_r_product = dG_r_product + self.R*temperature[p.compartment]['temperature']*\
@@ -544,7 +544,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             dG_r_reactant_ub = 0.0;
             for react in r.reactants:
                 if not(react.id in hydrogens): # exclude hydrogen because it has already been accounted for when adjusting for the pH
-                    if react.id in measured_concentration.keys():
+                    if react.id in list(measured_concentration.keys()):
                         # calculate the dG_r of the reactants using measured concentrations
                         #   NOTE: since the geometric mean is linear with respect to dG, no adjustments needs to be made
                         dG_r_reactant = dG_r_reactant + self.R*temperature[react.compartment]['temperature']*\
@@ -589,7 +589,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                         #                (react.charge*react.charge*r.get_coefficient(react.id)*ionic_strength[react.compartment]['ionic_strength'])/(1+B*ionic_strength[react.compartment]['ionic_strength']);
                         #dG_r_pH = dG_r_pH + log(10)*self.R*temperature[react.compartment]['temperature']*react.charge*pH[react.compartment]['pH']*r.get_coefficient(react.id);
 
-                    elif react.id in estimated_concentration.keys():
+                    elif react.id in list(estimated_concentration.keys()):
                         # calculate the dG_r of the reactants using estimated concentrations
                         #   NOTE: since the geometric mean is linear with respect to dG, no adjustments needs to be made
                         dG_r_reactant = dG_r_reactant + self.R*temperature[react.compartment]['temperature']*\
@@ -699,7 +699,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             dG0_r_product_lb = 0.0;
             dG0_r_product_ub = 0.0;
             for p in r.products:
-                if p.id in measured_dG_f.keys():
+                if p.id in list(measured_dG_f.keys()):
                     dG0_r_product = dG0_r_product + measured_dG_f[p.id]['dG_f']*r.get_coefficient(p.id)
                     dG0_r_product_var = dG0_r_product_var + measured_dG_f[p.id]['dG_f_var']
                     ## calculate the lb and ub for dG implementation #1
@@ -711,7 +711,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                     nMets = nMets + 1.0;
                     nMets_measured = nMets_measured + 1.0;
                     temperatures.append(temperature[p.compartment]['temperature']);
-                elif p.id in estimated_dG_f.keys():
+                elif p.id in list(estimated_dG_f.keys()):
                     dG0_r_product = dG0_r_product + estimated_dG_f[p.id]['dG_f']*r.get_coefficient(p.id)
                     #dG0_r_product_var = dG0_r_product_var + estimated_dG_f[p.id]['dG_f_var']
                     ## calculate the lb and ub for dG implementation #1
@@ -731,7 +731,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             dG0_r_reactant_lb = 0.0;
             dG0_r_reactant_ub = 0.0;
             for react in r.reactants:
-                if react.id in measured_dG_f.keys():
+                if react.id in list(measured_dG_f.keys()):
                     dG0_r_reactant = dG0_r_reactant + measured_dG_f[react.id]['dG_f']*r.get_coefficient(react.id)
                     dG0_r_reactant_var = dG0_r_reactant_var + measured_dG_f[react.id]['dG_f_var']
                     ## calculate the lb and ub for dG implementation #1
@@ -743,7 +743,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                     nMets = nMets + 1.0;
                     nMets_measured = nMets_measured + 1.0;
                     temperatures.append(temperature[react.compartment]['temperature']);
-                elif react.id in estimated_dG_f.keys():
+                elif react.id in list(estimated_dG_f.keys()):
                     dG0_r_reactant = dG0_r_reactant + estimated_dG_f[react.id]['dG_f']*r.get_coefficient(react.id)
                     dG0_r_reactant_var = dG0_r_reactant_var + estimated_dG_f[react.id]['dG_f_var']
                     ## calculate the lb and ub for dG implementation #1
@@ -859,7 +859,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             dG_r_product_ub = 0.0;
             for p in r.products:
                 if not(p.id in hydrogens): # exclude hydrogen because it has already been accounted for when adjusting for the pH
-                    if p.id in measured_concentration.keys():
+                    if p.id in list(measured_concentration.keys()):
                         # calculate the dG_r of the reactants using measured concentrations
                         #   NOTE: since the geometric mean is linear with respect to dG, no adjustments needs to be made
                         #dG_r_product = dG_r_product + self.R*temperature[p.compartment]['temperature']*\
@@ -906,7 +906,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                         #                (p.charge*p.charge*r.get_coefficient(p.id)*ionic_strength[p.compartment]['ionic_strength'])/(1+B*ionic_strength[p.compartment]['ionic_strength']);
                         #dG_r_pH = dG_r_pH + log(10)*self.R*temperature[p.compartment]['temperature']*p.charge*pH[p.compartment]['pH'];
 
-                    elif p.id in estimated_concentration.keys():
+                    elif p.id in list(estimated_concentration.keys()):
                         # calculate the dG_r of the reactants using estimated concentrations
                         #   NOTE: since the geometric mean is linear with respect to dG, no adjustments needs to be made
                         #dG_r_product = dG_r_product + self.R*temperature[p.compartment]['temperature']*\
@@ -955,7 +955,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             dG_r_reactant_ub = 0.0;
             for react in r.reactants:
                 if not(react.id in hydrogens): # exclude hydrogen because it has already been accounted for when adjusting for the pH
-                    if react.id in measured_concentration.keys():
+                    if react.id in list(measured_concentration.keys()):
                         # calculate the dG_r of the reactants using measured concentrations
                         #   NOTE: since the geometric mean is linear with respect to dG, no adjustments needs to be made
                         #dG_r_reactant = dG_r_reactant + self.R*temperature[react.compartment]['temperature']*\
@@ -1000,7 +1000,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                         #                (react.charge*react.charge*r.get_coefficient(react.id)*ionic_strength[react.compartment]['ionic_strength'])/(1+B*ionic_strength[react.compartment]['ionic_strength']);
                         #dG_r_pH = dG_r_pH + log(10)*self.R*temperature[react.compartment]['temperature']*react.charge*pH[react.compartment]['pH']*r.get_coefficient(react.id);
 
-                    elif react.id in estimated_concentration.keys():
+                    elif react.id in list(estimated_concentration.keys()):
                         # calculate the dG_r of the reactants using estimated concentrations
                         #   NOTE: since the geometric mean is linear with respect to dG, no adjustments needs to be made
                         #dG_r_reactant = dG_r_reactant + self.R*temperature[react.compartment]['temperature']*\
@@ -1118,7 +1118,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             dG0_r_product_lb = 0.0;
             dG0_r_product_ub = 0.0;
             for p in r.products:
-                if p.id in measured_dG_f.keys():
+                if p.id in list(measured_dG_f.keys()):
                     dG0_r_product = dG0_r_product + measured_dG_f[p.id]['dG_f']*r.get_coefficient(p.id)
                     dG0_r_product_var = dG0_r_product_var + measured_dG_f[p.id]['dG_f_var']
                     # calculate the lb and ub for dG implementation #1
@@ -1127,7 +1127,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                     nMets = nMets + 1.0;
                     nMets_measured = nMets_measured + 1.0;
                     temperatures.append(temperature[p.compartment]['temperature']);
-                elif p.id in estimated_dG_f.keys():
+                elif p.id in list(estimated_dG_f.keys()):
                     dG0_r_product = dG0_r_product + estimated_dG_f[p.id]['dG_f']*r.get_coefficient(p.id)
                     #dG0_r_product_var = dG0_r_product_var + estimated_dG_f[p.id]['dG_f_var']
                     # calculate the lb and ub for dG implementation #1
@@ -1146,7 +1146,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             dG0_r_reactant_lb = 0.0;
             dG0_r_reactant_ub = 0.0;
             for react in r.reactants:
-                if react.id in measured_dG_f.keys():
+                if react.id in list(measured_dG_f.keys()):
                     dG0_r_reactant = dG0_r_reactant + measured_dG_f[react.id]['dG_f']*r.get_coefficient(react.id)
                     dG0_r_reactant_var = dG0_r_reactant_var + measured_dG_f[react.id]['dG_f_var']
                     # calculate the lb and ub for dG implementation #1
@@ -1155,7 +1155,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                     nMets = nMets + 1.0;
                     nMets_measured = nMets_measured + 1.0;
                     temperatures.append(temperature[react.compartment]['temperature']);
-                elif react.id in estimated_dG_f.keys():
+                elif react.id in list(estimated_dG_f.keys()):
                     dG0_r_reactant = dG0_r_reactant + estimated_dG_f[react.id]['dG_f']*r.get_coefficient(react.id)
                     dG0_r_reactant_var = dG0_r_reactant_var + estimated_dG_f[react.id]['dG_f_var']
                     # calculate the lb and ub for dG implementation #1
@@ -1276,7 +1276,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             dG_r_product_ub = 0.0;
             for p in r.products:
                 if not(p.id in hydrogens): # exclude hydrogen because it has already been accounted for when adjusting for the pH
-                    if p.id in measured_concentration.keys():
+                    if p.id in list(measured_concentration.keys()):
                         # calculate the dG_r of the reactants using measured concentrations
                         #   NOTE: since the geometric mean is linear with respect to dG, no adjustments needs to be made
                         #dG_r_product = dG_r_product + self.R*temperature[p.compartment]['temperature']*\
@@ -1318,7 +1318,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                         #                (p.charge*p.charge*r.get_coefficient(p.id)*ionic_strength[p.compartment]['ionic_strength'])/(1+B*ionic_strength[p.compartment]['ionic_strength']);
                         #dG_r_pH = dG_r_pH + log(10)*self.R*temperature[p.compartment]['temperature']*p.charge*pH[p.compartment]['pH'];
 
-                    elif p.id in estimated_concentration.keys():
+                    elif p.id in list(estimated_concentration.keys()):
                         # calculate the dG_r of the reactants using estimated concentrations
                         #   NOTE: since the geometric mean is linear with respect to dG, no adjustments needs to be made
                         #dG_r_product = dG_r_product + self.R*temperature[p.compartment]['temperature']*\
@@ -1362,7 +1362,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             dG_r_reactant_ub = 0.0;
             for react in r.reactants:
                 if not(react.id in hydrogens): # exclude hydrogen because it has already been accounted for when adjusting for the pH
-                    if react.id in measured_concentration.keys():
+                    if react.id in list(measured_concentration.keys()):
                         # calculate the dG_r of the reactants using measured concentrations
                         #   NOTE: since the geometric mean is linear with respect to dG, no adjustments needs to be made
                         #dG_r_reactant = dG_r_reactant + self.R*temperature[react.compartment]['temperature']*\
@@ -1402,7 +1402,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                         #                (react.charge*react.charge*r.get_coefficient(react.id)*ionic_strength[react.compartment]['ionic_strength'])/(1+B*ionic_strength[react.compartment]['ionic_strength']);
                         #dG_r_pH = dG_r_pH + log(10)*self.R*temperature[react.compartment]['temperature']*react.charge*pH[react.compartment]['pH']*r.get_coefficient(react.id);
 
-                    elif react.id in estimated_concentration.keys():
+                    elif react.id in list(estimated_concentration.keys()):
                         # calculate the dG_r of the reactants using estimated concentrations
                         #   NOTE: since the geometric mean is linear with respect to dG, no adjustments needs to be made
                         #dG_r_reactant = dG_r_reactant + self.R*temperature[react.compartment]['temperature']*\
@@ -1552,23 +1552,23 @@ class thermodynamics_dG_r_data(thermodynamics_io):
 
         '''Summarize the thermodynamic consistency check'''
         # analysis summary:
-        print 'thermodynamically infeasible reactions identified:';
+        print('thermodynamically infeasible reactions identified:');
         for r in infeasible_reactions:
-            print r.id, r.build_reaction_string();
+            print(r.id, r.build_reaction_string());
 
         conc_coverage_cnt = 0;
-        for k,v in self.metabolomics_coverage.iteritems():
+        for k,v in self.metabolomics_coverage.items():
             if v > measured_concentration_coverage_criteria:
                 conc_coverage_cnt += 1;
                 #print k, v
-        print ('total # of reactions with required metabolomic coverage = ' + str(conc_coverage_cnt))
+        print(('total # of reactions with required metabolomic coverage = ' + str(conc_coverage_cnt)))
 
         dG_f_coverage_cnt = 0;
-        for k,v in self.dG_r_coverage.iteritems():
+        for k,v in self.dG_r_coverage.items():
             if v > measured_dG_f_coverage_criteria:
                 dG_f_coverage_cnt += 1;
                 #print k, v
-        print ('total # of reactions with required thermodynamic coverage = ' + str(dG_f_coverage_cnt))
+        print(('total # of reactions with required thermodynamic coverage = ' + str(dG_f_coverage_cnt)))
     
     def find_transportMets(self, cobra_model_I, reaction_id_I):
         # transport metabolite definition:
@@ -1590,7 +1590,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
         mets_O = [];
         for m in met_ids:
             met_names.append(m.name);
-        met_O = [k for k,v in Counter(met_names).items() if v>1]
+        met_O = [k for k,v in list(Counter(met_names).items()) if v>1]
         return met_O;
 
     def calculate_displacement(self, cobra_model, measured_concentration, estimated_concentration):
@@ -1618,12 +1618,12 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             products_pi_ub = 1.0;
             for p in r.products:
                 if not(p.id in hydrogens): # exclude hydrogen
-                    if p.id in measured_concentration.keys():
+                    if p.id in list(measured_concentration.keys()):
                         # calculate Q using the geometric mean
                         products_pi_lb *= pow(measured_concentration[p.id]['concentration_lb'],r.get_coefficient(p.id));
                         products_pi_ub *= pow(measured_concentration[p.id]['concentration_ub'],r.get_coefficient(p.id));
 
-                    elif p.id in estimated_concentration.keys():
+                    elif p.id in list(estimated_concentration.keys()):
                         products_pi_lb *= pow(estimated_concentration[p.id]['concentration_lb'],r.get_coefficient(p.id));
                         products_pi_ub *= pow(estimated_concentration[p.id]['concentration_ub'],r.get_coefficient(p.id));
 
@@ -1631,7 +1631,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             reactants_pi_ub = 1.0;
             for react in r.reactants:
                 if not(react.id in hydrogens): # exclude hydrogen
-                    if react.id in measured_concentration.keys():
+                    if react.id in list(measured_concentration.keys()):
                         # Method 1
                         # calculate Q using the geometric mean
                         reactants_pi_lb *= pow(measured_concentration[react.id]['concentration_lb'],r.get_coefficient(react.id));
@@ -1641,7 +1641,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                         #reactants_pi_lb *= pow(measured_concentration[react.id]['concentration_ub'],r.get_coefficient(react.id));
                         #reactants_pi_ub *= pow(measured_concentration[react.id]['concentration_lb'],r.get_coefficient(react.id));
 
-                    elif react.id in estimated_concentration.keys():
+                    elif react.id in list(estimated_concentration.keys()):
                         # Method 1
                         # calculate Q using the geometric mean
                         reactants_pi_lb *= pow(estimated_concentration[react.id]['concentration_lb'],r.get_coefficient(react.id));
@@ -1683,12 +1683,12 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             products_pi_ub = 1.0;
             for p in r.products:
                 if not(p.id in hydrogens): # exclude hydrogen
-                    if p.id in measured_concentration.keys():
+                    if p.id in list(measured_concentration.keys()):
                         # calculate Q using the geometric mean
                         products_pi_lb *= pow(measured_concentration[p.id]['concentration_lb'],r.get_coefficient(p.id));
                         products_pi_ub *= pow(measured_concentration[p.id]['concentration_ub'],r.get_coefficient(p.id));
 
-                    elif p.id in estimated_concentration.keys():
+                    elif p.id in list(estimated_concentration.keys()):
                         products_pi_lb *= pow(estimated_concentration[p.id]['concentration_lb'],r.get_coefficient(p.id));
                         products_pi_ub *= pow(estimated_concentration[p.id]['concentration_ub'],r.get_coefficient(p.id));
 
@@ -1696,7 +1696,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             reactants_pi_ub = 1.0;
             for react in r.reactants:
                 if not(react.id in hydrogens): # exclude hydrogen
-                    if react.id in measured_concentration.keys():
+                    if react.id in list(measured_concentration.keys()):
                         ## Method 1
                         ## calculate Q using the geometric mean
                         #reactants_pi_lb *= pow(measured_concentration[react.id]['concentration_lb'],r.get_coefficient(react.id));
@@ -1706,7 +1706,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                         reactants_pi_lb *= pow(measured_concentration[react.id]['concentration_ub'],r.get_coefficient(react.id));
                         reactants_pi_ub *= pow(measured_concentration[react.id]['concentration_lb'],r.get_coefficient(react.id));
 
-                    elif react.id in estimated_concentration.keys():
+                    elif react.id in list(estimated_concentration.keys()):
                         ## Method 1
                         ## calculate Q using the geometric mean
                         #reactants_pi_lb *= pow(estimated_concentration[react.id]['concentration_lb'],r.get_coefficient(react.id));
@@ -1748,12 +1748,12 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             products_pi_ub = 1.0;
             for p in r.products:
                 if not(p.id in hydrogens): # exclude hydrogen
-                    if p.id in measured_concentration.keys():
+                    if p.id in list(measured_concentration.keys()):
                         # calculate Q using the geometric mean
                         products_pi_lb *= pow(measured_concentration[p.id]['concentration_lb'],r.get_coefficient(p.id));
                         products_pi_ub *= pow(measured_concentration[p.id]['concentration_ub'],r.get_coefficient(p.id));
 
-                    elif p.id in estimated_concentration.keys():
+                    elif p.id in list(estimated_concentration.keys()):
                         products_pi_lb *= pow(estimated_concentration[p.id]['concentration_lb'],r.get_coefficient(p.id));
                         products_pi_ub *= pow(estimated_concentration[p.id]['concentration_ub'],r.get_coefficient(p.id));
 
@@ -1761,7 +1761,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             reactants_pi_ub = 1.0;
             for react in r.reactants:
                 if not(react.id in hydrogens): # exclude hydrogen
-                    if react.id in measured_concentration.keys():
+                    if react.id in list(measured_concentration.keys()):
                         # Method 1
                         # calculate Q using the geometric mean
                         reactants_pi_lb *= pow(measured_concentration[react.id]['concentration_lb'],r.get_coefficient(react.id));
@@ -1771,7 +1771,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                         #reactants_pi_lb *= pow(measured_concentration[react.id]['concentration_ub'],r.get_coefficient(react.id));
                         #reactants_pi_ub *= pow(measured_concentration[react.id]['concentration_lb'],r.get_coefficient(react.id));
 
-                    elif react.id in estimated_concentration.keys():
+                    elif react.id in list(estimated_concentration.keys()):
                         # Method 1
                         # calculate Q using the geometric mean
                         reactants_pi_lb *= pow(estimated_concentration[react.id]['concentration_lb'],r.get_coefficient(react.id));
@@ -1811,7 +1811,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
         #           'reaction_id 2':{gr:float, gr_ratio:% change in growth},...}
 
         gr_O = {};
-        reactions_id_I = self.inconsistent_reactions.keys();
+        reactions_id_I = list(self.inconsistent_reactions.keys());
         # determine the orginal growth rate of the model
         cobra_model_I.optimize();
         gr_original = cobra_model_I.solution.f;
@@ -1844,7 +1844,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
         # Output:
         #   cobra_model with reactions removed
 
-        for k,v in self.inconsistent_reactions.iteritems():
+        for k,v in self.inconsistent_reactions.items():
             #remove the reaction from the model
             if v['gr_ratio'] > 0.0:
                 rxn = cobra_model_irreversible.reactions.get_by_id(k)
@@ -1858,7 +1858,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                 #check for growth
                 cobra_model_irreversible.optimize(solver='gurobi');
                 if not cobra_model_irreversible.solution.f:
-                    print rxn.id + ' broke the model!';
+                    print(rxn.id + ' broke the model!');
                     cobra_model_irreversible.reactions.get_by_id(k).upper_bound = ub;
                     cobra_model_irreversible.reactions.get_by_id(k).lower_bound = lb;
 
@@ -1870,7 +1870,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
         # Output:
         #   cobra_model with reactions removed
 
-        for k,v in self.inconsistent_reactions.iteritems():
+        for k,v in self.inconsistent_reactions.items():
             #remove the reaction from the model
             if v['gr_ratio'] > 0.0:
                 rxn = cobra_model.reactions.get_by_id(k)
@@ -1878,7 +1878,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                 #check for growth
                 cobra_model.optimize(solver='gurobi');
                 if not cobra_model.solution.f:
-                    print rxn.id + ' broke the model!';
+                    print(rxn.id + ' broke the model!');
                     cobra_model.add_reaction(rxn);
 
     def change_feasibleReactions(self,infeasible_reactions_I):
@@ -1889,10 +1889,10 @@ class thermodynamics_dG_r_data(thermodynamics_io):
         #   infeasible_reactions_I = list of strings of reaction ids
         
         for rxn in infeasible_reactions_I:
-            if self.thermodynamic_consistency_check.has_key(rxn):
+            if rxn in self.thermodynamic_consistency_check:
                 self.thermodynamic_consistency_check[rxn]['feasible']=False;
             else:
-                print "reaction " + rxn + " not found in variable inconsistent_reactions";
+                print("reaction " + rxn + " not found in variable inconsistent_reactions");
 
 
 

@@ -31,7 +31,7 @@ def find_transportMets(cobra_model_I, reaction_id_I):
     mets_O = [];
     for m in met_ids:
         met_names.append(m.name);
-    met_O = [k for k,v in Counter(met_names).items() if v>1]
+    met_O = [k for k,v in list(Counter(met_names).items()) if v>1]
     return met_O;
 
 def find_transportRxns(cobra_model_I):

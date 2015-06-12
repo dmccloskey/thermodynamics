@@ -120,7 +120,7 @@ def gim3e(cobra_model, expression_dict = {}, expression_threshold = 0.,
 
     # First finalize the solver to use through the script
     solver = check_solver(solver)
-    if type(solver) == types.NoneType:
+    if type(solver) == type(None):
         print("Cannot identify a working solver, exiting ...")
         continue_flag = False
 
@@ -145,7 +145,7 @@ def gim3e(cobra_model, expression_dict = {}, expression_threshold = 0.,
                    tolerance_feasibility = solver_tolerance,
                    tolerance_barrier = 0.0001 * solver_tolerance,
                    tolerance_integer = tolerance_integer)
-        if type(new_cobra_model.solution) != types.NoneType:
+        if type(new_cobra_model.solution) != type(None):
             best_objective = new_cobra_model.solution.f
             if new_cobra_model.solution.status not in acceptable_solution_strings:
                 print("Cannot optimize the original problem, even without metabolite constraints!  Exiting...")
@@ -159,7 +159,7 @@ def gim3e(cobra_model, expression_dict = {}, expression_threshold = 0.,
     if continue_flag:
         if fraction_growth >= ((best_objective - solver_tolerance) / best_objective):
             fraction_growth = (best_objective - solver_tolerance) / best_objective                
-            print("Fraction of growth must take numerical limitations into consideration and cannot be set too close to 1.  Resetting to " + str(fraction_growth) + ".")	
+            print(("Fraction of growth must take numerical limitations into consideration and cannot be set too close to 1.  Resetting to " + str(fraction_growth) + "."))	
         # First make the model irreversible.
         # First set exchange constraints to +/- max so media exchanges are
         # are given a _reverse reaction even if it is not used.
@@ -269,13 +269,13 @@ def gim3e(cobra_model, expression_dict = {}, expression_threshold = 0.,
             constraint_test_model.reactions.get_by_id("test_objective").objective_coefficient = 1.
             if (constraint_test_model.solution.status != 'optimal'):
                 fraction_growth = best_objective_with_mets / best_objective
-                print("Warning: cannot operate at desired fraction of optimum.  Reducing to: "+ str(fraction_growth) +" of value with no metabolite constraints.")
+                print(("Warning: cannot operate at desired fraction of optimum.  Reducing to: "+ str(fraction_growth) +" of value with no metabolite constraints."))
             elif (constraint_test_model.solution.f < fraction_growth * best_objective):
                 # Check about relaxing constraint; for practical reasons it does not make
                 # sense to relax it less than the solver tolerance
                 # Also, GIM^3E does not perform well with fraction_growth == 1
                 fraction_growth = min(best_objective_with_mets / best_objective, (best_objective - solver_tolerance) / best_objective)
-                print("Warning: cannot operate at desired fraction of optimum.  Reducing to: "+ str(fraction_growth) +" of value with no metabolite constraints.")
+                print(("Warning: cannot operate at desired fraction of optimum.  Reducing to: "+ str(fraction_growth) +" of value with no metabolite constraints."))
 
 
         # Use the reaction penalties as an objective.
@@ -283,8 +283,8 @@ def gim3e(cobra_model, expression_dict = {}, expression_threshold = 0.,
         for reaction in new_cobra_model.reactions:
             if reaction.objective_coefficient != 0:
                 old_objective[reaction.id] = reaction.objective_coefficient           
-        if (len(old_objective.keys()) < 2):
-            the_growth_objective_id = old_objective.keys()[0]
+        if (len(list(old_objective.keys())) < 2):
+            the_growth_objective_id = list(old_objective.keys())[0]
             old_objective_reaction = new_cobra_model.reactions.get_by_id(the_growth_objective_id)
             the_growth_objective_coefficient = old_objective_reaction.objective_coefficient
             old_objective_reaction.objective_coefficient = 0
@@ -319,7 +319,7 @@ def gim3e(cobra_model, expression_dict = {}, expression_threshold = 0.,
                    tolerance_feasibility = solver_tolerance,
                    tolerance_barrier = 0.0001 * solver_tolerance,
                    tolerance_integer = tolerance_integer)
-            if type(new_cobra_model.solution) != types.NoneType:
+            if type(new_cobra_model.solution) != type(None):
                 best_total_penalty = new_cobra_model.solution.f
                 if new_cobra_model.solution.status not in acceptable_solution_strings:	
                     print("Failed to find a solution when minimizing the penalties, exiting...")
@@ -394,7 +394,7 @@ def gim3e(cobra_model, expression_dict = {}, expression_threshold = 0.,
         # Here, we only turn off reactions if there is no growth or
         # penalty, even if we allowed a bit more slack in the FVA solutions.
         # Not pressure tested yet.
-        inactivation_candidates = [x for x in penalties.keys() if penalties[x] > 0]
+        inactivation_candidates = [x for x in list(penalties.keys()) if penalties[x] > 0]
         
         # We don't want to turn off a reaction if it is required the current optimal growth
         # In theory this step could result in a worsening of the lowest penalty
@@ -639,11 +639,11 @@ def remove_model_reactions(cobra_model, the_reactions_to_remove = [], FVA_result
     # Now trim the model
     IRRMILP_id_list = [x.id for x in cobra_model.reactions if x.id.startswith("IRRMILP_")]
     for the_reaction in approved_reactions:
-        if the_reaction.id in FVA_result_dict.keys():
+        if the_reaction.id in list(FVA_result_dict.keys()):
             FVA_result_dict.pop(the_reaction.id)
         if 'reflection' in dir(the_reaction):
             if type(the_reaction.reflection) == Reaction:
-                if the_reaction.reflection.id in FVA_result_dict.keys():
+                if the_reaction.reflection.id in list(FVA_result_dict.keys()):
                     FVA_result_dict.pop(the_reaction.reflection.id)
                 comb_1 = 'IRRMILP_direction_constraint_source_for_'+the_reaction.id+'_and_'+the_reaction.reflection.id
                 comb_2 = 'IRRMILP_direction_constraint_source_for_'+the_reaction.reflection.id+'_and_'+the_reaction.id
@@ -781,12 +781,12 @@ def irreversible_flux_variability_analysis(cobra_model, **kwargs):
             else:
                 the_reactions_temp.append(the_reaction)
             the_bounds.append(the_reactions[the_reaction])
-        the_reactions = map(cobra_model.reactions.get_by_id, the_reactions_temp)
+        the_reactions = list(map(cobra_model.reactions.get_by_id, the_reactions_temp))
 
     else:
         if hasattr(the_reactions[0], 'id'):
             the_reactions = [x.id for x in the_reactions]
-        the_reactions = map(cobra_model.reactions.get_by_id, the_reactions)
+        the_reactions = list(map(cobra_model.reactions.get_by_id, the_reactions))
 
     # We will need to keep these in memory.
     if solver == 'cplex':
@@ -932,7 +932,7 @@ def irreversible_flux_variability_analysis(cobra_model, **kwargs):
                 # incorporated into production of the objective metabolite
                 the_reaction.objective_coefficient = 1.
                 
-                for the_sense, the_description in the_sense_dict.iteritems():
+                for the_sense, the_description in the_sense_dict.items():
                     move_to_next = False
                     while not move_to_next:
                         gim3e_optimize(cobra_model,
@@ -948,7 +948,7 @@ def irreversible_flux_variability_analysis(cobra_model, **kwargs):
                             tolerance_integer = tolerance_integer,
                             the_problem = the_solution,
                             error_reporting = error_reporting)                                
-                        if type(cobra_model.solution) != types.NoneType:
+                        if type(cobra_model.solution) != type(None):
                             tmp_dict[the_description] = cobra_model.solution.f
                             tmp_dict[str(the_description)+"_"+"status"] = cobra_model.solution.status
                             move_to_next = True
@@ -967,11 +967,11 @@ def irreversible_flux_variability_analysis(cobra_model, **kwargs):
                 # we can retry the failed one using the solution from the
                 # successful one as a basis
                 n_bad_attempts = 0
-                for the_sense, the_description in the_sense_dict.iteritems():
+                for the_sense, the_description in the_sense_dict.items():
                     if tmp_dict[str(the_description)+"_"+"status"] not in acceptable_solution_strings:
                         n_bad_attempts += 1
                 if n_bad_attempts == 1:
-                    for the_sense, the_description in the_sense_dict.iteritems():
+                    for the_sense, the_description in the_sense_dict.items():
                         if tmp_dict[str(the_description)+"_"+"status"] not in acceptable_solution_strings:
                             failed_sense = the_sense
                             failed_description = the_description
@@ -990,7 +990,7 @@ def irreversible_flux_variability_analysis(cobra_model, **kwargs):
                             tolerance_integer = tolerance_integer,
                             the_problem = the_solution,
                             error_reporting = error_reporting)
-                    if type(cobra_model.solution) != types.NoneType:
+                    if type(cobra_model.solution) != type(None):
                         if cobra_model.solution.status in acceptable_solution_strings:
                             gim3e_optimize(cobra_model,
                                                 solver = solver,
@@ -1005,7 +1005,7 @@ def irreversible_flux_variability_analysis(cobra_model, **kwargs):
                                                 tolerance_integer = tolerance_integer,
                                                 the_problem = successful_solution,
                                     error_reporting = error_reporting)
-                            if type(cobra_model.solution) != types.NoneType:
+                            if type(cobra_model.solution) != type(None):
                                 tmp_dict[failed_description] = cobra_model.solution.f
                                 tmp_dict[str(failed_description)+"_"+"status"] = cobra_model.solution.status
 
@@ -1025,7 +1025,7 @@ def irreversible_flux_variability_analysis(cobra_model, **kwargs):
                         # the reverse reaction to carry flux; don't expect to
                         # run into this situation frequently
                         if ((reflection_lower_bound > 0) & (reflection_upper_bound > 0)):
-                            for the_sense, the_description in the_sense_dict.iteritems():
+                            for the_sense, the_description in the_sense_dict.items():
                                 tmp_dict[the_description] = None
                                 # Solution is infeasible if it violates a boundary
                                 tmp_dict[the_description + "_" + "status"] = 'infeasible'                                
@@ -1057,7 +1057,7 @@ def irreversible_flux_variability_analysis(cobra_model, **kwargs):
                     remaining_m = floor(((remaining_s)/3600 - remaining_h) * 60)                    
                     if (the_index + 1) < len(the_reactions):
                         next_reaction_id = the_reactions[the_index + 1].id
-                    print("Completed "+ str(the_index + 1 ) + " of " + str(len(the_reactions)) + ", about to try " + next_reaction_id + ".  El: %0.0f s.  R: %0.0f hr %0.0f min." % (pass_s, remaining_h, remaining_m))                        
+                    print(("Completed "+ str(the_index + 1 ) + " of " + str(len(the_reactions)) + ", about to try " + next_reaction_id + ".  El: %0.0f s.  R: %0.0f hr %0.0f min." % (pass_s, remaining_h, remaining_m)))                        
 
     return variability_dict
 
@@ -1086,7 +1086,7 @@ def convert_FVA_dict_to_reversible(irreversible_FVA_dict, cobra_model, enforce_c
     irreversible_FVA_dict = deepcopy(irreversible_FVA_dict)
     # Popping would be easier but this creates issues with pointers in Python
     consolidated_dict = deepcopy(irreversible_FVA_dict)
-    for the_reaction_id in irreversible_FVA_dict.keys():
+    for the_reaction_id in list(irreversible_FVA_dict.keys()):
        
         the_reaction = cobra_model.reactions.get_by_id(the_reaction_id)
         if 'reflection' in dir(the_reaction):
@@ -1389,7 +1389,7 @@ def add_sense_aware_bounds(cobra_model, **kwargs):
         wt_solution = cobra_model.solution.f
         objective_reaction = cobra_model.reactions.get_by_id(nonzero_objective_list[0])
         # Usually the coefficient will be 1.
-        if type(wt_solution) != types.NoneType:
+        if type(wt_solution) != type(None):
 			best_obj_reaction_value = wt_solution / objective_reaction.objective_coefficient
         else:
 			continue_conversion = False
@@ -1512,7 +1512,7 @@ def convert_FVA_to_constraint(cobra_model, FVA_dict, **kwargs):
             cobra_model = cobra_model.copy()
 
     the_model_reaction_ids = [x.id for x in cobra_model.reactions]
-    for reaction_id in FVA_dict.keys():
+    for reaction_id in list(FVA_dict.keys()):
         if reaction_id in the_model_reaction_ids:
             the_reaction = cobra_model.reactions.get_by_id(reaction_id)
             the_max = FVA_dict[reaction_id]['maximum']
@@ -1565,7 +1565,7 @@ def convert_FVA_to_constraint(cobra_model, FVA_dict, **kwargs):
                 elif (the_max == None) & (the_max_ref != None) & (the_min_ref != None):
                     the_reaction.lower_bound = 0                        
         else:
-            print('Did not detect id '+ reaction_id +' in model.  Skipping this reaction.')
+            print(('Did not detect id '+ reaction_id +' in model.  Skipping this reaction.'))
     return cobra_model
 
 
@@ -1679,7 +1679,7 @@ def turn_off_unused_reactions(cobra_model, **kwargs):
 
     # Run FVA to ID inactivation candidates if an FVA dict was not supplied
     # and the candidates were not specified
-    if (len(FVA_dict.keys()) < 1):
+    if (len(list(FVA_dict.keys())) < 1):
         if (len(candidate_reaction_id_list) > 0):
             the_FVA_reaction_ids = candidate_reaction_id_list
         else:
@@ -1698,7 +1698,7 @@ def turn_off_unused_reactions(cobra_model, **kwargs):
         new_FVA_dict = {}
         # Potential artifact if FVA dict has already been converted to reversible.
         for candidate_reaction in candidate_reaction_id_list:
-            if FVA_dict.has_key(candidate_reaction):
+            if candidate_reaction in FVA_dict:
                 new_FVA_dict[candidate_reaction] = deepcopy(FVA_dict[candidate_reaction])
     else:
         # If no candidate list is given we just use the whole set of results
@@ -1706,14 +1706,14 @@ def turn_off_unused_reactions(cobra_model, **kwargs):
     # Pick out candidate reactions for elimination based on the FVA results
     # Need to convert to reversible, also enforce numerical consistency
     if verbose:
-        print("Constructed an irreversible FVA dict with " + str(len(new_FVA_dict.keys())) + " irreversible reaction keys to query for inactivation.")    
+        print(("Constructed an irreversible FVA dict with " + str(len(list(new_FVA_dict.keys()))) + " irreversible reaction keys to query for inactivation."))    
 
     FVA_reversible_dict = convert_FVA_dict_to_reversible(new_FVA_dict, cobra_model)
     if verbose:
-        print("Constructed a reversible FVA dict with " + str(len(FVA_reversible_dict.keys())) + " reaction keys to query for inactivation.")
+        print(("Constructed a reversible FVA dict with " + str(len(list(FVA_reversible_dict.keys()))) + " reaction keys to query for inactivation."))
 
     elimination_candidates = []
-    for reaction_id in FVA_reversible_dict.keys():
+    for reaction_id in list(FVA_reversible_dict.keys()):
         # we consider a reaction for inactivation if none of its
         # fluxes is larger than epsilon.  Leave infeasible
         # alone.
@@ -1738,7 +1738,7 @@ def turn_off_unused_reactions(cobra_model, **kwargs):
                 elimination_candidates.append(reaction_id)
 
     if verbose:
-        print("Identified " + str(len(elimination_candidates)) + " reactions as candidates for deactivation based on FVA.")
+        print(("Identified " + str(len(elimination_candidates)) + " reactions as candidates for deactivation based on FVA."))
 
     # If specified, we need to establish that additional reaction ranges do not
     # leave the original bounds at the optimum following the elimination of a
@@ -1845,8 +1845,8 @@ def turn_off_unused_reactions(cobra_model, **kwargs):
     reaction_counter = 1
     for reaction_id in elimination_candidates:
         if verbose:
-            print("Testing reaction "+ str(reaction_counter) + " of " +
-              str(len(elimination_candidates)) + " for inactivation.")
+            print(("Testing reaction "+ str(reaction_counter) + " of " +
+              str(len(elimination_candidates)) + " for inactivation."))
         reaction_counter = reaction_counter + 1
         the_solution = initial_best_solution
         the_reaction = cobra_model.reactions.get_by_id(reaction_id)
@@ -1933,7 +1933,7 @@ def turn_off_unused_reactions(cobra_model, **kwargs):
                         the_reaction.reflection.upper_bound = cobra_model_initial_opt.reactions.get_by_id(the_reaction.id).reflection.upper_bound
                         the_reaction.reflection.lower_bound = cobra_model_initial_opt.reactions.get_by_id(the_reaction.id).reflection.lower_bound
                 if verbose:
-                    print("Could not find acceptable solution, reactivating reaction " + str(reactivated_counter) + ".")
+                    print(("Could not find acceptable solution, reactivating reaction " + str(reactivated_counter) + "."))
             else:
                 if verbose:
                     print("Could not find an acceptable solution when removing reactions, all reactions are reactivated.")
@@ -2064,17 +2064,17 @@ def gim3e_optimize(cobra_model, solver='cplex', error_reporting=True, **kwargs):
                           'quadratic_component': None}
     
     # Also, pop integer gap defaults if any
-    if 'MIP_gap_abs' in parameter_defaults.keys():
+    if 'MIP_gap_abs' in list(parameter_defaults.keys()):
         parameter_defaults.pop('MIP_gap_abs')
-    elif 'MIP_gap' in parameter_defaults.keys():
+    elif 'MIP_gap' in list(parameter_defaults.keys()):
         parameter_defaults.pop('MIP_gap')
 
     # Separate out parameters that should only be set for mips,
     # that give cplex problems if set for lps
     mip_only_parameter_defaults = {'tolerance_barrier': 1E-11}
     mip_only_parameter_dict = {}
-    for the_parameter in mip_only_parameter_defaults.keys():
-        if the_parameter in kwargs.keys():
+    for the_parameter in list(mip_only_parameter_defaults.keys()):
+        if the_parameter in list(kwargs.keys()):
             mip_only_parameter_dict[the_parameter] = kwargs[the_parameter]
             kwargs.pop(the_parameter)
         else:
@@ -2100,7 +2100,7 @@ def gim3e_optimize(cobra_model, solver='cplex', error_reporting=True, **kwargs):
                 new_objectives[the_key] = 1
                 kwargs['new_objective'] = new_objectives
         elif isinstance(kwargs['new_objective'], dict):
-            for the_objective in kwargs['new_objective'].keys():
+            for the_objective in list(kwargs['new_objective'].keys()):
                 if isinstance(the_objective, str):
                     if len(reaction_id_list) == 0:
                         reaction_id_list = [x.id for x in cobra_model.reactions]
@@ -2252,12 +2252,12 @@ def gim3e_optimize(cobra_model, solver='cplex', error_reporting=True, **kwargs):
 
     if status in optimal_solution_strings:
         the_solution = the_solver.format_solution(lp, cobra_model)
-    elif type(acceptable_solution) != types.NoneType:
+    elif type(acceptable_solution) != type(None):
         the_solution = acceptable_solution
         the_solution.status = status
     elif status != 'infeasible':
         if error_reporting:
-            print '%s failed: %s'%(solver, status)
+            print('%s failed: %s'%(solver, status))
         the_solution = the_solver.format_solution(lp, cobra_model)
         # Keep this in case local solvers have modified the status
         the_solution.status = status
@@ -2271,7 +2271,7 @@ def gim3e_optimize(cobra_model, solver='cplex', error_reporting=True, **kwargs):
         the_solution = None
         the_solution.status = 'infeasible'
         if error_reporting:
-            print '%s failed: infeasible'%(solver)          
+            print('%s failed: infeasible'%(solver))          
 
     cobra_model.solution = the_solution
     return lp
@@ -2290,7 +2290,7 @@ def local_solve_cplex_problem(lp, **kwargs):
     # Update parameter settings if provided
     if kwargs:
         [set_parameter(lp, parameter_mappings[k], v)
-         for k, v in kwargs.iteritems() if k in parameter_mappings]
+         for k, v in kwargs.items() if k in parameter_mappings]
 
     lp.solve()
     # Strictly enforce the bounds on the solution, if available (not available for LPs)
@@ -2325,7 +2325,7 @@ def local_solve_gurobi_problem(lp, **kwargs):
     # Update parameter settings if provided
     if kwargs:
         [set_parameter(lp, parameter_mappings[k], v)
-         for k, v in kwargs.iteritems() if k in parameter_mappings]
+         for k, v in kwargs.items() if k in parameter_mappings]
     
     lp.optimize()
     status = get_status(lp)
@@ -2479,8 +2479,8 @@ def evaluate_penalties(cobra_model, new_cobra_model, expression_dict, expression
     # Reaction penalties added to help in situations like flux minimization.
     # Rather than user specifying, nicer to have an automated check here.
     reaction_ids = [x.id for x in cobra_model.reactions]
-    if ((sum([1 for x in expression_dict.keys() if x in reaction_ids]) >
-         (0.5 * len(expression_dict.keys())))
+    if ((sum([1 for x in list(expression_dict.keys()) if x in reaction_ids]) >
+         (0.5 * len(list(expression_dict.keys()))))
         | (expression_threshold == None)):
         penalties = {}
         # Filter these against model reactions to be safe, this way we
@@ -2488,15 +2488,15 @@ def evaluate_penalties(cobra_model, new_cobra_model, expression_dict, expression
         # that forward and reverse reactions are similarly penalized
         # if no reverse if given.
         for the_reaction in new_cobra_model.reactions:
-            if the_reaction.id in expression_dict.keys():
+            if the_reaction.id in list(expression_dict.keys()):
                 cur_penalty = expression_threshold - expression_dict[the_reaction.id]
                 penalties[the_reaction.id] = max(0, cur_penalty)
                 if 'reflection' in dir(the_reaction):
                     if type(the_reaction.reflection) == Reaction:
-                        if the_reaction.reflection.id not in expression_dict.keys():
+                        if the_reaction.reflection.id not in list(expression_dict.keys()):
                             penalties[the_reaction.reflection.id] = max(0, cur_penalty)
             # Assign zero penalty to reactions not in the expression_dict
-            elif the_reaction.id not in penalties.keys():
+            elif the_reaction.id not in list(penalties.keys()):
                 penalties[the_reaction.id] = 0
     else:
         penalties = evaluate_gene_penalties(new_cobra_model, expression_dict, expression_threshold)
@@ -2524,7 +2524,7 @@ def evaluate_gene_penalties(new_cobra_model, expression_dict, threshold):
     # First we test for gene P/A calls.
     # Declare P/A based on cutoff
     gene_pa_dict = {}
-    for cur_gene in expression_dict.keys():
+    for cur_gene in list(expression_dict.keys()):
         if cur_gene in new_cobra_model.genes:
             if expression_dict[cur_gene] > threshold:
                 gene_pa_dict[cur_gene] = 1
@@ -2598,21 +2598,21 @@ def check_solver(solver = 'cplex'):
     """
     from cobra import solvers
     
-    available_solvers = solvers.solver_dict.keys()
+    available_solvers = list(solvers.solver_dict.keys())
 
     if solver not in available_solvers:
         if 'cplex' in available_solvers:
-            print("Switched solver from " + solver + " to cplex.")            
+            print(("Switched solver from " + solver + " to cplex."))            
             return 'cplex'
         # Gurobi should work well but it is not
         # tested as thoroughly as cplex
         elif 'gurobi' in available_solvers:
-            print("Switched solver from " + solver + " to gurobi.")             
+            print(("Switched solver from " + solver + " to gurobi."))             
             return 'gurobi'
         # glpk works well for LPs but is usually not effective
         # for MILPs
         elif 'glpk' in available_solvers:
-            print("Switched solver from " + solver + " to glpk.") 
+            print(("Switched solver from " + solver + " to glpk.")) 
             return 'glpk'
         # Otherwise, none available.
         # Also note Java_glpk not tested/supported
@@ -2745,16 +2745,16 @@ def irreversible_reaction_knockout_analysis(cobra_model, **kwargs):
     # If no reactions were provided we will use the model reactions
     if not the_reactions:
         the_reactions = {x.id: [x] for x in cobra_model.reactions if not (x.id.startswith("TMS_")| x.id.startswith("EX_") | x.id.startswith("DM_") | x.id.startswith("IRRMILP_"))}
-        for the_reaction_id in test_reactions.keys():
+        for the_reaction_id in list(test_reactions.keys()):
             the_reaction = cobra_model.reactions.get_by_id(the_reaction_id)
             if 'reflection' in dir(the_reaction):
                 if type(the_reaction.reflection) == Reaction:
                     if ((not the_reaction.id.endswith("_reverse")) & (the_reaction.reflection.id.endswith("_reverse"))):
-                        if (the_reaction.reflection.id in test_reactions.keys()) & (the_reaction.id in test_reactions.keys()):
+                        if (the_reaction.reflection.id in list(test_reactions.keys())) & (the_reaction.id in list(test_reactions.keys())):
                             test_reactions.pop(the_reaction.reflection.id)
     elif type(the_reactions) == dict:
         the_reactions_new = {}
-        for the_key in the_reactions.keys():
+        for the_key in list(the_reactions.keys()):
             if hasattr(the_key, 'id'):
                 the_new_key = the_key.id
             else:
@@ -2767,7 +2767,7 @@ def irreversible_reaction_knockout_analysis(cobra_model, **kwargs):
                 if hasattr(the_item, 'id'):
                     the_item = the_item.id
                 the_new_list.append(the_item)
-            the_new_list = map(cobra_model.reactions.get_by_id, the_new_list)
+            the_new_list = list(map(cobra_model.reactions.get_by_id, the_new_list))
             the_reactions_new[the_new_key] = the_new_list
         the_reactions = the_reactions_new 
     elif type(the_reactions) == list:
@@ -2869,16 +2869,16 @@ def irreversible_reaction_knockout_analysis(cobra_model, **kwargs):
                             starting_upper_bound = starting_model.reactions.get_by_id(the_reaction).upper_bound
                             if starting_upper_bound - upper_bound < 1:
                                 if starting_upper_bound - upper_bound > 0:
-                                    print("Warning, decreasing upper bound in starting_model for " + the_reaction + ".")
+                                    print(("Warning, decreasing upper bound in starting_model for " + the_reaction + "."))
                                     starting_model.reactions.get_by_id(the_reaction).upper_bound = upper_bound
                                 if starting_model.reactions.get_by_id(the_reaction).objective_coefficient == cobra_model.reactions.get_by_id(the_reaction).objective_coefficient:
                                     reactions_passed += 1
                                 else:
-                                    print("Mismatch objective " + the_reaction + ".")
+                                    print(("Mismatch objective " + the_reaction + "."))
                             else:
-                                print("Mismatch upper bound " + the_reaction + ".")
+                                print(("Mismatch upper bound " + the_reaction + "."))
                         else:
-                            print("Mismatch lower bound " + the_reaction + ".")
+                            print(("Mismatch lower bound " + the_reaction + "."))
             if reactions_passed == len(reaction_ids):
                 metabolites_passed = 0
                 metabolite_ids = [x.id for x in cobra_model.metabolites]
@@ -2905,7 +2905,7 @@ def irreversible_reaction_knockout_analysis(cobra_model, **kwargs):
                     tolerance_feasibility = tolerance_feasibility,
                     tolerance_barrier = tolerance_barrier,
                     tolerance_integer = tolerance_integer)
-            if type(starting_model.solution) != types.NoneType:
+            if type(starting_model.solution) != type(None):
                 print("Hot starting from supplied alternate model.")
             else:
                 if cobra_version == '0.2.0':
@@ -2933,7 +2933,7 @@ def irreversible_reaction_knockout_analysis(cobra_model, **kwargs):
             if verbose:
                 start_time = time()
             the_sense_dict = {'maximize': 'maximum'}
-            the_reaction_keys = the_reactions.keys()
+            the_reaction_keys = list(the_reactions.keys())
             for the_reaction_key in the_reaction_keys:
                 the_reaction_list = the_reactions[the_reaction_key]
                 # This flag makes sure we try to find a solution with the best basis
@@ -2945,7 +2945,7 @@ def irreversible_reaction_knockout_analysis(cobra_model, **kwargs):
                 the_solution = best_solution                
                 # Default to infeasible
                 tmp_dict = {}
-                for the_sense, the_description in the_sense_dict.iteritems():
+                for the_sense, the_description in the_sense_dict.items():
                     tmp_dict[the_description] = None
                     tmp_dict[str(the_description)+"_"+"status"] = 'infeasible'
                 current_reaction_list_upper_bound = []
@@ -3000,7 +3000,7 @@ def irreversible_reaction_knockout_analysis(cobra_model, **kwargs):
                         current_reaction_list_reflection_upper_bound.append(0)
                         current_reaction_list_reflection_lower_bound.append(0)
 
-                for the_sense, the_description in the_sense_dict.iteritems():
+                for the_sense, the_description in the_sense_dict.items():
                     while ((not move_to_next) & (try_to_find_solution)):
                         gim3e_optimize(cobra_model,
                             solver = solver,
@@ -3014,7 +3014,7 @@ def irreversible_reaction_knockout_analysis(cobra_model, **kwargs):
                             tolerance_integer = tolerance_integer,
                             the_problem = the_solution,
                             error_reporting = error_reporting)                                
-                        if type(cobra_model.solution) != types.NoneType:
+                        if type(cobra_model.solution) != type(None):
                             tmp_dict[the_description] = cobra_model.solution.f
                             tmp_dict[str(the_description)+"_"+"status"] = cobra_model.solution.status
                             move_to_next = True
@@ -3066,7 +3066,7 @@ def irreversible_reaction_knockout_analysis(cobra_model, **kwargs):
                     remaining_m = floor(((remaining_s)/3600 - remaining_h) * 60)                    
                     if (the_index + 1) < len(the_reactions):
                         next_reaction_id = the_reaction_keys[the_index + 1]
-                    print("Completed "+ str(the_index + 1 ) + " of " + str(len(the_reaction_keys)) + ", about to try " + next_reaction_id + ".  El: %0.0f s.  R: %0.0f hr %0.0f min." % (pass_s, remaining_h, remaining_m))                        
+                    print(("Completed "+ str(the_index + 1 ) + " of " + str(len(the_reaction_keys)) + ", about to try " + next_reaction_id + ".  El: %0.0f s.  R: %0.0f hr %0.0f min." % (pass_s, remaining_h, remaining_m)))                        
 
     return variability_dict
 
@@ -3083,7 +3083,7 @@ def convert_group_dict_to_reversible(the_reactions, cobra_model):
     from cobra.core import Reaction
     
     reference_reactions = deepcopy(the_reactions)
-    for the_key in reference_reactions.keys():
+    for the_key in list(reference_reactions.keys()):
         for index, the_reaction in enumerate(reference_reactions[the_key]):
             if 'reflection' in dir(the_reaction):
                 if type(the_reaction.reflection) == Reaction:
@@ -3100,7 +3100,7 @@ def convert_group_dict_to_reversible(the_reactions, cobra_model):
                     temp.pop(temp.index(x.id))
             the_reactions[the_key] = new_reactions
     reference_reactions = deepcopy(the_reactions)
-    for the_key in reference_reactions.keys():
+    for the_key in list(reference_reactions.keys()):
         if the_key.endswith("_reverse"):
             # This is a big flag, check and make sure the
             # forward, if it exists, isn't a copy...            
@@ -3109,7 +3109,7 @@ def convert_group_dict_to_reversible(the_reactions, cobra_model):
                 if 'reflection' in dir(the_reaction):
                     if type(the_reaction.reflection) == Reaction:
                         if not the_reaction.reflection.id.endswith("_reverse"):
-                            if the_reaction.reflection.id in the_reactions.keys():
+                            if the_reaction.reflection.id in list(the_reactions.keys()):
                                 reverse_list = reference_reactions[the_key]
                                 forward_list = reference_reactions[the_reaction.reflection.id]
                                 if set([x.id for x in reverse_list]) == set([x.id for x in forward_list]):

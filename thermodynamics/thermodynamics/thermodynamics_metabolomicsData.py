@@ -4,7 +4,7 @@ from math import sqrt,exp,pow
 from numpy import average, var, log
 from copy import copy
 
-from thermodynamics_io import thermodynamics_io
+from .thermodynamics_io import thermodynamics_io
 
 class thermodynamics_metabolomicsData(thermodynamics_io):
     """Class to handle metabolomics data"""
@@ -86,11 +86,11 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
         """
         # check units
         measured_values_O = {};
-        for k,v in measured_values_I.iteritems():
+        for k,v in measured_values_I.items():
             if v['concentration_units'] == 'M':
                 measured_values_O[k] = v
             else:
-                print (str(k) + ' has invalid units of ' + str(v) + ' and will be ignored')
+                print((str(k) + ' has invalid units of ' + str(v) + ' and will be ignored'))
         return measured_values_O;
 
     def _convert_cv2varAndmM2M_concentrations(self, measured_values):
@@ -110,7 +110,7 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
                                                  'concentration_units': 'M'}
         """
         measured_values_O = {};
-        for k,v in measured_values.iteritems():
+        for k,v in measured_values.items():
              concM = v['concentration']*1e-3;
              concMvar = v['concentration_cv']/100*(v['concentration']*1e-3)*v['concentration_cv']/100*(v['concentration']*1e-3);
              measured_values_O[k + '_c'] = {'concentration': concM,
@@ -132,7 +132,7 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
                                                  'concentration_units': 'M'}
         """
         measured_values_O = {};
-        for k,v in measured_values.iteritems():
+        for k,v in measured_values.items():
              measured_values_O[k + '_c'] = v
 
         return measured_values_O
@@ -151,7 +151,7 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
                                                  'concentration_units': 'M'}
         """
         measured_values_O = {};
-        for k,v in measured_values.iteritems():
+        for k,v in measured_values.items():
              measured_values_O[k + '_e'] = v
              measured_values_O[k + '_p'] = v
 
@@ -177,7 +177,7 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
                                                  'concentration_units': 'M'}
         """
         measured_values_O = {};
-        for k,v in measured_values.iteritems():
+        for k,v in measured_values.items():
              concMlb = 0.0;
              concMub = 0.0;
              concMlb = v['concentration']*1e-3 - v['concentration_cv']/100*(v['concentration']*1e-3);
@@ -241,7 +241,7 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
                                    'concentration_ub': lbub[m.compartment]['concentration_ub'],
                                    'concentration_units': lbub[m.compartment]['concentration_units']};
             if exceptions:        
-                for k,v in exceptions.iteritems():
+                for k,v in exceptions.items():
                     if k in m.id:
                         default_values[m.id] = {'concentration_lb':v['concentration_lb'],
                                        'concentration_ub':v['concentration_ub'],
@@ -387,7 +387,7 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
                                    'concentration_ub': concentration[m.compartment]['concentration_ub'],
                                    'concentration_units': concentration[m.compartment]['concentration_units']};
             if exceptions:        
-                for k,v in exceptions.iteritems():
+                for k,v in exceptions.items():
                     if k in m.id:
                         default_values[m.id] = {'concentration':v['concentration'],
                                        'concentration_var':v['concentration_var'],
@@ -533,7 +533,7 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
                                        'concentration_ub': concentration[m.compartment]['concentration_ub'],
                                        'concentration_units': concentration[m.compartment]['concentration_units']};
                 if exceptions:        
-                    for k,v in exceptions.iteritems():
+                    for k,v in exceptions.items():
                         if k in m.id:
                             default_values[m.id] = {'concentration':v['concentration'],
                                            'concentration_var':v['concentration_var'],
@@ -547,7 +547,7 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
         '''Format measured metabolite names'''
         # convert names:
         measured_concentrations_converted = {};
-        for met in measured_values.keys():
+        for met in list(measured_values.keys()):
             met_conv = copy(met);
             met_conv = met_conv.replace('-','_DASH_');
             met_conv = met_conv.replace('(','_LPAREN_');

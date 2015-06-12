@@ -12,8 +12,8 @@ from cobra.flux_analysis import flux_variability_analysis, single_deletion
 from cobra.flux_analysis.parsimonious import optimize_minimal_flux
 from cobra.flux_analysis.objective import update_objective
 # Dependencies from thermodynamics
-from thermodynamics_io import thermodynamics_io
-from thermodynamics_utility import mean_confidence_interval
+from .thermodynamics_io import thermodynamics_io
+from .thermodynamics_utility import mean_confidence_interval
 
 class thermodynamics_sampling(thermodynamics_io):
 
@@ -156,7 +156,7 @@ class thermodynamics_sampling(thermodynamics_io):
 
         data_loops = json.load(open(data_fva))
         rxn_loops = [];
-        for k,v in data_loops.iteritems():
+        for k,v in data_loops.items():
             if abs(v['minimum'])>1.0 or abs(v['maximum'])>1.0:
                 rxn_loops.append(k);
         #return rxn_loops
@@ -166,7 +166,7 @@ class thermodynamics_sampling(thermodynamics_io):
         '''remove reactions with loops from sampling points'''
 
         points_loopless = {};
-        for k,v in self.points.iteritems():
+        for k,v in self.points.items():
             if k in self.loops: continue
             else: 
                 points_loopless[k] = {'points':v,

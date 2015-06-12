@@ -75,7 +75,7 @@ def _main_():
 
     # Update the data file
     reaction_deletions = {};
-    for k,v in single_reaction_deletions[0].iteritems():
+    for k,v in single_reaction_deletions[0].items():
 	    reaction_deletions[k.id] = {'gr':None,'gr_ratio':None};
 	    if v:
 		    reaction_deletions[k.id] = {'gr':v,'gr_ratio':v/cobra_model.solution.f};

@@ -1,4 +1,4 @@
-from __future__ import with_statement, absolute_import
+
 import sys
 from os import name as __name
 available_tests = ['unit_tests']
@@ -34,7 +34,7 @@ def create_test_model(test_pickle=salmonella_pickle):
     """
     from os import name as __name
     try:
-        from cPickle import load
+        from pickle import load
     except:
         from pickle import load
 

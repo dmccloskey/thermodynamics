@@ -1,4 +1,4 @@
-from __future__ import with_statement
+
 from math import floor,ceil,log,sqrt,pow,exp,fabs
 from copy import deepcopy
 from cobra.core.Metabolite import Metabolite
@@ -101,7 +101,7 @@ class thermodynamics_dG_p_data():
         dG0_p = {};
         dG_p = {};
         # iterate through each pathway
-        for path,v in self.pathways.iteritems():
+        for path,v in self.pathways.items():
             dG0_p[path] = None;
             dG_p[path] = None;
             dG0_p_dict = {};
@@ -116,7 +116,7 @@ class thermodynamics_dG_p_data():
             dG_p_ub_tmp = 0.0;
             # iterate through each reaction
             for i,rxn in enumerate(v['reactions']):
-                if dG0_r.has_key(rxn):
+                if rxn in dG0_r:
                     # dG0 calculations
                     dG0_p_tmp += dG0_r[rxn]['dG_r']*v['stoichiometry'][i];
                     dG0_p_var_tmp += dG0_r[rxn]['dG_r_var']*v['stoichiometry'][i];
@@ -127,8 +127,8 @@ class thermodynamics_dG_p_data():
                     else:
                         dG0_p_lb_tmp += dG0_r[rxn]['dG_r_lb']*v['stoichiometry'][i];
                         dG0_p_ub_tmp += dG0_r[rxn]['dG_r_ub']*v['stoichiometry'][i];
-                else: print ('dG0_r not calculated for reaction ' + rxn + '!');
-                if dG_r.has_key(rxn):
+                else: print(('dG0_r not calculated for reaction ' + rxn + '!'));
+                if rxn in dG_r:
                     # dG calculations
                     dG_p_tmp += dG_r[rxn]['dG_r']*v['stoichiometry'][i];
                     dG_p_var_tmp += dG_r[rxn]['dG_r_var']*v['stoichiometry'][i];
@@ -139,7 +139,7 @@ class thermodynamics_dG_p_data():
                     else:
                         dG_p_lb_tmp += dG_r[rxn]['dG_r_lb']*v['stoichiometry'][i];
                         dG_p_ub_tmp += dG_r[rxn]['dG_r_ub']*v['stoichiometry'][i];
-                else: print ('dG0_r not calculated for reaction ' + rxn + '!');
+                else: print(('dG0_r not calculated for reaction ' + rxn + '!'));
             # copy information into dG0
             dG0_p_dict['reactions'] = v['reactions'];
             dG0_p_dict['stoichiometry'] = v['stoichiometry'];

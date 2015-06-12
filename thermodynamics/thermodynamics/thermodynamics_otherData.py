@@ -3,7 +3,7 @@ import json, csv
 from math import sqrt,exp,pow
 from numpy import average, var, log
 
-from thermodynamics_io import thermodynamics_io
+from .thermodynamics_io import thermodynamics_io
 
 class thermodynamics_otherData(thermodynamics_io):
     """Class to handle other input data"""

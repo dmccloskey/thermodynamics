@@ -177,19 +177,19 @@ tfba.tsampling_conc_ln_matlab_export(cobra_model_wt01, metabolomics_data_wt01.me
 tfba.tfva_concentrations(cobra_model_wt01, metabolomics_data_wt01.measured_concentrations, metabolomics_data_wt01.estimated_concentrations,
                   tcc_wt01.dG0_r, other_data.temperature, tcc_wt01.metabolomics_coverage, tcc_wt01.dG_r_coverage, tcc_wt01.thermodynamic_consistency_check, 0.5, 0.99, use_measured_concentrations=False,use_measured_dG0_r=True,solver='gurobi');
 
-rxn_ids = tfba.tfva_dG_r_data.keys();
+rxn_ids = list(tfba.tfva_dG_r_data.keys());
 print ('rxn_id\tfva_min\tfva_max\ttfva_min\ttfvamax')
 for rxn in rxn_ids:
-    print ('%s\t%s\t%s\t%s\t%s' %(rxn,simulated_data_wt01.fva_data[rxn]['flux_lb'],simulated_data_wt01.fva_data[rxn]['flux_ub'],fva_results[rxn]['flux_lb'],fva_results[rxn]['flux_ub']))
-rxn_ids = fva_results.keys();
+    print(('%s\t%s\t%s\t%s\t%s' %(rxn,simulated_data_wt01.fva_data[rxn]['flux_lb'],simulated_data_wt01.fva_data[rxn]['flux_ub'],fva_results[rxn]['flux_lb'],fva_results[rxn]['flux_ub'])))
+rxn_ids = list(fva_results.keys());
 print ('rxn_id\tdG_r_min\tdG_r_max')
 for rxn in rxn_ids:
-    print ('%s\t%s\t%s' %(rxn,tfba.tfva_dG_r_data[rxn]['dG_r_lb'],tfba.tfva_dG_r_data[rxn]['dG_r_ub']))
-met_ids = tfba.tfva_concentration_data.keys();
+    print(('%s\t%s\t%s' %(rxn,tfba.tfva_dG_r_data[rxn]['dG_r_lb'],tfba.tfva_dG_r_data[rxn]['dG_r_ub'])))
+met_ids = list(tfba.tfva_concentration_data.keys());
 print ('met_id\tconcentration_min\tconcentration_max')
 for met in met_ids:
-    print ('%s\t%s\t%s' %(met,tfba.tfva_concentration_data[met]['concentration_lb'],tfba.tfva_concentration_data[met]['concentration_ub']))
+    print(('%s\t%s\t%s' %(met,tfba.tfva_concentration_data[met]['concentration_lb'],tfba.tfva_concentration_data[met]['concentration_ub'])))
 
-reactions = tcc_anoxic.dG_r.keys();
+reactions = list(tcc_anoxic.dG_r.keys());
 for r in reactions:
-    print r + '\t' + str(tcc_anoxic.dG_r[r]['dG_r_lb']) + '\t' + str(tcc_anoxic.dG_r[r]['dG_r_ub']) + '\t' + str(tcc_oxic.dG_r[r]['dG_r_lb']) + '\t' + str(tcc_oxic.dG_r[r]['dG_r_ub']) + '\t' + str(tcc_anoxic.displacement[r]['displacement_lb']) + '\t' + str(tcc_anoxic.displacement[r]['displacement_ub']) + '\t' + str(tcc_oxic.displacement[r]['displacement_lb']) + '\t' + str(tcc_oxic.displacement[r]['displacement_ub'])
+    print(r + '\t' + str(tcc_anoxic.dG_r[r]['dG_r_lb']) + '\t' + str(tcc_anoxic.dG_r[r]['dG_r_ub']) + '\t' + str(tcc_oxic.dG_r[r]['dG_r_lb']) + '\t' + str(tcc_oxic.dG_r[r]['dG_r_ub']) + '\t' + str(tcc_anoxic.displacement[r]['displacement_lb']) + '\t' + str(tcc_anoxic.displacement[r]['displacement_ub']) + '\t' + str(tcc_oxic.displacement[r]['displacement_lb']) + '\t' + str(tcc_oxic.displacement[r]['displacement_ub']))

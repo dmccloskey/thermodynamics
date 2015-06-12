@@ -172,15 +172,15 @@ def _main_():
     tfba.tfva_concentrations(cobra_model_anoxic, metabolomics_data_anoxic.measured_concentrations, metabolomics_data_anoxic.estimated_concentrations,
                       tcc_anoxic.dG0_r, other_data.temperature, tcc_anoxic.dG_r_coverage, 0.99, use_measured_concentrations=False,use_measured_dG0_r=True,solver='gurobi');
 
-    rxn_ids = tfba.tfva_dG_r_data.keys();
+    rxn_ids = list(tfba.tfva_dG_r_data.keys());
     print ('rxn_id\tfva_min\tfva_max\ttfva_min\ttfvamax')
     for rxn in rxn_ids:
-        print ('%s\t%s\t%s\t%s\t%s' %(rxn,simulated_data_anoxic.fva_data[rxn]['flux_lb'],simulated_data_anoxic.fva_data[rxn]['flux_ub'],fva_results[rxn]['flux_lb'],fva_results[rxn]['flux_ub']))
-    rxn_ids = fva_results.keys();
+        print(('%s\t%s\t%s\t%s\t%s' %(rxn,simulated_data_anoxic.fva_data[rxn]['flux_lb'],simulated_data_anoxic.fva_data[rxn]['flux_ub'],fva_results[rxn]['flux_lb'],fva_results[rxn]['flux_ub'])))
+    rxn_ids = list(fva_results.keys());
     print ('rxn_id\tdG_r_min\tdG_r_max')
     for rxn in rxn_ids:
-        print ('%s\t%s\t%s' %(rxn,tfba.tfva_dG_r_data[rxn]['dG_r_lb'],tfba.tfva_dG_r_data[rxn]['dG_r_ub']))
-    met_ids = tfba.tfva_concentration_data.keys();
+        print(('%s\t%s\t%s' %(rxn,tfba.tfva_dG_r_data[rxn]['dG_r_lb'],tfba.tfva_dG_r_data[rxn]['dG_r_ub'])))
+    met_ids = list(tfba.tfva_concentration_data.keys());
     print ('met_id\tconcentration_min\tconcentration_max')
     for met in met_ids:
-        print ('%s\t%s\t%s' %(met,tfba.tfva_concentration_data[met]['concentration_lb'],tfba.tfva_concentration_data[met]['concentration_ub']))
+        print(('%s\t%s\t%s' %(met,tfba.tfva_concentration_data[met]['concentration_lb'],tfba.tfva_concentration_data[met]['concentration_ub'])))

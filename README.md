@@ -27,8 +27,6 @@ the modified version does not require openbabel (currently, openbabel only suppo
 
 the modified version does not require oct2py
 
-several of the function calls to calculate dG0_r and dG_r have been modified to return dG0_f and dG_f instead so that
+several of the function calls to calculate dG0_r and dG_r have been modified to return dG0_f and dG_f instead
 
-the formation energies derived from the reactant contribution method were previously calculated using a 32 bit python interpretor
-
-for all compounds covered by the reactant contribution method, and are provided as a flat file for faster calculations
+all compounds covered by the reactant contribution method are provided as a flat file for faster calculations

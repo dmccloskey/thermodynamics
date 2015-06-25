@@ -12,8 +12,8 @@ import scipy
 
 from six import iteritems, string_types
 from cobra.solvers import solver_dict, get_solver_name
-from .thermodynamics_utility import find_transportRxns, null, find_transportMetsAndRxns
-from .thermodynamics_sampling import thermodynamics_sampling
+from thermodynamics.thermodynamics_utility import find_transportRxns, null, find_transportMetsAndRxns
+from thermodynamics.thermodynamics_sampling import thermodynamics_sampling
 
 # Other dependencies
 import csv,json,sys

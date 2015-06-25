@@ -71,7 +71,7 @@ def find_transportMetsAndRxns(cobra_model_I):
     return metsAndRxns_O;
 
 def load_thermoModel(anoxic = False):
-    ijo1366_sbml = "data\\iJO1366.xml"
+    ijo1366_sbml = "thermodynamics_data\\iJO1366.xml"
     # Read in the sbml file and define the model conditions
     cobra_model = create_cobra_model_from_sbml_file(ijo1366_sbml, print_time=True)
     ## Update AMPMS2

@@ -34,10 +34,10 @@ class thermodynamics_simulatedData(thermodynamics_io):
 
         # single reaction deletion
         single_reaction_deletions = single_deletion(cobra_model, element_list=None,
-                            method='fba', element_type='reaction', solver='gurobi');
+                            method='fba', element_type='reaction', solver=solver);
 
         # FBA
-        cobra_model.optimize(solver='gurobi');
+        cobra_model.optimize(solver=solver);
 
         for k,v in single_reaction_deletions[0].items():
             self.sra_data[k] = {'gr':None,'gr_ratio':None};
@@ -60,13 +60,15 @@ class thermodynamics_simulatedData(thermodynamics_io):
         print('FVA...')
         # calculate the reaction bounds using FVA
         self.fva_data = flux_variability_analysis(cobra_model, fraction_of_optimum=0.9,
-                                      objective_sense='maximize', the_reactions=None,
-                                      allow_loops=True, solver='gurobi',
-                                      the_problem='return', tolerance_optimality=1e-6,
-                                      tolerance_feasibility=1e-6, tolerance_barrier=1e-8,
-                                      lp_method=1, lp_parallel=0, new_objective=None,
-                                      relax_b=None, error_reporting=None,
-                                      number_of_processes=1, copy_model=True);
+                                      objective_sense='maximize', solver=solver,
+                                      #the_reactions=None,
+                                      #allow_loops=True, 
+                                      #the_problem='return', tolerance_optimality=1e-6,
+                                      #tolerance_feasibility=1e-6, tolerance_barrier=1e-8,
+                                      #lp_method=1, lp_parallel=0, new_objective=None,
+                                      #relax_b=None, error_reporting=None,
+                                      #number_of_processes=1, copy_model=True
+                                      );
 
     def export_fva_data(self, filename):
         '''export fva data'''

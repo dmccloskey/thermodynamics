@@ -2189,19 +2189,19 @@ class thermodynamics_tfba():
         2. check without using measured concentrations, but using measured dG0_r
         3. check using both measured concentrations and measured dG0_r
         reactions involved with variables found to break the model are
-        changed from "feasible:True" to "feasible:False"'''
-        # input:
-        #   n_checks_I = number of loops per check
-        #   diagnose_solver_I = solver used in the diagnose FBA
-        #   diagnose_threshold_I = % of orginal growth rate to flag a constrain
-        #   diagnose_break_I = % of original growth rate to stop the diagnosis
-        # output:
-        #   thermodynamic_constraints_check = thermodynamic_consistency_check updated from the check
-        #   inconsistent_tcc = list of feasible reactions that break the model when tfba constraints are added
-        #   diagnose_variables_1 = results of check 1
-        #   diagnose_variables_2 = results of check 2
-        #   diagnose_variables_3 = results of check 3
-
+        changed from "feasible:True" to "feasible:False"
+        input:
+        n_checks_I = number of loops per check
+        diagnose_solver_I = solver used in the diagnose FBA
+        diagnose_threshold_I = % of orginal growth rate to flag a constrain
+        diagnose_break_I = % of original growth rate to stop the diagnosis
+        output:
+        thermodynamic_constraints_check = thermodynamic_consistency_check updated from the check
+        inconsistent_tcc = list of feasible reactions that break the model when tfba constraints are added
+        diagnose_variables_1 = results of check 1
+        diagnose_variables_2 = results of check 2
+        diagnose_variables_3 = results of check 3
+        '''
         thermodynamic_constraints_check = thermodynamic_consistency_check;
         # check 1:
         diagnose_variables_1 = {}
@@ -2255,3 +2255,36 @@ class thermodynamics_tfba():
         # list out all identified reactions
         inconsistent_tcc = list(thermodynamic_constraints_check.keys());
         return thermodynamic_constraints_check,inconsistent_tcc,diagnose_variables_1,diagnose_variables_2,diagnose_variables_3;
+
+    def get_variableTypeAndUnits(self,rxn_id):
+        '''return the variable type and units based on the name of the rxn_id
+        INPUT:
+        rxn_id = string
+        OUTPUT
+        type_O = string
+        units_O = string
+        '''
+        type_O = None;
+        units_O = None;
+        if 'conc_lnv_' in rxn_id:
+            type_O = 'metabolite_activity';
+            units_O = 'ln(M)';
+        elif 'dG0_rv_' in rxn_id:
+            type_O = 'dG0_r';
+            units_O = 'kJ*mol-1';
+        elif 'dG_rv_' in rxn_id:
+            type_O = 'dG_r';
+            units_O = 'kJ*mol-1';
+        elif 'indicator_' in rxn_id:
+            type_O = 'indicator';
+            units_O = '';
+        elif 'dG_r_mem_' in rxn_id:
+            type_O = 'dG_mem';
+            units_O = 'kJ*mol-1';
+        elif 'dG_r_pH_' in rxn_id:
+            type_O = 'dG_pH';
+            units_O = 'kJ*mol-1';
+        else:
+            type_O = 'flux';
+            units_O = 'mmol*gDCW-1*hr-1';
+        return type_O,units_O;

@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  pyopenms:
+    image: dmccloskey/docker-pyopenms-vscode:validate_openSWATH
+    volumes:
+      - //C/Users/domccl/Dropbox (UCSD SBRG)/Project_FastPeak/openMS_MRMworkflow/:/home/user/openMS_MRMworkflow/
+      - //C/Users//domccl/GitHub/smartPeak/py/:/home/user/code/
+      # - /home/systemsbiochemistry/Documents/openMS_MRMworkflow/:/home/user/openMS_MRMworkflow/
+      # - /home/systemsbiochemistry/Documents/GitHub/smartPeak/py/:/home/user/code/
+    ports:
+      - "3000:3000"
+    command: python /home/user/code/debug_remote.py
+    restart: always
+    networks:
+      - pyopenms_network
+    
+networks:
+  pyopenms_network:
+    ipam:
+      config:
+        - subnet: 172.22.0.0/16

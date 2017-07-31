@@ -5,11 +5,16 @@ from cobra.core.model import Model
 # NOTE: component-contribution branch master is not py3 compatible
 # NOTE: some refactoring needed for branch feature/dgf
 # # No module named 'DLFCN'
-from component_contribution.python.training_data import TrainingData
-from component_contribution.python.component_contribution import ComponentContribution
-from component_contribution.python.kegg_model import KeggModel
-from component_contribution.python.compound_cacher import CompoundCacher
-from component_contribution.python.compound_model import compound_model
+# from component_contribution.python.training_data import TrainingData
+# from component_contribution.python.component_contribution import ComponentContribution
+# from component_contribution.python.kegg_model import KeggModel
+# from component_contribution.python.compound_cacher import CompoundCacher
+# from component_contribution.python.compound_model import compound_model
+from component_contribution.training_data import TrainingData
+from component_contribution.component_contribution import ComponentContribution
+from component_contribution.kegg_model import KeggModel
+from component_contribution.compound_cacher import CompoundCacher
+from component_contribution.compound_model import compound_model
 
 from .thermodynamics_io import thermodynamics_io
 

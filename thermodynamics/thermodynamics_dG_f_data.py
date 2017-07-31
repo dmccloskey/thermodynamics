@@ -4,6 +4,7 @@ from cobra.core.model import Model
 # dependencies from component-contribution
 # NOTE: component-contribution branch master is not py3 compatible
 # NOTE: some refactoring needed for branch feature/dgf
+# # No module named 'DLFCN'
 from component_contribution.python.training_data import TrainingData
 from component_contribution.python.component_contribution import ComponentContribution
 from component_contribution.python.kegg_model import KeggModel

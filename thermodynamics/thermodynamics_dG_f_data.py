@@ -1,12 +1,14 @@
-from cobra.core.Reaction import Reaction
-from cobra.core.Metabolite import Metabolite
-from cobra.core.Model import Model
-# dependencies from component-contribution
-from component_contribution.python.training_data import TrainingData
-from component_contribution.python.component_contribution import ComponentContribution
-from component_contribution.python.kegg_model import KeggModel
-from component_contribution.python.compound_cacher import CompoundCacher
-from component_contribution.python.compound_model import compound_model
+from cobra.core.reaction import Reaction
+from cobra.core.metabolite import Metabolite
+from cobra.core.model import Model
+# # dependencies from component-contribution
+# # NOTE: component-contribution branch master is not py3 compatible
+# # NOTE: some refactoring needed for branch feature/dgf
+# from component_contribution.python.training_data import TrainingData
+# from component_contribution.python.component_contribution import ComponentContribution
+# from component_contribution.python.kegg_model import KeggModel
+# from component_contribution.python.compound_cacher import CompoundCacher
+# from component_contribution.python.compound_model import compound_model
 
 from .thermodynamics_io import thermodynamics_io
 

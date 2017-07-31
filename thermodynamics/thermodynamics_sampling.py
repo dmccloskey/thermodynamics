@@ -10,7 +10,6 @@ from cobra.io.mat import load_matlab_model
 from cobra.io.sbml import create_cobra_model_from_sbml_file
 from cobra.flux_analysis import flux_variability_analysis, single_deletion
 from cobra.flux_analysis.parsimonious import optimize_minimal_flux
-from cobra.flux_analysis.objective import update_objective
 # Dependencies from thermodynamics
 from .thermodynamics_io import thermodynamics_io
 from .thermodynamics_utility import mean_confidence_interval

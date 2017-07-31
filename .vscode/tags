@@ -4,218 +4,385 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-DIASpectrumExtractor_py	../../smartPeak/smartPeak_MRMTransitionGroupPicker_py.py	/^    def DIASpectrumExtractor_py(self,$/;"	kind:member	line:20
-DIASpectrumExtractor_py	../../smartPeak/smartPeak_PeakPickerMRM_py.py	/^    def DIASpectrumExtractor_py(self,$/;"	kind:member	line:20
-MRMFeatureFilter	../../smartPeak/__main__.py	/^        from .pyTOPP.MRMFeatureFilter import MRMFeatureFilter$/;"	kind:namespace	line:236
-MRMFeatureFilter	../../smartPeak/pyTOPP/MRMFeatureFilter.py	/^class MRMFeatureFilter():$/;"	kind:class	line:11
-MRMFeatureFilter	../../smartPeak/smartPeak_openSWATH_py.py	/^from .pyTOPP.MRMFeatureFilter import MRMFeatureFilter$/;"	kind:namespace	line:10
-MRMFeatureFilter.py	../../smartPeak/pyTOPP/MRMFeatureFilter.py	1;"	kind:file	line:1
-MRMGroupMapper	../../smartPeak/pyTOPP/MRMGroupMapper.py	/^class MRMGroupMapper():$/;"	kind:class	line:11
-MRMGroupMapper.py	../../smartPeak/pyTOPP/MRMGroupMapper.py	1;"	kind:file	line:1
-MRMMapper	../../smartPeak/pyTOPP/MRMMapper.py	/^class MRMMapper():$/;"	kind:class	line:7
-MRMMapper	../../smartPeak/smartPeak_MRMTransitionGroupPicker_py.py	/^from .pyTOPP.MRMMapper import MRMMapper$/;"	kind:namespace	line:4
-MRMMapper	../../smartPeak/smartPeak_PeakPickerMRM_py.py	/^from .pyTOPP.MRMMapper import MRMMapper$/;"	kind:namespace	line:4
-MRMMapper	../../smartPeak/smartPeak_isotopeLabeledQuantitation_py.py	/^from .pyTOPP.MRMMapper import MRMMapper$/;"	kind:namespace	line:4
-MRMMapper	../../smartPeak/smartPeak_openSWATH_py.py	/^from .pyTOPP.MRMMapper import MRMMapper$/;"	kind:namespace	line:6
-MRMMapper.py	../../smartPeak/pyTOPP/MRMMapper.py	1;"	kind:file	line:1
-MRMTransitionGroupPicker	../../smartPeak/pyTOPP/MRMTransitionGroupPicker.py	/^class MRMTransitionGroupPicker():$/;"	kind:class	line:8
-MRMTransitionGroupPicker	../../smartPeak/smartPeak_MRMTransitionGroupPicker_py.py	/^from .pyTOPP.MRMTransitionGroupPicker import MRMTransitionGroupPicker$/;"	kind:namespace	line:9
-MRMTransitionGroupPicker	../../smartPeak/smartPeak_PeakPickerMRM_py.py	/^from .pyTOPP.MRMTransitionGroupPicker import MRMTransitionGroupPicker$/;"	kind:namespace	line:9
-MRMTransitionGroupPicker.py	../../smartPeak/pyTOPP/MRMTransitionGroupPicker.py	1;"	kind:file	line:1
-MRMTransitionGroupPicker_py	../../smartPeak/smartPeak_MRMTransitionGroupPicker_py.py	/^    def MRMTransitionGroupPicker_py(self,$/;"	kind:member	line:79
-OpenSwathChromatogramExtractor	../../smartPeak/pyTOPP/OpenSwathChromatogramExtractor.py	/^class OpenSwathChromatogramExtractor():$/;"	kind:class	line:12
-OpenSwathChromatogramExtractor	../../smartPeak/smartPeak_MRMTransitionGroupPicker_py.py	/^from .pyTOPP.OpenSwathChromatogramExtractor import OpenSwathChromatogramExtractor$/;"	kind:namespace	line:5
-OpenSwathChromatogramExtractor	../../smartPeak/smartPeak_PeakPickerMRM_py.py	/^from .pyTOPP.OpenSwathChromatogramExtractor import OpenSwathChromatogramExtractor$/;"	kind:namespace	line:5
-OpenSwathChromatogramExtractor	../../smartPeak/smartPeak_isotopeLabeledQuantitation_py.py	/^from .pyTOPP.OpenSwathChromatogramExtractor import OpenSwathChromatogramExtractor$/;"	kind:namespace	line:5
-OpenSwathChromatogramExtractor	../../smartPeak/smartPeak_openSWATH_py.py	/^from .pyTOPP.OpenSwathChromatogramExtractor import OpenSwathChromatogramExtractor$/;"	kind:namespace	line:7
-OpenSwathChromatogramExtractor.py	../../smartPeak/pyTOPP/OpenSwathChromatogramExtractor.py	1;"	kind:file	line:1
-OpenSwathFeatureXMLToTSV	../../smartPeak/__main__.py	/^        from .pyTOPP.OpenSwathFeatureXMLToTSV import OpenSwathFeatureXMLToTSV$/;"	kind:namespace	line:238
-OpenSwathFeatureXMLToTSV	../../smartPeak/pyTOPP/OpenSwathFeatureXMLToTSV.py	/^class OpenSwathFeatureXMLToTSV():$/;"	kind:class	line:7
-OpenSwathFeatureXMLToTSV	../../smartPeak/smartPeak_MRMTransitionGroupPicker_py.py	/^from .pyTOPP.OpenSwathFeatureXMLToTSV import OpenSwathFeatureXMLToTSV$/;"	kind:namespace	line:7
-OpenSwathFeatureXMLToTSV	../../smartPeak/smartPeak_PeakPickerMRM_py.py	/^from .pyTOPP.OpenSwathFeatureXMLToTSV import OpenSwathFeatureXMLToTSV$/;"	kind:namespace	line:7
-OpenSwathFeatureXMLToTSV	../../smartPeak/smartPeak_openSWATH_py.py	/^from .pyTOPP.OpenSwathFeatureXMLToTSV import OpenSwathFeatureXMLToTSV$/;"	kind:namespace	line:9
-OpenSwathFeatureXMLToTSV.py	../../smartPeak/pyTOPP/OpenSwathFeatureXMLToTSV.py	1;"	kind:file	line:1
-OpenSwathRTNormalizer	../../smartPeak/pyTOPP/OpenSwathRTNormalizer.py	/^class OpenSwathRTNormalizer():$/;"	kind:class	line:7
-OpenSwathRTNormalizer	../../smartPeak/smartPeak_MRMTransitionGroupPicker_py.py	/^from .pyTOPP.OpenSwathRTNormalizer import OpenSwathRTNormalizer$/;"	kind:namespace	line:6
-OpenSwathRTNormalizer	../../smartPeak/smartPeak_PeakPickerMRM_py.py	/^from .pyTOPP.OpenSwathRTNormalizer import OpenSwathRTNormalizer$/;"	kind:namespace	line:6
-OpenSwathRTNormalizer	../../smartPeak/smartPeak_openSWATH_py.py	/^from .pyTOPP.OpenSwathRTNormalizer import OpenSwathRTNormalizer$/;"	kind:namespace	line:8
-OpenSwathRTNormalizer.py	../../smartPeak/pyTOPP/OpenSwathRTNormalizer.py	1;"	kind:file	line:1
-PeakPickerMRM_py	../../smartPeak/smartPeak_PeakPickerMRM_py.py	/^    def PeakPickerMRM_py(self,$/;"	kind:member	line:79
-ReferenceData	../../smartPeak/__main__.py	/^        from .data.ReferenceData import ReferenceData$/;"	kind:namespace	line:198
-ReferenceData	../../smartPeak/data/referenceData.py	/^class ReferenceData(sbaas_base):$/;"	kind:class	line:8
-RetentionComponents	../../smartPeak/data/retentionComponents.py	/^class RetentionComponents():$/;"	kind:class	line:10
-__init__	../../smartPeak/smartPeak_MRMTransitionGroupPicker_py.py	/^    def __init__(self):$/;"	kind:member	line:17
-__init__	../../smartPeak/smartPeak_PeakPickerMRM_py.py	/^    def __init__(self):$/;"	kind:member	line:17
-__init__	../../smartPeak/smartPeak_isotopeLabeledQuantitation_py.py	/^    def __init__(self):$/;"	kind:member	line:13
-__init__	../../smartPeak/smartPeak_openSWATH_cmd.py	/^    def __init__(self, openSWATH_cmd_params_I=None):$/;"	kind:member	line:10
-__init__	../../smartPeak/smartPeak_openSWATH_py.py	/^    def __init__(self):$/;"	kind:member	line:18
-__init__.py	../../smartPeak/__init__.py	1;"	kind:file	line:1
-__init__.py	../../smartPeak/data/__init__.py	1;"	kind:file	line:1
-__init__.py	../../smartPeak/pyTOPP/__init__.py	1;"	kind:file	line:1
-__main__	../../debug_local.py	/^from smartPeak.__main__ import __main__$/;"	kind:namespace	line:3
-__main__	../../debug_remote.py	/^from smartPeak.__main__ import __main__$/;"	kind:namespace	line:9
-__main__	../../smartPeak/__main__.py	/^class __main__():$/;"	kind:class	line:6
-__main__.py	../../smartPeak/__main__.py	1;"	kind:file	line:1
-algorithm	../../smartPeak/pyTOPP/MRMMapper.py	/^    def algorithm(self, chromatogram_map, targeted, $/;"	kind:member	line:14
-allAssaysHaveChromatograms	../../smartPeak/pyTOPP/MRMGroupMapper.py	/^    def allAssaysHaveChromatograms(self):$/;"	kind:member	line:59
-base_exportData	../../smartPeak/smartPeak_o.py	/^from io_utilities.base_exportData import base_exportData$/;"	kind:namespace	line:4
-calculateConcentrations	../../smartPeak/smartPeak_isotopeLabeledQuantitation_py.py	/^    def calculateConcentrations(self):$/;"	kind:member	line:16
-castString	../../smartPeak/smartPeak.py	/^    def castString(str_I,type_I):$/;"	kind:member	line:241
-checkParameterValue	../../smartPeak/smartPeak.py	/^    def checkParameterValue(value_I):$/;"	kind:member	line:225
-compareValues	../../smartPeak/smartPeak.py	/^    def compareValues(value_1_I,value_2_I,comparator_I):$/;"	kind:member	line:339
-convert_FeatureXMLToTSV	../../smartPeak/pyTOPP/OpenSwathFeatureXMLToTSV.py	/^    def convert_FeatureXMLToTSV(self, features, targ, run_id = 'run0', filename = 'run0.FeatureXML'):$/;"	kind:member	line:136
-convert_MQQMethod2Feature	../../smartPeak/__main__.py	/^    def convert_MQQMethod2Feature(self,filename_I,filename_O):$/;"	kind:member	line:129
-convert_MQQMethod2Feature	../../smartPeak/smartPeak.py	/^    def convert_MQQMethod2Feature(self,MQQMethod_I):$/;"	kind:member	line:77
-convert_byte2String	../../smartPeak/smartPeak.py	/^    def convert_byte2String(byte_I, encoding_I='utf-8'):$/;"	kind:member	line:40
-convert_string2Byte	../../smartPeak/smartPeak.py	/^    def convert_string2Byte(string_I, encoding_I='utf-8'):$/;"	kind:member	line:59
-convert_to_row	../../smartPeak/pyTOPP/OpenSwathFeatureXMLToTSV.py	/^    def convert_to_row(self,feature, targ, run_id, keys, keys_subordinates, filename):$/;"	kind:member	line:14
-copy	../../smartPeak/pyTOPP/MRMFeatureFilter.py	/^import copy$/;"	kind:namespace	line:2
-copy	../../smartPeak/pyTOPP/MRMGroupMapper.py	/^import copy, sys$/;"	kind:namespace	line:1
-copy	../../smartPeak/pyTOPP/MRMMapper.py	/^import copy, sys$/;"	kind:namespace	line:1
-copy	../../smartPeak/pyTOPP/MRMTransitionGroupPicker.py	/^import copy, sys$/;"	kind:namespace	line:2
-copy	../../smartPeak/pyTOPP/OpenSwathChromatogramExtractor.py	/^import copy, sys$/;"	kind:namespace	line:4
-copy	../../smartPeak/smartPeak_i.py	/^import copy$/;"	kind:namespace	line:2
-copy	../../smartPeak/smartPeak_openSWATH_py.py	/^import copy$/;"	kind:namespace	line:3
-csv	../../smartPeak/pyTOPP/OpenSwathFeatureXMLToTSV.py	/^import csv, sys$/;"	kind:namespace	line:1
-csv	../../smartPeak/smartPeak_i.py	/^import csv,sys$/;"	kind:namespace	line:1
-csv	../../smartPeak/smartPeak_o.py	/^import csv, sys, json, io$/;"	kind:namespace	line:2
-csv	../../smartPeak/smartPeak_openSWATH_cmd.py	/^import csv, sys$/;"	kind:namespace	line:3
-debug_local.py	../../debug_local.py	1;"	kind:file	line:1
-debug_remote.py	../../debug_remote.py	1;"	kind:file	line:1
-delimiter	../../debug_remote.py	/^    delimiter=','$/;"	kind:variable	line:16
-delimiter	../../debug_remote.py	/^    delimiter=','$/;"	kind:variable	line:57
-doMap	../../smartPeak/pyTOPP/MRMGroupMapper.py	/^    def doMap(self, chromatogram_mapped, targeted):$/;"	kind:member	line:19
-doMap	../../smartPeak/pyTOPP/MRMTransitionGroupPicker.py	/^    def doMap(self,exp, targeted):$/;"	kind:member	line:39
-extract_features	../../smartPeak/pyTOPP/OpenSwathRTNormalizer.py	/^    def extract_features(self, output, pairs, targeted):$/;"	kind:member	line:40
-filename_I	../../debug_local.py	/^    filename_I='C:\/Users\/domccl\/Dropbox (UCSD SBRG)\/Project_FastPeak\/openMS_MRMworkflow\/qmethod.csv',$/;"	kind:variable	line:8
-filename_O	../../debug_local.py	/^    filename_O='C:\/Users\/domccl\/Dropbox (UCSD SBRG)\/Project_FastPeak\/openMS_MRMworkflow\/feature.csv'$/;"	kind:variable	line:9
-filename_filenames	../../debug_remote.py	/^    filename_filenames='\/home\/user\/openMS_MRMworkflow\/BloodProject01\/BloodProject01_SWATH_filenames.csv',$/;"	kind:variable	line:14
-filename_filenames	../../debug_remote.py	/^    filename_filenames='\/home\/user\/openMS_MRMworkflow\/BloodProject01\/BloodProject01_SWATH_filenames.csv',$/;"	kind:variable	line:55
-filename_params	../../debug_remote.py	/^    filename_params='\/home\/user\/openMS_MRMworkflow\/BloodProject01\/BloodProject01_MRMFeatureFinderScoring_params.csv',$/;"	kind:variable	line:15
-filename_params	../../debug_remote.py	/^    filename_params='\/home\/user\/openMS_MRMworkflow\/BloodProject01\/BloodProject01_validation_params.csv',$/;"	kind:variable	line:56
-filter_MRMFeatures	../../smartPeak/pyTOPP/MRMFeatureFilter.py	/^    def filter_MRMFeatures($/;"	kind:member	line:16
-getTransitionGroup	../../smartPeak/pyTOPP/MRMGroupMapper.py	/^    def getTransitionGroup(self, chromatogram_mapped_dict, targeted_dict):$/;"	kind:member	line:34
-getTransitionGroup	../../smartPeak/pyTOPP/MRMTransitionGroupPicker.py	/^    def getTransitionGroup(self, exp, targeted, key, trgr_ids, chrom_map):$/;"	kind:member	line:13
-get_header	../../smartPeak/pyTOPP/OpenSwathFeatureXMLToTSV.py	/^    def get_header(self, features):$/;"	kind:member	line:96
-get_referenceData	../../smartPeak/data/referenceData.py	/^    def get_referenceData($/;"	kind:member	line:13
-get_retentionComponents	../../smartPeak/data/retentionComponents.py	/^    def get_retentionComponents($/;"	kind:member	line:15
-io	../../smartPeak/smartPeak_o.py	/^import csv, sys, json, io$/;"	kind:namespace	line:2
-isfloat	../../smartPeak/smartPeak.py	/^        def isfloat(str_i):$/;"	kind:function	line:305
-isotopeLabeledQuantitation_py	../../smartPeak/smartPeak_isotopeLabeledQuantitation_py.py	/^    def isotopeLabeledQuantitation_py(self,$/;"	kind:member	line:26
-json	../../smartPeak/smartPeak_o.py	/^import csv, sys, json, io$/;"	kind:namespace	line:2
-m	../../debug_local.py	/^m = __main__()$/;"	kind:variable	line:4
-m	../../debug_remote.py	/^m = __main__()$/;"	kind:variable	line:10
-main	../../smartPeak/pyTOPP/MRMGroupMapper.py	/^    def main(self,chromatogram_mapped, targeted):$/;"	kind:member	line:69
-main	../../smartPeak/pyTOPP/MRMMapper.py	/^    def main(self, infile, traml_in, targeted, $/;"	kind:member	line:77
-main	../../smartPeak/pyTOPP/OpenSwathChromatogramExtractor.py	/^    def main($/;"	kind:member	line:18
-main	../../smartPeak/pyTOPP/OpenSwathRTNormalizer.py	/^    def main(self,$/;"	kind:member	line:187
-make_osCmd	../../smartPeak/smartPeak.py	/^    def make_osCmd(paramDict_I, functionName_I):$/;"	kind:member	line:8
-make_retentionTimePairs	../../smartPeak/pyTOPP/OpenSwathRTNormalizer.py	/^    def make_retentionTimePairs($/;"	kind:member	line:46
-make_transformation	../../smartPeak/pyTOPP/OpenSwathRTNormalizer.py	/^    def make_transformation($/;"	kind:member	line:130
-map_retentionComponents2Trafo	../../smartPeak/data/retentionComponents.py	/^    def map_retentionComponents2Trafo($/;"	kind:member	line:82
-normalize_retentionComponents	../../smartPeak/data/retentionComponents.py	/^    def normalize_retentionComponents($/;"	kind:member	line:62
-openSWATH_cmd	../../smartPeak/smartPeak_openSWATH_cmd.py	/^    def openSWATH_cmd(self, verbose_I=False):$/;"	kind:member	line:17
-openSWATH_py	../../smartPeak/smartPeak_openSWATH_py.py	/^    def openSWATH_py(self,$/;"	kind:member	line:21
-os	../../smartPeak/pyTOPP/OpenSwathChromatogramExtractor.py	/^import os,sys$/;"	kind:namespace	line:2
-os	../../smartPeak/pyTOPP/OpenSwathRTNormalizer.py	/^import os,sys$/;"	kind:namespace	line:1
-os	../../smartPeak/smartPeak.py	/^import os$/;"	kind:namespace	line:2
-parseString	../../smartPeak/smartPeak.py	/^    def parseString(str_I):$/;"	kind:member	line:284
-parse_MQTransitionName	../../smartPeak/smartPeak.py	/^    def parse_MQTransitionName(name_I):$/;"	kind:member	line:127
-parse_openMSParams	../../smartPeak/smartPeak_i.py	/^    def parse_openMSParams(self):$/;"	kind:member	line:9
-parse_openSWATH_cmd_params	../../smartPeak/smartPeak_openSWATH_cmd.py	/^    def parse_openSWATH_cmd_params(self, data_I):$/;"	kind:member	line:37
-parse_pythonParams	../../smartPeak/smartPeak_i.py	/^    def parse_pythonParams(self):$/;"	kind:member	line:90
-pickExperiment	../../smartPeak/pyTOPP/MRMTransitionGroupPicker.py	/^    def pickExperiment(self, exp, targeted, picker, feature_finder,$/;"	kind:member	line:101
-pickTransitionGroups	../../smartPeak/pyTOPP/MRMTransitionGroupPicker.py	/^    def pickTransitionGroups(self, exp, targeted, picker):$/;"	kind:member	line:68
-postgresql_orm	../../smartPeak/__main__.py	/^        from SBaaS_base.postgresql_orm import postgresql_orm$/;"	kind:namespace	line:190
-postgresql_settings	../../smartPeak/__main__.py	/^        from SBaaS_base.postgresql_settings import postgresql_settings$/;"	kind:namespace	line:189
-process_referenceData	../../smartPeak/data/referenceData.py	/^    def process_referenceData(self,$/;"	kind:member	line:189
-ptvsd	../../debug_remote.py	/^import ptvsd$/;"	kind:namespace	line:3
-pyopenms	../../smartPeak/__main__.py	/^            import pyopenms$/;"	kind:namespace	line:242
-pyopenms	../../smartPeak/pyTOPP/MRMFeatureFilter.py	/^    import pyopenms$/;"	kind:namespace	line:7
-pyopenms	../../smartPeak/pyTOPP/MRMGroupMapper.py	/^    import pyopenms$/;"	kind:namespace	line:3
-pyopenms	../../smartPeak/pyTOPP/MRMMapper.py	/^    import pyopenms$/;"	kind:namespace	line:3
-pyopenms	../../smartPeak/pyTOPP/MRMTransitionGroupPicker.py	/^    import pyopenms$/;"	kind:namespace	line:4
-pyopenms	../../smartPeak/pyTOPP/OpenSwathChromatogramExtractor.py	/^    import pyopenms$/;"	kind:namespace	line:6
-pyopenms	../../smartPeak/pyTOPP/OpenSwathFeatureXMLToTSV.py	/^    import pyopenms$/;"	kind:namespace	line:3
-pyopenms	../../smartPeak/pyTOPP/OpenSwathRTNormalizer.py	/^    import pyopenms$/;"	kind:namespace	line:3
-pyopenms	../../smartPeak/smartPeak_MRMTransitionGroupPicker_py.py	/^    import pyopenms$/;"	kind:namespace	line:12
-pyopenms	../../smartPeak/smartPeak_PeakPickerMRM_py.py	/^    import pyopenms$/;"	kind:namespace	line:12
-pyopenms	../../smartPeak/smartPeak_isotopeLabeledQuantitation_py.py	/^    import pyopenms$/;"	kind:namespace	line:8
-pyopenms	../../smartPeak/smartPeak_o.py	/^    import pyopenms$/;"	kind:namespace	line:7
-pyopenms	../../smartPeak/smartPeak_openSWATH_py.py	/^    import pyopenms$/;"	kind:namespace	line:13
-read_openMSParams	../../smartPeak/smartPeak_i.py	/^    def read_openMSParams(self, filename, delimiter):$/;"	kind:member	line:70
-read_openSWATH_cmd_params	../../smartPeak/smartPeak_openSWATH_cmd.py	/^    def read_openSWATH_cmd_params(self,$/;"	kind:member	line:93
-read_pythonParams	../../smartPeak/smartPeak_i.py	/^    def read_pythonParams(self, filename, delimiter):$/;"	kind:member	line:145
-referenceData.py	../../smartPeak/data/referenceData.py	1;"	kind:file	line:1
-retentionComponents.py	../../smartPeak/data/retentionComponents.py	1;"	kind:file	line:1
-runAllTests	../../smartPeak/test_smartPeak.py	/^    def runAllTests(self):$/;"	kind:member	line:54
-run_MRMTransitionGroupPicker_py	../../smartPeak/__main__.py	/^    def run_MRMTransitionGroupPicker_py($/;"	kind:member	line:59
-run_PeakPickerMRM_py	../../smartPeak/__main__.py	/^    def run_PeakPickerMRM_py($/;"	kind:member	line:30
-run_get_referenceData	../../smartPeak/__main__.py	/^    def run_get_referenceData(self,$/;"	kind:member	line:167
-run_openSWATH_cmd	../../smartPeak/__main__.py	/^    def run_openSWATH_cmd($/;"	kind:member	line:7
-run_openSWATH_py	../../smartPeak/__main__.py	/^    def run_openSWATH_py($/;"	kind:member	line:91
-run_osCmd	../../smartPeak/smartPeak.py	/^    def run_osCmd(cmd_I, verbose_I=False):$/;"	kind:member	line:28
-run_testSmartPeak	../../smartPeak/__main__.py	/^    def run_testSmartPeak(self):$/;"	kind:member	line:124
-run_validate_openSWATH	../../smartPeak/__main__.py	/^    def run_validate_openSWATH(self,$/;"	kind:member	line:224
-sbaas_base	../../smartPeak/data/referenceData.py	/^from SBaaS_base.sbaas_base import sbaas_base$/;"	kind:namespace	line:1
-sbaas_base_query_select	../../smartPeak/data/referenceData.py	/^from SBaaS_base.sbaas_base_query_select import sbaas_base_query_select$/;"	kind:namespace	line:2
-select_MRMFeatures	../../smartPeak/pyTOPP/MRMFeatureFilter.py	/^    def select_MRMFeatures($/;"	kind:member	line:62
-setParameters	../../smartPeak/smartPeak.py	/^    def setParameters(self,parameters_I,Param_O):$/;"	kind:member	line:190
-simple_find_best_feature	../../smartPeak/pyTOPP/OpenSwathRTNormalizer.py	/^    def simple_find_best_feature(self, output, pairs, targeted):$/;"	kind:member	line:17
-smartPeak	../../smartPeak/__main__.py	/^from .smartPeak import smartPeak$/;"	kind:namespace	line:2
-smartPeak	../../smartPeak/pyTOPP/MRMFeatureFilter.py	/^from smartPeak.smartPeak import smartPeak$/;"	kind:namespace	line:4
-smartPeak	../../smartPeak/smartPeak.py	/^class smartPeak():$/;"	kind:class	line:4
-smartPeak	../../smartPeak/smartPeak_MRMTransitionGroupPicker_py.py	/^from .smartPeak import smartPeak$/;"	kind:namespace	line:3
-smartPeak	../../smartPeak/smartPeak_PeakPickerMRM_py.py	/^from .smartPeak import smartPeak$/;"	kind:namespace	line:3
-smartPeak	../../smartPeak/smartPeak_isotopeLabeledQuantitation_py.py	/^from .smartPeak import smartPeak$/;"	kind:namespace	line:3
-smartPeak	../../smartPeak/smartPeak_openSWATH_cmd.py	/^from .smartPeak import smartPeak$/;"	kind:namespace	line:5
-smartPeak	../../smartPeak/smartPeak_openSWATH_py.py	/^from .smartPeak import smartPeak$/;"	kind:namespace	line:5
-smartPeak	../../smartPeak/test_smartPeak.py	/^from .smartPeak import smartPeak$/;"	kind:namespace	line:2
-smartPeak.py	../../smartPeak/smartPeak.py	1;"	kind:file	line:1
-smartPeak_MRMTransitionGroupPicker_py	../../smartPeak/__main__.py	/^        from .smartPeak_MRMTransitionGroupPicker_py import smartPeak_MRMTransitionGroupPicker_py$/;"	kind:namespace	line:74
-smartPeak_MRMTransitionGroupPicker_py	../../smartPeak/smartPeak_MRMTransitionGroupPicker_py.py	/^class smartPeak_MRMTransitionGroupPicker_py():$/;"	kind:class	line:16
-smartPeak_MRMTransitionGroupPicker_py.py	../../smartPeak/smartPeak_MRMTransitionGroupPicker_py.py	1;"	kind:file	line:1
-smartPeak_PeakPickerMRM_py	../../smartPeak/__main__.py	/^        from .smartPeak_PeakPickerMRM_py import smartPeak_PeakPickerMRM_py$/;"	kind:namespace	line:45
-smartPeak_PeakPickerMRM_py	../../smartPeak/smartPeak_PeakPickerMRM_py.py	/^class smartPeak_PeakPickerMRM_py():$/;"	kind:class	line:16
-smartPeak_PeakPickerMRM_py.py	../../smartPeak/smartPeak_PeakPickerMRM_py.py	1;"	kind:file	line:1
-smartPeak_i	../../smartPeak/__main__.py	/^from .smartPeak_i import smartPeak_i$/;"	kind:namespace	line:3
-smartPeak_i	../../smartPeak/smartPeak_i.py	/^class smartPeak_i(base_importData):$/;"	kind:class	line:6
-smartPeak_i	../../smartPeak/smartPeak_openSWATH_cmd.py	/^from .smartPeak_i import smartPeak_i$/;"	kind:namespace	line:6
-smartPeak_i.py	../../smartPeak/smartPeak_i.py	1;"	kind:file	line:1
-smartPeak_isotopeLabeledQuantitation_py	../../smartPeak/smartPeak_isotopeLabeledQuantitation_py.py	/^class smartPeak_isotopeLabeledQuantitation_py():$/;"	kind:class	line:12
-smartPeak_isotopeLabeledQuantitation_py.py	../../smartPeak/smartPeak_isotopeLabeledQuantitation_py.py	1;"	kind:file	line:1
-smartPeak_o	../../smartPeak/__main__.py	/^from .smartPeak_o import smartPeak_o$/;"	kind:namespace	line:4
-smartPeak_o	../../smartPeak/smartPeak_o.py	/^class smartPeak_o(base_exportData):$/;"	kind:class	line:11
-smartPeak_o.py	../../smartPeak/smartPeak_o.py	1;"	kind:file	line:1
-smartPeak_openSWATH_cmd	../../smartPeak/__main__.py	/^        from .smartPeak_openSWATH_cmd import smartPeak_openSWATH_cmd$/;"	kind:namespace	line:25
-smartPeak_openSWATH_cmd	../../smartPeak/smartPeak_openSWATH_cmd.py	/^class smartPeak_openSWATH_cmd():$/;"	kind:class	line:9
-smartPeak_openSWATH_cmd.py	../../smartPeak/smartPeak_openSWATH_cmd.py	1;"	kind:file	line:1
-smartPeak_openSWATH_py	../../smartPeak/__main__.py	/^        from .smartPeak_openSWATH_py import smartPeak_openSWATH_py$/;"	kind:namespace	line:106
-smartPeak_openSWATH_py	../../smartPeak/__main__.py	/^        from .smartPeak_openSWATH_py import smartPeak_openSWATH_py$/;"	kind:namespace	line:240
-smartPeak_openSWATH_py	../../smartPeak/smartPeak_openSWATH_py.py	/^class smartPeak_openSWATH_py():$/;"	kind:class	line:17
-smartPeak_openSWATH_py	../../smartPeak/test_smartPeak.py	/^from .smartPeak_openSWATH_py import smartPeak_openSWATH_py$/;"	kind:namespace	line:3
-smartPeak_openSWATH_py.py	../../smartPeak/smartPeak_openSWATH_py.py	1;"	kind:file	line:1
-store	../../smartPeak/pyTOPP/OpenSwathFeatureXMLToTSV.py	/^    def store(self, filename_O, output, targeted, run_id = 'run0', filename = 'run0.FeatureXML'):$/;"	kind:member	line:157
-store_TransformationXMLFile	../../smartPeak/pyTOPP/OpenSwathRTNormalizer.py	/^    def store_TransformationXMLFile(self,outfile,trafo_out):$/;"	kind:member	line:222
-store_mzML	../../smartPeak/smartPeak_o.py	/^    def store_mzML(self, out, output):$/;"	kind:member	line:14
-sys	../../smartPeak/pyTOPP/MRMGroupMapper.py	/^import copy, sys$/;"	kind:namespace	line:1
-sys	../../smartPeak/pyTOPP/MRMMapper.py	/^import copy, sys$/;"	kind:namespace	line:1
-sys	../../smartPeak/pyTOPP/MRMTransitionGroupPicker.py	/^import copy, sys$/;"	kind:namespace	line:2
-sys	../../smartPeak/pyTOPP/OpenSwathChromatogramExtractor.py	/^import copy, sys$/;"	kind:namespace	line:4
-sys	../../smartPeak/pyTOPP/OpenSwathChromatogramExtractor.py	/^import os,sys$/;"	kind:namespace	line:2
-sys	../../smartPeak/pyTOPP/OpenSwathFeatureXMLToTSV.py	/^import csv, sys$/;"	kind:namespace	line:1
-sys	../../smartPeak/pyTOPP/OpenSwathRTNormalizer.py	/^import os,sys$/;"	kind:namespace	line:1
-sys	../../smartPeak/smartPeak_i.py	/^import csv,sys$/;"	kind:namespace	line:1
-sys	../../smartPeak/smartPeak_o.py	/^import csv, sys, json, io$/;"	kind:namespace	line:2
-sys	../../smartPeak/smartPeak_openSWATH_cmd.py	/^import csv, sys$/;"	kind:namespace	line:3
-test_make_osCmd	../../smartPeak/test_smartPeak.py	/^    def test_make_osCmd(self, verbose_I=False):$/;"	kind:member	line:10
-test_parseString	../../smartPeak/test_smartPeak.py	/^    def test_parseString(self, verbose_I=False):$/;"	kind:member	line:39
-test_smartPeak	../../smartPeak/__main__.py	/^        from .test_smartPeak import test_smartPeak$/;"	kind:namespace	line:125
-test_smartPeak	../../smartPeak/test_smartPeak.py	/^class test_smartPeak():$/;"	kind:class	line:6
-test_smartPeak.py	../../smartPeak/test_smartPeak.py	1;"	kind:file	line:1
-time	../../smartPeak/__main__.py	/^        import time as time$/;"	kind:namespace	line:187
-transform_targetedExperiment	../../smartPeak/pyTOPP/OpenSwathRTNormalizer.py	/^    def transform_targetedExperiment(self,trafo,targeted):$/;"	kind:member	line:226
-transform_targetedExperimentCSV	../../smartPeak/pyTOPP/OpenSwathRTNormalizer.py	/^    def transform_targetedExperimentCSV(self,trafo,targeted):$/;"	kind:member	line:241
-unittest	../../smartPeak/pyTOPP/OpenSwathChromatogramExtractor.py	/^import unittest$/;"	kind:namespace	line:1
-updateParameters	../../smartPeak/smartPeak.py	/^    def updateParameters(self,Param_IO,parameters_I):$/;"	kind:member	line:146
-validate_MRMFeatures	../../smartPeak/pyTOPP/MRMFeatureFilter.py	/^    def validate_MRMFeatures($/;"	kind:member	line:103
+ComponentContribution	thermodynamics/thermodynamics_dG_f_data.py	/^from component_contribution.python.component_contribution import ComponentContribution$/;"	kind:namespace	line:6
+CompoundCacher	thermodynamics/thermodynamics_dG_f_data.py	/^from component_contribution.python.compound_cacher import CompoundCacher$/;"	kind:namespace	line:8
+Counter	thermodynamics/thermodynamics_dG_p_data.py	/^from collections import Counter$/;"	kind:namespace	line:6
+Counter	thermodynamics/thermodynamics_dG_r_data.py	/^from collections import Counter$/;"	kind:namespace	line:6
+Counter	thermodynamics/thermodynamics_tfba.py	/^from collections import Counter$/;"	kind:namespace	line:7
+Counter	thermodynamics/thermodynamics_utility.py	/^from collections import Counter$/;"	kind:namespace	line:3
+KeggModel	thermodynamics/thermodynamics_dG_f_data.py	/^from component_contribution.python.kegg_model import KeggModel$/;"	kind:namespace	line:7
+Metabolite	thermodynamics/thermodynamics_analysis_deprecated.py	/^from cobra.core.Metabolite import Metabolite$/;"	kind:namespace	line:4
+Metabolite	thermodynamics/thermodynamics_dG_f_data.py	/^from cobra.core.metabolite import Metabolite$/;"	kind:namespace	line:2
+Metabolite	thermodynamics/thermodynamics_dG_p_data.py	/^from cobra.core.Metabolite import Metabolite$/;"	kind:namespace	line:4
+Metabolite	thermodynamics/thermodynamics_dG_r_data.py	/^from cobra.core.Metabolite import Metabolite$/;"	kind:namespace	line:4
+Metabolite	thermodynamics/thermodynamics_tfba.py	/^from cobra.core.Metabolite import Metabolite$/;"	kind:namespace	line:4
+Metabolite	thermodynamics/thermodynamics_utility.py	/^from cobra.core.Metabolite import Metabolite$/;"	kind:namespace	line:11
+Model	thermodynamics/thermodynamics_dG_f_data.py	/^from cobra.core.model import Model$/;"	kind:namespace	line:3
+Model	thermodynamics/thermodynamics_utility.py	/^from cobra.core.Model import Model$/;"	kind:namespace	line:10
+Reaction	thermodynamics/thermodynamics_analysis_deprecated.py	/^from cobra.core.Reaction import Reaction$/;"	kind:namespace	line:5
+Reaction	thermodynamics/thermodynamics_dG_f_data.py	/^from cobra.core.reaction import Reaction$/;"	kind:namespace	line:1
+Reaction	thermodynamics/thermodynamics_dG_p_data.py	/^from cobra.core.Reaction import Reaction$/;"	kind:namespace	line:5
+Reaction	thermodynamics/thermodynamics_dG_r_data.py	/^from cobra.core.Reaction import Reaction$/;"	kind:namespace	line:5
+Reaction	thermodynamics/thermodynamics_tfba.py	/^from cobra.core.Reaction import Reaction$/;"	kind:namespace	line:5
+Reaction	thermodynamics/thermodynamics_utility.py	/^from cobra.core.Reaction import Reaction$/;"	kind:namespace	line:12
+TrainingData	thermodynamics/thermodynamics_dG_f_data.py	/^from component_contribution.python.training_data import TrainingData$/;"	kind:namespace	line:5
+__init__	thermodynamics/thermodynamics_dG_f_data.py	/^    def __init__(self,id2KEGGID_filename_I=None,id2KEGGID_I={},dG0_f_I={},dG_f_I={},measured_dG_f_I={},estimated_dG_f_I={}):$/;"	kind:member	line:25
+__init__	thermodynamics/thermodynamics_dG_p_data.py	/^    def __init__(self,pathways_I = {}, dG0_p_I = {}, dG_p_I = {}):$/;"	kind:member	line:56
+__init__	thermodynamics/thermodynamics_dG_r_data.py	/^    def __init__(self, dG0_r_I = {},dG_r_I = {}, displacement_I = {},$/;"	kind:member	line:92
+__init__	thermodynamics/thermodynamics_metabolomicsData.py	/^    def __init__(self,measured_concentrations_I={},estimated_concentrations_I={}):$/;"	kind:member	line:12
+__init__	thermodynamics/thermodynamics_otherData.py	/^    def __init__(self,pH_I={},temperature_I={},ionic_strength_I={}):$/;"	kind:member	line:11
+__init__	thermodynamics/thermodynamics_sampling.py	/^    def __init__(self):$/;"	kind:member	line:20
+__init__	thermodynamics/thermodynamics_simulatedData.py	/^    def __init__(self,fva_data_I={},sra_data_I={}):$/;"	kind:member	line:15
+__init__	thermodynamics/thermodynamics_tfba.py	/^    def __init__(self):$/;"	kind:member	line:68
+__init__.py	thermodynamics/__init__.py	1;"	kind:file	line:1
+__init__.py	thermodynamics/thermodynamics_data/__init__.py	1;"	kind:file	line:1
+__init__.py	thermodynamics/thermodynamics_examples/__init__.py	1;"	kind:file	line:1
+_add_KEGGID	thermodynamics/thermodynamics_dG_f_data.py	/^    def _add_KEGGID(self, cobra_model_I):$/;"	kind:member	line:150
+_add_conc_ln_constraints	thermodynamics/thermodynamics_tfba.py	/^    def _add_conc_ln_constraints(self,cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,$/;"	kind:member	line:942
+_add_conc_ln_constraints_transport	thermodynamics/thermodynamics_tfba.py	/^    def _add_conc_ln_constraints_transport(self,cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, pH, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,$/;"	kind:member	line:1848
+_add_conc_ln_constraints_transport_v1	thermodynamics/thermodynamics_tfba.py	/^    def _add_conc_ln_constraints_transport_v1(self,cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, pH, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,$/;"	kind:member	line:1508
+_add_conc_ln_constraints_v1	thermodynamics/thermodynamics_tfba.py	/^    def _add_conc_ln_constraints_v1(self,cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,$/;"	kind:member	line:224
+_add_dG_r_constraints	thermodynamics/thermodynamics_tfba.py	/^    def _add_dG_r_constraints(self, cobra_model_irreversible, dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,$/;"	kind:member	line:143
+_add_electroneutrality_constraints	thermodynamics/thermodynamics_tfba.py	/^    def _add_electroneutrality_constraints(self,cobra_model_irreversible, measured_concentration, compartments):$/;"	kind:member	line:1505
+_add_ionicStrength_constraints	thermodynamics/thermodynamics_tfba.py	/^    def _add_ionicStrength_constraints(self,cobra_model_irreversible, measured_concentration):$/;"	kind:member	line:1497
+_add_membranePotential_constraints	thermodynamics/thermodynamics_tfba.py	/^    def _add_membranePotential_constraints(self,cobra_model_irreversible, measured_concentration):$/;"	kind:member	line:1503
+_add_osmoticPressure_constraints	thermodynamics/thermodynamics_tfba.py	/^    def _add_osmoticPressure_constraints(self,cobra_model_irreversible, measured_concentration, estimated_concentration, temperature, metabolomics_coverage,$/;"	kind:member	line:1214
+_add_pH_constraints	thermodynamics/thermodynamics_tfba.py	/^    def _add_pH_constraints(self,cobra_model_irreversible, measured_concentration):$/;"	kind:member	line:1501
+_add_solubility_constraints	thermodynamics/thermodynamics_tfba.py	/^    def _add_solubility_constraints(self,cobra_model_irreversible, measured_concentration):$/;"	kind:member	line:1499
+_checkInput_concentrations	thermodynamics/thermodynamics_metabolomicsData.py	/^    def _checkInput_concentrations(self, measured_values_I):$/;"	kind:member	line:74
+_checkInput_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def _checkInput_dG_f(self, measured_values_I):$/;"	kind:member	line:540
+_combine_dG0_f_pH0	thermodynamics/thermodynamics_dG_f_data.py	/^    def _combine_dG0_f_pH0(self, dG0_f_0, dG0_f_1, dG0_f_2, filename):$/;"	kind:member	line:398
+_compartementalize_concentrations	thermodynamics/thermodynamics_metabolomicsData.py	/^    def _compartementalize_concentrations(self, measured_values):$/;"	kind:member	line:121
+_compartementalize_concentrations_extracellular	thermodynamics/thermodynamics_metabolomicsData.py	/^    def _compartementalize_concentrations_extracellular(self, measured_values):$/;"	kind:member	line:140
+_component_contribution_wrapper	thermodynamics/thermodynamics_dG_f_data.py	/^    def _component_contribution_wrapper(self,reaction_list_I,pH_I,temperature_I,ionic_strength_I):$/;"	kind:member	line:201
+_convert_KEGGID2id	thermodynamics/thermodynamics_dG_f_data.py	/^    def _convert_KEGGID2id(self, KEGGID_I):$/;"	kind:member	line:241
+_convert_cv2lbubAndmM2M_concentrations	thermodynamics/thermodynamics_metabolomicsData.py	/^    def _convert_cv2lbubAndmM2M_concentrations(self, measured_values,min_value):$/;"	kind:member	line:160
+_convert_cv2varAndmM2M_concentrations	thermodynamics/thermodynamics_metabolomicsData.py	/^    def _convert_cv2varAndmM2M_concentrations(self, measured_values):$/;"	kind:member	line:96
+_convert_fluxBounds2var	thermodynamics/thermodynamics_simulatedData.py	/^    def _convert_fluxBounds2var(self, flux_bounds):$/;"	kind:member	line:83
+_convert_metabolomics_names	thermodynamics/thermodynamics_metabolomicsData.py	/^    def _convert_metabolomics_names(self, measured_values):$/;"	kind:member	line:546
+_convert_std2lbub_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def _convert_std2lbub_dG_f(self, measured_values,min_value):$/;"	kind:member	line:603
+_convert_var2lbub_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def _convert_var2lbub_dG_f(self, measured_values):$/;"	kind:member	line:567
+_copy_solution	thermodynamics/thermodynamics_tfba.py	/^    def _copy_solution(self,cobra_model_irreversible,cobra_model_copy):$/;"	kind:member	line:539
+_generalize_compartment2all_concentration	thermodynamics/thermodynamics_metabolomicsData.py	/^    def _generalize_compartment2all_concentration(self, cobra_model, concentration=None, exceptions=None):$/;"	kind:member	line:252
+_generalize_compartment2all_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def _generalize_compartment2all_dG_f(self, cobra_model, dG_f=None, exceptions=None):$/;"	kind:member	line:670
+_generalize_compartmentLBUB2all_concentration	thermodynamics/thermodynamics_metabolomicsData.py	/^    def _generalize_compartmentLBUB2all_concentration(self, cobra_model, lbub=None, exceptions=None):$/;"	kind:member	line:191
+_generalize_compartmentLBUB2all_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def _generalize_compartmentLBUB2all_dG_f(self, cobra_model, lbub=None, exceptions=None):$/;"	kind:member	line:632
+_generalize_externalCompartments2all_concentration	thermodynamics/thermodynamics_metabolomicsData.py	/^    def _generalize_externalCompartments2all_concentration(self, cobra_model, concentration=None, exceptions=None):$/;"	kind:member	line:400
+_get_compartments	thermodynamics/thermodynamics_dG_f_data.py	/^    def _get_compartments(self, cobra_model_I,compartment_I):$/;"	kind:member	line:253
+_get_id2KEGGID_csv	thermodynamics/thermodynamics_dG_f_data.py	/^    def _get_id2KEGGID_csv(self, id2KEGGID_filename_I):$/;"	kind:member	line:61
+_get_keggFromNotes	thermodynamics/thermodynamics_dG_f_data.py	/^    def _get_keggFromNotes(self, cobra_model_I,KEGGID_I):$/;"	kind:member	line:250
+_get_pseudoisomer_priority0_pH0	thermodynamics/thermodynamics_dG_f_data.py	/^    def _get_pseudoisomer_priority0_pH0(self):$/;"	kind:member	line:381
+_get_pseudoisomer_priority1_pH0	thermodynamics/thermodynamics_dG_f_data.py	/^    def _get_pseudoisomer_priority1_pH0(self):$/;"	kind:member	line:352
+_get_pseudoisomer_priority2_pH0	thermodynamics/thermodynamics_dG_f_data.py	/^    def _get_pseudoisomer_priority2_pH0(self):$/;"	kind:member	line:307
+_get_transformed_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def _get_transformed_f(self, dG0_f_id_I, dG0_f_I, pH_I, temperature_I, ionic_strength_I):$/;"	kind:member	line:509
+_get_union	thermodynamics/thermodynamics_dG_f_data.py	/^    def _get_union(self, cobra_model_I,KEGGID_I,compartment_I):$/;"	kind:member	line:256
+_main_	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^def _main_():$/;"	kind:function	line:19
+_make_KEGG_reaction	thermodynamics/thermodynamics_dG_f_data.py	/^    def _make_KEGG_reaction(self, cobra_model_I):$/;"	kind:member	line:159
+_make_ccache	thermodynamics/thermodynamics_dG_f_data.py	/^    def _make_ccache(self):$/;"	kind:member	line:292
+_make_invDict	thermodynamics/thermodynamics_dG_f_data.py	/^    def _make_invDict(self,dict_I):$/;"	kind:member	line:73
+_scale_conc	thermodynamics/thermodynamics_tfba.py	/^    def _scale_conc(self,concentrations):$/;"	kind:member	line:130
+_scale_dG_r	thermodynamics/thermodynamics_tfba.py	/^    def _scale_dG_r(self,dG_r):$/;"	kind:member	line:117
+add_pykA	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from thermodynamics.thermodynamics_utility import load_thermoModel, simulate_thermoConstraints, add_pykA$/;"	kind:namespace	line:15
+add_pykA	thermodynamics/thermodynamics_utility.py	/^def add_pykA(cobra_model_I):$/;"	kind:function	line:583
+aerobicAnaerobic01	debug_remote.py	/^from thermodynamics.thermodynamics_examples import aerobicAnaerobic01$/;"	kind:namespace	line:15
+aerobicAnaerobic01	thermodynamics/thermodynamics_examples/main.py	/^from thermodynamics_examples import aerobicAnaerobic01$/;"	kind:namespace	line:8
+aerobicAnaerobic01.py	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	1;"	kind:file	line:1
+analyze_tfva_results	thermodynamics/thermodynamics_tfba.py	/^    def analyze_tfva_results(self,flux_threshold=1e-6):$/;"	kind:member	line:803
+average	thermodynamics/thermodynamics_formatter.py	/^from numpy import average, var, log$/;"	kind:namespace	line:5
+average	thermodynamics/thermodynamics_io.py	/^from numpy import average, var, log$/;"	kind:namespace	line:5
+average	thermodynamics/thermodynamics_metabolomicsData.py	/^from numpy import average, var, log$/;"	kind:namespace	line:4
+average	thermodynamics/thermodynamics_otherData.py	/^from numpy import average, var, log$/;"	kind:namespace	line:4
+average	thermodynamics/thermodynamics_simulatedData.py	/^from numpy import average, var, log$/;"	kind:namespace	line:8
+calculate_dG0_r	thermodynamics/thermodynamics_dG_r_data.py	/^    def calculate_dG0_r(self, cobra_model, measured_dG_f, estimated_dG_f, temperature):$/;"	kind:member	line:249
+calculate_dG0_r_v2	thermodynamics/thermodynamics_dG_r_data.py	/^    def calculate_dG0_r_v2(self, cobra_model, measured_dG_f, estimated_dG_f, temperature):$/;"	kind:member	line:660
+calculate_dG0_r_v3	thermodynamics/thermodynamics_dG_r_data.py	/^    def calculate_dG0_r_v3(self, cobra_model, measured_dG_f, estimated_dG_f, temperature):$/;"	kind:member	line:1071
+calculate_dG_p	thermodynamics/thermodynamics_dG_p_data.py	/^    def calculate_dG_p(self, cobra_model, dG0_r, dG_r):$/;"	kind:member	line:91
+calculate_dG_r	thermodynamics/thermodynamics_dG_r_data.py	/^    def calculate_dG_r(self, cobra_model, measured_concentration, estimated_concentration,$/;"	kind:member	line:378
+calculate_dG_r_v2	thermodynamics/thermodynamics_dG_r_data.py	/^    def calculate_dG_r_v2(self, cobra_model, measured_concentration, estimated_concentration,$/;"	kind:member	line:789
+calculate_dG_r_v3	thermodynamics/thermodynamics_dG_r_data.py	/^    def calculate_dG_r_v3(self, cobra_model, measured_concentration, estimated_concentration,$/;"	kind:member	line:1206
+calculate_displacement	thermodynamics/thermodynamics_dG_r_data.py	/^    def calculate_displacement(self, cobra_model, measured_concentration, estimated_concentration):$/;"	kind:member	line:1596
+calculate_displacement_v2	thermodynamics/thermodynamics_dG_r_data.py	/^    def calculate_displacement_v2(self, cobra_model, measured_concentration, estimated_concentration):$/;"	kind:member	line:1661
+calculate_displacement_v3	thermodynamics/thermodynamics_dG_r_data.py	/^    def calculate_displacement_v3(self, cobra_model, measured_concentration, estimated_concentration):$/;"	kind:member	line:1726
+ceil	thermodynamics/thermodynamics_analysis_deprecated.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+ceil	thermodynamics/thermodynamics_dG_p_data.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+ceil	thermodynamics/thermodynamics_dG_r_data.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+ceil	thermodynamics/thermodynamics_tfba.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+change_feasibleReactions	thermodynamics/thermodynamics_dG_r_data.py	/^    def change_feasibleReactions(self,infeasible_reactions_I):$/;"	kind:member	line:1884
+checkInput_concentrations	thermodynamics/thermodynamics_io.py	/^def checkInput_concentrations(measured_values_I):$/;"	kind:function	line:27
+checkInput_dG_f	thermodynamics/thermodynamics_io.py	/^def checkInput_dG_f(measured_values_I):$/;"	kind:function	line:49
+check_conc_ln_constraints_transport	thermodynamics/thermodynamics_tfba.py	/^    def check_conc_ln_constraints_transport(self,cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, pH, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,$/;"	kind:member	line:2183
+check_data	thermodynamics/thermodynamics_dG_f_data.py	/^    def check_data(self):$/;"	kind:member	line:536
+check_data	thermodynamics/thermodynamics_otherData.py	/^    def check_data(self):$/;"	kind:member	line:25
+check_data	thermodynamics/thermodynamics_simulatedData.py	/^    def check_data(self):$/;"	kind:member	line:25
+check_loops	thermodynamics/thermodynamics_sampling.py	/^    def check_loops(self,cobra_model):$/;"	kind:member	line:87
+check_metabolomics_data	thermodynamics/thermodynamics_metabolomicsData.py	/^    def check_metabolomics_data(self):$/;"	kind:member	line:64
+check_thermodynamicConsistency	thermodynamics/thermodynamics_dG_r_data.py	/^    def check_thermodynamicConsistency(self, cobra_model, reaction_bounds,$/;"	kind:member	line:1474
+clear_data	thermodynamics/thermodynamics_otherData.py	/^    def clear_data(self):$/;"	kind:member	line:29
+combine_measured_concentrations	thermodynamics/thermodynamics_metabolomicsData.py	/^    def combine_measured_concentrations(self):$/;"	kind:member	line:559
+compartementalize_concentrations	thermodynamics/thermodynamics_formatter.py	/^def compartementalize_concentrations(measured_values):$/;"	kind:function	line:53
+compound_model	thermodynamics/thermodynamics_dG_f_data.py	/^from component_contribution.python.compound_model import compound_model$/;"	kind:namespace	line:9
+constrain_infeasibleReactions	thermodynamics/thermodynamics_dG_r_data.py	/^    def constrain_infeasibleReactions(self,cobra_model_irreversible,solver=None):$/;"	kind:member	line:1839
+convert_cv2lbubAndmM2M_concentrations	thermodynamics/thermodynamics_formatter.py	/^def convert_cv2lbubAndmM2M_concentrations(measured_values,min_value):$/;"	kind:function	line:72
+convert_cv2varAndmM2M_concentrations	thermodynamics/thermodynamics_formatter.py	/^def convert_cv2varAndmM2M_concentrations(measured_values):$/;"	kind:function	line:28
+convert_fluxBounds2var	thermodynamics/thermodynamics_formatter.py	/^def convert_fluxBounds2var(flux_bounds):$/;"	kind:function	line:7
+convert_std2lbub_dG_f	thermodynamics/thermodynamics_formatter.py	/^def convert_std2lbub_dG_f(measured_values,min_value):$/;"	kind:function	line:139
+convert_to_irreversible	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from cobra.manipulation.modify import convert_to_irreversible$/;"	kind:namespace	line:3
+convert_to_irreversible	thermodynamics/thermodynamics_utility.py	/^from cobra.manipulation.modify import convert_to_irreversible, revert_to_reversible$/;"	kind:namespace	line:8
+convert_var2lbub_dG_f	thermodynamics/thermodynamics_formatter.py	/^def convert_var2lbub_dG_f(measured_values):$/;"	kind:function	line:103
+copy	thermodynamics/thermodynamics_metabolomicsData.py	/^from copy import copy$/;"	kind:namespace	line:5
+create_cobra_model_from_sbml_file	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from cobra.io.sbml import create_cobra_model_from_sbml_file$/;"	kind:namespace	line:2
+create_cobra_model_from_sbml_file	thermodynamics/thermodynamics_sampling.py	/^from cobra.io.sbml import create_cobra_model_from_sbml_file$/;"	kind:namespace	line:10
+create_cobra_model_from_sbml_file	thermodynamics/thermodynamics_simulatedData.py	/^from cobra.io.sbml import create_cobra_model_from_sbml_file$/;"	kind:namespace	line:2
+create_cobra_model_from_sbml_file	thermodynamics/thermodynamics_utility.py	/^from cobra.io.sbml import create_cobra_model_from_sbml_file$/;"	kind:namespace	line:5
+csv	thermodynamics/thermodynamics_dG_f_data.py	/^import csv$/;"	kind:namespace	line:13
+csv	thermodynamics/thermodynamics_dG_r_data.py	/^import csv,json,sys$/;"	kind:namespace	line:9
+csv	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^import csv,json,sys$/;"	kind:namespace	line:7
+csv	thermodynamics/thermodynamics_formatter.py	/^import json, csv$/;"	kind:namespace	line:3
+csv	thermodynamics/thermodynamics_io.py	/^import json, csv$/;"	kind:namespace	line:3
+csv	thermodynamics/thermodynamics_metabolomicsData.py	/^import json, csv$/;"	kind:namespace	line:2
+csv	thermodynamics/thermodynamics_otherData.py	/^import json, csv$/;"	kind:namespace	line:2
+csv	thermodynamics/thermodynamics_sampling.py	/^import operator, json, csv$/;"	kind:namespace	line:2
+csv	thermodynamics/thermodynamics_simulatedData.py	/^import json, csv$/;"	kind:namespace	line:6
+csv	thermodynamics/thermodynamics_tfba.py	/^import csv,json,sys$/;"	kind:namespace	line:19
+csv	thermodynamics/thermodynamics_utility.py	/^import operator, json, csv$/;"	kind:namespace	line:2
+debug_remote.py	debug_remote.py	1;"	kind:file	line:1
+deepcopy	thermodynamics/thermodynamics_analysis_deprecated.py	/^from copy import deepcopy$/;"	kind:namespace	line:3
+deepcopy	thermodynamics/thermodynamics_dG_p_data.py	/^from copy import deepcopy$/;"	kind:namespace	line:3
+deepcopy	thermodynamics/thermodynamics_dG_r_data.py	/^from copy import deepcopy$/;"	kind:namespace	line:3
+deepcopy	thermodynamics/thermodynamics_tfba.py	/^from copy import deepcopy$/;"	kind:namespace	line:3
+escher	thermodynamics/thermodynamics_visualization.py	/^import escher$/;"	kind:namespace	line:2
+exp	thermodynamics/thermodynamics_analysis_deprecated.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+exp	thermodynamics/thermodynamics_dG_p_data.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+exp	thermodynamics/thermodynamics_dG_r_data.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+exp	thermodynamics/thermodynamics_formatter.py	/^from math import sqrt,exp,pow$/;"	kind:namespace	line:4
+exp	thermodynamics/thermodynamics_io.py	/^from math import sqrt,exp,pow$/;"	kind:namespace	line:4
+exp	thermodynamics/thermodynamics_metabolomicsData.py	/^from math import sqrt,exp,pow$/;"	kind:namespace	line:3
+exp	thermodynamics/thermodynamics_otherData.py	/^from math import sqrt,exp,pow$/;"	kind:namespace	line:3
+exp	thermodynamics/thermodynamics_simulatedData.py	/^from math import sqrt,exp,pow$/;"	kind:namespace	line:7
+exp	thermodynamics/thermodynamics_tfba.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+exp	thermodynamics/thermodynamics_tfba.py	/^from math import log, exp$/;"	kind:namespace	line:8
+export_concentrations_escher	thermodynamics/thermodynamics_dG_r_data.py	/^    def export_concentrations_escher(self, filename_I, measured_concentrations):$/;"	kind:member	line:219
+export_dG0_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def export_dG0_f(self,filename_I):$/;"	kind:member	line:145
+export_dG0_p_json	thermodynamics/thermodynamics_dG_p_data.py	/^    def export_dG0_p_json(self, filename_I):$/;"	kind:member	line:76
+export_dG0_r_json	thermodynamics/thermodynamics_dG_r_data.py	/^    def export_dG0_r_json(self, filename_I):$/;"	kind:member	line:151
+export_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def export_dG_f(self,filename_I):$/;"	kind:member	line:504
+export_dG_p_json	thermodynamics/thermodynamics_dG_p_data.py	/^    def export_dG_p_json(self, filename_I):$/;"	kind:member	line:81
+export_dG_r_escher	thermodynamics/thermodynamics_dG_r_data.py	/^    def export_dG_r_escher(self, filename_I):$/;"	kind:member	line:195
+export_dG_r_json	thermodynamics/thermodynamics_dG_r_data.py	/^    def export_dG_r_json(self, filename_I):$/;"	kind:member	line:156
+export_displacement_escher	thermodynamics/thermodynamics_dG_r_data.py	/^    def export_displacement_escher(self, filename_I):$/;"	kind:member	line:207
+export_fva_data	thermodynamics/thermodynamics_simulatedData.py	/^    def export_fva_data(self, filename):$/;"	kind:member	line:72
+export_points_numpy	thermodynamics/thermodynamics_sampling.py	/^    def export_points_numpy(self,filename):$/;"	kind:member	line:179
+export_sampling_matlab	thermodynamics/thermodynamics_sampling.py	/^    def export_sampling_matlab(self,cobra_model,filename_model='C:\\\\Users\\\\Public\\\\Documents\\\\sample_model.mat',filename_script='C:\\\\Users\\\\Public\\\\Documents\\\\sample_script.m'):$/;"	kind:member	line:184
+export_sra_data	thermodynamics/thermodynamics_simulatedData.py	/^    def export_sra_data(self, filename):$/;"	kind:member	line:46
+export_summary	thermodynamics/thermodynamics_dG_r_data.py	/^    def export_summary(self,cobra_model,reaction_bounds,filename):$/;"	kind:member	line:166
+export_tcc_json	thermodynamics/thermodynamics_dG_p_data.py	/^    def export_tcc_json(self, filename_I):$/;"	kind:member	line:86
+export_tcc_json	thermodynamics/thermodynamics_dG_r_data.py	/^    def export_tcc_json(self, filename_I):$/;"	kind:member	line:161
+export_tfva_analysis	thermodynamics/thermodynamics_tfba.py	/^    def export_tfva_analysis(self, filename):$/;"	kind:member	line:114
+export_tfva_concentrations_data	thermodynamics/thermodynamics_tfba.py	/^    def export_tfva_concentrations_data(self, filename):$/;"	kind:member	line:111
+export_tfva_dG_r_data	thermodynamics/thermodynamics_tfba.py	/^    def export_tfva_dG_r_data(self, filename):$/;"	kind:member	line:108
+export_tfva_data	thermodynamics/thermodynamics_tfba.py	/^    def export_tfva_data(self, filename):$/;"	kind:member	line:105
+export_values_json	thermodynamics/thermodynamics_io.py	/^    def export_values_json(self, filename, data):$/;"	kind:member	line:21
+fabs	thermodynamics/thermodynamics_analysis_deprecated.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+fabs	thermodynamics/thermodynamics_dG_p_data.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+fabs	thermodynamics/thermodynamics_dG_r_data.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+fabs	thermodynamics/thermodynamics_tfba.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+find_loops	thermodynamics/thermodynamics_sampling.py	/^    def find_loops(self,data_fva):$/;"	kind:member	line:154
+find_transportMets	thermodynamics/thermodynamics_analysis_deprecated.py	/^from thermodynamics.thermodynamics_utility import find_transportMets$/;"	kind:namespace	line:7
+find_transportMets	thermodynamics/thermodynamics_dG_r_data.py	/^    def find_transportMets(self, cobra_model_I, reaction_id_I):$/;"	kind:member	line:1573
+find_transportMets	thermodynamics/thermodynamics_utility.py	/^def find_transportMets(cobra_model_I, reaction_id_I):$/;"	kind:function	line:14
+find_transportMetsAndRxns	thermodynamics/thermodynamics_tfba.py	/^from thermodynamics.thermodynamics_utility import find_transportRxns, null, find_transportMetsAndRxns$/;"	kind:namespace	line:15
+find_transportMetsAndRxns	thermodynamics/thermodynamics_utility.py	/^def find_transportMetsAndRxns(cobra_model_I):$/;"	kind:function	line:57
+find_transportRxns	thermodynamics/thermodynamics_tfba.py	/^from thermodynamics.thermodynamics_utility import find_transportRxns, null, find_transportMetsAndRxns$/;"	kind:namespace	line:15
+find_transportRxns	thermodynamics/thermodynamics_utility.py	/^def find_transportRxns(cobra_model_I):$/;"	kind:function	line:37
+floor	thermodynamics/thermodynamics_analysis_deprecated.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+floor	thermodynamics/thermodynamics_dG_p_data.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+floor	thermodynamics/thermodynamics_dG_r_data.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+floor	thermodynamics/thermodynamics_tfba.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+flux_variability_analysis	thermodynamics/thermodynamics_sampling.py	/^from cobra.flux_analysis import flux_variability_analysis, single_deletion$/;"	kind:namespace	line:11
+flux_variability_analysis	thermodynamics/thermodynamics_simulatedData.py	/^from cobra.flux_analysis import flux_variability_analysis$/;"	kind:namespace	line:3
+format_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def format_dG_f(self):$/;"	kind:member	line:526
+format_metabolomics_data	thermodynamics/thermodynamics_metabolomicsData.py	/^    def format_metabolomics_data(self): #deprecated$/;"	kind:member	line:40
+format_metabolomics_data_extracellular	thermodynamics/thermodynamics_metabolomicsData.py	/^    def format_metabolomics_data_extracellular(self):$/;"	kind:member	line:52
+format_metabolomics_data_intracellular	thermodynamics/thermodynamics_metabolomicsData.py	/^    def format_metabolomics_data_intracellular(self):$/;"	kind:member	line:46
+generalize_compartment2all_concentration	thermodynamics/thermodynamics_formatter.py	/^def generalize_compartment2all_concentration(cobra_model, concentration=None, exceptions=None):$/;"	kind:function	line:229
+generalize_compartment2all_dG_f	thermodynamics/thermodynamics_formatter.py	/^def generalize_compartment2all_dG_f(cobra_model, dG_f=None, exceptions=None):$/;"	kind:function	line:404
+generalize_compartmentLBUB2all_concentration	thermodynamics/thermodynamics_formatter.py	/^def generalize_compartmentLBUB2all_concentration(cobra_model, lbub=None, exceptions=None):$/;"	kind:function	line:168
+generalize_compartmentLBUB2all_dG_f	thermodynamics/thermodynamics_formatter.py	/^def generalize_compartmentLBUB2all_dG_f(cobra_model, lbub=None, exceptions=None):$/;"	kind:function	line:366
+generate_estimated_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def generate_estimated_dG_f(self, cobra_model):$/;"	kind:member	line:531
+generate_estimated_metabolomics_data	thermodynamics/thermodynamics_metabolomicsData.py	/^    def generate_estimated_metabolomics_data(self, cobra_model):$/;"	kind:member	line:58
+generate_fva_data	thermodynamics/thermodynamics_simulatedData.py	/^    def generate_fva_data(self, cobra_model, fraction_of_optimum=0.9,$/;"	kind:member	line:50
+generate_sra_data	thermodynamics/thermodynamics_simulatedData.py	/^    def generate_sra_data(self, cobra_model, element_list=None,$/;"	kind:member	line:29
+get_points_matlab	thermodynamics/thermodynamics_sampling.py	/^    def get_points_matlab(self,matlab_data,sampler_model_name):$/;"	kind:member	line:24
+get_points_numpy	thermodynamics/thermodynamics_sampling.py	/^    def get_points_numpy(self,numpy_data,ijo1366_sbml):$/;"	kind:member	line:51
+get_solver_name	thermodynamics/thermodynamics_tfba.py	/^from cobra.solvers import solver_dict, get_solver_name$/;"	kind:namespace	line:14
+get_transformed_dG0_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def get_transformed_dG0_f(self,cobra_model_I, pH_I,temperature_I,ionic_strength_I):$/;"	kind:member	line:90
+get_transformed_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def get_transformed_dG_f(self,dG0_f_I, cobra_model_I, pH_I,temperature_I,ionic_strength_I):$/;"	kind:member	line:424
+get_variableTypeAndUnits	thermodynamics/thermodynamics_tfba.py	/^    def get_variableTypeAndUnits(self,rxn_id):$/;"	kind:member	line:2259
+histogram	thermodynamics/thermodynamics_sampling.py	/^from numpy import histogram, mean, std, loadtxt, savetxt$/;"	kind:namespace	line:5
+import_dG0_r_json	thermodynamics/thermodynamics_dG_r_data.py	/^    def import_dG0_r_json(self, dG0_r_filename_I):$/;"	kind:member	line:231
+import_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def import_dG_f(self, dG_f_filename_I):$/;"	kind:member	line:520
+import_dG_r_json	thermodynamics/thermodynamics_dG_r_data.py	/^    def import_dG_r_json(self, dG_r_filename_I):$/;"	kind:member	line:237
+import_fva_data	thermodynamics/thermodynamics_simulatedData.py	/^    def import_fva_data(self,filename):$/;"	kind:member	line:79
+import_metabolomics_data	thermodynamics/thermodynamics_metabolomicsData.py	/^    def import_metabolomics_data(self, concentration_filename_I): #deprecated$/;"	kind:member	line:25
+import_metabolomics_data_extracellular	thermodynamics/thermodynamics_metabolomicsData.py	/^    def import_metabolomics_data_extracellular(self, concentration_filename_I):$/;"	kind:member	line:35
+import_metabolomics_data_intracellular	thermodynamics/thermodynamics_metabolomicsData.py	/^    def import_metabolomics_data_intracellular(self, concentration_filename_I):$/;"	kind:member	line:30
+import_sra_data	thermodynamics/thermodynamics_simulatedData.py	/^    def import_sra_data(self,filename):$/;"	kind:member	line:76
+import_tcc_json	thermodynamics/thermodynamics_dG_r_data.py	/^    def import_tcc_json(self, tcc_filename_I):$/;"	kind:member	line:243
+import_values_json	thermodynamics/thermodynamics_io.py	/^    def import_values_json(self, filename):$/;"	kind:member	line:16
+import_values_json	thermodynamics/thermodynamics_io.py	/^def import_values_json(filename):$/;"	kind:function	line:74
+init_pathways	thermodynamics/thermodynamics_dG_p_data.py	/^    def init_pathways(self):$/;"	kind:member	line:165
+io	thermodynamics/thermodynamics_sampling.py	/^import scipy.io$/;"	kind:namespace	line:4
+iteritems	thermodynamics/thermodynamics_tfba.py	/^from six import iteritems, string_types$/;"	kind:namespace	line:13
+json	thermodynamics/thermodynamics_dG_f_data.py	/^import json$/;"	kind:namespace	line:16
+json	thermodynamics/thermodynamics_dG_r_data.py	/^import csv,json,sys$/;"	kind:namespace	line:9
+json	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^import csv,json,sys$/;"	kind:namespace	line:7
+json	thermodynamics/thermodynamics_formatter.py	/^import json, csv$/;"	kind:namespace	line:3
+json	thermodynamics/thermodynamics_io.py	/^import json, csv$/;"	kind:namespace	line:3
+json	thermodynamics/thermodynamics_metabolomicsData.py	/^import json, csv$/;"	kind:namespace	line:2
+json	thermodynamics/thermodynamics_otherData.py	/^import json, csv$/;"	kind:namespace	line:2
+json	thermodynamics/thermodynamics_sampling.py	/^import operator, json, csv$/;"	kind:namespace	line:2
+json	thermodynamics/thermodynamics_simulatedData.py	/^import json, csv$/;"	kind:namespace	line:6
+json	thermodynamics/thermodynamics_tfba.py	/^import csv,json,sys$/;"	kind:namespace	line:19
+json	thermodynamics/thermodynamics_utility.py	/^import operator, json, csv$/;"	kind:namespace	line:2
+load_data	thermodynamics/thermodynamics_otherData.py	/^    def load_data(self,pH_I,ionic_strength_I,temperature_I):$/;"	kind:member	line:19
+load_defaultData	thermodynamics/thermodynamics_otherData.py	/^    def load_defaultData(self):$/;"	kind:member	line:35
+load_matlab_model	thermodynamics/thermodynamics_sampling.py	/^from cobra.io.mat import load_matlab_model$/;"	kind:namespace	line:9
+load_thermoModel	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from thermodynamics.thermodynamics_utility import load_thermoModel, simulate_thermoConstraints, add_pykA$/;"	kind:namespace	line:15
+load_thermoModel	thermodynamics/thermodynamics_utility.py	/^def load_thermoModel(anoxic = False):$/;"	kind:function	line:73
+loadtxt	thermodynamics/thermodynamics_sampling.py	/^from numpy import histogram, mean, std, loadtxt, savetxt$/;"	kind:namespace	line:5
+log	thermodynamics/thermodynamics_analysis_deprecated.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+log	thermodynamics/thermodynamics_dG_p_data.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+log	thermodynamics/thermodynamics_dG_r_data.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+log	thermodynamics/thermodynamics_formatter.py	/^from numpy import average, var, log$/;"	kind:namespace	line:5
+log	thermodynamics/thermodynamics_io.py	/^from numpy import average, var, log$/;"	kind:namespace	line:5
+log	thermodynamics/thermodynamics_metabolomicsData.py	/^from numpy import average, var, log$/;"	kind:namespace	line:4
+log	thermodynamics/thermodynamics_otherData.py	/^from numpy import average, var, log$/;"	kind:namespace	line:4
+log	thermodynamics/thermodynamics_simulatedData.py	/^from numpy import average, var, log$/;"	kind:namespace	line:8
+log	thermodynamics/thermodynamics_tfba.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+log	thermodynamics/thermodynamics_tfba.py	/^from math import log, exp$/;"	kind:namespace	line:8
+main.py	thermodynamics/thermodynamics_examples/main.py	1;"	kind:file	line:1
+make_dG0_f_pH0	thermodynamics/thermodynamics_dG_f_data.py	/^    def make_dG0_f_pH0(self):$/;"	kind:member	line:265
+matplotlib	thermodynamics/thermodynamics_sampling.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:7
+mean	thermodynamics/thermodynamics_sampling.py	/^from numpy import histogram, mean, std, loadtxt, savetxt$/;"	kind:namespace	line:5
+mean_confidence_interval	thermodynamics/thermodynamics_sampling.py	/^from .thermodynamics_utility import mean_confidence_interval$/;"	kind:namespace	line:16
+mean_confidence_interval	thermodynamics/thermodynamics_utility.py	/^def mean_confidence_interval(data, confidence=0.95):$/;"	kind:function	line:628
+mpl	thermodynamics/thermodynamics_sampling.py	/^import matplotlib as mpl$/;"	kind:namespace	line:6
+null	thermodynamics/thermodynamics_tfba.py	/^from thermodynamics.thermodynamics_utility import find_transportRxns, null, find_transportMetsAndRxns$/;"	kind:namespace	line:15
+null	thermodynamics/thermodynamics_utility.py	/^def null(A, eps=1e-6):$/;"	kind:function	line:639
+numpy	thermodynamics/thermodynamics_tfba.py	/^import numpy$/;"	kind:namespace	line:10
+numpy	thermodynamics/thermodynamics_utility.py	/^    import numpy$/;"	kind:namespace	line:630
+numpy	thermodynamics/thermodynamics_utility.py	/^    import numpy$/;"	kind:namespace	line:640
+operator	thermodynamics/thermodynamics_sampling.py	/^import operator, json, csv$/;"	kind:namespace	line:2
+operator	thermodynamics/thermodynamics_utility.py	/^import operator, json, csv$/;"	kind:namespace	line:2
+optimize_minimal_flux	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from cobra.flux_analysis.parsimonious import optimize_minimal_flux$/;"	kind:namespace	line:4
+optimize_minimal_flux	thermodynamics/thermodynamics_sampling.py	/^from cobra.flux_analysis.parsimonious import optimize_minimal_flux$/;"	kind:namespace	line:12
+pathways	thermodynamics/thermodynamics_dG_p_data.py	/^pathways = {};$/;"	kind:variable	line:416
+plot_points	thermodynamics/thermodynamics_sampling.py	/^    def plot_points(self,reaction_lst=None):$/;"	kind:member	line:72
+plt	thermodynamics/thermodynamics_sampling.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:7
+pow	thermodynamics/thermodynamics_analysis_deprecated.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+pow	thermodynamics/thermodynamics_dG_p_data.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+pow	thermodynamics/thermodynamics_dG_r_data.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+pow	thermodynamics/thermodynamics_formatter.py	/^from math import sqrt,exp,pow$/;"	kind:namespace	line:4
+pow	thermodynamics/thermodynamics_io.py	/^from math import sqrt,exp,pow$/;"	kind:namespace	line:4
+pow	thermodynamics/thermodynamics_metabolomicsData.py	/^from math import sqrt,exp,pow$/;"	kind:namespace	line:3
+pow	thermodynamics/thermodynamics_otherData.py	/^from math import sqrt,exp,pow$/;"	kind:namespace	line:3
+pow	thermodynamics/thermodynamics_simulatedData.py	/^from math import sqrt,exp,pow$/;"	kind:namespace	line:7
+pow	thermodynamics/thermodynamics_tfba.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+ptvsd	debug_remote.py	/^import ptvsd$/;"	kind:namespace	line:3
+re	thermodynamics/thermodynamics_dG_f_data.py	/^import re$/;"	kind:namespace	line:14
+remove_infeasibleReactions	thermodynamics/thermodynamics_dG_r_data.py	/^    def remove_infeasibleReactions(self,cobra_model,solver=None):$/;"	kind:member	line:1865
+remove_loopsFromPoints	thermodynamics/thermodynamics_sampling.py	/^    def remove_loopsFromPoints(self):$/;"	kind:member	line:165
+remove_measured_concentrations	thermodynamics/thermodynamics_metabolomicsData.py	/^    def remove_measured_concentrations(self,mets_I):$/;"	kind:member	line:68
+remove_measured_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def remove_measured_dG_f(self,mets_I):$/;"	kind:member	line:719
+revert_to_reversible	thermodynamics/thermodynamics_utility.py	/^from cobra.manipulation.modify import convert_to_irreversible, revert_to_reversible$/;"	kind:namespace	line:8
+save_matlab_model	thermodynamics/thermodynamics_tfba.py	/^from cobra.io import save_matlab_model, write_sbml_model$/;"	kind:namespace	line:6
+save_matlab_model	thermodynamics/thermodynamics_utility.py	/^from cobra.io.mat import save_matlab_model$/;"	kind:namespace	line:7
+savetxt	thermodynamics/thermodynamics_sampling.py	/^from numpy import histogram, mean, std, loadtxt, savetxt$/;"	kind:namespace	line:5
+scipy	thermodynamics/thermodynamics_sampling.py	/^import scipy.io$/;"	kind:namespace	line:4
+scipy	thermodynamics/thermodynamics_tfba.py	/^import scipy$/;"	kind:namespace	line:11
+scipy	thermodynamics/thermodynamics_utility.py	/^    import scipy$/;"	kind:namespace	line:631
+scipy	thermodynamics/thermodynamics_utility.py	/^    import scipy.stats$/;"	kind:namespace	line:632
+simulate_infeasibleReactions	thermodynamics/thermodynamics_dG_r_data.py	/^    def simulate_infeasibleReactions(self,cobra_model_I):$/;"	kind:member	line:1803
+simulate_loops	thermodynamics/thermodynamics_sampling.py	/^    def simulate_loops(self,cobra_model,data_fva):$/;"	kind:member	line:106
+simulate_loops_sbml	thermodynamics/thermodynamics_sampling.py	/^    def simulate_loops_sbml(self,ijo1366_sbml,data_fva):$/;"	kind:member	line:127
+simulate_thermoConstraints	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from thermodynamics.thermodynamics_utility import load_thermoModel, simulate_thermoConstraints, add_pykA$/;"	kind:namespace	line:15
+simulate_thermoConstraints	thermodynamics/thermodynamics_utility.py	/^def simulate_thermoConstraints(cobra_model_I,reactions_id_I):$/;"	kind:function	line:547
+single_deletion	thermodynamics/thermodynamics_sampling.py	/^from cobra.flux_analysis import flux_variability_analysis, single_deletion$/;"	kind:namespace	line:11
+single_deletion	thermodynamics/thermodynamics_simulatedData.py	/^from cobra.flux_analysis import single_deletion$/;"	kind:namespace	line:4
+solver_dict	thermodynamics/thermodynamics_tfba.py	/^from cobra.solvers import solver_dict, get_solver_name$/;"	kind:namespace	line:14
+sqrt	thermodynamics/thermodynamics_analysis_deprecated.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+sqrt	thermodynamics/thermodynamics_dG_f_data.py	/^from math import sqrt$/;"	kind:namespace	line:15
+sqrt	thermodynamics/thermodynamics_dG_p_data.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+sqrt	thermodynamics/thermodynamics_dG_r_data.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+sqrt	thermodynamics/thermodynamics_formatter.py	/^from math import sqrt,exp,pow$/;"	kind:namespace	line:4
+sqrt	thermodynamics/thermodynamics_io.py	/^from math import sqrt,exp,pow$/;"	kind:namespace	line:4
+sqrt	thermodynamics/thermodynamics_metabolomicsData.py	/^from math import sqrt,exp,pow$/;"	kind:namespace	line:3
+sqrt	thermodynamics/thermodynamics_otherData.py	/^from math import sqrt,exp,pow$/;"	kind:namespace	line:3
+sqrt	thermodynamics/thermodynamics_simulatedData.py	/^from math import sqrt,exp,pow$/;"	kind:namespace	line:7
+sqrt	thermodynamics/thermodynamics_tfba.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
+stats	thermodynamics/thermodynamics_utility.py	/^    import scipy.stats$/;"	kind:namespace	line:632
+std	thermodynamics/thermodynamics_sampling.py	/^from numpy import histogram, mean, std, loadtxt, savetxt$/;"	kind:namespace	line:5
+string_types	thermodynamics/thermodynamics_tfba.py	/^from six import iteritems, string_types$/;"	kind:namespace	line:13
+sys	debug_remote.py	/^import sys$/;"	kind:namespace	line:11
+sys	thermodynamics/thermodynamics_dG_r_data.py	/^import csv,json,sys$/;"	kind:namespace	line:9
+sys	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^import csv,json,sys$/;"	kind:namespace	line:7
+sys	thermodynamics/thermodynamics_examples/main.py	/^import sys$/;"	kind:namespace	line:3
+sys	thermodynamics/thermodynamics_tfba.py	/^import csv,json,sys$/;"	kind:namespace	line:19
+tfba	thermodynamics/thermodynamics_tfba.py	/^    def tfba(self, cobra_model_irreversible, dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99, use_measured_dG_r=True, solver=None):$/;"	kind:member	line:555
+tfba_conc_ln	thermodynamics/thermodynamics_tfba.py	/^    def tfba_conc_ln(self,cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,$/;"	kind:member	line:585
+tfva	thermodynamics/thermodynamics_tfba.py	/^    def tfva(self, cobra_model_irreversible, dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99, use_measured_dG_r=True,$/;"	kind:member	line:623
+tfva_concentrations	thermodynamics/thermodynamics_tfba.py	/^    def tfva_concentrations(self, cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,$/;"	kind:member	line:751
+tfva_dG_r	thermodynamics/thermodynamics_tfba.py	/^    def tfva_dG_r(self, cobra_model_irreversible, dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99, use_measured_dG_r=True,$/;"	kind:member	line:687
+thermodynamic_analysis	thermodynamics/thermodynamics_analysis_deprecated.py	/^def thermodynamic_analysis(cobra_model, reaction_bounds, $/;"	kind:function	line:9
+thermodynamics_analysis_deprecated.py	thermodynamics/thermodynamics_analysis_deprecated.py	1;"	kind:file	line:1
+thermodynamics_dG_f_data	thermodynamics/thermodynamics_dG_f_data.py	/^class thermodynamics_dG_f_data(thermodynamics_io):$/;"	kind:class	line:18
+thermodynamics_dG_f_data	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from thermodynamics.thermodynamics_dG_f_data import thermodynamics_dG_f_data$/;"	kind:namespace	line:13
+thermodynamics_dG_f_data.py	thermodynamics/thermodynamics_dG_f_data.py	1;"	kind:file	line:1
+thermodynamics_dG_p_data	thermodynamics/thermodynamics_dG_p_data.py	/^class thermodynamics_dG_p_data():$/;"	kind:class	line:8
+thermodynamics_dG_p_data	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from thermodynamics.thermodynamics_dG_p_data import thermodynamics_dG_p_data$/;"	kind:namespace	line:16
+thermodynamics_dG_p_data.py	thermodynamics/thermodynamics_dG_p_data.py	1;"	kind:file	line:1
+thermodynamics_dG_r_data	thermodynamics/thermodynamics_dG_r_data.py	/^class thermodynamics_dG_r_data(thermodynamics_io):$/;"	kind:class	line:13
+thermodynamics_dG_r_data	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from thermodynamics.thermodynamics_dG_r_data import thermodynamics_dG_r_data$/;"	kind:namespace	line:14
+thermodynamics_dG_r_data.py	thermodynamics/thermodynamics_dG_r_data.py	1;"	kind:file	line:1
+thermodynamics_formatter.py	thermodynamics/thermodynamics_formatter.py	1;"	kind:file	line:1
+thermodynamics_io	thermodynamics/thermodynamics_dG_f_data.py	/^from .thermodynamics_io import thermodynamics_io$/;"	kind:namespace	line:11
+thermodynamics_io	thermodynamics/thermodynamics_dG_r_data.py	/^from .thermodynamics_io import thermodynamics_io$/;"	kind:namespace	line:11
+thermodynamics_io	thermodynamics/thermodynamics_io.py	/^class thermodynamics_io:$/;"	kind:class	line:7
+thermodynamics_io	thermodynamics/thermodynamics_metabolomicsData.py	/^from .thermodynamics_io import thermodynamics_io$/;"	kind:namespace	line:7
+thermodynamics_io	thermodynamics/thermodynamics_otherData.py	/^from .thermodynamics_io import thermodynamics_io$/;"	kind:namespace	line:6
+thermodynamics_io	thermodynamics/thermodynamics_sampling.py	/^from .thermodynamics_io import thermodynamics_io$/;"	kind:namespace	line:15
+thermodynamics_io	thermodynamics/thermodynamics_simulatedData.py	/^from .thermodynamics_io import thermodynamics_io$/;"	kind:namespace	line:10
+thermodynamics_io.py	thermodynamics/thermodynamics_io.py	1;"	kind:file	line:1
+thermodynamics_metabolomicsData	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from thermodynamics.thermodynamics_metabolomicsData import thermodynamics_metabolomicsData$/;"	kind:namespace	line:11
+thermodynamics_metabolomicsData	thermodynamics/thermodynamics_metabolomicsData.py	/^class thermodynamics_metabolomicsData(thermodynamics_io):$/;"	kind:class	line:9
+thermodynamics_metabolomicsData.py	thermodynamics/thermodynamics_metabolomicsData.py	1;"	kind:file	line:1
+thermodynamics_otherData	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from thermodynamics.thermodynamics_otherData import thermodynamics_otherData$/;"	kind:namespace	line:12
+thermodynamics_otherData	thermodynamics/thermodynamics_otherData.py	/^class thermodynamics_otherData(thermodynamics_io):$/;"	kind:class	line:8
+thermodynamics_otherData.py	thermodynamics/thermodynamics_otherData.py	1;"	kind:file	line:1
+thermodynamics_sampling	thermodynamics/thermodynamics_sampling.py	/^class thermodynamics_sampling(thermodynamics_io):$/;"	kind:class	line:18
+thermodynamics_sampling	thermodynamics/thermodynamics_tfba.py	/^from thermodynamics.thermodynamics_sampling import thermodynamics_sampling$/;"	kind:namespace	line:16
+thermodynamics_sampling.py	thermodynamics/thermodynamics_sampling.py	1;"	kind:file	line:1
+thermodynamics_simulatedData	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from thermodynamics.thermodynamics_simulatedData import thermodynamics_simulatedData$/;"	kind:namespace	line:10
+thermodynamics_simulatedData	thermodynamics/thermodynamics_simulatedData.py	/^class thermodynamics_simulatedData(thermodynamics_io):$/;"	kind:class	line:12
+thermodynamics_simulatedData.py	thermodynamics/thermodynamics_simulatedData.py	1;"	kind:file	line:1
+thermodynamics_tfba	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from thermodynamics.thermodynamics_tfba import thermodynamics_tfba$/;"	kind:namespace	line:17
+thermodynamics_tfba	thermodynamics/thermodynamics_tfba.py	/^class thermodynamics_tfba():    $/;"	kind:class	line:21
+thermodynamics_tfba.py	thermodynamics/thermodynamics_tfba.py	1;"	kind:file	line:1
+thermodynamics_utility.py	thermodynamics/thermodynamics_utility.py	1;"	kind:file	line:1
+thermodynamics_visualization.py	thermodynamics/thermodynamics_visualization.py	1;"	kind:file	line:1
+tsampling_conc_ln_matlab_export	thermodynamics/thermodynamics_tfba.py	/^    def tsampling_conc_ln_matlab_export(self,cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, pH, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,$/;"	kind:member	line:913
+tsampling_matlab_export	thermodynamics/thermodynamics_tfba.py	/^    def tsampling_matlab_export(self, cobra_model_irreversible, dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99, use_measured_dG_r=True, solver=None,$/;"	kind:member	line:849
+tsampling_matlab_import	thermodynamics/thermodynamics_tfba.py	/^    def tsampling_matlab_import(self,cobra_model_irreversible, dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99, use_measured_dG_r=True, solver=None,$/;"	kind:member	line:876
+update_objective	thermodynamics/thermodynamics_sampling.py	/^from cobra.flux_analysis.objective import update_objective$/;"	kind:namespace	line:13
+update_objective	thermodynamics/thermodynamics_utility.py	/^from cobra.flux_analysis.objective import update_objective$/;"	kind:namespace	line:9
+var	thermodynamics/thermodynamics_formatter.py	/^from numpy import average, var, log$/;"	kind:namespace	line:5
+var	thermodynamics/thermodynamics_io.py	/^from numpy import average, var, log$/;"	kind:namespace	line:5
+var	thermodynamics/thermodynamics_metabolomicsData.py	/^from numpy import average, var, log$/;"	kind:namespace	line:4
+var	thermodynamics/thermodynamics_otherData.py	/^from numpy import average, var, log$/;"	kind:namespace	line:4
+var	thermodynamics/thermodynamics_simulatedData.py	/^from numpy import average, var, log$/;"	kind:namespace	line:8
+warn	thermodynamics/thermodynamics_tfba.py	/^                    from warnings import warn$/;"	kind:namespace	line:761
+warn	thermodynamics/thermodynamics_tfba.py	/^            from warnings import warn$/;"	kind:namespace	line:647
+warn	thermodynamics/thermodynamics_tfba.py	/^            from warnings import warn$/;"	kind:namespace	line:711
+warn	thermodynamics/thermodynamics_tfba.py	/^from warnings import warn$/;"	kind:namespace	line:9
+write_cobra_model_to_sbml_file	thermodynamics/thermodynamics_utility.py	/^from cobra.io.sbml import write_cobra_model_to_sbml_file$/;"	kind:namespace	line:6
+write_sbml_model	thermodynamics/thermodynamics_tfba.py	/^from cobra.io import save_matlab_model, write_sbml_model$/;"	kind:namespace	line:6

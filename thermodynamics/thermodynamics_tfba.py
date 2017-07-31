@@ -1,8 +1,8 @@
 
 from math import floor,ceil,log,sqrt,pow,exp,fabs
 from copy import deepcopy
-from cobra.core.Metabolite import Metabolite
-from cobra.core.Reaction import Reaction
+from cobra.core.metabolite import Metabolite
+from cobra.core.reaction import Reaction
 from cobra.io import save_matlab_model, write_sbml_model
 from collections import Counter
 from math import log, exp
@@ -203,8 +203,9 @@ class thermodynamics_tfba():
             cobra_model_irreversible.add_reaction(indicator);
             cobra_model_irreversible.add_reaction(dG_rv);
             # check to see if the model broke
-            cobra_model_irreversible.optimize(solver='gurobi');
-            if not cobra_model_irreversible.solution.f:
+            cobra_model_irreversible.solver = 'glpk'
+            cobra_model_irreversible.optimize()
+            if not cobra_model_irreversible.objective.value:
                 print(dG_rv.id + ' broke the model!');
                 variables_break.append(dG_rv.id);
                 #cobra_model_irreversible.remove_reactions(indicator)
@@ -487,8 +488,9 @@ class thermodynamics_tfba():
             # record dG_rv variables
             dG0_r_dict[r.id] = dG0_rv
             # check to see if the model broke
-            cobra_model_irreversible.optimize(solver='gurobi');
-            if not cobra_model_irreversible.solution.f:
+            cobra_model_irreversible.solver = 'glpk'
+            cobra_model_irreversible.optimize()
+            if not cobra_model_irreversible.objective.value:
                 print(dG_rv.id + ' broke the model!');
                 variables_break.append(dG_rv.id);
                 #cobra_model_irreversible.remove_reactions(indicator)
@@ -504,8 +506,8 @@ class thermodynamics_tfba():
                 # record dG_rv variables
                 dG_r_variables[r.id] = dG_rv;
             ## check to see if the model broke
-            #cobra_model_irreversible.optimize(solver='gurobi');
-            #if not cobra_model_irreversible.solution.f:
+            #cobra_model_irreversible.optimize(solver='glpk');
+            #if not cobra_model_irreversible.objective.value:
             #    print dG0_rv.id + ' broke the model!';
             #    variables_break.append(dG0_rv.id);
             #    #cobra_model_irreversible.remove_reactions(indicator)
@@ -519,8 +521,8 @@ class thermodynamics_tfba():
         #    # add indicator reactions to the model
         #    cobra_model_irreversible.add_reaction(dG0_rv);
         #    # check to see if the model broke
-        #    cobra_model_irreversible.optimize(solver='gurobi');
-        #    if not cobra_model_irreversible.solution.f:
+        #    cobra_model_irreversible.optimize(solver='glpk');
+        #    if not cobra_model_irreversible.objective.value:
         #        print dG0_rv.id + ' broke the model!';
         #        variables_break.append(dG0_rv.id);
         #        #cobra_model_irreversible.remove_reactions(indicator)
@@ -540,9 +542,9 @@ class thermodynamics_tfba():
         '''copy out the model solution'''
         x_dict_copy = {};
         #y_dict_copy = {};
-        solution_copy = cobra_model_copy.solution.f;
+        solution_copy = cobra_model_copy.objective.value;
         status_copy = cobra_model_copy.solution.status;
-        cobra_model_irreversible.solution.f = solution_copy;
+        cobra_model_irreversible.objective.value = solution_copy;
         cobra_model_irreversible.solution.status = status_copy;
         if solution_copy:
             for rxn in cobra_model_irreversible.reactions:
@@ -579,7 +581,8 @@ class thermodynamics_tfba():
         # add constraints
         self._add_dG_r_constraints(cobra_model_copy,dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria, use_measured_dG_r);
         # optimize
-        cobra_model_copy.optimize(solver='gurobi');
+        cobra_model_copy.solver = 'glpk'
+        cobra_model_copy.optimize()
         # record the results
         self._copy_solution(cobra_model_irreversible,cobra_model_copy);
     def tfba_conc_ln(self,cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,
@@ -617,7 +620,8 @@ class thermodynamics_tfba():
         self._add_conc_ln_constraints(cobra_model_copy,measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,
                      use_measured_concentrations,use_measured_dG0_r);
         # optimize
-        cobra_model_copy.optimize(solver='gurobi');
+        cobra_model_copy.solver = 'glpk'
+        cobra_model_copy.optimize()
         # record the results
         self._copy_solution(cobra_model_irreversible,cobra_model_copy);
     def tfva(self, cobra_model_irreversible, dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99, use_measured_dG_r=True,
@@ -855,10 +859,11 @@ class thermodynamics_tfba():
         # add constraints
         self._add_dG_r_constraints(cobra_model_copy,dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria, use_measured_dG_r);
         # optimize
-        cobra_model_copy.optimize(solver='gurobi');
+        cobra_model_copy.solver = 'glpk'
+        cobra_model_copy.optimize()
         # confine the objective to a fraction of maximum optimal
         objective = [x.id for x in cobra_model_copy.reactions if x.objective_coefficient == 1]
-        cobra_model_copy.reactions.get_by_id(objective[0]).upper_bound = fraction_optimal * cobra_model_copy.solution.f;
+        cobra_model_copy.reactions.get_by_id(objective[0]).upper_bound = fraction_optimal * cobra_model_copy.objective.value;
         # write model to mat
         save_matlab_model(cobra_model_copy,'data\\tsampling\\tsampler.mat');
         ## write model to xml
@@ -882,10 +887,11 @@ class thermodynamics_tfba():
         # add constraints
         dG_r_variables = self._add_dG_r_constraints(cobra_model_copy,dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria, use_measured_dG_r, True);
         # optimize
-        cobra_model_copy.optimize(solver='gurobi');
+        cobra_model_copy.solver = 'glpk'
+        cobra_model_copy.optimize()
         # confine the objective to a fraction of maximum optimal
         objective = [x.id for x in cobra_model_copy.reactions if x.objective_coefficient == 1]
-        cobra_model_copy.reactions.get_by_id(objective[0]).upper_bound = fraction_optimal * cobra_model_copy.solution.f;
+        cobra_model_copy.reactions.get_by_id(objective[0]).upper_bound = fraction_optimal * cobra_model_copy.objective.value;
         # process matlab sampling data
         tsampling = thermodynamics_sampling();
         tsampling.get_points_matlab(matlab_data,sampler_model_name);
@@ -922,10 +928,11 @@ class thermodynamics_tfba():
         self._add_conc_ln_constraints_transport(cobra_model_copy,measured_concentration, estimated_concentration, dG0_r, pH, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,
                      use_measured_concentrations,use_measured_dG0_r);
         # optimize
-        cobra_model_copy.optimize(solver='gurobi');
+        cobra_model_copy.solver = 'glpk'
+        cobra_model_copy.optimize()
         # confine the objective to a fraction of maximum optimal
         objective = [x.id for x in cobra_model_copy.reactions if x.objective_coefficient == 1]
-        cobra_model_copy.reactions.get_by_id(objective[0]).upper_bound = fraction_optimal * cobra_model_copy.solution.f;
+        cobra_model_copy.reactions.get_by_id(objective[0]).upper_bound = fraction_optimal * cobra_model_copy.objective.value;
         # write model to mat
         save_matlab_model(cobra_model_copy,'data\\tsampling\\tsampler_conc_ln.mat');
         ## write model to xml
@@ -1178,8 +1185,8 @@ class thermodynamics_tfba():
             # add indicator reactions to the model
             cobra_model_irreversible.add_reaction(dG0_rv);
             ## check to see if the model broke
-            #cobra_model_irreversible.optimize(solver='gurobi');
-            #if not cobra_model_irreversible.solution.f:
+            #cobra_model_irreversible.optimize(solver='glpk');
+            #if not cobra_model_irreversible.objective.value:
             #    print dG0_rv.id + ' broke the model!';
             #    variables_break.append(dG0_rv.id);
             #    #cobra_model_irreversible.remove_reactions(indicator)
@@ -1193,8 +1200,8 @@ class thermodynamics_tfba():
         #    # add indicator reactions to the model
         #    cobra_model_irreversible.add_reaction(dG0_rv);
         #    # check to see if the model broke
-        #    cobra_model_irreversible.optimize(solver='gurobi');
-        #    if not cobra_model_irreversible.solution.f:
+        #    cobra_model_irreversible.optimize(solver='glpk');
+        #    if not cobra_model_irreversible.objective.value:
         #        print dG0_rv.id + ' broke the model!';
         #        variables_break.append(dG0_rv.id);
         #        #cobra_model_irreversible.remove_reactions(indicator)
@@ -1471,8 +1478,9 @@ class thermodynamics_tfba():
             # record dG_rv variables
             dG0_r_dict[r.id] = dG0_rv
             # check to see if the model broke
-            cobra_model_irreversible.optimize(solver='gurobi');
-            if not cobra_model_irreversible.solution.f:
+            cobra_model_irreversible.solver = 'glpk'
+            cobra_model_irreversible.optimize()
+            if not cobra_model_irreversible.objective.value:
                 print(dG_rv.id + ' broke the model!');
                 variables_break.append(dG_rv.id);
                 #cobra_model_irreversible.remove_reactions(indicator)
@@ -1822,8 +1830,9 @@ class thermodynamics_tfba():
             # record dG_rv variables
             dG0_r_dict[r.id] = dG0_rv
             # check to see if the model broke
-            cobra_model_irreversible.optimize(solver='gurobi');
-            if not cobra_model_irreversible.solution.f:
+            cobra_model_irreversible.solver = 'glpk'
+            cobra_model_irreversible.optimize()
+            if not cobra_model_irreversible.objective.value:
                 print(dG_rv.id + ' broke the model!');
                 variables_break.append(dG_rv.id);
                 #cobra_model_irreversible.remove_reactions(indicator)
@@ -1870,8 +1879,8 @@ class thermodynamics_tfba():
             diagnosed_variables_O = {};
             # original solution:
             cobra_model_irreversible.optimize(solver=diagnose_solver_I);
-            sol_original = cobra_model_irreversible.solution.f
-            diagnose_sol = cobra_model_irreversible.solution.f;
+            sol_original = cobra_model_irreversible.objective.value
+            diagnose_sol = cobra_model_irreversible.objective.value;
         # initialize hydrogens:
         hydrogens = [];
         compartments = list(set(cobra_model_irreversible.metabolites.list_attr('compartment')));
@@ -2160,15 +2169,15 @@ class thermodynamics_tfba():
             if diagnose_I:
                 # check to see if the model broke
                 cobra_model_irreversible.optimize(solver = diagnose_solver_I);
-                print(r.id + " solution: "+ str(cobra_model_irreversible.solution.f));
-                if cobra_model_irreversible.solution.f<sol_original*diagnose_break_I:
+                print(r.id + " solution: "+ str(cobra_model_irreversible.objective.value));
+                if cobra_model_irreversible.objective.value<sol_original*diagnose_break_I:
                     diagnosed_variables_O[r.id]={'solution_before':diagnose_sol,
-                                                 'solution_after':cobra_model_irreversible.solution.f};
+                                                 'solution_after':cobra_model_irreversible.objective.value};
                     return diagnosed_variables_O;
-                elif cobra_model_irreversible.solution.f<diagnose_sol*diagnose_threshold_I:
+                elif cobra_model_irreversible.objective.value<diagnose_sol*diagnose_threshold_I:
                     diagnosed_variables_O[r.id]={'solution_before':diagnose_sol,
-                                                 'solution_after':cobra_model_irreversible.solution.f};
-                    diagnose_sol=cobra_model_irreversible.solution.f;
+                                                 'solution_after':cobra_model_irreversible.objective.value};
+                    diagnose_sol=cobra_model_irreversible.objective.value;
 
         #output:
         if diagnose_I:

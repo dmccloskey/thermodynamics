@@ -6,10 +6,9 @@ from cobra.io.sbml import create_cobra_model_from_sbml_file
 from cobra.io.sbml import write_cobra_model_to_sbml_file
 from cobra.io.mat import save_matlab_model
 from cobra.manipulation.modify import convert_to_irreversible, revert_to_reversible
-from cobra.flux_analysis.objective import update_objective
-from cobra.core.Model import Model
-from cobra.core.Metabolite import Metabolite
-from cobra.core.Reaction import Reaction
+from cobra.core.model import Model
+from cobra.core.metabolite import Metabolite
+from cobra.core.reaction import Reaction
 
 def find_transportMets(cobra_model_I, reaction_id_I):
     # transport metabolite definition:
@@ -71,7 +70,7 @@ def find_transportMetsAndRxns(cobra_model_I):
     return metsAndRxns_O;
 
 def load_thermoModel(anoxic = False):
-    ijo1366_sbml = "thermodynamics_data\\iJO1366.xml"
+    ijo1366_sbml = "/home/user/code/thermodynamics/thermodynamics_data/iJO1366.xml"
     # Read in the sbml file and define the model conditions
     cobra_model = create_cobra_model_from_sbml_file(ijo1366_sbml, print_time=True)
     ## Update AMPMS2
@@ -125,7 +124,7 @@ def load_thermoModel(anoxic = False):
             cobra_model.reactions.get_by_id(d).lower_bound = 0.0;
             cobra_model.reactions.get_by_id(d).upper_bound = 1000.0;
     # Change the objective
-    update_objective(cobra_model,{'Ec_biomass_iJO1366_WT_53p95M':1.0})
+    cobra_model.objective = {cobra_model.reactions.Ec_biomass_iJO1366_WT_53p95M:1.0}
     cobra_model.remove_reactions(['Ec_biomass_iJO1366_core_53p95M'])
     # Assign KOs
 
@@ -558,7 +557,7 @@ def simulate_thermoConstraints(cobra_model_I,reactions_id_I):
     gr_O = {};
     # determine the orginal growth rate of the model
     cobra_model_I.optimize();
-    gr_original = cobra_model_I.solution.f;
+    gr_original = cobra_model_I.objective.value;
     gr_O['original'] = gr_original;
     # iterate through each reaction
     for rxn in reactions_id_I:
@@ -572,7 +571,7 @@ def simulate_thermoConstraints(cobra_model_I,reactions_id_I):
             cobra_model_I.reactions.get_by_id(rxn).lower_bound = 0.0;
         # simulate growth with the constraint
         cobra_model_I.optimize();
-        gr = cobra_model_I.solution.f
+        gr = cobra_model_I.objective.value
         if gr: gr_O[rxn] = [gr, gr/gr_original*100];
         else: gr_O[rxn] = [0.0, 0.0/gr_original*100];
         # reset reaction constraint

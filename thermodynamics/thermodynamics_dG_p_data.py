@@ -1,8 +1,6 @@
 
 from math import floor,ceil,log,sqrt,pow,exp,fabs
 from copy import deepcopy
-from cobra.core.Metabolite import Metabolite
-from cobra.core.Reaction import Reaction
 from collections import Counter
 
 class thermodynamics_dG_p_data():

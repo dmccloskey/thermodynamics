@@ -2,7 +2,6 @@
 from cobra.io.sbml import create_cobra_model_from_sbml_file
 from cobra.flux_analysis import flux_variability_analysis
 from cobra.flux_analysis import single_deletion
-from cobra.flux_analysis.objective import update_objective
 
 import json, csv
 from math import sqrt,exp,pow

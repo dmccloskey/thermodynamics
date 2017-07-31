@@ -1,8 +1,8 @@
 
 from math import floor,ceil,log,sqrt,pow,exp,fabs
 from copy import deepcopy
-from cobra.core.Metabolite import Metabolite
-from cobra.core.Reaction import Reaction
+from cobra.core.metabolite import Metabolite
+from cobra.core.reaction import Reaction
 from collections import Counter
 
 # Other dependencies
@@ -184,7 +184,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             #    reaction_bounds[rxn]['flux_lb'],reaction_bounds[rxn]['flux_ub'],\
             #    self.metabolomics_coverage[rxn],self.dG_r_coverage[rxn],self.thermodynamic_consistency_check[rxn];
 
-        with open(filename, 'wb') as f:
+        with open(filename, 'w') as f:
             writer = csv.writer(f);
             try:
                 writer.writerow(header);

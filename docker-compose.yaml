@@ -5,7 +5,7 @@ services:
     image: dmccloskey/python3cobrapy-thermodynamics:latest
     volumes:
       - //C/Users//domccl/GitHub/thermodynamics/:/home/user/code/
-      - //C/Users//domccl/GitHub/component-contribution/component_contribution:/home/user/code/component_contribution
+      - //C/Users//domccl/GitHub/component-contribution/component_contribution:/home/user/component_contribution
       # - //C/Users//dmccloskey/Documents/GitHub/thermodynamics/:/home/user/code/
     ports:
       - "3000:3000"

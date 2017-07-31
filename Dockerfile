@@ -1,6 +1,30 @@
 FROM dmccloskey/python3cobrapy
 USER root
 
+# install openbabel
+RUN apt-get -y update && \
+    apt-get install -y \
+	swig \
+	libeigen3-dev \
+    cmake \
+    make && \
+    # apt-get clean && \
+    # apt-get purge && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+	cd /usr/local \
+	&& wget https://sourceforge.net/projects/openbabel/files/openbabel/2.4.1/openbabel-2.4.1.tar.gz
+	\
+	&& tar -zxvf openbabel-2.4.1.tar.gz \
+	&& mkdir build \
+	&& cd build \
+	&& cmake ../openbabel-2.4.1 -DPYTHON_BINDINGS=ON \
+	&& make -j4 \
+	&& make install \
+	&& export PYTHONPATH=/usr/local/lib:$PYTHONPATH
+# # Cannot use openbabel/pybel
+# # https://github.com/openbabel/openbabel/issues/368
+# # No module named 'DLFCN'
+
 # install PTVS
 EXPOSE 3000
 RUN pip3 install --no-cache-dir \

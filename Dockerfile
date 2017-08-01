@@ -29,15 +29,23 @@ RUN pip3 install --no-cache-dir \
 		ptvsd==3.0.0 \
 	&&pip3 install --upgrade
 
-# # Custom modules
-# ENV CC_VERSION feature/dgf
-# ENV CC_REPOSITORY https://github.com/dmccloskey/component-contribution.git
-# RUN cd /usr/local/ && \
-# 	#install io_utilities
-# 	git clone ${CC_REPOSITORY} && \
-# 	cd /usr/local/component-contribution/ && \
-# 	git checkout ${CC_VERSION} && \
-# 	python3 setup.py install && \
-# 	cd /usr/local/
+# Custom modules
+ENV CC_VERSION fix/py2to3
+ENV CC_REPOSITORY https://github.com/dmccloskey/component-contribution.git
+ENV IOUTILITIES_VERSION master
+ENV IOUTILITIES_REPOSITORY https://github.com/dmccloskey/io_utilities.git
+RUN cd /usr/local/ && \
+	# #install component-contribution
+	# git clone ${CC_REPOSITORY} && \
+	# cd /usr/local/component-contribution/ && \
+	# git checkout ${CC_VERSION} && \
+	# python3 setup.py install && \
+	# cd /usr/local/ && \
+	#install io_utilities
+	git clone ${IOUTILITIES_REPOSITORY} && \
+	cd /usr/local/io_utilities/ && \
+	git checkout ${IOUTILITIES_VERSION} && \
+	python3 setup.py install && \
+	cd /usr/local/
 
 USER user

@@ -7,7 +7,8 @@ from cobra.flux_analysis.parsimonious import optimize_minimal_flux
 import csv,json,sys
 
 # Dependencies from thermodynamics
-from thermodynamics.thermodynamics_simulatedData import thermodynamics_simulatedData
+# from thermodynamics.thermodynamics_simulatedData import thermodynamics_simulatedData
+from cobra_utilities.cobra_simulatedData import cobra_simulatedData
 from thermodynamics.thermodynamics_metabolomicsData import thermodynamics_metabolomicsData
 from thermodynamics.thermodynamics_otherData import thermodynamics_otherData
 from thermodynamics.thermodynamics_dG_f_data import thermodynamics_dG_f_data
@@ -28,11 +29,11 @@ def _main_():
     # make/load simulated data for anaerobic conditions
     data_fva_anoxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_fva_anoxic.json'
     data_srd_anoxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_srd_anoxic.json'
-    simulated_data_anoxic = thermodynamics_simulatedData()
-    #simulated_data_anoxic.generate_sra_data(cobra_model_anoxic) # perform single reaction deletion analysis
-    #simulated_data_anoxic.generate_fva_data(cobra_model_anoxic) # perform flux variability analysis
-    #simulated_data_anoxic.export_sra_data(data_srd_anoxic) # save results for later use
-    #simulated_data_anoxic.export_fva_data(data_fva_anoxic) # save results for later use
+    simulated_data_anoxic = cobra_simulatedData()
+    # simulated_data_anoxic.generate_sra_data(cobra_model_anoxic) # perform single reaction deletion analysis
+    # simulated_data_anoxic.generate_fva_data(cobra_model_anoxic) # perform flux variability analysis
+    # simulated_data_anoxic.export_sra_data(data_srd_anoxic) # save results for later use
+    # simulated_data_anoxic.export_fva_data(data_fva_anoxic) # save results for later use
     simulated_data_anoxic.import_sra_data(data_srd_anoxic)
     simulated_data_anoxic.import_fva_data(data_fva_anoxic)
     simulated_data_anoxic.check_data()
@@ -40,9 +41,9 @@ def _main_():
     # make/load simulated data for aerobic conditions
     data_fva_oxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_fva_oxic.json'
     data_srd_oxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_srd_oxic.json'
-    simulated_data_oxic = thermodynamics_simulatedData()
-    #simulated_data_oxic.generate_sra_data(cobra_model_oxic) # perform single reaction deletion analysis
-    #simulated_data_oxic.generate_fva_data(cobra_model_oxic) # perform flux variability analysis
+    simulated_data_oxic = cobra_simulatedData()
+    # simulated_data_oxic.generate_sra_data(cobra_model_oxic) # perform single reaction deletion analysis
+    # simulated_data_oxic.generate_fva_data(cobra_model_oxic) # perform flux variability analysis
     #simulated_data_oxic.export_sra_data(data_srd_oxic) # save results for later use
     #simulated_data_oxic.export_fva_data(data_fva_oxic) # save results for later use
     simulated_data_oxic.import_sra_data(data_srd_oxic)
@@ -60,8 +61,8 @@ def _main_():
     #data_dG0_transformed = 'thermodynamics_data/ijo1366_dG_f.json'
     data_dG0_transformed = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_dG_f01.json'
     dG_f_data = thermodynamics_dG_f_data(id2KEGGID_filename_I='/home/user/code/thermodynamics/thermodynamics_data/id2KEGGID.csv')
-    ##dG_f_data.make_dG0_f_pH0() # only if the data has not been generated previously!
-    #dG_f_data.get_transformed_dG_f('data/compounds_dG0_f.json',cobra_model_oxic,other_data.pH,other_data.temperature,other_data.ionic_strength) # adjust the non-transformed dG0_f data to physiological pH, temperature, and ionic strength (this step has already been completed)
+    dG_f_data.make_dG0_f_pH0() # only if the data has not been generated previously!
+    dG_f_data.get_transformed_dG_f('/home/user/code/thermodynamics/thermodynamics_data/compounds_dG0_f.json',cobra_model_oxic,other_data.pH,other_data.temperature,other_data.ionic_strength) # adjust the non-transformed dG0_f data to physiological pH, temperature, and ionic strength (this step has already been completed)
     #dG_f_data.export_dG_f(data_dG0_transformed) # save results for later use
     dG_f_data.import_dG_f(data_dG0_transformed)
     dG_f_data.format_dG_f()

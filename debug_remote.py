@@ -9,7 +9,9 @@ ptvsd.wait_for_attach()
 # if the thermodynamics or component-contribution package is not located in lib/site-packages
 # define the location
 import sys
-sys.path.append('/home/user/component_contribution')
+sys.path.append('/home/user/component-contribution')
+sys.path.append('/home/user/io_utilities')
+sys.path.append('/home/user/cobra_utilities')
 
 # import the example file and run
 from thermodynamics.thermodynamics_examples import aerobicAnaerobic01

@@ -139,4 +139,74 @@ def _main_():
     ##TODO: methods are defined, but an example is not yet given
 	
 	# perform thermodynamic FBA, FVA, and sampling
-	##TODO: methods are defined, but an example is not yet given
+
+    # copy the model
+    cobra_model_irreversible = cobra_model.copy();
+    # make the model irreversible
+    convert_to_irreversible(cobra_model_irreversible);
+    # remove an inconsistent dGf values
+    dG_f_data.remove_measured_dG_f(inconsistent_dG_f_I)
+    # remove an inconsistent concentration values
+    metabolomics_data.remove_measured_concentrations(inconsistent_concentrations_I);
+    # remove an inconcsistent tcc
+    tcc = thermodynamics_dG_r_data(dG0_r_I = dG0_r,
+            dG_r_coverage_I = measured_dG_f_coverage,
+            metabolomics_coverage_I = measured_concentration_coverage,
+            thermodynamic_consistency_check_I = feasible);
+    tcc.change_feasibleReactions(inconsistent_tcc_I);    
+    # diagnose tfba constraints
+    tfba = thermodynamics_tfba()
+    thermodynamic_constraints_check,diagnose_variables_1,diagnose_variables_2,diagnose_variables_3 = tfba.check_conc_ln_constraints_transport(cobra_model_irreversible,
+                                            metabolomics_data.measured_concentrations, metabolomics_data.estimated_concentrations,
+                                            tcc.dG0_r, other_data.pH,other_data.temperature,tcc.metabolomics_coverage,
+                                            tcc.dG_r_coverage, tcc.thermodynamic_consistency_check,
+                                            measured_concentration_coverage_criteria_I, measured_dG_f_coverage_criteria_I,
+                                            n_checks_I = 5,
+                                            diagnose_solver_I=None,diagnose_threshold_I=0.98,diagnose_break_I=0.1);
+    # apply tfba constraints
+    tfba = thermodynamics_tfba()
+    tfba._add_conc_ln_constraints_transport(cobra_model_irreversible, metabolomics_data.measured_concentrations, metabolomics_data.estimated_concentrations,
+                                            tcc.dG0_r, other_data.pH,other_data.temperature,tcc.metabolomics_coverage,
+                                            tcc.dG_r_coverage, tcc.thermodynamic_consistency_check,
+                                            measured_concentration_coverage_criteria_I, measured_dG_f_coverage_criteria_I,
+                                            use_measured_concentrations=True,use_measured_dG0_r=True);
+    # run TFBA
+    tfba.tfba_conc_ln(self,cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,
+                              measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
+                              use_measured_concentrations=True,use_measured_dG0_r=True, solver=None)
+    
+    # run TFVA
+    tfba.tfva_concentrations(self, cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,
+                              measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
+                             use_measured_concentrations=True,use_measured_dG0_r=True, reaction_list=None,fraction_of_optimum=1.0, solver=None,
+                             objective_sense="maximize", **solver_args)
+    tfba.analyze_tfva_results(self,flux_threshold=1e-6)
+    tfba.export_tfva_concentrations_data(self, filename)
+    tfba.export_tfva_analysis(self, filename)
+    
+    # run Tsampling (Need to update for new sampling interface)
+    if modelsCOBRA.test_model(cobra_model_I=cobra_model_copy):
+        sampling = cobra_sampling(data_dir_I = data_dir_I);
+        if simulation_parameters['sampler_id']=='gpSampler':
+            filename_model = simulation_id_I + '.mat';
+            filename_script = simulation_id_I + '.m';
+            filename_points = simulation_id_I + '_points' + '.mat';
+            sampling.export_sampling_matlab(cobra_model=cobra_model_copy,filename_model=filename_model,filename_script=filename_script,filename_points=filename_points,\
+                solver_id_I = simulation_parameters['solver_id'],\
+                n_points_I = simulation_parameters['n_points'],\
+                n_steps_I = simulation_parameters['n_steps'],\
+                max_time_I = simulation_parameters['max_time']);
+    # Analyze each model (Need to update for new sampling interface)
+    if modelsCOBRA.test_model(cobra_model_I=cobra_model_copy):
+        sampling = cobra_sampling(data_dir_I = data_dir_I,model_I = cobra_model_copy);
+        if simulation_parameters['sampler_id']=='gpSampler':
+            # load the results of sampling
+            filename_points = simulation_id_I + '_points' + '.mat';
+            sampling.get_points_matlab(filename_points,'sampler_out');
+            # check if points were sampled outside the solution space
+            pruned_reactions = sampling.remove_points_notInSolutionSpace(min_points_I=min_pointsInSolutionSpace_I);
+            ## check if the model contains loops
+            #sampling.simulate_loops(data_fva=settings.workspace_data + '/loops_fva_tmp.json');
+            #sampling.find_loops(data_fva=settings.workspace_data + '/loops_fva_tmp.json');
+            #sampling.remove_loopsFromPoints();
+            sampling.descriptive_statistics();

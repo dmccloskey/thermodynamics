@@ -285,7 +285,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
         dG0_f_1 = self._get_pseudoisomer_priority1_pH0()
         dG0_f_2 = self._get_pseudoisomer_priority2_pH0()
 
-        self._combine_dG0_f_pH0(dG0_f_0, dG0_f_1, dG0_f_2, '/home/user/code/thermodynamics/thermodynamics/data/compounds_dG0_f.json')
+        self._combine_dG0_f_pH0(dG0_f_0, dG0_f_1, dG0_f_2, '/home/user/code/thermodynamics/thermodynamics_data/compounds_dG0_f.json')
 
         #>>> len(keys)
         #12841
@@ -298,7 +298,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
         #>>> 
 
     def _make_ccache(self):
-        pseudo = json.load(open('/home/user/code/thermodynamics/thermodynamics/data/kegg_pseudoisomers.json'))
+        pseudo = json.load(open('/home/user/code/thermodynamics/thermodynamics_data/kegg_pseudoisomers.json'))
         rxns = []
         cnt = 0
         for i, item in enumerate(pseudo):
@@ -314,8 +314,8 @@ class thermodynamics_dG_f_data(thermodynamics_io):
 
     def _get_pseudoisomer_priority2_pH0(self):
        # compounds = json.load(open('cobra\\thermodynamics\\component_contribution\\cache\\compounds.json'))
-        compounds = json.load(open('/home/user/code/thermodynamics/thermodynamics/data/compounds.json'))
-        pseudo = json.load(open('/home/user/code/thermodynamics/thermodynamics/data/kegg_pseudoisomers.json'))
+        compounds = json.load(open('/home/user/code/thermodynamics/thermodynamics_data/compounds.json'))
+        pseudo = json.load(open('/home/user/code/thermodynamics/thermodynamics_data/kegg_pseudoisomers.json'))
         # units: dG0_f: kJ/mol
         #        variance = (kJ/mol)^2
         # variance: we are estimating that the variance for the GC method is 62.0 (kJ/mol)^2,
@@ -358,7 +358,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
         return dG0_f
 
     def _get_pseudoisomer_priority1_pH0(self):
-        pseudo = json.load(open('/home/user/code/thermodynamics/thermodynamics/data/kegg_pseudoisomers.json'))
+        pseudo = json.load(open('/home/user/code/thermodynamics/thermodynamics_data/kegg_pseudoisomers.json'))
         # units: dG0_f: kJ/mol
         #        variance = (kJ/mol)^2
         # variance: we are estimating that the experimental variance for bibliomic data is 31.0 (kJ/mol)^2,
@@ -393,7 +393,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
         #           doi:10.1371/journal.pcbi.1003098 page 10
 
         dG0_f = {}
-        with open('data\\dG0_f_rc_v2.csv','r') as infile:
+        with open('/home/user/code/thermodynamics/thermodynamics_data/dG0_f_rc_v2.csv','r') as infile:
             reader = csv.reader(infile)
             headers = next(reader)
             for r in reader:
@@ -450,7 +450,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
         if type(dG0_f_I) == type({}): dG0_f_KEGG_all=dG0_f_I
         elif type(dG0_f_I) == type(''):
             try:
-                dG0_f_KEGG_all = json.load(open(filename_dG0_f_I))
+                dG0_f_KEGG_all = json.load(open(dG0_f_I))
             except IOError as e:
                 print(e)
                 return

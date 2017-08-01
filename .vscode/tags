@@ -116,7 +116,7 @@ check_loops	thermodynamics/thermodynamics_sampling.py	/^    def check_loops(self
 check_metabolomics_data	thermodynamics/thermodynamics_metabolomicsData.py	/^    def check_metabolomics_data(self):$/;"	kind:member	line:64
 check_thermodynamicConsistency	thermodynamics/thermodynamics_dG_r_data.py	/^    def check_thermodynamicConsistency(self, cobra_model, reaction_bounds,$/;"	kind:member	line:1474
 clear_data	thermodynamics/thermodynamics_otherData.py	/^    def clear_data(self):$/;"	kind:member	line:29
-cobra_utilities	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from cobra_utilities.cobra_simulatedData import cobra_utilities.simulatedData$/;"	kind:namespace	line:11
+cobra_simulatedData	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from cobra_utilities.cobra_simulatedData import cobra_simulatedData$/;"	kind:namespace	line:11
 combine_measured_concentrations	thermodynamics/thermodynamics_metabolomicsData.py	/^    def combine_measured_concentrations(self):$/;"	kind:member	line:559
 compartementalize_concentrations	thermodynamics/thermodynamics_formatter.py	/^def compartementalize_concentrations(measured_values):$/;"	kind:function	line:53
 compound_model	thermodynamics/thermodynamics_dG_f_data.py	/^from component_contribution.compound_model import compound_model$/;"	kind:namespace	line:17
@@ -306,7 +306,6 @@ simulate_loops	thermodynamics/thermodynamics_sampling.py	/^    def simulate_loop
 simulate_loops_sbml	thermodynamics/thermodynamics_sampling.py	/^    def simulate_loops_sbml(self,ijo1366_sbml,data_fva):$/;"	kind:member	line:126
 simulate_thermoConstraints	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from thermodynamics.thermodynamics_utility import load_thermoModel, simulate_thermoConstraints, add_pykA$/;"	kind:namespace	line:16
 simulate_thermoConstraints	thermodynamics/thermodynamics_utility.py	/^def simulate_thermoConstraints(cobra_model_I,reactions_id_I):$/;"	kind:function	line:546
-simulatedData	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from cobra_utilities.cobra_simulatedData import cobra_utilities.simulatedData$/;"	kind:namespace	line:11
 single_deletion	thermodynamics/thermodynamics_sampling.py	/^from cobra.flux_analysis import flux_variability_analysis, single_deletion$/;"	kind:namespace	line:11
 single_deletion	thermodynamics/thermodynamics_simulatedData.py	/^from cobra.flux_analysis import single_deletion$/;"	kind:namespace	line:4
 solver_dict	thermodynamics/thermodynamics_tfba.py	/^from cobra.solvers import solver_dict, get_solver_name$/;"	kind:namespace	line:14

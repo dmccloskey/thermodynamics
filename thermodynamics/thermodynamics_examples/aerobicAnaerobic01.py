@@ -61,8 +61,8 @@ def _main_():
     #data_dG0_transformed = 'thermodynamics_data/ijo1366_dG_f.json'
     data_dG0_transformed = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_dG_f01.json'
     dG_f_data = thermodynamics_dG_f_data(id2KEGGID_filename_I='/home/user/code/thermodynamics/thermodynamics_data/id2KEGGID.csv')
-    dG_f_data.make_dG0_f_pH0() # only if the data has not been generated previously!
-    dG_f_data.get_transformed_dG_f('/home/user/code/thermodynamics/thermodynamics_data/compounds_dG0_f.json',cobra_model_oxic,other_data.pH,other_data.temperature,other_data.ionic_strength) # adjust the non-transformed dG0_f data to physiological pH, temperature, and ionic strength (this step has already been completed)
+    # # # dG_f_data.make_dG0_f_pH0() # only if the data has not been generated previously!
+    # dG_f_data.get_transformed_dG_f('/home/user/code/thermodynamics/thermodynamics_data/compounds_dG0_f.json',cobra_model_oxic,other_data.pH,other_data.temperature,other_data.ionic_strength) # adjust the non-transformed dG0_f data to physiological pH, temperature, and ionic strength (this step has already been completed)
     #dG_f_data.export_dG_f(data_dG0_transformed) # save results for later use
     dG_f_data.import_dG_f(data_dG0_transformed)
     dG_f_data.format_dG_f()

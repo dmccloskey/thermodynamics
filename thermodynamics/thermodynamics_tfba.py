@@ -172,15 +172,12 @@ class thermodynamics_tfba():
                 #dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
                     dG_rv.lower_bound = dG_r[r.id]['dG_r_lb'];
                     dG_rv.upper_bound = dG_r[r.id]['dG_r_ub'];
-                    dG_rv.objective_coefficient = 0;
                 #else: 
                 #    dG_rv.lower_bound = self.dG_r_min;
                 #    dG_rv.upper_bound = self.dG_r_max;
-                #    dG_rv.objective_coefficient = 0;
             else:
                 dG_rv.lower_bound = self.dG_r_min;
                 dG_rv.upper_bound = self.dG_r_max;
-                dG_rv.objective_coefficient = 0;
             dG_rv.variable_kind = 'continuous';
             # create a constraint for vi-zi*vmax<=0
             indicator_plus = Metabolite(r.id + '_plus');
@@ -202,6 +199,7 @@ class thermodynamics_tfba():
             # add indicator reactions to the model
             cobra_model_irreversible.add_reaction(indicator);
             cobra_model_irreversible.add_reaction(dG_rv);
+            cobra_model_irreversible.reactions.get_by_id('dG_rv_' + r.id).objective_coefficient = 0
             # check to see if the model broke
             cobra_model_irreversible.solver = 'glpk'
             cobra_model_irreversible.optimize()
@@ -284,13 +282,13 @@ class thermodynamics_tfba():
                                 conc_lnv.lower_bound = log(measured_concentration[p.id]['concentration_lb']);
                                 conc_lnv.upper_bound = log(measured_concentration[p.id]['concentration_ub']);
                                 conc_lnv.variable_kind = 'continuous';
-                                conc_lnv.objective_coefficient = 0;
                                 # add constraints
                                 conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[p.compartment]['temperature']*r.get_coefficient(p.id)});
                                 # record the new variable
                                 conc_lnv_dict[p.id] = conc_lnv;
                                 # add the new variable to the model
                                 cobra_model_irreversible.add_reaction(conc_lnv);
+                                cobra_model_irreversible.reactions.get_by_id('conc_lnv_' + p.id).objective_coefficient = 0
                         elif p.id in list(estimated_concentration.keys()):
                             # check that if the p_id has already been created:
                             if p.id in list(conc_lnv_dict.keys()):
@@ -302,13 +300,13 @@ class thermodynamics_tfba():
                                 conc_lnv.lower_bound = log(estimated_concentration[p.id]['concentration_lb']);
                                 conc_lnv.upper_bound = log(estimated_concentration[p.id]['concentration_ub']);
                                 conc_lnv.variable_kind = 'continuous';
-                                conc_lnv.objective_coefficient = 0;
                                 # add constraints
                                 conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[p.compartment]['temperature']*r.get_coefficient(p.id)});
                                 # record the new variable
                                 conc_lnv_dict[p.id] = conc_lnv;
                                 # add the new variable to the model
                                 cobra_model_irreversible.add_reaction(conc_lnv);
+                                cobra_model_irreversible.reactions.get_by_id('conc_lnv_' + r.id + '_' + p.id).objective_coefficient = 0
                     else:
                         # check that if the p_id has already been created:
                         if p.id in list(conc_lnv_dict.keys()):
@@ -320,13 +318,13 @@ class thermodynamics_tfba():
                             conc_lnv.lower_bound = self.conc_min_ln;
                             conc_lnv.upper_bound = self.conc_max_ln;
                             conc_lnv.variable_kind = 'continuous';
-                            conc_lnv.objective_coefficient = 0;
                             # add constraints
                             conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[p.compartment]['temperature']*r.get_coefficient(p.id)});
                             # record the new variable
                             conc_lnv_dict[p.id] = conc_lnv;
                             # add the new variable to the model
                             cobra_model_irreversible.add_reaction(conc_lnv);
+                            cobra_model_irreversible.reactions.get_by_id('conc_lnv_' + p.id).objective_coefficient = 0
             reactants = [react for react in r.reactants];
             # Method 2:
             for react in reactants:
@@ -343,13 +341,13 @@ class thermodynamics_tfba():
                                 conc_lnv.lower_bound = log(measured_concentration[react.id]['concentration_ub']);
                                 conc_lnv.upper_bound = log(measured_concentration[react.id]['concentration_lb']);
                                 conc_lnv.variable_kind = 'continuous';
-                                conc_lnv.objective_coefficient = 0;
                                 # add constraints
                                 conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[react.compartment]['temperature']*r.get_coefficient(react.id)});
                                 # record the new variable
                                 conc_lnv_dict[react.id] = conc_lnv;
                                 # add the new variable to the model
                                 cobra_model_irreversible.add_reaction(conc_lnv);
+                                cobra_model_irreversible.reactions.get_by_id('conc_lnv_' + react.id).objective_coefficient = 0
                         elif react.id in list(estimated_concentration.keys()):
                             # check that if the react_id has already been created:
                             if react.id in list(conc_lnv_dict.keys()):
@@ -361,13 +359,13 @@ class thermodynamics_tfba():
                                 conc_lnv.lower_bound = log(estimated_concentration[react.id]['concentration_ub']);
                                 conc_lnv.upper_bound = log(estimated_concentration[react.id]['concentration_lb']);
                                 conc_lnv.variable_kind = 'continuous';
-                                conc_lnv.objective_coefficient = 0;
                                 # add constraints
                                 conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[react.compartment]['temperature']*r.get_coefficient(react.id)});
                                 # record the new variable
                                 conc_lnv_dict[react.id] = conc_lnv;
                                 # add the new variable to the model
                                 cobra_model_irreversible.add_reaction(conc_lnv);
+                                cobra_model_irreversible.reactions.get_by_id('conc_lnv_' + r.id + '_' + react.id).objective_coefficient = 0
                     else:
                         # check that if the react_id has already been created:
                         if react.id in list(conc_lnv_dict.keys()):
@@ -379,13 +377,13 @@ class thermodynamics_tfba():
                             conc_lnv.lower_bound = self.conc_min_ln;
                             conc_lnv.upper_bound = self.conc_max_ln;
                             conc_lnv.variable_kind = 'continuous';
-                            conc_lnv.objective_coefficient = 0;
                             # add constraints
                             conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[react.compartment]['temperature']*r.get_coefficient(react.id)});
                             # record the new variable
                             conc_lnv_dict[react.id] = conc_lnv;
                             # add the new variable to the model
                             cobra_model_irreversible.add_reaction(conc_lnv);
+                            cobra_model_irreversible.reactions.get_by_id('conc_lnv_' + react.id).objective_coefficient = 0
             ## Method 1:
             #metabolites = [p for p in r.products] + [react for react in r.reactants];
             #for met in metabolites:
@@ -401,7 +399,7 @@ class thermodynamics_tfba():
             #                    conc_lnv.lower_bound = log(measured_concentration[met.id]['concentration_lb']);
             #                    conc_lnv.upper_bound = log(measured_concentration[met.id]['concentration_ub']);
             #                    conc_lnv.variable_kind = 'continuous';
-            #                    conc_lnv.objective_coefficient = 0;
+            #                    
             #                    # add constraints
             #                    conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[met.compartment]['temperature']*r.get_coefficient(met.id)});
             #                    # record the new variable
@@ -416,7 +414,7 @@ class thermodynamics_tfba():
             #                    conc_lnv.lower_bound = log(estimated_concentration[met.id]['concentration_lb']);
             #                    conc_lnv.upper_bound = log(estimated_concentration[met.id]['concentration_ub']);
             #                    conc_lnv.variable_kind = 'continuous';
-            #                    conc_lnv.objective_coefficient = 0;
+            #                    
             #                    # add constraints
             #                    conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[met.compartment]['temperature']*r.get_coefficient(met.id)});
             #                    # record the new variable
@@ -431,7 +429,7 @@ class thermodynamics_tfba():
             #                conc_lnv.lower_bound = self.conc_min_ln;
             #                conc_lnv.upper_bound = self.conc_max_ln;
             #                conc_lnv.variable_kind = 'continuous';
-            #                conc_lnv.objective_coefficient = 0;
+            #                
             #                # add constraints
             #                conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[met.compartment]['temperature']*r.get_coefficient(met.id)});
             #                # record the new variable
@@ -450,11 +448,9 @@ class thermodynamics_tfba():
                 #dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
                     dG_rv.lower_bound = dG_r[r.id]['dG_r_lb'];
                     dG_rv.upper_bound = dG_r[r.id]['dG_r_ub'];
-                    dG_rv.objective_coefficient = 0;
                 #else: 
                 #    dG_rv.lower_bound = self.dG_r_min;
                 #    dG_rv.upper_bound = self.dG_r_max;
-                #    dG_rv.objective_coefficient = 0;
             else:
                 dG_rv.lower_bound = self.dG_r_min
                 dG_rv.upper_bound = self.dG_r_max;
@@ -464,15 +460,12 @@ class thermodynamics_tfba():
                 if dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
                     dG0_rv.lower_bound = dG0_r[r.id]['dG_r_lb'];
                     dG0_rv.upper_bound = dG0_r[r.id]['dG_r_ub'];
-                    dG0_rv.objective_coefficient = 0;
                 else:
                     dG0_rv.lower_bound = self.dG0_r_min;
                     dG0_rv.upper_bound = self.dG0_r_max;
-                    dG0_rv.objective_coefficient = 0;
             else:
                 dG0_rv.lower_bound = self.dG0_r_min;
                 dG0_rv.upper_bound = self.dG0_r_max;
-                dG0_rv.objective_coefficient = 0;
             dG0_rv.variable_kind = 'continuous';
             # add constraints to the variables
             indicator.add_metabolites({indicator_plus: -r.upper_bound});#,indicator_minus: -r.lower_bound});
@@ -484,7 +477,9 @@ class thermodynamics_tfba():
             # add indicator reactions to the model
             cobra_model_irreversible.add_reaction(indicator);
             cobra_model_irreversible.add_reaction(dG_rv);
+            cobra_model_irreversible.reactions.get_by_id('dG0_rv_' + r.id).objective_coefficient = 0
             cobra_model_irreversible.add_reaction(dG0_rv);
+            cobra_model_irreversible.reactions.get_by_id('dG0_rv_' + r.id).objective_coefficient = 0
             # record dG_rv variables
             dG0_r_dict[r.id] = dG0_rv
             # check to see if the model broke
@@ -998,7 +993,7 @@ class thermodynamics_tfba():
                                 conc_lnv.lower_bound = log(measured_concentration[p.id]['concentration_lb']);
                                 conc_lnv.upper_bound = log(measured_concentration[p.id]['concentration_ub']);
                                 conc_lnv.variable_kind = 'continuous';
-                                conc_lnv.objective_coefficient = 0;
+                                
                                 # add constraints
                                 conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[p.compartment]['temperature']*r.get_coefficient(p.id)});
                                 # record the new variable
@@ -1016,7 +1011,7 @@ class thermodynamics_tfba():
                                 conc_lnv.lower_bound = log(estimated_concentration[p.id]['concentration_lb']);
                                 conc_lnv.upper_bound = log(estimated_concentration[p.id]['concentration_ub']);
                                 conc_lnv.variable_kind = 'continuous';
-                                conc_lnv.objective_coefficient = 0;
+                                
                                 # add constraints
                                 conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[p.compartment]['temperature']*r.get_coefficient(p.id)});
                                 # record the new variable
@@ -1034,7 +1029,7 @@ class thermodynamics_tfba():
                             conc_lnv.lower_bound = self.conc_min_ln;
                             conc_lnv.upper_bound = self.conc_max_ln;
                             conc_lnv.variable_kind = 'continuous';
-                            conc_lnv.objective_coefficient = 0;
+                            
                             # add constraints
                             conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[p.compartment]['temperature']*r.get_coefficient(p.id)});
                             # record the new variable
@@ -1057,7 +1052,7 @@ class thermodynamics_tfba():
                                 conc_lnv.lower_bound = log(measured_concentration[react.id]['concentration_ub']);
                                 conc_lnv.upper_bound = log(measured_concentration[react.id]['concentration_lb']);
                                 conc_lnv.variable_kind = 'continuous';
-                                conc_lnv.objective_coefficient = 0;
+                                
                                 # add constraints
                                 conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[react.compartment]['temperature']*r.get_coefficient(react.id)});
                                 # record the new variable
@@ -1075,7 +1070,7 @@ class thermodynamics_tfba():
                                 conc_lnv.lower_bound = log(estimated_concentration[react.id]['concentration_ub']);
                                 conc_lnv.upper_bound = log(estimated_concentration[react.id]['concentration_lb']);
                                 conc_lnv.variable_kind = 'continuous';
-                                conc_lnv.objective_coefficient = 0;
+                                
                                 # add constraints
                                 conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[react.compartment]['temperature']*r.get_coefficient(react.id)});
                                 # record the new variable
@@ -1093,7 +1088,7 @@ class thermodynamics_tfba():
                             conc_lnv.lower_bound = self.conc_min_ln;
                             conc_lnv.upper_bound = self.conc_max_ln;
                             conc_lnv.variable_kind = 'continuous';
-                            conc_lnv.objective_coefficient = 0;
+                            
                             # add constraints
                             conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[react.compartment]['temperature']*r.get_coefficient(react.id)});
                             # record the new variable
@@ -1115,7 +1110,7 @@ class thermodynamics_tfba():
             #                    conc_lnv.lower_bound = log(measured_concentration[met.id]['concentration_lb']);
             #                    conc_lnv.upper_bound = log(measured_concentration[met.id]['concentration_ub']);
             #                    conc_lnv.variable_kind = 'continuous';
-            #                    conc_lnv.objective_coefficient = 0;
+            #                    
             #                    # add constraints
             #                    conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[met.compartment]['temperature']*r.get_coefficient(met.id)});
             #                    # record the new variable
@@ -1130,7 +1125,7 @@ class thermodynamics_tfba():
             #                    conc_lnv.lower_bound = log(estimated_concentration[met.id]['concentration_lb']);
             #                    conc_lnv.upper_bound = log(estimated_concentration[met.id]['concentration_ub']);
             #                    conc_lnv.variable_kind = 'continuous';
-            #                    conc_lnv.objective_coefficient = 0;
+            #                    
             #                    # add constraints
             #                    conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[met.compartment]['temperature']*r.get_coefficient(met.id)});
             #                    # record the new variable
@@ -1145,7 +1140,7 @@ class thermodynamics_tfba():
             #                conc_lnv.lower_bound = self.conc_min_ln;
             #                conc_lnv.upper_bound = self.conc_max_ln;
             #                conc_lnv.variable_kind = 'continuous';
-            #                conc_lnv.objective_coefficient = 0;
+            #                
             #                # add constraints
             #                conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[met.compartment]['temperature']*r.get_coefficient(met.id)});
             #                # record the new variable
@@ -1168,15 +1163,15 @@ class thermodynamics_tfba():
                 if dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
                     dG0_rv.lower_bound = dG0_r[r.id]['dG_r_lb'];
                     dG0_rv.upper_bound = dG0_r[r.id]['dG_r_ub'];
-                    dG0_rv.objective_coefficient = 0;
+                    
                 else:
                     dG0_rv.lower_bound = self.dG0_r_min;
                     dG0_rv.upper_bound = self.dG0_r_max;
-                    dG0_rv.objective_coefficient = 0;
+                    
             else:
                 dG0_rv.lower_bound = self.dG0_r_min;
                 dG0_rv.upper_bound = self.dG0_r_max;
-                dG0_rv.objective_coefficient = 0;
+                
             dG0_rv.variable_kind = 'continuous';
             # add constraints
             dG0_rv.add_metabolites({conc_ln_constraint: 1.0})
@@ -1274,7 +1269,7 @@ class thermodynamics_tfba():
                                 conc_lnv.lower_bound = log(measured_concentration[p.id]['concentration_lb']);
                                 conc_lnv.upper_bound = log(measured_concentration[p.id]['concentration_ub']);
                                 conc_lnv.variable_kind = 'continuous';
-                                conc_lnv.objective_coefficient = 0;
+                                
                                 # add constraints
                                 conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[p.compartment]['temperature']*r.get_coefficient(p.id)});
                                 # record the new variable
@@ -1292,7 +1287,7 @@ class thermodynamics_tfba():
                                 conc_lnv.lower_bound = log(estimated_concentration[p.id]['concentration_lb']);
                                 conc_lnv.upper_bound = log(estimated_concentration[p.id]['concentration_ub']);
                                 conc_lnv.variable_kind = 'continuous';
-                                conc_lnv.objective_coefficient = 0;
+                                
                                 # add constraints
                                 conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[p.compartment]['temperature']*r.get_coefficient(p.id)});
                                 # record the new variable
@@ -1310,7 +1305,7 @@ class thermodynamics_tfba():
                             conc_lnv.lower_bound = self.conc_min_ln;
                             conc_lnv.upper_bound = self.conc_max_ln;
                             conc_lnv.variable_kind = 'continuous';
-                            conc_lnv.objective_coefficient = 0;
+                            
                             # add constraints
                             conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[p.compartment]['temperature']*r.get_coefficient(p.id)});
                             # record the new variable
@@ -1333,7 +1328,7 @@ class thermodynamics_tfba():
                                 conc_lnv.lower_bound = log(measured_concentration[react.id]['concentration_ub']);
                                 conc_lnv.upper_bound = log(measured_concentration[react.id]['concentration_lb']);
                                 conc_lnv.variable_kind = 'continuous';
-                                conc_lnv.objective_coefficient = 0;
+                                
                                 # add constraints
                                 conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[react.compartment]['temperature']*r.get_coefficient(react.id)});
                                 # record the new variable
@@ -1351,7 +1346,7 @@ class thermodynamics_tfba():
                                 conc_lnv.lower_bound = log(estimated_concentration[react.id]['concentration_ub']);
                                 conc_lnv.upper_bound = log(estimated_concentration[react.id]['concentration_lb']);
                                 conc_lnv.variable_kind = 'continuous';
-                                conc_lnv.objective_coefficient = 0;
+                                
                                 # add constraints
                                 conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[react.compartment]['temperature']*r.get_coefficient(react.id)});
                                 # record the new variable
@@ -1369,7 +1364,7 @@ class thermodynamics_tfba():
                             conc_lnv.lower_bound = self.conc_min_ln;
                             conc_lnv.upper_bound = self.conc_max_ln;
                             conc_lnv.variable_kind = 'continuous';
-                            conc_lnv.objective_coefficient = 0;
+                            
                             # add constraints
                             conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[react.compartment]['temperature']*r.get_coefficient(react.id)});
                             # record the new variable
@@ -1391,7 +1386,7 @@ class thermodynamics_tfba():
             #                    conc_lnv.lower_bound = log(measured_concentration[met.id]['concentration_lb']);
             #                    conc_lnv.upper_bound = log(measured_concentration[met.id]['concentration_ub']);
             #                    conc_lnv.variable_kind = 'continuous';
-            #                    conc_lnv.objective_coefficient = 0;
+            #                    
             #                    # add constraints
             #                    conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[met.compartment]['temperature']*r.get_coefficient(met.id)});
             #                    # record the new variable
@@ -1406,7 +1401,7 @@ class thermodynamics_tfba():
             #                    conc_lnv.lower_bound = log(estimated_concentration[met.id]['concentration_lb']);
             #                    conc_lnv.upper_bound = log(estimated_concentration[met.id]['concentration_ub']);
             #                    conc_lnv.variable_kind = 'continuous';
-            #                    conc_lnv.objective_coefficient = 0;
+            #                    
             #                    # add constraints
             #                    conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[met.compartment]['temperature']*r.get_coefficient(met.id)});
             #                    # record the new variable
@@ -1421,7 +1416,7 @@ class thermodynamics_tfba():
             #                conc_lnv.lower_bound = self.conc_min_ln;
             #                conc_lnv.upper_bound = self.conc_max_ln;
             #                conc_lnv.variable_kind = 'continuous';
-            #                conc_lnv.objective_coefficient = 0;
+            #                
             #                # add constraints
             #                conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[met.compartment]['temperature']*r.get_coefficient(met.id)});
             #                # record the new variable
@@ -1440,11 +1435,11 @@ class thermodynamics_tfba():
                 #dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
                     dG_rv.lower_bound = dG_r[r.id]['dG_r_lb'];
                     dG_rv.upper_bound = dG_r[r.id]['dG_r_ub'];
-                    dG_rv.objective_coefficient = 0;
+                    
                 #else: 
                 #    dG_rv.lower_bound = self.dG_r_min;
                 #    dG_rv.upper_bound = self.dG_r_max;
-                #    dG_rv.objective_coefficient = 0;
+                #    
             else:
                 dG_rv.lower_bound = self.dG_r_min
                 dG_rv.upper_bound = self.dG_r_max;
@@ -1454,15 +1449,15 @@ class thermodynamics_tfba():
                 if dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
                     dG0_rv.lower_bound = dG0_r[r.id]['dG_r_lb'];
                     dG0_rv.upper_bound = dG0_r[r.id]['dG_r_ub'];
-                    dG0_rv.objective_coefficient = 0;
+                    
                 else:
                     dG0_rv.lower_bound = self.dG0_r_min;
                     dG0_rv.upper_bound = self.dG0_r_max;
-                    dG0_rv.objective_coefficient = 0;
+                    
             else:
                 dG0_rv.lower_bound = self.dG0_r_min;
                 dG0_rv.upper_bound = self.dG0_r_max;
-                dG0_rv.objective_coefficient = 0;
+                
             dG0_rv.variable_kind = 'continuous';
             # add constraints to the variables
             indicator.add_metabolites({indicator_plus: -r.upper_bound});#,indicator_minus: -r.lower_bound});
@@ -1574,7 +1569,7 @@ class thermodynamics_tfba():
                                 conc_lnv.lower_bound = log(measured_concentration[p.id]['concentration_lb']);
                                 conc_lnv.upper_bound = log(measured_concentration[p.id]['concentration_ub']);
                                 conc_lnv.variable_kind = 'continuous';
-                                conc_lnv.objective_coefficient = 0;
+                                
                                 # add constraints
                                 conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[p.compartment]['temperature']*r.get_coefficient(p.id)});
                                 # record the new variable
@@ -1592,7 +1587,7 @@ class thermodynamics_tfba():
                                 conc_lnv.lower_bound = log(estimated_concentration[p.id]['concentration_lb']);
                                 conc_lnv.upper_bound = log(estimated_concentration[p.id]['concentration_ub']);
                                 conc_lnv.variable_kind = 'continuous';
-                                conc_lnv.objective_coefficient = 0;
+                                
                                 # add constraints
                                 conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[p.compartment]['temperature']*r.get_coefficient(p.id)});
                                 # record the new variable
@@ -1610,7 +1605,7 @@ class thermodynamics_tfba():
                             conc_lnv.lower_bound = self.conc_min_ln;
                             conc_lnv.upper_bound = self.conc_max_ln;
                             conc_lnv.variable_kind = 'continuous';
-                            conc_lnv.objective_coefficient = 0;
+                            
                             # add constraints
                             conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[p.compartment]['temperature']*r.get_coefficient(p.id)});
                             # record the new variable
@@ -1626,7 +1621,7 @@ class thermodynamics_tfba():
                             dG_r_mem.lower_bound = fabs(r.get_coefficient(p.id))/2.0*p.charge/2.0*self.F*(33.3*r.get_coefficient(p.id)/fabs(r.get_coefficient(p.id))*pH[p.compartment]['pH']-143.33/2.0);
                             dG_r_mem.upper_bound = fabs(r.get_coefficient(p.id))/2.0*p.charge/2.0*self.F*(33.3*r.get_coefficient(p.id)/fabs(r.get_coefficient(p.id))*pH[p.compartment]['pH']-143.33/2.0);
                             dG_r_mem.variable_kind = 'continuous';
-                            dG_r_mem.objective_coefficient = 0;
+                            
                             # add constraints
                             dG_r_mem.add_metabolites({conc_ln_constraint:1.0});
                             # record the new variable
@@ -1643,7 +1638,7 @@ class thermodynamics_tfba():
                             dG_r_mem.lower_bound = fabs(r.get_coefficient(p.id))/2.0*p.charge/2.0*self.F*(33.3*r.get_coefficient(p.id)/fabs(r.get_coefficient(p.id))*pH[p.compartment]['pH']-143.33/2.0);
                             dG_r_mem.upper_bound = fabs(r.get_coefficient(p.id))/2.0*p.charge/2.0*self.F*(33.3*r.get_coefficient(p.id)/fabs(r.get_coefficient(p.id))*pH[p.compartment]['pH']-143.33/2.0);
                             dG_r_mem.variable_kind = 'continuous';
-                            dG_r_mem.objective_coefficient = 0;
+                            
                             # add constraints
                             dG_r_mem.add_metabolites({conc_ln_constraint:1.0});
                             # record the new variable
@@ -1658,7 +1653,7 @@ class thermodynamics_tfba():
                             dG_r_pH.lower_bound = log(10)*self.R*temperature[p.compartment]['temperature']*pH[p.compartment]['pH']*r.get_coefficient(p.id)/2.0;
                             dG_r_pH.upper_bound = log(10)*self.R*temperature[p.compartment]['temperature']*pH[p.compartment]['pH']*r.get_coefficient(p.id)/2.0;
                             dG_r_pH.variable_kind = 'continuous';
-                            dG_r_pH.objective_coefficient = 0;
+                            
                             # add constraints
                             dG_r_pH.add_metabolites({conc_ln_constraint:1.0});
                             # record the new variable
@@ -1683,7 +1678,7 @@ class thermodynamics_tfba():
                                 conc_lnv.lower_bound = log(measured_concentration[react.id]['concentration_lb']);
                                 conc_lnv.upper_bound = log(measured_concentration[react.id]['concentration_ub']);
                                 conc_lnv.variable_kind = 'continuous';
-                                conc_lnv.objective_coefficient = 0;
+                                
                                 # add constraints
                                 conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[react.compartment]['temperature']*r.get_coefficient(react.id)});
                                 # record the new variable
@@ -1703,7 +1698,7 @@ class thermodynamics_tfba():
                                 conc_lnv.lower_bound = log(estimated_concentration[react.id]['concentration_lb']);
                                 conc_lnv.upper_bound = log(estimated_concentration[react.id]['concentration_ub']);
                                 conc_lnv.variable_kind = 'continuous';
-                                conc_lnv.objective_coefficient = 0;
+                                
                                 # add constraints
                                 conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[react.compartment]['temperature']*r.get_coefficient(react.id)});
                                 # record the new variable
@@ -1721,7 +1716,7 @@ class thermodynamics_tfba():
                             conc_lnv.lower_bound = self.conc_min_ln;
                             conc_lnv.upper_bound = self.conc_max_ln;
                             conc_lnv.variable_kind = 'continuous';
-                            conc_lnv.objective_coefficient = 0;
+                            
                             # add constraints
                             conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[react.compartment]['temperature']*r.get_coefficient(react.id)});
                             # record the new variable
@@ -1737,7 +1732,7 @@ class thermodynamics_tfba():
                             dG_r_mem.lower_bound = fabs(r.get_coefficient(react.id))/2.0*react.charge/2.0*self.F*(33.3*r.get_coefficient(react.id)/fabs(r.get_coefficient(react.id))*pH[react.compartment]['pH']-143.33/2.0);
                             dG_r_mem.upper_bound = fabs(r.get_coefficient(react.id))/2.0*react.charge/2.0*self.F*(33.3*r.get_coefficient(react.id)/fabs(r.get_coefficient(react.id))*pH[react.compartment]['pH']-143.33/2.0);
                             dG_r_mem.variable_kind = 'continuous';
-                            dG_r_mem.objective_coefficient = 0;
+                            
                             # add constraints
                             dG_r_mem.add_metabolites({conc_ln_constraint:1.0});
                             # record the new variable
@@ -1754,7 +1749,7 @@ class thermodynamics_tfba():
                             dG_r_mem.lower_bound = fabs(r.get_coefficient(react.id))/2.0*react.charge/2.0*self.F*(33.3*r.get_coefficient(react.id)/fabs(r.get_coefficient(react.id))*pH[react.compartment]['pH']-143.33/2.0);
                             dG_r_mem.upper_bound = fabs(r.get_coefficient(react.id))/2.0*react.charge/2.0*self.F*(33.3*r.get_coefficient(react.id)/fabs(r.get_coefficient(react.id))*pH[react.compartment]['pH']-143.33/2.0);
                             dG_r_mem.variable_kind = 'continuous';
-                            dG_r_mem.objective_coefficient = 0;
+                            
                             # add constraints
                             dG_r_mem.add_metabolites({conc_ln_constraint:1.0});
                             # record the new variable
@@ -1769,7 +1764,7 @@ class thermodynamics_tfba():
                             dG_r_pH.lower_bound = log(10)*self.R*temperature[react.compartment]['temperature']*pH[react.compartment]['pH']*r.get_coefficient(react.id)/2.0;
                             dG_r_pH.upper_bound = log(10)*self.R*temperature[react.compartment]['temperature']*pH[react.compartment]['pH']*r.get_coefficient(react.id)/2.0;
                             dG_r_pH.variable_kind = 'continuous';
-                            dG_r_pH.objective_coefficient = 0;
+                            
                             # add constraints
                             dG_r_pH.add_metabolites({conc_ln_constraint:1.0});
                             # record the new variable
@@ -1790,11 +1785,11 @@ class thermodynamics_tfba():
                 #dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
                     dG_rv.lower_bound = dG_r[r.id]['dG_r_lb'];
                     dG_rv.upper_bound = dG_r[r.id]['dG_r_ub'];
-                    dG_rv.objective_coefficient = 0;
+                    
                 #else: 
                 #    dG_rv.lower_bound = self.dG_r_min;
                 #    dG_rv.upper_bound = self.dG_r_max;
-                #    dG_rv.objective_coefficient = 0;
+                #    
             else:
                 dG_rv.lower_bound = self.dG_r_min
                 dG_rv.upper_bound = self.dG_r_max;
@@ -1806,15 +1801,15 @@ class thermodynamics_tfba():
                 if dG_r_coverage[r.id]['measured_dG_f_coverage']>measured_dG_f_coverage_criteria:
                     dG0_rv.lower_bound = dG0_r[r.id]['dG_r_lb'];
                     dG0_rv.upper_bound = dG0_r[r.id]['dG_r_ub'];
-                    dG0_rv.objective_coefficient = 0;
+                    
                 else:
                     dG0_rv.lower_bound = self.dG0_r_min;
                     dG0_rv.upper_bound = self.dG0_r_max;
-                    dG0_rv.objective_coefficient = 0;
+                    
             else:
                 dG0_rv.lower_bound = self.dG0_r_min;
                 dG0_rv.upper_bound = self.dG0_r_max;
-                dG0_rv.objective_coefficient = 0;
+                
             dG0_rv.variable_kind = 'continuous';
             # add constraints to the variables
             indicator.add_metabolites({indicator_plus: -r.upper_bound});#,indicator_minus: -r.lower_bound});
@@ -1933,7 +1928,7 @@ class thermodynamics_tfba():
                                 conc_lnv.lower_bound = log(measured_concentration[p.id]['concentration_lb']);
                                 conc_lnv.upper_bound = log(measured_concentration[p.id]['concentration_ub']);
                                 conc_lnv.variable_kind = 'continuous';
-                                conc_lnv.objective_coefficient = 0;
+                                
                                 # add constraints
                                 conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[p.compartment]['temperature']*r.get_coefficient(p.id)});
                                 # record the new variable
@@ -1951,7 +1946,7 @@ class thermodynamics_tfba():
                                 conc_lnv.lower_bound = log(estimated_concentration[p.id]['concentration_lb']);
                                 conc_lnv.upper_bound = log(estimated_concentration[p.id]['concentration_ub']);
                                 conc_lnv.variable_kind = 'continuous';
-                                conc_lnv.objective_coefficient = 0;
+                                
                                 # add constraints
                                 conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[p.compartment]['temperature']*r.get_coefficient(p.id)});
                                 # record the new variable
@@ -1969,13 +1964,13 @@ class thermodynamics_tfba():
                             conc_lnv.lower_bound = self.conc_min_ln;
                             conc_lnv.upper_bound = self.conc_max_ln;
                             conc_lnv.variable_kind = 'continuous';
-                            conc_lnv.objective_coefficient = 0;
                             # add constraints
                             conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[p.compartment]['temperature']*r.get_coefficient(p.id)});
                             # record the new variable
                             conc_lnv_dict[p.id] = conc_lnv;
                             # add the new variable to the model
                             cobra_model_irreversible.add_reaction(conc_lnv);
+                            cobra_model_irreversible.reactions.get_by_id('conc_lnv_' + p.id).objective_coefficient = 0
                     if r.id in mets_trans and p.name in mets_trans[r.id]: 
                         if p.id in list(dG_r_mem_dict.keys()):
                             # add constraints
@@ -1985,13 +1980,13 @@ class thermodynamics_tfba():
                             dG_r_mem.lower_bound = fabs(r.get_coefficient(p.id))/2.0*p.charge/2.0*self.F*(33.3*r.get_coefficient(p.id)/fabs(r.get_coefficient(p.id))*pH[p.compartment]['pH']-143.33/2.0);
                             dG_r_mem.upper_bound = fabs(r.get_coefficient(p.id))/2.0*p.charge/2.0*self.F*(33.3*r.get_coefficient(p.id)/fabs(r.get_coefficient(p.id))*pH[p.compartment]['pH']-143.33/2.0);
                             dG_r_mem.variable_kind = 'continuous';
-                            dG_r_mem.objective_coefficient = 0;
                             # add constraints
                             dG_r_mem.add_metabolites({conc_ln_constraint:1.0});
                             # record the new variable
                             dG_r_mem_dict[p.id] = dG_r_mem;
                             # add the new variable to the model
                             cobra_model_irreversible.add_reaction(dG_r_mem);
+                            cobra_model_irreversible.reactions.get_by_id('dG_r_mem_' + p.id).objective_coefficient = 0
                 else: 
                     if r.id in mets_trans and p.name in mets_trans[r.id]: 
                         if p.id in list(dG_r_mem_dict.keys()):
@@ -2002,13 +1997,13 @@ class thermodynamics_tfba():
                             dG_r_mem.lower_bound = fabs(r.get_coefficient(p.id))/2.0*p.charge/2.0*self.F*(33.3*r.get_coefficient(p.id)/fabs(r.get_coefficient(p.id))*pH[p.compartment]['pH']-143.33/2.0);
                             dG_r_mem.upper_bound = fabs(r.get_coefficient(p.id))/2.0*p.charge/2.0*self.F*(33.3*r.get_coefficient(p.id)/fabs(r.get_coefficient(p.id))*pH[p.compartment]['pH']-143.33/2.0);
                             dG_r_mem.variable_kind = 'continuous';
-                            dG_r_mem.objective_coefficient = 0;
                             # add constraints
                             dG_r_mem.add_metabolites({conc_ln_constraint:1.0});
                             # record the new variable
                             dG_r_mem_dict[p.id] = dG_r_mem;
                             # add the new variable to the model
                             cobra_model_irreversible.add_reaction(dG_r_mem);
+                            cobra_model_irreversible.reactions.get_by_id('dG_r_mem_' + p.id).objective_coefficient = 0
                         if p.id in list(dG_r_pH_dict.keys()):
                             # add constraints
                             dG_r_pH_dict[p.id].add_metabolites({conc_ln_constraint:1.0});
@@ -2017,13 +2012,13 @@ class thermodynamics_tfba():
                             dG_r_pH.lower_bound = log(10)*self.R*temperature[p.compartment]['temperature']*pH[p.compartment]['pH']*r.get_coefficient(p.id)/2.0;
                             dG_r_pH.upper_bound = log(10)*self.R*temperature[p.compartment]['temperature']*pH[p.compartment]['pH']*r.get_coefficient(p.id)/2.0;
                             dG_r_pH.variable_kind = 'continuous';
-                            dG_r_pH.objective_coefficient = 0;
                             # add constraints
                             dG_r_pH.add_metabolites({conc_ln_constraint:1.0});
                             # record the new variable
                             dG_r_pH_dict[p.id] = dG_r_pH;
                             # add the new variable to the model
                             cobra_model_irreversible.add_reaction(dG_r_pH);
+                            cobra_model_irreversible.reactions.get_by_id('dG_r_pH_' + p.id).objective_coefficient = 0
             reactants = [react for react in r.reactants];
             # Method 2:
             for react in reactants:
@@ -2042,13 +2037,13 @@ class thermodynamics_tfba():
                                 conc_lnv.lower_bound = log(measured_concentration[react.id]['concentration_lb']);
                                 conc_lnv.upper_bound = log(measured_concentration[react.id]['concentration_ub']);
                                 conc_lnv.variable_kind = 'continuous';
-                                conc_lnv.objective_coefficient = 0;
                                 # add constraints
                                 conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[react.compartment]['temperature']*r.get_coefficient(react.id)});
                                 # record the new variable
                                 conc_lnv_dict[react.id] = conc_lnv;
                                 # add the new variable to the model
                                 cobra_model_irreversible.add_reaction(conc_lnv);
+                                cobra_model_irreversible.reactions.get_by_id('conc_lnv_' + react.id).objective_coefficient = 0
                         elif react.id in list(estimated_concentration.keys()):
                             # check that if the react_id has already been created:
                             if react.id in list(conc_lnv_dict.keys()):
@@ -2062,13 +2057,14 @@ class thermodynamics_tfba():
                                 conc_lnv.lower_bound = log(estimated_concentration[react.id]['concentration_lb']);
                                 conc_lnv.upper_bound = log(estimated_concentration[react.id]['concentration_ub']);
                                 conc_lnv.variable_kind = 'continuous';
-                                conc_lnv.objective_coefficient = 0;
+                                #  #Errors with optlang
                                 # add constraints
                                 conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[react.compartment]['temperature']*r.get_coefficient(react.id)});
                                 # record the new variable
                                 conc_lnv_dict[react.id] = conc_lnv;
                                 # add the new variable to the model
                                 cobra_model_irreversible.add_reaction(conc_lnv);
+                                cobra_model_irreversible.reactions.get_by_id('conc_lnv_' + react.id).objective_coefficient = 0
                     else:
                         # check that if the react_id has already been created:
                         if react.id in list(conc_lnv_dict.keys()):
@@ -2080,13 +2076,14 @@ class thermodynamics_tfba():
                             conc_lnv.lower_bound = self.conc_min_ln;
                             conc_lnv.upper_bound = self.conc_max_ln;
                             conc_lnv.variable_kind = 'continuous';
-                            conc_lnv.objective_coefficient = 0;
+                            #  #Errors with optlang
                             # add constraints
                             conc_lnv.add_metabolites({conc_ln_constraint:self.R*temperature[react.compartment]['temperature']*r.get_coefficient(react.id)});
                             # record the new variable
                             conc_lnv_dict[react.id] = conc_lnv;
                             # add the new variable to the model
                             cobra_model_irreversible.add_reaction(conc_lnv);
+                            cobra_model_irreversible.reactions.get_by_id('conc_lnv_' + react.id).objective_coefficient = 0
                     if r.id in mets_trans and react.name in mets_trans[r.id]: 
                         if react.id in list(dG_r_mem_dict.keys()):
                             # add constraints
@@ -2096,13 +2093,13 @@ class thermodynamics_tfba():
                             dG_r_mem.lower_bound = fabs(r.get_coefficient(react.id))/2.0*react.charge/2.0*self.F*(33.3*r.get_coefficient(react.id)/fabs(r.get_coefficient(react.id))*pH[react.compartment]['pH']-143.33/2.0);
                             dG_r_mem.upper_bound = fabs(r.get_coefficient(react.id))/2.0*react.charge/2.0*self.F*(33.3*r.get_coefficient(react.id)/fabs(r.get_coefficient(react.id))*pH[react.compartment]['pH']-143.33/2.0);
                             dG_r_mem.variable_kind = 'continuous';
-                            dG_r_mem.objective_coefficient = 0;
                             # add constraints
                             dG_r_mem.add_metabolites({conc_ln_constraint:1.0});
                             # record the new variable
                             dG_r_mem_dict[react.id] = dG_r_mem;
                             # add the new variable to the model
                             cobra_model_irreversible.add_reaction(dG_r_mem);
+                            cobra_model_irreversible.reactions.get_by_id('dG_r_mem_' + react.id).objective_coefficient = 0
                 else: 
                     if r.id in mets_trans and react.name in mets_trans[r.id]: 
                         if react.id in list(dG_r_mem_dict.keys()):
@@ -2113,13 +2110,13 @@ class thermodynamics_tfba():
                             dG_r_mem.lower_bound = fabs(r.get_coefficient(react.id))/2.0*react.charge/2.0*self.F*(33.3*r.get_coefficient(react.id)/fabs(r.get_coefficient(react.id))*pH[react.compartment]['pH']-143.33/2.0);
                             dG_r_mem.upper_bound = fabs(r.get_coefficient(react.id))/2.0*react.charge/2.0*self.F*(33.3*r.get_coefficient(react.id)/fabs(r.get_coefficient(react.id))*pH[react.compartment]['pH']-143.33/2.0);
                             dG_r_mem.variable_kind = 'continuous';
-                            dG_r_mem.objective_coefficient = 0;
                             # add constraints
                             dG_r_mem.add_metabolites({conc_ln_constraint:1.0});
                             # record the new variable
                             dG_r_mem_dict[react.id] = dG_r_mem;
                             # add the new variable to the model
                             cobra_model_irreversible.add_reaction(dG_r_mem);
+                            cobra_model_irreversible.reactions.get_by_id('dG_r_mem_' + react.id).objective_coefficient = 0
                         if react.id in list(dG_r_pH_dict.keys()):
                             # add constraints
                             dG_r_pH_dict[react.id].add_metabolites({conc_ln_constraint:1.0});
@@ -2128,13 +2125,13 @@ class thermodynamics_tfba():
                             dG_r_pH.lower_bound = log(10)*self.R*temperature[react.compartment]['temperature']*pH[react.compartment]['pH']*r.get_coefficient(react.id)/2.0;
                             dG_r_pH.upper_bound = log(10)*self.R*temperature[react.compartment]['temperature']*pH[react.compartment]['pH']*r.get_coefficient(react.id)/2.0;
                             dG_r_pH.variable_kind = 'continuous';
-                            dG_r_pH.objective_coefficient = 0;
                             # add constraints
                             dG_r_pH.add_metabolites({conc_ln_constraint:1.0});
                             # record the new variable
                             dG_r_pH_dict[react.id] = dG_r_pH;
                             # add the new variable to the model
                             cobra_model_irreversible.add_reaction(dG_r_pH);
+                            cobra_model_irreversible.reactions.get_by_id('dG_r_pH_' + react.id).objective_coefficient = 0
             # make a boolean indicator variable
             indicator = Reaction('indicator_' + r.id);
             indicator.lower_bound = 0;
@@ -2142,20 +2139,17 @@ class thermodynamics_tfba():
             indicator.variable_kind = 'integer';
             # make a continuous variable for dG0_r
             dG0_rv = Reaction('dG0_rv_' + r.id);
+            dG0_rv.variable_kind = 'continuous';
             if use_measured_dG0_r and r.id in thermodynamic_consistency_check and thermodynamic_consistency_check[r.id]['feasible']:# and r.id != 'NTD4': # ignore inconsistent reactions:
                 if dG_r_coverage[r.id]['measured_dG_f_coverage']>measured_dG_f_coverage_criteria:
                     dG0_rv.lower_bound = dG0_r[r.id]['dG_r_lb'];
                     dG0_rv.upper_bound = dG0_r[r.id]['dG_r_ub'];
-                    dG0_rv.objective_coefficient = 0;
                 else:
                     dG0_rv.lower_bound = self.dG0_r_min;
                     dG0_rv.upper_bound = self.dG0_r_max;
-                    dG0_rv.objective_coefficient = 0;
             else:
                 dG0_rv.lower_bound = self.dG0_r_min;
                 dG0_rv.upper_bound = self.dG0_r_max;
-                dG0_rv.objective_coefficient = 0;
-            dG0_rv.variable_kind = 'continuous';
             # add constraints to the variables
             indicator.add_metabolites({indicator_plus: -r.upper_bound});#,indicator_minus: -r.lower_bound});
             indicator.add_metabolites({conc_ln_constraint: self.K});#,indicator_minus: -r.lower_bound});
@@ -2164,6 +2158,7 @@ class thermodynamics_tfba():
             # add indicator reactions to the model
             cobra_model_irreversible.add_reaction(indicator);
             cobra_model_irreversible.add_reaction(dG0_rv);
+            cobra_model_irreversible.reactions.get_by_id('dG0_rv_' + r.id).objective_coefficient = 0
             # record dG_rv variables
             dG0_r_dict[r.id] = dG0_rv
             if diagnose_I:

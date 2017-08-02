@@ -18,6 +18,8 @@ from thermodynamics.thermodynamics_dG_p_data import thermodynamics_dG_p_data
 from thermodynamics.thermodynamics_tfba import thermodynamics_tfba
 
 def _main_():
+    ##PART 1: Working
+    #-------
     # Read in the model sbml file and define the model conditions
     # Anaerobic specific changes:
     cobra_model_anoxic = load_thermoModel(anoxic = True)
@@ -26,6 +28,8 @@ def _main_():
     cobra_model_oxic = load_thermoModel(anoxic = False)
     #convert_to_irreversible(cobra_model_oxic)
 
+    ##PART 2: Working
+    #-------
     # make/load simulated data for anaerobic conditions
     data_fva_anoxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_fva_anoxic.json'
     data_srd_anoxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_srd_anoxic.json'
@@ -50,6 +54,8 @@ def _main_():
     simulated_data_oxic.import_fva_data(data_fva_oxic)
     simulated_data_oxic.check_data()
 
+    ##PART 3: Working
+    #-------
     # load pH, ionic_strength, and temperature parameters
     other_data = thermodynamics_otherData()
     other_data.load_defaultData()
@@ -69,6 +75,8 @@ def _main_():
     dG_f_data.generate_estimated_dG_f(cobra_model_oxic)
     dG_f_data.check_data()
 
+    ##PART 4: Working
+    #-------
     # load metabolomics data for anoxic conditions
     data_concentrations_anoxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_anoxic_geo01.json'
     metabolomics_data_anoxic = thermodynamics_metabolomicsData()
@@ -82,131 +90,155 @@ def _main_():
     metabolomics_data_oxic.format_metabolomics_data() # add compartment identifiers to metabolite ids
     metabolomics_data_oxic.generate_estimated_metabolomics_data(cobra_model_oxic)
 
+    ##PART 5: Working
+    #-------
     # calculate dG_r and perform a consistency check based on model simulations for anoxic conditions
     data_ta_anoxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_anoxic_ta.csv'
     data_dG0_anoxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_anoxic_dG0.json'
     data_dG_anoxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_anoxic_dG.json'
     data_tcc_anoxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_anoxic_tcc.json'
-    tcc_anoxic = thermodynamics_dG_r_data()
-    tcc_anoxic.calculate_dG0_r(cobra_model_anoxic, dG_f_data.measured_dG_f, dG_f_data.estimated_dG_f, other_data.temperature) # calculate the change in free energy of reaction without accounting for metabolite concentrations
-    tcc_anoxic.calculate_dG_r(cobra_model_anoxic,metabolomics_data_anoxic.measured_concentrations, metabolomics_data_anoxic.estimated_concentrations,
-                       other_data.pH, other_data.ionic_strength, other_data.temperature) # adjust the change in free energy of reaction for intracellular metabolite concentrations
-    tcc_anoxic.check_thermodynamicConsistency(cobra_model_anoxic,simulated_data_anoxic.fva_data,
-                       metabolomics_data_anoxic.measured_concentrations,
-                       metabolomics_data_anoxic.estimated_concentrations,
-                       other_data.pH,other_data.ionic_strength,other_data.temperature) # check the thermodynamic consistency of the data
-    tcc_anoxic.export_dG0_r_json(data_dG0_anoxic) # save for later use
-    tcc_anoxic.export_dG_r_json(data_dG_anoxic) # save for later use
-    tcc_anoxic.export_tcc_json(data_ta_anoxic) # save for later use
-    tcc_anoxic.export_summary(cobra_model_anoxic,simulated_data_anoxic.fva_data,data_ta_anoxic) # write summary of the analysis to csv file
+    # tcc_anoxic = thermodynamics_dG_r_data()
+    # tcc_anoxic.calculate_dG0_r(cobra_model_anoxic, dG_f_data.measured_dG_f, dG_f_data.estimated_dG_f, other_data.temperature) # calculate the change in free energy of reaction without accounting for metabolite concentrations
+    # tcc_anoxic.calculate_dG_r(cobra_model_anoxic,metabolomics_data_anoxic.measured_concentrations, metabolomics_data_anoxic.estimated_concentrations,
+    #                    other_data.pH, other_data.ionic_strength, other_data.temperature) # adjust the change in free energy of reaction for intracellular metabolite concentrations
+    # tcc_anoxic.check_thermodynamicConsistency(cobra_model_anoxic,simulated_data_anoxic.fva_data,
+    #                    metabolomics_data_anoxic.measured_concentrations,
+    #                    metabolomics_data_anoxic.estimated_concentrations,
+    #                    other_data.pH,other_data.ionic_strength,other_data.temperature) # check the thermodynamic consistency of the data
+    # tcc_anoxic.export_dG0_r_json(data_dG0_anoxic) # save for later use
+    # tcc_anoxic.export_dG_r_json(data_dG_anoxic) # save for later use
+    # tcc_anoxic.export_tcc_json(data_ta_anoxic) # save for later use
+    # tcc_anoxic.export_summary(cobra_model_anoxic,simulated_data_anoxic.fva_data,data_ta_anoxic) # write summary of the analysis to csv file
 
     # calculate dG_r and perform a consistency check based on model simulations for oxic conditions
     data_ta_oxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_oxic_ta.csv'
     data_dG0_oxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_oxic_dG0.json'
     data_dG_oxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_oxic_dG.json'
     data_tcc_oxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_oxic_tcc.json'
-    tcc_oxic = thermodynamics_dG_r_data()
-    tcc_oxic.calculate_dG0_r(cobra_model_oxic, dG_f_data.measured_dG_f, dG_f_data.estimated_dG_f, other_data.temperature) # calculate the change in free energy of reaction without accounting for metabolite concentrations
-    tcc_oxic.calculate_dG_r(cobra_model_oxic,metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
-                       other_data.pH, other_data.ionic_strength, other_data.temperature) # adjust the change in free energy of reaction for intracellular metabolite concentrations
-    tcc_oxic.check_thermodynamicConsistency(cobra_model_oxic,simulated_data_oxic.fva_data,
-                       metabolomics_data_oxic.measured_concentrations,
-                       metabolomics_data_oxic.estimated_concentrations,
-                       other_data.pH,other_data.ionic_strength,other_data.temperature) # check the thermodynamic consistency of the data
-    tcc_oxic.export_dG0_r_json(data_dG0_oxic) # save for later use
-    tcc_oxic.export_dG_r_json(data_dG_oxic) # save for later use
-    tcc_oxic.export_tcc_json(data_tcc_oxic) # save for later use
-    tcc_oxic.export_summary(cobra_model_oxic,simulated_data_oxic.fva_data,data_ta_oxic) # write summary of the analysis to csv file
+    # tcc_oxic = thermodynamics_dG_r_data()
+    # tcc_oxic.calculate_dG0_r(cobra_model_oxic, dG_f_data.measured_dG_f, dG_f_data.estimated_dG_f, other_data.temperature) # calculate the change in free energy of reaction without accounting for metabolite concentrations
+    # tcc_oxic.calculate_dG_r(cobra_model_oxic,metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
+    #                    other_data.pH, other_data.ionic_strength, other_data.temperature) # adjust the change in free energy of reaction for intracellular metabolite concentrations
+    # tcc_oxic.check_thermodynamicConsistency(cobra_model_oxic,simulated_data_oxic.fva_data,
+    #                    metabolomics_data_oxic.measured_concentrations,
+    #                    metabolomics_data_oxic.estimated_concentrations,
+    #                    other_data.pH,other_data.ionic_strength,other_data.temperature) # check the thermodynamic consistency of the data
+    # tcc_oxic.export_dG0_r_json(data_dG0_oxic) # save for later use
+    # tcc_oxic.export_dG_r_json(data_dG_oxic) # save for later use
+    # tcc_oxic.export_tcc_json(data_tcc_oxic) # save for later use
+    # tcc_oxic.export_summary(cobra_model_oxic,simulated_data_oxic.fva_data,data_ta_oxic) # write summary of the analysis to csv file
 
-    # inspect the thermodynamic analysis results
+    # ##PART 6: Working
+    # #-------
+    # # inspect the thermodynamic analysis results
 
-    # constrain the model solution and simulate optimal growth
-    gr_analysis_anoxic = simulate_thermoConstraints(cobra_model_anoxic,['PGCD','ACACT1r','NDPK2'])
-    gr_analysis_oxic = simulate_thermoConstraints(cobra_model_oxic,['PGCD','ACACT1r'])
+    # # constrain the model solution and simulate optimal growth
+    # gr_analysis_anoxic = simulate_thermoConstraints(cobra_model_anoxic,['PGCD','ACACT1r','NDPK2'])
+    # gr_analysis_oxic = simulate_thermoConstraints(cobra_model_oxic,['PGCD','ACACT1r'])
 
-    # calculate the dG for biosynthetic pathways for anoxic conditions
-    tccp_anoxic = thermodynamics_dG_p_data()
-    tccp_anoxic.calculate_dG_p(cobra_model_anoxic,tcc_anoxic.dG0_r,tcc_anoxic.dG_r)
-    # calculate the dG for biosynthetic pathways for oxic conditions
-    tccp_oxic = thermodynamics_dG_p_data()
-    tccp_oxic.calculate_dG_p(cobra_model_oxic,tcc_oxic.dG0_r,tcc_oxic.dG_r)
+    # # expand the reaction set of the anoxic model to reflect the enzyme permiscuity of pykA
+    # add_pykA(cobra_model_anoxic)
+    # gr_analysis_anoxic = simulate_thermoConstraints(cobra_model_anoxic,['PGCD','ACACT1r','NDPK2'])
 
-    # expand the reaction set of the anoxic model to reflect the enzyme permiscuity of pykA
-    add_pykA(cobra_model_anoxic)
-    gr_analysis_anoxic = simulate_thermoConstraints(cobra_model_anoxic,['PGCD','ACACT1r','NDPK2'])
+    # ##PART 7: Working
+    # #-------
+    # # calculate the dG for biosynthetic pathways
 
-    # visualize the results using escher
-    ##TODO: methods are defined, but an example is not yet given
-	
-	# perform thermodynamic FBA, FVA, and sampling
+    # # calculate the dG for biosynthetic pathways for anoxic conditions
+    # tccp_anoxic = thermodynamics_dG_p_data()
+    # tccp_anoxic.calculate_dG_p(cobra_model_anoxic,tcc_anoxic.dG0_r,tcc_anoxic.dG_r)
+    # # calculate the dG for biosynthetic pathways for oxic conditions
+    # tccp_oxic = thermodynamics_dG_p_data()
+    # tccp_oxic.calculate_dG_p(cobra_model_oxic,tcc_oxic.dG0_r,tcc_oxic.dG_r)
+    
+    ##PART 8:
+    #-------
+	# perform thermodynamic FBA, FVA, and sampling (Oxic condition only)
 
+    # identified inconsistent concentrations/dG_f/tcc values
+    inconsistent_concentrations_I = []
+    inconsistent_dG_f_I = []
+    inconsistent_tcc_I = []
     # copy the model
-    cobra_model_irreversible = cobra_model.copy();
+    cobra_model_irreversible = cobra_model_oxic.copy()
     # make the model irreversible
-    convert_to_irreversible(cobra_model_irreversible);
+    convert_to_irreversible(cobra_model_irreversible)
     # remove an inconsistent dGf values
     dG_f_data.remove_measured_dG_f(inconsistent_dG_f_I)
     # remove an inconsistent concentration values
-    metabolomics_data.remove_measured_concentrations(inconsistent_concentrations_I);
+    metabolomics_data_oxic.remove_measured_concentrations(inconsistent_concentrations_I)
+    # import the tcc data
+    tcc_oxic = thermodynamics_dG_r_data()
+    tcc_oxic.import_dG0_r_json(data_dG0_oxic)
+    tcc_oxic.import_dG_r_json(data_dG_oxic)
+    tcc_oxic.import_tcc_json(data_tcc_oxic)
     # remove an inconcsistent tcc
-    tcc = thermodynamics_dG_r_data(dG0_r_I = dG0_r,
-            dG_r_coverage_I = measured_dG_f_coverage,
-            metabolomics_coverage_I = measured_concentration_coverage,
-            thermodynamic_consistency_check_I = feasible);
-    tcc.change_feasibleReactions(inconsistent_tcc_I);    
+    tcc_oxic.change_feasibleReactions(inconsistent_tcc_I)    
     # diagnose tfba constraints
     tfba = thermodynamics_tfba()
     thermodynamic_constraints_check,diagnose_variables_1,diagnose_variables_2,diagnose_variables_3 = tfba.check_conc_ln_constraints_transport(cobra_model_irreversible,
-                                            metabolomics_data.measured_concentrations, metabolomics_data.estimated_concentrations,
-                                            tcc.dG0_r, other_data.pH,other_data.temperature,tcc.metabolomics_coverage,
-                                            tcc.dG_r_coverage, tcc.thermodynamic_consistency_check,
-                                            measured_concentration_coverage_criteria_I, measured_dG_f_coverage_criteria_I,
-                                            n_checks_I = 5,
-                                            diagnose_solver_I=None,diagnose_threshold_I=0.98,diagnose_break_I=0.1);
+        metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
+        tcc_oxic.dG0_r, other_data.pH,other_data.temperature,tcc_oxic.metabolomics_coverage,
+        tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
+        0.5, 0.99,
+        n_checks_I = 5,
+        diagnose_solver_I=None,diagnose_threshold_I=0.98,diagnose_break_I=0.1)
     # apply tfba constraints
-    tfba = thermodynamics_tfba()
-    tfba._add_conc_ln_constraints_transport(cobra_model_irreversible, metabolomics_data.measured_concentrations, metabolomics_data.estimated_concentrations,
-                                            tcc.dG0_r, other_data.pH,other_data.temperature,tcc.metabolomics_coverage,
-                                            tcc.dG_r_coverage, tcc.thermodynamic_consistency_check,
-                                            measured_concentration_coverage_criteria_I, measured_dG_f_coverage_criteria_I,
-                                            use_measured_concentrations=True,use_measured_dG0_r=True);
+    tfba._add_conc_ln_constraints_transport(cobra_model_irreversible, 
+        metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
+        tcc_oxic.dG0_r, other_data.pH,other_data.temperature,tcc_oxic.metabolomics_coverage,
+        tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
+        0.5, 0.99,
+        use_measured_concentrations=True,use_measured_dG0_r=True)
     # run TFBA
-    tfba.tfba_conc_ln(self,cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,
-                              measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
-                              use_measured_concentrations=True,use_measured_dG0_r=True, solver=None)
+    tfba.tfba_conc_ln(cobra_model_irreversible, 
+        metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
+        tcc_oxic.dG0_r, other_data.pH,other_data.temperature,tcc_oxic.metabolomics_coverage,
+        tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
+        measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
+        use_measured_concentrations=True,use_measured_dG0_r=True, solver=None)
     
     # run TFVA
-    tfba.tfva_concentrations(self, cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,
-                              measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
-                             use_measured_concentrations=True,use_measured_dG0_r=True, reaction_list=None,fraction_of_optimum=1.0, solver=None,
-                             objective_sense="maximize", **solver_args)
+    tfba.tfva_concentrations(cobra_model_irreversible, 
+        metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
+        tcc_oxic.dG0_r, other_data.pH,other_data.temperature,tcc_oxic.metabolomics_coverage,
+        tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
+        measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
+        use_measured_concentrations=True,use_measured_dG0_r=True, reaction_list=None,fraction_of_optimum=1.0, solver=None,
+        objective_sense="maximize", **solver_args)
     tfba.analyze_tfva_results(self,flux_threshold=1e-6)
     tfba.export_tfva_concentrations_data(self, filename)
     tfba.export_tfva_analysis(self, filename)
     
     # run Tsampling (Need to update for new sampling interface)
     if modelsCOBRA.test_model(cobra_model_I=cobra_model_copy):
-        sampling = cobra_sampling(data_dir_I = data_dir_I);
+        sampling = cobra_sampling(data_dir_I = data_dir_I)
         if simulation_parameters['sampler_id']=='gpSampler':
-            filename_model = simulation_id_I + '.mat';
-            filename_script = simulation_id_I + '.m';
-            filename_points = simulation_id_I + '_points' + '.mat';
+            filename_model = simulation_id_I + '.mat'
+            filename_script = simulation_id_I + '.m'
+            filename_points = simulation_id_I + '_points' + '.mat'
             sampling.export_sampling_matlab(cobra_model=cobra_model_copy,filename_model=filename_model,filename_script=filename_script,filename_points=filename_points,\
                 solver_id_I = simulation_parameters['solver_id'],\
                 n_points_I = simulation_parameters['n_points'],\
                 n_steps_I = simulation_parameters['n_steps'],\
-                max_time_I = simulation_parameters['max_time']);
+                max_time_I = simulation_parameters['max_time'])
     # Analyze each model (Need to update for new sampling interface)
     if modelsCOBRA.test_model(cobra_model_I=cobra_model_copy):
-        sampling = cobra_sampling(data_dir_I = data_dir_I,model_I = cobra_model_copy);
+        sampling = cobra_sampling(data_dir_I = data_dir_I,model_I = cobra_model_copy)
         if simulation_parameters['sampler_id']=='gpSampler':
             # load the results of sampling
-            filename_points = simulation_id_I + '_points' + '.mat';
-            sampling.get_points_matlab(filename_points,'sampler_out');
+            filename_points = simulation_id_I + '_points' + '.mat'
+            sampling.get_points_matlab(filename_points,'sampler_out')
             # check if points were sampled outside the solution space
-            pruned_reactions = sampling.remove_points_notInSolutionSpace(min_points_I=min_pointsInSolutionSpace_I);
+            pruned_reactions = sampling.remove_points_notInSolutionSpace(min_points_I=min_pointsInSolutionSpace_I)
             ## check if the model contains loops
-            #sampling.simulate_loops(data_fva=settings.workspace_data + '/loops_fva_tmp.json');
-            #sampling.find_loops(data_fva=settings.workspace_data + '/loops_fva_tmp.json');
-            #sampling.remove_loopsFromPoints();
-            sampling.descriptive_statistics();
+            #sampling.simulate_loops(data_fva=settings.workspace_data + '/loops_fva_tmp.json')
+            #sampling.find_loops(data_fva=settings.workspace_data + '/loops_fva_tmp.json')
+            #sampling.remove_loopsFromPoints()
+            sampling.descriptive_statistics()
+
+
+    
+
+    # visualize the results
+    ##TODO: methods are defined, but an example is not yet given

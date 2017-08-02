@@ -538,16 +538,13 @@ class thermodynamics_tfba():
         x_dict_copy = {};
         #y_dict_copy = {};
         solution_copy = cobra_model_copy.objective.value;
-        status_copy = cobra_model_copy.solution.status;
+        status_copy = cobra_model_copy.solver._status
         cobra_model_irreversible.objective.value = solution_copy;
-        cobra_model_irreversible.solution.status = status_copy;
+        cobra_model_irreversible.solver._status = status_copy;
         if solution_copy:
             for rxn in cobra_model_irreversible.reactions:
-                x_dict_copy[rxn.id]=cobra_model_copy.solution.x_dict[rxn.id];
-            #for met in cobra_model_irreversible.metabolites:
-            #    y_dict_copy[met.id]=cobra_model_copy.solution.y_dict[met.id];
-            #cobra_model_irreversible.solution.y_dict = y_dict_copy;
-            cobra_model_irreversible.solution.x_dict = x_dict_copy;
+                x_dict_copy[rxn.id]=cobra_model_copy.variables[rxn.id];
+            cobra_model_irreversible.variables = x_dict_copy;
 
     def tfba(self, cobra_model_irreversible, dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99, use_measured_dG_r=True, solver=None):
         '''performs thermodynamic flux balance analysis'''

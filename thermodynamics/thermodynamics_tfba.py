@@ -533,18 +533,6 @@ class thermodynamics_tfba():
             return dG0_r_dict;
         if return_concentration_variables and return_dG0_r_variables:
             return conc_lnv_dict,dG0_r_dict;
-    def _copy_solution(self,cobra_model_irreversible,cobra_model_copy):
-        '''copy out the model solution'''
-        x_dict_copy = {};
-        #y_dict_copy = {};
-        solution_copy = cobra_model_copy.objective.value;
-        status_copy = cobra_model_copy.solver._status
-        cobra_model_irreversible.objective.value = solution_copy;
-        cobra_model_irreversible.solver._status = status_copy;
-        if solution_copy:
-            for rxn in cobra_model_irreversible.reactions:
-                x_dict_copy[rxn.id]=cobra_model_copy.variables[rxn.id];
-            cobra_model_irreversible.variables = x_dict_copy;
 
     def tfba(self, cobra_model_irreversible, dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99, use_measured_dG_r=True, solver=None):
         '''performs thermodynamic flux balance analysis'''
@@ -575,8 +563,7 @@ class thermodynamics_tfba():
         # optimize
         cobra_model_copy.solver = 'glpk'
         cobra_model_copy.optimize()
-        # record the results
-        self._copy_solution(cobra_model_irreversible,cobra_model_copy);
+        return cobra_model_copy
     def tfba_conc_ln(self,cobra_model_irreversible, measured_concentration, estimated_concentration, 
         dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,
         measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
@@ -616,8 +603,7 @@ class thermodynamics_tfba():
         # optimize
         cobra_model_copy.solver = 'glpk'
         cobra_model_copy.optimize()
-        # record the results
-        self._copy_solution(cobra_model_irreversible,cobra_model_copy);
+        return cobra_model_copy
     def tfva(self, cobra_model_irreversible, dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99, use_measured_dG_r=True,
              reaction_list=None,fraction_of_optimum=1.0, solver=None,
              objective_sense="maximize", **solver_args):
@@ -2219,10 +2205,7 @@ class thermodynamics_tfba():
                                   diagnose_threshold_I=diagnose_threshold_I,diagnose_break_I=diagnose_break_I);
             if diagnose_variables_tmp:
                 for k,v in diagnose_variables_tmp.items():
-                    if k in thermodynamic_constraints_check.keys():
-                        thermodynamic_constraints_check[k]['feasible'] = False;
-                    else: 
-                        thermodynamic_constraints_check[k] = {'feasible':False};
+                    thermodynamic_constraints_check[k] = False;
                     diagnose_variables_1.update(diagnose_variables_tmp)
             else:
                 break;
@@ -2238,10 +2221,7 @@ class thermodynamics_tfba():
                                   diagnose_threshold_I=diagnose_threshold_I,diagnose_break_I=diagnose_break_I);
             if diagnose_variables_tmp:
                 for k,v in diagnose_variables_tmp.items():
-                    if k in thermodynamic_constraints_check.keys():
-                        thermodynamic_constraints_check[k]['feasible'] = False;
-                    else: 
-                        thermodynamic_constraints_check[k] = {'feasible':False};
+                    thermodynamic_constraints_check[k] = False;
                     diagnose_variables_2.update(diagnose_variables_tmp)
             else:
                 break;
@@ -2257,10 +2237,7 @@ class thermodynamics_tfba():
                                       diagnose_threshold_I=diagnose_threshold_I,diagnose_break_I=diagnose_break_I);
             if diagnose_variables_tmp:
                 for k,v in diagnose_variables_tmp.items():
-                    if k in thermodynamic_constraints_check.keys():
-                        thermodynamic_constraints_check[k]['feasible'] = False;
-                    else: 
-                        thermodynamic_constraints_check[k] = {'feasible':False};
+                    thermodynamic_constraints_check[k] = False;
                     diagnose_variables_3.update(diagnose_variables_tmp)
             else:
                 break;

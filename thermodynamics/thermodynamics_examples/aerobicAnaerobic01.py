@@ -48,8 +48,8 @@ def _main_():
     simulated_data_oxic = cobra_simulatedData()
     # simulated_data_oxic.generate_sra_data(cobra_model_oxic) # perform single reaction deletion analysis
     # simulated_data_oxic.generate_fva_data(cobra_model_oxic) # perform flux variability analysis
-    #simulated_data_oxic.export_sra_data(data_srd_oxic) # save results for later use
-    #simulated_data_oxic.export_fva_data(data_fva_oxic) # save results for later use
+    # simulated_data_oxic.export_sra_data(data_srd_oxic) # save results for later use
+    # simulated_data_oxic.export_fva_data(data_fva_oxic) # save results for later use
     simulated_data_oxic.import_sra_data(data_srd_oxic)
     simulated_data_oxic.import_fva_data(data_fva_oxic)
     simulated_data_oxic.check_data()
@@ -90,172 +90,69 @@ def _main_():
     metabolomics_data_oxic.format_metabolomics_data() # add compartment identifiers to metabolite ids
     metabolomics_data_oxic.generate_estimated_metabolomics_data(cobra_model_oxic)
 
-    ##PART 5: Working
-    #-------
+    #PART 5: Working
+    -------
     # calculate dG_r and perform a consistency check based on model simulations for anoxic conditions
     data_ta_anoxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_anoxic_ta.csv'
     data_dG0_anoxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_anoxic_dG0.json'
     data_dG_anoxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_anoxic_dG.json'
     data_tcc_anoxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_anoxic_tcc.json'
-    # tcc_anoxic = thermodynamics_dG_r_data()
-    # tcc_anoxic.calculate_dG0_r(cobra_model_anoxic, dG_f_data.measured_dG_f, dG_f_data.estimated_dG_f, other_data.temperature) # calculate the change in free energy of reaction without accounting for metabolite concentrations
-    # tcc_anoxic.calculate_dG_r(cobra_model_anoxic,metabolomics_data_anoxic.measured_concentrations, metabolomics_data_anoxic.estimated_concentrations,
-    #                    other_data.pH, other_data.ionic_strength, other_data.temperature) # adjust the change in free energy of reaction for intracellular metabolite concentrations
-    # tcc_anoxic.check_thermodynamicConsistency(cobra_model_anoxic,simulated_data_anoxic.fva_data,
-    #                    metabolomics_data_anoxic.measured_concentrations,
-    #                    metabolomics_data_anoxic.estimated_concentrations,
-    #                    other_data.pH,other_data.ionic_strength,other_data.temperature) # check the thermodynamic consistency of the data
-    # tcc_anoxic.export_dG0_r_json(data_dG0_anoxic) # save for later use
-    # tcc_anoxic.export_dG_r_json(data_dG_anoxic) # save for later use
-    # tcc_anoxic.export_tcc_json(data_ta_anoxic) # save for later use
-    # tcc_anoxic.export_summary(cobra_model_anoxic,simulated_data_anoxic.fva_data,data_ta_anoxic) # write summary of the analysis to csv file
+    tcc_anoxic = thermodynamics_dG_r_data()
+    tcc_anoxic.calculate_dG0_r(cobra_model_anoxic, dG_f_data.measured_dG_f, dG_f_data.estimated_dG_f, other_data.temperature) # calculate the change in free energy of reaction without accounting for metabolite concentrations
+    tcc_anoxic.calculate_dG_r(cobra_model_anoxic,metabolomics_data_anoxic.measured_concentrations, metabolomics_data_anoxic.estimated_concentrations,
+                       other_data.pH, other_data.ionic_strength, other_data.temperature) # adjust the change in free energy of reaction for intracellular metabolite concentrations
+    tcc_anoxic.check_thermodynamicConsistency(cobra_model_anoxic,simulated_data_anoxic.fva_data,
+                       metabolomics_data_anoxic.measured_concentrations,
+                       metabolomics_data_anoxic.estimated_concentrations,
+                       other_data.pH,other_data.ionic_strength,other_data.temperature) # check the thermodynamic consistency of the data
+    tcc_anoxic.export_dG0_r_json(data_dG0_anoxic) # save for later use
+    tcc_anoxic.export_dG_r_json(data_dG_anoxic) # save for later use
+    tcc_anoxic.export_tcc_json(data_ta_anoxic) # save for later use
+    tcc_anoxic.export_summary(cobra_model_anoxic,simulated_data_anoxic.fva_data,data_ta_anoxic) # write summary of the analysis to csv file
 
     # calculate dG_r and perform a consistency check based on model simulations for oxic conditions
     data_ta_oxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_oxic_ta.csv'
     data_dG0_oxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_oxic_dG0.json'
     data_dG_oxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_oxic_dG.json'
     data_tcc_oxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_oxic_tcc.json'
-    # tcc_oxic = thermodynamics_dG_r_data()
-    # tcc_oxic.calculate_dG0_r(cobra_model_oxic, dG_f_data.measured_dG_f, dG_f_data.estimated_dG_f, other_data.temperature) # calculate the change in free energy of reaction without accounting for metabolite concentrations
-    # tcc_oxic.calculate_dG_r(cobra_model_oxic,metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
-    #                    other_data.pH, other_data.ionic_strength, other_data.temperature) # adjust the change in free energy of reaction for intracellular metabolite concentrations
-    # tcc_oxic.check_thermodynamicConsistency(cobra_model_oxic,simulated_data_oxic.fva_data,
-    #                    metabolomics_data_oxic.measured_concentrations,
-    #                    metabolomics_data_oxic.estimated_concentrations,
-    #                    other_data.pH,other_data.ionic_strength,other_data.temperature) # check the thermodynamic consistency of the data
-    # tcc_oxic.export_dG0_r_json(data_dG0_oxic) # save for later use
-    # tcc_oxic.export_dG_r_json(data_dG_oxic) # save for later use
-    # tcc_oxic.export_tcc_json(data_tcc_oxic) # save for later use
-    # tcc_oxic.export_summary(cobra_model_oxic,simulated_data_oxic.fva_data,data_ta_oxic) # write summary of the analysis to csv file
-
-    # ##PART 6: Working
-    # #-------
-    # # inspect the thermodynamic analysis results
-
-    # # constrain the model solution and simulate optimal growth
-    # gr_analysis_anoxic = simulate_thermoConstraints(cobra_model_anoxic,['PGCD','ACACT1r','NDPK2'])
-    # gr_analysis_oxic = simulate_thermoConstraints(cobra_model_oxic,['PGCD','ACACT1r'])
-
-    # # expand the reaction set of the anoxic model to reflect the enzyme permiscuity of pykA
-    # add_pykA(cobra_model_anoxic)
-    # gr_analysis_anoxic = simulate_thermoConstraints(cobra_model_anoxic,['PGCD','ACACT1r','NDPK2'])
-
-    # ##PART 7: Working
-    # #-------
-    # # calculate the dG for biosynthetic pathways
-
-    # # calculate the dG for biosynthetic pathways for anoxic conditions
-    # tccp_anoxic = thermodynamics_dG_p_data()
-    # tccp_anoxic.calculate_dG_p(cobra_model_anoxic,tcc_anoxic.dG0_r,tcc_anoxic.dG_r)
-    # # calculate the dG for biosynthetic pathways for oxic conditions
-    # tccp_oxic = thermodynamics_dG_p_data()
-    # tccp_oxic.calculate_dG_p(cobra_model_oxic,tcc_oxic.dG0_r,tcc_oxic.dG_r)
-    
-    ##PART 8:
-    #-------
-	# Diagnose model variables and constraints prior to FBA, FVA, and sampling (Oxic condition only)
-
-    # identified inconsistent concentrations/dG_f/tcc values
-    inconsistent_concentrations_I = []
-    inconsistent_dG_f_I = []
-    inconsistent_tcc_I = []
-    # copy the model
-    cobra_model_irreversible = cobra_model_oxic.copy()
-    # make the model irreversible
-    convert_to_irreversible(cobra_model_irreversible)
-    # remove an inconsistent dGf values
-    dG_f_data.remove_measured_dG_f(inconsistent_dG_f_I)
-    # remove an inconsistent concentration values
-    metabolomics_data_oxic.remove_measured_concentrations(inconsistent_concentrations_I)
-    # import the tcc data
     tcc_oxic = thermodynamics_dG_r_data()
-    tcc_oxic.import_dG0_r_json(data_dG0_oxic)
-    tcc_oxic.import_dG_r_json(data_dG_oxic)
-    tcc_oxic.import_tcc_json(data_tcc_oxic)
-    # remove an inconcsistent tcc
-    tcc_oxic.change_feasibleReactions(inconsistent_tcc_I)    
-    # diagnose tfba constraints
-    tfba = thermodynamics_tfba()
-    # thermodynamic_constraints_check,diagnose_variables_1,diagnose_variables_2,diagnose_variables_3 = tfba.check_conc_ln_constraints_transport(cobra_model_irreversible,
-    #     metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
-    #     tcc_oxic.dG0_r, other_data.pH,other_data.temperature,tcc_oxic.metabolomics_coverage,
-    #     tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
-    #     0.5, 0.99,
-    #     n_checks_I = 1,
-    #     diagnose_solver_I=None,diagnose_threshold_I=0.98,diagnose_break_I=0.1)        
-    
-    ##PART 9:
-    #-------
-	# perform thermodynamic FBA and FVA (Oxic condition only)
+    # tcc_oxic.import_dG0_r_json(data_dG0_oxic)
+    # tcc_oxic.import_dG_r_json(data_dG_oxic)
+    # tcc_oxic.import_tcc_json(data_tcc_oxic)
+    tcc_oxic.calculate_dG0_r(cobra_model_oxic, dG_f_data.measured_dG_f, dG_f_data.estimated_dG_f, other_data.temperature) # calculate the change in free energy of reaction without accounting for metabolite concentrations
+    tcc_oxic.calculate_dG_r(cobra_model_oxic,metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
+                       other_data.pH, other_data.ionic_strength, other_data.temperature) # adjust the change in free energy of reaction for intracellular metabolite concentrations
+    tcc_oxic.check_thermodynamicConsistency(cobra_model_oxic,simulated_data_oxic.fva_data,
+                       metabolomics_data_oxic.measured_concentrations,
+                       metabolomics_data_oxic.estimated_concentrations,
+                       other_data.pH,other_data.ionic_strength,other_data.temperature) # check the thermodynamic consistency of the data
+    tcc_oxic.export_dG0_r_json(data_dG0_oxic) # save for later use
+    tcc_oxic.export_dG_r_json(data_dG_oxic) # save for later use
+    tcc_oxic.export_tcc_json(data_tcc_oxic) # save for later use
+    tcc_oxic.export_summary(cobra_model_oxic,simulated_data_oxic.fva_data,data_ta_oxic) # write summary of the analysis to csv file
 
-    # run TFBA
-    tfba.tfba_conc_ln(cobra_model_irreversible, 
-        metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
-        tcc_oxic.dG0_r,other_data.temperature,tcc_oxic.metabolomics_coverage,
-        tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
-        measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
-        use_measured_concentrations=True,use_measured_dG0_r=True, solver=None)
-    
-    # run TFVA
-    tfba.tfva_concentrations(cobra_model_irreversible, 
-        metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
-        tcc_oxic.dG0_r,other_data.temperature,tcc_oxic.metabolomics_coverage,
-        tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
-        measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
-        use_measured_concentrations=True,use_measured_dG0_r=True, reaction_list=None,fraction_of_optimum=1.0, solver=None,
-        objective_sense="maximize", **solver_args)
-    tfba.analyze_tfva_results(self,flux_threshold=1e-6)
-    tfba.export_tfva_concentrations_data(self, filename)
-    tfba.export_tfva_analysis(self, filename)
-    
-    ##PART 10:
+    ##PART 6: Working
     #-------
-	# perform thermodynamic Tsampling (Oxic condition only)
-    # NOTE: requires optGpSampler
-    
-    # run Tsampling
-    sampling = optGpSampler_sampling(data_dir_I = data_dir);
-    simulation_id_I = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_oxic_ta'
-    filename_model = simulation_id_I + '.json';
-    filename_script = simulation_id_I + '.py';
-    filename_points = simulation_id_I + '_points' + '.json';
-    filename_warmup = simulation_id_I + '_warmup' + '.json';
-    sampling.export_sampling_optGpSampler(cobra_model=cobra_model_copy,
-        filename_model=filename_model,
-        filename_script=filename_script,
-        filename_points=filename_points,
-        filename_warmup=filename_warmup,
-        solver_id_I = 'optGpSampler',
-        n_points_I = simulation_parameters['n_points'],
-        n_steps_I = simulation_parameters['n_steps'],
-        n_threads_I = 2);
-    
-    ##PART 11:
-    #-------
-	# Analyze thermodynamic sampling (Oxic condition only)
+    # inspect the thermodynamic analysis results
 
-    sampling = optGpSampler_sampling(
-        data_dir_I = data_dir,
-        model_I=cobra_model_copy);
-    sampling.get_points_json(filename_points);
-    sampling.get_warmup_json(filename_warmup);
-    sampling.calculate_mixFraction();
-    # check if the model contains loops
-    #loops_bool = self.sampling.check_loops();
-    sampling.simulate_loops(
-        data_fva=self.settings['workspace_data'] + '/loops_fva_tmp.json',
-        solver_I = simulation_parameters['solver_id']);
-    sampling.find_loops(data_fva=self.settings['workspace_data'] + '/loops_fva_tmp.json');
-    sampling.remove_loopsFromPoints();
-    # calculate the flux descriptive statistics
-    sampling.descriptive_statistics(points_I='flux');
-    # calculate descriptive stats for metabolites
-    sampling.convert_points2MetabolitePoints();
-    sampling.descriptive_statistics(points_I='metabolite');
-    # calculate descriptive stats for subsystems
-    sampling.convert_points2SubsystemPoints();
-    sampling.descriptive_statistics(points_I='subsystem');
-    
+    # constrain the model solution and simulate optimal growth
+    gr_analysis_anoxic = simulate_thermoConstraints(cobra_model_anoxic,['PGCD','ACACT1r','NDPK2'])
+    gr_analysis_oxic = simulate_thermoConstraints(cobra_model_oxic,['PGCD','ACACT1r'])
+
+    # expand the reaction set of the anoxic model to reflect the enzyme permiscuity of pykA
+    add_pykA(cobra_model_anoxic)
+    gr_analysis_anoxic = simulate_thermoConstraints(cobra_model_anoxic,['PGCD','ACACT1r','NDPK2'])
+
+    ##PART 7: Working
+    #-------
+    # calculate the dG for biosynthetic pathways
+
+    # calculate the dG for biosynthetic pathways for anoxic conditions
+    tccp_anoxic = thermodynamics_dG_p_data()
+    tccp_anoxic.calculate_dG_p(cobra_model_anoxic,tcc_anoxic.dG0_r,tcc_anoxic.dG_r)
+    # calculate the dG for biosynthetic pathways for oxic conditions
+    tccp_oxic = thermodynamics_dG_p_data()
+    tccp_oxic.calculate_dG_p(cobra_model_oxic,tcc_oxic.dG0_r,tcc_oxic.dG_r)    
 
     # visualize the results
     ##TODO: methods are defined, but an example is not yet given

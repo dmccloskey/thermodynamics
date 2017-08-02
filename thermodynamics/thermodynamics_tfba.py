@@ -167,7 +167,7 @@ class thermodynamics_tfba():
             # make a continuous variable for dG_r
             dG_rv = Reaction('dG_rv_' + r.id);
             if use_measured_dG_r and thermodynamic_consistency_check[r.id]: # ignore inconsistent reactions
-                #if dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
+                #if r.id in dG_r_coverage.keys() and dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
                 #if metabolomics_coverage[r.id] > measured_concentration_coverage_criteria and \
                 #dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
                     dG_rv.lower_bound = dG_r[r.id]['dG_r_lb'];
@@ -443,7 +443,7 @@ class thermodynamics_tfba():
             dG_rv = Reaction('dG_rv_' + r.id);
             #if use_measured_dG_r and thermodynamic_consistency_check[r.id]: # ignore inconsistent reactions
             if False and thermodynamic_consistency_check[r.id]: # ignore inconsistent reactions
-                #if dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
+                #if r.id in dG_r_coverage.keys() and dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
                 #if metabolomics_coverage[r.id] > measured_concentration_coverage_criteria and \
                 #dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
                     dG_rv.lower_bound = dG_r[r.id]['dG_r_lb'];
@@ -457,7 +457,7 @@ class thermodynamics_tfba():
             # make a continuous variable for dG0_r
             dG0_rv = Reaction('dG0_rv_' + r.id);
             if use_measured_dG0_r and thermodynamic_consistency_check[r.id] and r.id != 'NTD4': # ignore inconsistent reactions:
-                if dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
+                if r.id in dG_r_coverage.keys() and dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
                     dG0_rv.lower_bound = dG0_r[r.id]['dG_r_lb'];
                     dG0_rv.upper_bound = dG0_r[r.id]['dG_r_ub'];
                 else:
@@ -580,9 +580,10 @@ class thermodynamics_tfba():
         cobra_model_copy.optimize()
         # record the results
         self._copy_solution(cobra_model_irreversible,cobra_model_copy);
-    def tfba_conc_ln(self,cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,
-                              measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
-                              use_measured_concentrations=True,use_measured_dG0_r=True, solver=None):
+    def tfba_conc_ln(self,cobra_model_irreversible, measured_concentration, estimated_concentration, 
+        dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,
+        measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
+        use_measured_concentrations=True,use_measured_dG0_r=True, solver=None):
         '''performs thermodynamic flux balance analysis with bounds on metabolite activity insteady of dG_r'''
 
         """based on the method described in 10.1529/biophysj.106.093138
@@ -612,8 +613,9 @@ class thermodynamics_tfba():
         # copy the model:
         cobra_model_copy = cobra_model_irreversible.copy();
         # add constraints
-        self._add_conc_ln_constraints(cobra_model_copy,measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,
-                     use_measured_concentrations,use_measured_dG0_r);
+        self._add_conc_ln_constraints(cobra_model_copy,measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, 
+            measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,
+            use_measured_concentrations,use_measured_dG0_r);
         # optimize
         cobra_model_copy.solver = 'glpk'
         cobra_model_copy.optimize()
@@ -747,57 +749,58 @@ class thermodynamics_tfba():
             # revert the problem to how it was before
             solver.change_variable_objective(lp, i, 0.)
 
-    def tfva_concentrations(self, cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,
-                              measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
-                             use_measured_concentrations=True,use_measured_dG0_r=True, reaction_list=None,fraction_of_optimum=1.0, solver=None,
-                             objective_sense="maximize", **solver_args):
-                '''performs thermodynamic metabolite concentration variability analysis'''
-                # copy the model:
-                cobra_model_copy = cobra_model_irreversible.copy();
-                reactions_copy = [r for r in cobra_model_copy.reactions];
-                if reaction_list is None and "the_reactions" in solver_args:
-                    reaction_list = solver_args.pop("the_reactions")
-                    from warnings import warn
-                    warn("the_reactions is deprecated. Please use reaction_list=")
-                if reaction_list is None:
-                    reaction_list = [r for r in cobra_model_copy.reactions];
-                else:
-                    reaction_list = [cobra_model_copy.reactions.get_by_id(i) if isinstance(i, string_types) else i for i in reaction_list]
-                # add constraints
-                conc_ln_variables = self._add_conc_ln_constraints(cobra_model_copy,measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,
-                             use_measured_concentrations,use_measured_dG0_r,True,False);
+    def tfva_concentrations(self, cobra_model_irreversible, measured_concentration, estimated_concentration, 
+        dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,
+        measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
+        use_measured_concentrations=True,use_measured_dG0_r=True, reaction_list=None,fraction_of_optimum=1.0, solver=None,
+        objective_sense="maximize", **solver_args):
+        '''performs thermodynamic metabolite concentration variability analysis'''
+        # copy the model:
+        cobra_model_copy = cobra_model_irreversible.copy();
+        reactions_copy = [r for r in cobra_model_copy.reactions];
+        if reaction_list is None and "the_reactions" in solver_args:
+            reaction_list = solver_args.pop("the_reactions")
+            from warnings import warn
+            warn("the_reactions is deprecated. Please use reaction_list=")
+        if reaction_list is None:
+            reaction_list = [r for r in cobra_model_copy.reactions];
+        else:
+            reaction_list = [cobra_model_copy.reactions.get_by_id(i) if isinstance(i, string_types) else i for i in reaction_list]
+        # add constraints
+        conc_ln_variables = self._add_conc_ln_constraints(cobra_model_copy,measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,
+                        use_measured_concentrations,use_measured_dG0_r,True,False);
 
-                solver = solver_dict[get_solver_name() if solver is None else solver]
-                lp = solver.create_problem(cobra_model_copy)
-                solver.solve_problem(lp, objective_sense=objective_sense)
-                solution = solver.format_solution(lp, cobra_model_copy)
-                if solution.status != "optimal":
-                    raise ValueError("TFVA requires the solution status to be optimal, not "
-                                     + solution.status)
-                # set all objective coefficients to 0
-                for i, r in enumerate(cobra_model_copy.reactions):
-                    if r.objective_coefficient != 0:
-                        f = solution.x_dict[r.id]
-                        new_bounds = (f * fraction_of_optimum, f)
-                        solver.change_variable_bounds(lp, i, min(new_bounds), max(new_bounds))
-                        solver.change_variable_objective(lp, i, 0.)
-                ## add constraints
-                #conc_ln_variables = self._add_conc_ln_constraints(cobra_model_copy,measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,
-                #             use_measured_concentrations,use_measured_dG0_r, True,False);
-                # perform tfva on dG_r
-                for r in list(conc_ln_variables.values()):
-                    # print reaction for debugging
-                    print('TFVA_dG_r for met ' + r.id)
-                    i = cobra_model_copy.reactions.index(r)
-                    self.tfva_concentration_data[r.id] = {}
-                    solver.change_variable_objective(lp, i, 1.)
-                    solver.solve_problem(lp, objective_sense="maximize", **solver_args)
-                    self.tfva_concentration_data[r.id]["concentration_ub"] = exp(solver.get_objective_value(lp)) #convert from ln
-                    solver.solve_problem(lp, objective_sense="minimize", **solver_args)
-                    self.tfva_concentration_data[r.id]["concentration_lb"] = exp(solver.get_objective_value(lp)) #convert from ln
-                    self.tfva_concentration_data[r.id]['flux_units']= 'M';
-                    # revert the problem to how it was before
-                    solver.change_variable_objective(lp, i, 0.)
+        solver = solver_dict[get_solver_name() if solver is None else solver]
+        lp = solver.create_problem(cobra_model_copy)
+        solver.solve_problem(lp, objective_sense=objective_sense)
+        solution = solver.format_solution(lp, cobra_model_copy)
+        if solution.status != "optimal":
+            raise ValueError("TFVA requires the solution status to be optimal, not "
+                                + solution.status)
+        # set all objective coefficients to 0
+        for i, r in enumerate(cobra_model_copy.reactions):
+            if r.objective_coefficient != 0:
+                f = solution.x_dict[r.id]
+                new_bounds = (f * fraction_of_optimum, f)
+                solver.change_variable_bounds(lp, i, min(new_bounds), max(new_bounds))
+                solver.change_variable_objective(lp, i, 0.)
+        ## add constraints
+        #conc_ln_variables = self._add_conc_ln_constraints(cobra_model_copy,measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,
+        #             use_measured_concentrations,use_measured_dG0_r, True,False);
+        # perform tfva on dG_r
+        for r in list(conc_ln_variables.values()):
+            # print reaction for debugging
+            print('TFVA_dG_r for met ' + r.id)
+            i = cobra_model_copy.reactions.index(r)
+            self.tfva_concentration_data[r.id] = {}
+            solver.change_variable_objective(lp, i, 1.)
+            solver.solve_problem(lp, objective_sense="maximize", **solver_args)
+            self.tfva_concentration_data[r.id]["concentration_ub"] = exp(solver.get_objective_value(lp)) #convert from ln
+            solver.solve_problem(lp, objective_sense="minimize", **solver_args)
+            self.tfva_concentration_data[r.id]["concentration_lb"] = exp(solver.get_objective_value(lp)) #convert from ln
+            self.tfva_concentration_data[r.id]['flux_units']= 'M';
+            # revert the problem to how it was before
+            solver.change_variable_objective(lp, i, 0.)
 
     def analyze_tfva_results(self,flux_threshold=1e-6):
         '''Determine what reactions are
@@ -1160,7 +1163,7 @@ class thermodynamics_tfba():
             # make a continuous variable for dG0_r
             dG0_rv = Reaction('dG0_rv_' + r.id);
             if use_measured_dG0_r and thermodynamic_consistency_check[r.id] and r.id != 'NTD4': # ignore inconsistent reactions:
-                if dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
+                if r.id in dG_r_coverage.keys() and dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
                     dG0_rv.lower_bound = dG0_r[r.id]['dG_r_lb'];
                     dG0_rv.upper_bound = dG0_r[r.id]['dG_r_ub'];
                     
@@ -1430,7 +1433,7 @@ class thermodynamics_tfba():
             dG_rv = Reaction('dG_rv_' + r.id);
             #if use_measured_dG_r and thermodynamic_consistency_check[r.id]: # ignore inconsistent reactions
             if False and thermodynamic_consistency_check[r.id]: # ignore inconsistent reactions
-                #if dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
+                #if r.id in dG_r_coverage.keys() and dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
                 #if metabolomics_coverage[r.id] > measured_concentration_coverage_criteria and \
                 #dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
                     dG_rv.lower_bound = dG_r[r.id]['dG_r_lb'];
@@ -1446,7 +1449,7 @@ class thermodynamics_tfba():
             # make a continuous variable for dG0_r
             dG0_rv = Reaction('dG0_rv_' + r.id);
             if use_measured_dG0_r and thermodynamic_consistency_check[r.id] and r.id != 'NTD4': # ignore inconsistent reactions:
-                if dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
+                if r.id in dG_r_coverage.keys() and dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
                     dG0_rv.lower_bound = dG0_r[r.id]['dG_r_lb'];
                     dG0_rv.upper_bound = dG0_r[r.id]['dG_r_ub'];
                     
@@ -1780,7 +1783,7 @@ class thermodynamics_tfba():
             dG_rv = Reaction('dG_rv_' + r.id);
             #if use_measured_dG_r and thermodynamic_consistency_check[r.id]: # ignore inconsistent reactions
             if False and thermodynamic_consistency_check[r.id]['feasible']: # ignore inconsistent reactions
-                #if dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
+                #if r.id in dG_r_coverage.keys() and dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
                 #if metabolomics_coverage[r.id] > measured_concentration_coverage_criteria and \
                 #dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
                     dG_rv.lower_bound = dG_r[r.id]['dG_r_lb'];
@@ -1797,7 +1800,7 @@ class thermodynamics_tfba():
             dG_r_variables[r.id] = dG_rv;
             # make a continuous variable for dG0_r
             dG0_rv = Reaction('dG0_rv_' + r.id);
-            if use_measured_dG0_r and r.id in thermodynamic_consistency_check and thermodynamic_consistency_check[r.id]['feasible']:# and r.id != 'NTD4': # ignore inconsistent reactions:
+            if use_measured_dG0_r and r.id in thermodynamic_consistency_check.keys() and thermodynamic_consistency_check[r.id]['feasible']:# and r.id != 'NTD4': # ignore inconsistent reactions:
                 if dG_r_coverage[r.id]['measured_dG_f_coverage']>measured_dG_f_coverage_criteria:
                     dG0_rv.lower_bound = dG0_r[r.id]['dG_r_lb'];
                     dG0_rv.upper_bound = dG0_r[r.id]['dG_r_ub'];
@@ -2140,7 +2143,7 @@ class thermodynamics_tfba():
             # make a continuous variable for dG0_r
             dG0_rv = Reaction('dG0_rv_' + r.id);
             dG0_rv.variable_kind = 'continuous';
-            if use_measured_dG0_r and r.id in thermodynamic_consistency_check and thermodynamic_consistency_check[r.id]['feasible']:# and r.id != 'NTD4': # ignore inconsistent reactions:
+            if use_measured_dG0_r and r.id in thermodynamic_consistency_check.keys() and thermodynamic_consistency_check[r.id]['feasible']:# and r.id != 'NTD4': # ignore inconsistent reactions:
                 if dG_r_coverage[r.id]['measured_dG_f_coverage']>measured_dG_f_coverage_criteria:
                     dG0_rv.lower_bound = dG0_r[r.id]['dG_r_lb'];
                     dG0_rv.upper_bound = dG0_r[r.id]['dG_r_ub'];
@@ -2219,7 +2222,10 @@ class thermodynamics_tfba():
                                   diagnose_threshold_I=diagnose_threshold_I,diagnose_break_I=diagnose_break_I);
             if diagnose_variables_tmp:
                 for k,v in diagnose_variables_tmp.items():
-                    thermodynamic_constraints_check[k]['feasible'] = False;
+                    if k in thermodynamic_constraints_check.keys():
+                        thermodynamic_constraints_check[k]['feasible'] = False;
+                    else: 
+                        thermodynamic_constraints_check[k] = {'feasible':False};
                     diagnose_variables_1.update(diagnose_variables_tmp)
             else:
                 break;
@@ -2235,7 +2241,10 @@ class thermodynamics_tfba():
                                   diagnose_threshold_I=diagnose_threshold_I,diagnose_break_I=diagnose_break_I);
             if diagnose_variables_tmp:
                 for k,v in diagnose_variables_tmp.items():
-                    thermodynamic_constraints_check[k]['feasible'] = False;
+                    if k in thermodynamic_constraints_check.keys():
+                        thermodynamic_constraints_check[k]['feasible'] = False;
+                    else: 
+                        thermodynamic_constraints_check[k] = {'feasible':False};
                     diagnose_variables_2.update(diagnose_variables_tmp)
             else:
                 break;
@@ -2251,7 +2260,10 @@ class thermodynamics_tfba():
                                       diagnose_threshold_I=diagnose_threshold_I,diagnose_break_I=diagnose_break_I);
             if diagnose_variables_tmp:
                 for k,v in diagnose_variables_tmp.items():
-                    thermodynamic_constraints_check[k]['feasible'] = False;
+                    if k in thermodynamic_constraints_check.keys():
+                        thermodynamic_constraints_check[k]['feasible'] = False;
+                    else: 
+                        thermodynamic_constraints_check[k] = {'feasible':False};
                     diagnose_variables_3.update(diagnose_variables_tmp)
             else:
                 break;

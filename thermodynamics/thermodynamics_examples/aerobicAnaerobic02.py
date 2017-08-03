@@ -137,6 +137,12 @@ def _main_():
 
     # run TFBA
     cobra_model_copy = cobra_model_oxic.copy()
+    tfba.tfba(cobra_model_copy,
+        tcc_oxic.dG0_r,other_data.temperature,
+        tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
+        use_measured_dG_r=True, solver='glpk',)
+
+    cobra_model_copy = cobra_model_oxic.copy()
     tfba.tfba_conc_ln(cobra_model_copy, 
         metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
         tcc_oxic.dG0_r,other_data.temperature,tcc_oxic.metabolomics_coverage,
@@ -147,20 +153,16 @@ def _main_():
     # run TFVA
     cobra_model_copy = cobra_model_oxic.copy()
     tfba.tfva(cobra_model_copy, 
-        metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
-        tcc_oxic.dG0_r,other_data.temperature,tcc_oxic.metabolomics_coverage,
+        tcc_oxic.dG0_r,other_data.temperature,
         tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
-        measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
-        use_measured_concentrations=True,use_measured_dG0_r=True, reaction_list=['conc_lnv_fum_c'],fraction_of_optimum=1.0, solver='glpk',
+        use_measured_dG0_r=True, reaction_list=None,fraction_of_optimum=1.0, solver='glpk',
         objective_sense="maximize")
 
     cobra_model_copy = cobra_model_oxic.copy()
     tfba.tfva_dG_r(cobra_model_copy, 
-        metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
-        tcc_oxic.dG0_r,other_data.temperature,tcc_oxic.metabolomics_coverage,
+        tcc_oxic.dG0_r,other_data.temperature,
         tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
-        measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
-        use_measured_concentrations=True,use_measured_dG0_r=True, reaction_list=['conc_lnv_fum_c'],fraction_of_optimum=1.0, solver='glpk',
+        use_measured_dG0_r=True, fraction_of_optimum=1.0, solver='glpk',
         objective_sense="maximize")
 
     cobra_model_copy = cobra_model_oxic.copy()
@@ -169,7 +171,7 @@ def _main_():
         tcc_oxic.dG0_r,other_data.temperature,tcc_oxic.metabolomics_coverage,
         tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
         measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
-        use_measured_concentrations=True,use_measured_dG0_r=True, reaction_list=['conc_lnv_fum_c'],fraction_of_optimum=1.0, solver='glpk',
+        use_measured_concentrations=True,use_measured_dG0_r=True,fraction_of_optimum=1.0, solver='glpk',
         objective_sense="maximize")
     tfba.analyze_tfva_results(flux_threshold=1e-6)
     tfba.export_tfva_concentrations_data(filename)

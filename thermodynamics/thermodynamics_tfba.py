@@ -140,8 +140,8 @@ class thermodynamics_tfba():
             #elif v['concentration_ub']<self.conc_min:
             #    concentrations[k]['concentration_ub']=self.conc;
         return concentrations;
-    def _add_dG_r_constraints(self, cobra_model_irreversible, dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,
-                              measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99, use_measured_dG_r=True, return_dG_r_variables=False):
+    def _add_dG_r_constraints(self, cobra_model_irreversible, dG_r, dG_r_coverage, thermodynamic_consistency_check,
+                              use_measured_dG_r=True, return_dG_r_variables=False):
         '''add constraints for dG_r to the model'''
         # pre-process the data
         dG_r = self._scale_dG_r(dG_r);
@@ -534,7 +534,8 @@ class thermodynamics_tfba():
         if return_concentration_variables and return_dG0_r_variables:
             return conc_lnv_dict,dG0_r_dict;
 
-    def tfba(self, cobra_model_irreversible, dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99, use_measured_dG_r=True, solver=None):
+    def tfba(self, cobra_model_irreversible, dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, 
+    measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99, use_measured_dG_r=True, solver='glpk'):
         '''performs thermodynamic flux balance analysis'''
 
         """based on the method described in 10.1529/biophysj.106.093138
@@ -556,14 +557,11 @@ class thermodynamics_tfba():
         zi is a binary variable, zi {0,1}
         K is always large enough such that dG_ri-K<0 or K>dG_ri
         """    
-        # copy the model:
-        cobra_model_copy = cobra_model_irreversible.copy();
         # add constraints
-        self._add_dG_r_constraints(cobra_model_copy,dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria, use_measured_dG_r);
+        self._add_dG_r_constraints(cobra_model_irreversible,dG_r, dG_r_coverage, thermodynamic_consistency_check, use_measured_dG_r);
         # optimize
-        cobra_model_copy.solver = 'glpk'
-        cobra_model_copy.optimize()
-        return cobra_model_copy
+        cobra_model_irreversible.solver = solver
+        cobra_model_irreversible.optimize()
 
     def tfba_conc_ln(self,cobra_model_irreversible, measured_concentration, estimated_concentration, 
         dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,
@@ -596,14 +594,14 @@ class thermodynamics_tfba():
         K is always large enough such that dG_ri-K<0 or K>dG_ri
         """    
         # add constraints
-        self._add_conc_ln_constraints(cobra_model_copy,measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, 
+        self._add_conc_ln_constraints(cobra_model_irreversible,measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, 
             measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,
             use_measured_concentrations,use_measured_dG0_r);
         # optimize
-        cobra_model_copy.solver = solver
-        cobra_model_copy.optimize()
+        cobra_model_irreversible.solver = solver
+        cobra_model_irreversible.optimize()
 
-    def tfva(self, cobra_model_irreversible, dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99, use_measured_dG_r=True,
+    def tfva(self, cobra_model_irreversible, dG_r, dG_r_coverage, thermodynamic_consistency_check, use_measured_dG_r=True,
              reaction_list=None,fraction_of_optimum=1.0, solver=None,
              objective_sense="maximize", **solver_args):
         """performs thermodynamic flux variability analysis to find max/min flux values
@@ -624,7 +622,7 @@ class thermodynamics_tfba():
         """
         reaction_list = [r for r in cobra_model_copy.reactions]
         # add dG_r constraints: # adding constraints here is slower!
-        self._add_dG_r_constraints(cobra_model_copy,dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,use_measured_dG_r);
+        self._add_dG_r_constraints(cobra_model_copy,dG_r, dG_r_coverage, thermodynamic_consistency_check, use_measured_dG_r);
 
         from cobra.flux_analysis import flux_variability_analysis
         fva_data = flux_variability_analysis(cobra_model_oxic, fraction_of_optimum=0.9,
@@ -633,9 +631,8 @@ class thermodynamics_tfba():
                                         )
         self.tfva_data = dict(zip(list(fva_data.index),fva_data.to_dict('records')))
 
-    def tfva_dG_r(self, cobra_model_irreversible, dG_r, metabolomics_coverage, 
+    def tfva_dG_r(self, cobra_model_irreversible, dG_r,  
         dG_r_coverage, thermodynamic_consistency_check, 
-        measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99, 
         use_measured_dG_r=True,
         reaction_list=None,fraction_of_optimum=1.0, solver=None,
         objective_sense="maximize", **solver_args):
@@ -656,7 +653,7 @@ class thermodynamics_tfba():
 
         """
         # add dG_r constraints: # adding constraints here is slower!
-        dG_r_variables = self._add_dG_r_constraints(cobra_model_irreversible,dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,use_measured_dG_r,True);
+        dG_r_variables = self._add_dG_r_constraints(cobra_model_irreversible,dG_r, dG_r_coverage, thermodynamic_consistency_check, use_measured_dG_r,True);
 
         from cobra.flux_analysis import flux_variability_analysis
         fva_data = flux_variability_analysis(cobra_model_oxic, fraction_of_optimum=0.9,
@@ -729,14 +726,14 @@ class thermodynamics_tfba():
         print("substitutable reactions (" + str(substitutable_cnt) + "): " + substitutable_list);
         print("constrained reactions (" + str(constrained_cnt) + "): " + constrained_list);
 
-    def tsampling_matlab_export(self, cobra_model_irreversible, dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99, use_measured_dG_r=True, solver=None,
+    def tsampling_matlab_export(self, cobra_model_irreversible, dG_r, dG_r_coverage, thermodynamic_consistency_check, use_measured_dG_r=True, solver=None,
                   fraction_optimal = 1.0):
         '''performs sampling with bounds on dG_r values'''
 
         # copy the model:
         cobra_model_copy = cobra_model_irreversible.copy();
         # add constraints
-        self._add_dG_r_constraints(cobra_model_copy,dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria, use_measured_dG_r);
+        self._add_dG_r_constraints(cobra_model_copy,dG_r, dG_r_coverage, thermodynamic_consistency_check, use_measured_dG_r);
         # optimize
         cobra_model_copy.solver = 'glpk'
         cobra_model_copy.optimize()
@@ -757,14 +754,14 @@ class thermodynamics_tfba():
         with open('data\\tsampling\\tsampler_run.m','w') as f:
             f.write(mat_script);
 
-    def tsampling_matlab_import(self,cobra_model_irreversible, dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99, use_measured_dG_r=True, solver=None,
+    def tsampling_matlab_import(self,cobra_model_irreversible, dG_r, dG_r_coverage, thermodynamic_consistency_check, use_measured_dG_r=True, solver=None,
                   fraction_optimal = 1.0, matlab_data='data\\tsampling\\tsampler_out.mat',sampler_model_name='tsampler_out',plot_reactions=[]):
         '''performs sampling with bounds on dG_r values'''
 
         # copy the model:
         cobra_model_copy = cobra_model_irreversible.copy();
         # add constraints
-        dG_r_variables = self._add_dG_r_constraints(cobra_model_copy,dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria, use_measured_dG_r, True);
+        dG_r_variables = self._add_dG_r_constraints(cobra_model_copy,dG_r, dG_r_coverage, thermodynamic_consistency_check, use_measured_dG_r, True);
         # optimize
         cobra_model_copy.solver = 'glpk'
         cobra_model_copy.optimize()

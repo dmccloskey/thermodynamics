@@ -123,19 +123,24 @@ def _main_():
             tcc_oxic.dG0_r, other_data.pH,other_data.temperature,tcc_oxic.metabolomics_coverage,
             tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
             0.5, 0.99)
-    cobra_model_oxic.optimize()
+    # cobra_model_oxic.optimize()
+    from cobra.flux_analysis import flux_variability_analysis
+    fva_data = flux_variability_analysis(cobra_model_oxic, fraction_of_optimum=0.9,
+                                      objective_sense='maximize',
+                                      reaction_list=[cobra_model_oxic.reactions.get_by_id('conc_lnv_fum_c')],
+                                      )
     
     ##PART 9:
     #-------
 	# perform thermodynamic FBA and FVA (Oxic condition only)
 
     # run TFBA
-    cobra_model_oxic_tfba = tfba.tfba_conc_ln(cobra_model_oxic, 
-        metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
-        tcc_oxic.dG0_r,other_data.temperature,tcc_oxic.metabolomics_coverage,
-        tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
-        measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
-        use_measured_concentrations=True,use_measured_dG0_r=True, solver=None)
+    # cobra_model_oxic_tfba = tfba.tfba_conc_ln(cobra_model_oxic, 
+    #     metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
+    #     tcc_oxic.dG0_r,other_data.temperature,tcc_oxic.metabolomics_coverage,
+    #     tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
+    #     measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
+    #     use_measured_concentrations=True,use_measured_dG0_r=True, solver=None)
     
     # run TFVA
     tfba.tfva_concentrations(cobra_model_oxic, 
@@ -143,7 +148,7 @@ def _main_():
         tcc_oxic.dG0_r,other_data.temperature,tcc_oxic.metabolomics_coverage,
         tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
         measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
-        use_measured_concentrations=True,use_measured_dG0_r=True, reaction_list=None,fraction_of_optimum=1.0, solver=None,
+        use_measured_concentrations=True,use_measured_dG0_r=True, reaction_list=['conc_lnv_fum_c'],fraction_of_optimum=1.0, solver=None,
         objective_sense="maximize")
     tfba.analyze_tfva_results(flux_threshold=1e-6)
     tfba.export_tfva_concentrations_data(filename)

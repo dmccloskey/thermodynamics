@@ -99,7 +99,7 @@ def _main_():
     # identified inconsistent concentrations/dG_f/tcc values
     inconsistent_concentrations_I = []
     inconsistent_dG_f_I = []
-    inconsistent_tcc_I = []
+    inconsistent_tcc_I = ['EX_glc_LPAREN_e_RPAREN__reverse']
     # remove an inconsistent dGf values
     dG_f_data.remove_measured_dG_f(inconsistent_dG_f_I)
     # remove an inconsistent concentration values
@@ -108,20 +108,29 @@ def _main_():
     tcc_oxic.change_feasibleReactions(inconsistent_tcc_I)    
     # diagnose tfba constraints
     tfba = thermodynamics_tfba()
-    thermodynamic_constraints_check,diagnose_variables_1,diagnose_variables_2,diagnose_variables_3 = tfba.check_conc_ln_constraints_transport(cobra_model_oxic,
-        metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
-        tcc_oxic.dG0_r, other_data.pH,other_data.temperature,tcc_oxic.metabolomics_coverage,
-        tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
-        0.5, 0.99,
-        n_checks_I = 1,
-        diagnose_solver_I=None,diagnose_threshold_I=0.98,diagnose_break_I=0.1)        
+    # thermodynamic_constraints_check,\
+    #     inconsistent_tcc,diagnose_variables_1,\
+    #     diagnose_variables_2,\
+    #     diagnose_variables_3 = tfba.check_conc_ln_constraints_transport(
+    #         cobra_model_oxic,
+    #         metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
+    #         tcc_oxic.dG0_r, other_data.pH,other_data.temperature,tcc_oxic.metabolomics_coverage,
+    #         tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
+    #         0.5, 0.99,n_checks_I = 0,
+    #         diagnose_solver_I=None,diagnose_threshold_I=0.98,diagnose_break_I=0.1)        
+    tfba._add_conc_ln_constraints_transport(cobra_model_oxic,
+            metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
+            tcc_oxic.dG0_r, other_data.pH,other_data.temperature,tcc_oxic.metabolomics_coverage,
+            tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
+            0.5, 0.99)
+    cobra_model_oxic.optimize()
     
     ##PART 9:
     #-------
 	# perform thermodynamic FBA and FVA (Oxic condition only)
 
     # run TFBA
-    tfba.tfba_conc_ln(cobra_model_oxic, 
+    cobra_model_oxic_tfba = tfba.tfba_conc_ln(cobra_model_oxic, 
         metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
         tcc_oxic.dG0_r,other_data.temperature,tcc_oxic.metabolomics_coverage,
         tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,

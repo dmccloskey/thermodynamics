@@ -1765,7 +1765,7 @@ class thermodynamics_tfba():
             # make a continuous variable for dG_r
             dG_rv = Reaction('dG_rv_' + r.id);
             #if use_measured_dG_r and thermodynamic_consistency_check[r.id]: # ignore inconsistent reactions
-            if False and r.id in thermodynamic_consistency_check.keys() and thermodynamic_consistency_check[r.id]['feasible']: # ignore inconsistent reactions
+            if False and thermodynamic_consistency_check[r.id]: # ignore inconsistent reactions
                 #if r.id in dG_r_coverage.keys() and dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
                 #if metabolomics_coverage[r.id] > measured_concentration_coverage_criteria and \
                 #dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
@@ -1783,8 +1783,8 @@ class thermodynamics_tfba():
             dG_r_variables[r.id] = dG_rv;
             # make a continuous variable for dG0_r
             dG0_rv = Reaction('dG0_rv_' + r.id);
-            if use_measured_dG0_r and r.id in thermodynamic_consistency_check.keys() and thermodynamic_consistency_check[r.id]['feasible']:# and r.id != 'NTD4': # ignore inconsistent reactions:
-                if dG_r_coverage[r.id]['measured_dG_f_coverage']>measured_dG_f_coverage_criteria:
+            if use_measured_dG0_r and r.id in thermodynamic_consistency_check.keys() and thermodynamic_consistency_check[r.id]:# and r.id != 'NTD4': # ignore inconsistent reactions:   
+                if r.id in dG_r_coverage.keys() and dG_r_coverage[r.id]['measured_dG_f_coverage']>measured_dG_f_coverage_criteria:
                     dG0_rv.lower_bound = dG0_r[r.id]['dG_r_lb'];
                     dG0_rv.upper_bound = dG0_r[r.id]['dG_r_ub'];
                     
@@ -2126,8 +2126,8 @@ class thermodynamics_tfba():
             # make a continuous variable for dG0_r
             dG0_rv = Reaction('dG0_rv_' + r.id);
             dG0_rv.variable_kind = 'continuous';
-            if use_measured_dG0_r and r.id in thermodynamic_consistency_check.keys() and thermodynamic_consistency_check[r.id]['feasible']:# and r.id != 'NTD4': # ignore inconsistent reactions:
-                if dG_r_coverage[r.id]['measured_dG_f_coverage']>measured_dG_f_coverage_criteria:
+            if use_measured_dG0_r and r.id in thermodynamic_consistency_check.keys() and thermodynamic_consistency_check[r.id]:# and r.id != 'NTD4': # ignore inconsistent reactions:
+                if r.id in dG_r_coverage.keys() and dG_r_coverage[r.id]['measured_dG_f_coverage']>measured_dG_f_coverage_criteria:
                     dG0_rv.lower_bound = dG0_r[r.id]['dG_r_lb'];
                     dG0_rv.upper_bound = dG0_r[r.id]['dG_r_ub'];
                 else:
@@ -2243,8 +2243,11 @@ class thermodynamics_tfba():
                 break;
 
         # list out all identified reactions
-        inconsistent_tcc = list(thermodynamic_constraints_check.keys());
-        return thermodynamic_constraints_check,inconsistent_tcc,diagnose_variables_1,diagnose_variables_2,diagnose_variables_3;
+        # for k,v in thermodynamic_constraints_check.items(): 
+        #     if not v: 
+        #         print(k)
+        inconsistent_tcc = [k for k,v in thermodynamic_constraints_check.items() if not v];
+        return thermodynamic_constraints_check,inconsistent_tcc,diagnose_variables_1,diagnose_variables_2,diagnose_variables_3
 
     def get_variableTypeAndUnits(self,rxn_id):
         '''return the variable type and units based on the name of the rxn_id

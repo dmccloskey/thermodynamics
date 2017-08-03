@@ -1890,7 +1890,8 @@ class thermodynamics_dG_r_data(thermodynamics_io):
         
         for rxn in infeasible_reactions_I:
             if rxn in self.thermodynamic_consistency_check:
-                self.thermodynamic_consistency_check[rxn]['feasible']=False;
+                self.thermodynamic_consistency_check[rxn]=False;
+                # self.thermodynamic_consistency_check[rxn]['feasible']=False;
             else:
                 print("reaction " + rxn + " not found in variable inconsistent_reactions");
 

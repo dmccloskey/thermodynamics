@@ -9,6 +9,7 @@ import csv,json,sys
 # Dependencies from thermodynamics
 # from thermodynamics.thermodynamics_simulatedData import thermodynamics_simulatedData
 from cobra_utilities.cobra_simulatedData import cobra_simulatedData
+from cobra_utilities.optGpSampler_sampling import  optGpSampler_sampling
 from thermodynamics.thermodynamics_metabolomicsData import thermodynamics_metabolomicsData
 from thermodynamics.thermodynamics_otherData import thermodynamics_otherData
 from thermodynamics.thermodynamics_dG_f_data import thermodynamics_dG_f_data
@@ -118,37 +119,57 @@ def _main_():
     #         tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
     #         0.5, 0.99,n_checks_I = 0,
     #         diagnose_solver_I=None,diagnose_threshold_I=0.98,diagnose_break_I=0.1)        
-    tfba._add_conc_ln_constraints_transport(cobra_model_oxic,
-            metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
-            tcc_oxic.dG0_r, other_data.pH,other_data.temperature,tcc_oxic.metabolomics_coverage,
-            tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
-            0.5, 0.99)
-    # cobra_model_oxic.optimize()
-    from cobra.flux_analysis import flux_variability_analysis
-    fva_data = flux_variability_analysis(cobra_model_oxic, fraction_of_optimum=0.9,
-                                      objective_sense='maximize',
-                                      reaction_list=[cobra_model_oxic.reactions.get_by_id('conc_lnv_fum_c')],
-                                      )
+    # tfba._add_conc_ln_constraints_transport(cobra_model_oxic,
+    #         metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
+    #         tcc_oxic.dG0_r, other_data.pH,other_data.temperature,tcc_oxic.metabolomics_coverage,
+    #         tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
+    #         0.5, 0.99)
+    # # cobra_model_oxic.optimize()
+    # from cobra.flux_analysis import flux_variability_analysis
+    # fva_data = flux_variability_analysis(cobra_model_oxic, fraction_of_optimum=0.9,
+    #                                   objective_sense='maximize',
+    #                                   reaction_list=[cobra_model_oxic.reactions.get_by_id('conc_lnv_fum_c')],
+    #                                   )
     
-    ##PART 9:
-    #-------
+    # #PART 9:
+    # -------
 	# perform thermodynamic FBA and FVA (Oxic condition only)
 
     # run TFBA
-    # cobra_model_oxic_tfba = tfba.tfba_conc_ln(cobra_model_oxic, 
-    #     metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
-    #     tcc_oxic.dG0_r,other_data.temperature,tcc_oxic.metabolomics_coverage,
-    #     tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
-    #     measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
-    #     use_measured_concentrations=True,use_measured_dG0_r=True, solver=None)
-    
-    # run TFVA
-    tfba.tfva_concentrations(cobra_model_oxic, 
+    cobra_model_copy = cobra_model_oxic.copy()
+    tfba.tfba_conc_ln(cobra_model_copy, 
         metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
         tcc_oxic.dG0_r,other_data.temperature,tcc_oxic.metabolomics_coverage,
         tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
         measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
-        use_measured_concentrations=True,use_measured_dG0_r=True, reaction_list=['conc_lnv_fum_c'],fraction_of_optimum=1.0, solver=None,
+        use_measured_concentrations=True,use_measured_dG0_r=True, solver='glpk',)
+    
+    # run TFVA
+    cobra_model_copy = cobra_model_oxic.copy()
+    tfba.tfva(cobra_model_copy, 
+        metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
+        tcc_oxic.dG0_r,other_data.temperature,tcc_oxic.metabolomics_coverage,
+        tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
+        measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
+        use_measured_concentrations=True,use_measured_dG0_r=True, reaction_list=['conc_lnv_fum_c'],fraction_of_optimum=1.0, solver='glpk',
+        objective_sense="maximize")
+
+    cobra_model_copy = cobra_model_oxic.copy()
+    tfba.tfva_dG_r(cobra_model_copy, 
+        metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
+        tcc_oxic.dG0_r,other_data.temperature,tcc_oxic.metabolomics_coverage,
+        tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
+        measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
+        use_measured_concentrations=True,use_measured_dG0_r=True, reaction_list=['conc_lnv_fum_c'],fraction_of_optimum=1.0, solver='glpk',
+        objective_sense="maximize")
+
+    cobra_model_copy = cobra_model_oxic.copy()
+    tfba.tfva_concentrations(cobra_model_copy, 
+        metabolomics_data_oxic.measured_concentrations, metabolomics_data_oxic.estimated_concentrations,
+        tcc_oxic.dG0_r,other_data.temperature,tcc_oxic.metabolomics_coverage,
+        tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
+        measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
+        use_measured_concentrations=True,use_measured_dG0_r=True, reaction_list=['conc_lnv_fum_c'],fraction_of_optimum=1.0, solver='glpk',
         objective_sense="maximize")
     tfba.analyze_tfva_results(flux_threshold=1e-6)
     tfba.export_tfva_concentrations_data(filename)
@@ -160,8 +181,9 @@ def _main_():
     # NOTE: requires optGpSampler
     
     # run Tsampling
+    data_dir = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo'
     sampling = optGpSampler_sampling(data_dir_I = data_dir);
-    simulation_id_I = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_oxic_ta'
+    simulation_id_I = 'aerobicAnaerobic01_oxic_tsampling'
     filename_model = simulation_id_I + '.json';
     filename_script = simulation_id_I + '.py';
     filename_points = simulation_id_I + '_points' + '.json';
@@ -172,9 +194,9 @@ def _main_():
         filename_points=filename_points,
         filename_warmup=filename_warmup,
         solver_id_I = 'optGpSampler',
-        n_points_I = simulation_parameters['n_points'],
-        n_steps_I = simulation_parameters['n_steps'],
-        n_threads_I = 2);
+        n_points_I = 2*len(cobra_model_oxic.reactions),
+        n_steps_I = 5000,
+        n_threads_I = 2)
     
     ##PART 11:
     #-------
@@ -189,9 +211,9 @@ def _main_():
     # check if the model contains loops
     #loops_bool = self.sampling.check_loops();
     sampling.simulate_loops(
-        data_fva=self.settings['workspace_data'] + '/loops_fva_tmp.json',
-        solver_I = simulation_parameters['solver_id']);
-    sampling.find_loops(data_fva=self.settings['workspace_data'] + '/loops_fva_tmp.json');
+        data_fva='/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/loops_fva_tmp.json',
+        solver_I = 'optGpSampler');
+    sampling.find_loops(data_fva='/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/loops_fva_tmp.json');
     sampling.remove_loopsFromPoints();
     # calculate the flux descriptive statistics
     sampling.descriptive_statistics(points_I='flux');

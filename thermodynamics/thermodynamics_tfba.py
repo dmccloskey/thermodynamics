@@ -564,10 +564,11 @@ class thermodynamics_tfba():
         cobra_model_copy.solver = 'glpk'
         cobra_model_copy.optimize()
         return cobra_model_copy
+
     def tfba_conc_ln(self,cobra_model_irreversible, measured_concentration, estimated_concentration, 
         dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,
         measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
-        use_measured_concentrations=True,use_measured_dG0_r=True, solver=None):
+        use_measured_concentrations=True,use_measured_dG0_r=True, solver='glpk'):
         '''performs thermodynamic flux balance analysis with bounds on metabolite activity insteady of dG_r'''
 
         """based on the method described in 10.1529/biophysj.106.093138
@@ -594,16 +595,14 @@ class thermodynamics_tfba():
         zi is a binary variable, zi {0,1}
         K is always large enough such that dG_ri-K<0 or K>dG_ri
         """    
-        # copy the model:
-        cobra_model_copy = cobra_model_irreversible.copy();
         # add constraints
         self._add_conc_ln_constraints(cobra_model_copy,measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, 
             measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,
             use_measured_concentrations,use_measured_dG0_r);
         # optimize
-        cobra_model_copy.solver = 'glpk'
+        cobra_model_copy.solver = solver
         cobra_model_copy.optimize()
-        return cobra_model_copy
+
     def tfva(self, cobra_model_irreversible, dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99, use_measured_dG_r=True,
              reaction_list=None,fraction_of_optimum=1.0, solver=None,
              objective_sense="maximize", **solver_args):
@@ -623,54 +622,23 @@ class thermodynamics_tfba():
             If None is given, the default solver will be used.
 
         """
-        # copy the model:
-        cobra_model_copy = cobra_model_irreversible.copy();
-        reactions_copy = [r for r in cobra_model_copy.reactions];
-        if reaction_list is None and "the_reactions" in solver_args:
-            reaction_list = solver_args.pop("the_reactions")
-            from warnings import warn
-            warn("the_reactions is deprecated. Please use reaction_list=")
-        if reaction_list is None:
-            reaction_list = [r for r in cobra_model_copy.reactions];
-        else:
-            reaction_list = [cobra_model_copy.reactions.get_by_id(i) if isinstance(i, string_types) else i for i in reaction_list]
+        reaction_list = [r for r in cobra_model_copy.reactions]
         # add dG_r constraints: # adding constraints here is slower!
         self._add_dG_r_constraints(cobra_model_copy,dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,use_measured_dG_r);
 
-        solver = solver_dict[get_solver_name() if solver is None else solver]
-        lp = solver.create_problem(cobra_model_copy)
-        solver.solve_problem(lp, objective_sense=objective_sense)
-        solution = solver.format_solution(lp, cobra_model_copy)
-        if solution.status != "optimal":
-            raise ValueError("TFVA requires the solution status to be optimal, not "
-                             + solution.status)
-        # set all objective coefficients to 0
-        for i, r in enumerate(cobra_model_copy.reactions):
-            if r.objective_coefficient != 0 and r in reactions_copy: # check that we are not messing with added variables from dG_r constraints
-                f = solution.x_dict[r.id]
-                new_bounds = (f * fraction_of_optimum, f)
-                solver.change_variable_bounds(lp, i, min(new_bounds), max(new_bounds))
-                solver.change_variable_objective(lp, i, 0.)
-        ## add dG_r constraints: # adding constraints here is faster!
-        #self._add_dG_r_constraints(cobra_model_copy,dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,use_measured_dG_r);
-        # perform fva
-        for r in reaction_list:
-            ## print reaction for debugging
-            #print 'TFVA for rxn ' + r.id
-            i = cobra_model_copy.reactions.index(r)
-            self.tfva_data[r.id] = {}
-            solver.change_variable_objective(lp, i, 1.)
-            solver.solve_problem(lp, objective_sense="maximize", **solver_args)
-            self.tfva_data[r.id]["flux_ub"] = solver.get_objective_value(lp)
-            solver.solve_problem(lp, objective_sense="minimize", **solver_args)
-            self.tfva_data[r.id]["flux_lb"] = solver.get_objective_value(lp)
-            self.tfva_data[r.id]['flux_units']= 'mmol*gDW-1*hr-1';
-            # revert the problem to how it was before
-            solver.change_variable_objective(lp, i, 0.)
+        from cobra.flux_analysis import flux_variability_analysis
+        fva_data = flux_variability_analysis(cobra_model_oxic, fraction_of_optimum=0.9,
+                                        objective_sense='maximize',
+                                        reaction_list=reaction_list,
+                                        )
+        self.tfva_data = dict(zip(list(fva_data.index),fva_data.to_dict('records')))
 
-    def tfva_dG_r(self, cobra_model_irreversible, dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99, use_measured_dG_r=True,
-             reaction_list=None,fraction_of_optimum=1.0, solver=None,
-             objective_sense="maximize", **solver_args):
+    def tfva_dG_r(self, cobra_model_irreversible, dG_r, metabolomics_coverage, 
+        dG_r_coverage, thermodynamic_consistency_check, 
+        measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99, 
+        use_measured_dG_r=True,
+        reaction_list=None,fraction_of_optimum=1.0, solver=None,
+        objective_sense="maximize", **solver_args):
         """performs thermodynamic dG_r variability analysis to find max/min dG_r values
 
         cobra_model : :class:`~cobra.core.Model`:
@@ -687,50 +655,15 @@ class thermodynamics_tfba():
             If None is given, the default solver will be used.
 
         """
-        # copy the model:
-        cobra_model_copy = cobra_model_irreversible.copy();
-        reactions_copy = [r for r in cobra_model_copy.reactions];
-        if reaction_list is None and "the_reactions" in solver_args:
-            reaction_list = solver_args.pop("the_reactions")
-            from warnings import warn
-            warn("the_reactions is deprecated. Please use reaction_list=")
-        if reaction_list is None:
-            reaction_list = [r for r in cobra_model_copy.reactions];
-        else:
-            reaction_list = [cobra_model_copy.reactions.get_by_id(i) if isinstance(i, string_types) else i for i in reaction_list]
         # add dG_r constraints: # adding constraints here is slower!
-        dG_r_variables = self._add_dG_r_constraints(cobra_model_copy,dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,use_measured_dG_r,True);
+        dG_r_variables = self._add_dG_r_constraints(cobra_model_irreversible,dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,use_measured_dG_r,True);
 
-        solver = solver_dict[get_solver_name() if solver is None else solver]
-        lp = solver.create_problem(cobra_model_copy)
-        solver.solve_problem(lp, objective_sense=objective_sense)
-        solution = solver.format_solution(lp, cobra_model_copy)
-        if solution.status != "optimal":
-            raise ValueError("TFVA requires the solution status to be optimal, not "
-                             + solution.status)
-        # set all objective coefficients to 0
-        for i, r in enumerate(cobra_model_copy.reactions):
-            if r.objective_coefficient != 0:
-                f = solution.x_dict[r.id]
-                new_bounds = (f * fraction_of_optimum, f)
-                solver.change_variable_bounds(lp, i, min(new_bounds), max(new_bounds))
-                solver.change_variable_objective(lp, i, 0.)
-        ## add dG_r constraints: # adding constraints here is faster!
-        #dG_r_variables = self._add_dG_r_constraints(cobra_model_copy,dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,use_measured_dG_r,True);
-        # perform tfva on dG_r
-        for r in list(dG_r_variables.values()):
-            # print reaction for debugging
-            print('TFVA_dG_r for rxn ' + r.id)
-            i = cobra_model_copy.reactions.index(r)
-            self.tfva_dG_r_data[r.id] = {}
-            solver.change_variable_objective(lp, i, 1.)
-            solver.solve_problem(lp, objective_sense="maximize", **solver_args)
-            self.tfva_dG_r_data[r.id]["dG_r_ub"] = solver.get_objective_value(lp)
-            solver.solve_problem(lp, objective_sense="minimize", **solver_args)
-            self.tfva_dG_r_data[r.id]["dG_r_lb"] = solver.get_objective_value(lp)
-            self.tfva_dG_r_data[r.id]['flux_units']= 'mmol*gDW-1*hr-1';
-            # revert the problem to how it was before
-            solver.change_variable_objective(lp, i, 0.)
+        from cobra.flux_analysis import flux_variability_analysis
+        fva_data = flux_variability_analysis(cobra_model_oxic, fraction_of_optimum=0.9,
+                                        objective_sense='maximize',
+                                        reaction_list=dG_r_variables,
+                                        )
+        self.tfva_data = dict(zip(list(fva_data.index),fva_data.to_dict('records')))
 
     def tfva_concentrations(self, cobra_model_irreversible, measured_concentration, estimated_concentration, 
         dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,
@@ -738,52 +671,17 @@ class thermodynamics_tfba():
         use_measured_concentrations=True,use_measured_dG0_r=True, reaction_list=None,fraction_of_optimum=1.0, solver=None,
         objective_sense="maximize", **solver_args):
         '''performs thermodynamic metabolite concentration variability analysis'''
-        # copy the model:
-        cobra_model_copy = cobra_model_irreversible.copy();
-        reactions_copy = [r for r in cobra_model_copy.reactions];
-        if reaction_list is None and "the_reactions" in solver_args:
-            reaction_list = solver_args.pop("the_reactions")
-            from warnings import warn
-            warn("the_reactions is deprecated. Please use reaction_list=")
-        if reaction_list is None:
-            reaction_list = [r for r in cobra_model_copy.reactions];
-        else:
-            reaction_list = [cobra_model_copy.reactions.get_by_id(i) if isinstance(i, string_types) else i for i in reaction_list]
+
         # add constraints
         conc_ln_variables = self._add_conc_ln_constraints(cobra_model_copy,measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,
                         use_measured_concentrations,use_measured_dG0_r,True,False);
 
-        solver = solver_dict[get_solver_name() if solver is None else solver]
-        lp = solver.create_problem(cobra_model_copy)
-        solver.solve_problem(lp, objective_sense=objective_sense)
-        solution = solver.format_solution(lp, cobra_model_copy)
-        if solution.status != "optimal":
-            raise ValueError("TFVA requires the solution status to be optimal, not "
-                                + solution.status)
-        # set all objective coefficients to 0
-        for i, r in enumerate(cobra_model_copy.reactions):
-            if r.objective_coefficient != 0:
-                f = solution.x_dict[r.id]
-                new_bounds = (f * fraction_of_optimum, f)
-                solver.change_variable_bounds(lp, i, min(new_bounds), max(new_bounds))
-                solver.change_variable_objective(lp, i, 0.)
-        ## add constraints
-        #conc_ln_variables = self._add_conc_ln_constraints(cobra_model_copy,measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,
-        #             use_measured_concentrations,use_measured_dG0_r, True,False);
-        # perform tfva on dG_r
-        for r in list(conc_ln_variables.values()):
-            # print reaction for debugging
-            print('TFVA_dG_r for met ' + r.id)
-            i = cobra_model_copy.reactions.index(r)
-            self.tfva_concentration_data[r.id] = {}
-            solver.change_variable_objective(lp, i, 1.)
-            solver.solve_problem(lp, objective_sense="maximize", **solver_args)
-            self.tfva_concentration_data[r.id]["concentration_ub"] = exp(solver.get_objective_value(lp)) #convert from ln
-            solver.solve_problem(lp, objective_sense="minimize", **solver_args)
-            self.tfva_concentration_data[r.id]["concentration_lb"] = exp(solver.get_objective_value(lp)) #convert from ln
-            self.tfva_concentration_data[r.id]['flux_units']= 'M';
-            # revert the problem to how it was before
-            solver.change_variable_objective(lp, i, 0.)
+        from cobra.flux_analysis import flux_variability_analysis
+        fva_data = flux_variability_analysis(cobra_model_oxic, fraction_of_optimum=0.9,
+                                        objective_sense='maximize',
+                                        reaction_list=conc_ln_variables,
+                                        )
+        self.tfva_data = dict(zip(list(fva_data.index),fva_data.to_dict('records')))
 
     def analyze_tfva_results(self,flux_threshold=1e-6):
         '''Determine what reactions are

@@ -309,12 +309,12 @@ class thermodynamics_tfba():
             If None is given, the default solver will be used.
 
         """
-        reaction_list = [r for r in cobra_model_copy.reactions]
+        reaction_list = [r for r in cobra_model_irreversible.reactions]
         # add dG_r constraints: # adding constraints here is slower!
-        self._add_dG_r_constraints(cobra_model_copy,dG_r, dG_r_coverage, thermodynamic_consistency_check, use_measured_dG_r);
+        self._add_dG_r_constraints(cobra_model_irreversible,dG_r, dG_r_coverage, thermodynamic_consistency_check, use_measured_dG_r);
 
         from cobra.flux_analysis import flux_variability_analysis
-        fva_data = flux_variability_analysis(cobra_model_oxic, fraction_of_optimum=0.9,
+        fva_data = flux_variability_analysis(cobra_model_irreversible, fraction_of_optimum=0.9,
                                         objective_sense='maximize',
                                         reaction_list=reaction_list,
                                         )
@@ -345,11 +345,11 @@ class thermodynamics_tfba():
         dG_r_variables = self._add_dG_r_constraints(cobra_model_irreversible,dG_r, dG_r_coverage, thermodynamic_consistency_check, use_measured_dG_r,True);
 
         from cobra.flux_analysis import flux_variability_analysis
-        fva_data = flux_variability_analysis(cobra_model_oxic, fraction_of_optimum=0.9,
+        fva_data = flux_variability_analysis(cobra_model_irreversible, fraction_of_optimum=0.9,
                                         objective_sense='maximize',
-                                        reaction_list=dG_r_variables,
+                                        reaction_list=list(dG_r_variables.values()),
                                         )
-        self.tfva_data = dict(zip(list(fva_data.index),fva_data.to_dict('records')))
+        self.tfva_dG_r_data = dict(zip(list(fva_data.index),fva_data.to_dict('records')))
 
     def tfva_concentrations(self, cobra_model_irreversible, measured_concentration, estimated_concentration, 
         dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,
@@ -359,15 +359,15 @@ class thermodynamics_tfba():
         '''performs thermodynamic metabolite concentration variability analysis'''
 
         # add constraints
-        conc_ln_variables = self._add_conc_ln_constraints(cobra_model_copy,measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,
+        conc_ln_variables = self._add_conc_ln_constraints(cobra_model_irreversible,measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,
                         use_measured_concentrations,use_measured_dG0_r,True,False);
 
         from cobra.flux_analysis import flux_variability_analysis
-        fva_data = flux_variability_analysis(cobra_model_oxic, fraction_of_optimum=0.9,
+        fva_data = flux_variability_analysis(cobra_model_irreversible, fraction_of_optimum=0.9,
                                         objective_sense='maximize',
-                                        reaction_list=conc_ln_variables,
+                                        reaction_list=list(conc_ln_variables.values()),
                                         )
-        self.tfva_data = dict(zip(list(fva_data.index),fva_data.to_dict('records')))
+        self.tfva_concentrations_data = dict(zip(list(fva_data.index),fva_data.to_dict('records')))
 
     def analyze_tfva_results(self,flux_threshold=1e-6):
         '''Determine what reactions are

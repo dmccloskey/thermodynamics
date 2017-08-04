@@ -150,20 +150,28 @@ def _main_():
     #     measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
     #     use_measured_concentrations=True,use_measured_dG0_r=True, solver='glpk',)
     
-    # # run TFVA
-    # cobra_model_copy = cobra_model_oxic.copy()
-    # tfba.tfva(cobra_model_copy, 
-    #     tcc_oxic.dG0_r,other_data.temperature,
-    #     tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
-    #     use_measured_dG0_r=True, reaction_list=None,fraction_of_optimum=1.0, solver='glpk',
-    #     objective_sense="maximize")
+    # run TFVA
+    data_tfva_oxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_oxic_irrev_tfva.csv'
+    data_tfva_analysis_oxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_oxic_irrev_tfva_analysis.csv'
+    data_tfva_dG_r_oxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_oxic_orrev_tfva_dG_r.json'
+    data_tfva_concentrations_oxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_oxic_irrev_tfva_concentrations.json'
+    cobra_model_copy = cobra_model_oxic.copy()
+    tfba.tfva(cobra_model_copy, 
+        tcc_oxic.dG0_r,other_data.temperature,
+        tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
+        use_measured_dG0_r=True, reaction_list=None,fraction_of_optimum=1.0, solver='glpk',
+        objective_sense="maximize")
+    tfba.export_tfva_data(data_tfva_oxic)
+    tfba.analyze_tfva_results(flux_threshold=1e-6)
+    tfba.export_tfva_analysis(data_tfva_analysis_oxic)
 
-    # cobra_model_copy = cobra_model_oxic.copy()
-    # tfba.tfva_dG_r(cobra_model_copy, 
-    #     tcc_oxic.dG0_r,other_data.temperature,
-    #     tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
-    #     use_measured_dG0_r=True, fraction_of_optimum=1.0, solver='glpk',
-    #     objective_sense="maximize")
+    cobra_model_copy = cobra_model_oxic.copy()
+    tfba.tfva_dG_r(cobra_model_copy, 
+        tcc_oxic.dG0_r,other_data.temperature,
+        tcc_oxic.dG_r_coverage, tcc_oxic.thermodynamic_consistency_check,
+        use_measured_dG0_r=True, fraction_of_optimum=1.0, solver='glpk',
+        objective_sense="maximize")
+    tfba.export_tfva_dG_r_data(data_tfva_dG_r_oxic)
 
     cobra_model_copy = cobra_model_oxic.copy()
     tfba.tfva_concentrations(cobra_model_copy, 
@@ -173,32 +181,30 @@ def _main_():
         measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
         use_measured_concentrations=True,use_measured_dG0_r=True,fraction_of_optimum=1.0, solver='glpk',
         objective_sense="maximize")
-    tfba.analyze_tfva_results(flux_threshold=1e-6)
-    tfba.export_tfva_concentrations_data(filename)
-    tfba.export_tfva_analysis(filename)
+    tfba.export_tfva_concentrations_data(data_tfva_concentrations_oxic)
     
-    ##PART 10:
-    #-------
-	# perform thermodynamic Tsampling (Oxic condition only)
-    # NOTE: requires optGpSampler
+    # ##PART 10:
+    # #-------
+	# # perform thermodynamic Tsampling (Oxic condition only)
+    # # NOTE: requires optGpSampler
     
-    # run Tsampling
-    data_dir = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo'
-    sampling = optGpSampler_sampling(data_dir_I = data_dir);
-    simulation_id_I = 'aerobicAnaerobic01_oxic_tsampling'
-    filename_model = simulation_id_I + '.json';
-    filename_script = simulation_id_I + '.py';
-    filename_points = simulation_id_I + '_points' + '.json';
-    filename_warmup = simulation_id_I + '_warmup' + '.json';
-    sampling.export_sampling_optGpSampler(cobra_model=cobra_model_oxic,
-        filename_model=filename_model,
-        filename_script=filename_script,
-        filename_points=filename_points,
-        filename_warmup=filename_warmup,
-        solver_id_I = 'optGpSampler',
-        n_points_I = 2*len(cobra_model_oxic.reactions),
-        n_steps_I = 5000,
-        n_threads_I = 2)
+    # # run Tsampling
+    # data_dir = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo'
+    # sampling = optGpSampler_sampling(data_dir_I = data_dir);
+    # simulation_id_I = 'aerobicAnaerobic01_oxic_tsampling'
+    # filename_model = simulation_id_I + '.json';
+    # filename_script = simulation_id_I + '.py';
+    # filename_points = simulation_id_I + '_points' + '.json';
+    # filename_warmup = simulation_id_I + '_warmup' + '.json';
+    # sampling.export_sampling_optGpSampler(cobra_model=cobra_model_oxic,
+    #     filename_model=filename_model,
+    #     filename_script=filename_script,
+    #     filename_points=filename_points,
+    #     filename_warmup=filename_warmup,
+    #     solver_id_I = 'optGpSampler',
+    #     n_points_I = 2*len(cobra_model_oxic.reactions),
+    #     n_steps_I = 5000,
+    #     n_threads_I = 2)
     
     ##PART 11:
     #-------

@@ -235,6 +235,7 @@ class test_thermodynamics():
         self.tcc.change_feasibleReactions(inconsistent_tcc_I)    
         # diagnose tfba constraints
         tfba = thermodynamics_tfba()
+        # test concentration constraints
         thermodynamic_constraints_check,\
             inconsistent_tcc,diagnose_variables_1,\
             diagnose_variables_2,\
@@ -244,8 +245,8 @@ class test_thermodynamics():
                 self.tcc.dG0_r, self.other_data.pH,self.other_data.temperature,
                 self.tcc.metabolomics_coverage,
                 self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
-                0.5, 0.99, n_checks_I = 2,
-                diagnose_solver_I='glpk',diagnose_threshold_I=30,diagnose_break_I=0.1)
+                n_checks_I = 2,
+                diagnose_solver_I='glpk',diagnose_threshold_I=29,diagnose_break_I=0.1)
         assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)
         assert(diagnose_variables_1['ENO']['solution_after'] == 30.0)
         assert(diagnose_variables_2['ENO']['solution_before'] == 30.0)
@@ -260,6 +261,12 @@ class test_thermodynamics():
         #perform thermodynamic FBA
         tfba = thermodynamics_tfba()
 
+        # remove inconsistent reactions
+        inconsistent_tcc_I = ['ENO', 'EX_glc__D_e', 'EX_h_e', 'EX_lac__D_e', 'FBA', 'GAPD', 'GLCpts', 'LDH_D', 'PFK', 'PGI', 'PGK',
+        'PGM', 'PYK', 'TPI', 'ENO_reverse', 'EX_glc__D_e_reverse', 'EX_h_e_reverse', 'FBA_reverse',
+        'GAPD_reverse', 'LDH_D_reverse', 'PGI_reverse', 'PGK_reverse', 'PGM_reverse', 'TPI_reverse']
+        self.tcc.change_feasibleReactions(inconsistent_tcc_I)
+
         # run TFBA
         cobra_model_copy = self.cobra_model.copy()
         tfba.tfba(cobra_model_copy,
@@ -267,7 +274,7 @@ class test_thermodynamics():
             self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
             use_measured_dG_r=True, solver='glpk',)
         assert(cobra_model_copy.objective.value == 12.585)
-        assert(tfba.tfba_data['ENO'] == 8.3935919770788487)
+        assert(tfba.tfba_data['ENO'] == 8.3900000000000006)
 
         cobra_model_copy = self.cobra_model.copy()
         tfba.tfba_conc_ln(cobra_model_copy, 
@@ -277,7 +284,7 @@ class test_thermodynamics():
             measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
             use_measured_concentrations=True,use_measured_dG0_r=True, solver='glpk',)
         assert(cobra_model_copy.objective.value == 12.585)
-        assert(tfba.tfba_data['ENO'] == 8.5998048528709976)
+        assert(tfba.tfba_data['ENO'] == 8.5962128757921494)
     
     def test_tfva(self):
         # run TFVA
@@ -287,16 +294,17 @@ class test_thermodynamics():
         data_tfva_analysis = data_dir + 'test_tfva_analysis.csv'
         data_tfva_dG_r = data_dir + 'test_tfva_dG_r.json'
         data_tfva_concentrations = data_dir + 'test_tfva_concentrations.json'
-        cobra_model_copy = cobra_model.copy()
+        cobra_model_copy = self.cobra_model.copy()
         tfba.tfva(cobra_model_copy, 
             self.tcc.dG0_r,self.other_data.temperature,
             self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
             use_measured_dG0_r=True, reaction_list=None,fraction_of_optimum=1.0, solver='glpk',
             objective_sense="maximize")
-        assert(tfba.tfva_data['ENO'] == 30.0)
+        assert(tfba.fva_data['ENO']['maximum'] == 1000.0)
+        assert(tfba.fva_data['ENO']['minimum'] == 18.0)
         tfba.export_tfva_data(data_tfva)
         tfba.analyze_tfva_results(flux_threshold=1e-6)
-        assert(tfba.tfva_data['ENO'] == 30.0)
+        assert(tfba.tfva_analysis['ENO'] == 30.0)
         tfba.export_tfva_analysis(data_tfva_analysis)
 
         cobra_model_copy = self.cobra_model.copy()
@@ -305,8 +313,9 @@ class test_thermodynamics():
             self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
             use_measured_dG0_r=True, fraction_of_optimum=1.0, solver='glpk',
             objective_sense="maximize")
+        assert(tfba.tfva_dG_r_data['dGr_rv_ENO']['maximum'] == 1000.0)
+        assert(tfba.tfva_dG_r_data['dGr_rv_ENO']['minimum'] == 18.0)
         tfba.export_tfva_dG_r_data(data_tfva_dG_r)
-        assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)
 
         cobra_model_copy = self.cobra_model.copy()
         tfba.tfva_concentrations(cobra_model_copy, 
@@ -316,8 +325,9 @@ class test_thermodynamics():
             measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
             use_measured_concentrations=True,use_measured_dG0_r=True,fraction_of_optimum=1.0, solver='glpk',
             objective_sense="maximize")
+        assert(tfba.tfva_concentration_data['conc_lnv_pep_c']['maximum'] == 1000.0)
+        assert(tfba.tfva_concentration_data['conc_lnv_pep_c']['minimum'] == 18.0)
         tfba.export_tfva_concentrations_data(data_tfva_concentrations)
-        assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)
     
     def test_tsampling(self):
         # perform thermodynamic Tsampling

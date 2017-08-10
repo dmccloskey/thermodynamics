@@ -318,7 +318,7 @@ class thermodynamics_tfba():
         self._add_dG_r_constraints(cobra_model_irreversible,dG_r, dG_r_coverage, thermodynamic_consistency_check, use_measured_dG_r);
 
         from cobra.flux_analysis import flux_variability_analysis
-        fva_data = flux_variability_analysis(cobra_model_irreversible, fraction_of_optimum=0.9,
+        fva_data = flux_variability_analysis(cobra_model_irreversible, fraction_of_optimum=1.0,
                                         objective_sense='maximize',
                                         reaction_list=reaction_list,
                                         )

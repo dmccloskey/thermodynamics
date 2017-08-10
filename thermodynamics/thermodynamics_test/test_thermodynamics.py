@@ -91,7 +91,7 @@ class test_thermodynamics():
         assert(other_data.temperature['e']['temperature_units'] == 'K')
         assert(other_data.temperature['p']['temperature'] == 310.15)
         assert(other_data.temperature['p']['temperature_units'] == 'K')
-        self.other_data = None
+        self.other_data = other_data
 
     def test_dG_f_data(self):
         # generate dG_f data for all model compounds
@@ -99,14 +99,32 @@ class test_thermodynamics():
         # export/load and check the dG_f data
         data_dG0_transformed = data_dir + '/test_dG_f01.json'
         dG_f_data = thermodynamics_dG_f_data(id2KEGGID_filename_I=data_dir + '/id2KEGGID.csv')
+        assert(dG_f_data.KEGGID2id['C00234'] == '10fthf')
+        assert(dG_f_data.id2KEGGID['10fthf'] == 'C00234')
         dG_f_data.get_transformed_dG_f(data_dir + '/compounds_dG0_f.json',
             self.cobra_model,self.other_data.pH,
             self.other_data.temperature,self.other_data.ionic_strength
             ) # adjust the non-transformed dG0_f data to physiological pH, temperature, and ionic strength
+        assert(dG_f_data.dG0_f['C00236']['dG_f'] == -2354.086788)
+        assert(dG_f_data.dG0_f['C00236']['dG_f_units'] == 'kJ/mol')
+        assert(dG_f_data.dG0_f['C00236']['dG_f_var'] == 17.8)
+        assert(dG_f_data.dG_f['13dpg_c']['dG_f'] == -2094.9687955266982)
+        assert(dG_f_data.dG_f['13dpg_c']['dG_f_units'] == 'kJ/mol')
+        assert(dG_f_data.dG_f['13dpg_c']['dG_f_var'] == 17.8)
         dG_f_data.export_dG_f(data_dG0_transformed) # save results for later use
         dG_f_data.import_dG_f(data_dG0_transformed)
         dG_f_data.format_dG_f()
+        assert(dG_f_data.measured_dG_f['13dpg_c']['dG_f'] == -2094.9687955266982)
+        assert(dG_f_data.measured_dG_f['13dpg_c']['dG_f_units'] == 'kJ/mol')
+        assert(dG_f_data.measured_dG_f['13dpg_c']['dG_f_var'] == 17.8)
+        assert(dG_f_data.measured_dG_f['13dpg_c']['dG_f_lb'] == -2099.187800148644)
+        assert(dG_f_data.measured_dG_f['13dpg_c']['dG_f_ub'] == -2090.7497909047524)        
         dG_f_data.generate_estimated_dG_f(self.cobra_model)
+        assert(dG_f_data.estimated_dG_f['13dpg_c']['dG_f'] == 0)
+        assert(dG_f_data.estimated_dG_f['13dpg_c']['dG_f_units'] == 'kJ/mol')
+        assert(dG_f_data.estimated_dG_f['13dpg_c']['dG_f_var'] == 1000000000000.0)
+        assert(dG_f_data.estimated_dG_f['13dpg_c']['dG_f_lb'] == -1000000.0)
+        assert(dG_f_data.estimated_dG_f['13dpg_c']['dG_f_ub'] == 1000000.0)  
         dG_f_data.check_data()
         self.dG_f_data = dG_f_data
 
@@ -115,8 +133,23 @@ class test_thermodynamics():
         data_concentrations = data_dir + '/test_geo01.json'
         metabolomics_data = thermodynamics_metabolomicsData()
         metabolomics_data.import_metabolomics_data(data_concentrations)
+        assert(metabolomics_data.measured_concentrations['pep']['concentration'] == 0.000122661)  
+        assert(metabolomics_data.measured_concentrations['pep']['concentration_lb'] == 2.73e-05)  
+        assert(metabolomics_data.measured_concentrations['pep']['concentration_ub'] == 0.000551246)  
+        assert(metabolomics_data.measured_concentrations['pep']['concentration_var'] == 1.32798777)  
+        assert(metabolomics_data.measured_concentrations['pep']['concentration_units'] == 'M')  
         metabolomics_data.format_metabolomics_data() # add compartment identifiers to metabolite ids
+        assert(metabolomics_data.measured_concentrations['pep_c']['concentration'] == 0.000122661)  
+        assert(metabolomics_data.measured_concentrations['pep_c']['concentration_lb'] == 2.73e-05)  
+        assert(metabolomics_data.measured_concentrations['pep_c']['concentration_ub'] == 0.000551246)  
+        assert(metabolomics_data.measured_concentrations['pep_c']['concentration_var'] == 1.32798777)  
+        assert(metabolomics_data.measured_concentrations['pep_c']['concentration_units'] == 'M')  
         metabolomics_data.generate_estimated_metabolomics_data(self.cobra_model)
+        assert(metabolomics_data.estimated_concentrations['pep_c']['concentration'] == 5.000000000000004e-05)  
+        assert(metabolomics_data.estimated_concentrations['pep_c']['concentration_lb'] == 1.5811388300841896e-06)  
+        assert(metabolomics_data.estimated_concentrations['pep_c']['concentration_ub'] == 0.0015811388300841897)  
+        assert(metabolomics_data.estimated_concentrations['pep_c']['concentration_var'] == 176.21560953198042)  
+        assert(metabolomics_data.estimated_concentrations['pep_c']['concentration_units'] == 'M')  
         self.metabolomics_data = metabolomics_data
 
     def test_dG_r_data(self):
@@ -129,17 +162,27 @@ class test_thermodynamics():
         # tcc.import_dG0_r_json(data_dG0)
         # tcc.import_dG_r_json(data_dG)
         # tcc.import_tcc_json(data_tcc)
-        tcc.calculate_dG0_r(self.cobra_model, dG_f_data.measured_dG_f, dG_f_data.estimated_dG_f, other_data.temperature) # calculate the change in free energy of reaction without accounting for metabolite concentrations
-        tcc.calculate_dG_r(self.cobra_model,metabolomics_data.measured_concentrations, metabolomics_data.estimated_concentrations,
-                        other_data.pH, other_data.ionic_strength, other_data.temperature) # adjust the change in free energy of reaction for intracellular metabolite concentrations
-        tcc.check_thermodynamicConsistency(self.cobra_model,simulated_data.fva_data,
-                        metabolomics_data.measured_concentrations,
-                        metabolomics_data.estimated_concentrations,
-                        other_data.pH,other_data.ionic_strength,other_data.temperature) # check the thermodynamic consistency of the data
+        tcc.calculate_dG0_r(self.cobra_model, 
+            self.dG_f_data.measured_dG_f, self.dG_f_data.estimated_dG_f, 
+            self.other_data.temperature) # calculate the change in free energy of reaction without accounting for metabolite concentrations  
+        assert(metabolomics_data.estimated_concentrations['pep_c']['concentration_units'] == 'M')  
+        tcc.calculate_dG_r(self.cobra_model,self.metabolomics_data.measured_concentrations,
+            self.metabolomics_data.estimated_concentrations,
+            self.other_data.pH, self.other_data.ionic_strength, self.other_data.temperature) # adjust the change in free energy of reaction for intracellular metabolite concentrations  
+        assert(metabolomics_data.estimated_concentrations['pep_c']['concentration_units'] == 'M')  
+        tcc.check_thermodynamicConsistency(self.cobra_model,self.simulated_data.fva_data,
+            self.metabolomics_data.measured_concentrations,
+            self.metabolomics_data.estimated_concentrations,
+            self.other_data.pH,self.other_data.ionic_strength,self.other_data.temperature) # check the thermodynamic consistency of the data  
+        assert(metabolomics_data.estimated_concentrations['pep_c']['concentration_units'] == 'M')  
         tcc.export_dG0_r_json(data_dG0) # save for later use
         tcc.export_dG_r_json(data_dG) # save for later use
         tcc.export_tcc_json(data_tcc) # save for later use
-        tcc.export_summary(self.cobra_model,simulated_data.fva_data,data_ta) # write summary of the analysis to csv file
+        tcc.export_summary(self.cobra_model,self.simulated_data.fva_data,data_ta) # write summary of the analysis to csv file
+        tcc.import_dG0_r_json(data_dG0)
+        tcc.import_dG_r_json(data_dG)
+        tcc.import_tcc_json(data_tcc)
+        assert(metabolomics_data.estimated_concentrations['pep_c']['concentration_units'] == 'M') 
         self.tcc = tcc
 
     def test_dG_p_data(self):        

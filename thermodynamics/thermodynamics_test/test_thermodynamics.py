@@ -52,23 +52,23 @@ class test_thermodynamics():
         assert(np.isnan(simulated_data.sra_data['ENO']['gr_ratio']))
         assert(simulated_data.sra_data['H2Ot']['gr'] == 30.0)
         assert(simulated_data.sra_data['H2Ot']['gr_ratio'] == 1.0)
+        test_fva_data = simulated_data._convert_fluxBounds2var(simulated_data.fva_data)
+        assert(test_fva_data['ENO']['flux'] == 491.0)
+        assert(test_fva_data['ENO']['flux_var'] == 259081.0)
+        assert(test_fva_data['ENO']['flux_units'] == 'mmol*gDW-1*hr-1')
+        assert(test_fva_data['ENO']['flux_ub'] == 1000.0)
+        assert(test_fva_data['ENO']['flux_lb'] == 18.0)
         simulated_data.export_sra_data(data_srd) # save results for later use
         simulated_data.export_fva_data(data_fva) # save results for later use
         simulated_data.import_sra_data(data_srd)
         simulated_data.import_fva_data(data_fva)
-        assert(simulated_data.fva_data['ENO']['maximum'] == 1000.0)
-        assert(simulated_data.fva_data['ENO']['minimum'] == 18.0)
+        assert(simulated_data.fva_data['ENO']['flux_ub'] == 1000.0)
+        assert(simulated_data.fva_data['ENO']['flux_lb'] == 18.0)
         assert(np.isnan(simulated_data.sra_data['ENO']['gr']))
         assert(np.isnan(simulated_data.sra_data['ENO']['gr_ratio']))
         assert(simulated_data.sra_data['H2Ot']['gr'] == 30.0)
         assert(simulated_data.sra_data['H2Ot']['gr_ratio'] == 1.0)
         simulated_data.check_data()
-        assert(simulated_data.fva_data['ENO']['maximum'] == 1000.0)
-        assert(simulated_data.fva_data['ENO']['minimum'] == 18.0)
-        assert(np.isnan(simulated_data.sra_data['ENO']['gr']))
-        assert(np.isnan(simulated_data.sra_data['ENO']['gr_ratio']))
-        assert(simulated_data.sra_data['H2Ot']['gr'] == 30.0)
-        assert(simulated_data.sra_data['H2Ot']['gr_ratio'] == 1.0)
         self.simulated_data = simulated_data
 
     def test_otherData(self):

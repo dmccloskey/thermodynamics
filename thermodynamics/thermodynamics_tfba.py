@@ -246,14 +246,13 @@ class thermodynamics_tfba():
         zi is a binary variable, zi {0,1}
         K is always large enough such that dG_ri-K<0 or K>dG_ri
         """    
-        reaction_list = [r for r in cobra_model_irreversible.reactions]
+        reaction_list = [r.id for r in cobra_model_irreversible.reactions]
         # add constraints
         self._add_dG_r_constraints(cobra_model_irreversible,dG_r, dG_r_coverage, thermodynamic_consistency_check, use_measured_dG_r);
         # optimize
         cobra_model_irreversible.solver = solver
         solution = cobra_model_irreversible.optimize()
-        tfba_data = dict(zip(list(solution.fluxes.index),solution.fluxes.to_dict('records')))
-        self.tfba_data = tfba_data
+        self.tfba_data = {k:v for k,v in solution.fluxes.to_dict().items() if k in reaction_list}
 
     def tfba_conc_ln(self,cobra_model_irreversible, measured_concentration, estimated_concentration, 
         dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,
@@ -286,12 +285,14 @@ class thermodynamics_tfba():
         K is always large enough such that dG_ri-K<0 or K>dG_ri
         """    
         # add constraints
+        reaction_list = [r.id for r in cobra_model_irreversible.reactions]
         conc_ln_variables = self._add_conc_ln_constraints(cobra_model_irreversible,measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, 
             measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,
             use_measured_concentrations,use_measured_dG0_r);
         # optimize
         cobra_model_irreversible.solver = solver
-        cobra_model_irreversible.optimize()
+        solution = cobra_model_irreversible.optimize()
+        self.tfba_data = {k:v for k,v in solution.fluxes.to_dict().items() if k in reaction_list}
 
     def tfva(self, cobra_model_irreversible, dG_r, dG_r_coverage, thermodynamic_consistency_check, use_measured_dG_r=True,
              reaction_list=None,fraction_of_optimum=1.0, solver='glpk',

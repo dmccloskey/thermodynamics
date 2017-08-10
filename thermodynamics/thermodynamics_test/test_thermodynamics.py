@@ -266,7 +266,8 @@ class test_thermodynamics():
             self.tcc.dG0_r,self.other_data.temperature,
             self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
             use_measured_dG_r=True, solver='glpk',)
-        assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)
+        assert(cobra_model_copy.objective.value == 12.585)
+        assert(tfba.tfba_data['ENO'] == 8.3935919770788487)
 
         cobra_model_copy = self.cobra_model.copy()
         tfba.tfba_conc_ln(cobra_model_copy, 
@@ -275,7 +276,8 @@ class test_thermodynamics():
             self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
             measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
             use_measured_concentrations=True,use_measured_dG0_r=True, solver='glpk',)
-        assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)
+        assert(cobra_model_copy.objective.value == 12.585)
+        assert(tfba.tfba_data['ENO'] == 8.5998048528709976)
     
     def test_tfva(self):
         # run TFVA
@@ -291,10 +293,11 @@ class test_thermodynamics():
             self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
             use_measured_dG0_r=True, reaction_list=None,fraction_of_optimum=1.0, solver='glpk',
             objective_sense="maximize")
+        assert(tfba.tfva_data['ENO'] == 30.0)
         tfba.export_tfva_data(data_tfva)
         tfba.analyze_tfva_results(flux_threshold=1e-6)
+        assert(tfba.tfva_data['ENO'] == 30.0)
         tfba.export_tfva_analysis(data_tfva_analysis)
-        assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)
 
         cobra_model_copy = self.cobra_model.copy()
         tfba.tfva_dG_r(cobra_model_copy, 

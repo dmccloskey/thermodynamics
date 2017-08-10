@@ -1,0 +1,75 @@
+{
+    "ATPM": {
+        "gr": null,
+        "gr_ratio": null,
+        "method": "fba"
+    },
+    "D_LACt2": {
+        "gr": NaN,
+        "gr_ratio": NaN
+    },
+    "ENO": {
+        "gr": NaN,
+        "gr_ratio": NaN
+    },
+    "EX_glc__D_e": {
+        "gr": NaN,
+        "gr_ratio": NaN
+    },
+    "EX_h_e": {
+        "gr": NaN,
+        "gr_ratio": NaN
+    },
+    "EX_lac__D_e": {
+        "gr": NaN,
+        "gr_ratio": NaN
+    },
+    "FBA": {
+        "gr": NaN,
+        "gr_ratio": NaN
+    },
+    "GAPD": {
+        "gr": NaN,
+        "gr_ratio": NaN
+    },
+    "GLCpts": {
+        "gr": NaN,
+        "gr_ratio": NaN
+    },
+    "H2Ot": {
+        "gr": 30.0,
+        "gr_ratio": 1.0
+    },
+    "LDH_D": {
+        "gr": NaN,
+        "gr_ratio": NaN
+    },
+    "PFK": {
+        "gr": NaN,
+        "gr_ratio": NaN
+    },
+    "PGI": {
+        "gr": NaN,
+        "gr_ratio": NaN
+    },
+    "PGK": {
+        "gr": NaN,
+        "gr_ratio": NaN
+    },
+    "PGM": {
+        "gr": NaN,
+        "gr_ratio": NaN
+    },
+    "PIt2r": {
+        "gr": 30.0,
+        "gr_ratio": 1.0
+    },
+    "PYK": {
+        "gr": NaN,
+        "gr_ratio": NaN
+    },
+    "TPI": {
+        "gr": NaN,
+        "gr_ratio": NaN
+    }
+}

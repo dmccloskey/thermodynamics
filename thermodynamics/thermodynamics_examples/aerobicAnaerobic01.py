@@ -91,7 +91,7 @@ def _main_():
     metabolomics_data_oxic.generate_estimated_metabolomics_data(cobra_model_oxic)
 
     #PART 5: Working
-    -------
+    #-------
     # calculate dG_r and perform a consistency check based on model simulations for anoxic conditions
     data_ta_anoxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_anoxic_ta.csv'
     data_dG0_anoxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_anoxic_dG0.json'

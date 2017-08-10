@@ -1,0 +1,74 @@
+{
+    "ATPM": {
+        "maximum": 20.0,
+        "minimum": 18.0
+    },
+    "D_LACt2": {
+        "maximum": -18.0,
+        "minimum": -20.0
+    },
+    "ENO": {
+        "maximum": 20.0,
+        "minimum": 18.0
+    },
+    "EX_glc__D_e": {
+        "maximum": -9.0,
+        "minimum": -10.0
+    },
+    "EX_h_e": {
+        "maximum": 20.0,
+        "minimum": 18.0
+    },
+    "EX_lac__D_e": {
+        "maximum": 20.0,
+        "minimum": 18.0
+    },
+    "FBA": {
+        "maximum": 10.0,
+        "minimum": 9.0
+    },
+    "GAPD": {
+        "maximum": 20.0,
+        "minimum": 18.0
+    },
+    "GLCpts": {
+        "maximum": 10.0,
+        "minimum": 9.0
+    },
+    "H2Ot": {
+        "maximum": 0.0,
+        "minimum": 0.0
+    },
+    "LDH_D": {
+        "maximum": -18.0,
+        "minimum": -20.0
+    },
+    "PFK": {
+        "maximum": 10.0,
+        "minimum": 9.0
+    },
+    "PGI": {
+        "maximum": 10.0,
+        "minimum": 9.0
+    },
+    "PGK": {
+        "maximum": -18.0,
+        "minimum": -20.0
+    },
+    "PGM": {
+        "maximum": -18.0,
+        "minimum": -20.0
+    },
+    "PIt2r": {
+        "maximum": 0.0,
+        "minimum": 0.0
+    },
+    "PYK": {
+        "maximum": 10.0,
+        "minimum": 9.0
+    },
+    "TPI": {
+        "maximum": 10.0,
+        "minimum": 9.0
+    }
+}

@@ -230,9 +230,9 @@ class test_thermodynamics():
         # remove an inconsistent dGf values
         self.dG_f_data.remove_measured_dG_f(inconsistent_dG_f_I)
         # remove an inconsistent concentration values
-        self.dG_f_data.metabolomics_data.remove_measured_concentrations(inconsistent_concentrations_I)
+        self.metabolomics_data.remove_measured_concentrations(inconsistent_concentrations_I)
         # remove an inconcsistent tcc
-        self.dG_f_data.tcc.change_feasibleReactions(inconsistent_tcc_I)    
+        self.tcc.change_feasibleReactions(inconsistent_tcc_I)    
         # diagnose tfba constraints
         tfba = thermodynamics_tfba()
         thermodynamic_constraints_check,\
@@ -245,8 +245,16 @@ class test_thermodynamics():
                 self.tcc.metabolomics_coverage,
                 self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
                 0.5, 0.99, n_checks_I = 2,
-                diagnose_solver_I=None,diagnose_threshold_I=30,diagnose_break_I=0.1)
-    
+                diagnose_solver_I='glpk',diagnose_threshold_I=30,diagnose_break_I=0.1)
+        assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)
+        assert(diagnose_variables_1['ENO']['solution_after'] == 30.0)
+        assert(diagnose_variables_2['ENO']['solution_before'] == 30.0)
+        assert(diagnose_variables_2['ENO']['solution_after'] == 30.0)
+        assert(diagnose_variables_3['ENO']['solution_before'] == 30.0)
+        assert(diagnose_variables_3['ENO']['solution_after'] == 30.0)
+        assert(not thermodynamic_constraints_check['ENO'])
+        assert(thermodynamic_constraints_check['ATPM'])
+        assert('ENO' in inconsistent_tcc)  
     
     def test_tfba(self):
         #perform thermodynamic FBA
@@ -258,6 +266,7 @@ class test_thermodynamics():
             self.tcc.dG0_r,self.other_data.temperature,
             self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
             use_measured_dG_r=True, solver='glpk',)
+        assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)
 
         cobra_model_copy = self.cobra_model.copy()
         tfba.tfba_conc_ln(cobra_model_copy, 
@@ -266,6 +275,7 @@ class test_thermodynamics():
             self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
             measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
             use_measured_concentrations=True,use_measured_dG0_r=True, solver='glpk',)
+        assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)
     
     def test_tfva(self):
         # run TFVA
@@ -284,6 +294,7 @@ class test_thermodynamics():
         tfba.export_tfva_data(data_tfva)
         tfba.analyze_tfva_results(flux_threshold=1e-6)
         tfba.export_tfva_analysis(data_tfva_analysis)
+        assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)
 
         cobra_model_copy = self.cobra_model.copy()
         tfba.tfva_dG_r(cobra_model_copy, 
@@ -292,6 +303,7 @@ class test_thermodynamics():
             use_measured_dG0_r=True, fraction_of_optimum=1.0, solver='glpk',
             objective_sense="maximize")
         tfba.export_tfva_dG_r_data(data_tfva_dG_r)
+        assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)
 
         cobra_model_copy = self.cobra_model.copy()
         tfba.tfva_concentrations(cobra_model_copy, 
@@ -302,6 +314,7 @@ class test_thermodynamics():
             use_measured_concentrations=True,use_measured_dG0_r=True,fraction_of_optimum=1.0, solver='glpk',
             objective_sense="maximize")
         tfba.export_tfva_concentrations_data(data_tfva_concentrations)
+        assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)
     
     def test_tsampling(self):
         # perform thermodynamic Tsampling
@@ -320,6 +333,7 @@ class test_thermodynamics():
             n_points_I = 2*len(self.cobra_model.reactions),
             n_steps_I = 5000,
             n_threads_I = 2)
+        assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)
     
     def test_tsampling_analysis(self):
         # Analyze thermodynamic sampling
@@ -332,6 +346,7 @@ class test_thermodynamics():
         sampling.get_points_json(filename_points);
         sampling.get_warmup_json(filename_warmup);
         sampling.calculate_mixFraction();
+        assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)
         # check if the model contains loops
         #loops_bool = self.sampling.check_loops();
         sampling.simulate_loops(
@@ -339,11 +354,15 @@ class test_thermodynamics():
             solver_I = 'optGpSampler');
         sampling.find_loops(data_fva = data_dir + 'test_loops_fva.json');
         sampling.remove_loopsFromPoints();
+        assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)
         # calculate the flux descriptive statistics
         sampling.descriptive_statistics(points_I='flux');
+        assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)
         # calculate descriptive stats for metabolites
         sampling.convert_points2MetabolitePoints();
         sampling.descriptive_statistics(points_I='metabolite');
+        assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)
         # calculate descriptive stats for subsystems
         sampling.convert_points2SubsystemPoints();
         sampling.descriptive_statistics(points_I='subsystem');
+        assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)

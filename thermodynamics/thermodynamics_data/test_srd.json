@@ -5,6 +5,10 @@
         "method": "fba"
     },
     "D_LACt2": {
+        "gr": 30.0,
+        "gr_ratio": 1.0
+    },
+    "D_LACt2_reverse": {
         "gr": NaN,
         "gr_ratio": NaN
     },
@@ -12,13 +16,25 @@
         "gr": NaN,
         "gr_ratio": NaN
     },
+    "ENO_reverse": {
+        "gr": 30.0,
+        "gr_ratio": 1.0
+    },
     "EX_glc__D_e": {
+        "gr": 30.0,
+        "gr_ratio": 1.0
+    },
+    "EX_glc__D_e_reverse": {
         "gr": NaN,
         "gr_ratio": NaN
     },
     "EX_h_e": {
         "gr": NaN,
         "gr_ratio": NaN
+    },
+    "EX_h_e_reverse": {
+        "gr": 30.0,
+        "gr_ratio": 1.0
     },
     "EX_lac__D_e": {
         "gr": NaN,
@@ -28,9 +44,17 @@
         "gr": NaN,
         "gr_ratio": NaN
     },
+    "FBA_reverse": {
+        "gr": 30.0,
+        "gr_ratio": 1.0
+    },
     "GAPD": {
         "gr": NaN,
         "gr_ratio": NaN
+    },
+    "GAPD_reverse": {
+        "gr": 30.0,
+        "gr_ratio": 1.0
     },
     "GLCpts": {
         "gr": NaN,
@@ -40,7 +64,15 @@
         "gr": 30.0,
         "gr_ratio": 1.0
     },
+    "H2Ot_reverse": {
+        "gr": 30.0,
+        "gr_ratio": 1.0
+    },
     "LDH_D": {
+        "gr": 30.0,
+        "gr_ratio": 1.0
+    },
+    "LDH_D_reverse": {
         "gr": NaN,
         "gr_ratio": NaN
     },
@@ -52,15 +84,31 @@
         "gr": NaN,
         "gr_ratio": NaN
     },
+    "PGI_reverse": {
+        "gr": 30.0,
+        "gr_ratio": 1.0
+    },
     "PGK": {
+        "gr": 30.0,
+        "gr_ratio": 1.0
+    },
+    "PGK_reverse": {
         "gr": NaN,
         "gr_ratio": NaN
     },
     "PGM": {
+        "gr": 30.0,
+        "gr_ratio": 1.0
+    },
+    "PGM_reverse": {
         "gr": NaN,
         "gr_ratio": NaN
     },
     "PIt2r": {
+        "gr": 30.0,
+        "gr_ratio": 1.0
+    },
+    "PIt2r_reverse": {
         "gr": 30.0,
         "gr_ratio": 1.0
     },
@@ -71,5 +119,9 @@
     "TPI": {
         "gr": NaN,
         "gr_ratio": NaN
+    },
+    "TPI_reverse": {
+        "gr": 30.0,
+        "gr_ratio": 1.0
     }
 }

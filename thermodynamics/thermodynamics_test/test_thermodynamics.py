@@ -1,4 +1,6 @@
 import pytest
+import numpy as np
+
 # Dependencies from cobra
 from cobra.io.json import load_json_model
 from cobra.manipulation.modify import convert_to_irreversible
@@ -22,7 +24,7 @@ from . import data_dir
 class test_thermodynamics():
     
     def __init__(self):
-        self.cobra_model = load_json_model(data_dir + '/mini.json')
+        self.cobra_model = None
         self.simulated_data = None
         self.other_data = None
         self.metabolomics_data = None
@@ -30,17 +32,43 @@ class test_thermodynamics():
         self.dG_f_data = None
         self.tccp = None
 
+    def test_cobra_model(self):
+        cobra_model = load_json_model(data_dir + '/mini.json')
+        convert_to_irreversible(cobra_model)
+        solution = cobra_model.optimize()
+        assert(solution.objective_value == 30.0)
+        assert(solution.fluxes['ENO'] == 20.0)
+        self.cobra_model = cobra_model
+
     def test_simulatedData(self):
         data_fva = data_dir + '/test_fva.json'
         data_srd = data_dir + '/test_srd.json'
         simulated_data = cobra_simulatedData()
         simulated_data.generate_sra_data(self.cobra_model) # perform single reaction deletion analysis
         simulated_data.generate_fva_data(self.cobra_model) # perform flux variability analysis
+        assert(simulated_data.fva_data['ENO']['maximum'] == 1000.0)
+        assert(simulated_data.fva_data['ENO']['minimum'] == 18.0)
+        assert(np.isnan(simulated_data.sra_data['ENO']['gr']))
+        assert(np.isnan(simulated_data.sra_data['ENO']['gr_ratio']))
+        assert(simulated_data.sra_data['H2Ot']['gr'] == 30.0)
+        assert(simulated_data.sra_data['H2Ot']['gr_ratio'] == 1.0)
         simulated_data.export_sra_data(data_srd) # save results for later use
         simulated_data.export_fva_data(data_fva) # save results for later use
         simulated_data.import_sra_data(data_srd)
         simulated_data.import_fva_data(data_fva)
+        assert(simulated_data.fva_data['ENO']['maximum'] == 1000.0)
+        assert(simulated_data.fva_data['ENO']['minimum'] == 18.0)
+        assert(np.isnan(simulated_data.sra_data['ENO']['gr']))
+        assert(np.isnan(simulated_data.sra_data['ENO']['gr_ratio']))
+        assert(simulated_data.sra_data['H2Ot']['gr'] == 30.0)
+        assert(simulated_data.sra_data['H2Ot']['gr_ratio'] == 1.0)
         simulated_data.check_data()
+        assert(simulated_data.fva_data['ENO']['maximum'] == 1000.0)
+        assert(simulated_data.fva_data['ENO']['minimum'] == 18.0)
+        assert(np.isnan(simulated_data.sra_data['ENO']['gr']))
+        assert(np.isnan(simulated_data.sra_data['ENO']['gr_ratio']))
+        assert(simulated_data.sra_data['H2Ot']['gr'] == 30.0)
+        assert(simulated_data.sra_data['H2Ot']['gr_ratio'] == 1.0)
         self.simulated_data = simulated_data
 
     def test_otherData(self):

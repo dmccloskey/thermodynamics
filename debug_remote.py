@@ -21,6 +21,7 @@ sys.path.append('/home/user/cobra_utilities')
 
 from thermodynamics.thermodynamics_test.test_thermodynamics import test_thermodynamics
 tthermo = test_thermodynamics()
+tthermo.test_cobra_model()
 tthermo.test_simulatedData()
 tthermo.test_otherData()
 tthermo.test_dG_f_data()

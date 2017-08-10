@@ -462,7 +462,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                         # calculate the lb and ub for dG implementation #1
                         dG_r_product_lb = dG_r_product_lb + self.R*temperature[p.compartment]['temperature']*\
                                                             log(measured_concentration[p.id]['concentration_lb'])*r.get_coefficient(p.id);
-                        dG_r_product_ub = dG_r_product_ub + self.R*temperature[react.compartment]['temperature']*\
+                        dG_r_product_ub = dG_r_product_ub + self.R*temperature[p.compartment]['temperature']*\
                                                             log(measured_concentration[p.id]['concentration_ub'])*r.get_coefficient(p.id);
                         ## calculate the lb and ub for dG implementation #2
                         #dG_r_product_lb = dG_r_product_lb + self.R*temperature[p.compartment]['temperature']*\

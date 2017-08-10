@@ -164,17 +164,31 @@ class test_thermodynamics():
         # tcc.import_tcc_json(data_tcc)
         tcc.calculate_dG0_r(self.cobra_model, 
             self.dG_f_data.measured_dG_f, self.dG_f_data.estimated_dG_f, 
-            self.other_data.temperature) # calculate the change in free energy of reaction without accounting for metabolite concentrations  
-        assert(metabolomics_data.estimated_concentrations['pep_c']['concentration_units'] == 'M')  
+            self.other_data.temperature) # calculate the change in free energy of reaction without accounting for metabolite concentrations
+        assert(tcc.dG0_r['ENO']['dG_r'] == -3.8598069140609823)
+        assert(tcc.dG0_r['ENO']['dG_r_var'] == 53.400000000000006)
+        assert(tcc.dG0_r['ENO']['dG_r_lb'] == -8.078811536006697)
+        assert(tcc.dG0_r['ENO']['dG_r_ub'] == 0.35919770788473215)
+        assert(tcc.dG0_r['ENO']['dG_r_units'] == 'kJ/mol')
+        assert(tcc.dG0_r['ENO']['Keq_lb'] == 22.943577827979983)
+        assert(tcc.dG0_r['ENO']['Keq_ub'] == 0.8699668221299198)
         tcc.calculate_dG_r(self.cobra_model,self.metabolomics_data.measured_concentrations,
             self.metabolomics_data.estimated_concentrations,
-            self.other_data.pH, self.other_data.ionic_strength, self.other_data.temperature) # adjust the change in free energy of reaction for intracellular metabolite concentrations  
-        assert(metabolomics_data.estimated_concentrations['pep_c']['concentration_units'] == 'M')  
+            self.other_data.pH, self.other_data.ionic_strength, self.other_data.temperature) # adjust the change in free energy of reaction for intracellular metabolite concentrations
+        assert(tcc.dG_r['ENO']['dG_r'] == 8.716270424972741)
+        assert(tcc.dG_r['ENO']['dG_r_var'] == 53.400000000000006)
+        assert(tcc.dG_r['ENO']['dG_r_lb'] == 4.793062495527913)
+        assert(tcc.dG_r['ENO']['dG_r_ub'] == 12.628180518569243)
+        assert(tcc.dG_r['ENO']['dG_r_units'] == 'kJ/mol')
+        assert(tcc.dG_r['ENO']['Keq_lb'] == 0.15586046876150242)
+        assert(tcc.dG_r['ENO']['Keq_ub'] == 0.007466525151002594)
+        assert(tcc.dG_r_coverage['ENO'] == 1.0)
         tcc.check_thermodynamicConsistency(self.cobra_model,self.simulated_data.fva_data,
             self.metabolomics_data.measured_concentrations,
             self.metabolomics_data.estimated_concentrations,
             self.other_data.pH,self.other_data.ionic_strength,self.other_data.temperature) # check the thermodynamic consistency of the data  
-        assert(metabolomics_data.estimated_concentrations['pep_c']['concentration_units'] == 'M')  
+        assert(not tcc.thermodynamic_consistency_check['ENO'])
+        assert(tcc.thermodynamic_consistency_check['ATPM'])
         tcc.export_dG0_r_json(data_dG0) # save for later use
         tcc.export_dG_r_json(data_dG) # save for later use
         tcc.export_tcc_json(data_tcc) # save for later use
@@ -182,11 +196,154 @@ class test_thermodynamics():
         tcc.import_dG0_r_json(data_dG0)
         tcc.import_dG_r_json(data_dG)
         tcc.import_tcc_json(data_tcc)
-        assert(metabolomics_data.estimated_concentrations['pep_c']['concentration_units'] == 'M') 
+        assert(tcc.dG0_r['ENO']['dG_r'] == -3.8598069140609823)
+        assert(not tcc.thermodynamic_consistency_check['ENO'])
+        assert(tcc.dG_r['ENO']['dG_r'] == 8.716270424972741)
+        assert(tcc.dG_r_coverage['ENO'] == 1.0)
         self.tcc = tcc
 
     def test_dG_p_data(self):        
         # calculate the dG for biosynthetic pathways
         tccp = thermodynamics_dG_p_data()
+        assert(tccp.pathways['Glycolysis']['reactions'] == ['PGI', 'PFK', 'FBA', 'TPI', 'GAPD', 'PGK', 'PGM', 'ENO'])
+        assert(tccp.pathways['Glycolysis']['stoichiometry'] == [1, 1, 1, 1, 1, -1, -1, 1])
         tccp.calculate_dG_p(self.cobra_model,self.tcc.dG0_r,self.tcc.dG_r)
-        self.tccp = tccp 
+        assert(tccp.dG0_p['Glycolysis']['dG0_p'] == 1.9688173094308468)
+        assert(tccp.dG0_p['Glycolysis']['dG0_p_var'] == 267.0)
+        assert(tccp.dG0_p['Glycolysis']['dG0_p_lb'] == -10.688196556406865)
+        assert(tccp.dG0_p['Glycolysis']['dG0_p_ub'] == 14.625831175268445)
+        assert(tccp.dG0_p['Glycolysis']['dG0_p_units'] == 'kJ/mol')
+        assert(tccp.dG_p['Glycolysis']['dG_p'] == -2.93851827063736)
+        assert(tccp.dG_p['Glycolysis']['dG_p_var'] == 267.0)
+        assert(tccp.dG_p['Glycolysis']['dG_p_lb'] == -29.148908111427986)
+        assert(tccp.dG_p['Glycolysis']['dG_p_ub'] == 23.27562458558087)
+        assert(tccp.dG_p['Glycolysis']['dG_p_units'] == 'kJ/mol')
+        self.tccp = tccp    
+    
+    def test_tfba_constraints(self):
+        # Diagnose model variables and constraints prior to FBA, FVA
+
+        # identified inconsistent concentrations/dG_f/tcc values
+        inconsistent_concentrations_I = []
+        inconsistent_dG_f_I = []
+        inconsistent_tcc_I = []
+        # remove an inconsistent dGf values
+        self.dG_f_data.remove_measured_dG_f(inconsistent_dG_f_I)
+        # remove an inconsistent concentration values
+        self.dG_f_data.metabolomics_data.remove_measured_concentrations(inconsistent_concentrations_I)
+        # remove an inconcsistent tcc
+        self.dG_f_data.tcc.change_feasibleReactions(inconsistent_tcc_I)    
+        # diagnose tfba constraints
+        tfba = thermodynamics_tfba()
+        thermodynamic_constraints_check,\
+            inconsistent_tcc,diagnose_variables_1,\
+            diagnose_variables_2,\
+            diagnose_variables_3 = tfba.check_conc_ln_constraints_transport(
+                self.cobra_model,
+                self.metabolomics_data.measured_concentrations, self.metabolomics_data.estimated_concentrations,
+                self.tcc.dG0_r, self.other_data.pH,self.other_data.temperature,
+                self.tcc.metabolomics_coverage,
+                self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
+                0.5, 0.99, n_checks_I = 2,
+                diagnose_solver_I=None,diagnose_threshold_I=30,diagnose_break_I=0.1)
+    
+    
+    def test_tfba(self):
+        #perform thermodynamic FBA
+        tfba = thermodynamics_tfba()
+
+        # run TFBA
+        cobra_model_copy = self.cobra_model.copy()
+        tfba.tfba(cobra_model_copy,
+            self.tcc.dG0_r,self.other_data.temperature,
+            self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
+            use_measured_dG_r=True, solver='glpk',)
+
+        cobra_model_copy = self.cobra_model.copy()
+        tfba.tfba_conc_ln(cobra_model_copy, 
+            self.metabolomics_data.measured_concentrations, self.metabolomics_data.estimated_concentrations,
+            self.tcc.dG0_r,self.other_data.temperature,self.tcc.metabolomics_coverage,
+            self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
+            measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
+            use_measured_concentrations=True,use_measured_dG0_r=True, solver='glpk',)
+    
+    def test_tfva(self):
+        # run TFVA
+        tfba = thermodynamics_tfba()
+
+        data_tfva = data_dir + 'test_tfva.csv'
+        data_tfva_analysis = data_dir + 'test_tfva_analysis.csv'
+        data_tfva_dG_r = data_dir + 'test_tfva_dG_r.json'
+        data_tfva_concentrations = data_dir + 'test_tfva_concentrations.json'
+        cobra_model_copy = cobra_model.copy()
+        tfba.tfva(cobra_model_copy, 
+            self.tcc.dG0_r,self.other_data.temperature,
+            self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
+            use_measured_dG0_r=True, reaction_list=None,fraction_of_optimum=1.0, solver='glpk',
+            objective_sense="maximize")
+        tfba.export_tfva_data(data_tfva)
+        tfba.analyze_tfva_results(flux_threshold=1e-6)
+        tfba.export_tfva_analysis(data_tfva_analysis)
+
+        cobra_model_copy = self.cobra_model.copy()
+        tfba.tfva_dG_r(cobra_model_copy, 
+            self.tcc.dG0_r,other_data.temperature,
+            self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
+            use_measured_dG0_r=True, fraction_of_optimum=1.0, solver='glpk',
+            objective_sense="maximize")
+        tfba.export_tfva_dG_r_data(data_tfva_dG_r)
+
+        cobra_model_copy = self.cobra_model.copy()
+        tfba.tfva_concentrations(cobra_model_copy, 
+            self.metabolomics_data.measured_concentrations, self.metabolomics_data.estimated_concentrations,
+            self.tcc.dG0_r,self.other_data.temperature,self.tcc.metabolomics_coverage,
+            self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
+            measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
+            use_measured_concentrations=True,use_measured_dG0_r=True,fraction_of_optimum=1.0, solver='glpk',
+            objective_sense="maximize")
+        tfba.export_tfva_concentrations_data(data_tfva_concentrations)
+    
+    def test_tsampling(self):
+        # perform thermodynamic Tsampling
+        sampling = optGpSampler_sampling(data_dir_I = data_dir);
+        simulation_id_I = 'test_tsampling'
+        filename_model = simulation_id_I + '.json';
+        filename_script = simulation_id_I + '.py';
+        filename_points = simulation_id_I + '_points' + '.json';
+        filename_warmup = simulation_id_I + '_warmup' + '.json';
+        sampling.export_sampling_optGpSampler(cobra_model=self.cobra_model,
+            filename_model=filename_model,
+            filename_script=filename_script,
+            filename_points=filename_points,
+            filename_warmup=filename_warmup,
+            solver_id_I = 'optGpSampler',
+            n_points_I = 2*len(self.cobra_model.reactions),
+            n_steps_I = 5000,
+            n_threads_I = 2)
+    
+    def test_tsampling_analysis(self):
+        # Analyze thermodynamic sampling
+        simulation_id_I = 'test_tsampling'
+        filename_points = simulation_id_I + '_points' + '.json';
+        filename_warmup = simulation_id_I + '_warmup' + '.json';
+        sampling = optGpSampler_sampling(
+            data_dir_I = data_dir,
+            model_I=self.cobra_model);
+        sampling.get_points_json(filename_points);
+        sampling.get_warmup_json(filename_warmup);
+        sampling.calculate_mixFraction();
+        # check if the model contains loops
+        #loops_bool = self.sampling.check_loops();
+        sampling.simulate_loops(
+            data_fva = data_dir + 'test_loops_fva.json',
+            solver_I = 'optGpSampler');
+        sampling.find_loops(data_fva = data_dir + 'test_loops_fva.json');
+        sampling.remove_loopsFromPoints();
+        # calculate the flux descriptive statistics
+        sampling.descriptive_statistics(points_I='flux');
+        # calculate descriptive stats for metabolites
+        sampling.convert_points2MetabolitePoints();
+        sampling.descriptive_statistics(points_I='metabolite');
+        # calculate descriptive stats for subsystems
+        sampling.convert_points2SubsystemPoints();
+        sampling.descriptive_statistics(points_I='subsystem');

@@ -11,6 +11,7 @@ import csv,json,sys
 # Dependencies from thermodynamics
 # from thermodynamics.thermodynamics_simulatedData import thermodynamics_simulatedData
 from cobra_utilities.cobra_simulatedData import cobra_simulatedData
+from cobra_utilities.optGpSampler_sampling import optGpSampler_sampling
 from thermodynamics.thermodynamics_metabolomicsData import thermodynamics_metabolomicsData
 from thermodynamics.thermodynamics_otherData import thermodynamics_otherData
 from thermodynamics.thermodynamics_dG_f_data import thermodynamics_dG_f_data
@@ -349,7 +350,6 @@ class test_thermodynamics():
             n_points_I = 2*len(self.cobra_model.reactions),
             n_steps_I = 5000,
             n_threads_I = 2)
-        assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)
     
     def test_tsampling_analysis(self):
         # Analyze thermodynamic sampling

@@ -246,7 +246,7 @@ class test_thermodynamics():
                 self.tcc.metabolomics_coverage,
                 self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
                 n_checks_I = 2,
-                diagnose_solver_I='glpk',diagnose_threshold_I=29,diagnose_break_I=0.1)
+                diagnose_solver_I='glpk',diagnose_threshold_I=29,diagnose_break_I=29)
         assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)
         assert(diagnose_variables_1['ENO']['solution_after'] == 30.0)
         assert(diagnose_variables_2['ENO']['solution_before'] == 30.0)
@@ -261,16 +261,16 @@ class test_thermodynamics():
         #perform thermodynamic FBA
         tfba = thermodynamics_tfba()
 
-        # remove inconsistent reactions
-        inconsistent_tcc_I = ['ENO', 'EX_glc__D_e', 'EX_h_e', 'EX_lac__D_e', 'FBA', 'GAPD', 'GLCpts', 'LDH_D', 'PFK', 'PGI', 'PGK',
-        'PGM', 'PYK', 'TPI', 'ENO_reverse', 'EX_glc__D_e_reverse', 'EX_h_e_reverse', 'FBA_reverse',
-        'GAPD_reverse', 'LDH_D_reverse', 'PGI_reverse', 'PGK_reverse', 'PGM_reverse', 'TPI_reverse']
-        self.tcc.change_feasibleReactions(inconsistent_tcc_I)
+        # # remove inconsistent reactions
+        # inconsistent_tcc_I = ['ENO', 'EX_glc__D_e', 'EX_h_e', 'EX_lac__D_e', 'FBA', 'GAPD', 'GLCpts', 'LDH_D', 'PFK', 'PGI', 'PGK',
+        # 'PGM', 'PYK', 'TPI', 'ENO_reverse', 'EX_glc__D_e_reverse', 'EX_h_e_reverse', 'FBA_reverse',
+        # 'GAPD_reverse', 'LDH_D_reverse', 'PGI_reverse', 'PGK_reverse', 'PGM_reverse', 'TPI_reverse']
+        # self.tcc.change_feasibleReactions(inconsistent_tcc_I)
 
         # run TFBA
         cobra_model_copy = self.cobra_model.copy()
         tfba.tfba(cobra_model_copy,
-            self.tcc.dG0_r,self.other_data.temperature,
+            self.tcc.dG_r,self.other_data.temperature,
             self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
             use_measured_dG_r=True, solver='glpk',)
         assert(cobra_model_copy.objective.value == 12.585)

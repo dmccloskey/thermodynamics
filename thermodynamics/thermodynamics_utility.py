@@ -37,14 +37,19 @@ def find_transportMets(cobra_model_I, reaction_id_I):
     return met_O;
 
 def find_transportRxns(cobra_model_I):
-    # transport reaction definition:
-    # 1. the metabolite satisfies the critera for a transport metabolite
-    #	1. different id (same base id but different compartment)
-    #	2. same name
-    #	3. different compartment
-    # 2. the reaction is not a system boundary reaction
+    '''
+    transport reaction definition:
+    1. the metabolite satisfies the critera for a transport metabolite
+    	1. different id (same base id but different compartment)
+    	2. same name
+    	3. different compartment
+    2. the reaction is not a system boundary reaction
+    '''
 
     rxn_O = [];
+    #Method 1
+    rxn_O = [rxn.id for rxn in cobra_model_I.exchanges]
+    #Method 2
     for rxn in cobra_model_I.reactions:
         mets = [];
         mets = find_transportMets(cobra_model_I, rxn.id);

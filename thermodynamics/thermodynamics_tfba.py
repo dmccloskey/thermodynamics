@@ -248,7 +248,7 @@ class thermodynamics_tfba():
         """    
         reaction_list = [r.id for r in cobra_model_irreversible.reactions]
         # add constraints
-        self._add_dG_r_constraints(cobra_model_irreversible,dG_r, dG_r_coverage, thermodynamic_consistency_check, use_measured_dG_r);
+        dG_r_constraints = self._add_dG_r_constraints(cobra_model_irreversible,dG_r, dG_r_coverage, thermodynamic_consistency_check, use_measured_dG_r);
         # optimize
         cobra_model_irreversible.solver = solver
         solution = cobra_model_irreversible.optimize()

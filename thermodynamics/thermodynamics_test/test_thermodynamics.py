@@ -334,6 +334,12 @@ class test_thermodynamics():
         tfba.export_tfva_concentrations_data(data_tfva_concentrations)
     
     def test_tsampling(self):
+        tfba = thermodynamics_tfba()
+        cobra_model_copy = self.cobra_model.copy()
+        tfba._add_dG_r_constraints(cobra_model_copy,
+            self.tcc.dG_r,self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
+            use_measured_dG_r=True)
+
         # perform thermodynamic Tsampling
         sampling = optGpSampler_sampling(data_dir_I = data_dir);
         simulation_id_I = 'test_tsampling'
@@ -341,17 +347,23 @@ class test_thermodynamics():
         filename_script = simulation_id_I + '.py';
         filename_points = simulation_id_I + '_points' + '.json';
         filename_warmup = simulation_id_I + '_warmup' + '.json';
-        sampling.export_sampling_optGpSampler(cobra_model=self.cobra_model,
+
+        sampling.export_sampling_optGpSampler(cobra_model=cobra_model_copy,
             filename_model=filename_model,
             filename_script=filename_script,
             filename_points=filename_points,
             filename_warmup=filename_warmup,
-            solver_id_I = 'optGpSampler',
-            n_points_I = 2*len(self.cobra_model.reactions),
+            solver_id_I = 'glpk',
+            n_points_I = 2*len(cobra_model_copy.reactions),
             n_steps_I = 5000,
             n_threads_I = 2)
     
     def test_tsampling_analysis(self):
+        tfba = thermodynamics_tfba()
+        cobra_model_copy = self.cobra_model.copy()
+        tfba._add_dG_r_constraints(cobra_model_copy,
+            self.tcc.dG_r,self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
+            use_measured_dG_r=True)
         # Analyze thermodynamic sampling
         simulation_id_I = 'test_tsampling'
         filename_points = simulation_id_I + '_points' + '.json';
@@ -367,7 +379,7 @@ class test_thermodynamics():
         #loops_bool = self.sampling.check_loops();
         sampling.simulate_loops(
             data_fva = data_dir + 'test_loops_fva.json',
-            solver_I = 'optGpSampler');
+            solver_I = 'glpk');
         sampling.find_loops(data_fva = data_dir + 'test_loops_fva.json');
         sampling.remove_loopsFromPoints();
         assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)

@@ -1,89 +1,4 @@
 {
-    "13dpg_c": {
-        "dG_f": -2094.968795526698,
-        "dG_f_var": 17.8,
-        "dG_f_units": "kJ/mol"
-    },
-    "2pg_c": {
-        "dG_f": -1265.5542556315352,
-        "dG_f_var": 17.8,
-        "dG_f_units": "kJ/mol"
-    },
-    "3pg_c": {
-        "dG_f": -1263.8683406692155,
-        "dG_f_var": 17.8,
-        "dG_f_units": "kJ/mol"
-    },
-    "adp_c": {
-        "dG_f": -1306.7100283279078,
-        "dG_f_var": 17.8,
-        "dG_f_units": "kJ/mol"
-    },
-    "atp_c": {
-        "dG_f": -2169.995252077878,
-        "dG_f_var": 17.8,
-        "dG_f_units": "kJ/mol"
-    },
-    "dhap_c": {
-        "dG_f": -1027.6014208761658,
-        "dG_f_var": 17.8,
-        "dG_f_units": "kJ/mol"
-    },
-    "f6p_c": {
-        "dG_f": -1220.5992822225899,
-        "dG_f_var": 17.8,
-        "dG_f_units": "kJ/mol"
-    },
-    "fdp_c": {
-        "dG_f": -2071.3066634904026,
-        "dG_f_var": 17.8,
-        "dG_f_units": "kJ/mol"
-    },
-    "g3p_c": {
-        "dG_f": -1019.7146116274646,
-        "dG_f_var": 17.8,
-        "dG_f_units": "kJ/mol"
-    },
-    "g6p_c": {
-        "dG_f": -1223.0806817926405,
-        "dG_f_var": 17.8,
-        "dG_f_units": "kJ/mol"
-    },
-    "h2o_c": {
-        "dG_f": -148.19964692253393,
-        "dG_f_var": 17.8,
-        "dG_f_units": "kJ/mol"
-    },
-    "h_c": {
-        "dG_f": -3.65e-11,
-        "dG_f_var": 17.8,
-        "dG_f_units": "kJ/mol"
-    },
-    "nad_c": {
-        "dG_f": 1393.555719870331,
-        "dG_f_var": 17.8,
-        "dG_f_units": "kJ/mol"
-    },
-    "nadh_c": {
-        "dG_f": 1461.7489383397908,
-        "dG_f_var": 17.8,
-        "dG_f_units": "kJ/mol"
-    },
-    "pep_c": {
-        "dG_f": -1121.2144156230622,
-        "dG_f_var": 17.8,
-        "dG_f_units": "kJ/mol"
-    },
-    "pi_c": {
-        "dG_f": -999.8235912204638,
-        "dG_f_var": 17.8,
-        "dG_f_units": "kJ/mol"
-    },
-    "pyr_c": {
-        "dG_f": -314.419306357104,
-        "dG_f_var": 17.8,
-        "dG_f_units": "kJ/mol"
-    },
     "13dpg_e": {
         "dG_f": -2106.8992087029696,
         "dG_f_var": 17.8,
@@ -166,6 +81,91 @@
     },
     "pyr_e": {
         "dG_f": -323.32122597689,
+        "dG_f_var": 17.8,
+        "dG_f_units": "kJ/mol"
+    },
+    "13dpg_c": {
+        "dG_f": -2094.968795526698,
+        "dG_f_var": 17.8,
+        "dG_f_units": "kJ/mol"
+    },
+    "2pg_c": {
+        "dG_f": -1265.5542556315352,
+        "dG_f_var": 17.8,
+        "dG_f_units": "kJ/mol"
+    },
+    "3pg_c": {
+        "dG_f": -1263.8683406692155,
+        "dG_f_var": 17.8,
+        "dG_f_units": "kJ/mol"
+    },
+    "adp_c": {
+        "dG_f": -1306.7100283279078,
+        "dG_f_var": 17.8,
+        "dG_f_units": "kJ/mol"
+    },
+    "atp_c": {
+        "dG_f": -2169.995252077878,
+        "dG_f_var": 17.8,
+        "dG_f_units": "kJ/mol"
+    },
+    "dhap_c": {
+        "dG_f": -1027.6014208761658,
+        "dG_f_var": 17.8,
+        "dG_f_units": "kJ/mol"
+    },
+    "f6p_c": {
+        "dG_f": -1220.5992822225899,
+        "dG_f_var": 17.8,
+        "dG_f_units": "kJ/mol"
+    },
+    "fdp_c": {
+        "dG_f": -2071.3066634904026,
+        "dG_f_var": 17.8,
+        "dG_f_units": "kJ/mol"
+    },
+    "g3p_c": {
+        "dG_f": -1019.7146116274646,
+        "dG_f_var": 17.8,
+        "dG_f_units": "kJ/mol"
+    },
+    "g6p_c": {
+        "dG_f": -1223.0806817926405,
+        "dG_f_var": 17.8,
+        "dG_f_units": "kJ/mol"
+    },
+    "h2o_c": {
+        "dG_f": -148.19964692253393,
+        "dG_f_var": 17.8,
+        "dG_f_units": "kJ/mol"
+    },
+    "h_c": {
+        "dG_f": -3.65e-11,
+        "dG_f_var": 17.8,
+        "dG_f_units": "kJ/mol"
+    },
+    "nad_c": {
+        "dG_f": 1393.555719870331,
+        "dG_f_var": 17.8,
+        "dG_f_units": "kJ/mol"
+    },
+    "nadh_c": {
+        "dG_f": 1461.7489383397908,
+        "dG_f_var": 17.8,
+        "dG_f_units": "kJ/mol"
+    },
+    "pep_c": {
+        "dG_f": -1121.2144156230622,
+        "dG_f_var": 17.8,
+        "dG_f_units": "kJ/mol"
+    },
+    "pi_c": {
+        "dG_f": -999.8235912204638,
+        "dG_f_var": 17.8,
+        "dG_f_units": "kJ/mol"
+    },
+    "pyr_c": {
+        "dG_f": -314.419306357104,
         "dG_f_var": 17.8,
         "dG_f_units": "kJ/mol"
     }

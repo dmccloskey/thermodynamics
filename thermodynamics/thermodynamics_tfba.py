@@ -100,7 +100,7 @@ class thermodynamics_tfba(thermodynamics_io):
         self.tfba_data = {};
         self.tfva_data = {};
         self.tfva_dG_r_data = {};
-        self.tfva_concentration_data = {};
+        self.tfva_concentrations_data = {};
         self.tfva_analysis = {};
         self.tsampling_dG_r_data = {};
         
@@ -703,8 +703,8 @@ class thermodynamics_tfba(thermodynamics_io):
             cobra_model_irreversible.add_reaction(dG0_rv);
             # check to see if the model broke
             cobra_model_irreversible.optimize();
-            if not cobra_model_irreversible.objective.value or cobra_model_irreversible.solution.status == 'infeasible':
-               print dG0_rv.id + ' broke the model!';
+            if not cobra_model_irreversible.objective.value or cobra_model_irreversible.solver.status == 'infeasible':
+               print(dG0_rv.id + ' broke the model!');
                variables_break.append(dG0_rv.id);
                #cobra_model_irreversible.remove_reactions(indicator)
                cobra_model_irreversible.remove_reactions(dG0_rv)
@@ -718,8 +718,8 @@ class thermodynamics_tfba(thermodynamics_io):
         #    cobra_model_irreversible.add_reaction(dG0_rv);
         #    # check to see if the model broke
         #    cobra_model_irreversible.optimize(solver='glpk');
-        #    if not cobra_model_irreversible.objective.value or cobra_model_irreversible.solution.status == 'infeasible':
-        #        print dG0_rv.id + ' broke the model!';
+        #    if not cobra_model_irreversible.objective.value or cobra_model_irreversible.solver.status == 'infeasible':
+        #        print(dG0_rv.id + ' broke the model!');
         #        variables_break.append(dG0_rv.id);
         #        #cobra_model_irreversible.remove_reactions(indicator)
         #        cobra_model_irreversible.remove_reactions(dG0_rv)

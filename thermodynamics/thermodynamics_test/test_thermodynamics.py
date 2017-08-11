@@ -328,8 +328,8 @@ class test_thermodynamics():
             measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
             use_measured_concentrations=True,use_measured_dG0_r=True,fraction_of_optimum=1.0, solver='glpk',
             objective_sense="maximize")
-        assert(tfba.tfva_concentration_data['conc_lnv_pep_c']['flux_ub'] == 1000.0)
-        assert(tfba.tfva_concentration_data['conc_lnv_pep_c']['flux_lb'] == 18.0)
+        assert(tfba.tfva_concentrations_data['conc_lnv_pep_c']['flux_ub'] == -7.5033293874653726)
+        assert(tfba.tfva_concentrations_data['conc_lnv_pep_c']['flux_lb'] == -10.50862385577336)
         tfba.export_tfva_concentrations_data(data_tfva_concentrations)
     
     def test_tsampling(self):

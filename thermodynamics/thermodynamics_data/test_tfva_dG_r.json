@@ -1,0 +1,128 @@
+{
+    "dG_rv_ENO": {
+        "flux": 50.00000000000006,
+        "flux_var": 902841.270078239,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -1000.1795988539425,
+        "flux_ub": -900.1795988539424
+    },
+    "dG_rv_ENO_reverse": {
+        "flux": 0.0,
+        "flux_var": 0.12902299334964537,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -0.35919770788473215,
+        "flux_ub": -0.35919770788473215
+    },
+    "dG_rv_FBA": {
+        "flux": 24.99999999999997,
+        "flux_var": 239223.52279943528,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -514.1048178043591,
+        "flux_ub": -464.10481780435913
+    },
+    "dG_rv_FBA_reverse": {
+        "flux": 0.0,
+        "flux_var": 795.7835411766588,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -28.209635608718145,
+        "flux_ub": -28.209635608718145
+    },
+    "dG_rv_GAPD": {
+        "flux": 4550.0,
+        "flux_var": 29702500.0,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -10000.0,
+        "flux_ub": -900.0
+    },
+    "dG_rv_GAPD_reverse": {
+        "flux": 4550.0,
+        "flux_var": 20702500.0,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -9100.0,
+        "flux_ub": 0.0
+    },
+    "dG_rv_GLCpts": {
+        "flux": 25.00000000000003,
+        "flux_var": 225625.0,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -500.0,
+        "flux_ub": -449.99999999999994
+    },
+    "dG_rv_LDH_D": {
+        "flux": 0.0,
+        "flux_var": 1.0,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -1.0,
+        "flux_ub": -1.0
+    },
+    "dG_rv_LDH_D_reverse": {
+        "flux": 99.99999999999989,
+        "flux_var": 3613801.0,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -2001.0,
+        "flux_ub": -1801.0000000000002
+    },
+    "dG_rv_PGI": {
+        "flux": 25.00000000000003,
+        "flux_var": 226805.20413173048,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -501.24069978502524,
+        "flux_ub": -451.2406997850252
+    },
+    "dG_rv_PGI_reverse": {
+        "flux": 0.0,
+        "flux_var": 6.157343826247295,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -2.4813995700505984,
+        "flux_ub": -2.4813995700505984
+    },
+    "dG_rv_PGK": {
+        "flux": 4550.0,
+        "flux_var": 20702500.0,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -9100.0,
+        "flux_ub": 0.0
+    },
+    "dG_rv_PGK_reverse": {
+        "flux": 4550.0,
+        "flux_var": 29702500.0,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -10000.0,
+        "flux_ub": -900.0
+    },
+    "dG_rv_PGM": {
+        "flux": 4550.0,
+        "flux_var": 20702500.0,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -9100.0,
+        "flux_ub": 0.0
+    },
+    "dG_rv_PGM_reverse": {
+        "flux": 4550.0,
+        "flux_var": 29702500.0,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -10000.0,
+        "flux_ub": -900.0
+    },
+    "dG_rv_PYK": {
+        "flux": 25.00000000000003,
+        "flux_var": 225625.0,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -500.0,
+        "flux_ub": -449.99999999999994
+    },
+    "dG_rv_TPI": {
+        "flux": 25.0,
+        "flux_var": 229386.78483316442,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -503.9434046243506,
+        "flux_ub": -453.9434046243506
+    },
+    "dG_rv_TPI_reverse": {
+        "flux": 0.0,
+        "flux_var": 62.20176012539853,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -7.886809248701184,
+        "flux_ub": -7.886809248701184
+    }
+}

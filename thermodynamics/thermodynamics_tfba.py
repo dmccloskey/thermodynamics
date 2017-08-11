@@ -220,9 +220,8 @@ class thermodynamics_tfba(thermodynamics_io):
                 #indicator.add_metabolites({dG_r_constraint: self.K})
                 dG_rv.add_metabolites({dG_r_constraint: 1.0})
                 cobra_model_irreversible.add_reaction(dG_rv);
-            else:
-                # record dG_rv variables
-                dG_r_variables[r.id] = dG_rv;
+            # record dG_rv variables
+            dG_r_variables[r.id] = dG_rv;
         if return_dG_r_variables:
             return dG_r_variables;
 
@@ -418,10 +417,10 @@ class thermodynamics_tfba(thermodynamics_io):
                 constrained_list.append(k);
                 constrained_cnt+=1;
 
-        print("blocked reactions (" + str(blocked_cnt) + "): " + blocked_list);
-        print("essential reactions (" + str(essential_cnt) + "): " + essential_list);
-        print("substitutable reactions (" + str(substitutable_cnt) + "): " + substitutable_list);
-        print("constrained reactions (" + str(constrained_cnt) + "): " + constrained_list);
+        # print("blocked reactions (" + str(blocked_cnt) + "): " + str(blocked_list));
+        # print("essential reactions (" + str(essential_cnt) + "): " + str(essential_list));
+        # print("substitutable reactions (" + str(substitutable_cnt) + "): " + str(substitutable_list))
+        # print("constrained reactions (" + str(constrained_cnt) + "): " + str(constrained_list));
 
     def tsampling_matlab_import(self,cobra_model_irreversible, dG_r, dG_r_coverage, thermodynamic_consistency_check, use_measured_dG_r=True, solver='glpk',
                   fraction_optimal = 1.0, matlab_data='data\\tsampling\\tsampler_out.mat',sampler_model_name='tsampler_out',plot_reactions=[]):
@@ -702,18 +701,18 @@ class thermodynamics_tfba(thermodynamics_io):
             dG0_r_dict[r.id] = dG0_rv
             # add indicator reactions to the model
             cobra_model_irreversible.add_reaction(dG0_rv);
-            ## check to see if the model broke
-            #cobra_model_irreversible.optimize(solver='glpk');
-            #if not cobra_model_irreversible.objective.value or cobra_model_irreversible.solution.status == 'infeasible':
-            #    print dG0_rv.id + ' broke the model!';
-            #    variables_break.append(dG0_rv.id);
-            #    #cobra_model_irreversible.remove_reactions(indicator)
-            #    cobra_model_irreversible.remove_reactions(dG0_rv)
-            #    #cobra_model_irreversible.reactions.get_by_id(r.id).subtract_metabolites({indicator_plus:1})
-            #    dG0_rv.lower_bound = self.dG0_r_min;
-            #    dG0_rv.upper_bound = self.dG0_r_max;
-            #    dG0_rv.add_metabolites({conc_ln_constraint: 1.0})
-            #    cobra_model_irreversible.add_reaction(dG0_rv);
+            # check to see if the model broke
+            cobra_model_irreversible.optimize();
+            if not cobra_model_irreversible.objective.value or cobra_model_irreversible.solution.status == 'infeasible':
+               print dG0_rv.id + ' broke the model!';
+               variables_break.append(dG0_rv.id);
+               #cobra_model_irreversible.remove_reactions(indicator)
+               cobra_model_irreversible.remove_reactions(dG0_rv)
+               #cobra_model_irreversible.reactions.get_by_id(r.id).subtract_metabolites({indicator_plus:1})
+               dG0_rv.lower_bound = self.dG0_r_min;
+               dG0_rv.upper_bound = self.dG0_r_max;
+               dG0_rv.add_metabolites({conc_ln_constraint: 1.0})
+               cobra_model_irreversible.add_reaction(dG0_rv);
         #for dG0_rv in dG0_r_dict.values():
         #    # add indicator reactions to the model
         #    cobra_model_irreversible.add_reaction(dG0_rv);

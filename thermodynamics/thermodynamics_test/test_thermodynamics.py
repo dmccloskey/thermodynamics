@@ -304,20 +304,20 @@ class test_thermodynamics():
         assert(tfba.tfva_data['ENO']['flux_lb'] == 20.003591977078848)
         tfba.export_tfva_data(data_tfva)
         tfba.analyze_tfva_results(threshold=1e-6)
-        assert(tfba.tfva_analysis['ENO']['blocked'])
+        assert(not tfba.tfva_analysis['ENO']['blocked'])
         assert(tfba.tfva_analysis['ENO']['essential'])
-        assert(tfba.tfva_analysis['ENO']['substitutable'])
+        assert(not tfba.tfva_analysis['ENO']['substitutable'])
         assert(tfba.tfva_analysis['ENO']['constrained'])
         tfba.export_tfva_analysis(data_tfva_analysis)
 
         cobra_model_copy = self.cobra_model.copy()
         tfba.tfva_dG_r(cobra_model_copy, 
-            self.tcc.dG0_r,other_data.temperature,
+            self.tcc.dG0_r,self.other_data.temperature,
             self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
             use_measured_dG0_r=True, fraction_of_optimum=1.0, solver='glpk',
             objective_sense="maximize")
-        assert(tfba.tfva_dG_r_data['dGr_rv_ENO']['flux_ub'] == 1000.0)
-        assert(tfba.tfva_dG_r_data['dGr_rv_ENO']['flux_lb'] == 18.0)
+        assert(tfba.tfva_dG_r_data['dG_rv_ENO']['flux_ub'] == -900.17959885394237)
+        assert(tfba.tfva_dG_r_data['dG_rv_ENO']['flux_lb'] == -1000.1795988539425)
         tfba.export_tfva_dG_r_data(data_tfva_dG_r)
 
         cobra_model_copy = self.cobra_model.copy()

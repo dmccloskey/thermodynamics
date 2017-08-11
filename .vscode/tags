@@ -85,7 +85,7 @@ abspath	thermodynamics/thermodynamics_test/__init__.py	/^from os.path import abs
 add_pykA	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from thermodynamics.thermodynamics_utility import load_thermoModel, simulate_thermoConstraints, add_pykA$/;"	kind:namespace	line:16
 add_pykA	thermodynamics/thermodynamics_examples/aerobicAnaerobic02.py	/^from thermodynamics.thermodynamics_utility import load_thermoModel, simulate_thermoConstraints, add_pykA$/;"	kind:namespace	line:17
 add_pykA	thermodynamics/thermodynamics_test/test_thermodynamics.py	/^from thermodynamics.thermodynamics_utility import load_thermoModel, simulate_thermoConstraints, add_pykA$/;"	kind:namespace	line:18
-add_pykA	thermodynamics/thermodynamics_utility.py	/^def add_pykA(cobra_model_I):$/;"	kind:function	line:585
+add_pykA	thermodynamics/thermodynamics_utility.py	/^def add_pykA(cobra_model_I):$/;"	kind:function	line:590
 aerobicAnaerobic01	thermodynamics/thermodynamics_examples/main.py	/^from thermodynamics_examples import aerobicAnaerobic01$/;"	kind:namespace	line:8
 aerobicAnaerobic01.py	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	1;"	kind:file	line:1
 aerobicAnaerobic01_oxic_tsampling.py	thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_oxic_tsampling.py	1;"	kind:file	line:1
@@ -206,7 +206,7 @@ find_transportMets	thermodynamics/thermodynamics_analysis_deprecated.py	/^from t
 find_transportMets	thermodynamics/thermodynamics_dG_r_data.py	/^    def find_transportMets(self, cobra_model_I, reaction_id_I):$/;"	kind:member	line:1573
 find_transportMets	thermodynamics/thermodynamics_utility.py	/^def find_transportMets(cobra_model_I, reaction_id_I):$/;"	kind:function	line:13
 find_transportMetsAndRxns	thermodynamics/thermodynamics_tfba.py	/^from thermodynamics.thermodynamics_utility import find_transportRxns, null, find_transportMetsAndRxns$/;"	kind:namespace	line:15
-find_transportMetsAndRxns	thermodynamics/thermodynamics_utility.py	/^def find_transportMetsAndRxns(cobra_model_I):$/;"	kind:function	line:59
+find_transportMetsAndRxns	thermodynamics/thermodynamics_utility.py	/^def find_transportMetsAndRxns(cobra_model_I):$/;"	kind:function	line:64
 find_transportRxns	thermodynamics/thermodynamics_tfba.py	/^from thermodynamics.thermodynamics_utility import find_transportRxns, null, find_transportMetsAndRxns$/;"	kind:namespace	line:15
 find_transportRxns	thermodynamics/thermodynamics_utility.py	/^def find_transportRxns(cobra_model_I):$/;"	kind:function	line:39
 floor	thermodynamics/thermodynamics_analysis_deprecated.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
@@ -272,7 +272,7 @@ load_matlab_model	thermodynamics/thermodynamics_sampling.py	/^from cobra.io.mat 
 load_thermoModel	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from thermodynamics.thermodynamics_utility import load_thermoModel, simulate_thermoConstraints, add_pykA$/;"	kind:namespace	line:16
 load_thermoModel	thermodynamics/thermodynamics_examples/aerobicAnaerobic02.py	/^from thermodynamics.thermodynamics_utility import load_thermoModel, simulate_thermoConstraints, add_pykA$/;"	kind:namespace	line:17
 load_thermoModel	thermodynamics/thermodynamics_test/test_thermodynamics.py	/^from thermodynamics.thermodynamics_utility import load_thermoModel, simulate_thermoConstraints, add_pykA$/;"	kind:namespace	line:18
-load_thermoModel	thermodynamics/thermodynamics_utility.py	/^def load_thermoModel(anoxic = False):$/;"	kind:function	line:75
+load_thermoModel	thermodynamics/thermodynamics_utility.py	/^def load_thermoModel(anoxic = False):$/;"	kind:function	line:80
 loadtxt	thermodynamics/thermodynamics_sampling.py	/^from numpy import histogram, mean, std, loadtxt, savetxt$/;"	kind:namespace	line:5
 log	thermodynamics/thermodynamics_analysis_deprecated.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
 log	thermodynamics/thermodynamics_dG_p_data.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
@@ -289,14 +289,14 @@ make_dG0_f_pH0	thermodynamics/thermodynamics_dG_f_data.py	/^    def make_dG0_f_p
 matplotlib	thermodynamics/thermodynamics_sampling.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:7
 mean	thermodynamics/thermodynamics_sampling.py	/^from numpy import histogram, mean, std, loadtxt, savetxt$/;"	kind:namespace	line:5
 mean_confidence_interval	thermodynamics/thermodynamics_sampling.py	/^from .thermodynamics_utility import mean_confidence_interval$/;"	kind:namespace	line:15
-mean_confidence_interval	thermodynamics/thermodynamics_utility.py	/^def mean_confidence_interval(data, confidence=0.95):$/;"	kind:function	line:630
+mean_confidence_interval	thermodynamics/thermodynamics_utility.py	/^def mean_confidence_interval(data, confidence=0.95):$/;"	kind:function	line:635
 mpl	thermodynamics/thermodynamics_sampling.py	/^import matplotlib as mpl$/;"	kind:namespace	line:6
 np	thermodynamics/thermodynamics_test/test_thermodynamics.py	/^import numpy as np$/;"	kind:namespace	line:2
 null	thermodynamics/thermodynamics_tfba.py	/^from thermodynamics.thermodynamics_utility import find_transportRxns, null, find_transportMetsAndRxns$/;"	kind:namespace	line:15
-null	thermodynamics/thermodynamics_utility.py	/^def null(A, eps=1e-6):$/;"	kind:function	line:641
+null	thermodynamics/thermodynamics_utility.py	/^def null(A, eps=1e-6):$/;"	kind:function	line:646
 numpy	thermodynamics/thermodynamics_tfba.py	/^import numpy$/;"	kind:namespace	line:10
-numpy	thermodynamics/thermodynamics_utility.py	/^    import numpy$/;"	kind:namespace	line:632
-numpy	thermodynamics/thermodynamics_utility.py	/^    import numpy$/;"	kind:namespace	line:642
+numpy	thermodynamics/thermodynamics_utility.py	/^    import numpy$/;"	kind:namespace	line:637
+numpy	thermodynamics/thermodynamics_utility.py	/^    import numpy$/;"	kind:namespace	line:647
 operator	thermodynamics/thermodynamics_sampling.py	/^import operator, json, csv$/;"	kind:namespace	line:2
 operator	thermodynamics/thermodynamics_utility.py	/^import operator, json, csv$/;"	kind:namespace	line:2
 optGpSampler_sampling	thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_oxic_tsampling.py	/^from sampling.optGpSampler_sampling import optGpSampler_sampling$/;"	kind:namespace	line:2
@@ -333,15 +333,15 @@ save_matlab_model	thermodynamics/thermodynamics_utility.py	/^from cobra.io.mat i
 savetxt	thermodynamics/thermodynamics_sampling.py	/^from numpy import histogram, mean, std, loadtxt, savetxt$/;"	kind:namespace	line:5
 scipy	thermodynamics/thermodynamics_sampling.py	/^import scipy.io$/;"	kind:namespace	line:4
 scipy	thermodynamics/thermodynamics_tfba.py	/^import scipy$/;"	kind:namespace	line:11
-scipy	thermodynamics/thermodynamics_utility.py	/^    import scipy$/;"	kind:namespace	line:633
-scipy	thermodynamics/thermodynamics_utility.py	/^    import scipy.stats$/;"	kind:namespace	line:634
+scipy	thermodynamics/thermodynamics_utility.py	/^    import scipy$/;"	kind:namespace	line:638
+scipy	thermodynamics/thermodynamics_utility.py	/^    import scipy.stats$/;"	kind:namespace	line:639
 simulate_infeasibleReactions	thermodynamics/thermodynamics_dG_r_data.py	/^    def simulate_infeasibleReactions(self,cobra_model_I):$/;"	kind:member	line:1803
 simulate_loops	thermodynamics/thermodynamics_sampling.py	/^    def simulate_loops(self,cobra_model,data_fva):$/;"	kind:member	line:105
 simulate_loops_sbml	thermodynamics/thermodynamics_sampling.py	/^    def simulate_loops_sbml(self,ijo1366_sbml,data_fva):$/;"	kind:member	line:126
 simulate_thermoConstraints	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from thermodynamics.thermodynamics_utility import load_thermoModel, simulate_thermoConstraints, add_pykA$/;"	kind:namespace	line:16
 simulate_thermoConstraints	thermodynamics/thermodynamics_examples/aerobicAnaerobic02.py	/^from thermodynamics.thermodynamics_utility import load_thermoModel, simulate_thermoConstraints, add_pykA$/;"	kind:namespace	line:17
 simulate_thermoConstraints	thermodynamics/thermodynamics_test/test_thermodynamics.py	/^from thermodynamics.thermodynamics_utility import load_thermoModel, simulate_thermoConstraints, add_pykA$/;"	kind:namespace	line:18
-simulate_thermoConstraints	thermodynamics/thermodynamics_utility.py	/^def simulate_thermoConstraints(cobra_model_I,reactions_id_I):$/;"	kind:function	line:549
+simulate_thermoConstraints	thermodynamics/thermodynamics_utility.py	/^def simulate_thermoConstraints(cobra_model_I,reactions_id_I):$/;"	kind:function	line:554
 single_deletion	thermodynamics/thermodynamics_sampling.py	/^from cobra.flux_analysis import flux_variability_analysis, single_deletion$/;"	kind:namespace	line:11
 single_deletion	thermodynamics/thermodynamics_simulatedData.py	/^from cobra.flux_analysis import single_deletion$/;"	kind:namespace	line:4
 solver_dict	thermodynamics/thermodynamics_tfba.py	/^from cobra.solvers import solver_dict, get_solver_name$/;"	kind:namespace	line:14
@@ -355,7 +355,7 @@ sqrt	thermodynamics/thermodynamics_metabolomicsData.py	/^from math import sqrt,e
 sqrt	thermodynamics/thermodynamics_otherData.py	/^from math import sqrt,exp,pow$/;"	kind:namespace	line:3
 sqrt	thermodynamics/thermodynamics_simulatedData.py	/^from math import sqrt,exp,pow$/;"	kind:namespace	line:7
 sqrt	thermodynamics/thermodynamics_tfba.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
-stats	thermodynamics/thermodynamics_utility.py	/^    import scipy.stats$/;"	kind:namespace	line:634
+stats	thermodynamics/thermodynamics_utility.py	/^    import scipy.stats$/;"	kind:namespace	line:639
 std	thermodynamics/thermodynamics_sampling.py	/^from numpy import histogram, mean, std, loadtxt, savetxt$/;"	kind:namespace	line:5
 string_types	thermodynamics/thermodynamics_tfba.py	/^from six import iteritems, string_types$/;"	kind:namespace	line:13
 sys	debug_remote.py	/^import sys$/;"	kind:namespace	line:11

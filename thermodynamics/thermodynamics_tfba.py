@@ -172,8 +172,8 @@ class thermodynamics_tfba():
                 #if r.id in dG_r_coverage.keys() and dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
                 #if metabolomics_coverage[r.id] > measured_concentration_coverage_criteria and \
                 #dG_r_coverage[r.id]>measured_dG_f_coverage_criteria:
-                    dG_rv.lower_bound = dG_r[r.id]['dG_r_lb'];
-                    dG_rv.upper_bound = dG_r[r.id]['dG_r_ub'];
+                dG_rv.lower_bound = dG_r[r.id]['dG_r_lb'];
+                dG_rv.upper_bound = dG_r[r.id]['dG_r_ub'];
                 #else: 
                 #    dG_rv.lower_bound = self.dG_r_min;
                 #    dG_rv.upper_bound = self.dG_r_max;
@@ -205,7 +205,8 @@ class thermodynamics_tfba():
             # check to see if the model broke
             cobra_model_irreversible.solver = 'glpk'
             cobra_model_irreversible.optimize()
-            if not cobra_model_irreversible.objective.value:
+            if not cobra_model_irreversible.objective.value\
+                or cobra_model_irreversible.solver.status == 'infeasible':
                 print(dG_rv.id + ' broke the model!');
                 variables_break.append(dG_rv.id);
                 #cobra_model_irreversible.remove_reactions(indicator)
@@ -700,7 +701,7 @@ class thermodynamics_tfba():
             cobra_model_irreversible.add_reaction(dG0_rv);
             ## check to see if the model broke
             #cobra_model_irreversible.optimize(solver='glpk');
-            #if not cobra_model_irreversible.objective.value:
+            #if not cobra_model_irreversible.objective.value or cobra_model_irreversible.solution.status == 'infeasible':
             #    print dG0_rv.id + ' broke the model!';
             #    variables_break.append(dG0_rv.id);
             #    #cobra_model_irreversible.remove_reactions(indicator)
@@ -715,7 +716,7 @@ class thermodynamics_tfba():
         #    cobra_model_irreversible.add_reaction(dG0_rv);
         #    # check to see if the model broke
         #    cobra_model_irreversible.optimize(solver='glpk');
-        #    if not cobra_model_irreversible.objective.value:
+        #    if not cobra_model_irreversible.objective.value or cobra_model_irreversible.solution.status == 'infeasible':
         #        print dG0_rv.id + ' broke the model!';
         #        variables_break.append(dG0_rv.id);
         #        #cobra_model_irreversible.remove_reactions(indicator)

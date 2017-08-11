@@ -300,11 +300,14 @@ class test_thermodynamics():
             self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
             use_measured_dG0_r=True, reaction_list=None,fraction_of_optimum=1.0, solver='glpk',
             objective_sense="maximize")
-        assert(tfba.fva_data['ENO']['maximum'] == 1000.0)
-        assert(tfba.fva_data['ENO']['minimum'] == 18.0)
+        assert(tfba.tfva_data['ENO']['flux_ub'] == 20.003591977078848)
+        assert(tfba.tfva_data['ENO']['flux_lb'] == 20.003591977078848)
         tfba.export_tfva_data(data_tfva)
-        tfba.analyze_tfva_results(flux_threshold=1e-6)
-        assert(tfba.tfva_analysis['ENO'] == 30.0)
+        tfba.analyze_tfva_results(threshold=1e-6)
+        assert(tfba.tfva_analysis['ENO']['blocked'])
+        assert(tfba.tfva_analysis['ENO']['essential'])
+        assert(tfba.tfva_analysis['ENO']['substitutable'])
+        assert(tfba.tfva_analysis['ENO']['constrained'])
         tfba.export_tfva_analysis(data_tfva_analysis)
 
         cobra_model_copy = self.cobra_model.copy()
@@ -313,8 +316,8 @@ class test_thermodynamics():
             self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
             use_measured_dG0_r=True, fraction_of_optimum=1.0, solver='glpk',
             objective_sense="maximize")
-        assert(tfba.tfva_dG_r_data['dGr_rv_ENO']['maximum'] == 1000.0)
-        assert(tfba.tfva_dG_r_data['dGr_rv_ENO']['minimum'] == 18.0)
+        assert(tfba.tfva_dG_r_data['dGr_rv_ENO']['flux_ub'] == 1000.0)
+        assert(tfba.tfva_dG_r_data['dGr_rv_ENO']['flux_lb'] == 18.0)
         tfba.export_tfva_dG_r_data(data_tfva_dG_r)
 
         cobra_model_copy = self.cobra_model.copy()
@@ -325,8 +328,8 @@ class test_thermodynamics():
             measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
             use_measured_concentrations=True,use_measured_dG0_r=True,fraction_of_optimum=1.0, solver='glpk',
             objective_sense="maximize")
-        assert(tfba.tfva_concentration_data['conc_lnv_pep_c']['maximum'] == 1000.0)
-        assert(tfba.tfva_concentration_data['conc_lnv_pep_c']['minimum'] == 18.0)
+        assert(tfba.tfva_concentration_data['conc_lnv_pep_c']['flux_ub'] == 1000.0)
+        assert(tfba.tfva_concentration_data['conc_lnv_pep_c']['flux_lb'] == 18.0)
         tfba.export_tfva_concentrations_data(data_tfva_concentrations)
     
     def test_tsampling(self):

@@ -14,11 +14,13 @@ from six import iteritems, string_types
 from cobra.solvers import solver_dict, get_solver_name
 from thermodynamics.thermodynamics_utility import find_transportRxns, null, find_transportMetsAndRxns
 from thermodynamics.thermodynamics_sampling import thermodynamics_sampling
+from thermodynamics.thermodynamics_io import thermodynamics_io
+from cobra_utilities.cobra_simulatedData import cobra_simulatedData
 
 # Other dependencies
 import csv,json,sys
 
-class thermodynamics_tfba():    
+class thermodynamics_tfba(thermodynamics_io):    
     """1. Runs thermodynamic flux balance analysis analysis on a cobra.Model object
     2. Runs thermodynamic flux variabiity balance analysis analysis on a cobra.Model object
     3. Runs thermodynamic dG_r variability analysis analysis on a cobra.Model object
@@ -323,7 +325,8 @@ class thermodynamics_tfba():
                                         objective_sense='maximize',
                                         reaction_list=reaction_list,
                                         )
-        self.tfva_data = dict(zip(list(fva_data.index),fva_data.to_dict('records')))
+        simulatedData = cobra_simulatedData()
+        self.tfva_data = simulatedData._convert_fluxBounds2var(dict(zip(list(fva_data.index),fva_data.to_dict('records'))))
 
     def tfva_dG_r(self, cobra_model_irreversible, dG_r,  
         dG_r_coverage, thermodynamic_consistency_check, 
@@ -354,7 +357,8 @@ class thermodynamics_tfba():
                                         objective_sense='maximize',
                                         reaction_list=list(dG_r_variables.values()),
                                         )
-        self.tfva_dG_r_data = dict(zip(list(fva_data.index),fva_data.to_dict('records')))
+        simulatedData = cobra_simulatedData()
+        self.tfva_dG_r_data = simulatedData._convert_fluxBounds2var(dict(zip(list(fva_data.index),fva_data.to_dict('records'))))
 
     def tfva_concentrations(self, cobra_model_irreversible, measured_concentration, estimated_concentration, 
         dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,
@@ -372,9 +376,10 @@ class thermodynamics_tfba():
                                         objective_sense='maximize',
                                         reaction_list=list(conc_ln_variables.values()),
                                         )
-        self.tfva_concentrations_data = dict(zip(list(fva_data.index),fva_data.to_dict('records')))
+        simulatedData = cobra_simulatedData()
+        self.tfva_concentrations_data = simulatedData._convert_fluxBounds2var(dict(zip(list(fva_data.index),fva_data.to_dict('records'))))
 
-    def analyze_tfva_results(self,flux_threshold=1e-6):
+    def analyze_tfva_results(self,threshold=1e-6):
         '''Determine what reactions are
         1. Blocked
         2. Essential
@@ -390,28 +395,26 @@ class thermodynamics_tfba():
         substitutable_cnt = 0;
         constrained_cnt = 0;
         for k,v in self.tfva_data.items():
+            self.tfva_analysis[k] = {
+                'blocked':False,
+                'essential':False,
+                'substitutable':False,
+                'constrained':False,
+            }
             if v['flux_lb']<threshold and v['flux_ub']<threshold:
                 self.tfva_analysis[k]['blocked'] = True;
                 blocked_list.append(k);
                 blocked_cnt+=1;
-            else:
-                self.tfva_analysis[k]['blocked'] = False;
             if v['flux_lb']>threshold and v['flux_ub']>threshold:
                 self.tfva_analysis[k]['essential'] = True;
                 essential_list.append(k);
                 essential_cnt+=1;
-            else:
-                self.tfva_analysis[k]['essential'] = False;
             if v['flux_lb']<threshold and v['flux_ub']>threshold:
                 self.tfva_analysis[k]['substitutable'] = True;
                 substitutable_list.append(k);
                 substitutable_cnt+=1;
-            else:
-                self.tfva_analysis[k]['substitutable'] = False;
             if v['flux_lb']-v['flux_ub']<threshold:
                 self.tfva_analysis[k]['constrained'] = True;
-            else:
-                self.tfva_analysis[k]['constrained'] = False;
                 constrained_list.append(k);
                 constrained_cnt+=1;
 

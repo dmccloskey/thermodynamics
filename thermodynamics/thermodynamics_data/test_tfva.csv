@@ -1,0 +1,126 @@
+{
+    "ATPM": {
+        "maximum": 20.0,
+        "minimum": 20.0
+    },
+    "D_LACt2": {
+        "maximum": 980.0,
+        "minimum": 0.0
+    },
+    "D_LACt2_reverse": {
+        "maximum": 1000.0,
+        "minimum": 20.0
+    },
+    "ENO": {
+        "maximum": 20.003591977078848,
+        "minimum": 20.003591977078848
+    },
+    "ENO_reverse": {
+        "maximum": 0.0035919770788473216,
+        "minimum": 0.0035919770788473216
+    },
+    "EX_glc__D_e": {
+        "maximum": 0.0,
+        "minimum": 0.0
+    },
+    "EX_glc__D_e_reverse": {
+        "maximum": 10.0,
+        "minimum": 10.0
+    },
+    "EX_h_e": {
+        "maximum": 1000.0,
+        "minimum": 19.999999999999996
+    },
+    "EX_h_e_reverse": {
+        "maximum": 980.0,
+        "minimum": 0.0
+    },
+    "EX_lac__D_e": {
+        "maximum": 20.0,
+        "minimum": 20.0
+    },
+    "FBA": {
+        "maximum": 10.282096356087182,
+        "minimum": 10.282096356087182
+    },
+    "FBA_reverse": {
+        "maximum": 0.2820963560871815,
+        "minimum": 0.2820963560871815
+    },
+    "GAPD": {
+        "maximum": 200.0,
+        "minimum": 20.0
+    },
+    "GAPD_reverse": {
+        "maximum": 180.0,
+        "minimum": 0.0
+    },
+    "GLCpts": {
+        "maximum": 10.0,
+        "minimum": 10.0
+    },
+    "H2Ot": {
+        "maximum": 1000.0,
+        "minimum": 0.0
+    },
+    "H2Ot_reverse": {
+        "maximum": 1000.0,
+        "minimum": 0.0
+    },
+    "LDH_D": {
+        "maximum": 0.01,
+        "minimum": 0.01
+    },
+    "LDH_D_reverse": {
+        "maximum": 20.01,
+        "minimum": 20.01
+    },
+    "PFK": {
+        "maximum": 10.0,
+        "minimum": 10.0
+    },
+    "PGI": {
+        "maximum": 10.024813995700505,
+        "minimum": 10.024813995700505
+    },
+    "PGI_reverse": {
+        "maximum": 0.024813995700505985,
+        "minimum": 0.024813995700505985
+    },
+    "PGK": {
+        "maximum": 180.0,
+        "minimum": 0.0
+    },
+    "PGK_reverse": {
+        "maximum": 200.0,
+        "minimum": 20.0
+    },
+    "PGM": {
+        "maximum": 180.0,
+        "minimum": 0.0
+    },
+    "PGM_reverse": {
+        "maximum": 200.0,
+        "minimum": 20.0
+    },
+    "PIt2r": {
+        "maximum": 1000.0,
+        "minimum": 3.552713678800501e-15
+    },
+    "PIt2r_reverse": {
+        "maximum": 1000.0,
+        "minimum": 0.0
+    },
+    "PYK": {
+        "maximum": 10.0,
+        "minimum": 10.0
+    },
+    "TPI": {
+        "maximum": 10.078868092487012,
+        "minimum": 10.078868092487012
+    },
+    "TPI_reverse": {
+        "maximum": 0.07886809248701185,
+        "minimum": 0.07886809248701185
+    }
+}

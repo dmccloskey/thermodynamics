@@ -35,12 +35,12 @@ ENV CC_REPOSITORY https://github.com/dmccloskey/component-contribution.git
 ENV IOUTILITIES_VERSION master
 ENV IOUTILITIES_REPOSITORY https://github.com/dmccloskey/io_utilities.git
 RUN cd /usr/local/ && \
-	# #install component-contribution
-	# git clone ${CC_REPOSITORY} && \
-	# cd /usr/local/component-contribution/ && \
-	# git checkout ${CC_VERSION} && \
-	# python3 setup.py install && \
-	# cd /usr/local/ && \
+	#install component-contribution
+	git clone ${CC_REPOSITORY} && \
+	cd /usr/local/component-contribution/ && \
+	git checkout ${CC_VERSION} && \
+	python3 setup.py install && \
+	cd /usr/local/ && \
 	#install io_utilities
 	git clone ${IOUTILITIES_REPOSITORY} && \
 	cd /usr/local/io_utilities/ && \

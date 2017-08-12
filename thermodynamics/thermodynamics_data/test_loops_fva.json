@@ -1,0 +1,126 @@
+{
+    "ATPM": {
+        "maximum": 20.0,
+        "minimum": 20.0
+    },
+    "D_LACt2": {
+        "maximum": 980.0,
+        "minimum": 0.0
+    },
+    "D_LACt2_reverse": {
+        "maximum": 1000.0,
+        "minimum": 20.0
+    },
+    "ENO": {
+        "maximum": 1000.0,
+        "minimum": 20.0
+    },
+    "ENO_reverse": {
+        "maximum": 980.0,
+        "minimum": 0.0
+    },
+    "EX_glc__D_e": {
+        "maximum": 0.0,
+        "minimum": 0.0
+    },
+    "EX_glc__D_e_reverse": {
+        "maximum": 10.0,
+        "minimum": 10.0
+    },
+    "EX_h_e": {
+        "maximum": 1000.0,
+        "minimum": 20.0
+    },
+    "EX_h_e_reverse": {
+        "maximum": 980.0,
+        "minimum": 0.0
+    },
+    "EX_lac__D_e": {
+        "maximum": 20.0,
+        "minimum": 20.0
+    },
+    "FBA": {
+        "maximum": 1000.0,
+        "minimum": 10.0
+    },
+    "FBA_reverse": {
+        "maximum": 990.0,
+        "minimum": 0.0
+    },
+    "GAPD": {
+        "maximum": 1000.0,
+        "minimum": 20.0
+    },
+    "GAPD_reverse": {
+        "maximum": 980.0,
+        "minimum": 0.0
+    },
+    "GLCpts": {
+        "maximum": 10.0,
+        "minimum": 10.0
+    },
+    "H2Ot": {
+        "maximum": 1000.0,
+        "minimum": 0.0
+    },
+    "H2Ot_reverse": {
+        "maximum": 1000.0,
+        "minimum": 0.0
+    },
+    "LDH_D": {
+        "maximum": 980.0,
+        "minimum": 0.0
+    },
+    "LDH_D_reverse": {
+        "maximum": 1000.0,
+        "minimum": 20.0
+    },
+    "PFK": {
+        "maximum": 10.0,
+        "minimum": 10.0
+    },
+    "PGI": {
+        "maximum": 1000.0,
+        "minimum": 10.0
+    },
+    "PGI_reverse": {
+        "maximum": 990.0,
+        "minimum": 0.0
+    },
+    "PGK": {
+        "maximum": 980.0,
+        "minimum": 0.0
+    },
+    "PGK_reverse": {
+        "maximum": 1000.0,
+        "minimum": 20.0
+    },
+    "PGM": {
+        "maximum": 980.0,
+        "minimum": 0.0
+    },
+    "PGM_reverse": {
+        "maximum": 1000.0,
+        "minimum": 20.0
+    },
+    "PIt2r": {
+        "maximum": 1000.0,
+        "minimum": 0.0
+    },
+    "PIt2r_reverse": {
+        "maximum": 1000.0,
+        "minimum": 0.0
+    },
+    "PYK": {
+        "maximum": 10.0,
+        "minimum": 10.0
+    },
+    "TPI": {
+        "maximum": 1000.0,
+        "minimum": 10.0
+    },
+    "TPI_reverse": {
+        "maximum": 990.0,
+        "minimum": 0.0
+    }
+}

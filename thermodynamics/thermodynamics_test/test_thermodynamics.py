@@ -335,10 +335,12 @@ class test_thermodynamics():
     
     def test_tsampling(self):
         tfba = thermodynamics_tfba()
-        cobra_model_copy = self.cobra_model.copy()
-        tfba._add_dG_r_constraints(cobra_model_copy,
-            self.tcc.dG_r,self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
-            use_measured_dG_r=True)
+        # cobra_model_copy = self.cobra_model.copy()
+        # tfba._add_dG_r_constraints(cobra_model_copy,
+        #     self.tcc.dG_r,self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
+        #     use_measured_dG_r=True)
+
+        cobra_model_copy = load_json_model(data_dir + '/mini.json')
 
         # perform thermodynamic Tsampling
         sampling = optGpSampler_sampling(data_dir_I = data_dir);
@@ -361,11 +363,12 @@ class test_thermodynamics():
     def test_tsampling_analysis(self):
         tfba = thermodynamics_tfba()
         cobra_model_copy = self.cobra_model.copy()
-        tfba._add_dG_r_constraints(cobra_model_copy,
-            self.tcc.dG_r,self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
-            use_measured_dG_r=True)
+        # tfba._add_dG_r_constraints(cobra_model_copy,
+        #     self.tcc.dG_r,self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
+        #     use_measured_dG_r=True)
         # Analyze thermodynamic sampling
-        simulation_id_I = 'test_tsampling'
+        simulation_id_I = 'test_sampling'
+        # simulation_id_I = 'test_tsampling'
         filename_points = simulation_id_I + '_points' + '.json';
         filename_warmup = simulation_id_I + '_warmup' + '.json';
         sampling = optGpSampler_sampling(
@@ -374,15 +377,17 @@ class test_thermodynamics():
         sampling.get_points_json(filename_points);
         sampling.get_warmup_json(filename_warmup);
         sampling.calculate_mixFraction();
-        assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)
+        assert(len(sampling.points) == 31)
+        assert(sampling.mixed_fraction == 1.0) #need to update
         # check if the model contains loops
         #loops_bool = self.sampling.check_loops();
         sampling.simulate_loops(
             data_fva = data_dir + 'test_loops_fva.json',
             solver_I = 'glpk');
         sampling.find_loops(data_fva = data_dir + 'test_loops_fva.json');
+        assert('ENO' in sampling.loops)
         sampling.remove_loopsFromPoints();
-        assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)
+        assert(len(sampling.points) == 1)
         # calculate the flux descriptive statistics
         sampling.descriptive_statistics(points_I='flux');
         assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)

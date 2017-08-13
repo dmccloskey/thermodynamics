@@ -402,4 +402,6 @@ class test_thermodynamics():
         # calculate descriptive stats for subsystems
         sampling.convert_points2SubsystemPoints();
         sampling.descriptive_statistics(points_I='subsystem');
-        assert('glycolysis' in sampling.points_subsystem.keys())
+        assert('' in sampling.points_subsystem.keys())
+        assert(sampling.points_statistics['']['n'] == 62)
+        assert(sampling.points_statistics['']['ave'] == 1.9176474254840106)

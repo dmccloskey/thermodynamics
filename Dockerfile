@@ -30,10 +30,12 @@ RUN pip3 install --no-cache-dir \
 	&&pip3 install --upgrade
 
 # Custom modules
-ENV CC_VERSION fix/py2to3
+ENV CC_VERSION feature/dgf
 ENV CC_REPOSITORY https://github.com/dmccloskey/component-contribution.git
 ENV IOUTILITIES_VERSION master
 ENV IOUTILITIES_REPOSITORY https://github.com/dmccloskey/io_utilities.git
+ENV PYSTATS_VERSION master
+ENV PYSTATS_REPOSITORY https://github.com/dmccloskey/python_statistics.git
 RUN cd /usr/local/ && \
 	#install component-contribution
 	git clone ${CC_REPOSITORY} && \
@@ -45,6 +47,12 @@ RUN cd /usr/local/ && \
 	git clone ${IOUTILITIES_REPOSITORY} && \
 	cd /usr/local/io_utilities/ && \
 	git checkout ${IOUTILITIES_VERSION} && \
+	python3 setup.py install && \
+	cd /usr/local/ && \
+	#install python_statistics
+	git clone ${PYSTATS_REPOSITORY} && \
+	cd /usr/local/python_statistics/ && \
+	git checkout ${PYSTATS_VERSION} && \
 	python3 setup.py install && \
 	cd /usr/local/
 

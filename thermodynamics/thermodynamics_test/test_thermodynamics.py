@@ -383,23 +383,23 @@ class test_thermodynamics():
         assert('ENO' in sampling.loops)
         sampling.remove_loopsFromPoints();
         assert(len(sampling.points) == 1)
-        # calculate the flux descriptive statistics
-        sampling.descriptive_statistics(points_I='flux');
         assert('EX_glc__D_e' in sampling.points.keys())
-        assert(sampling.points_statistics['EX_glc__D_e']['n'] == 62)
-        assert(sampling.points_statistics['EX_glc__D_e']['ave'] == 1.9176474254840106)
-        # calculate descriptive stats for metabolites
+        # # calculate the flux descriptive statistics
+        # sampling.descriptive_statistics(points_I='flux');
+        # assert(sampling.points_statistics['EX_glc__D_e']['n'] == 62)
+        # assert(sampling.points_statistics['EX_glc__D_e']['ave'] == 1.9176474254840106)
         sampling.convert_points2MetabolitePoints();
-        sampling.descriptive_statistics(points_I='metabolite');
         assert('glc__D_e' in sampling.points_metabolite.keys())
-        assert(sampling.points_statistics['glc__D_e']['n'] == 62)
-        assert(sampling.points_statistics['glc__D_e']['ave'] == 0.95882371274200529)
-        # calculate descriptive stats for subsystems
+        # calculate descriptive stats for metabolites
+        # sampling.descriptive_statistics(points_I='metabolite');
+        # assert(sampling.points_statistics['glc__D_e']['n'] == 62)
+        # assert(sampling.points_statistics['glc__D_e']['ave'] == 0.95882371274200529)
         sampling.convert_points2SubsystemPoints();
-        sampling.descriptive_statistics(points_I='subsystem');
         assert('' in sampling.points_subsystem.keys())
-        assert(sampling.points_statistics['']['n'] == 62)
-        assert(sampling.points_statistics['']['ave'] == 1.9176474254840106)
+        # calculate descriptive stats for subsystems
+        # sampling.descriptive_statistics(points_I='subsystem');
+        # assert(sampling.points_statistics['']['n'] == 62)
+        # assert(sampling.points_statistics['']['ave'] == 1.9176474254840106)
     
     def test_tsampling_analysis(self):
         tfba = thermodynamics_tfba()
@@ -431,20 +431,8 @@ class test_thermodynamics():
         assert('ENO' in sampling.loops)
         sampling.remove_loopsFromPoints();
         assert(len(sampling.points) == 1)
-        # calculate the flux descriptive statistics
-        sampling.descriptive_statistics(points_I='flux');
         assert('EX_glc__D_e' in sampling.points.keys())
-        assert(sampling.points_statistics['EX_glc__D_e']['n'] == 62)
-        assert(sampling.points_statistics['EX_glc__D_e']['ave'] == 1.9176474254840106)
-        # calculate descriptive stats for metabolites
         sampling.convert_points2MetabolitePoints();
-        sampling.descriptive_statistics(points_I='metabolite');
         assert('glc__D_e' in sampling.points_metabolite.keys())
-        assert(sampling.points_statistics['glc__D_e']['n'] == 62)
-        assert(sampling.points_statistics['glc__D_e']['ave'] == 0.95882371274200529)
-        # calculate descriptive stats for subsystems
         sampling.convert_points2SubsystemPoints();
-        sampling.descriptive_statistics(points_I='subsystem');
         assert('' in sampling.points_subsystem.keys())
-        assert(sampling.points_statistics['']['n'] == 62)
-        assert(sampling.points_statistics['']['ave'] == 1.9176474254840106)

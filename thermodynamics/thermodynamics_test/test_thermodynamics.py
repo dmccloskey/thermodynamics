@@ -390,12 +390,16 @@ class test_thermodynamics():
         assert(len(sampling.points) == 1)
         # calculate the flux descriptive statistics
         sampling.descriptive_statistics(points_I='flux');
-        assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)
+        assert('EX_glc__D_e' in sampling.points.keys())
+        assert(sampling.points_statistics['EX_glc__D_e']['n'] == 62)
+        assert(sampling.points_statistics['EX_glc__D_e']['ave'] == 1.9176474254840106)
         # calculate descriptive stats for metabolites
         sampling.convert_points2MetabolitePoints();
         sampling.descriptive_statistics(points_I='metabolite');
-        assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)
+        assert('glc__D_e' in sampling.points_metabolite.keys())
+        assert(sampling.points_statistics['glc__D_e']['n'] == 62)
+        assert(sampling.points_statistics['glc__D_e']['ave'] == 0.95882371274200529)
         # calculate descriptive stats for subsystems
         sampling.convert_points2SubsystemPoints();
         sampling.descriptive_statistics(points_I='subsystem');
-        assert(diagnose_variables_1['ENO']['solution_before'] == 30.0)
+        assert('glycolysis' in sampling.points_subsystem.keys())

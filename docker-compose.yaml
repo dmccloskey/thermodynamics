@@ -4,10 +4,13 @@ services:
   thermodynamics:
     image: dmccloskey/python3cobrapy-thermodynamics:latest
     volumes:
+      ##computer 1: directories
       - //C/Users//domccl/GitHub/thermodynamics/:/home/user/code/
-      - //C/Users//domccl/GitHub/component-contribution/:/home/user/component-contribution/
+      # - //C/Users//domccl/GitHub/component-contribution/:/home/user/component-contribution/
       - //C/Users//domccl/GitHub/cobra_utilities/:/home/user/cobra_utilities/
+      ##computer 2: directories
       # - //C/Users//dmccloskey/Documents/GitHub/thermodynamics/:/home/user/code/
+      #...
     ports:
       - "3000:3000"
     command: python /home/user/code/debug_remote.py

@@ -377,6 +377,7 @@ test_dG_p_data	thermodynamics/thermodynamics_test/test_thermodynamics.py	/^    d
 test_dG_r_data	thermodynamics/thermodynamics_test/test_thermodynamics.py	/^    def test_dG_r_data(self):$/;"	kind:member	line:156
 test_metabolomicsData	thermodynamics/thermodynamics_test/test_thermodynamics.py	/^    def test_metabolomicsData(self):$/;"	kind:member	line:132
 test_otherData	thermodynamics/thermodynamics_test/test_thermodynamics.py	/^    def test_otherData(self):$/;"	kind:member	line:75
+test_sampling_analysis	thermodynamics/thermodynamics_test/test_thermodynamics.py	/^    def test_sampling_analysis(self):$/;"	kind:member	line:363
 test_simulatedData	thermodynamics/thermodynamics_test/test_thermodynamics.py	/^    def test_simulatedData(self):$/;"	kind:member	line:44
 test_tfba	thermodynamics/thermodynamics_test/test_thermodynamics.py	/^    def test_tfba(self):$/;"	kind:member	line:261
 test_tfba_constraints	thermodynamics/thermodynamics_test/test_thermodynamics.py	/^    def test_tfba_constraints(self):$/;"	kind:member	line:224
@@ -386,7 +387,7 @@ test_thermodynamics	thermodynamics/thermodynamics_test/test_thermodynamics.py	/^
 test_thermodynamics.py	thermodynamics/thermodynamics_test/test_thermodynamics.py	1;"	kind:file	line:1
 test_tsampling	thermodynamics/thermodynamics_test/test_thermodynamics.py	/^    def test_tsampling(self):$/;"	kind:member	line:336
 test_tsampling.py	thermodynamics/thermodynamics_data/test_tsampling.py	1;"	kind:file	line:1
-test_tsampling_analysis	thermodynamics/thermodynamics_test/test_thermodynamics.py	/^    def test_tsampling_analysis(self):$/;"	kind:member	line:363
+test_tsampling_analysis	thermodynamics/thermodynamics_test/test_thermodynamics.py	/^    def test_tsampling_analysis(self):$/;"	kind:member	line:404
 tfba	thermodynamics/thermodynamics_tfba.py	/^    def tfba(self, cobra_model_irreversible, dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, $/;"	kind:member	line:228
 tfba_conc_ln	thermodynamics/thermodynamics_tfba.py	/^    def tfba_conc_ln(self,cobra_model_irreversible, measured_concentration, estimated_concentration, $/;"	kind:member	line:259
 tfva	thermodynamics/thermodynamics_tfba.py	/^    def tfva(self, cobra_model_irreversible, dG_r, dG_r_coverage, thermodynamic_consistency_check, use_measured_dG_r=True,$/;"	kind:member	line:299

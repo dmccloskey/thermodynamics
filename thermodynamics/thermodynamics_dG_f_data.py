@@ -435,15 +435,14 @@ class thermodynamics_dG_f_data(thermodynamics_io):
         relies on RC data taken from the component_contribution: doi:10.1371/journal.pcbi.1003098
         and bibliomic/GC data taken from the psuedoisomer contribution method: doi:10.1093/bioinformatics/bts317
 
-        cobra_model_I: cobra_model
-
-        pH: {metabolite.compartment {'pH': float}}
-
-        temperature: {metabolite.compartment {'temperature': float,
-                'temperature_units': K}}
-
-        ionic strength: {metabolite.compartment {'ionic_strength': float,
-                                                    'ionic_strength_units': units}}'''
+        Args
+            cobra_model_I: cobra_model
+            pH: {metabolite.compartment {'pH': float}}
+            temperature: {metabolite.compartment {'temperature': float,
+                    'temperature_units': K}}
+            ionic strength: {metabolite.compartment {'ionic_strength': float,
+                                                        'ionic_strength_units': units}}
+        '''
 
         # upload dG0_f values
         dG0_f_KEGG_all = {}

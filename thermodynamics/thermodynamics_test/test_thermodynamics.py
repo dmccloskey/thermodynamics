@@ -20,7 +20,7 @@ from thermodynamics.thermodynamics_utility import load_thermoModel, simulate_the
 from thermodynamics.thermodynamics_dG_p_data import thermodynamics_dG_p_data
 from thermodynamics.thermodynamics_tfba import thermodynamics_tfba
 
-from . import data_dir
+from . import data_dir, data_dir_tests
 
 class test_thermodynamics():
     
@@ -34,7 +34,7 @@ class test_thermodynamics():
         self.tccp = None
 
     def test_cobra_model(self):
-        cobra_model = load_json_model(data_dir + '/mini.json')
+        cobra_model = load_json_model(data_dir_tests + '/mini.json')
         convert_to_irreversible(cobra_model)
         solution = cobra_model.optimize()
         assert(solution.objective_value == 30.0)
@@ -42,8 +42,8 @@ class test_thermodynamics():
         self.cobra_model = cobra_model
 
     def test_simulatedData(self):
-        data_fva = data_dir + '/test_fva.json'
-        data_srd = data_dir + '/test_srd.json'
+        data_fva = data_dir_tests + '/test_fva.json'
+        data_srd = data_dir_tests + '/test_srd.json'
         simulated_data = cobra_simulatedData()
         simulated_data.generate_sra_data(self.cobra_model) # perform single reaction deletion analysis
         simulated_data.generate_fva_data(self.cobra_model) # perform flux variability analysis
@@ -98,7 +98,7 @@ class test_thermodynamics():
         # generate dG_f data for all model compounds
         # calculate the dG_f for each compound in each compartment
         # export/load and check the dG_f data
-        data_dG0_transformed = data_dir + '/test_dG_f01.json'
+        data_dG0_transformed = data_dir_tests + '/test_dG_f01.json'
         dG_f_data = thermodynamics_dG_f_data(id2KEGGID_filename_I=data_dir + '/id2KEGGID.csv')
         assert(dG_f_data.KEGGID2id['C00234'] == '10fthf')
         assert(dG_f_data.id2KEGGID['10fthf'] == 'C00234')
@@ -131,7 +131,7 @@ class test_thermodynamics():
 
     def test_metabolomicsData(self):
         # load metabolomics data
-        data_concentrations = data_dir + '/test_geo01.json'
+        data_concentrations = data_dir_tests + '/test_geo01.json'
         metabolomics_data = thermodynamics_metabolomicsData()
         metabolomics_data.import_metabolomics_data(data_concentrations)
         assert(metabolomics_data.measured_concentrations['pep']['concentration'] == 0.000122661)  
@@ -155,10 +155,10 @@ class test_thermodynamics():
 
     def test_dG_r_data(self):
         # calculate dG_r and perform a consistency check based on model simulations
-        data_ta = data_dir + '/test_ta.csv'
-        data_dG0 = data_dir + '/test_dG0.json'
-        data_dG = data_dir + '/test_dG.json'
-        data_tcc = data_dir + '/test_tcc.json'
+        data_ta = data_dir_tests + '/test_ta.csv'
+        data_dG0 = data_dir_tests + '/test_dG0.json'
+        data_dG = data_dir_tests + '/test_dG.json'
+        data_tcc = data_dir_tests + '/test_tcc.json'
         tcc = thermodynamics_dG_r_data()
         # tcc.import_dG0_r_json(data_dG0)
         # tcc.import_dG_r_json(data_dG)
@@ -291,10 +291,10 @@ class test_thermodynamics():
         # run TFVA
         tfba = thermodynamics_tfba()
 
-        data_tfva = data_dir + 'test_tfva.csv'
-        data_tfva_analysis = data_dir + 'test_tfva_analysis.csv'
-        data_tfva_dG_r = data_dir + 'test_tfva_dG_r.json'
-        data_tfva_concentrations = data_dir + 'test_tfva_concentrations.json'
+        data_tfva = data_dir_tests + 'test_tfva.csv'
+        data_tfva_analysis = data_dir_tests + 'test_tfva_analysis.csv'
+        data_tfva_dG_r = data_dir_tests + 'test_tfva_dG_r.json'
+        data_tfva_concentrations = data_dir_tests + 'test_tfva_concentrations.json'
         cobra_model_copy = self.cobra_model.copy()
         tfba.tfva(cobra_model_copy, 
             self.tcc.dG0_r,self.other_data.temperature,
@@ -340,10 +340,10 @@ class test_thermodynamics():
             self.tcc.dG_r,self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
             use_measured_dG_r=True)
 
-        # cobra_model_copy = load_json_model(data_dir + '/mini.json')
+        # cobra_model_copy = load_json_model(data_dir_tests + '/mini.json')
 
         # perform thermodynamic Tsampling
-        sampling = optGpSampler_sampling(data_dir_I = data_dir);
+        sampling = optGpSampler_sampling(data_dir_I = data_dir_tests);
         simulation_id_I = 'test_tsampling'
         filename_model = simulation_id_I + '.json';
         filename_script = simulation_id_I + '.py';
@@ -367,7 +367,7 @@ class test_thermodynamics():
         filename_points = simulation_id_I + '_points' + '.json';
         filename_warmup = simulation_id_I + '_warmup' + '.json';
         sampling = optGpSampler_sampling(
-            data_dir_I = data_dir,
+            data_dir_I = data_dir_tests,
             model_I=self.cobra_model);
         sampling.get_points_json(filename_points);
         sampling.get_warmup_json(filename_warmup);
@@ -377,9 +377,9 @@ class test_thermodynamics():
         # check if the model contains loops
         #loops_bool = self.sampling.check_loops();
         sampling.simulate_loops(
-            data_fva = data_dir + 'test_loops_fva.json',
+            data_fva = data_dir_tests + 'test_loops_fva.json',
             solver_I = 'glpk');
-        sampling.find_loops(data_fva = data_dir + 'test_loops_fva.json');
+        sampling.find_loops(data_fva = data_dir_tests + 'test_loops_fva.json');
         assert('ENO' in sampling.loops)
         sampling.remove_loopsFromPoints();
         assert(len(sampling.points) == 1)
@@ -413,7 +413,7 @@ class test_thermodynamics():
         filename_points = simulation_id_I + '_points' + '.json';
         filename_warmup = simulation_id_I + '_warmup' + '.json';
         sampling = optGpSampler_sampling(
-            data_dir_I = data_dir,
+            data_dir_I = data_dir_tests,
             model_I=self.cobra_model);
         sampling.get_points_json(filename_points);
         sampling.get_warmup_json(filename_warmup);
@@ -425,9 +425,9 @@ class test_thermodynamics():
         # check if the model contains loops
         #loops_bool = self.sampling.check_loops();
         sampling.simulate_loops(
-            data_fva = data_dir + 'test_loops_fva.json',
+            data_fva = data_dir_tests + 'test_loops_fva.json',
             solver_I = 'glpk');
-        sampling.find_loops(data_fva = data_dir + 'test_loops_fva.json');
+        sampling.find_loops(data_fva = data_dir_tests + 'test_loops_fva.json');
         assert('ENO' in sampling.loops)
         sampling.remove_loopsFromPoints();
         assert(len(sampling.points) == 1)

@@ -13,6 +13,7 @@ except ImportError:
 thermodynamics_directory = abspath(join(dirname(abspath(__file__)), ".."))
 thermodynamics_location = abspath(join(thermodynamics_directory, ".."))
 data_dir = join(thermodynamics_directory, "thermodynamics_data", "")
+data_dir_tests = join(thermodynamics_directory, "thermodynamics_data/tests", "")
 
 def test_all(args=None):
     """ alias for running all unit-tests on installed thermodynamics

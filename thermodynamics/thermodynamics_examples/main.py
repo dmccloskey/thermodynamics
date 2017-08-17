@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import thermodynamics
 
 # import the example file and run

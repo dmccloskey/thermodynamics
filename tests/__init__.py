@@ -1,4 +1,12 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
+"""
+test_thermodynamics
+----------------------------------
+
+Tests for `thermodynamics` module.
+"""
 
 from __future__ import absolute_import
 
@@ -11,9 +19,9 @@ except ImportError:
     pytest = None
 
 thermodynamics_directory = abspath(join(dirname(abspath(__file__)), ".."))
-thermodynamics_location = abspath(join(thermodynamics_directory, ".."))
-data_dir = join(thermodynamics_directory, "thermodynamics_data", "")
-data_dir_tests = join(thermodynamics_directory, "thermodynamics_data/tests", "")
+thermodynamics_location = abspath(join(thermodynamics_directory, "thermodynamics"))
+data_dir = join(thermodynamics_location, "thermodynamics_data", "")
+data_dir_tests = join(thermodynamics_location, "thermodynamics_data/tests", "")
 
 def test_all(args=None):
     """ alias for running all unit-tests on installed thermodynamics

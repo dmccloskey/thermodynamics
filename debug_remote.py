@@ -11,7 +11,7 @@ ptvsd.wait_for_attach()
 import sys
 # sys.path.append('/home/user/component-contribution')
 # sys.path.append('/home/user/io_utilities')
-sys.path.append('/home/user/cobra_utilities')
+# sys.path.append('/home/user/cobra_utilities')
 
 # # import the example file and run
 # # from thermodynamics.thermodynamics_examples import aerobicAnaerobic01
@@ -19,7 +19,7 @@ sys.path.append('/home/user/cobra_utilities')
 # from thermodynamics.thermodynamics_examples import aerobicAnaerobic02
 # aerobicAnaerobic02._main_()
 
-from thermodynamics.thermodynamics_test.test_thermodynamics import test_thermodynamics
+from tests.test_thermodynamics import test_thermodynamics
 tthermo = test_thermodynamics()
 tthermo.test_cobra_model()
 tthermo.test_simulatedData()

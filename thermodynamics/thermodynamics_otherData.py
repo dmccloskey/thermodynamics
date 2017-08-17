@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 import json, csv
 from math import sqrt,exp,pow
 from numpy import average, var, log

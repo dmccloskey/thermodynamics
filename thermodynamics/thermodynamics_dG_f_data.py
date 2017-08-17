@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from cobra.core.reaction import Reaction
 from cobra.core.metabolite import Metabolite
 from cobra.core.model import Model

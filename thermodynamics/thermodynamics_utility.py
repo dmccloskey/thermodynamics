@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Dependencies
 import operator, json, csv
 from collections import Counter

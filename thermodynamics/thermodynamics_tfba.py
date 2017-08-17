@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 from math import floor,ceil,log,sqrt,pow,exp,fabs
 from copy import deepcopy
 from cobra.core.metabolite import Metabolite

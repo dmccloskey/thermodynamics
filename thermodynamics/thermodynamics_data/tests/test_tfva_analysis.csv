@@ -1,0 +1,188 @@
+{
+    "ATPM": {
+        "blocked": false,
+        "essential": true,
+        "substitutable": false,
+        "constrained": true
+    },
+    "D_LACt2": {
+        "blocked": false,
+        "essential": false,
+        "substitutable": true,
+        "constrained": true
+    },
+    "D_LACt2_reverse": {
+        "blocked": false,
+        "essential": true,
+        "substitutable": false,
+        "constrained": true
+    },
+    "ENO": {
+        "blocked": false,
+        "essential": true,
+        "substitutable": false,
+        "constrained": true
+    },
+    "ENO_reverse": {
+        "blocked": false,
+        "essential": true,
+        "substitutable": false,
+        "constrained": true
+    },
+    "EX_glc__D_e": {
+        "blocked": true,
+        "essential": false,
+        "substitutable": false,
+        "constrained": true
+    },
+    "EX_glc__D_e_reverse": {
+        "blocked": false,
+        "essential": true,
+        "substitutable": false,
+        "constrained": true
+    },
+    "EX_h_e": {
+        "blocked": false,
+        "essential": true,
+        "substitutable": false,
+        "constrained": true
+    },
+    "EX_h_e_reverse": {
+        "blocked": false,
+        "essential": false,
+        "substitutable": true,
+        "constrained": true
+    },
+    "EX_lac__D_e": {
+        "blocked": false,
+        "essential": true,
+        "substitutable": false,
+        "constrained": true
+    },
+    "FBA": {
+        "blocked": false,
+        "essential": true,
+        "substitutable": false,
+        "constrained": true
+    },
+    "FBA_reverse": {
+        "blocked": false,
+        "essential": true,
+        "substitutable": false,
+        "constrained": true
+    },
+    "GAPD": {
+        "blocked": false,
+        "essential": true,
+        "substitutable": false,
+        "constrained": true
+    },
+    "GAPD_reverse": {
+        "blocked": false,
+        "essential": false,
+        "substitutable": true,
+        "constrained": true
+    },
+    "GLCpts": {
+        "blocked": false,
+        "essential": true,
+        "substitutable": false,
+        "constrained": true
+    },
+    "H2Ot": {
+        "blocked": false,
+        "essential": false,
+        "substitutable": true,
+        "constrained": true
+    },
+    "H2Ot_reverse": {
+        "blocked": false,
+        "essential": false,
+        "substitutable": true,
+        "constrained": true
+    },
+    "LDH_D": {
+        "blocked": false,
+        "essential": true,
+        "substitutable": false,
+        "constrained": true
+    },
+    "LDH_D_reverse": {
+        "blocked": false,
+        "essential": true,
+        "substitutable": false,
+        "constrained": true
+    },
+    "PFK": {
+        "blocked": false,
+        "essential": true,
+        "substitutable": false,
+        "constrained": true
+    },
+    "PGI": {
+        "blocked": false,
+        "essential": true,
+        "substitutable": false,
+        "constrained": true
+    },
+    "PGI_reverse": {
+        "blocked": false,
+        "essential": true,
+        "substitutable": false,
+        "constrained": true
+    },
+    "PGK": {
+        "blocked": false,
+        "essential": false,
+        "substitutable": true,
+        "constrained": true
+    },
+    "PGK_reverse": {
+        "blocked": false,
+        "essential": true,
+        "substitutable": false,
+        "constrained": true
+    },
+    "PGM": {
+        "blocked": false,
+        "essential": false,
+        "substitutable": true,
+        "constrained": true
+    },
+    "PGM_reverse": {
+        "blocked": false,
+        "essential": true,
+        "substitutable": false,
+        "constrained": true
+    },
+    "PIt2r": {
+        "blocked": false,
+        "essential": false,
+        "substitutable": true,
+        "constrained": true
+    },
+    "PIt2r_reverse": {
+        "blocked": false,
+        "essential": false,
+        "substitutable": true,
+        "constrained": true
+    },
+    "PYK": {
+        "blocked": false,
+        "essential": true,
+        "substitutable": false,
+        "constrained": true
+    },
+    "TPI": {
+        "blocked": false,
+        "essential": true,
+        "substitutable": false,
+        "constrained": true
+    },
+    "TPI_reverse": {
+        "blocked": false,
+        "essential": true,
+        "substitutable": false,
+        "constrained": true
+    }
+}

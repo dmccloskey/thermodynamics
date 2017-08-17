@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """helper functions for generating thermodynamic analysis input"""
 
 import json, csv

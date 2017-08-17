@@ -1,0 +1,128 @@
+{
+    "conc_lnv_2pg_c": {
+        "flux": 0.0,
+        "flux_var": 132.0918725618648,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -11.493122837674049,
+        "flux_ub": -11.493122837674049
+    },
+    "conc_lnv_3pg_c": {
+        "flux": 0.0,
+        "flux_var": 132.0918725618648,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -11.493122837674049,
+        "flux_ub": -11.493122837674049
+    },
+    "conc_lnv_ENO_h2o_c": {
+        "flux": 0.0,
+        "flux_var": 16.058719257465423,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": 4.007333185232471,
+        "flux_ub": 4.007333185232471
+    },
+    "conc_lnv_FBA_dhap_c": {
+        "flux": 2.670757110277433,
+        "flux_var": 83.18109464010838,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -11.791124133599926,
+        "flux_ub": -6.44960991304506
+    },
+    "conc_lnv_FBA_g3p_c": {
+        "flux": 2.1000230040988836,
+        "flux_var": 73.09622301791126,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -10.649655921242827,
+        "flux_ub": -6.44960991304506
+    },
+    "conc_lnv_GAPD_13dpg_c": {
+        "flux": 3.453877639491069,
+        "flux_var": 98.07906570323804,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -13.357365192027197,
+        "flux_ub": -6.44960991304506
+    },
+    "conc_lnv_GAPD_pi_c": {
+        "flux": 0.0,
+        "flux_var": 47.71708299430558,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -6.907755278982137,
+        "flux_ub": -6.907755278982137
+    },
+    "conc_lnv_GLCpts_glc__D_e": {
+        "flux": 0.0,
+        "flux_var": 763.4733279088892,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -27.631021115928547,
+        "flux_ub": -27.631021115928547
+    },
+    "conc_lnv_GLCpts_pyr_c": {
+        "flux": 3.453877639491069,
+        "flux_var": 98.07906570323804,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -13.357365192027197,
+        "flux_ub": -6.44960991304506
+    },
+    "conc_lnv_LDH_D_lac__D_c": {
+        "flux": 0.0,
+        "flux_var": 178.41920487317978,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -13.357365192027197,
+        "flux_ub": -13.357365192027197
+    },
+    "conc_lnv_adp_c": {
+        "flux": 1.150268622975954,
+        "flux_var": 98.75170225577223,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -11.087657729565885,
+        "flux_ub": -8.787120483613977
+    },
+    "conc_lnv_atp_c": {
+        "flux": 0.0,
+        "flux_var": 82.2355311691432,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -9.068380846057536,
+        "flux_ub": -9.068380846057536
+    },
+    "conc_lnv_f6p_c": {
+        "flux": 1.2348848064832016,
+        "flux_var": 62.81029944694992,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -9.160179718784567,
+        "flux_ub": -6.690410105818164
+    },
+    "conc_lnv_fdp_c": {
+        "flux": 0.0,
+        "flux_var": 53.30132502032526,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -7.300775645116432,
+        "flux_ub": -7.300775645116432
+    },
+    "conc_lnv_g6p_c": {
+        "flux": 1.8165314650646378,
+        "flux_var": 56.92146894696379,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -9.361163261710766,
+        "flux_ub": -5.728100331581491
+    },
+    "conc_lnv_nad_c": {
+        "flux": 0.0,
+        "flux_var": 75.22466922355895,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -8.673215621876292,
+        "flux_ub": -8.673215621876292
+    },
+    "conc_lnv_nadh_c": {
+        "flux": 1.8484793842563372,
+        "flux_var": 73.43072064779194,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -10.417652077567633,
+        "flux_ub": -6.720693309054958
+    },
+    "conc_lnv_pep_c": {
+        "flux": 1.5026472341539936,
+        "flux_var": 81.10761490915458,
+        "flux_units": "mmol*gDW-1*hr-1",
+        "flux_lb": -10.50862385577336,
+        "flux_ub": -7.503329387465373
+    }
+}

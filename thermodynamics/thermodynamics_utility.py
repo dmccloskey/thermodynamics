@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Dependencies
 import operator, json, csv
 from collections import Counter
@@ -11,12 +12,15 @@ from cobra.core.metabolite import Metabolite
 from cobra.core.reaction import Reaction
 
 def find_transportMets(cobra_model_I, reaction_id_I):
-    # transport metabolite definition:
-    #	1. different id (same base id but different compartment)
-    #	2. same name
-    #	3. different compartment
 
-    ''' Not full proof
+    ''' 
+    transport metabolite definition:
+    	1. different id (same base id but different compartment)
+    	2. same name
+    	3. different compartment
+        
+    Not full proof
+
     import re
     compartments = list(set(cobra_model.metabolites.list_attr('compartment')));
     met_ID
@@ -25,7 +29,7 @@ def find_transportMets(cobra_model_I, reaction_id_I):
 	    met_tmp = re.sub(comp_tmp,'',met_ID)
     met_ids.append(met_tmp)'''
 
-    met_ids = cobra_model_I.reactions.get_by_id(reaction_id_I).get_products() + cobra_model_I.reactions.get_by_id(reaction_id_I).get_reactants()
+    met_ids = cobra_model_I.reactions.get_by_id(reaction_id_I).products + cobra_model_I.reactions.get_by_id(reaction_id_I).reactants
     met_names = [];
     mets_O = [];
     for m in met_ids:
@@ -34,19 +38,24 @@ def find_transportMets(cobra_model_I, reaction_id_I):
     return met_O;
 
 def find_transportRxns(cobra_model_I):
-    # transport reaction definition:
-    # 1. the metabolite satisfies the critera for a transport metabolite
-    #	1. different id (same base id but different compartment)
-    #	2. same name
-    #	3. different compartment
-    # 2. the reaction is not a system boundary reaction
+    '''
+    transport reaction definition:
+    1. the metabolite satisfies the critera for a transport metabolite
+    	1. different id (same base id but different compartment)
+    	2. same name
+    	3. different compartment
+    2. the reaction is not a system boundary reaction
+    '''
 
     rxn_O = [];
+    #Method 1
+    rxn_O = [rxn.id for rxn in cobra_model_I.exchanges]
+    #Method 2
     for rxn in cobra_model_I.reactions:
         mets = [];
         mets = find_transportMets(cobra_model_I, rxn.id);
-        #products = rxn.get_products();
-        #reactants = rxn.get_reactants();
+        #products = rxn.products;
+        #reactants = rxn.reactants;
         #product_names = [x.name for x in products];
         #reactant_names = [x.name for x in reactants];
         if mets:

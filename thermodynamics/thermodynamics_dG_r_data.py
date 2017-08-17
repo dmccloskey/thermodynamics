@@ -203,7 +203,8 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             flux2[k] = v['dG_r_ub'];
         data.append(flux1);
         data.append(flux2);
-        self.export_values_json(filename_I, data);
+        with open(filename_I, 'w') as outfile:
+            json.dump(data, outfile, indent=4)
         
     def export_displacement_escher(self, filename_I):
         '''plot confidence intervals from displacement calculations using escher'''
@@ -215,7 +216,8 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             flux2[k] = v['displacement_ub'];
         data.append(flux1);
         data.append(flux2);
-        self.export_values_json(filename_I, data);
+        with open(filename_I, 'w') as outfile:
+            json.dump(data, outfile, indent=4)
                 
     def export_concentrations_escher(self, filename_I, measured_concentrations):
         '''plot confidence intervals from concentrations calculations using escher'''
@@ -227,7 +229,8 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             flux2[k] = v['concentration_ub'];
         data.append(flux1);
         data.append(flux2);
-        self.export_values_json(filename_I, data);
+        with open(filename_I, 'w') as outfile:
+            json.dump(data, outfile, indent=4)
     
     def import_dG0_r_json(self, dG0_r_filename_I):
         '''import previous analysis'''

@@ -121,10 +121,10 @@ check_thermodynamicConsistency	thermodynamics/thermodynamics_dG_r_data.py	/^    
 clear_data	thermodynamics/thermodynamics_otherData.py	/^    def clear_data(self):$/;"	kind:member	line:29
 cobra_model	thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_oxic_tsampling.py	/^cobra_model = load_json_model("aerobicAnaerobic01_oxic_tsampling.json");$/;"	kind:variable	line:3
 cobra_model	thermodynamics/thermodynamics_data/tests/test_tsampling.py	/^cobra_model = load_json_model("test_tsampling.json");$/;"	kind:variable	line:3
-cobra_simulatedData	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from cobra_utilities.cobra_simulatedData import cobra_simulatedData$/;"	kind:namespace	line:11
-cobra_simulatedData	thermodynamics/thermodynamics_examples/aerobicAnaerobic02.py	/^from cobra_utilities.cobra_simulatedData import cobra_simulatedData$/;"	kind:namespace	line:11
-cobra_simulatedData	thermodynamics/thermodynamics_test/test_thermodynamics.py	/^from cobra_utilities.cobra_simulatedData import cobra_simulatedData$/;"	kind:namespace	line:13
-cobra_simulatedData	thermodynamics/thermodynamics_tfba.py	/^from cobra_utilities.cobra_simulatedData import cobra_simulatedData$/;"	kind:namespace	line:17
+thermodynamics_simulatedData	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from thermodynamics.thermodynamics_simulatedData import thermodynamics_simulatedData$/;"	kind:namespace	line:11
+thermodynamics_simulatedData	thermodynamics/thermodynamics_examples/aerobicAnaerobic02.py	/^from thermodynamics.thermodynamics_simulatedData import thermodynamics_simulatedData$/;"	kind:namespace	line:11
+thermodynamics_simulatedData	thermodynamics/thermodynamics_test/test_thermodynamics.py	/^from thermodynamics.thermodynamics_simulatedData import thermodynamics_simulatedData$/;"	kind:namespace	line:13
+thermodynamics_simulatedData	thermodynamics/thermodynamics_tfba.py	/^from thermodynamics.thermodynamics_simulatedData import thermodynamics_simulatedData$/;"	kind:namespace	line:17
 combine_measured_concentrations	thermodynamics/thermodynamics_metabolomicsData.py	/^    def combine_measured_concentrations(self):$/;"	kind:member	line:559
 compartementalize_concentrations	thermodynamics/thermodynamics_formatter.py	/^def compartementalize_concentrations(measured_values):$/;"	kind:function	line:53
 compound_model	thermodynamics/thermodynamics_dG_f_data.py	/^from component_contribution.compound_model import compound_model$/;"	kind:namespace	line:17

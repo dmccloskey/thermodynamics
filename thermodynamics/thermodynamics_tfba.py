@@ -14,7 +14,7 @@ from six import iteritems, string_types
 from cobra.solvers import solver_dict, get_solver_name
 from thermodynamics.thermodynamics_utility import find_transportRxns, null, find_transportMetsAndRxns
 from thermodynamics.thermodynamics_io import thermodynamics_io
-from cobra_utilities.cobra_simulatedData import cobra_simulatedData
+from thermodynamics.thermodynamics_simulatedData import thermodynamics_simulatedData
 
 # Other dependencies
 import csv,json,sys
@@ -104,17 +104,21 @@ class thermodynamics_tfba(thermodynamics_io):
         self.tsampling_dG_r_data = {};
         
     def export_tfva_data(self, filename):
-        '''export tfva data'''
-        self.export_values_json(filename, self.tfva_data);
+        '''export tfva data'''       
+        with open(filename, 'w') as outfile:
+            json.dump(self.tfva_data, outfile, indent=4)
     def export_tfva_dG_r_data(self, filename):
-        '''export tfva_dG_r data'''
-        self.export_values_json(filename, self.tfva_dG_r_data);
+        '''export tfva_dG_r data'''      
+        with open(filename, 'w') as outfile:
+            json.dump(self.tfva_dG_r_data, outfile, indent=4)
     def export_tfva_concentrations_data(self, filename):
         '''export tfva_concentrations data'''
-        self.export_values_json(filename, self.tfva_concentrations_data);
+        with open(filename, 'w') as outfile:
+            json.dump(self.tfva_concentrations_data, outfile, indent=4)
     def export_tfva_analysis(self, filename):
         '''export tfva_analysis'''
-        self.export_values_json(filename, self.tfva_analysis);
+        with open(filename, 'w') as outfile:
+            json.dump(self.tfva_analysis, outfile, indent=4)
     def _scale_dG_r(self,dG_r):
         '''scale dG_r lb/ub to be within pre-defined bounds'''
         # scale down the magnitude of dG_r
@@ -340,7 +344,7 @@ class thermodynamics_tfba(thermodynamics_io):
                                         objective_sense='maximize',
                                         reaction_list=reaction_list,
                                         )
-        simulatedData = cobra_simulatedData()
+        simulatedData = thermodynamics_simulatedData()
         self.tfva_data = simulatedData._convert_fluxBounds2var(dict(zip(list(fva_data.index),fva_data.to_dict('records'))))
 
     def tfva_dG_r(self, cobra_model_irreversible, dG_r,  
@@ -372,7 +376,7 @@ class thermodynamics_tfba(thermodynamics_io):
                                         objective_sense='maximize',
                                         reaction_list=list(dG_r_variables.values()),
                                         )
-        simulatedData = cobra_simulatedData()
+        simulatedData = thermodynamics_simulatedData()
         self.tfva_dG_r_data = simulatedData._convert_fluxBounds2var(dict(zip(list(fva_data.index),fva_data.to_dict('records'))))
 
     def tfva_concentrations(self, cobra_model_irreversible, measured_concentration, estimated_concentration, 
@@ -391,7 +395,7 @@ class thermodynamics_tfba(thermodynamics_io):
                                         objective_sense='maximize',
                                         reaction_list=list(conc_ln_variables.values()),
                                         )
-        simulatedData = cobra_simulatedData()
+        simulatedData = thermodynamics_simulatedData()
         self.tfva_concentrations_data = simulatedData._convert_fluxBounds2var(dict(zip(list(fva_data.index),fva_data.to_dict('records'))))
 
     def analyze_tfva_results(self,threshold=1e-6,verbose_I=False):

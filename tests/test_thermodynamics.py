@@ -10,7 +10,7 @@ import csv,json,sys
 
 # Dependencies from thermodynamics
 # from thermodynamics.thermodynamics_simulatedData import thermodynamics_simulatedData
-from cobra_utilities.cobra_simulatedData import cobra_simulatedData
+from thermodynamics.thermodynamics_simulatedData import thermodynamics_simulatedData
 from cobra_utilities.optGpSampler_sampling import optGpSampler_sampling
 from thermodynamics.thermodynamics_metabolomicsData import thermodynamics_metabolomicsData
 from thermodynamics.thermodynamics_otherData import thermodynamics_otherData
@@ -44,7 +44,7 @@ class test_thermodynamics():
     def test_simulatedData(self):
         data_fva = data_dir_tests + '/test_fva.json'
         data_srd = data_dir_tests + '/test_srd.json'
-        simulated_data = cobra_simulatedData()
+        simulated_data = thermodynamics_simulatedData()
         simulated_data.generate_sra_data(self.cobra_model) # perform single reaction deletion analysis
         simulated_data.generate_fva_data(self.cobra_model) # perform flux variability analysis
         assert(simulated_data.fva_data['ENO']['maximum'] == 1000.0)

@@ -32,10 +32,6 @@ RUN pip3 install --no-cache-dir \
 # Custom modules
 ENV CC_VERSION feature/dgf
 ENV CC_REPOSITORY https://github.com/dmccloskey/component-contribution.git
-# ENV IOUTILITIES_VERSION master
-# ENV IOUTILITIES_REPOSITORY https://github.com/dmccloskey/io_utilities.git
-# ENV PYSTATS_VERSION master
-# ENV PYSTATS_REPOSITORY https://github.com/dmccloskey/python_statistics.git
 ENV COBRAUTILITIES_VERSION master
 ENV COBRAUTILITIES_REPOSITORY https://github.com/dmccloskey/cobra_utilities.git
 RUN cd /usr/local/ && \
@@ -45,18 +41,6 @@ RUN cd /usr/local/ && \
 	git checkout ${CC_VERSION} && \
 	python3 setup.py install && \
 	cd /usr/local/ && \
-	# #install io_utilities
-	# git clone ${IOUTILITIES_REPOSITORY} && \
-	# cd /usr/local/io_utilities/ && \
-	# git checkout ${IOUTILITIES_VERSION} && \
-	# python3 setup.py install && \
-	# cd /usr/local/ && \
-	# #install python_statistics
-	# git clone ${PYSTATS_REPOSITORY} && \
-	# cd /usr/local/python_statistics/ && \
-	# git checkout ${PYSTATS_VERSION} && \
-	# python3 setup.py install && \
-	# cd /usr/local/ && \
 	#install cobra_utilities
 	git clone ${COBRAUTILITIES_REPOSITORY} && \
 	cd /usr/local/cobra_utilities/ && \

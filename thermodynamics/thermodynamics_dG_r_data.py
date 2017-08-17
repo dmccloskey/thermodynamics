@@ -247,13 +247,17 @@ class thermodynamics_dG_r_data(thermodynamics_io):
         self.thermodynamic_consistency_check = self.import_values_json(tcc_filename_I);
 
     def calculate_dG0_r(self, cobra_model, measured_dG_f, estimated_dG_f, temperature):
-        """calculate the standard Gibbs free energy of reaction"""
-        # Input:
-        #   dG_f (adjusted from dG0_f to in vivo conditions)
-        #   thermodynamic_consistency_check
-        # Output:
-        #   dG0_r
-        #   thermodynamic_consistency_check
+        """calculate the standard Gibbs free energy of reaction
+
+        Args
+            dG_f (adjusted from dG0_f to in vivo conditions)
+            thermodynamic_consistency_check
+            temperature
+
+        Returns
+            dG0_r
+            thermodynamic_consistency_check
+        """
 
         """
         a quick primer on the propogation of uncertainty:
@@ -382,25 +386,27 @@ class thermodynamics_dG_r_data(thermodynamics_io):
         pH (proton concentration)
         temperature: accounted for in dG_f
         change in ionic_strength: accounted for in dG_f
-        transport processes (membrane potential and  proton exchange)"""
-        # Input:
-        #   measured_concentrations
-        #   estimated_concentrations
-        #   dG0_r
-        #   thermodynamic_consistency_check
-        #   temperature
-        #   pH
-        #   ionic_strength
-        # Output:
-        #   dG_r
-        #   thermodynamic_consistency_check
+        transport processes (membrane potential and  proton exchange)
 
-        # NOTES:
-        #   The lower and upper bounds for dG_r can be calculated in two ways:
-        #   #1 provides a more conservative estimate, but can often reverse lb/ub dG_r values
-        #       depending on how wide the lb/ub is for reactants and products (default)
-        #   #2 provides a less conservative estimate, but avoids reversing the lb/ub dG_r values
-        #       even when the lb/ub for reactants and products is wide
+        Args
+            measured_concentrations
+            estimated_concentrations
+            dG0_r
+            thermodynamic_consistency_check
+            temperature
+            pH
+            ionic_strength
+        Returns
+            dG_r
+            thermodynamic_consistency_check
+
+        NOTES:
+          The lower and upper bounds for dG_r can be calculated in two ways:
+          #1 provides a more conservative estimate, but can often reverse lb/ub dG_r values
+              depending on how wide the lb/ub is for reactants and products (default)
+          #2 provides a less conservative estimate, but avoids reversing the lb/ub dG_r values
+              even when the lb/ub for reactants and products is wide
+        """
     
         # initialize hydrogens:
         hydrogens = [];
@@ -1571,10 +1577,21 @@ class thermodynamics_dG_r_data(thermodynamics_io):
         print(('total # of reactions with required thermodynamic coverage = ' + str(dG_f_coverage_cnt)))
     
     def find_transportMets(self, cobra_model_I, reaction_id_I):
-        # transport metabolite definition:
-        #	1. different id (same base id but different compartment)
-        #	2. same name
-        #	3. different compartment
+        """Find transport metabolites
+
+        Args
+            cobra_model (cobra.Model)
+            reaction_id_I (string): reaction id
+
+        Returns
+            met_O (list()): transport metabolites
+
+        Notes
+        transport metabolite definition:
+            1. different id (same base id but different compartment)
+            2. same name
+            3. different compartment
+        """
 
         ''' Not full proof
         import re
@@ -1802,13 +1819,16 @@ class thermodynamics_dG_r_data(thermodynamics_io):
 
     def simulate_infeasibleReactions(self,cobra_model_I):
         '''simulate the effect of constraining thermodynamically infeasible reactions to
-        thermodynamically determined directions'''
-        # Input:
-        #   cobra_model_I
-        #   reactions_id_I = cobra model reaction ids
-        # Output:
-        #   gr_O = {'reaction_id 1':{gr:float, gr_ratio:% change in growth},
-        #           'reaction_id 2':{gr:float, gr_ratio:% change in growth},...}
+        thermodynamically determined directions
+        
+        Args
+          cobra_model_I
+          reactions_id_I = cobra model reaction ids
+
+        Returns
+          gr_O = {'reaction_id 1':{gr:float, gr_ratio:% change in growth},
+                  'reaction_id 2':{gr:float, gr_ratio:% change in growth},...}
+        '''
 
         gr_O = {};
         reactions_id_I = list(self.inconsistent_reactions.keys());
@@ -1836,13 +1856,15 @@ class thermodynamics_dG_r_data(thermodynamics_io):
 
         self.inconsistent_reactions = gr_O;
 
-    def constrain_infeasibleReactions(self,cobra_model_irreversible,solver=None):
+    def constrain_infeasibleReactions(self,cobra_model_irreversible,solver=None,verbose_I=False):
         '''constrain the bounds of thermodynamically infeasible reactions
-        that do not impact growth'''
-        # Input:
-        #   cobra_model
-        # Output:
-        #   cobra_model with reactions removed
+        that do not impact growth
+        Args
+            cobra_model
+
+        Returns
+            cobra_model with reactions removed
+        '''
 
         for k,v in self.inconsistent_reactions.items():
             #remove the reaction from the model
@@ -1858,17 +1880,20 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                 #check for growth
                 cobra_model_irreversible.optimize(solver=solver);
                 if not cobra_model_irreversible.solution.f:
-                    print(rxn.id + ' broke the model!');
+                    if verbose_I: print(rxn.id + ' broke the model!');
                     cobra_model_irreversible.reactions.get_by_id(k).upper_bound = ub;
                     cobra_model_irreversible.reactions.get_by_id(k).lower_bound = lb;
 
     def remove_infeasibleReactions(self,cobra_model,solver=None):
         '''remove thermodynamically infeasible reactions
-        that do not impact growth'''
-        # Input:
-        #   cobra_model
-        # Output:
-        #   cobra_model with reactions removed
+        that do not impact growth
+
+        Args
+            cobra_model
+
+        Returns
+            cobra_model with reactions removed
+        '''
 
         for k,v in self.inconsistent_reactions.items():
             #remove the reaction from the model
@@ -1883,10 +1908,11 @@ class thermodynamics_dG_r_data(thermodynamics_io):
 
     def change_feasibleReactions(self,infeasible_reactions_I):
         '''change thermodynamically feasible reactions
-        to thermodynamically infeasible'''
+        to thermodynamically infeasible
 
-        #Input:
-        #   infeasible_reactions_I = list of strings of reaction ids
+        Args
+            infeasible_reactions_I = list of strings of reaction ids
+        '''
         
         for rxn in infeasible_reactions_I:
             if rxn in self.thermodynamic_consistency_check:

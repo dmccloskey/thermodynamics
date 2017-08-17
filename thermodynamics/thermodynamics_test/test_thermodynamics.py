@@ -284,8 +284,8 @@ class test_thermodynamics():
             self.tcc.dG_r_coverage, self.tcc.thermodynamic_consistency_check,
             measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
             use_measured_concentrations=True,use_measured_dG0_r=True, solver='glpk',)
-        assert(cobra_model_copy.objective.value == 12.585)
-        assert(tfba.tfba_data['ENO'] < 9 or tfba.tfba_data['ENO'] > 8) #exact solution varies
+        assert(cobra_model_copy.objective.value == 30.0)
+        assert(tfba.tfba_data['ENO'] < 21 or tfba.tfba_data['ENO'] > 20) #exact solution varies
     
     def test_tfva(self):
         # run TFVA

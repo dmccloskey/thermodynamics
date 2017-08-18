@@ -9,7 +9,7 @@ import csv,json,sys
 
 # Dependencies from thermodynamics
 # from thermodynamics.thermodynamics_simulatedData import thermodynamics_simulatedData
-from cobra_utilities.cobra_simulatedData import cobra_simulatedData
+from thermodynamics.thermodynamics_simulatedData import thermodynamics_simulatedData
 from cobra_utilities.optGpSampler_sampling import  optGpSampler_sampling
 from thermodynamics.thermodynamics_metabolomicsData import thermodynamics_metabolomicsData
 from thermodynamics.thermodynamics_otherData import thermodynamics_otherData
@@ -32,7 +32,7 @@ def _main_():
     # make/load simulated data for aerobic conditions
     data_fva_oxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_fva_irrev_oxic.json'
     data_srd_oxic = '/home/user/code/thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_srd_irrev_oxic.json'
-    simulated_data_oxic = cobra_simulatedData()
+    simulated_data_oxic = thermodynamics_simulatedData()
     # simulated_data_oxic.generate_sra_data(cobra_model_oxic) # perform single reaction deletion analysis
     # simulated_data_oxic.generate_fva_data(cobra_model_oxic) # perform flux variability analysis
     # simulated_data_oxic.export_sra_data(data_srd_oxic) # save results for later use

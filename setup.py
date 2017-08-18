@@ -10,8 +10,7 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    'https://github.com/dmccloskey/component-contribution/archive/feature/dgf.zip',
-    'https://github.com/dmccloskey/cobra_utilties/archive/master.zip',
+     # TODO: put package requirements here
 ]
 
 test_requirements = [

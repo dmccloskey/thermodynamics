@@ -30,8 +30,8 @@ matrix:
 
 clone_depth: 2
 
-password:
-    secure: COPY PASTE FROM APPVEYORS ONLINE ENCRYPTION TOOL
+# password:
+    # secure: COPY PASTE FROM APPVEYORS ONLINE ENCRYPTION TOOL
 
 init:
   - "ECHO %PYTHON% %PYTHON_VERSION% %PYTHON_ARCH%bit"

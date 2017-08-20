@@ -1,2 +1,2 @@
 https://github.com/dmccloskey/component-contribution/archive/feature/dgf.zip
-https://github.com/dmccloskey/cobra_sampling/archive/master.zip
+https://github.com/dmccloskey/sampling/archive/master.zip

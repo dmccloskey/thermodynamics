@@ -10,7 +10,7 @@ import csv,json,sys
 
 # Dependencies from thermodynamics
 from thermodynamics.thermodynamics_simulatedData import thermodynamics_simulatedData
-from cobra_utilities.optGpSampler_sampling import optGpSampler_sampling
+from cobra_sampling.optGpSampler_sampling import optGpSampler_sampling
 from thermodynamics.thermodynamics_metabolomicsData import thermodynamics_metabolomicsData
 from thermodynamics.thermodynamics_otherData import thermodynamics_otherData
 from thermodynamics.thermodynamics_dG_f_data import thermodynamics_dG_f_data

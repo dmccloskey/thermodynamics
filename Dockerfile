@@ -32,8 +32,8 @@ RUN pip3 install --no-cache-dir \
 # Custom modules
 ENV CC_VERSION feature/dgf
 ENV CC_REPOSITORY https://github.com/dmccloskey/component-contribution.git
-ENV COBRAUTILITIES_VERSION master
-ENV COBRAUTILITIES_REPOSITORY https://github.com/dmccloskey/cobra_utilities.git
+ENV COBRASAMPLING_VERSION master
+ENV COBRASAMPLING_REPOSITORY https://github.com/dmccloskey/cobra_sampling.git
 RUN cd /usr/local/ && \
 	#install component-contribution
 	git clone ${CC_REPOSITORY} && \
@@ -41,10 +41,10 @@ RUN cd /usr/local/ && \
 	git checkout ${CC_VERSION} && \
 	python3 setup.py install && \
 	cd /usr/local/ && \
-	#install cobra_utilities
-	git clone ${COBRAUTILITIES_REPOSITORY} && \
-	cd /usr/local/cobra_utilities/ && \
-	git checkout ${COBRAUTILITIES_VERSION} && \
+	#install cobra_sampling
+	git clone ${COBRASAMPLING_REPOSITORY} && \
+	cd /usr/local/cobra_sampling/ && \
+	git checkout ${COBRASAMPLING_VERSION} && \
 	python3 setup.py install && \
 	cd /usr/local/
 

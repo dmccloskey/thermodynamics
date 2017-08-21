@@ -1,13 +1,6 @@
 thermodynamics package
 ======================
 
-Subpackages
------------
-
-.. toctree::
-
-    thermodynamics.thermodynamics_examples
-
 Submodules
 ----------
 

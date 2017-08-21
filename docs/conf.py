@@ -70,7 +70,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'cobrapy_thermodynamics'
+project = u'thermodynamics'
 copyright = u"2017, Douglas McCloskey"
 
 # The version info for the project you're documenting, acts as replacement
@@ -224,7 +224,7 @@ latex_elements = {
 # [howto/manual]).
 latex_documents = [
     ('index', 'thermodynamics.tex',
-     u'cobrapy_thermodynamics Documentation',
+     u'thermodynamics Documentation',
      u'Douglas McCloskey', 'manual'),
 ]
 
@@ -255,7 +255,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', 'thermodynamics',
-     u'cobrapy_thermodynamics Documentation',
+     u'thermodynamics Documentation',
      [u'Douglas McCloskey'], 1)
 ]
 
@@ -270,7 +270,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     ('index', 'thermodynamics',
-     u'cobrapy_thermodynamics Documentation',
+     u'thermodynamics Documentation',
      u'Douglas McCloskey',
      'thermodynamics',
      'One line description of project.',

@@ -54,8 +54,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
     ionic strength: {metabolite.compartment {'ionic_strength': float,
                                              'ionic_strength_units': units}}
 
-    returns a dictionary: 
-    dG_r = {reaction.id: {'dG_r': float,
+    dG_r: {reaction.id: {'dG_r': float,
                           'dG_r_var': float,
                           'dG_r_lb': float,
                           'dG_r_ub': float,
@@ -83,8 +82,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
     measured_dG_f_coverage_criteria: The fraction of the reaction that is covered
                                               by measured values (defaults > 99%)
 
-    returns a dictionary: 
-    thermodynamic_consistency_check = {reaction.id: {'feasible': boolean, NOTE: or None if the below criterion
+    thermodynamic_consistency_check: {reaction.id: {'feasible': boolean, NOTE: or None if the below criterion
                                                                     were not met
                                          'measured_concentration_coverage': float,
                                          'measured_dG_r_coverage': float}
@@ -94,8 +92,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                  dG_r_coverage_I = {},metabolomics_coverage_I = {},
                  thermodynamic_consistency_check_I = {},
                  inconsistent_reactions_I = {}):
-        """
-        Estimate of reaction bounds:
+        """Estimate of reaction bounds:
 
         for a reaction of the form aA + bB = cC + dD
         dG_r_lb: aA_ub + bB_ub = cC_lb + dD_lb
@@ -386,6 +383,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
     def calculate_dG_r(self, cobra_model, measured_concentration, estimated_concentration,
                            pH, ionic_strength, temperature):
         """calculate the Gibbs free energy of reaction accounting for the following:
+        
         metabolite concentrations
         pH (proton concentration)
         temperature: accounted for in dG_f

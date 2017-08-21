@@ -333,6 +333,7 @@ export_tfva_concentrations_data	thermodynamics/thermodynamics_tfba.py	/^    def 
 export_tfva_dG_r_data	thermodynamics/thermodynamics_tfba.py	/^    def export_tfva_dG_r_data(self, filename):$/;"	kind:member	line:110
 export_tfva_data	thermodynamics/thermodynamics_tfba.py	/^    def export_tfva_data(self, filename):$/;"	kind:member	line:106
 export_values_json	thermodynamics/thermodynamics_io.py	/^    def export_values_json(self, filename, data):$/;"	kind:member	line:22
+extensions	docs/conf.py	/^extensions = ['sphinx.ext.autodoc', 'sphinx.ext.napoleon']$/;"	kind:variable	line:279
 extensions	docs/conf.py	/^extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode', 'numpydoc']$/;"	kind:variable	line:43
 fabs	thermodynamics/thermodynamics_dG_p_data.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:3
 fabs	thermodynamics/thermodynamics_dG_r_data.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:3
@@ -494,6 +495,17 @@ mean_confidence_interval	thermodynamics/thermodynamics_utility.py	/^def mean_con
 module	.tox/flake8/lib/python3.6/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
 module	.tox/py36/lib/python3.6/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
 name	setup.py	/^    name='thermodynamics',$/;"	kind:variable	line:21
+napoleon_google_docstring	docs/conf.py	/^napoleon_google_docstring = True$/;"	kind:variable	line:282
+napoleon_include_init_with_doc	docs/conf.py	/^napoleon_include_init_with_doc = False$/;"	kind:variable	line:284
+napoleon_include_private_with_doc	docs/conf.py	/^napoleon_include_private_with_doc = False$/;"	kind:variable	line:285
+napoleon_include_special_with_doc	docs/conf.py	/^napoleon_include_special_with_doc = True$/;"	kind:variable	line:286
+napoleon_numpy_docstring	docs/conf.py	/^napoleon_numpy_docstring = True$/;"	kind:variable	line:283
+napoleon_use_admonition_for_examples	docs/conf.py	/^napoleon_use_admonition_for_examples = False$/;"	kind:variable	line:287
+napoleon_use_admonition_for_notes	docs/conf.py	/^napoleon_use_admonition_for_notes = False$/;"	kind:variable	line:288
+napoleon_use_admonition_for_references	docs/conf.py	/^napoleon_use_admonition_for_references = False$/;"	kind:variable	line:289
+napoleon_use_ivar	docs/conf.py	/^napoleon_use_ivar = False$/;"	kind:variable	line:290
+napoleon_use_param	docs/conf.py	/^napoleon_use_param = True$/;"	kind:variable	line:291
+napoleon_use_rtype	docs/conf.py	/^napoleon_use_rtype = True/;"	kind:variable	line:292
 new_sys_path	.tox/flake8/bin/activate_this.py	/^new_sys_path = []$/;"	kind:variable	line:29
 new_sys_path	.tox/py36/bin/activate_this.py	/^new_sys_path = []$/;"	kind:variable	line:29
 not	.tox/flake8/lib/python3.6/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
@@ -523,10 +535,10 @@ opcode	.tox/py36/lib/python3.6/distutils/__init__.py	/^import opcode # opcode is
 operator	thermodynamics/thermodynamics_utility.py	/^import operator, json, csv$/;"	kind:namespace	line:3
 operator.py	.tox/flake8/lib/python3.6/operator.py	1;"	kind:file	line:1
 operator.py	.tox/py36/lib/python3.6/operator.py	1;"	kind:file	line:1
-optGpSampler_sampling	tests/test_thermodynamics.py	/^from cobra_utilities.optGpSampler_sampling import optGpSampler_sampling$/;"	kind:namespace	line:13
+optGpSampler_sampling	tests/test_thermodynamics.py	/^from sampling.optGpSampler_sampling import optGpSampler_sampling$/;"	kind:namespace	line:13
 optGpSampler_sampling	thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_oxic_tsampling.py	/^from sampling.optGpSampler_sampling import optGpSampler_sampling$/;"	kind:namespace	line:2
-optGpSampler_sampling	thermodynamics/thermodynamics_data/tests/test_tsampling.py	/^from cobra_utilities.optGpSampler_sampling import optGpSampler_sampling$/;"	kind:namespace	line:2
-optGpSampler_sampling	thermodynamics/thermodynamics_examples/aerobicAnaerobic02.py	/^from cobra_utilities.optGpSampler_sampling import  optGpSampler_sampling$/;"	kind:namespace	line:13
+optGpSampler_sampling	thermodynamics/thermodynamics_data/tests/test_tsampling.py	/^from sampling.optGpSampler_sampling import optGpSampler_sampling$/;"	kind:namespace	line:2
+optGpSampler_sampling	thermodynamics/thermodynamics_examples/aerobicAnaerobic02.py	/^from sampling.optGpSampler_sampling import  optGpSampler_sampling$/;"	kind:namespace	line:13
 opt_flags	.tox/flake8/bin/python-config	/^opt_flags = [flag for (flag, val) in opts]$/;"	kind:variable	line:33
 opt_flags	.tox/py36/bin/python-config	/^opt_flags = [flag for (flag, val) in opts]$/;"	kind:variable	line:33
 optimize_minimal_flux	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from cobra.flux_analysis.parsimonious import optimize_minimal_flux$/;"	kind:namespace	line:5

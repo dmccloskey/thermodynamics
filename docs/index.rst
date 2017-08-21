@@ -18,6 +18,7 @@ Contents:
    contributing
     authors
    history
+   thermodynamics
 
 Indices and tables
 ==================

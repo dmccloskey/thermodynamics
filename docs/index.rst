@@ -18,7 +18,7 @@ Contents:
    contributing
     authors
    history
-   thermodynamics
+   modules
 
 Indices and tables
 ==================

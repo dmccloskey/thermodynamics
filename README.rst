@@ -1,5 +1,5 @@
 ===============================
-cobrapy_thermodynamics
+thermodynamics
 ===============================
 
 

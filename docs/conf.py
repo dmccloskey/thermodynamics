@@ -42,7 +42,7 @@ import thermodynamics
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.intersphinx',
               'sphinx.ext.mathjax', 'sphinx.ext.viewcode',
-              'sphinx.ext.napoleon', 'sphinx.ext.mathjax', 'nbsphinx']
+              'sphinx.ext.napoleon', 'sphinx.ext.mathjax']
 
 # Napoleon settings
 napoleon_google_docstring = True

@@ -104,23 +104,23 @@ class thermodynamics_tfba(thermodynamics_io):
         self.tsampling_dG_r_data = {};
         
     def export_tfva_data(self, filename):
-        '''export tfva data'''       
+        """export tfva data"""       
         with open(filename, 'w') as outfile:
             json.dump(self.tfva_data, outfile, indent=4)
     def export_tfva_dG_r_data(self, filename):
-        '''export tfva_dG_r data'''      
+        """export tfva_dG_r data"""      
         with open(filename, 'w') as outfile:
             json.dump(self.tfva_dG_r_data, outfile, indent=4)
     def export_tfva_concentrations_data(self, filename):
-        '''export tfva_concentrations data'''
+        """export tfva_concentrations data"""
         with open(filename, 'w') as outfile:
             json.dump(self.tfva_concentrations_data, outfile, indent=4)
     def export_tfva_analysis(self, filename):
-        '''export tfva_analysis'''
+        """export tfva_analysis"""
         with open(filename, 'w') as outfile:
             json.dump(self.tfva_analysis, outfile, indent=4)
     def _scale_dG_r(self,dG_r):
-        '''scale dG_r lb/ub to be within pre-defined bounds'''
+        """scale dG_r lb/ub to be within pre-defined bounds"""
         # scale down the magnitude of dG_r
         for k,v in dG_r.items():
             if v['dG_r_lb']<self.dG_r_min:
@@ -134,7 +134,7 @@ class thermodynamics_tfba(thermodynamics_io):
         return dG_r;
 
     def _scale_conc(self,concentrations):
-        '''scale conc lb/ub to be within pre-defined bounds'''
+        """scale conc lb/ub to be within pre-defined bounds"""
         # scale down the magnitude of conc
         for k,v in concentrations.items():
             if v['concentration_lb']<self.conc_min:
@@ -151,7 +151,7 @@ class thermodynamics_tfba(thermodynamics_io):
                               use_measured_dG_r=True, return_dG_r_variables=False, verbose_I=False):
         """add constraints for dG_r to the model
 
-        Args
+        Args:
             cobra_model_irreversible (cobra.Model): irreversible cobra model
             measured_concentrations (dict()): dictionary of measured concentrations
             estimated_concentrations(dict()): dictionary of estimated concentrations
@@ -163,7 +163,7 @@ class thermodynamics_tfba(thermodynamics_io):
             use_measured_dG_r (boolean): 
             return_dG_r_variables (boolean)  False add dG0_r variables?
 
-        Returns
+        Returns:
             cobra_model_irreversible = irreversible cobra model with dG0r and conc_ln constraints added
             dG_r_dict = dictionary of dG0_r variables
         """
@@ -321,18 +321,16 @@ class thermodynamics_tfba(thermodynamics_io):
              objective_sense="maximize", **solver_args):
         """performs thermodynamic flux variability analysis to find max/min flux values
 
-        cobra_model : :class:`~cobra.core.Model`:
-
-        reaction_list : list of :class:`~cobra.core.Reaction`: or their id's
-            The id's for which FVA should be run. If this is None, the bounds
-            will be comptued for all reactions in the model.
-
-        fraction_of_optimum : fraction of optimum which must be maintained.
-            The original objective reaction is constrained to be greater than
-            maximal_value * fraction_of_optimum
-
-        solver : string of solver name
-            If None is given, the default solver will be used.
+        Args:
+            cobra_model : :class:`~cobra.core.Model`:
+            reaction_list : list of :class:`~cobra.core.Reaction`: or their id's
+                The id's for which FVA should be run. If this is None, the bounds
+                will be comptued for all reactions in the model.
+            fraction_of_optimum : fraction of optimum which must be maintained.
+                The original objective reaction is constrained to be greater than
+                maximal_value * fraction_of_optimum
+            solver : string of solver name
+                If None is given, the default solver will be used.
 
         """
         reaction_list = [r for r in cobra_model_irreversible.reactions]
@@ -354,18 +352,16 @@ class thermodynamics_tfba(thermodynamics_io):
         objective_sense="maximize", **solver_args):
         """performs thermodynamic dG_r variability analysis to find max/min dG_r values
 
-        cobra_model : :class:`~cobra.core.Model`:
-
-        reaction_list : list of :class:`~cobra.core.Reaction`: or their id's
-            The id's for which FVA should be run. If this is None, the bounds
-            will be computed for all reactions in the model.
-
-        fraction_of_optimum : fraction of optimum which must be maintained.
-            The original objective reaction is constrained to be greater than
-            maximal_value * fraction_of_optimum
-
-        solver : string of solver name
-            If None is given, the default solver will be used.
+        Args:
+            cobra_model : :class:`~cobra.core.Model`:
+            reaction_list : list of :class:`~cobra.core.Reaction`: or their id's
+                The id's for which FVA should be run. If this is None, the bounds
+                will be comptued for all reactions in the model.
+            fraction_of_optimum : fraction of optimum which must be maintained.
+                The original objective reaction is constrained to be greater than
+                maximal_value * fraction_of_optimum
+            solver : string of solver name
+                If None is given, the default solver will be used.
 
         """
         # add dG_r constraints: # adding constraints here is slower!
@@ -384,7 +380,7 @@ class thermodynamics_tfba(thermodynamics_io):
         measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
         use_measured_concentrations=True,use_measured_dG0_r=True, reaction_list=None,fraction_of_optimum=1.0, solver='glpk',
         objective_sense="maximize", **solver_args):
-        '''performs thermodynamic metabolite concentration variability analysis'''
+        """performs thermodynamic metabolite concentration variability analysis"""
 
         # add constraints
         conc_ln_variables = self._add_conc_ln_constraints(cobra_model_irreversible,measured_concentration, estimated_concentration, dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, measured_concentration_coverage_criteria, measured_dG_f_coverage_criteria,
@@ -399,17 +395,17 @@ class thermodynamics_tfba(thermodynamics_io):
         self.tfva_concentrations_data = simulatedData._convert_fluxBounds2var(dict(zip(list(fva_data.index),fva_data.to_dict('records'))))
 
     def analyze_tfva_results(self,threshold=1e-6,verbose_I=False):
-        '''Determine what reactions are
+        """Determine what reactions are
         1. Blocked
         2. Essential
         3. Substitutable
         4. Constrained
         
-        Args
+        Args:
             threshold (float): smallest floating point number to call a no flux reaction
             verbose_I (boolean): print the number of reactions found belonging to each category to the console
 
-        '''
+        """
 
         blocked_list = [];
         essential_list = [];
@@ -457,7 +453,7 @@ class thermodynamics_tfba(thermodynamics_io):
         verbose_I=False):
         """Add thermodynamic concentration constraints to the model
 
-        Args
+        Args:
             cobra_model_irreversible (cobra.Model): irreversible cobra model
             measured_concentrations (dict()): dictionary of measured concentrations
             estimated_concentrations(dict()): dictionary of estimated concentrations
@@ -473,7 +469,7 @@ class thermodynamics_tfba(thermodynamics_io):
             return_concentration_variables (boolean): return added concentration variables?
             return_dG0_r_variables (boolean)  False add dG0_r variables?
 
-        Returns
+        Returns:
             cobra_model_irreversible = irreversible cobra model with dG0r and conc_ln constraints added
             conc_lnv_dict = dictionary of conc_ln variables
             dG0_r_dict = dictionary of dG0_r variables
@@ -755,10 +751,10 @@ class thermodynamics_tfba(thermodynamics_io):
         use_measured_concentrations=True,use_measured_dG0_r=True,return_concentration_variables=False,return_dG0_r_variables=False,
         diagnose_I=False,diagnose_solver_I='glpk',diagnose_threshold_I=0.98,diagnose_break_I=0.1,
         verbose_I=True):
-        '''
+        """
         Add thermodynamic constraints for concentrations and transport reactions
 
-        Args
+        Args:
             cobra_model_irreversible (cobra.Model): irreversible cobra model
             measured_concentrations (dict()): dictionary of measured concentrations
             estimated_concentrations(dict()): dictionary of estimated concentrations
@@ -779,12 +775,12 @@ class thermodynamics_tfba(thermodynamics_io):
             diagnose_threshold_I (float): % of orginal growth rate to flag a constrain
             diagnose_break_I (float): % of original growth rate to stop the diagnosis
 
-        Returns
+        Returns:
             cobra_model_irreversible = irreversible cobra model with dG0r and conc_ln constraints added
             conc_lnv_dict = dictionary of conc_ln variables
             dG0_r_dict = dictionary of dG0_r variables
             diagnosed_variables_O = dictionary of constraints that reduce the model solution by diagnose_threshold_I
-        '''
+        """
         
         # pre-process the data
         dG0_r = self._scale_dG_r(dG0_r);
@@ -1110,26 +1106,27 @@ class thermodynamics_tfba(thermodynamics_io):
                               measured_concentration_coverage_criteria = 0.5, measured_dG_f_coverage_criteria = 0.99,
                               n_checks_I = 5,
                               diagnose_solver_I='glpk',diagnose_threshold_I=0.98,diagnose_break_I=0.1):
-        '''Check conc_ln_constraints_trasport
+        """Check conc_ln_constraints_trasport
+
         1. check without using measured concentrations or measured dG0_r
         2. check without using measured concentrations, but using measured dG0_r
         3. check using both measured concentrations and measured dG0_r
         reactions involved with variables found to break the model are
         changed from "feasible:True" to "feasible:False"
 
-        Args
+        Args:
             n_checks_I = number of loops per check
             diagnose_solver_I = solver used in the diagnose FBA
             diagnose_threshold_I = % of orginal growth rate to flag a constrain
             diagnose_break_I = % of original growth rate to stop the diagnosis
 
-        Returns
+        Returns:
             thermodynamic_constraints_check = thermodynamic_consistency_check updated from the check
             inconsistent_tcc = list of feasible reactions that break the model when tfba constraints are added
             diagnose_variables_1 = results of check 1
             diagnose_variables_2 = results of check 2
             diagnose_variables_3 = results of check 3
-        '''
+        """
         thermodynamic_constraints_check = thermodynamic_consistency_check;
         # check 1:
         diagnose_variables_1 = {}
@@ -1188,13 +1185,15 @@ class thermodynamics_tfba(thermodynamics_io):
         return thermodynamic_constraints_check,inconsistent_tcc,diagnose_variables_1,diagnose_variables_2,diagnose_variables_3
 
     def get_variableTypeAndUnits(self,rxn_id):
-        '''return the variable type and units based on the name of the rxn_id
-        Args
-        rxn_id = string
-        OUTPUT
-        type_O = string
-        units_O = string
-        '''
+        """return the variable type and units based on the name of the rxn_id
+
+        Args:
+            rxn_id
+
+        Returns:
+            type_O
+            units_O
+        """
         type_O = None;
         units_O = None;
         if 'conc_lnv_' in rxn_id:
@@ -1222,11 +1221,11 @@ class thermodynamics_tfba(thermodynamics_io):
 
     def tsampling_matlab_import(self,cobra_model_irreversible, dG_r, dG_r_coverage, thermodynamic_consistency_check, use_measured_dG_r=True, solver='glpk',
                   fraction_optimal = 1.0, matlab_data='data\\tsampling\\tsampler_out.mat',sampler_model_name='tsampler_out',plot_reactions=[]):
-        '''Analyze sampling results
+        """Analyze sampling results
 
         DEPRECATED
         
-        '''
+        """
 
         # copy the model:
         cobra_model_copy = cobra_model_irreversible.copy();

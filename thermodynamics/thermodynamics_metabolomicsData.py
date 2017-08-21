@@ -24,63 +24,65 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
         self.measured_concentrations_extracellular = {}
 
     def import_metabolomics_data(self, concentration_filename_I): #deprecated
-        '''import measured values required for analysis'''
+        """import measured values required for analysis"""
 
         self.measured_concentrations = self._checkInput_concentrations(self.import_values_json(concentration_filename_I));
 
     def import_metabolomics_data_intracellular(self, concentration_filename_I):
-        '''import measured values required for analysis'''
+        """import measured values required for analysis"""
 
         self.measured_concentrations_intracellular = self._checkInput_concentrations(self.import_values_json(concentration_filename_I));
 
     def import_metabolomics_data_extracellular(self, concentration_filename_I):
-        '''import measured values required for analysis'''
+        """import measured values required for analysis"""
 
         self.measured_concentrations_extracellular = self._checkInput_concentrations(self.import_values_json(concentration_filename_I));
         
     def format_metabolomics_data(self): #deprecated
-        '''format data'''
+        """format data"""
         
         self.measured_concentrations = self._convert_metabolomics_names(self.measured_concentrations);
         self.measured_concentrations = self._compartementalize_concentrations(self.measured_concentrations);
         
     def format_metabolomics_data_intracellular(self):
-        '''format data'''
+        """format data"""
         
         self.measured_concentrations_intracellular = self._convert_metabolomics_names(self.measured_concentrations_intracellular);
         self.measured_concentrations_intracellular = self._compartementalize_concentrations(self.measured_concentrations_intracellular);
         
     def format_metabolomics_data_extracellular(self):
-        '''format data'''
+        """format data"""
         
         self.measured_concentrations_extracellular = self._convert_metabolomics_names(self.measured_concentrations_extracellular);
         self.measured_concentrations_extracellular = self._compartementalize_concentrations_extracellular(self.measured_concentrations_extracellular);
         
     def generate_estimated_metabolomics_data(self, cobra_model):
-        '''generate estimated values'''
+        """generate estimated values"""
 
         self.estimated_concentrations = self._generalize_compartment2all_concentration(cobra_model);
         self.estimated_concentrations.update(self._generalize_externalCompartments2all_concentration(cobra_model));
 
     def check_metabolomics_data(self):
-        '''check data integrity'''
+        """check data integrity"""
         return
 
     def remove_measured_concentrations(self,mets_I):
-        '''Remove measured metabolite concentrations'''
+        """Remove measured metabolite concentrations"""
 
         for met in mets_I:
             v=self.measured_concentrations.pop(met);
         
     def _checkInput_concentrations(self, measured_values_I):
-        """
-        check concentration data input
+        """check concentration data input
 
-        measured_values: measured values with variances
+        Args:
+            measured_values: measured values with variances
                                  {metabolite.id: {'concentration': float,
                                                  'concentration_var': float,
                                                  'concentration_units': 'M'}
-        returns a dictionary: measured_values_O:
+
+        Returns:
+            dictionary: measured_values_O:
                                  {metabolite.id: {'concentration': float,
                                                  'concentration_var': float,
                                                  'concentration_units': 'M'}
@@ -95,17 +97,18 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
         return measured_values_O;
 
     def _convert_cv2varAndmM2M_concentrations(self, measured_values):
-        """
-        convered measured concentration values from mM to M
+        """convered measured concentration values from mM to M
 
         convert measured concentration values with a coefficient of varation
         (CV = SD/Ave*100; SD = CV/100*AVE) 
 
-        measured_values: measured values with variances
+        Args:
+            measured_values: measured values with variances
                                  {metabolite.id: {'concentration': float,
                                                  'concentration_cv': float,
                                                  'concentration_units': 'mM'}
-        returns a dictionary: measured_values_O:
+        Returns:             
+            dictionary:  measured_values_O:
                                  {metabolite.id: {'concentration': float,
                                                  'concentration_var': float,
                                                  'concentration_units': 'M'}
@@ -120,14 +123,15 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
         return measured_values_O
 
     def _compartementalize_concentrations(self, measured_values):
-        """
-        add a compartment identifier to intracellular metabolites
+        """add a compartment identifier to intracellular metabolites
 
-        measured_values: measured values with variances
+        Args:
+            measured_values: measured values with variances
                                  {metabolite.id: {'concentration': float,
                                                  'concentration_var': float,
                                                  'concentration_units': 'M'}
-        returns a dictionary: measured_values_O:
+        Returns:             
+            dictionary:  measured_values_O:
                                  {metabolite.id: {'concentration': float,
                                                  'concentration_var': float,
                                                  'concentration_units': 'M'}
@@ -139,14 +143,15 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
         return measured_values_O
 
     def _compartementalize_concentrations_extracellular(self, measured_values):
-        """
-        add a compartment identifier to extracellular metabolites
+        """add a compartment identifier to extracellular metabolites
 
-        measured_values: measured values with variances
+        Args:
+            measured_values: measured values with variances
                                  {metabolite.id: {'concentration': float,
                                                  'concentration_var': float,
                                                  'concentration_units': 'M'}
-        returns a dictionary: measured_values_O:
+        Returns:             
+            dictionary:  measured_values_O:
                                  {metabolite.id: {'concentration': float,
                                                  'concentration_var': float,
                                                  'concentration_units': 'M'}
@@ -159,8 +164,7 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
         return measured_values_O
 
     def _convert_cv2lbubAndmM2M_concentrations(self, measured_values,min_value):
-        """
-        convered measured concentration values from mM to M
+        """convered measured concentration values from mM to M
 
         convert measured concentration values with a coefficient of varation
         (CV = SD/Ave*100; SD = CV/100*AVE) to lb and ub
@@ -168,11 +172,13 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
         lb = ave - sqrt(var) NOTE: if < 0 min_value is used instead
         ub = ave + sqrt(var)
 
-        measured_values: measured values with variances
+        Args:
+            measured_values: measured values with variances
                                  {metabolite.id: {'concentration': float,
                                                  'concentration_cv': float,
                                                  'concentration_units': 'mM'}
-        returns a dictionary: measured_values_O:
+        Returns:             
+            dictionary:  measured_values_O:
                                  {metabolite.id: {'concentration_lb': float,
                                                  'concentration_ub': float,
                                                  'concentration_units': 'M'}
@@ -190,23 +196,22 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
         return measured_values_O
 
     def _generalize_compartmentLBUB2all_concentration(self, cobra_model, lbub=None, exceptions=None):
-        """
-        takes a compartment and lb/ub for that compartment
+        """takes a compartment and lb/ub for that compartment
         and updates each metabolite in that compartment
 
         allows for exceptions to the generalization as input
 
-        cobra_model: a Model object
-
-        lbub: 'compartment': {'concentration_lb': float,
+        Args:
+            cobra_model: a Model object
+            lbub: 'compartment': {'concentration_lb': float,
                                'concentration_ub': float,
                                'concentration_units': 'M'}
-
-        exceptions: metabolite.id: {'concentration_lb': float,
+            exceptions: metabolite.id: {'concentration_lb': float,
                                'concentration_ub': float,
                                'concentration_units': string}
 
-        returns a dictionary: metabolite.id {'concentration_lb': float,
+        Returns:             
+            dictionary:  metabolite.id {'concentration_lb': float,
                                'concentration_ub': float,
                                'concentration_units': string}
         """
@@ -251,20 +256,33 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
         return default_values;
 
     def _generalize_compartment2all_concentration(self, cobra_model, concentration=None, exceptions=None):
-        """
-        takes a compartment and concentration for that compartment
+        """takes a compartment and concentration for that compartment
         and updates each metabolite in that compartment
 
         allows for exceptions to the generalization as input
 
-        cobra_model: a Model object
-
-        concentration: 'compartment': {'concentration': float,
+        Args:
+            cobra_model: a Model object
+            concentration: 'compartment': {'concentration': float,
                                'concentration_var': float,
                                'concentration_lb': float,
                                'concentration_ub': float,
                                'concentration_units': string}}
-            Note: the concentration is given in ln space
+            exceptions: metabolite.id: {'concentration': float,
+                               'concentration_var': float,
+                               'concentration_lb': float,
+                               'concentration_ub': float,
+                               'concentration_units': 'M'}
+
+        Returns:             
+            dictionary:  metabolite.id {'concentration': float,
+                               'concentration_var': float,
+                               'concentration_lb': float,
+                               'concentration_ub': float,
+                               'concentration_units': 'M'}
+
+        Notes:
+            the concentration is given in ln space
 
             Note that the concentration_var for the extimated concentration is the span (y)
             upper bound = sqrt(y)*concentration
@@ -280,18 +298,6 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
             
             adapted from doi:  10.1093/bioinformatics/bts317
 
-                               'concentration_units': 'M'}
-
-        exceptions: metabolite.id: {'concentration': float,
-                               'concentration_var': float,
-                               'concentration_lb': float,
-                               'concentration_ub': float,
-                               'concentration_units': 'M'}
-
-        returns a dictionary: metabolite.id {'concentration': float,
-                               'concentration_var': float,
-                               'concentration_lb': float,
-                               'concentration_ub': float,
                                'concentration_units': 'M'}
         """
         if not(exceptions):
@@ -399,20 +405,33 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
         return default_values;
 
     def _generalize_externalCompartments2all_concentration(self, cobra_model, concentration=None, exceptions=None):
-        """
-        takes a compartment and concentration for that compartment
+        """takes a compartment and concentration for that compartment
         and updates each metabolite in that compartment
 
         allows for exceptions to the generalization as input
 
-        cobra_model: a Model object
-
-        concentration: 'compartment': {'concentration': float,
+        Args:
+            cobra_model: a Model object
+            concentration: 'compartment': {'concentration': float,
+                                'concentration_var': float,
+                                'concentration_lb': float,
+                                'concentration_ub': float,
+                                'concentration_units': string}}
+            exceptions: metabolite.id: {'concentration': float,
                                'concentration_var': float,
                                'concentration_lb': float,
                                'concentration_ub': float,
-                               'concentration_units': string}}
-            Note: the concentration is given in ln space
+                               'concentration_units': 'M'}
+
+        Returns:             
+            dictionary:  metabolite.id {'concentration': float,
+                               'concentration_var': float,
+                               'concentration_lb': float,
+                               'concentration_ub': float,
+                               'concentration_units': 'M'}
+
+        Notes: 
+            the concentration is given in ln space
 
             Note that the concentration_var for the extimated concentration is the span (y)
             upper bound = sqrt(y)*concentration
@@ -428,18 +447,6 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
             
             adapted from doi:  10.1093/bioinformatics/bts317
 
-                               'concentration_units': 'M'}
-
-        exceptions: metabolite.id: {'concentration': float,
-                               'concentration_var': float,
-                               'concentration_lb': float,
-                               'concentration_ub': float,
-                               'concentration_units': 'M'}
-
-        returns a dictionary: metabolite.id {'concentration': float,
-                               'concentration_var': float,
-                               'concentration_lb': float,
-                               'concentration_ub': float,
                                'concentration_units': 'M'}
         """
         if not(exceptions):
@@ -545,7 +552,7 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
         return default_values;
 
     def _convert_metabolomics_names(self, measured_values):
-        '''Format measured metabolite names'''
+        """Format measured metabolite names"""
         # convert names:
         measured_concentrations_converted = {};
         for met in list(measured_values.keys()):
@@ -558,6 +565,6 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
         return measured_concentrations_converted;
 
     def combine_measured_concentrations(self):
-        '''combine intracellular and extracellular concentration measurements'''
+        """combine intracellular and extracellular concentration measurements"""
         self.measured_concentrations = self.measured_concentrations_intracellular;
         self.measured_concentrations.update(self.measured_concentrations_extracellular);

@@ -32,15 +32,18 @@ class thermodynamics_dG_f_data(thermodynamics_io):
     #4: load, format, and check the data"""
 
     def __init__(self,id2KEGGID_filename_I=None,id2KEGGID_I={},dG0_f_I={},dG_f_I={},measured_dG_f_I={},estimated_dG_f_I={}):
-        '''
+        """
+
+        Args:
         cobra_model_I = cobra model object
                                                     
-        returns a dictionary: measured_dG_fs: transformed compound Gibbs energies of formation
+        Returns: 
+            measured_dG_f (dict): transformed compound Gibbs energies of formation
                                     metabolite.id: {'dG_f_lb': float,
                                      'dG_f_ub': float,
                                      'dG_f_units': string}
                                      
-                                     '''
+                                     """
 
         if id2KEGGID_filename_I: 
             self.id2KEGGID = self._get_id2KEGGID_csv(id2KEGGID_filename_I)
@@ -68,7 +71,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
             self.estimated_dG_f = {} # units of kJ/mol
 
     def _get_id2KEGGID_csv(self, id2KEGGID_filename_I):
-        #Read in the id2KEGGID mapping
+        """Read in the id2KEGGID mapping"""
         
         id2KEGGID = {}
         with open(id2KEGGID_filename_I,mode='r') as infile:
@@ -80,7 +83,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
         return id2KEGGID
 
     def _make_invDict(self,dict_I):
-        #Make an inverse dictionary from the id2KEGGID mapping
+        """Make an inverse dictionary from the id2KEGGID mapping"""
 
         #check that the values are unique
         if len(dict_I) == len(list(set(dict_I.values()))):
@@ -97,19 +100,18 @@ class thermodynamics_dG_f_data(thermodynamics_io):
     # leading to erroneous dG_r values
     # consequently, RC values were manually taken during the calculation      
     def get_transformed_dG0_f(self,cobra_model_I, pH_I,temperature_I,ionic_strength_I):
-        '''get the transformed Gibbs free energies of formation
+        """get the transformed Gibbs free energies of formation
 
         relies on component_contribution: doi:10.1371/journal.pcbi.1003098
 
-        cobra_model_I: cobra_model
-
-        pH: {metabolite.compartment {'pH': float}}
-
-        temperature: {metabolite.compartment {'temperature': float,
+        Args:
+            cobra_model_I: cobra_model
+            pH: {metabolite.compartment {'pH': float}}
+            temperature: {metabolite.compartment {'temperature': float,
                 'temperature_units': K}}
-
-        ionic strength: {metabolite.compartment {'ionic_strength': float,
-                                                    'ionic_strength_units': units}}'''
+            ionic strength: {metabolite.compartment {'ionic_strength': float,
+                                                    'ionic_strength_units': units}}
+        """
 
         self._add_KEGGID(cobra_model_I)
         reaction_list = self._make_KEGG_reaction(cobra_model_I)
@@ -166,12 +168,15 @@ class thermodynamics_dG_f_data(thermodynamics_io):
              else: cobra_model_I.metabolites.get_by_id(met.id).notes['KEGGID'] = None
 
     def _make_KEGG_reaction(self, cobra_model_I):
-        '''covert a cobra_model reaction list with BIGG ids
+        """covert a cobra_model reaction list with BIGG ids
         to a reaction list with KEGG ids
 
-        cobra_model_I: cobra model
+        Args:
+            cobra_model_I: cobra model
 
-        returns a dictionary: reaction.id: formula'''
+        Returns: 
+            (dict): reaction.id: formula
+        """
 
         reaction_list_tmp = {}
         reaction_list = {}
@@ -208,7 +213,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
         return reaction_list
 
     def _component_contribution_wrapper(self,reaction_list_I,pH_I,temperature_I,ionic_strength_I):
-        '''wrapper for component contribution'''
+        """wrapper for component contribution"""
 
         # Orginal implementation involves an input of a reaction list
         # the dG_prime and dG_std for each reaction are then calculated.
@@ -248,12 +253,14 @@ class thermodynamics_dG_f_data(thermodynamics_io):
         return dG0_prime_f, dG0_var_f
 
     def _convert_KEGGID2id(self, KEGGID_I):
-        '''convert KEGGID to model id
+        """convert KEGGID to model id
 
-        KEGGID_I = list of kegg ids
+        Args:
+            KEGGID_I: list of kegg ids
 
-        returns a list of metabolite.ids
-        '''
+        Returns:
+            (list()): list of metabolite.ids
+        """
         return
 
     def _get_keggFromNotes(self, cobra_model_I,KEGGID_I):
@@ -272,12 +279,12 @@ class thermodynamics_dG_f_data(thermodynamics_io):
     # method and combine with the bibliomic and GC data previously described using the
     # psuedoisomer contribution method that is stored on equilibrator
     def make_dG0_f_pH0(self):
-        '''
+        """
         Set of functions to generate a combined RC, bibliomic, and GC set of dG0_f values
         priority 0: RC (from component contribution see _make_ccache())
         priority 1: bibliomic (from pseudoisomer contriubtion from equilibrator website)
         priority 2: GC (from pseudoisomer contribution from equilibrator website)
-        '''
+        """
         # get dG0_f (pH = 0, ionic strength = 0, temperature = 298.15 K) for priority 0, 1, and 2
         dG0_f_0 = {}
         dG0_f_1 = {}
@@ -405,9 +412,9 @@ class thermodynamics_dG_f_data(thermodynamics_io):
         return dG0_f
 
     def _combine_dG0_f_pH0(self, dG0_f_0, dG0_f_1, dG0_f_2, filename):
-        '''
+        """
         combine priority 0, 1, and 2 dG0_f values into a single json datafile
-        '''
+        """
         compounds_dG0_f = {}
         keys = []
         if dG0_f_0:keys.extend(list(dG0_f_0.keys()))
@@ -431,7 +438,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
     ### 3 Start ###
     # upload the combined dG0_f data file and tranfsorm to the desired ph, temp, and ionic strength         
     def get_transformed_dG_f(self,dG0_f_I, cobra_model_I, pH_I,temperature_I,ionic_strength_I):
-        '''get the transformed Gibbs free energies of formation
+        """get the transformed Gibbs free energies of formation
 
         relies on RC data taken from the component_contribution: doi:10.1371/journal.pcbi.1003098
         and bibliomic/GC data taken from the psuedoisomer contribution method: doi:10.1093/bioinformatics/bts317
@@ -443,7 +450,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
                     'temperature_units': K}}
             ionic strength: {metabolite.compartment {'ionic_strength': float,
                                                         'ionic_strength_units': units}}
-        '''
+        """
 
         # upload dG0_f values
         dG0_f_KEGG_all = {}
@@ -526,37 +533,38 @@ class thermodynamics_dG_f_data(thermodynamics_io):
     # load, format, and check data
 
     def import_dG_f(self, dG_f_filename_I):
-        '''import measured values required for analysis'''
+        """import measured values required for analysis"""
 
         self.dG_f = {}
         self.dG_f = self._checkInput_dG_f(self.import_values_json(dG_f_filename_I))
 
     def format_dG_f(self):
-        '''format data'''
+        """format data"""
 
         self.measured_dG_f = self._convert_var2lbub_dG_f(self.dG_f)
 
     def generate_estimated_dG_f(self, cobra_model):
-        '''generate estimated values'''
+        """generate estimated values"""
 
         self.estimated_dG_f = self._generalize_compartment2all_dG_f(cobra_model)
 
     def check_data(self):
-        '''check data integrity'''
+        """check data integrity"""
         return
 
     def _checkInput_dG_f(self, measured_values_I):
         """
         check dG_O_f data input
 
-        measured_values: measured values with variances
+        Args:
+            measured_values: measured values with variances
                                  {metabolite.id: {'dG_f': float,
                                                  'dG_f_var': float,
                                                  'dG_f_lb': float,
                                                  'dG_f_ub': float,
                                                  'dG_f_units': 'kJ/mol'}
-        returns a dictionary: measured_values_O:
-                                 {metabolite.id: {'dG_f': float,
+        Returns: 
+            (dict): measured_values_O: {metabolite.id: {'dG_f': float,
                                                  'dG_f_var': float,
                                                  'dG_f_lb': float,
                                                  'dG_f_ub': float,
@@ -579,12 +587,13 @@ class thermodynamics_dG_f_data(thermodynamics_io):
         lb = ave - sqrt(var)
         ub = ave + sqrt(var)
 
-        measured_values: measured values with variances
+        Args:
+            measured_values: measured values with variances
                                  {metabolite.id: {'dG_f': float,
                                                  'dG_f_var': float,
                                                  'dG_f_units': 'kJ/mol'}
-        returns a dictionary: measured_values_O:
-                                 {metabolite.id: {'dG_f': float,
+        Returns:
+            (dict): measured_values_O:  {metabolite.id: {'dG_f': float,
                                                  'dG_f_var': float,
                                                  'dG_f_lb': float,
                                                  'dG_f_ub': float,
@@ -611,17 +620,19 @@ class thermodynamics_dG_f_data(thermodynamics_io):
     def _convert_std2lbub_dG_f(self, measured_values,min_value):
         """
         convert measured values with a standard deviation
+
         (CV = SD/Ave*100 SD = CV/100*AVE) to lb and ub
         currently use +/- SD
         lb = ave - sqrt(var) NOTE: if < 0 min_value is used instead
         ub = ave + sqrt(var)
 
-        measured_values: measured values with variances
+        Args:
+            measured_values: measured values with variances
                                  {metabolite.id: {'dG_f': float,
                                                  'dG_f_cv': float,
                                                  'dG_f_units': 'mM'}
-        returns a dictionary: measured_values_O:
-                                 {metabolite.id: {'dG_f_lb': float,
+        Returns:
+            {dict): measured_values_O: {metabolite.id: {'dG_f_lb': float,
                                                  'dG_f_ub': float,
                                                  'dG_f_units': 'M'}
         """
@@ -644,13 +655,14 @@ class thermodynamics_dG_f_data(thermodynamics_io):
 
         allows for exceptions to the generalization as input
 
-        cobra_model: a Model object
-
-        lbub: metabolite.compartment: {'dG_f_lb': float,
+        Args:
+            cobra_model: a Model object
+            lbub: metabolite.compartment: {'dG_f_lb': float,
                                'dG_f_ub': float,
                                'dG_f_units': 'kJ/mol'}
 
-        returns a dictionary: metabolite.id {'dG_f_lb': float,
+        Returns:
+            {dict}: metabolite.id: {'dG_f_lb': float,
                                'dG_f_ub': float,
                                'dG_f_units': string}
         """
@@ -686,13 +698,14 @@ class thermodynamics_dG_f_data(thermodynamics_io):
         lb = mean - sqrt(var)
         ub = mean + sqrt(var)
 
-        cobra_model: a Model object
-
-        lbub: metabolite.compartment: {'dG_f': float,
+        Args:
+            cobra_model: a Model object
+            lbub: metabolite.compartment: {'dG_f': float,
                                'dG_f_var': float,
                                'dG_f_units': 'kJ/mol'}
 
-        returns a dictionary: metabolite.id {'dG_f': float,
+        Returns: 
+            (dict): metabolite.id {'dG_f': float,
                                'dG_f_var': float,
                                'dG_f_lb': float,
                                'dG_f_ub': float,
@@ -725,7 +738,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
         return default_values    
 
     def remove_measured_dG_f(self,mets_I):
-        '''Remove measured metabolite dG_f'''
+        """Remove measured metabolite dG_f"""
 
         for met in mets_I:
             v=self.measured_dG_f.pop(met)

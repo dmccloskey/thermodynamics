@@ -13,7 +13,7 @@ from cobra.core.reaction import Reaction
 
 def find_transportMets(cobra_model_I, reaction_id_I):
 
-    ''' 
+    """ 
     transport metabolite definition:
     	1. different id (same base id but different compartment)
     	2. same name
@@ -27,7 +27,7 @@ def find_transportMets(cobra_model_I, reaction_id_I):
     for compart in compartments:
 	    comp_tmp = '_' + compart;
 	    met_tmp = re.sub(comp_tmp,'',met_ID)
-    met_ids.append(met_tmp)'''
+    met_ids.append(met_tmp)"""
 
     met_ids = cobra_model_I.reactions.get_by_id(reaction_id_I).products + cobra_model_I.reactions.get_by_id(reaction_id_I).reactants
     met_names = [];
@@ -38,14 +38,14 @@ def find_transportMets(cobra_model_I, reaction_id_I):
     return met_O;
 
 def find_transportRxns(cobra_model_I):
-    '''
-    transport reaction definition:
+    """transport reaction definition:
+
     1. the metabolite satisfies the critera for a transport metabolite
     	1. different id (same base id but different compartment)
     	2. same name
     	3. different compartment
     2. the reaction is not a system boundary reaction
-    '''
+    """
 
     rxn_O = [];
     #Method 1
@@ -63,12 +63,14 @@ def find_transportRxns(cobra_model_I):
     return rxn_O;
 
 def find_transportMetsAndRxns(cobra_model_I):
-    # transport metabolites and reaction definition:
-    # 1. the metabolite satisfies the critera for a transport metabolite
-    #	1. different id (same base id but different compartment)
-    #	2. same name
-    #	3. different compartment
-    # 2. the reaction is not a system boundary reaction
+    """transport metabolite and reaction definition:
+    
+    1. the metabolite satisfies the critera for a transport metabolite
+    	1. different id (same base id but different compartment)
+    	2. same name
+    	3. different compartment
+    2. the reaction is not a system boundary reaction
+    """
 
     metsAndRxns_O = {};
     for rxn in cobra_model_I.reactions:
@@ -553,8 +555,8 @@ def load_thermoModel(anoxic = False):
     return cobra_model;
 
 def simulate_thermoConstraints(cobra_model_I,reactions_id_I):
-    '''simulate the effect of constraining a list of model reactions to
-    thermodynamically determined directions'''
+    """simulate the effect of constraining a list of model reactions to
+    thermodynamically determined directions"""
     # Input:
     #   cobra_model_I
     #   reactions_id_I = cobra model reaction ids
@@ -589,12 +591,8 @@ def simulate_thermoConstraints(cobra_model_I,reactions_id_I):
     return gr_O;
 
 def add_pykA(cobra_model_I):
-    '''adds the reactions corresponding to the permiscuous activity of pykA to
-    the model'''
-    # Input:
-    #   cobra_model = cobra model
-    # Output
-    #   cobra_model = cobra model (input model is manipulated in place)
+    """adds the reactions corresponding to the permiscuous activity of pykA to
+    the model"""
 
     # add conversion of udp to utp
     pyka_mets = {};
@@ -634,7 +632,7 @@ def add_pykA(cobra_model_I):
     cobra_model_I.add_reactions([pyka]);
 
 def mean_confidence_interval(data, confidence=0.95):
-    '''calculate the mean and confidence intervals'''
+    """calculate the mean and confidence intervals"""
     import numpy
     import scipy
     import scipy.stats

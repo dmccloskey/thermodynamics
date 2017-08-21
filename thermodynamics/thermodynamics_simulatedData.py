@@ -42,20 +42,20 @@ class thermodynamics_simulatedData(thermodynamics_io):
             self.sga_data = {}
 
     def check_data(self):
-        '''check data integrity'''
+        """check data integrity"""
         return
 
     def generate_sra_data(self, cobra_model, reaction_list=None,
                             method_I='fba', solver='glpk', verbose_I=True):
-        '''Single reaction deletion analysis
+        """Single reaction deletion analysis
 
-        Args
+        Args:
             cobra_model (cobra.Model): cobra model object
             reaction_list (list(cobra.Reaction)): list of cobra model reactions to use with SRA
             method_I (string): 'fba', 'moma'
             solver (string): default = 'glpk'
             verbose_I (boolean): print messages to the console
-        '''
+        """
         if verbose_I:
             print('Single Reaction Deletion...')
 
@@ -82,12 +82,12 @@ class thermodynamics_simulatedData(thermodynamics_io):
 
 
     def export_sra_data(self, filename):
-        '''export sra data'''
+        """export sra data"""
         with open(filename, 'w') as outfile:
             json.dump(self.sra_data, outfile, indent=4);
 
     def import_sra_data(self,filename):
-        '''import sra data'''
+        """import sra data"""
         self.sra_data = json.load(open(filename))
 
     def generate_fva_data(self, cobra_model, fraction_of_optimum=0.9,
@@ -107,25 +107,26 @@ class thermodynamics_simulatedData(thermodynamics_io):
         self.fva_data = dict(zip(list(fva_data.index),fva_data.to_dict('records')))
 
     def export_fva_data(self, filename):
-        '''export fva data'''
+        """export fva data"""
         with open(filename, 'w') as outfile:
             json.dump(self.fva_data, outfile, indent=4);
 
 
     def import_fva_data(self,filename):
-        '''import fva data'''
+        """import fva data"""
         fva = json.load(open(filename))
         self.fva_data = self._convert_fluxBounds2var(fva)
         
     def _convert_fluxBounds2var(self, flux_bounds):
-        """
-        convert flux bounds from FVA to median and variance
+        """convert flux bounds from FVA to median and variance
     
         variance = (max - median)^2
 
-        flux_bounds: {reaction.id: {'maximum': float, 'minimum': float}}
+        Args:
+            flux_bounds: {reaction.id: {'maximum': float, 'minimum': float}}
 
-        returns a dictionary: {reaction.id: {'flux': float, 'flux_var': float, 'flux_units': 'mmol*gDW-1*hr-1'}
+        Returns:             
+            dictionary:  {reaction.id: {'flux': float, 'flux_var': float, 'flux_units': 'mmol*gDW-1*hr-1'}
 
         """
 
@@ -139,11 +140,8 @@ class thermodynamics_simulatedData(thermodynamics_io):
         return flux_bounds_O
 
     def generate_fba_data(self,cobra_model,allow_loops=True, method_I='fba',solver='glpk'):
-        '''
-        perform FBA simulation on the model
-        INPUT:
-        OUTPUT:
-        '''
+        """perform FBA simulation on the model
+        """
         #add in loop law constrain
         if not allow_loops: cobra_model=construct_loopless_model(cobra_model)
         #check for the optimization method:
@@ -165,10 +163,12 @@ class thermodynamics_simulatedData(thermodynamics_io):
 
     def generate_sga_data(self, cobra_model, gene_list=None,
                             method_I='fba', solver='glpk'):
-        '''Single gene deletion analysis
-        INPUT:
-        method_I = string 'fba', 'moma'
-        '''
+        """Single gene deletion analysis
+        
+        Args:
+            gene_list (list): list of genes
+            method_I (str): 'fba', 'moma'
+        """
 
         print('Single Reaction Deletion...')
 
@@ -189,21 +189,20 @@ class thermodynamics_simulatedData(thermodynamics_io):
                 self.sga_data[k] = {'gr':v,'gr_ratio':v/cobra_model.objective.value}
 
     def export_sga_data(self, filename):
-        '''export sga data'''
+        """export sga data"""
         with open(filename, 'w') as outfile:
             json.dump(self.sga_data, outfile, indent=4);
 
     def import_sga_data(self,filename):
-        '''import sga data'''
+        """import sga data"""
         self.sga_data = json.load(open(filename))
 
     #TODO:
     def reduce_model(self,cobra_model,method_I='fba',solver='glpk'):
-        '''reduce the model'''
+        """reduce the model"""
         pass
     def generate_fluxSum_data(self,cobra_model,method_I='fba',solver='glpk'):
-        '''
-        perform a fluxSum analysis
-        INPUT:
-        '''
+        """
+        perform a fluxSum analysis        
+        """
         pass

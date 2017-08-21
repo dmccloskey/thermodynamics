@@ -88,14 +88,18 @@ class thermodynamics_dG_p_data():
             json.dump(self.thermodynamic_consistency_check, outfile, indent=4);
 
     def calculate_dG_p(self, cobra_model, dG0_r, dG_r):
-        """calculate the Gibbs free energy of an entire pathway"""
-        # Input:
-        #   dG0_r
-        #   dG_r
-        # Output:
-        #   dG0_p
-        #   dG_p
-        #   thermodynamic_consistency_check
+        """calculate the Gibbs free energy of an entire pathway
+
+        Args:
+            dG0_r
+            dG_r
+
+        Returns:
+            dG0_p
+            dG_p
+            thermodynamic_consistency_check
+
+        """
 
         dG0_p = {};
         dG_p = {};

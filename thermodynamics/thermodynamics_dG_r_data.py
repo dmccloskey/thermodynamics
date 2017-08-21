@@ -165,7 +165,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             json.dump(self.thermodynamic_consistency_check, outfile, indent=4);
 
     def export_summary(self,cobra_model,reaction_bounds,filename):
-        '''Summarize the results of the thermodynamics analysis'''
+        """Summarize the results of the thermodynamics analysis"""
         # make header
         header = ["reaction_id","reaction_formula","dG0_r","dG_r_lb","dG_r_ub","flux_lb","flux_ub","metabolomics_coverage","dG_coverage","is_feasible"];
         # make rows
@@ -194,7 +194,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                 sys.exit(e);
 
     def export_dG_r_escher(self, filename_I):
-        '''plot confidence intervals from dGr calculations using escher'''
+        """plot confidence intervals from dGr calculations using escher"""
         data = [];
         flux1 = {};
         flux2 = {};
@@ -207,7 +207,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             json.dump(data, outfile, indent=4)
         
     def export_displacement_escher(self, filename_I):
-        '''plot confidence intervals from displacement calculations using escher'''
+        """plot confidence intervals from displacement calculations using escher"""
         data = [];
         flux1 = {};
         flux2 = {};
@@ -220,7 +220,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             json.dump(data, outfile, indent=4)
                 
     def export_concentrations_escher(self, filename_I, measured_concentrations):
-        '''plot confidence intervals from concentrations calculations using escher'''
+        """plot confidence intervals from concentrations calculations using escher"""
         data = [];
         flux1 = {};
         flux2 = {};
@@ -233,19 +233,19 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             json.dump(data, outfile, indent=4)
     
     def import_dG0_r_json(self, dG0_r_filename_I):
-        '''import previous analysis'''
+        """import previous analysis"""
 
         self.dG0_r = {};
         self.dG0_r = self.import_values_json(dG0_r_filename_I);
     
     def import_dG_r_json(self, dG_r_filename_I):
-        '''import previous analysis'''
+        """import previous analysis"""
 
         self.dG_r = {};
         self.dG_r = self.import_values_json(dG_r_filename_I);
         
     def import_tcc_json(self, tcc_filename_I):
-        '''import previous analysis'''
+        """import previous analysis"""
 
         self.thermodynamic_consistency_check = {};
         self.thermodynamic_consistency_check = self.import_values_json(tcc_filename_I);
@@ -253,12 +253,12 @@ class thermodynamics_dG_r_data(thermodynamics_io):
     def calculate_dG0_r(self, cobra_model, measured_dG_f, estimated_dG_f, temperature):
         """calculate the standard Gibbs free energy of reaction
 
-        Args
+        Args:
             dG_f (adjusted from dG0_f to in vivo conditions)
             thermodynamic_consistency_check
             temperature
 
-        Returns
+        Returns:
             dG0_r
             thermodynamic_consistency_check
         """
@@ -392,7 +392,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
         change in ionic_strength: accounted for in dG_f
         transport processes (membrane potential and  proton exchange)
 
-        Args
+        Args:
             measured_concentrations
             estimated_concentrations
             dG0_r
@@ -400,7 +400,8 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             temperature
             pH
             ionic_strength
-        Returns
+
+        Returns:
             dG_r
             thermodynamic_consistency_check
 
@@ -667,14 +668,8 @@ class thermodynamics_dG_r_data(thermodynamics_io):
         self.dG_r = dG_r_I;
         self.metabolomics_coverage = metabolomics_coverage_I;
 
-    def calculate_dG0_r_v2(self, cobra_model, measured_dG_f, estimated_dG_f, temperature):
+    def _calculate_dG0_r_v2(self, cobra_model, measured_dG_f, estimated_dG_f, temperature):
         """calculate the standard Gibbs free energy of reaction"""
-        # Input:
-        #   dG_f (adjusted from dG0_f to in vivo conditions)
-        #   thermodynamic_consistency_check
-        # Output:
-        #   dG0_r
-        #   thermodynamic_consistency_check
 
         """
         a quick primer on the propogation of uncertainty:
@@ -796,7 +791,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
         self.dG0_r = dG0_r_I;
         self.dG_r_coverage = dG_r_coverage_I;
 
-    def calculate_dG_r_v2(self, cobra_model, measured_concentration, estimated_concentration,
+    def _calculate_dG_r_v2(self, cobra_model, measured_concentration, estimated_concentration,
                            pH, ionic_strength, temperature):
         """calculate the Gibbs free energy of reaction accounting for the following:
         metabolite concentrations
@@ -804,17 +799,6 @@ class thermodynamics_dG_r_data(thermodynamics_io):
         temperature: accounted for in dG_f
         change in ionic_strength: accounted for in dG_f
         transport processes (membrane potential and  proton exchange)"""
-        # Input:
-        #   measured_concentrations
-        #   estimated_concentrations
-        #   dG0_r
-        #   thermodynamic_consistency_check
-        #   temperature
-        #   pH
-        #   ionic_strength
-        # Output:
-        #   dG_r
-        #   thermodynamic_consistency_check
 
         # NOTES:
         #   The lower and upper bounds for dG_r can be calculated in two ways:
@@ -1078,14 +1062,8 @@ class thermodynamics_dG_r_data(thermodynamics_io):
         self.dG_r = dG_r_I;
         self.metabolomics_coverage = metabolomics_coverage_I;
 
-    def calculate_dG0_r_v3(self, cobra_model, measured_dG_f, estimated_dG_f, temperature):
+    def _calculate_dG0_r_v3(self, cobra_model, measured_dG_f, estimated_dG_f, temperature):
         """calculate the standard Gibbs free energy of reaction"""
-        # Input:
-        #   dG_f (adjusted from dG0_f to in vivo conditions)
-        #   thermodynamic_consistency_check
-        # Output:
-        #   dG0_r
-        #   thermodynamic_consistency_check
 
         """
         a quick primer on the propogation of uncertainty:
@@ -1213,7 +1191,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
         self.dG0_r = dG0_r_I;
         self.dG_r_coverage = dG_r_coverage_I;
 
-    def calculate_dG_r_v3(self, cobra_model, measured_concentration, estimated_concentration,
+    def _calculate_dG_r_v3(self, cobra_model, measured_concentration, estimated_concentration,
                            pH, ionic_strength, temperature):
         """calculate the Gibbs free energy of reaction accounting for the following:
         metabolite concentrations
@@ -1221,17 +1199,6 @@ class thermodynamics_dG_r_data(thermodynamics_io):
         temperature: accounted for in dG_f
         change in ionic_strength: accounted for in dG_f
         transport processes (membrane potential and  proton exchange)"""
-        # Input:
-        #   measured_concentrations
-        #   estimated_concentrations
-        #   dG0_r
-        #   thermodynamic_consistency_check
-        #   temperature
-        #   pH
-        #   ionic_strength
-        # Output:
-        #   dG_r
-        #   thermodynamic_consistency_check
 
         # NOTES:
         #   The lower and upper bounds for dG_r can be calculated in two ways:
@@ -1560,7 +1527,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                 infeasible_reactions.append(r);
                 self.inconsistent_reactions[r.id] = {};
 
-        '''Summarize the thermodynamic consistency check'''
+        """Summarize the thermodynamic consistency check"""
         # analysis summary:
         print('thermodynamically infeasible reactions identified:');
         for r in infeasible_reactions:
@@ -1583,28 +1550,28 @@ class thermodynamics_dG_r_data(thermodynamics_io):
     def find_transportMets(self, cobra_model_I, reaction_id_I):
         """Find transport metabolites
 
-        Args
+        Args:
             cobra_model (cobra.Model)
             reaction_id_I (string): reaction id
 
-        Returns
+        Returns:
             met_O (list()): transport metabolites
 
-        Notes
+        Notes:
         transport metabolite definition:
             1. different id (same base id but different compartment)
             2. same name
             3. different compartment
         """
 
-        ''' Not full proof
+        """ Not full proof
         import re
         compartments = list(set(cobra_model.metabolites.list_attr('compartment')));
         met_ID
         for compart in compartments:
 	        comp_tmp = '_' + compart;
 	        met_tmp = re.sub(comp_tmp,'',met_ID)
-        met_ids.append(met_tmp)'''
+        met_ids.append(met_tmp)"""
 
         met_ids = cobra_model_I.reactions.get_by_id(reaction_id_I).products + cobra_model_I.reactions.get_by_id(reaction_id_I).reactants
         met_names = [];
@@ -1615,12 +1582,12 @@ class thermodynamics_dG_r_data(thermodynamics_io):
         return met_O;
 
     def calculate_displacement(self, cobra_model, measured_concentration, estimated_concentration):
-        '''calculate the thermodynamic displacement from equilibrium
+        """calculate the thermodynamic displacement from equilibrium
         
         displacement = 1 - Q/Keq
                        1 - (PI(products^stoichiometry)/PI(reactants^stoichiometry))/Keq
 
-        '''
+        """
         
         # initialize hydrogens:
         hydrogens = [];
@@ -1679,13 +1646,13 @@ class thermodynamics_dG_r_data(thermodynamics_io):
 
         self.displacement = displacement_I;
 
-    def calculate_displacement_v2(self, cobra_model, measured_concentration, estimated_concentration):
-        '''calculate the thermodynamic displacement from equilibrium
+    def _calculate_displacement_v2(self, cobra_model, measured_concentration, estimated_concentration):
+        """calculate the thermodynamic displacement from equilibrium
         
         displacement = 1 - Q/Keq
                        1 - (PI(products^stoichiometry)/PI(reactants^stoichiometry))/Keq
 
-        '''
+        """
         
         # initialize hydrogens:
         hydrogens = [];
@@ -1744,13 +1711,13 @@ class thermodynamics_dG_r_data(thermodynamics_io):
 
         self.displacement = displacement_I;
 
-    def calculate_displacement_v3(self, cobra_model, measured_concentration, estimated_concentration):
-        '''calculate the thermodynamic displacement from equilibrium
+    def _calculate_displacement_v3(self, cobra_model, measured_concentration, estimated_concentration):
+        """calculate the thermodynamic displacement from equilibrium
         
         displacement = 1 - Q/Keq
                        1 - (PI(products^stoichiometry)/PI(reactants^stoichiometry))/Keq
 
-        '''
+        """
         
         # initialize hydrogens:
         hydrogens = [];
@@ -1822,17 +1789,17 @@ class thermodynamics_dG_r_data(thermodynamics_io):
         self.displacement = displacement_I;
 
     def simulate_infeasibleReactions(self,cobra_model_I):
-        '''simulate the effect of constraining thermodynamically infeasible reactions to
+        """simulate the effect of constraining thermodynamically infeasible reactions to
         thermodynamically determined directions
         
-        Args
+        Args:
           cobra_model_I
           reactions_id_I = cobra model reaction ids
 
-        Returns
+        Returns:
           gr_O = {'reaction_id 1':{gr:float, gr_ratio:% change in growth},
                   'reaction_id 2':{gr:float, gr_ratio:% change in growth},...}
-        '''
+        """
 
         gr_O = {};
         reactions_id_I = list(self.inconsistent_reactions.keys());
@@ -1861,14 +1828,16 @@ class thermodynamics_dG_r_data(thermodynamics_io):
         self.inconsistent_reactions = gr_O;
 
     def constrain_infeasibleReactions(self,cobra_model_irreversible,solver=None,verbose_I=False):
-        '''constrain the bounds of thermodynamically infeasible reactions
+        """constrain the bounds of thermodynamically infeasible reactions
         that do not impact growth
-        Args
-            cobra_model
 
-        Returns
+        Args:
+            cobra_model_irreversible (cobra.Model): irreversible cobra model
+            solver (str): solver name
+
+        Returns:
             cobra_model with reactions removed
-        '''
+        """
 
         for k,v in self.inconsistent_reactions.items():
             #remove the reaction from the model
@@ -1889,15 +1858,15 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                     cobra_model_irreversible.reactions.get_by_id(k).lower_bound = lb;
 
     def remove_infeasibleReactions(self,cobra_model,solver=None):
-        '''remove thermodynamically infeasible reactions
+        """remove thermodynamically infeasible reactions
         that do not impact growth
 
-        Args
+        Args:
             cobra_model
 
-        Returns
+        Returns:
             cobra_model with reactions removed
-        '''
+        """
 
         for k,v in self.inconsistent_reactions.items():
             #remove the reaction from the model
@@ -1911,12 +1880,12 @@ class thermodynamics_dG_r_data(thermodynamics_io):
                     cobra_model.add_reaction(rxn);
 
     def change_feasibleReactions(self,infeasible_reactions_I):
-        '''change thermodynamically feasible reactions
+        """change thermodynamically feasible reactions
         to thermodynamically infeasible
 
-        Args
-            infeasible_reactions_I = list of strings of reaction ids
-        '''
+        Args:
+            infeasible_reactions_I (list(str)): list of strings of reaction ids
+        """
         
         for rxn in infeasible_reactions_I:
             if rxn in self.thermodynamic_consistency_check:

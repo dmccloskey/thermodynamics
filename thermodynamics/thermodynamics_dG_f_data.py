@@ -26,6 +26,7 @@ import json
 
 class thermodynamics_dG_f_data(thermodynamics_io):
     """Class for handling dG_f data
+    
     #1: make the reactant contribution (RC) data from the component_contribution method
     #2: combine the RC data with the bibliomic and GC data taken from the equilibrator database
     #3: transform the thermodynamic data to the desired pH, ionic strength and temperature

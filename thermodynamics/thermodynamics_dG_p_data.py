@@ -27,8 +27,7 @@ class thermodynamics_dG_p_data():
                           'Keq': float,
                           'dG_r_units': string}}
 
-    returns a dictionary: 
-    dG0_p = {pathway.id: {'dG_p': float,
+    dG0_p: {pathway.id: {'dG_p': float,
                           'dG_p_var': float,
                           'dG_p_lb': float,
                           'dG_p_ub': float,
@@ -37,7 +36,7 @@ class thermodynamics_dG_p_data():
                           'reactions':[string],
                           'stoichiometry':[int]}}
 
-    dG_p = {pathway.id: {'dG_p': float,
+    dG_p: {pathway.id: {'dG_p': float,
                           'dG_p_var': float,
                           'dG_p_lb': float,
                           'dG_p_ub': float,
@@ -46,7 +45,7 @@ class thermodynamics_dG_p_data():
                           'reactions':[string],
                           'stoichiometry':[int]}
 
-    thermodynamic_consistency_check = {pathway.id: {'feasible': boolean, NOTE: or None if the below criterion
+    thermodynamic_consistency_check: {pathway.id: {'feasible': boolean, NOTE: or None if the below criterion
                                                                     were not met
                                          'measured_concentration_coverage': float,
                                          'measured_dG_p_coverage': float}

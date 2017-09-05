@@ -14,6 +14,7 @@ branches:
   only:
     - master
     - develop
+    - "/v\\d+\\.\\d+\\.\\d+/"
 
 matrix:
   fast_finish: true
@@ -56,21 +57,38 @@ install:
 script:
   - tox -e "${TOXENV}"
 
+before_deploy:
+  - if [[ "$TRAVIS_PYTHON_VERSION" == "3.6" ]]; then
+        pip install -r docs/requirements.txt;
+        make docs && touch _build/html/.nojekyll;
+    fi
+  - cd $TRAVIS_BUILD_DIR
+
 # After you create the Github repo and add it to Travis, run the
 # travis_pypi_setup.py script to finish PyPI deployment setup
 deploy:
-  provider: pypi
-  distributions: sdist bdist_wheel
-  user: dmccloskey
-  password:
-    secure: PLEASE_REPLACE_ME
-  on:
-    tags: true
-    branch: master
-    repo: Biosustain/thermodynamics
-    condition: $TOXENV == py27
+  - provider: pypi
+    distributions: sdist bdist_wheel
+    user: dmccloskey
+    password: $PYPI
+    on:
+      tags: true
+      branch: master
+      repo: dmccloskey/thermodynamics
+      condition: "$TRAVIS_PYTHON_VERSION" == "3.6"
+  - provider: pages
+    local_dir: docs/_build/html
+    skip_cleanup: true
+    github_token: $GH_TOKEN # Set in travis-ci.org dashboard
+    target-branch: gh-pages
+    on:
+      branch:
+        - master
+        - develop
+      condition: "$TRAVIS_PYTHON_VERSION" == "3.6"
+      repo: dmccloskey/thermodynamics
 
 notifications:
   email:
     on_success: never
-    on_failure: always
+    on_failure: never

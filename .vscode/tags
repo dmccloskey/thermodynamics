@@ -498,7 +498,7 @@ napoleon_google_docstring	docs/conf.py	/^napoleon_google_docstring = True$/;"	ki
 napoleon_include_init_with_doc	docs/conf.py	/^napoleon_include_init_with_doc = False$/;"	kind:variable	line:50
 napoleon_include_private_with_doc	docs/conf.py	/^napoleon_include_private_with_doc = False$/;"	kind:variable	line:51
 napoleon_include_special_with_doc	docs/conf.py	/^napoleon_include_special_with_doc = True$/;"	kind:variable	line:52
-napoleon_numpy_docstring	docs/conf.py	/^napoleon_numpy_docstring = True$/;"	kind:variable	line:49
+napoleon_numpy_docstring	docs/conf.py	/^napoleon_numpy_docstring = False$/;"	kind:variable	line:49
 napoleon_use_admonition_for_examples	docs/conf.py	/^napoleon_use_admonition_for_examples = False$/;"	kind:variable	line:53
 napoleon_use_admonition_for_notes	docs/conf.py	/^napoleon_use_admonition_for_notes = False$/;"	kind:variable	line:54
 napoleon_use_admonition_for_references	docs/conf.py	/^napoleon_use_admonition_for_references = False$/;"	kind:variable	line:55
@@ -721,9 +721,7 @@ test_tfva	tests/test_thermodynamics.py	/^    def test_tfva(self):$/;"	kind:membe
 test_thermodynamics	debug_remote.py	/^from tests.test_thermodynamics import test_thermodynamics$/;"	kind:namespace	line:22
 test_thermodynamics	tests/test_thermodynamics.py	/^class test_thermodynamics():$/;"	kind:class	line:24
 test_thermodynamics.py	tests/test_thermodynamics.py	1;"	kind:file	line:1
-test_tsampling	tests/test_thermodynamics.py	/^    def test_tsampling(self):$/;"	kind:member	line:335
 test_tsampling.py	thermodynamics/thermodynamics_data/tests/test_tsampling.py	1;"	kind:file	line:1
-test_tsampling_analysis	tests/test_thermodynamics.py	/^    def test_tsampling_analysis(self):$/;"	kind:member	line:360
 tests_require	setup.py	/^    tests_require=test_requirements$/;"	kind:variable	line:51
 texinfo_documents	docs/conf.py	/^texinfo_documents = [$/;"	kind:variable	line:271
 textwrap	.tox/flake8/lib/python3.6/site.py	/^        import textwrap$/;"	kind:namespace	line:753

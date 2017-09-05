@@ -75,7 +75,7 @@ deploy:
       tags: true
       branch: master
       repo: dmccloskey/thermodynamics
-      condition: "$TRAVIS_PYTHON_VERSION" == "3.6"
+      condition: $TRAVIS_PYTHON_VERSION == "3.6"
   - provider: pages
     local_dir: docs/_build/html
     skip_cleanup: true
@@ -85,7 +85,7 @@ deploy:
       branch:
         - master
         - develop
-      condition: "$TRAVIS_PYTHON_VERSION" == "3.6"
+      condition: $TRAVIS_PYTHON_VERSION == "3.6"
       repo: dmccloskey/thermodynamics
 
 notifications:

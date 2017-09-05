@@ -58,9 +58,9 @@ __init__	.tox/flake8/lib/python3.6/site.py	/^    def __init__(self, name, data, 
 __init__	.tox/py36/lib/python3.6/site.py	/^        def __init__(self, name):$/;"	kind:member	line:392
 __init__	.tox/py36/lib/python3.6/site.py	/^    def __init__(self, name, data, files=(), dirs=()):$/;"	kind:member	line:414
 __init__	tests/test_thermodynamics.py	/^    def __init__(self):$/;"	kind:member	line:26
-__init__	thermodynamics/thermodynamics_dG_f_data.py	/^    def __init__(self,id2KEGGID_filename_I=None,id2KEGGID_I={},dG0_f_I={},dG_f_I={},measured_dG_f_I={},estimated_dG_f_I={}):$/;"	kind:member	line:34
-__init__	thermodynamics/thermodynamics_dG_p_data.py	/^    def __init__(self,pathways_I = {}, dG0_p_I = {}, dG_p_I = {}):$/;"	kind:member	line:55
-__init__	thermodynamics/thermodynamics_dG_r_data.py	/^    def __init__(self, dG0_r_I = {},dG_r_I = {}, displacement_I = {},$/;"	kind:member	line:93
+__init__	thermodynamics/thermodynamics_dG_f_data.py	/^    def __init__(self,id2KEGGID_filename_I=None,id2KEGGID_I={},dG0_f_I={},dG_f_I={},measured_dG_f_I={},estimated_dG_f_I={}):$/;"	kind:member	line:35
+__init__	thermodynamics/thermodynamics_dG_p_data.py	/^    def __init__(self,pathways_I = {}, dG0_p_I = {}, dG_p_I = {}):$/;"	kind:member	line:54
+__init__	thermodynamics/thermodynamics_dG_r_data.py	/^    def __init__(self, dG0_r_I = {},dG_r_I = {}, displacement_I = {},$/;"	kind:member	line:91
 __init__	thermodynamics/thermodynamics_metabolomicsData.py	/^    def __init__(self,measured_concentrations_I={},estimated_concentrations_I={}):$/;"	kind:member	line:13
 __init__	thermodynamics/thermodynamics_otherData.py	/^    def __init__(self,pH_I={},temperature_I={},ionic_strength_I={}):$/;"	kind:member	line:11
 __init__	thermodynamics/thermodynamics_simulatedData.py	/^    def __init__(self,fva_data_I={},$/;"	kind:member	line:18
@@ -83,48 +83,54 @@ __setup	.tox/py36/lib/python3.6/site.py	/^    def __setup(self):$/;"	kind:member
 __version__	.tox/flake8/lib/python3.6/distutils/__init__.py	/^    __version__ = real_distutils.__version__$/;"	kind:variable	line:23
 __version__	.tox/py36/lib/python3.6/distutils/__init__.py	/^    __version__ = real_distutils.__version__$/;"	kind:variable	line:23
 __version__	thermodynamics/__init__.py	/^__version__ = '0.1.0'/;"	kind:variable	line:7
-_add_KEGGID	thermodynamics/thermodynamics_dG_f_data.py	/^    def _add_KEGGID(self, cobra_model_I):$/;"	kind:member	line:159
-_add_conc_ln_constraints	thermodynamics/thermodynamics_tfba.py	/^    def _add_conc_ln_constraints(self,cobra_model_irreversible, measured_concentration, estimated_concentration, $/;"	kind:member	line:452
-_add_conc_ln_constraints_transport	thermodynamics/thermodynamics_tfba.py	/^    def _add_conc_ln_constraints_transport(self,cobra_model_irreversible, measured_concentration, estimated_concentration,$/;"	kind:member	line:752
+_add_KEGGID	thermodynamics/thermodynamics_dG_f_data.py	/^    def _add_KEGGID(self, cobra_model_I):$/;"	kind:member	line:162
+_add_conc_ln_constraints	thermodynamics/thermodynamics_tfba.py	/^    def _add_conc_ln_constraints(self,cobra_model_irreversible, measured_concentration, estimated_concentration, $/;"	kind:member	line:448
+_add_conc_ln_constraints_transport	thermodynamics/thermodynamics_tfba.py	/^    def _add_conc_ln_constraints_transport(self,cobra_model_irreversible, measured_concentration, estimated_concentration,$/;"	kind:member	line:748
 _add_dG_r_constraints	thermodynamics/thermodynamics_tfba.py	/^    def _add_dG_r_constraints(self, cobra_model_irreversible, dG_r, dG_r_coverage, thermodynamic_consistency_check,$/;"	kind:member	line:150
-_add_electroneutrality_constraints	thermodynamics/thermodynamics_tfba.py	/^    def _add_electroneutrality_constraints(self,cobra_model_irreversible, measured_concentration, compartments):$/;"	kind:member	line:1280
-_add_ionicStrength_constraints	thermodynamics/thermodynamics_tfba.py	/^    def _add_ionicStrength_constraints(self,cobra_model_irreversible, measured_concentration):$/;"	kind:member	line:1268
-_add_membranePotential_constraints	thermodynamics/thermodynamics_tfba.py	/^    def _add_membranePotential_constraints(self,cobra_model_irreversible, measured_concentration):$/;"	kind:member	line:1277
-_add_osmoticPressure_constraints	thermodynamics/thermodynamics_tfba.py	/^    def _add_osmoticPressure_constraints(self,cobra_model_irreversible):$/;"	kind:member	line:1265
-_add_pH_constraints	thermodynamics/thermodynamics_tfba.py	/^    def _add_pH_constraints(self,cobra_model_irreversible, measured_concentration):$/;"	kind:member	line:1274
-_add_solubility_constraints	thermodynamics/thermodynamics_tfba.py	/^    def _add_solubility_constraints(self,cobra_model_irreversible, measured_concentration):$/;"	kind:member	line:1271
+_add_electroneutrality_constraints	thermodynamics/thermodynamics_tfba.py	/^    def _add_electroneutrality_constraints(self,cobra_model_irreversible, measured_concentration, compartments):$/;"	kind:member	line:1279
+_add_ionicStrength_constraints	thermodynamics/thermodynamics_tfba.py	/^    def _add_ionicStrength_constraints(self,cobra_model_irreversible, measured_concentration):$/;"	kind:member	line:1267
+_add_membranePotential_constraints	thermodynamics/thermodynamics_tfba.py	/^    def _add_membranePotential_constraints(self,cobra_model_irreversible, measured_concentration):$/;"	kind:member	line:1276
+_add_osmoticPressure_constraints	thermodynamics/thermodynamics_tfba.py	/^    def _add_osmoticPressure_constraints(self,cobra_model_irreversible):$/;"	kind:member	line:1264
+_add_pH_constraints	thermodynamics/thermodynamics_tfba.py	/^    def _add_pH_constraints(self,cobra_model_irreversible, measured_concentration):$/;"	kind:member	line:1273
+_add_solubility_constraints	thermodynamics/thermodynamics_tfba.py	/^    def _add_solubility_constraints(self,cobra_model_irreversible, measured_concentration):$/;"	kind:member	line:1270
 _bootlocale.py	.tox/flake8/lib/python3.6/_bootlocale.py	1;"	kind:file	line:1
 _bootlocale.py	.tox/py36/lib/python3.6/_bootlocale.py	1;"	kind:file	line:1
+_calculate_dG0_r_v2	thermodynamics/thermodynamics_dG_r_data.py	/^    def _calculate_dG0_r_v2(self, cobra_model, measured_dG_f, estimated_dG_f, temperature):$/;"	kind:member	line:669
+_calculate_dG0_r_v3	thermodynamics/thermodynamics_dG_r_data.py	/^    def _calculate_dG0_r_v3(self, cobra_model, measured_dG_f, estimated_dG_f, temperature):$/;"	kind:member	line:1063
+_calculate_dG_r_v2	thermodynamics/thermodynamics_dG_r_data.py	/^    def _calculate_dG_r_v2(self, cobra_model, measured_concentration, estimated_concentration,$/;"	kind:member	line:792
+_calculate_dG_r_v3	thermodynamics/thermodynamics_dG_r_data.py	/^    def _calculate_dG_r_v3(self, cobra_model, measured_concentration, estimated_concentration,$/;"	kind:member	line:1192
+_calculate_displacement_v2	thermodynamics/thermodynamics_dG_r_data.py	/^    def _calculate_displacement_v2(self, cobra_model, measured_concentration, estimated_concentration):$/;"	kind:member	line:1647
+_calculate_displacement_v3	thermodynamics/thermodynamics_dG_r_data.py	/^    def _calculate_displacement_v3(self, cobra_model, measured_concentration, estimated_concentration):$/;"	kind:member	line:1712
 _checkInput_concentrations	thermodynamics/thermodynamics_metabolomicsData.py	/^    def _checkInput_concentrations(self, measured_values_I):$/;"	kind:member	line:75
-_checkInput_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def _checkInput_dG_f(self, measured_values_I):$/;"	kind:member	line:548
+_checkInput_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def _checkInput_dG_f(self, measured_values_I):$/;"	kind:member	line:556
 _collections_abc.py	.tox/flake8/lib/python3.6/_collections_abc.py	1;"	kind:file	line:1
 _collections_abc.py	.tox/py36/lib/python3.6/_collections_abc.py	1;"	kind:file	line:1
-_combine_dG0_f_pH0	thermodynamics/thermodynamics_dG_f_data.py	/^    def _combine_dG0_f_pH0(self, dG0_f_0, dG0_f_1, dG0_f_2, filename):$/;"	kind:member	line:407
-_compartementalize_concentrations	thermodynamics/thermodynamics_metabolomicsData.py	/^    def _compartementalize_concentrations(self, measured_values):$/;"	kind:member	line:122
-_compartementalize_concentrations_extracellular	thermodynamics/thermodynamics_metabolomicsData.py	/^    def _compartementalize_concentrations_extracellular(self, measured_values):$/;"	kind:member	line:141
-_component_contribution_wrapper	thermodynamics/thermodynamics_dG_f_data.py	/^    def _component_contribution_wrapper(self,reaction_list_I,pH_I,temperature_I,ionic_strength_I):$/;"	kind:member	line:210
-_convert_KEGGID2id	thermodynamics/thermodynamics_dG_f_data.py	/^    def _convert_KEGGID2id(self, KEGGID_I):$/;"	kind:member	line:250
-_convert_cv2lbubAndmM2M_concentrations	thermodynamics/thermodynamics_metabolomicsData.py	/^    def _convert_cv2lbubAndmM2M_concentrations(self, measured_values,min_value):$/;"	kind:member	line:161
-_convert_cv2varAndmM2M_concentrations	thermodynamics/thermodynamics_metabolomicsData.py	/^    def _convert_cv2varAndmM2M_concentrations(self, measured_values):$/;"	kind:member	line:97
+_combine_dG0_f_pH0	thermodynamics/thermodynamics_dG_f_data.py	/^    def _combine_dG0_f_pH0(self, dG0_f_0, dG0_f_1, dG0_f_2, filename):$/;"	kind:member	line:415
+_compartementalize_concentrations	thermodynamics/thermodynamics_metabolomicsData.py	/^    def _compartementalize_concentrations(self, measured_values):$/;"	kind:member	line:125
+_compartementalize_concentrations_extracellular	thermodynamics/thermodynamics_metabolomicsData.py	/^    def _compartementalize_concentrations_extracellular(self, measured_values):$/;"	kind:member	line:145
+_component_contribution_wrapper	thermodynamics/thermodynamics_dG_f_data.py	/^    def _component_contribution_wrapper(self,reaction_list_I,pH_I,temperature_I,ionic_strength_I):$/;"	kind:member	line:216
+_convert_KEGGID2id	thermodynamics/thermodynamics_dG_f_data.py	/^    def _convert_KEGGID2id(self, KEGGID_I):$/;"	kind:member	line:256
+_convert_cv2lbubAndmM2M_concentrations	thermodynamics/thermodynamics_metabolomicsData.py	/^    def _convert_cv2lbubAndmM2M_concentrations(self, measured_values,min_value):$/;"	kind:member	line:166
+_convert_cv2varAndmM2M_concentrations	thermodynamics/thermodynamics_metabolomicsData.py	/^    def _convert_cv2varAndmM2M_concentrations(self, measured_values):$/;"	kind:member	line:99
 _convert_fluxBounds2var	thermodynamics/thermodynamics_simulatedData.py	/^    def _convert_fluxBounds2var(self, flux_bounds):$/;"	kind:member	line:120
-_convert_metabolomics_names	thermodynamics/thermodynamics_metabolomicsData.py	/^    def _convert_metabolomics_names(self, measured_values):$/;"	kind:member	line:547
-_convert_std2lbub_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def _convert_std2lbub_dG_f(self, measured_values,min_value):$/;"	kind:member	line:611
-_convert_var2lbub_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def _convert_var2lbub_dG_f(self, measured_values):$/;"	kind:member	line:575
+_convert_metabolomics_names	thermodynamics/thermodynamics_metabolomicsData.py	/^    def _convert_metabolomics_names(self, measured_values):$/;"	kind:member	line:554
+_convert_std2lbub_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def _convert_std2lbub_dG_f(self, measured_values,min_value):$/;"	kind:member	line:621
+_convert_var2lbub_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def _convert_var2lbub_dG_f(self, measured_values):$/;"	kind:member	line:584
 _dummy_thread.py	.tox/flake8/lib/python3.6/_dummy_thread.py	1;"	kind:file	line:1
 _dummy_thread.py	.tox/py36/lib/python3.6/_dummy_thread.py	1;"	kind:file	line:1
-_generalize_compartment2all_concentration	thermodynamics/thermodynamics_metabolomicsData.py	/^    def _generalize_compartment2all_concentration(self, cobra_model, concentration=None, exceptions=None):$/;"	kind:member	line:253
-_generalize_compartment2all_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def _generalize_compartment2all_dG_f(self, cobra_model, dG_f=None, exceptions=None):$/;"	kind:member	line:678
-_generalize_compartmentLBUB2all_concentration	thermodynamics/thermodynamics_metabolomicsData.py	/^    def _generalize_compartmentLBUB2all_concentration(self, cobra_model, lbub=None, exceptions=None):$/;"	kind:member	line:192
-_generalize_compartmentLBUB2all_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def _generalize_compartmentLBUB2all_dG_f(self, cobra_model, lbub=None, exceptions=None):$/;"	kind:member	line:640
-_generalize_externalCompartments2all_concentration	thermodynamics/thermodynamics_metabolomicsData.py	/^    def _generalize_externalCompartments2all_concentration(self, cobra_model, concentration=None, exceptions=None):$/;"	kind:member	line:401
-_get_compartments	thermodynamics/thermodynamics_dG_f_data.py	/^    def _get_compartments(self, cobra_model_I,compartment_I):$/;"	kind:member	line:262
-_get_id2KEGGID_csv	thermodynamics/thermodynamics_dG_f_data.py	/^    def _get_id2KEGGID_csv(self, id2KEGGID_filename_I):$/;"	kind:member	line:70
-_get_keggFromNotes	thermodynamics/thermodynamics_dG_f_data.py	/^    def _get_keggFromNotes(self, cobra_model_I,KEGGID_I):$/;"	kind:member	line:259
-_get_pseudoisomer_priority0_pH0	thermodynamics/thermodynamics_dG_f_data.py	/^    def _get_pseudoisomer_priority0_pH0(self):$/;"	kind:member	line:390
-_get_pseudoisomer_priority1_pH0	thermodynamics/thermodynamics_dG_f_data.py	/^    def _get_pseudoisomer_priority1_pH0(self):$/;"	kind:member	line:361
-_get_pseudoisomer_priority2_pH0	thermodynamics/thermodynamics_dG_f_data.py	/^    def _get_pseudoisomer_priority2_pH0(self):$/;"	kind:member	line:316
-_get_transformed_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def _get_transformed_f(self, dG0_f_id_I, dG0_f_I, pH_I, temperature_I, ionic_strength_I):$/;"	kind:member	line:517
-_get_union	thermodynamics/thermodynamics_dG_f_data.py	/^    def _get_union(self, cobra_model_I,KEGGID_I,compartment_I):$/;"	kind:member	line:265
+_generalize_compartment2all_concentration	thermodynamics/thermodynamics_metabolomicsData.py	/^    def _generalize_compartment2all_concentration(self, cobra_model, concentration=None, exceptions=None):$/;"	kind:member	line:258
+_generalize_compartment2all_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def _generalize_compartment2all_dG_f(self, cobra_model, dG_f=None, exceptions=None):$/;"	kind:member	line:691
+_generalize_compartmentLBUB2all_concentration	thermodynamics/thermodynamics_metabolomicsData.py	/^    def _generalize_compartmentLBUB2all_concentration(self, cobra_model, lbub=None, exceptions=None):$/;"	kind:member	line:198
+_generalize_compartmentLBUB2all_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def _generalize_compartmentLBUB2all_dG_f(self, cobra_model, lbub=None, exceptions=None):$/;"	kind:member	line:652
+_generalize_externalCompartments2all_concentration	thermodynamics/thermodynamics_metabolomicsData.py	/^    def _generalize_externalCompartments2all_concentration(self, cobra_model, concentration=None, exceptions=None):$/;"	kind:member	line:407
+_get_compartments	thermodynamics/thermodynamics_dG_f_data.py	/^    def _get_compartments(self, cobra_model_I,compartment_I):$/;"	kind:member	line:270
+_get_id2KEGGID_csv	thermodynamics/thermodynamics_dG_f_data.py	/^    def _get_id2KEGGID_csv(self, id2KEGGID_filename_I):$/;"	kind:member	line:74
+_get_keggFromNotes	thermodynamics/thermodynamics_dG_f_data.py	/^    def _get_keggFromNotes(self, cobra_model_I,KEGGID_I):$/;"	kind:member	line:267
+_get_pseudoisomer_priority0_pH0	thermodynamics/thermodynamics_dG_f_data.py	/^    def _get_pseudoisomer_priority0_pH0(self):$/;"	kind:member	line:398
+_get_pseudoisomer_priority1_pH0	thermodynamics/thermodynamics_dG_f_data.py	/^    def _get_pseudoisomer_priority1_pH0(self):$/;"	kind:member	line:369
+_get_pseudoisomer_priority2_pH0	thermodynamics/thermodynamics_dG_f_data.py	/^    def _get_pseudoisomer_priority2_pH0(self):$/;"	kind:member	line:324
+_get_transformed_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def _get_transformed_f(self, dG0_f_id_I, dG0_f_I, pH_I, temperature_I, ionic_strength_I):$/;"	kind:member	line:525
+_get_union	thermodynamics/thermodynamics_dG_f_data.py	/^    def _get_union(self, cobra_model_I,KEGGID_I,compartment_I):$/;"	kind:member	line:273
 _init_pathinfo	.tox/flake8/lib/python3.6/site.py	/^def _init_pathinfo():$/;"	kind:function	line:143
 _init_pathinfo	.tox/py36/lib/python3.6/site.py	/^def _init_pathinfo():$/;"	kind:function	line:143
 _is_64bit	.tox/flake8/lib/python3.6/site.py	/^_is_64bit = (getattr(sys, 'maxsize', None) or getattr(sys, 'maxint')) > 2**32$/;"	kind:variable	line:86
@@ -133,9 +139,9 @@ _is_pypy	.tox/flake8/lib/python3.6/site.py	/^_is_pypy = hasattr(sys, 'pypy_versi
 _is_pypy	.tox/py36/lib/python3.6/site.py	/^_is_pypy = hasattr(sys, 'pypy_version_info')$/;"	kind:variable	line:87
 _main_	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^def _main_():$/;"	kind:function	line:21
 _main_	thermodynamics/thermodynamics_examples/aerobicAnaerobic02.py	/^def _main_():$/;"	kind:function	line:22
-_make_KEGG_reaction	thermodynamics/thermodynamics_dG_f_data.py	/^    def _make_KEGG_reaction(self, cobra_model_I):$/;"	kind:member	line:168
-_make_ccache	thermodynamics/thermodynamics_dG_f_data.py	/^    def _make_ccache(self):$/;"	kind:member	line:301
-_make_invDict	thermodynamics/thermodynamics_dG_f_data.py	/^    def _make_invDict(self,dict_I):$/;"	kind:member	line:82
+_make_KEGG_reaction	thermodynamics/thermodynamics_dG_f_data.py	/^    def _make_KEGG_reaction(self, cobra_model_I):$/;"	kind:member	line:171
+_make_ccache	thermodynamics/thermodynamics_dG_f_data.py	/^    def _make_ccache(self):$/;"	kind:member	line:309
+_make_invDict	thermodynamics/thermodynamics_dG_f_data.py	/^    def _make_invDict(self,dict_I):$/;"	kind:member	line:86
 _scale_conc	thermodynamics/thermodynamics_tfba.py	/^    def _scale_conc(self,concentrations):$/;"	kind:member	line:136
 _scale_dG_r	thermodynamics/thermodynamics_tfba.py	/^    def _scale_dG_r(self,dG_r):$/;"	kind:member	line:122
 _script	.tox/flake8/lib/python3.6/site.py	/^def _script():$/;"	kind:function	line:705
@@ -156,7 +162,7 @@ activate_this.py	.tox/py36/bin/activate_this.py	1;"	kind:file	line:1
 add_pykA	tests/test_thermodynamics.py	/^from thermodynamics.thermodynamics_utility import load_thermoModel, simulate_thermoConstraints, add_pykA$/;"	kind:namespace	line:18
 add_pykA	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from thermodynamics.thermodynamics_utility import load_thermoModel, simulate_thermoConstraints, add_pykA$/;"	kind:namespace	line:17
 add_pykA	thermodynamics/thermodynamics_examples/aerobicAnaerobic02.py	/^from thermodynamics.thermodynamics_utility import load_thermoModel, simulate_thermoConstraints, add_pykA$/;"	kind:namespace	line:18
-add_pykA	thermodynamics/thermodynamics_utility.py	/^def add_pykA(cobra_model_I):$/;"	kind:function	line:591
+add_pykA	thermodynamics/thermodynamics_utility.py	/^def add_pykA(cobra_model_I):$/;"	kind:function	line:593
 addbuilddir	.tox/flake8/lib/python3.6/site.py	/^def addbuilddir():$/;"	kind:function	line:133
 addbuilddir	.tox/py36/lib/python3.6/site.py	/^def addbuilddir():$/;"	kind:function	line:133
 addpackage	.tox/flake8/lib/python3.6/site.py	/^def addpackage(sitedir, name, known_paths):$/;"	kind:function	line:155
@@ -174,7 +180,7 @@ aerobicAnaerobic02	thermodynamics/thermodynamics_examples/main.py	/^from thermod
 aerobicAnaerobic02.py	thermodynamics/thermodynamics_examples/aerobicAnaerobic02.py	1;"	kind:file	line:1
 aliasmbcs	.tox/flake8/lib/python3.6/site.py	/^def aliasmbcs():$/;"	kind:function	line:510
 aliasmbcs	.tox/py36/lib/python3.6/site.py	/^def aliasmbcs():$/;"	kind:function	line:510
-analyze_tfva_results	thermodynamics/thermodynamics_tfba.py	/^    def analyze_tfva_results(self,threshold=1e-6,verbose_I=False):$/;"	kind:member	line:401
+analyze_tfva_results	thermodynamics/thermodynamics_tfba.py	/^    def analyze_tfva_results(self,threshold=1e-6,verbose_I=False):$/;"	kind:member	line:397
 argparse	travis_pypi_setup.py	/^    import argparse$/;"	kind:namespace	line:119
 args	travis_pypi_setup.py	/^    args = parser.parse_args()$/;"	kind:variable	line:126
 author	setup.py	/^    author="Douglas McCloskey",$/;"	kind:variable	line:25
@@ -201,32 +207,26 @@ builtins	.tox/flake8/lib/python3.6/site.py	/^    import __builtin__ as builtins$
 builtins	.tox/flake8/lib/python3.6/site.py	/^    import builtins$/;"	kind:namespace	line:71
 builtins	.tox/py36/lib/python3.6/site.py	/^    import __builtin__ as builtins$/;"	kind:namespace	line:69
 builtins	.tox/py36/lib/python3.6/site.py	/^    import builtins$/;"	kind:namespace	line:71
-calculate_dG0_r	thermodynamics/thermodynamics_dG_r_data.py	/^    def calculate_dG0_r(self, cobra_model, measured_dG_f, estimated_dG_f, temperature):$/;"	kind:member	line:253
-calculate_dG0_r_v2	thermodynamics/thermodynamics_dG_r_data.py	/^    def calculate_dG0_r_v2(self, cobra_model, measured_dG_f, estimated_dG_f, temperature):$/;"	kind:member	line:670
-calculate_dG0_r_v3	thermodynamics/thermodynamics_dG_r_data.py	/^    def calculate_dG0_r_v3(self, cobra_model, measured_dG_f, estimated_dG_f, temperature):$/;"	kind:member	line:1081
-calculate_dG_p	thermodynamics/thermodynamics_dG_p_data.py	/^    def calculate_dG_p(self, cobra_model, dG0_r, dG_r):$/;"	kind:member	line:90
-calculate_dG_r	thermodynamics/thermodynamics_dG_r_data.py	/^    def calculate_dG_r(self, cobra_model, measured_concentration, estimated_concentration,$/;"	kind:member	line:386
-calculate_dG_r_v2	thermodynamics/thermodynamics_dG_r_data.py	/^    def calculate_dG_r_v2(self, cobra_model, measured_concentration, estimated_concentration,$/;"	kind:member	line:799
-calculate_dG_r_v3	thermodynamics/thermodynamics_dG_r_data.py	/^    def calculate_dG_r_v3(self, cobra_model, measured_concentration, estimated_concentration,$/;"	kind:member	line:1216
-calculate_displacement	thermodynamics/thermodynamics_dG_r_data.py	/^    def calculate_displacement(self, cobra_model, measured_concentration, estimated_concentration):$/;"	kind:member	line:1617
-calculate_displacement_v2	thermodynamics/thermodynamics_dG_r_data.py	/^    def calculate_displacement_v2(self, cobra_model, measured_concentration, estimated_concentration):$/;"	kind:member	line:1682
-calculate_displacement_v3	thermodynamics/thermodynamics_dG_r_data.py	/^    def calculate_displacement_v3(self, cobra_model, measured_concentration, estimated_concentration):$/;"	kind:member	line:1747
+calculate_dG0_r	thermodynamics/thermodynamics_dG_r_data.py	/^    def calculate_dG0_r(self, cobra_model, measured_dG_f, estimated_dG_f, temperature):$/;"	kind:member	line:250
+calculate_dG_p	thermodynamics/thermodynamics_dG_p_data.py	/^    def calculate_dG_p(self, cobra_model, dG0_r, dG_r):$/;"	kind:member	line:89
+calculate_dG_r	thermodynamics/thermodynamics_dG_r_data.py	/^    def calculate_dG_r(self, cobra_model, measured_concentration, estimated_concentration,$/;"	kind:member	line:383
+calculate_displacement	thermodynamics/thermodynamics_dG_r_data.py	/^    def calculate_displacement(self, cobra_model, measured_concentration, estimated_concentration):$/;"	kind:member	line:1582
 can	.tox/flake8/lib/python3.6/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
 can	.tox/py36/lib/python3.6/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
 ceil	thermodynamics/thermodynamics_dG_p_data.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:3
 ceil	thermodynamics/thermodynamics_dG_r_data.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:3
 ceil	thermodynamics/thermodynamics_tfba.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
-change_feasibleReactions	thermodynamics/thermodynamics_dG_r_data.py	/^    def change_feasibleReactions(self,infeasible_reactions_I):$/;"	kind:member	line:1913
-checkInput_concentrations	thermodynamics/thermodynamics_io.py	/^def checkInput_concentrations(measured_values_I):$/;"	kind:function	line:28
-checkInput_dG_f	thermodynamics/thermodynamics_io.py	/^def checkInput_dG_f(measured_values_I):$/;"	kind:function	line:50
-check_conc_ln_constraints_transport	thermodynamics/thermodynamics_tfba.py	/^    def check_conc_ln_constraints_transport(self,cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, pH, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,$/;"	kind:member	line:1109
-check_data	thermodynamics/thermodynamics_dG_f_data.py	/^    def check_data(self):$/;"	kind:member	line:544
+change_feasibleReactions	thermodynamics/thermodynamics_dG_r_data.py	/^    def change_feasibleReactions(self,infeasible_reactions_I):$/;"	kind:member	line:1880
+checkInput_concentrations	thermodynamics/thermodynamics_io.py	/^def checkInput_concentrations(measured_values_I):$/;"	kind:function	line:22
+checkInput_dG_f	thermodynamics/thermodynamics_io.py	/^def checkInput_dG_f(measured_values_I):$/;"	kind:function	line:45
+check_conc_ln_constraints_transport	thermodynamics/thermodynamics_tfba.py	/^    def check_conc_ln_constraints_transport(self,cobra_model_irreversible, measured_concentration, estimated_concentration, dG0_r, pH, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,$/;"	kind:member	line:1105
+check_data	thermodynamics/thermodynamics_dG_f_data.py	/^    def check_data(self):$/;"	kind:member	line:552
 check_data	thermodynamics/thermodynamics_otherData.py	/^    def check_data(self):$/;"	kind:member	line:25
 check_data	thermodynamics/thermodynamics_simulatedData.py	/^    def check_data(self):$/;"	kind:member	line:44
 check_enableusersite	.tox/flake8/lib/python3.6/site.py	/^def check_enableusersite():$/;"	kind:function	line:285
 check_enableusersite	.tox/py36/lib/python3.6/site.py	/^def check_enableusersite():$/;"	kind:function	line:285
 check_metabolomics_data	thermodynamics/thermodynamics_metabolomicsData.py	/^    def check_metabolomics_data(self):$/;"	kind:member	line:65
-check_thermodynamicConsistency	thermodynamics/thermodynamics_dG_r_data.py	/^    def check_thermodynamicConsistency(self, cobra_model, reaction_bounds,$/;"	kind:member	line:1484
+check_thermodynamicConsistency	thermodynamics/thermodynamics_dG_r_data.py	/^    def check_thermodynamicConsistency(self, cobra_model, reaction_bounds,$/;"	kind:member	line:1449
 classifiers	setup.py	/^    classifiers=[$/;"	kind:variable	line:38
 clear_data	thermodynamics/thermodynamics_otherData.py	/^    def clear_data(self):$/;"	kind:member	line:29
 cobra_model	thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_oxic_tsampling.py	/^cobra_model = load_json_model("aerobicAnaerobic01_oxic_tsampling.json");$/;"	kind:variable	line:3
@@ -235,27 +235,27 @@ codecs	.tox/flake8/lib/python3.6/site.py	/^        import locale, codecs$/;"	kin
 codecs	.tox/py36/lib/python3.6/site.py	/^        import locale, codecs$/;"	kind:namespace	line:515
 codecs.py	.tox/flake8/lib/python3.6/codecs.py	1;"	kind:file	line:1
 codecs.py	.tox/py36/lib/python3.6/codecs.py	1;"	kind:file	line:1
-combine_measured_concentrations	thermodynamics/thermodynamics_metabolomicsData.py	/^    def combine_measured_concentrations(self):$/;"	kind:member	line:560
-compartementalize_concentrations	thermodynamics/thermodynamics_formatter.py	/^def compartementalize_concentrations(measured_values):$/;"	kind:function	line:54
+combine_measured_concentrations	thermodynamics/thermodynamics_metabolomicsData.py	/^    def combine_measured_concentrations(self):$/;"	kind:member	line:567
+compartementalize_concentrations	thermodynamics/thermodynamics_formatter.py	/^def compartementalize_concentrations(measured_values):$/;"	kind:function	line:56
 compound_model	thermodynamics/thermodynamics_dG_f_data.py	/^from component_contribution.compound_model import compound_model$/;"	kind:namespace	line:18
 conf.py	docs/conf.py	1;"	kind:file	line:1
-constrain_infeasibleReactions	thermodynamics/thermodynamics_dG_r_data.py	/^    def constrain_infeasibleReactions(self,cobra_model_irreversible,solver=None,verbose_I=False):$/;"	kind:member	line:1863
+constrain_infeasibleReactions	thermodynamics/thermodynamics_dG_r_data.py	/^    def constrain_infeasibleReactions(self,cobra_model_irreversible,solver=None,verbose_I=False):$/;"	kind:member	line:1828
 construct_loopless_model	thermodynamics/thermodynamics_simulatedData.py	/^from cobra.flux_analysis.loopless import construct_loopless_model$/;"	kind:namespace	line:7
-convert_cv2lbubAndmM2M_concentrations	thermodynamics/thermodynamics_formatter.py	/^def convert_cv2lbubAndmM2M_concentrations(measured_values,min_value):$/;"	kind:function	line:73
-convert_cv2varAndmM2M_concentrations	thermodynamics/thermodynamics_formatter.py	/^def convert_cv2varAndmM2M_concentrations(measured_values):$/;"	kind:function	line:29
+convert_cv2lbubAndmM2M_concentrations	thermodynamics/thermodynamics_formatter.py	/^def convert_cv2lbubAndmM2M_concentrations(measured_values,min_value):$/;"	kind:function	line:77
+convert_cv2varAndmM2M_concentrations	thermodynamics/thermodynamics_formatter.py	/^def convert_cv2varAndmM2M_concentrations(measured_values):$/;"	kind:function	line:30
 convert_fluxBounds2var	thermodynamics/thermodynamics_formatter.py	/^def convert_fluxBounds2var(flux_bounds):$/;"	kind:function	line:8
-convert_std2lbub_dG_f	thermodynamics/thermodynamics_formatter.py	/^def convert_std2lbub_dG_f(measured_values,min_value):$/;"	kind:function	line:140
+convert_std2lbub_dG_f	thermodynamics/thermodynamics_formatter.py	/^def convert_std2lbub_dG_f(measured_values,min_value):$/;"	kind:function	line:149
 convert_to_irreversible	tests/test_thermodynamics.py	/^from cobra.manipulation.modify import convert_to_irreversible$/;"	kind:namespace	line:6
 convert_to_irreversible	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from cobra.manipulation.modify import convert_to_irreversible$/;"	kind:namespace	line:4
 convert_to_irreversible	thermodynamics/thermodynamics_examples/aerobicAnaerobic02.py	/^from cobra.manipulation.modify import convert_to_irreversible$/;"	kind:namespace	line:4
 convert_to_irreversible	thermodynamics/thermodynamics_utility.py	/^from cobra.manipulation.modify import convert_to_irreversible, revert_to_reversible$/;"	kind:namespace	line:9
-convert_var2lbub_dG_f	thermodynamics/thermodynamics_formatter.py	/^def convert_var2lbub_dG_f(measured_values):$/;"	kind:function	line:104
+convert_var2lbub_dG_f	thermodynamics/thermodynamics_formatter.py	/^def convert_var2lbub_dG_f(measured_values):$/;"	kind:function	line:110
 copy	thermodynamics/thermodynamics_metabolomicsData.py	/^from copy import copy$/;"	kind:namespace	line:6
 copy.py	.tox/flake8/lib/python3.6/copy.py	1;"	kind:file	line:1
 copy.py	.tox/py36/lib/python3.6/copy.py	1;"	kind:file	line:1
 copyreg.py	.tox/flake8/lib/python3.6/copyreg.py	1;"	kind:file	line:1
 copyreg.py	.tox/py36/lib/python3.6/copyreg.py	1;"	kind:file	line:1
-copyright	docs/conf.py	/^copyright = u"2017, Douglas McCloskey"$/;"	kind:variable	line:59
+copyright	docs/conf.py	/^copyright = u"2017, Douglas McCloskey"$/;"	kind:variable	line:74
 create_cobra_model_from_sbml_file	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from cobra.io.sbml import create_cobra_model_from_sbml_file$/;"	kind:namespace	line:3
 create_cobra_model_from_sbml_file	thermodynamics/thermodynamics_examples/aerobicAnaerobic02.py	/^from cobra.io.sbml import create_cobra_model_from_sbml_file$/;"	kind:namespace	line:3
 create_cobra_model_from_sbml_file	thermodynamics/thermodynamics_simulatedData.py	/^from cobra.io.sbml import create_cobra_model_from_sbml_file$/;"	kind:namespace	line:3
@@ -295,7 +295,7 @@ encodings	.tox/py36/lib/python3.6/site.py	/^                import encodings$/;"
 encrypt	travis_pypi_setup.py	/^def encrypt(pubkey, password):$/;"	kind:function	line:45
 enum.py	.tox/flake8/lib/python3.6/enum.py	1;"	kind:file	line:1
 enum.py	.tox/py36/lib/python3.6/enum.py	1;"	kind:file	line:1
-exclude_patterns	docs/conf.py	/^exclude_patterns = ['_build']$/;"	kind:variable	line:82
+exclude_patterns	docs/conf.py	/^exclude_patterns = ['_build']$/;"	kind:variable	line:97
 execsitecustomize	.tox/flake8/lib/python3.6/site.py	/^def execsitecustomize():$/;"	kind:function	line:545
 execsitecustomize	.tox/py36/lib/python3.6/site.py	/^def execsitecustomize():$/;"	kind:function	line:545
 execusercustomize	.tox/flake8/lib/python3.6/site.py	/^def execusercustomize():$/;"	kind:function	line:660
@@ -313,28 +313,27 @@ exp	thermodynamics/thermodynamics_otherData.py	/^from math import sqrt,exp,pow$/
 exp	thermodynamics/thermodynamics_simulatedData.py	/^from math import sqrt,exp,pow$/;"	kind:namespace	line:10
 exp	thermodynamics/thermodynamics_tfba.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
 exp	thermodynamics/thermodynamics_tfba.py	/^from math import log, exp$/;"	kind:namespace	line:8
-export_concentrations_escher	thermodynamics/thermodynamics_dG_r_data.py	/^    def export_concentrations_escher(self, filename_I, measured_concentrations):$/;"	kind:member	line:222
-export_dG0_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def export_dG0_f(self,filename_I):$/;"	kind:member	line:154
-export_dG0_p_json	thermodynamics/thermodynamics_dG_p_data.py	/^    def export_dG0_p_json(self, filename_I):$/;"	kind:member	line:75
-export_dG0_r_json	thermodynamics/thermodynamics_dG_r_data.py	/^    def export_dG0_r_json(self, filename_I):$/;"	kind:member	line:152
-export_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def export_dG_f(self,filename_I):$/;"	kind:member	line:512
-export_dG_p_json	thermodynamics/thermodynamics_dG_p_data.py	/^    def export_dG_p_json(self, filename_I):$/;"	kind:member	line:80
-export_dG_r_escher	thermodynamics/thermodynamics_dG_r_data.py	/^    def export_dG_r_escher(self, filename_I):$/;"	kind:member	line:196
-export_dG_r_json	thermodynamics/thermodynamics_dG_r_data.py	/^    def export_dG_r_json(self, filename_I):$/;"	kind:member	line:157
-export_displacement_escher	thermodynamics/thermodynamics_dG_r_data.py	/^    def export_displacement_escher(self, filename_I):$/;"	kind:member	line:209
+export_concentrations_escher	thermodynamics/thermodynamics_dG_r_data.py	/^    def export_concentrations_escher(self, filename_I, measured_concentrations):$/;"	kind:member	line:219
+export_dG0_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def export_dG0_f(self,filename_I):$/;"	kind:member	line:157
+export_dG0_p_json	thermodynamics/thermodynamics_dG_p_data.py	/^    def export_dG0_p_json(self, filename_I):$/;"	kind:member	line:74
+export_dG0_r_json	thermodynamics/thermodynamics_dG_r_data.py	/^    def export_dG0_r_json(self, filename_I):$/;"	kind:member	line:149
+export_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def export_dG_f(self,filename_I):$/;"	kind:member	line:520
+export_dG_p_json	thermodynamics/thermodynamics_dG_p_data.py	/^    def export_dG_p_json(self, filename_I):$/;"	kind:member	line:79
+export_dG_r_escher	thermodynamics/thermodynamics_dG_r_data.py	/^    def export_dG_r_escher(self, filename_I):$/;"	kind:member	line:193
+export_dG_r_json	thermodynamics/thermodynamics_dG_r_data.py	/^    def export_dG_r_json(self, filename_I):$/;"	kind:member	line:154
+export_displacement_escher	thermodynamics/thermodynamics_dG_r_data.py	/^    def export_displacement_escher(self, filename_I):$/;"	kind:member	line:206
 export_fva_data	thermodynamics/thermodynamics_simulatedData.py	/^    def export_fva_data(self, filename):$/;"	kind:member	line:109
 export_sga_data	thermodynamics/thermodynamics_simulatedData.py	/^    def export_sga_data(self, filename):$/;"	kind:member	line:191
 export_sra_data	thermodynamics/thermodynamics_simulatedData.py	/^    def export_sra_data(self, filename):$/;"	kind:member	line:84
-export_summary	thermodynamics/thermodynamics_dG_r_data.py	/^    def export_summary(self,cobra_model,reaction_bounds,filename):$/;"	kind:member	line:167
-export_tcc_json	thermodynamics/thermodynamics_dG_p_data.py	/^    def export_tcc_json(self, filename_I):$/;"	kind:member	line:85
-export_tcc_json	thermodynamics/thermodynamics_dG_r_data.py	/^    def export_tcc_json(self, filename_I):$/;"	kind:member	line:162
+export_summary	thermodynamics/thermodynamics_dG_r_data.py	/^    def export_summary(self,cobra_model,reaction_bounds,filename):$/;"	kind:member	line:164
+export_tcc_json	thermodynamics/thermodynamics_dG_p_data.py	/^    def export_tcc_json(self, filename_I):$/;"	kind:member	line:84
+export_tcc_json	thermodynamics/thermodynamics_dG_r_data.py	/^    def export_tcc_json(self, filename_I):$/;"	kind:member	line:159
 export_tfva_analysis	thermodynamics/thermodynamics_tfba.py	/^    def export_tfva_analysis(self, filename):$/;"	kind:member	line:118
 export_tfva_concentrations_data	thermodynamics/thermodynamics_tfba.py	/^    def export_tfva_concentrations_data(self, filename):$/;"	kind:member	line:114
 export_tfva_dG_r_data	thermodynamics/thermodynamics_tfba.py	/^    def export_tfva_dG_r_data(self, filename):$/;"	kind:member	line:110
 export_tfva_data	thermodynamics/thermodynamics_tfba.py	/^    def export_tfva_data(self, filename):$/;"	kind:member	line:106
-export_values_json	thermodynamics/thermodynamics_io.py	/^    def export_values_json(self, filename, data):$/;"	kind:member	line:22
-extensions	docs/conf.py	/^extensions = ['sphinx.ext.autodoc', 'sphinx.ext.napoleon']$/;"	kind:variable	line:279
-extensions	docs/conf.py	/^extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode', 'numpydoc']$/;"	kind:variable	line:43
+export_values_json	thermodynamics/thermodynamics_io.py	/^    def export_values_json(self, filename, data):$/;"	kind:member	line:16
+extensions	docs/conf.py	/^extensions = ['sphinx.ext.autodoc', 'sphinx.ext.intersphinx',$/;"	kind:variable	line:43
 fabs	thermodynamics/thermodynamics_dG_p_data.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:3
 fabs	thermodynamics/thermodynamics_dG_r_data.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:3
 fabs	thermodynamics/thermodynamics_tfba.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
@@ -345,7 +344,7 @@ find	.tox/flake8/lib/python3.6/distutils/__init__.py	/^import opcode # opcode is
 find	.tox/py36/lib/python3.6/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
 find_config_files	.tox/flake8/lib/python3.6/distutils/__init__.py	/^def find_config_files(self):$/;"	kind:function	line:53
 find_config_files	.tox/py36/lib/python3.6/distutils/__init__.py	/^def find_config_files(self):$/;"	kind:function	line:53
-find_transportMets	thermodynamics/thermodynamics_dG_r_data.py	/^    def find_transportMets(self, cobra_model_I, reaction_id_I):$/;"	kind:member	line:1583
+find_transportMets	thermodynamics/thermodynamics_dG_r_data.py	/^    def find_transportMets(self, cobra_model_I, reaction_id_I):$/;"	kind:member	line:1548
 find_transportMets	thermodynamics/thermodynamics_utility.py	/^def find_transportMets(cobra_model_I, reaction_id_I):$/;"	kind:function	line:14
 find_transportMetsAndRxns	thermodynamics/thermodynamics_tfba.py	/^from thermodynamics.thermodynamics_utility import find_transportRxns, null, find_transportMetsAndRxns$/;"	kind:namespace	line:15
 find_transportMetsAndRxns	thermodynamics/thermodynamics_utility.py	/^def find_transportMetsAndRxns(cobra_model_I):$/;"	kind:function	line:65
@@ -357,38 +356,38 @@ floor	thermodynamics/thermodynamics_dG_p_data.py	/^from math import floor,ceil,l
 floor	thermodynamics/thermodynamics_dG_r_data.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:3
 floor	thermodynamics/thermodynamics_tfba.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:2
 flux_variability_analysis	thermodynamics/thermodynamics_simulatedData.py	/^from cobra.flux_analysis import flux_variability_analysis$/;"	kind:namespace	line:4
-flux_variability_analysis	thermodynamics/thermodynamics_tfba.py	/^        from cobra.flux_analysis import flux_variability_analysis$/;"	kind:namespace	line:342
-flux_variability_analysis	thermodynamics/thermodynamics_tfba.py	/^        from cobra.flux_analysis import flux_variability_analysis$/;"	kind:namespace	line:374
-flux_variability_analysis	thermodynamics/thermodynamics_tfba.py	/^        from cobra.flux_analysis import flux_variability_analysis$/;"	kind:namespace	line:393
+flux_variability_analysis	thermodynamics/thermodynamics_tfba.py	/^        from cobra.flux_analysis import flux_variability_analysis$/;"	kind:namespace	line:340
+flux_variability_analysis	thermodynamics/thermodynamics_tfba.py	/^        from cobra.flux_analysis import flux_variability_analysis$/;"	kind:namespace	line:370
+flux_variability_analysis	thermodynamics/thermodynamics_tfba.py	/^        from cobra.flux_analysis import flux_variability_analysis$/;"	kind:namespace	line:389
 fnmatch.py	.tox/flake8/lib/python3.6/fnmatch.py	1;"	kind:file	line:1
 fnmatch.py	.tox/py36/lib/python3.6/fnmatch.py	1;"	kind:file	line:1
 force_global_eggs_after_local_site_packages	.tox/flake8/lib/python3.6/site.py	/^def force_global_eggs_after_local_site_packages():$/;"	kind:function	line:627
 force_global_eggs_after_local_site_packages	.tox/py36/lib/python3.6/site.py	/^def force_global_eggs_after_local_site_packages():$/;"	kind:function	line:627
-format_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def format_dG_f(self):$/;"	kind:member	line:534
+format_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def format_dG_f(self):$/;"	kind:member	line:542
 format_metabolomics_data	thermodynamics/thermodynamics_metabolomicsData.py	/^    def format_metabolomics_data(self): #deprecated$/;"	kind:member	line:41
 format_metabolomics_data_extracellular	thermodynamics/thermodynamics_metabolomicsData.py	/^    def format_metabolomics_data_extracellular(self):$/;"	kind:member	line:53
 format_metabolomics_data_intracellular	thermodynamics/thermodynamics_metabolomicsData.py	/^    def format_metabolomics_data_intracellular(self):$/;"	kind:member	line:47
 functools.py	.tox/flake8/lib/python3.6/functools.py	1;"	kind:file	line:1
 functools.py	.tox/py36/lib/python3.6/functools.py	1;"	kind:file	line:1
-generalize_compartment2all_concentration	thermodynamics/thermodynamics_formatter.py	/^def generalize_compartment2all_concentration(cobra_model, concentration=None, exceptions=None):$/;"	kind:function	line:230
-generalize_compartment2all_dG_f	thermodynamics/thermodynamics_formatter.py	/^def generalize_compartment2all_dG_f(cobra_model, dG_f=None, exceptions=None):$/;"	kind:function	line:405
-generalize_compartmentLBUB2all_concentration	thermodynamics/thermodynamics_formatter.py	/^def generalize_compartmentLBUB2all_concentration(cobra_model, lbub=None, exceptions=None):$/;"	kind:function	line:169
-generalize_compartmentLBUB2all_dG_f	thermodynamics/thermodynamics_formatter.py	/^def generalize_compartmentLBUB2all_dG_f(cobra_model, lbub=None, exceptions=None):$/;"	kind:function	line:367
-generate_estimated_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def generate_estimated_dG_f(self, cobra_model):$/;"	kind:member	line:539
+generalize_compartment2all_concentration	thermodynamics/thermodynamics_formatter.py	/^def generalize_compartment2all_concentration(cobra_model, concentration=None, exceptions=None):$/;"	kind:function	line:241
+generalize_compartment2all_dG_f	thermodynamics/thermodynamics_formatter.py	/^def generalize_compartment2all_dG_f(cobra_model, dG_f=None, exceptions=None):$/;"	kind:function	line:416
+generalize_compartmentLBUB2all_concentration	thermodynamics/thermodynamics_formatter.py	/^def generalize_compartmentLBUB2all_concentration(cobra_model, lbub=None, exceptions=None):$/;"	kind:function	line:181
+generalize_compartmentLBUB2all_dG_f	thermodynamics/thermodynamics_formatter.py	/^def generalize_compartmentLBUB2all_dG_f(cobra_model, lbub=None, exceptions=None):$/;"	kind:function	line:378
+generate_estimated_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def generate_estimated_dG_f(self, cobra_model):$/;"	kind:member	line:547
 generate_estimated_metabolomics_data	thermodynamics/thermodynamics_metabolomicsData.py	/^    def generate_estimated_metabolomics_data(self, cobra_model):$/;"	kind:member	line:59
-generate_fba_data	thermodynamics/thermodynamics_simulatedData.py	/^    def generate_fba_data(self,cobra_model,allow_loops=True, method_I='fba',solver='glpk'):$/;"	kind:member	line:141
+generate_fba_data	thermodynamics/thermodynamics_simulatedData.py	/^    def generate_fba_data(self,cobra_model,allow_loops=True, method_I='fba',solver='glpk'):$/;"	kind:member	line:142
 generate_fluxSum_data	thermodynamics/thermodynamics_simulatedData.py	/^    def generate_fluxSum_data(self,cobra_model,method_I='fba',solver='glpk'):$/;"	kind:member	line:204
 generate_fva_data	thermodynamics/thermodynamics_simulatedData.py	/^    def generate_fva_data(self, cobra_model, fraction_of_optimum=0.9,$/;"	kind:member	line:93
-generate_sga_data	thermodynamics/thermodynamics_simulatedData.py	/^    def generate_sga_data(self, cobra_model, gene_list=None,$/;"	kind:member	line:166
+generate_sga_data	thermodynamics/thermodynamics_simulatedData.py	/^    def generate_sga_data(self, cobra_model, gene_list=None,$/;"	kind:member	line:164
 generate_sra_data	thermodynamics/thermodynamics_simulatedData.py	/^    def generate_sra_data(self, cobra_model, reaction_list=None,$/;"	kind:member	line:48
 genericpath.py	.tox/flake8/lib/python3.6/genericpath.py	1;"	kind:file	line:1
 genericpath.py	.tox/py36/lib/python3.6/genericpath.py	1;"	kind:file	line:1
 get_platform	.tox/flake8/lib/python3.6/site.py	/^    from distutils.util import get_platform$/;"	kind:namespace	line:136
 get_platform	.tox/py36/lib/python3.6/site.py	/^    from distutils.util import get_platform$/;"	kind:namespace	line:136
 get_solver_name	thermodynamics/thermodynamics_tfba.py	/^from cobra.solvers import solver_dict, get_solver_name$/;"	kind:namespace	line:14
-get_transformed_dG0_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def get_transformed_dG0_f(self,cobra_model_I, pH_I,temperature_I,ionic_strength_I):$/;"	kind:member	line:99
-get_transformed_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def get_transformed_dG_f(self,dG0_f_I, cobra_model_I, pH_I,temperature_I,ionic_strength_I):$/;"	kind:member	line:433
-get_variableTypeAndUnits	thermodynamics/thermodynamics_tfba.py	/^    def get_variableTypeAndUnits(self,rxn_id):$/;"	kind:member	line:1190
+get_transformed_dG0_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def get_transformed_dG0_f(self,cobra_model_I, pH_I,temperature_I,ionic_strength_I):$/;"	kind:member	line:103
+get_transformed_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def get_transformed_dG_f(self,dG0_f_I, cobra_model_I, pH_I,temperature_I,ionic_strength_I):$/;"	kind:member	line:441
+get_variableTypeAndUnits	thermodynamics/thermodynamics_tfba.py	/^    def get_variableTypeAndUnits(self,rxn_id):$/;"	kind:member	line:1187
 getopt	.tox/flake8/bin/python-config	/^import getopt$/;"	kind:namespace	line:4
 getopt	.tox/py36/bin/python-config	/^import getopt$/;"	kind:namespace	line:4
 getpass	travis_pypi_setup.py	/^from getpass import getpass$/;"	kind:namespace	line:11
@@ -403,27 +402,27 @@ help	travis_pypi_setup.py	/^                        help='PyPI password (will pr
 history	setup.py	/^    history = history_file.read()$/;"	kind:variable	line:10
 hmac.py	.tox/flake8/lib/python3.6/hmac.py	1;"	kind:file	line:1
 hmac.py	.tox/py36/lib/python3.6/hmac.py	1;"	kind:file	line:1
-html_static_path	docs/conf.py	/^html_static_path = ['_static']$/;"	kind:variable	line:145
-html_theme	docs/conf.py	/^html_theme = 'default'$/;"	kind:variable	line:114
-htmlhelp_basename	docs/conf.py	/^htmlhelp_basename = 'thermodynamicsdoc'$/;"	kind:variable	line:191
+html_static_path	docs/conf.py	/^html_static_path = ['_static']$/;"	kind:variable	line:160
+html_theme	docs/conf.py	/^html_theme = 'default'$/;"	kind:variable	line:129
+htmlhelp_basename	docs/conf.py	/^htmlhelp_basename = 'thermodynamicsdoc'$/;"	kind:variable	line:206
 imp	.tox/flake8/lib/python3.6/distutils/__init__.py	/^import imp$/;"	kind:namespace	line:4
 imp	.tox/py36/lib/python3.6/distutils/__init__.py	/^import imp$/;"	kind:namespace	line:4
 imp.py	.tox/flake8/lib/python3.6/imp.py	1;"	kind:file	line:1
 imp.py	.tox/py36/lib/python3.6/imp.py	1;"	kind:file	line:1
-import_dG0_r_json	thermodynamics/thermodynamics_dG_r_data.py	/^    def import_dG0_r_json(self, dG0_r_filename_I):$/;"	kind:member	line:235
-import_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def import_dG_f(self, dG_f_filename_I):$/;"	kind:member	line:528
-import_dG_r_json	thermodynamics/thermodynamics_dG_r_data.py	/^    def import_dG_r_json(self, dG_r_filename_I):$/;"	kind:member	line:241
+import_dG0_r_json	thermodynamics/thermodynamics_dG_r_data.py	/^    def import_dG0_r_json(self, dG0_r_filename_I):$/;"	kind:member	line:232
+import_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def import_dG_f(self, dG_f_filename_I):$/;"	kind:member	line:536
+import_dG_r_json	thermodynamics/thermodynamics_dG_r_data.py	/^    def import_dG_r_json(self, dG_r_filename_I):$/;"	kind:member	line:238
 import_fva_data	thermodynamics/thermodynamics_simulatedData.py	/^    def import_fva_data(self,filename):$/;"	kind:member	line:115
 import_metabolomics_data	thermodynamics/thermodynamics_metabolomicsData.py	/^    def import_metabolomics_data(self, concentration_filename_I): #deprecated$/;"	kind:member	line:26
 import_metabolomics_data_extracellular	thermodynamics/thermodynamics_metabolomicsData.py	/^    def import_metabolomics_data_extracellular(self, concentration_filename_I):$/;"	kind:member	line:36
 import_metabolomics_data_intracellular	thermodynamics/thermodynamics_metabolomicsData.py	/^    def import_metabolomics_data_intracellular(self, concentration_filename_I):$/;"	kind:member	line:31
 import_sga_data	thermodynamics/thermodynamics_simulatedData.py	/^    def import_sga_data(self,filename):$/;"	kind:member	line:196
 import_sra_data	thermodynamics/thermodynamics_simulatedData.py	/^    def import_sra_data(self,filename):$/;"	kind:member	line:89
-import_tcc_json	thermodynamics/thermodynamics_dG_r_data.py	/^    def import_tcc_json(self, tcc_filename_I):$/;"	kind:member	line:247
-import_values_json	thermodynamics/thermodynamics_io.py	/^    def import_values_json(self, filename):$/;"	kind:member	line:17
-import_values_json	thermodynamics/thermodynamics_io.py	/^def import_values_json(filename):$/;"	kind:function	line:75
+import_tcc_json	thermodynamics/thermodynamics_dG_r_data.py	/^    def import_tcc_json(self, tcc_filename_I):$/;"	kind:member	line:244
+import_values_json	thermodynamics/thermodynamics_io.py	/^    def import_values_json(self, filename):$/;"	kind:member	line:11
+import_values_json	thermodynamics/thermodynamics_io.py	/^def import_values_json(filename):$/;"	kind:function	line:72
 include_package_data	setup.py	/^    include_package_data=True,$/;"	kind:variable	line:33
-init_pathways	thermodynamics/thermodynamics_dG_p_data.py	/^    def init_pathways(self):$/;"	kind:member	line:164
+init_pathways	thermodynamics/thermodynamics_dG_p_data.py	/^    def init_pathways(self):$/;"	kind:member	line:167
 install_requires	setup.py	/^    install_requires=requirements,$/;"	kind:variable	line:34
 io.py	.tox/flake8/lib/python3.6/io.py	1;"	kind:file	line:1
 io.py	.tox/py36/lib/python3.6/io.py	1;"	kind:file	line:1
@@ -451,8 +450,8 @@ json	travis_pypi_setup.py	/^import json$/;"	kind:namespace	line:8
 keyword.py	.tox/flake8/lib/python3.6/keyword.py	1;"	kind:file	line:1
 keyword.py	.tox/py36/lib/python3.6/keyword.py	1;"	kind:file	line:1
 keywords	setup.py	/^    keywords='thermodynamics',$/;"	kind:variable	line:37
-latex_documents	docs/conf.py	/^latex_documents = [$/;"	kind:variable	line:210
-latex_elements	docs/conf.py	/^latex_elements = {$/;"	kind:variable	line:196
+latex_documents	docs/conf.py	/^latex_documents = [$/;"	kind:variable	line:225
+latex_elements	docs/conf.py	/^latex_elements = {$/;"	kind:variable	line:211
 license	setup.py	/^    license="Apache Software License 2.0",$/;"	kind:variable	line:35
 linecache.py	.tox/flake8/lib/python3.6/linecache.py	1;"	kind:file	line:1
 linecache.py	.tox/py36/lib/python3.6/linecache.py	1;"	kind:file	line:1
@@ -464,7 +463,7 @@ load_pem_public_key	travis_pypi_setup.py	/^from cryptography.hazmat.primitives.s
 load_thermoModel	tests/test_thermodynamics.py	/^from thermodynamics.thermodynamics_utility import load_thermoModel, simulate_thermoConstraints, add_pykA$/;"	kind:namespace	line:18
 load_thermoModel	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from thermodynamics.thermodynamics_utility import load_thermoModel, simulate_thermoConstraints, add_pykA$/;"	kind:namespace	line:17
 load_thermoModel	thermodynamics/thermodynamics_examples/aerobicAnaerobic02.py	/^from thermodynamics.thermodynamics_utility import load_thermoModel, simulate_thermoConstraints, add_pykA$/;"	kind:namespace	line:18
-load_thermoModel	thermodynamics/thermodynamics_utility.py	/^def load_thermoModel(anoxic = False):$/;"	kind:function	line:81
+load_thermoModel	thermodynamics/thermodynamics_utility.py	/^def load_thermoModel(anoxic = False):$/;"	kind:function	line:83
 load_yaml_config	travis_pypi_setup.py	/^def load_yaml_config(filepath):$/;"	kind:function	line:86
 locale	.tox/flake8/lib/python3.6/site.py	/^        import locale$/;"	kind:namespace	line:532
 locale	.tox/flake8/lib/python3.6/site.py	/^        import locale, codecs$/;"	kind:namespace	line:515
@@ -486,26 +485,26 @@ main	.tox/flake8/lib/python3.6/site.py	/^def main():$/;"	kind:function	line:668
 main	.tox/py36/lib/python3.6/site.py	/^def main():$/;"	kind:function	line:668
 main	travis_pypi_setup.py	/^def main(args):$/;"	kind:function	line:111
 main.py	thermodynamics/thermodynamics_examples/main.py	1;"	kind:file	line:1
-make_dG0_f_pH0	thermodynamics/thermodynamics_dG_f_data.py	/^    def make_dG0_f_pH0(self):$/;"	kind:member	line:274
+make_dG0_f_pH0	thermodynamics/thermodynamics_dG_f_data.py	/^    def make_dG0_f_pH0(self):$/;"	kind:member	line:282
 makepath	.tox/flake8/lib/python3.6/site.py	/^def makepath(*paths):$/;"	kind:function	line:92
 makepath	.tox/py36/lib/python3.6/site.py	/^def makepath(*paths):$/;"	kind:function	line:92
-man_pages	docs/conf.py	/^man_pages = [$/;"	kind:variable	line:241
-master_doc	docs/conf.py	/^master_doc = 'index'$/;"	kind:variable	line:55
-mean_confidence_interval	thermodynamics/thermodynamics_utility.py	/^def mean_confidence_interval(data, confidence=0.95):$/;"	kind:function	line:636
+man_pages	docs/conf.py	/^man_pages = [$/;"	kind:variable	line:256
+master_doc	docs/conf.py	/^master_doc = 'index'$/;"	kind:variable	line:70
+mean_confidence_interval	thermodynamics/thermodynamics_utility.py	/^def mean_confidence_interval(data, confidence=0.95):$/;"	kind:function	line:634
 module	.tox/flake8/lib/python3.6/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
 module	.tox/py36/lib/python3.6/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
 name	setup.py	/^    name='thermodynamics',$/;"	kind:variable	line:21
-napoleon_google_docstring	docs/conf.py	/^napoleon_google_docstring = True$/;"	kind:variable	line:282
-napoleon_include_init_with_doc	docs/conf.py	/^napoleon_include_init_with_doc = False$/;"	kind:variable	line:284
-napoleon_include_private_with_doc	docs/conf.py	/^napoleon_include_private_with_doc = False$/;"	kind:variable	line:285
-napoleon_include_special_with_doc	docs/conf.py	/^napoleon_include_special_with_doc = True$/;"	kind:variable	line:286
-napoleon_numpy_docstring	docs/conf.py	/^napoleon_numpy_docstring = True$/;"	kind:variable	line:283
-napoleon_use_admonition_for_examples	docs/conf.py	/^napoleon_use_admonition_for_examples = False$/;"	kind:variable	line:287
-napoleon_use_admonition_for_notes	docs/conf.py	/^napoleon_use_admonition_for_notes = False$/;"	kind:variable	line:288
-napoleon_use_admonition_for_references	docs/conf.py	/^napoleon_use_admonition_for_references = False$/;"	kind:variable	line:289
-napoleon_use_ivar	docs/conf.py	/^napoleon_use_ivar = False$/;"	kind:variable	line:290
-napoleon_use_param	docs/conf.py	/^napoleon_use_param = True$/;"	kind:variable	line:291
-napoleon_use_rtype	docs/conf.py	/^napoleon_use_rtype = True/;"	kind:variable	line:292
+napoleon_google_docstring	docs/conf.py	/^napoleon_google_docstring = True$/;"	kind:variable	line:48
+napoleon_include_init_with_doc	docs/conf.py	/^napoleon_include_init_with_doc = False$/;"	kind:variable	line:50
+napoleon_include_private_with_doc	docs/conf.py	/^napoleon_include_private_with_doc = False$/;"	kind:variable	line:51
+napoleon_include_special_with_doc	docs/conf.py	/^napoleon_include_special_with_doc = True$/;"	kind:variable	line:52
+napoleon_numpy_docstring	docs/conf.py	/^napoleon_numpy_docstring = True$/;"	kind:variable	line:49
+napoleon_use_admonition_for_examples	docs/conf.py	/^napoleon_use_admonition_for_examples = False$/;"	kind:variable	line:53
+napoleon_use_admonition_for_notes	docs/conf.py	/^napoleon_use_admonition_for_notes = False$/;"	kind:variable	line:54
+napoleon_use_admonition_for_references	docs/conf.py	/^napoleon_use_admonition_for_references = False$/;"	kind:variable	line:55
+napoleon_use_ivar	docs/conf.py	/^napoleon_use_ivar = False$/;"	kind:variable	line:56
+napoleon_use_param	docs/conf.py	/^napoleon_use_param = True$/;"	kind:variable	line:57
+napoleon_use_rtype	docs/conf.py	/^napoleon_use_rtype = True$/;"	kind:variable	line:58
 new_sys_path	.tox/flake8/bin/activate_this.py	/^new_sys_path = []$/;"	kind:variable	line:29
 new_sys_path	.tox/py36/bin/activate_this.py	/^new_sys_path = []$/;"	kind:variable	line:29
 not	.tox/flake8/lib/python3.6/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
@@ -514,10 +513,10 @@ np	tests/test_thermodynamics.py	/^import numpy as np$/;"	kind:namespace	line:2
 ntpath.py	.tox/flake8/lib/python3.6/ntpath.py	1;"	kind:file	line:1
 ntpath.py	.tox/py36/lib/python3.6/ntpath.py	1;"	kind:file	line:1
 null	thermodynamics/thermodynamics_tfba.py	/^from thermodynamics.thermodynamics_utility import find_transportRxns, null, find_transportMetsAndRxns$/;"	kind:namespace	line:15
-null	thermodynamics/thermodynamics_utility.py	/^def null(A, eps=1e-6):$/;"	kind:function	line:647
+null	thermodynamics/thermodynamics_utility.py	/^def null(A, eps=1e-6):$/;"	kind:function	line:645
 numpy	thermodynamics/thermodynamics_tfba.py	/^import numpy$/;"	kind:namespace	line:10
-numpy	thermodynamics/thermodynamics_utility.py	/^    import numpy$/;"	kind:namespace	line:638
-numpy	thermodynamics/thermodynamics_utility.py	/^    import numpy$/;"	kind:namespace	line:648
+numpy	thermodynamics/thermodynamics_utility.py	/^    import numpy$/;"	kind:namespace	line:636
+numpy	thermodynamics/thermodynamics_utility.py	/^    import numpy$/;"	kind:namespace	line:646
 old_build_ext	.tox/flake8/lib/python3.6/distutils/__init__.py	/^    from distutils.command.build_ext import build_ext as old_build_ext$/;"	kind:namespace	line:36
 old_build_ext	.tox/py36/lib/python3.6/distutils/__init__.py	/^    from distutils.command.build_ext import build_ext as old_build_ext$/;"	kind:namespace	line:36
 old_find_config_files	.tox/flake8/lib/python3.6/distutils/__init__.py	/^old_find_config_files = dist.Distribution.find_config_files$/;"	kind:variable	line:52
@@ -557,7 +556,7 @@ os.py	.tox/py36/lib/python3.6/os.py	1;"	kind:file	line:1
 package_dir	setup.py	/^    package_dir={'thermodynamics':$/;"	kind:variable	line:31
 packages	setup.py	/^    packages=[$/;"	kind:variable	line:28
 parser	travis_pypi_setup.py	/^    parser = argparse.ArgumentParser(description=__doc__)$/;"	kind:variable	line:120
-pathways	thermodynamics/thermodynamics_dG_p_data.py	/^pathways = {};$/;"	kind:variable	line:415
+pathways	thermodynamics/thermodynamics_dG_p_data.py	/^pathways = {};$/;"	kind:variable	line:418
 posixpath.py	.tox/flake8/lib/python3.6/posixpath.py	1;"	kind:file	line:1
 posixpath.py	.tox/py36/lib/python3.6/posixpath.py	1;"	kind:file	line:1
 pow	thermodynamics/thermodynamics_dG_p_data.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:3
@@ -572,12 +571,12 @@ prepend_line	travis_pypi_setup.py	/^def prepend_line(filepath, line):$/;"	kind:f
 prev_sys_path	.tox/flake8/bin/activate_this.py	/^prev_sys_path = list(sys.path)$/;"	kind:variable	line:23
 prev_sys_path	.tox/py36/bin/activate_this.py	/^prev_sys_path = list(sys.path)$/;"	kind:variable	line:23
 print_function	travis_pypi_setup.py	/^from __future__ import print_function$/;"	kind:namespace	line:6
-project	docs/conf.py	/^project = u'cobrapy_thermodynamics'$/;"	kind:variable	line:58
+project	docs/conf.py	/^project = u'thermodynamics'$/;"	kind:variable	line:73
 project_root	docs/conf.py	/^project_root = os.path.dirname(cwd)$/;"	kind:variable	line:27
 ptvsd	debug_remote.py	/^import ptvsd$/;"	kind:namespace	line:3
 pydoc	.tox/flake8/lib/python3.6/site.py	/^        import pydoc$/;"	kind:namespace	line:504
 pydoc	.tox/py36/lib/python3.6/site.py	/^        import pydoc$/;"	kind:namespace	line:504
-pygments_style	docs/conf.py	/^pygments_style = 'sphinx'$/;"	kind:variable	line:100
+pygments_style	docs/conf.py	/^pygments_style = 'sphinx'$/;"	kind:variable	line:115
 pytest	tests/__init__.py	/^    import pytest$/;"	kind:namespace	line:16
 pytest	tests/__init__.py	/^    pytest = None$/;"	kind:variable	line:19
 pytest	tests/test_thermodynamics.py	/^import pytest$/;"	kind:namespace	line:1
@@ -595,10 +594,10 @@ readme	setup.py	/^    readme = readme_file.read()$/;"	kind:variable	line:7
 real_distutils	.tox/flake8/lib/python3.6/distutils/__init__.py	/^    real_distutils = imp.load_module("_virtualenv_distutils", None, distutils_path, ('', '', imp.PKG_DIRECTORY))$/;"	kind:variable	line:17
 real_distutils	.tox/py36/lib/python3.6/distutils/__init__.py	/^    real_distutils = imp.load_module("_virtualenv_distutils", None, distutils_path, ('', '', imp.PKG_DIRECTORY))$/;"	kind:variable	line:17
 reduce_model	thermodynamics/thermodynamics_simulatedData.py	/^    def reduce_model(self,cobra_model,method_I='fba',solver='glpk'):$/;"	kind:member	line:201
-release	docs/conf.py	/^release = thermodynamics.__version__$/;"	kind:variable	line:68
-remove_infeasibleReactions	thermodynamics/thermodynamics_dG_r_data.py	/^    def remove_infeasibleReactions(self,cobra_model,solver=None):$/;"	kind:member	line:1891
+release	docs/conf.py	/^release = thermodynamics.__version__$/;"	kind:variable	line:83
+remove_infeasibleReactions	thermodynamics/thermodynamics_dG_r_data.py	/^    def remove_infeasibleReactions(self,cobra_model,solver=None):$/;"	kind:member	line:1858
 remove_measured_concentrations	thermodynamics/thermodynamics_metabolomicsData.py	/^    def remove_measured_concentrations(self,mets_I):$/;"	kind:member	line:69
-remove_measured_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def remove_measured_dG_f(self,mets_I):$/;"	kind:member	line:727
+remove_measured_dG_f	thermodynamics/thermodynamics_dG_f_data.py	/^    def remove_measured_dG_f(self,mets_I):$/;"	kind:member	line:741
 removeduppaths	.tox/flake8/lib/python3.6/site.py	/^def removeduppaths():$/;"	kind:function	line:113
 removeduppaths	.tox/py36/lib/python3.6/site.py	/^def removeduppaths():$/;"	kind:function	line:113
 reprlib.py	.tox/flake8/lib/python3.6/reprlib.py	1;"	kind:file	line:1
@@ -613,8 +612,8 @@ save_matlab_model	thermodynamics/thermodynamics_tfba.py	/^from cobra.io import s
 save_matlab_model	thermodynamics/thermodynamics_utility.py	/^from cobra.io.mat import save_matlab_model$/;"	kind:namespace	line:8
 save_yaml_config	travis_pypi_setup.py	/^def save_yaml_config(filepath, config):$/;"	kind:function	line:91
 scipy	thermodynamics/thermodynamics_tfba.py	/^import scipy$/;"	kind:namespace	line:11
-scipy	thermodynamics/thermodynamics_utility.py	/^    import scipy$/;"	kind:namespace	line:639
-scipy	thermodynamics/thermodynamics_utility.py	/^    import scipy.stats$/;"	kind:namespace	line:640
+scipy	thermodynamics/thermodynamics_utility.py	/^    import scipy$/;"	kind:namespace	line:637
+scipy	thermodynamics/thermodynamics_utility.py	/^    import scipy.stats$/;"	kind:namespace	line:638
 set	.tox/flake8/lib/python3.6/site.py	/^    from sets import Set as set$/;"	kind:namespace	line:75
 set	.tox/py36/lib/python3.6/site.py	/^    from sets import Set as set$/;"	kind:namespace	line:75
 setBEGINLIBPATH	.tox/flake8/lib/python3.6/site.py	/^def setBEGINLIBPATH():$/;"	kind:function	line:362
@@ -631,11 +630,11 @@ setup	setup.py	/^from setuptools import setup$/;"	kind:namespace	line:4
 setup.py	setup.py	1;"	kind:file	line:1
 shutil.py	.tox/flake8/lib/python3.6/shutil.py	1;"	kind:file	line:1
 shutil.py	.tox/py36/lib/python3.6/shutil.py	1;"	kind:file	line:1
-simulate_infeasibleReactions	thermodynamics/thermodynamics_dG_r_data.py	/^    def simulate_infeasibleReactions(self,cobra_model_I):$/;"	kind:member	line:1824
+simulate_infeasibleReactions	thermodynamics/thermodynamics_dG_r_data.py	/^    def simulate_infeasibleReactions(self,cobra_model_I):$/;"	kind:member	line:1789
 simulate_thermoConstraints	tests/test_thermodynamics.py	/^from thermodynamics.thermodynamics_utility import load_thermoModel, simulate_thermoConstraints, add_pykA$/;"	kind:namespace	line:18
 simulate_thermoConstraints	thermodynamics/thermodynamics_examples/aerobicAnaerobic01.py	/^from thermodynamics.thermodynamics_utility import load_thermoModel, simulate_thermoConstraints, add_pykA$/;"	kind:namespace	line:17
 simulate_thermoConstraints	thermodynamics/thermodynamics_examples/aerobicAnaerobic02.py	/^from thermodynamics.thermodynamics_utility import load_thermoModel, simulate_thermoConstraints, add_pykA$/;"	kind:namespace	line:18
-simulate_thermoConstraints	thermodynamics/thermodynamics_utility.py	/^def simulate_thermoConstraints(cobra_model_I,reactions_id_I):$/;"	kind:function	line:555
+simulate_thermoConstraints	thermodynamics/thermodynamics_utility.py	/^def simulate_thermoConstraints(cobra_model_I,reactions_id_I):$/;"	kind:function	line:557
 single_gene_deletion	thermodynamics/thermodynamics_simulatedData.py	/^from cobra.flux_analysis.single_deletion import single_reaction_deletion,single_gene_deletion$/;"	kind:namespace	line:5
 single_reaction_deletion	thermodynamics/thermodynamics_simulatedData.py	/^from cobra.flux_analysis.single_deletion import single_reaction_deletion,single_gene_deletion$/;"	kind:namespace	line:5
 site	.tox/flake8/bin/activate_this.py	/^import site$/;"	kind:namespace	line:24
@@ -651,7 +650,7 @@ sitecustomize	.tox/py36/lib/python3.6/site.py	/^        import sitecustomize$/;"
 so	.tox/flake8/lib/python3.6/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
 so	.tox/py36/lib/python3.6/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
 solver_dict	thermodynamics/thermodynamics_tfba.py	/^from cobra.solvers import solver_dict, get_solver_name$/;"	kind:namespace	line:14
-source_suffix	docs/conf.py	/^source_suffix = '.rst'$/;"	kind:variable	line:49
+source_suffix	docs/conf.py	/^source_suffix = '.rst'$/;"	kind:variable	line:64
 sqrt	thermodynamics/thermodynamics_dG_f_data.py	/^from math import sqrt$/;"	kind:namespace	line:24
 sqrt	thermodynamics/thermodynamics_dG_p_data.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:3
 sqrt	thermodynamics/thermodynamics_dG_r_data.py	/^from math import floor,ceil,log,sqrt,pow,exp,fabs$/;"	kind:namespace	line:3
@@ -669,7 +668,7 @@ sre_parse.py	.tox/flake8/lib/python3.6/sre_parse.py	1;"	kind:file	line:1
 sre_parse.py	.tox/py36/lib/python3.6/sre_parse.py	1;"	kind:file	line:1
 stat.py	.tox/flake8/lib/python3.6/stat.py	1;"	kind:file	line:1
 stat.py	.tox/py36/lib/python3.6/stat.py	1;"	kind:file	line:1
-stats	thermodynamics/thermodynamics_utility.py	/^    import scipy.stats$/;"	kind:namespace	line:640
+stats	thermodynamics/thermodynamics_utility.py	/^    import scipy.stats$/;"	kind:namespace	line:638
 stdlib	.tox/flake8/lib/python3.6/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
 stdlib	.tox/py36/lib/python3.6/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
 string_types	thermodynamics/thermodynamics_tfba.py	/^from six import iteritems, string_types$/;"	kind:namespace	line:13
@@ -705,7 +704,7 @@ tarfile.py	.tox/flake8/lib/python3.6/tarfile.py	1;"	kind:file	line:1
 tarfile.py	.tox/py36/lib/python3.6/tarfile.py	1;"	kind:file	line:1
 tempfile.py	.tox/flake8/lib/python3.6/tempfile.py	1;"	kind:file	line:1
 tempfile.py	.tox/py36/lib/python3.6/tempfile.py	1;"	kind:file	line:1
-templates_path	docs/conf.py	/^templates_path = ['_templates']$/;"	kind:variable	line:46
+templates_path	docs/conf.py	/^templates_path = ['_templates']$/;"	kind:variable	line:61
 test_all	tests/__init__.py	/^def test_all(args=None):$/;"	kind:function	line:26
 test_cobra_model	tests/test_thermodynamics.py	/^    def test_cobra_model(self):$/;"	kind:member	line:35
 test_dG_f_data	tests/test_thermodynamics.py	/^    def test_dG_f_data(self):$/;"	kind:member	line:96
@@ -726,14 +725,14 @@ test_tsampling	tests/test_thermodynamics.py	/^    def test_tsampling(self):$/;"	
 test_tsampling.py	thermodynamics/thermodynamics_data/tests/test_tsampling.py	1;"	kind:file	line:1
 test_tsampling_analysis	tests/test_thermodynamics.py	/^    def test_tsampling_analysis(self):$/;"	kind:member	line:360
 tests_require	setup.py	/^    tests_require=test_requirements$/;"	kind:variable	line:51
-texinfo_documents	docs/conf.py	/^texinfo_documents = [$/;"	kind:variable	line:256
+texinfo_documents	docs/conf.py	/^texinfo_documents = [$/;"	kind:variable	line:271
 textwrap	.tox/flake8/lib/python3.6/site.py	/^        import textwrap$/;"	kind:namespace	line:753
 textwrap	.tox/py36/lib/python3.6/site.py	/^        import textwrap$/;"	kind:namespace	line:753
 tfba	thermodynamics/thermodynamics_tfba.py	/^    def tfba(self, cobra_model_irreversible, dG_r, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check, $/;"	kind:member	line:248
 tfba_conc_ln	thermodynamics/thermodynamics_tfba.py	/^    def tfba_conc_ln(self,cobra_model_irreversible, measured_concentration, estimated_concentration, $/;"	kind:member	line:279
 tfva	thermodynamics/thermodynamics_tfba.py	/^    def tfva(self, cobra_model_irreversible, dG_r, dG_r_coverage, thermodynamic_consistency_check, use_measured_dG_r=True,$/;"	kind:member	line:319
-tfva_concentrations	thermodynamics/thermodynamics_tfba.py	/^    def tfva_concentrations(self, cobra_model_irreversible, measured_concentration, estimated_concentration, $/;"	kind:member	line:382
-tfva_dG_r	thermodynamics/thermodynamics_tfba.py	/^    def tfva_dG_r(self, cobra_model_irreversible, dG_r,  $/;"	kind:member	line:350
+tfva_concentrations	thermodynamics/thermodynamics_tfba.py	/^    def tfva_concentrations(self, cobra_model_irreversible, measured_concentration, estimated_concentration, $/;"	kind:member	line:378
+tfva_dG_r	thermodynamics/thermodynamics_tfba.py	/^    def tfva_dG_r(self, cobra_model_irreversible, dG_r,  $/;"	kind:member	line:348
 the	.tox/flake8/lib/python3.6/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
 the	.tox/py36/lib/python3.6/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
 thermodynamics	docs/conf.py	/^import thermodynamics$/;"	kind:namespace	line:34
@@ -793,7 +792,7 @@ token.py	.tox/py36/lib/python3.6/token.py	1;"	kind:file	line:1
 tokenize.py	.tox/flake8/lib/python3.6/tokenize.py	1;"	kind:file	line:1
 tokenize.py	.tox/py36/lib/python3.6/tokenize.py	1;"	kind:file	line:1
 travis_pypi_setup.py	travis_pypi_setup.py	1;"	kind:file	line:1
-tsampling_matlab_import	thermodynamics/thermodynamics_tfba.py	/^    def tsampling_matlab_import(self,cobra_model_irreversible, dG_r, dG_r_coverage, thermodynamic_consistency_check, use_measured_dG_r=True, solver='glpk',$/;"	kind:member	line:1223
+tsampling_matlab_import	thermodynamics/thermodynamics_tfba.py	/^    def tsampling_matlab_import(self,cobra_model_irreversible, dG_r, dG_r_coverage, thermodynamic_consistency_check, use_measured_dG_r=True, solver='glpk',$/;"	kind:member	line:1222
 tthermo	debug_remote.py	/^tthermo = test_thermodynamics()$/;"	kind:variable	line:23
 types.py	.tox/flake8/lib/python3.6/types.py	1;"	kind:file	line:1
 types.py	.tox/py36/lib/python3.6/types.py	1;"	kind:file	line:1
@@ -813,7 +812,7 @@ var	thermodynamics/thermodynamics_io.py	/^from numpy import average, var, log$/;
 var	thermodynamics/thermodynamics_metabolomicsData.py	/^from numpy import average, var, log$/;"	kind:namespace	line:5
 var	thermodynamics/thermodynamics_otherData.py	/^from numpy import average, var, log$/;"	kind:namespace	line:4
 var	thermodynamics/thermodynamics_simulatedData.py	/^from numpy import average, var, log$/;"	kind:namespace	line:11
-version	docs/conf.py	/^version = thermodynamics.__version__$/;"	kind:variable	line:66
+version	docs/conf.py	/^version = thermodynamics.__version__$/;"	kind:variable	line:81
 version	setup.py	/^    version='0.1.0',$/;"	kind:variable	line:22
 virtual_addsitepackages	.tox/flake8/lib/python3.6/site.py	/^def virtual_addsitepackages(known_paths):$/;"	kind:function	line:642
 virtual_addsitepackages	.tox/py36/lib/python3.6/site.py	/^def virtual_addsitepackages(known_paths):$/;"	kind:function	line:642

@@ -243,7 +243,6 @@ check_thermodynamicConsistency	thermodynamics/thermodynamics_dG_r_data.py	/^    
 classifiers	setup.py	/^    classifiers=[$/;"	kind:variable	line:38
 clear_data	thermodynamics/thermodynamics_otherData.py	/^    def clear_data(self):$/;"	kind:member	line:29
 cobra_model	thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_oxic_tsampling.py	/^cobra_model = load_json_model("aerobicAnaerobic01_oxic_tsampling.json");$/;"	kind:variable	line:3
-cobra_model	thermodynamics/thermodynamics_data/tests/test_tsampling.py	/^cobra_model = load_json_model("test_tsampling.json");$/;"	kind:variable	line:3
 codecs	.tox/flake8/lib/python3.6/site.py	/^        import locale, codecs$/;"	kind:namespace	line:515
 codecs	.tox/py36/lib/python3.6/site.py	/^        import locale, codecs$/;"	kind:namespace	line:515
 codecs.py	.tox/flake8/lib/python3.6/codecs.py	1;"	kind:file	line:1
@@ -575,7 +574,6 @@ operator.py	.tox/flake8/lib/python3.6/operator.py	1;"	kind:file	line:1
 operator.py	.tox/py36/lib/python3.6/operator.py	1;"	kind:file	line:1
 optGpSampler_sampling	tests/test_thermodynamics.py	/^from sampling.optGpSampler_sampling import optGpSampler_sampling$/;"	kind:namespace	line:13
 optGpSampler_sampling	thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_oxic_tsampling.py	/^from sampling.optGpSampler_sampling import optGpSampler_sampling$/;"	kind:namespace	line:2
-optGpSampler_sampling	thermodynamics/thermodynamics_data/tests/test_tsampling.py	/^from cobra_utilities.optGpSampler_sampling import optGpSampler_sampling$/;"	kind:namespace	line:2
 optGpSampler_sampling	thermodynamics/thermodynamics_examples/TestThermodynamics.py	/^from sampling.optGpSampler_sampling import optGpSampler_sampling$/;"	kind:namespace	line:13
 optGpSampler_sampling	thermodynamics/thermodynamics_examples/aerobicAnaerobic02.py	/^from sampling.optGpSampler_sampling import  optGpSampler_sampling$/;"	kind:namespace	line:13
 opt_flags	.tox/flake8/bin/python-config	/^opt_flags = [flag for (flag, val) in opts]$/;"	kind:variable	line:33
@@ -662,7 +660,6 @@ run_tfba_constraints	thermodynamics/thermodynamics_examples/TestThermodynamics.p
 run_tfva	thermodynamics/thermodynamics_examples/TestThermodynamics.py	/^    def run_tfva(self):$/;"	kind:member	line:289
 run_tsampling	thermodynamics/thermodynamics_examples/TestThermodynamics.py	/^    def run_tsampling(self):$/;"	kind:member	line:335
 sampling	thermodynamics/thermodynamics_data/aerobicAnaerobic01_geo/aerobicAnaerobic01_oxic_tsampling.py	/^sampling = optGpSampler_sampling(data_dir_I = "\/");$/;"	kind:variable	line:4
-sampling	thermodynamics/thermodynamics_data/tests/test_tsampling.py	/^sampling = optGpSampler_sampling(data_dir_I = "\/");$/;"	kind:variable	line:4
 save_matlab_model	thermodynamics/thermodynamics_tfba.py	/^from cobra.io import save_matlab_model, write_sbml_model$/;"	kind:namespace	line:6
 save_matlab_model	thermodynamics/thermodynamics_utility.py	/^from cobra.io.mat import save_matlab_model$/;"	kind:namespace	line:8
 save_yaml_config	travis_pypi_setup.py	/^def save_yaml_config(filepath, config):$/;"	kind:function	line:91
@@ -777,7 +774,6 @@ test_tfba	tests/test_thermodynamics.py	/^    def test_tfba(self):      $/;"	kind
 test_tfba_constraints	tests/test_thermodynamics.py	/^    def test_tfba_constraints(self):      $/;"	kind:member	line:290
 test_tfva	tests/test_thermodynamics.py	/^    def test_tfva(self):      $/;"	kind:member	line:368
 test_thermodynamics.py	tests/test_thermodynamics.py	1;"	kind:file	line:1
-test_tsampling.py	thermodynamics/thermodynamics_data/tests/test_tsampling.py	1;"	kind:file	line:1
 tests_require	setup.py	/^    tests_require=test_requirements$/;"	kind:variable	line:51
 texinfo_documents	docs/conf.py	/^texinfo_documents = [$/;"	kind:variable	line:271
 textwrap	.tox/flake8/lib/python3.6/site.py	/^        import textwrap$/;"	kind:namespace	line:753

@@ -58,15 +58,14 @@ def compartementalize_concentrations(measured_values):
 
     Args:
         measured_values: measured values with variances
-                             {metabolite.id: {'concentration': float,
-                                             'concentration_var': float,
-                                             'concentration_units': 'M'}
+            {metabolite.id: {'concentration': float,
+            'concentration_var': float,
+            'concentration_units': 'M'}
     
     Returns:
-        dictionary: measured_values_O:
-                             {metabolite.id: {'concentration': float,
-                                             'concentration_var': float,
-                                             'concentration_units': 'M'}
+        dictionary: measured_values_O: {metabolite.id: {'concentration': float,
+            'concentration_var': float,
+            'concentration_units': 'M'}
     """
     measured_values_O = {};
     for k,v in measured_values.items():

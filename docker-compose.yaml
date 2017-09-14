@@ -2,7 +2,8 @@ version: "3"
 
 services:
   thermodynamics:
-    image: dmccloskey/python3cobrapy-thermodynamics:latest
+    image: python3cobrapy-thermodynamics:latest
+    # image: dmccloskey/python3cobrapy-thermodynamics:latest
     volumes:
       ##computer 1: directories
       - //C/Users//domccl/GitHub/thermodynamics/:/home/user/code/

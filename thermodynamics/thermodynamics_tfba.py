@@ -164,8 +164,8 @@ class thermodynamics_tfba(thermodynamics_io):
             return_dG_r_variables (boolean)  False add dG0_r variables?
 
         Returns:
-            cobra_model_irreversible = irreversible cobra model with dG0r and conc_ln constraints added
-            dG_r_dict = dictionary of dG0_r variables
+            cobra.Model: cobra_model_irreversible: irreversible cobra model with dG0r and conc_ln constraints added
+            dict: dG_r_dict: dictionary of dG0_r variables
         """
         # pre-process the data
         dG_r = self._scale_dG_r(dG_r);

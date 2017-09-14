@@ -274,7 +274,7 @@ class thermodynamics_tfba(thermodynamics_io):
         # optimize
         cobra_model_irreversible.solver = solver
         solution = cobra_model_irreversible.optimize()
-        self.tfba_data = {k:v for k,v in solution.fluxes.to_dict.items() if k in reaction_list}
+        self.tfba_data = {k:v for k,v in solution.fluxes.to_dict().items() if k in reaction_list}
 
     def tfba_conc_ln(self,cobra_model_irreversible, measured_concentration, estimated_concentration, 
         dG0_r, temperature, metabolomics_coverage, dG_r_coverage, thermodynamic_consistency_check,
@@ -314,7 +314,7 @@ class thermodynamics_tfba(thermodynamics_io):
         # optimize
         cobra_model_irreversible.solver = solver
         solution = cobra_model_irreversible.optimize()
-        self.tfba_data = {k:v for k,v in solution.fluxes.to_dict.items() if k in reaction_list}
+        self.tfba_data = {k:v for k,v in solution.fluxes.to_dict().items() if k in reaction_list}
 
     def tfva(self, cobra_model_irreversible, dG_r, dG_r_coverage, thermodynamic_consistency_check, use_measured_dG_r=True,
              reaction_list=None,fraction_of_optimum=1.0, solver='glpk',

@@ -67,7 +67,13 @@ class TestThermodynamics():
         metabolomics_data.generate_estimated_metabolomics_data(self.cobra_model)
         self.metabolomics_data = metabolomics_data
 
-    def init_dG_r_data(self):
+    def init_dG_r_data(self):   
+        self.init_model()
+        self.init_simulatedData()
+        self.init_otherData()
+        self.init_metabolomicsData()
+        self.init_dG_f_data()
+
         data_ta = data_dir_tests + '/test_ta.csv'
         data_dG0 = data_dir_tests + '/test_dG0.json'
         data_dG = data_dir_tests + '/test_dG.json'

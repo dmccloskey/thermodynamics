@@ -22,15 +22,14 @@ def checkInput_concentrations(measured_values_I):
     """check concentration data input
 
     Args:
-        measured_values: measured values with variances
-                             {metabolite.id: {'concentration': float,
-                                             'concentration_var': float,
-                                             'concentration_units': 'M'}
+        measured_values (dict): measured values with variances
+            {metabolite.id: {'concentration': float,
+            'concentration_var': float,
+            'concentration_units': 'M'}
     Returns:
-        dictionary: measured_values_O:
-                             {metabolite.id: {'concentration': float,
-                                             'concentration_var': float,
-                                             'concentration_units': 'M'}
+        dict: output: measured_values_O: {metabolite.id: {'concentration': float,
+            'concentration_var': float,
+            'concentration_units': 'M'}
     """
     # check units
     measured_values_O = {};
@@ -45,18 +44,17 @@ def checkInput_dG_f(measured_values_I):
     """check dG_O_f data input
 
     Args:
-        measured_values: measured values with variances
-                             {metabolite.id: {'dG_f': float,
-                                             'dG_f_var': float,
-                                             'dG_f_units': 'kJ/mol'}
+        measured_values (dict): measured values with variances
+            {metabolite.id: {'dG_f': float,
+            'dG_f_var': float,
+            'dG_f_units': 'kJ/mol'}
 
     Returns:
-        dictionary: measured_values_O:
-                             {metabolite.id: {'dG_f': float,
-                                             'dG_f_var': float,
-                                             'dG_f_lb': float,
-                                             'dG_f_ub': float,
-                                             'dG_f_units': 'kJ/mol'}
+        dict: output: measured_values_O: {metabolite.id: {'dG_f': float,
+            'dG_f_var': float,
+            'dG_f_lb': float,
+            'dG_f_ub': float,
+            'dG_f_units': 'kJ/mol'}
     """
     # check units
     

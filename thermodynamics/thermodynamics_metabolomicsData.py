@@ -76,16 +76,15 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
         """check concentration data input
 
         Args:
-            measured_values: measured values with variances
-                                 {metabolite.id: {'concentration': float,
-                                                 'concentration_var': float,
-                                                 'concentration_units': 'M'}
+            measured_values (dict): measured values with variances
+                {metabolite.id: {'concentration': float,
+                'concentration_var': float,
+                'concentration_units': 'M'}
 
         Returns:
-            dictionary: measured_values_O:
-                                 {metabolite.id: {'concentration': float,
-                                                 'concentration_var': float,
-                                                 'concentration_units': 'M'}
+            dict: output: measured_values_O: {metabolite.id: {'concentration': float,
+                'concentration_var': float,
+                'concentration_units': 'M'}
         """
         # check units
         measured_values_O = {};
@@ -104,14 +103,14 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
 
         Args:
             measured_values: measured values with variances
-                                 {metabolite.id: {'concentration': float,
-                                                 'concentration_cv': float,
-                                                 'concentration_units': 'mM'}
-        Returns:             
-            dictionary:  measured_values_O:
-                                 {metabolite.id: {'concentration': float,
-                                                 'concentration_var': float,
-                                                 'concentration_units': 'M'}
+                {metabolite.id: {'concentration': float,
+                'concentration_cv': float,
+                'concentration_units': 'mM'}
+
+        Returns:
+            dict: output: measured_values_O: {metabolite.id: {'concentration': float,
+                'concentration_var': float,
+                'concentration_units': 'M'}
         """
         measured_values_O = {};
         for k,v in measured_values.items():
@@ -127,14 +126,14 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
 
         Args:
             measured_values: measured values with variances
-                                 {metabolite.id: {'concentration': float,
-                                                 'concentration_var': float,
-                                                 'concentration_units': 'M'}
-        Returns:             
-            dictionary:  measured_values_O:
-                                 {metabolite.id: {'concentration': float,
-                                                 'concentration_var': float,
-                                                 'concentration_units': 'M'}
+                {metabolite.id: {'concentration': float,
+                'concentration_var': float,
+                'concentration_units': 'M'}
+
+        Returns:
+            dict: output: measured_values_O: {metabolite.id: {'concentration': float,
+                'concentration_var': float,
+                'concentration_units': 'M'}
         """
         measured_values_O = {};
         for k,v in measured_values.items():
@@ -147,14 +146,14 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
 
         Args:
             measured_values: measured values with variances
-                                 {metabolite.id: {'concentration': float,
-                                                 'concentration_var': float,
-                                                 'concentration_units': 'M'}
-        Returns:             
-            dictionary:  measured_values_O:
-                                 {metabolite.id: {'concentration': float,
-                                                 'concentration_var': float,
-                                                 'concentration_units': 'M'}
+                {metabolite.id: {'concentration': float,
+                'concentration_var': float,
+                'concentration_units': 'M'}
+
+        Returns:
+            dict: output: measured_values_O: {metabolite.id: {'concentration': float,
+                'concentration_var': float,
+                'concentration_units': 'M'}
         """
         measured_values_O = {};
         for k,v in measured_values.items():
@@ -174,14 +173,14 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
 
         Args:
             measured_values: measured values with variances
-                                 {metabolite.id: {'concentration': float,
-                                                 'concentration_cv': float,
-                                                 'concentration_units': 'mM'}
-        Returns:             
-            dictionary:  measured_values_O:
-                                 {metabolite.id: {'concentration_lb': float,
-                                                 'concentration_ub': float,
-                                                 'concentration_units': 'M'}
+                {metabolite.id: {'concentration': float,
+                'concentration_cv': float,
+                'concentration_units': 'mM'}
+
+        Returns:
+            dict: output: measured_values_O: {metabolite.id: {'concentration': float,
+                'concentration_var': float,
+                'concentration_units': 'M'}
         """
         measured_values_O = {};
         for k,v in measured_values.items():
@@ -204,16 +203,16 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
         Args:
             cobra_model: a Model object
             lbub: 'compartment': {'concentration_lb': float,
-                               'concentration_ub': float,
-                               'concentration_units': 'M'}
+                'concentration_ub': float,
+                'concentration_units': 'M'}
             exceptions: metabolite.id: {'concentration_lb': float,
-                               'concentration_ub': float,
-                               'concentration_units': string}
+                'concentration_ub': float,
+                'concentration_units': string}
 
-        Returns:             
-            dictionary:  metabolite.id {'concentration_lb': float,
-                               'concentration_ub': float,
-                               'concentration_units': string}
+        Returns:
+            dict: output: measured_values_O: {metabolite.id: {'concentration': float,
+                'concentration_var': float,
+                'concentration_units': 'M'}
         """
         if not(exceptions):
             exceptions = {};
@@ -264,22 +263,22 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
         Args:
             cobra_model: a Model object
             concentration: 'compartment': {'concentration': float,
-                               'concentration_var': float,
-                               'concentration_lb': float,
-                               'concentration_ub': float,
-                               'concentration_units': string}}
+                'concentration_var': float,
+                'concentration_lb': float,
+                'concentration_ub': float,
+                'concentration_units': string}}
             exceptions: metabolite.id: {'concentration': float,
-                               'concentration_var': float,
-                               'concentration_lb': float,
-                               'concentration_ub': float,
-                               'concentration_units': 'M'}
+                'concentration_var': float,
+                'concentration_lb': float,
+                'concentration_ub': float,
+                'concentration_units': 'M'}
 
         Returns:             
-            dictionary:  metabolite.id {'concentration': float,
-                               'concentration_var': float,
-                               'concentration_lb': float,
-                               'concentration_ub': float,
-                               'concentration_units': 'M'}
+            dict: output: metabolite.id {'concentration': float,
+                'concentration_var': float,
+                'concentration_lb': float,
+                'concentration_ub': float,
+                'concentration_units': 'M'}
 
         Notes:
             the concentration is given in ln space
@@ -413,22 +412,22 @@ class thermodynamics_metabolomicsData(thermodynamics_io):
         Args:
             cobra_model: a Model object
             concentration: 'compartment': {'concentration': float,
-                                'concentration_var': float,
-                                'concentration_lb': float,
-                                'concentration_ub': float,
-                                'concentration_units': string}}
+                'concentration_var': float,
+                'concentration_lb': float,
+                'concentration_ub': float,
+                'concentration_units': string}}
             exceptions: metabolite.id: {'concentration': float,
-                               'concentration_var': float,
-                               'concentration_lb': float,
-                               'concentration_ub': float,
-                               'concentration_units': 'M'}
+                'concentration_var': float,
+                'concentration_lb': float,
+                'concentration_ub': float,
+                'concentration_units': 'M'}
 
         Returns:             
-            dictionary:  metabolite.id {'concentration': float,
-                               'concentration_var': float,
-                               'concentration_lb': float,
-                               'concentration_ub': float,
-                               'concentration_units': 'M'}
+            dict: output: metabolite.id {'concentration': float,
+                'concentration_var': float,
+                'concentration_lb': float,
+                'concentration_ub': float,
+                'concentration_units': 'M'}
 
         Notes: 
             the concentration is given in ln space

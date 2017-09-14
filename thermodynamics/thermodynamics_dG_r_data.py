@@ -1553,7 +1553,7 @@ class thermodynamics_dG_r_data(thermodynamics_io):
             reaction_id_I (string): reaction id
 
         Returns:
-            met_O (list()): transport metabolites
+            list: met_O: transport metabolites
 
         Notes:
         transport metabolite definition:
@@ -1795,8 +1795,8 @@ class thermodynamics_dG_r_data(thermodynamics_io):
           reactions_id_I = cobra model reaction ids
 
         Returns:
-          gr_O = {'reaction_id 1':{gr:float, gr_ratio:% change in growth},
-                  'reaction_id 2':{gr:float, gr_ratio:% change in growth},...}
+          dict: gr_O: {'reaction_id 1':{gr:float, gr_ratio:% change in growth},
+            'reaction_id 2':{gr:float, gr_ratio:% change in growth},...}
         """
 
         gr_O = {};

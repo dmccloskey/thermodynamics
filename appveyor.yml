@@ -94,7 +94,7 @@ init:
   ## Conda
   - "SET PATH=%CONDA_HOME%;%CONDA_HOME%\\Scripts;%PATH%"
   # configures the Miniconda environment (Py2/Py3, 32/64 bit)
-  - python -u ci\appveyor\conda_setup.py
+  - ps: python -u ci\appveyor\conda_setup.py
 
 install:
   - "%PYTHON%/Scripts/easy_install -U pip"

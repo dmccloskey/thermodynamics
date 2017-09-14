@@ -123,10 +123,10 @@ class thermodynamics_simulatedData(thermodynamics_io):
         variance = (max - median)^2
 
         Args:
-            flux_bounds: {reaction.id: {'maximum': float, 'minimum': float}}
+            flux_bounds (dict): {reaction.id: {'maximum': float, 'minimum': float}}
 
         Returns:             
-            dictionary:  {reaction.id: {'flux': float, 'flux_var': float, 'flux_units': 'mmol*gDW-1*hr-1'}
+            dict: output:  {reaction.id: {'flux': float, 'flux_var': float, 'flux_units': 'mmol*gDW-1*hr-1'}
 
         """
 

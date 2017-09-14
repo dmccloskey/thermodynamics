@@ -2,7 +2,8 @@
 
 set -e
 
-dependencies=(pip setuptools wheel tox twine)
+# dependencies=(pip setuptools wheel tox twine)
+dependencies=(wheel tox twine)
 
 if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then
     brew update

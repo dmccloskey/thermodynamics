@@ -11,10 +11,10 @@ def convert_fluxBounds2var(flux_bounds):
     variance = (max - median)^2
 
     Args:
-        flux_bounds: {reaction.id: {'maximum': float, 'minimum': float}}
+        flux_bounds (dict): {reaction.id: {'maximum': float, 'minimum': float}}
 
     Returns:
-        (dict): {reaction.id: {'flux': float, 'flux_var': float, 'flux_units': 'mmol*gDW-1*hr-1'}
+        dict: flux_bounds_O: {reaction.id: {'flux': float, 'flux_var': float, 'flux_units': 'mmol*gDW-1*hr-1'}
 
     """
 
@@ -34,15 +34,15 @@ def convert_cv2varAndmM2M_concentrations(measured_values):
     (CV = SD/Ave*100; SD = CV/100*AVE) 
 
     Args:
-        measured_values: measured values with variances
-                             {metabolite.id: {'concentration': float,
-                                             'concentration_cv': float,
-                                             'concentration_units': 'mM'}
+        measured_values (dict): measured values with variances
+            {metabolite.id: {'concentration': float,
+            'concentration_cv': float,
+            'concentration_units': 'mM'}
+
     Returns:
-        dictionary: measured_values_O:
-                             {metabolite.id: {'concentration': float,
-                                             'concentration_var': float,
-                                             'concentration_units': 'M'}
+        dict: measured_values_O: {metabolite.id: {'concentration': float,
+            'concentration_var': float,
+            'concentration_units': 'M'}
     """
     measured_values_O = {};
     for k,v in measured_values.items():
@@ -57,16 +57,15 @@ def compartementalize_concentrations(measured_values):
     """add a compartment identifier to intracellular metabolites
 
     Args:
-        measured_values: measured values with variances
-                             {metabolite.id: {'concentration': float,
-                                             'concentration_var': float,
-                                             'concentration_units': 'M'}
+        measured_values (dict): measured values with variances
+            {metabolite.id: {'concentration': float,
+            'concentration_var': float,
+            'concentration_units': 'M'}
     
     Returns:
-        dictionary: measured_values_O:
-                             {metabolite.id: {'concentration': float,
-                                             'concentration_var': float,
-                                             'concentration_units': 'M'}
+        dict: measured_values_O: {metabolite.id: {'concentration': float,
+            'concentration_var': float,
+            'concentration_units': 'M'}
     """
     measured_values_O = {};
     for k,v in measured_values.items():
@@ -84,16 +83,15 @@ def convert_cv2lbubAndmM2M_concentrations(measured_values,min_value):
     ub = ave + sqrt(var)
 
     Args:
-        measured_values: measured values with variances
-                             {metabolite.id: {'concentration': float,
-                                             'concentration_cv': float,
-                                             'concentration_units': 'mM'}
+        measured_values (dict): measured values with variances
+            {metabolite.id: {'concentration': float,
+            'concentration_cv': float,
+            'concentration_units': 'mM'}
 
     Returns:
-        dictionary: measured_values_O:
-                             {metabolite.id: {'concentration_lb': float,
-                                             'concentration_ub': float,
-                                             'concentration_units': 'M'}
+        dict: measured_values_O: {metabolite.id: {'concentration_lb': float,
+            'concentration_ub': float,
+            'concentration_units': 'M'}
     """
     measured_values_O = {};
     for k,v in measured_values.items():
@@ -115,18 +113,17 @@ def convert_var2lbub_dG_f(measured_values):
     ub = ave + sqrt(var)
 
     Args:
-        measured_values: measured values with variances
-                             {metabolite.id: {'dG_f': float,
-                                             'dG_f_var': float,
-                                             'dG_f_units': 'kJ/mol'}
+        measured_values (dict): measured values with variances
+            {metabolite.id: {'dG_f': float,
+            'dG_f_var': float,
+            'dG_f_units': 'kJ/mol'}
                                         
     Returns:
-        dictionary: measured_values_O:
-                             {metabolite.id: {'dG_f': float,
-                                             'dG_f_var': float,
-                                             'dG_f_lb': float,
-                                             'dG_f_ub': float,
-                                             'dG_f_units': 'kJ/mol'}
+        dict: measured_values_O: {metabolite.id: {'dG_f': float,
+            'dG_f_var': float,
+            'dG_f_lb': float,
+            'dG_f_ub': float,
+            'dG_f_units': 'kJ/mol'}
     """
     measured_values_O = {};
     for k,v in measured_values.items():
@@ -155,16 +152,15 @@ def convert_std2lbub_dG_f(measured_values,min_value):
     ub = ave + sqrt(var)
 
     Args:
-        measured_values: measured values with variances
-                             {metabolite.id: {'dG_f': float,
-                                             'dG_f_cv': float,
-                                             'dG_f_units': 'mM'}
+        measured_values (dict): measured values with variances
+            {metabolite.id: {'dG_f': float,
+            'dG_f_cv': float,
+            'dG_f_units': 'mM'}
 
     Returns:
-        dictionary: measured_values_O:
-                             {metabolite.id: {'dG_f_lb': float,
-                                             'dG_f_ub': float,
-                                             'dG_f_units': 'M'}
+        dict: measured_values_O: {metabolite.id: {'dG_f_lb': float,
+            'dG_f_ub': float,
+            'dG_f_units': 'M'}
     """
     measured_values_O = {};
     for k,v in measured_values.items():
@@ -187,16 +183,16 @@ def generalize_compartmentLBUB2all_concentration(cobra_model, lbub=None, excepti
     Args:
         cobra_model: a Model object
         lbub: 'compartment': {'concentration_lb': float,
-                           'concentration_ub': float,
-                           'concentration_units': 'M'}
+            'concentration_ub': float,
+            'concentration_units': 'M'}
         exceptions: metabolite.id: {'concentration_lb': float,
-                           'concentration_ub': float,
-                           'concentration_units': string}
+            'concentration_ub': float,
+            'concentration_units': string}
 
     Returns:
-        dictionary: metabolite.id {'concentration_lb': float,
-                           'concentration_ub': float,
-                           'concentration_units': string}
+        dict: metabolite.id {'concentration_lb': float,
+            'concentration_ub': float,
+            'concentration_units': string}
     """
     if not(exceptions):
         exceptions = {};
@@ -246,7 +242,7 @@ def generalize_compartment2all_concentration(cobra_model, concentration=None, ex
 
     Args:
         cobra_model: a Model object
-        concentration: 'compartment': {'concentration': float,
+        concentration (dict): 'compartment': {'concentration': float,
                             'concentration_var': float,
                             'concentration_lb': float,
                             'concentration_ub': float,
@@ -269,14 +265,14 @@ def generalize_compartment2all_concentration(cobra_model, concentration=None, ex
 
                             'concentration_units': 'M'}
 
-        exceptions: metabolite.id: {'concentration': float,
+        exceptions (dict): metabolite.id: {'concentration': float,
                            'concentration_var': float,
                            'concentration_lb': float,
                            'concentration_ub': float,
                            'concentration_units': 'M'}
     
     Returns:
-        dictionary: metabolite.id {'concentration': float,
+        dict: output: metabolite.id {'concentration': float,
                            'concentration_var': float,
                            'concentration_lb': float,
                            'concentration_ub': float,
@@ -383,14 +379,14 @@ def generalize_compartmentLBUB2all_dG_f(cobra_model, lbub=None, exceptions=None)
 
     Args:
         cobra_model: a Model object
-        lbub: metabolite.compartment: {'dG_f_lb': float,
-                           'dG_f_ub': float,
-                           'dG_f_units': 'kJ/mol'}
+        lbub (dict): metabolite.compartment: {'dG_f_lb': float,
+            'dG_f_ub': float,
+            'dG_f_units': 'kJ/mol'}
     
     Returns:
-        dictionary: metabolite.id {'dG_f_lb': float,
-                           'dG_f_ub': float,
-                           'dG_f_units': string}
+        dictionary: output: metabolite.id {'dG_f_lb': float,
+            'dG_f_ub': float,
+            'dG_f_units': string}
     """
     if not(lbub):
         lbub = {};
@@ -425,16 +421,16 @@ def generalize_compartment2all_dG_f(cobra_model, dG_f=None, exceptions=None):
 
     Args:
         cobra_model: a Model object
-        lbub: metabolite.compartment: {'dG_f': float,
-                           'dG_f_var': float,
-                           'dG_f_units': 'kJ/mol'}
+        lbub (dict): metabolite.compartment: {'dG_f': float,
+            'dG_f_var': float,
+            'dG_f_units': 'kJ/mol'}
 
     Returns:
-        dictionary: metabolite.id {'dG_f': float,
-                           'dG_f_var': float,
-                           'dG_f_lb': float,
-                           'dG_f_ub': float,
-                           'dG_f_units': 'kJ/mol'}
+        dictionary: output: metabolite.id {'dG_f': float,
+            'dG_f_var': float,
+            'dG_f_lb': float,
+            'dG_f_ub': float,
+            'dG_f_units': 'kJ/mol'}
     """
     if not(dG_f):
         dG_f = {};

@@ -153,19 +153,19 @@ class thermodynamics_tfba(thermodynamics_io):
 
         Args:
             cobra_model_irreversible (cobra.Model): irreversible cobra model
-            measured_concentrations (dict()): dictionary of measured concentrations
-            estimated_concentrations(dict()): dictionary of estimated concentrations
-            dG_r (dict()): dictionary of calculated dG_r values
-            dG_r_coverage (dict()): dictionary of reaction-specific dG_r coverage values
-            thermodynamics_consistency_check (dict()): dictionary of reaction-specific thermodynamics consistency values
+            measured_concentrations (dict): dictionary of measured concentrations
+            estimated_concentrations(dict): dictionary of estimated concentrations
+            dG_r (dict): dictionary of calculated dG_r values
+            dG_r_coverage (dict): dictionary of reaction-specific dG_r coverage values
+            thermodynamics_consistency_check (dict): dictionary of reaction-specific thermodynamics consistency values
             measured_dG_r_coverage_criteria (float): minimum cutoff for experimentally determined dG_r coverage
             use_measured_concentrations (boolean): 
             use_measured_dG_r (boolean): 
             return_dG_r_variables (boolean)  False add dG0_r variables?
 
         Returns:
-            cobra_model_irreversible = irreversible cobra model with dG0r and conc_ln constraints added
-            dG_r_dict = dictionary of dG0_r variables
+            cobra.Model: cobra_model_irreversible: irreversible cobra model with dG0r and conc_ln constraints added
+            dict: dG_r_dict: dictionary of dG0_r variables
         """
         # pre-process the data
         dG_r = self._scale_dG_r(dG_r);
@@ -322,14 +322,14 @@ class thermodynamics_tfba(thermodynamics_io):
         """performs thermodynamic flux variability analysis to find max/min flux values
 
         Args:
-            cobra_model : :class:`~cobra.core.Model`:
-            reaction_list : list of :class:`~cobra.core.Reaction`: or their id's
+            cobra_model: :class:`~cobra.core.Model`:
+            reaction_list (list): list of :class:`~cobra.core.Reaction`: or their id's
                 The id's for which FVA should be run. If this is None, the bounds
                 will be comptued for all reactions in the model.
-            fraction_of_optimum : fraction of optimum which must be maintained.
+            fraction_of_optimum (float): fraction of optimum which must be maintained.
                 The original objective reaction is constrained to be greater than
                 maximal_value * fraction_of_optimum
-            solver : string of solver name
+            solver (str): string of solver name
                 If None is given, the default solver will be used.
 
         """
@@ -353,14 +353,14 @@ class thermodynamics_tfba(thermodynamics_io):
         """performs thermodynamic dG_r variability analysis to find max/min dG_r values
 
         Args:
-            cobra_model : :class:`~cobra.core.Model`:
-            reaction_list : list of :class:`~cobra.core.Reaction`: or their id's
+            cobra_model: :class:`~cobra.core.Model`:
+            reaction_list (list): list of :class:`~cobra.core.Reaction`: or their id's
                 The id's for which FVA should be run. If this is None, the bounds
                 will be comptued for all reactions in the model.
-            fraction_of_optimum : fraction of optimum which must be maintained.
+            fraction_of_optimum (float): fraction of optimum which must be maintained.
                 The original objective reaction is constrained to be greater than
                 maximal_value * fraction_of_optimum
-            solver : string of solver name
+            solver (str): string of solver name
                 If None is given, the default solver will be used.
 
         """
@@ -396,6 +396,7 @@ class thermodynamics_tfba(thermodynamics_io):
 
     def analyze_tfva_results(self,threshold=1e-6,verbose_I=False):
         """Determine what reactions are
+
         1. Blocked
         2. Essential
         3. Substitutable
@@ -455,13 +456,13 @@ class thermodynamics_tfba(thermodynamics_io):
 
         Args:
             cobra_model_irreversible (cobra.Model): irreversible cobra model
-            measured_concentrations (dict()): dictionary of measured concentrations
-            estimated_concentrations(dict()): dictionary of estimated concentrations
-            dG0_r (dict()): dictionary of calculated dG0_r values
-            temperature (dict()): dictionary of compartment specific temperature values
-            metabolomics_coverage (dict()): dictionary of reaction-specific metabolomics coverage values
-            dG_r_coverage (dict()): dictionary of reaction-specific dG_r coverage values
-            thermodynamics_consistency_check (dict()): dictionary of reaction-specific thermodynamics consistency values
+            measured_concentrations (dict): dictionary of measured concentrations
+            estimated_concentrations(dict): dictionary of estimated concentrations
+            dG0_r (dict): dictionary of calculated dG0_r values
+            temperature (dict): dictionary of compartment specific temperature values
+            metabolomics_coverage (dict): dictionary of reaction-specific metabolomics coverage values
+            dG_r_coverage (dict): dictionary of reaction-specific dG_r coverage values
+            thermodynamics_consistency_check (dict): dictionary of reaction-specific thermodynamics consistency values
             measured_concentration_coverage_criteria (float): minimum cutoff for measured concentration coverage
             measured_dG_f_coverage_criteria (float): minimum cutoff for experimentally determined dG_f coverage
             use_measured_concentrations (boolean): 
@@ -470,9 +471,9 @@ class thermodynamics_tfba(thermodynamics_io):
             return_dG0_r_variables (boolean)  False add dG0_r variables?
 
         Returns:
-            cobra_model_irreversible = irreversible cobra model with dG0r and conc_ln constraints added
-            conc_lnv_dict = dictionary of conc_ln variables
-            dG0_r_dict = dictionary of dG0_r variables
+            cobra.Model: cobra_model_irreversible: irreversible cobra model with dG0r and conc_ln constraints added
+            dict: conc_lnv_dict: dictionary of conc_ln variables
+            dict: dG0_r_dict: dictionary of dG0_r variables
         """
 
         # pre-process the data
@@ -756,14 +757,14 @@ class thermodynamics_tfba(thermodynamics_io):
 
         Args:
             cobra_model_irreversible (cobra.Model): irreversible cobra model
-            measured_concentrations (dict()): dictionary of measured concentrations
-            estimated_concentrations(dict()): dictionary of estimated concentrations
-            dG0_r (dict()): dictionary of calculated dG0_r values
-            pH (dict()): dictionary of compartment specific pH values
-            temperature (dict()): dictionary of compartment specific temperature values
-            metabolomics_coverage (dict()): dictionary of reaction-specific metabolomics coverage values
-            dG_r_coverage (dict()): dictionary of reaction-specific dG_r coverage values
-            thermodynamics_consistency_check (dict()): dictionary of reaction-specific thermodynamics consistency values
+            measured_concentrations (dict): dictionary of measured concentrations
+            estimated_concentrations(dict): dictionary of estimated concentrations
+            dG0_r (dict): dictionary of calculated dG0_r values
+            pH (dict): dictionary of compartment specific pH values
+            temperature (dict): dictionary of compartment specific temperature values
+            metabolomics_coverage (dict): dictionary of reaction-specific metabolomics coverage values
+            dG_r_coverage (dict): dictionary of reaction-specific dG_r coverage values
+            thermodynamics_consistency_check (dict): dictionary of reaction-specific thermodynamics consistency values
             measured_concentration_coverage_criteria (float): minimum cutoff for measured concentration coverage
             measured_dG_f_coverage_criteria (float): minimum cutoff for experimentally determined dG_f coverage
             use_measured_concentrations (boolean): 
@@ -776,10 +777,10 @@ class thermodynamics_tfba(thermodynamics_io):
             diagnose_break_I (float): % of original growth rate to stop the diagnosis
 
         Returns:
-            cobra_model_irreversible = irreversible cobra model with dG0r and conc_ln constraints added
-            conc_lnv_dict = dictionary of conc_ln variables
-            dG0_r_dict = dictionary of dG0_r variables
-            diagnosed_variables_O = dictionary of constraints that reduce the model solution by diagnose_threshold_I
+            cobra.Model: cobra_model_irreversible: irreversible cobra model with dG0r and conc_ln constraints added
+            dict: conc_lnv_dict: dictionary of conc_ln variables
+            dict: dG0_r_dict: dictionary of dG0_r variables
+            dict: diagnosed_variables_O: dictionary of constraints that reduce the model solution by diagnose_threshold_I
         """
         
         # pre-process the data
@@ -1115,17 +1116,17 @@ class thermodynamics_tfba(thermodynamics_io):
         changed from "feasible:True" to "feasible:False"
 
         Args:
-            n_checks_I = number of loops per check
-            diagnose_solver_I = solver used in the diagnose FBA
-            diagnose_threshold_I = % of orginal growth rate to flag a constrain
-            diagnose_break_I = % of original growth rate to stop the diagnosis
+            n_checks_I (float): number of loops per check
+            diagnose_solver_I (float): solver used in the diagnose FBA
+            diagnose_threshold_I (float): % of orginal growth rate to flag a constrain
+            diagnose_break_I (float): % of original growth rate to stop the diagnosis
 
         Returns:
-            thermodynamic_constraints_check = thermodynamic_consistency_check updated from the check
-            inconsistent_tcc = list of feasible reactions that break the model when tfba constraints are added
-            diagnose_variables_1 = results of check 1
-            diagnose_variables_2 = results of check 2
-            diagnose_variables_3 = results of check 3
+            dict: thermodynamic_constraints_check: thermodynamic_consistency_check updated from the check
+            dict: inconsistent_tcc: list of feasible reactions that break the model when tfba constraints are added
+            dict: diagnose_variables_1: results of check 1
+            dict: diagnose_variables_2: results of check 2
+            dict: diagnose_variables_3: results of check 3
         """
         thermodynamic_constraints_check = thermodynamic_consistency_check;
         # check 1:
@@ -1188,11 +1189,11 @@ class thermodynamics_tfba(thermodynamics_io):
         """return the variable type and units based on the name of the rxn_id
 
         Args:
-            rxn_id
+            rxn_id (string): reaction id
 
         Returns:
-            type_O
-            units_O
+            string: type_O
+            string: units_O
         """
         type_O = None;
         units_O = None;

@@ -19,18 +19,34 @@ import sys
 # from thermodynamics.thermodynamics_examples import aerobicAnaerobic02
 # aerobicAnaerobic02._main_()
 
-from tests.test_thermodynamics import test_thermodynamics
-tthermo = test_thermodynamics()
-tthermo.test_cobra_model()
-tthermo.test_simulatedData()
-tthermo.test_otherData()
-tthermo.test_dG_f_data()
-tthermo.test_metabolomicsData()
-tthermo.test_dG_r_data()
-tthermo.test_dG_p_data()
-tthermo.test_tfba_constraints()
-tthermo.test_tfba()
-tthermo.test_tfva()
-tthermo.test_tsampling()
-tthermo.test_sampling_analysis()
+## Tests
+# from tests.test_thermodynamics import TestThermodynamics
+# tthermo = TestThermodynamics()
+# tthermo.test_cobra_model()
+# tthermo.test_simulatedData()
+# tthermo.test_otherData()
+# tthermo.test_dG_f_data()
+# tthermo.test_metabolomicsData()
+# tthermo.test_dG_r_data()
+# tthermo.test_dG_p_data()
+# tthermo.test_tfba_constraints()
+# tthermo.test_tfba()
+# tthermo.test_tfva()
+# tthermo.test_tsampling()
+# tthermo.test_tsampling_analysis()
+
+## Example class with tests to run a complete thermodynamics analysis
+# from thermodynamics.thermodynamics_examples.TestThermodynamics import TestThermodynamics
+# tthermo = TestThermodynamics()
+# tthermo.test_cobra_model()
+# tthermo.test_simulatedData()
+# tthermo.test_otherData()
+# tthermo.test_dG_f_data()
+# tthermo.test_metabolomicsData()
+# tthermo.test_dG_r_data()
+# tthermo.test_dG_p_data()
+# tthermo.test_tfba_constraints()
+# tthermo.test_tfba()
+# tthermo.test_tfva()
+# tthermo.test_tsampling()
 # tthermo.test_tsampling_analysis()

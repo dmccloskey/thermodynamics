@@ -39,10 +39,10 @@ class thermodynamics_dG_f_data(thermodynamics_io):
         cobra_model_I = cobra model object
                                                     
         Returns: 
-            measured_dG_f (dict): transformed compound Gibbs energies of formation
-                                    metabolite.id: {'dG_f_lb': float,
-                                     'dG_f_ub': float,
-                                     'dG_f_units': string}
+            dict: measured_dG_f: transformed compound Gibbs energies of formation
+                metabolite.id: {'dG_f_lb': float,
+                'dG_f_ub': float,
+                'dG_f_units': string}
                                      
                                      """
 
@@ -111,7 +111,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
             temperature: {metabolite.compartment {'temperature': float,
                 'temperature_units': K}}
             ionic strength: {metabolite.compartment {'ionic_strength': float,
-                                                    'ionic_strength_units': units}}
+                'ionic_strength_units': units}}
         """
 
         self._add_KEGGID(cobra_model_I)
@@ -176,7 +176,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
             cobra_model_I: cobra model
 
         Returns: 
-            (dict): reaction.id: formula
+            dict: reaction.id: formula
         """
 
         reaction_list_tmp = {}
@@ -260,7 +260,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
             KEGGID_I: list of kegg ids
 
         Returns:
-            (list()): list of metabolite.ids
+            list: list of metabolite.ids
         """
         return
 
@@ -282,6 +282,7 @@ class thermodynamics_dG_f_data(thermodynamics_io):
     def make_dG0_f_pH0(self):
         """
         Set of functions to generate a combined RC, bibliomic, and GC set of dG0_f values
+
         priority 0: RC (from component contribution see _make_ccache())
         priority 1: bibliomic (from pseudoisomer contriubtion from equilibrator website)
         priority 2: GC (from pseudoisomer contribution from equilibrator website)
@@ -444,13 +445,13 @@ class thermodynamics_dG_f_data(thermodynamics_io):
         relies on RC data taken from the component_contribution: doi:10.1371/journal.pcbi.1003098
         and bibliomic/GC data taken from the psuedoisomer contribution method: doi:10.1093/bioinformatics/bts317
 
-        Args
+        Args:
             cobra_model_I: cobra_model
-            pH: {metabolite.compartment {'pH': float}}
-            temperature: {metabolite.compartment {'temperature': float,
-                    'temperature_units': K}}
-            ionic strength: {metabolite.compartment {'ionic_strength': float,
-                                                        'ionic_strength_units': units}}
+            pH (dict): {metabolite.compartment {'pH': float}}
+            temperature (dict): {metabolite.compartment {'temperature': float,
+                'temperature_units': K}}
+            ionic strength (dict): {metabolite.compartment {'ionic_strength': float,
+                'ionic_strength_units': units}}
         """
 
         # upload dG0_f values
@@ -559,17 +560,17 @@ class thermodynamics_dG_f_data(thermodynamics_io):
 
         Args:
             measured_values: measured values with variances
-                                 {metabolite.id: {'dG_f': float,
-                                                 'dG_f_var': float,
-                                                 'dG_f_lb': float,
-                                                 'dG_f_ub': float,
-                                                 'dG_f_units': 'kJ/mol'}
+                {metabolite.id: {'dG_f': float,
+                'dG_f_var': float,
+                'dG_f_lb': float,
+                'dG_f_ub': float,
+                'dG_f_units': 'kJ/mol'}
         Returns: 
-            (dict): measured_values_O: {metabolite.id: {'dG_f': float,
-                                                 'dG_f_var': float,
-                                                 'dG_f_lb': float,
-                                                 'dG_f_ub': float,
-                                                 'dG_f_units': 'kJ/mol'}
+            dict: measured_values_O: {metabolite.id: {'dG_f': float,
+                'dG_f_var': float,
+                'dG_f_lb': float,
+                'dG_f_ub': float,
+                'dG_f_units': 'kJ/mol'}
         """
         # check units
     
@@ -590,15 +591,16 @@ class thermodynamics_dG_f_data(thermodynamics_io):
 
         Args:
             measured_values: measured values with variances
-                                 {metabolite.id: {'dG_f': float,
-                                                 'dG_f_var': float,
-                                                 'dG_f_units': 'kJ/mol'}
+            {metabolite.id: {'dG_f': float,
+            'dG_f_var': float,
+            'dG_f_units': 'kJ/mol'}
+
         Returns:
-            (dict): measured_values_O:  {metabolite.id: {'dG_f': float,
-                                                 'dG_f_var': float,
-                                                 'dG_f_lb': float,
-                                                 'dG_f_ub': float,
-                                                 'dG_f_units': 'kJ/mol'}
+            dict: measured_values_O:  {metabolite.id: {'dG_f': float,
+                'dG_f_var': float,
+                'dG_f_lb': float,
+                'dG_f_ub': float,
+                'dG_f_units': 'kJ/mol'}
         """
         measured_values_O = {}
         for k,v in measured_values.items():
@@ -629,13 +631,13 @@ class thermodynamics_dG_f_data(thermodynamics_io):
 
         Args:
             measured_values: measured values with variances
-                                 {metabolite.id: {'dG_f': float,
-                                                 'dG_f_cv': float,
-                                                 'dG_f_units': 'mM'}
+                {metabolite.id: {'dG_f': float,
+                'dG_f_cv': float,
+                'dG_f_units': 'mM'}
         Returns:
-            {dict): measured_values_O: {metabolite.id: {'dG_f_lb': float,
-                                                 'dG_f_ub': float,
-                                                 'dG_f_units': 'M'}
+            dict: measured_values_O: {metabolite.id: {'dG_f_lb': float,
+                'dG_f_ub': float,
+                'dG_f_units': 'M'}
         """
         measured_values_O = {}
         for k,v in measured_values.items():
@@ -659,13 +661,13 @@ class thermodynamics_dG_f_data(thermodynamics_io):
         Args:
             cobra_model: a Model object
             lbub: metabolite.compartment: {'dG_f_lb': float,
-                               'dG_f_ub': float,
-                               'dG_f_units': 'kJ/mol'}
+                'dG_f_ub': float,
+                'dG_f_units': 'kJ/mol'}
 
         Returns:
-            {dict}: metabolite.id: {'dG_f_lb': float,
-                               'dG_f_ub': float,
-                               'dG_f_units': string}
+            dict: metabolite.id {'dG_f_lb': float,
+                'dG_f_ub': float,
+                'dG_f_units': string}
         """
         if not(lbub):
             lbub = {}
@@ -702,11 +704,11 @@ class thermodynamics_dG_f_data(thermodynamics_io):
         Args:
             cobra_model: a Model object
             lbub: metabolite.compartment: {'dG_f': float,
-                               'dG_f_var': float,
-                               'dG_f_units': 'kJ/mol'}
+                'dG_f_var': float,
+                'dG_f_units': 'kJ/mol'}
 
         Returns: 
-            (dict): metabolite.id {'dG_f': float,
+            dict: metabolite.id {'dG_f': float,
                                'dG_f_var': float,
                                'dG_f_lb': float,
                                'dG_f_ub': float,

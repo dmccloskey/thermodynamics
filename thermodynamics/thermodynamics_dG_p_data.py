@@ -8,50 +8,48 @@ class thermodynamics_dG_p_data():
     """Runs pathway thermodynamic analysis analysis on a cobra.Model object
 
     #1 Calculate pathway thermodynamics
-
-    cobra_model: a Model object (irreversible)
-    
-    dG0_r: calculated standard Gibbs energies of reaction:
-                    reaction.id: {'dG_r': float,
-                          'dG_r_var': float,
-                          'dG_r_lb': float,
-                          'dG_r_ub': float,
-                          'Keq': float,
-                          'dG_r_units': string}}
-
-    dG_r: calculated in vivo Gibbs energies of reaction:
-                    reaction.id: {'dG_r': float,
-                          'dG_r_var': float,
-                          'dG_r_lb': float,
-                          'dG_r_ub': float,
-                          'Keq': float,
-                          'dG_r_units': string}}
-
-    dG0_p: {pathway.id: {'dG_p': float,
-                          'dG_p_var': float,
-                          'dG_p_lb': float,
-                          'dG_p_ub': float,
-                          'Keq': float,
-                          'dG_p_units': string,
-                          'reactions':[string],
-                          'stoichiometry':[int]}}
-
-    dG_p: {pathway.id: {'dG_p': float,
-                          'dG_p_var': float,
-                          'dG_p_lb': float,
-                          'dG_p_ub': float,
-                          'Keq': float,
-                          'dG_p_units': string},
-                          'reactions':[string],
-                          'stoichiometry':[int]}
-
-    thermodynamic_consistency_check: {pathway.id: {'feasible': boolean, NOTE: or None if the below criterion
-                                                                    were not met
-                                         'measured_concentration_coverage': float,
-                                         'measured_dG_p_coverage': float}
     """
 
     def __init__(self,pathways_I = {}, dG0_p_I = {}, dG_p_I = {}):
+        """ Initialization of the class
+
+        Args:
+            cobra_model: a Model object (irreversible)    
+            dG0_r: calculated standard Gibbs energies of reaction:
+                reaction.id: {'dG_r': float,
+                'dG_r_var': float,
+                'dG_r_lb': float,
+                'dG_r_ub': float,
+                'Keq': float,
+                'dG_r_units': string}}
+            dG_r: calculated in vivo Gibbs energies of reaction:
+                reaction.id: {'dG_r': float,
+                'dG_r_var': float,
+                'dG_r_lb': float,
+                'dG_r_ub': float,
+                'Keq': float,
+                'dG_r_units': string}}
+            dG0_p: {pathway.id: {'dG_p': float,
+                'dG_p_var': float,
+                'dG_p_lb': float,
+                'dG_p_ub': float,
+                'Keq': float,
+                'dG_p_units': string,
+                'reactions':[string],
+                'stoichiometry':[int]}}
+            dG_p: {pathway.id: {'dG_p': float,
+                'dG_p_var': float,
+                'dG_p_lb': float,
+                'dG_p_ub': float,
+                'Keq': float,
+                'dG_p_units': string},
+                'reactions':[string],
+                'stoichiometry':[int]}
+            thermodynamic_consistency_check: {pathway.id: {'feasible': boolean, NOTE: or None if the below criterion
+                were not met
+                'measured_concentration_coverage': float,
+                'measured_dG_p_coverage': float}
+        """
         # initialize pathways
         if pathways_I:
             self.pathways = pathways_I;
@@ -90,13 +88,13 @@ class thermodynamics_dG_p_data():
         """calculate the Gibbs free energy of an entire pathway
 
         Args:
-            dG0_r
-            dG_r
+            dG0_r (dict)
+            dG_r (dict)
 
         Returns:
-            dG0_p
-            dG_p
-            thermodynamic_consistency_check
+            dict: dG0_p
+            dict: dG_p
+            dict: thermodynamic_consistency_check
 
         """
 

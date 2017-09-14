@@ -32,7 +32,7 @@ class TestThermodynamics():
         self.dG_f_data = None
         self.tccp = None
 
-    def test_cobra_model(self):
+    def run_cobra_model(self):
         cobra_model = load_json_model(data_dir_tests + '/mini.json')
         convert_to_irreversible(cobra_model)
         solution = cobra_model.optimize()
@@ -40,7 +40,7 @@ class TestThermodynamics():
         assert(solution.fluxes['ENO'] == 20.0)
         self.cobra_model = cobra_model
 
-    def test_simulatedData(self):
+    def run_simulatedData(self):
         data_fva = data_dir_tests + '/test_fva.json'
         data_srd = data_dir_tests + '/test_srd.json'
         simulated_data = thermodynamics_simulatedData()
@@ -71,7 +71,7 @@ class TestThermodynamics():
         simulated_data.check_data()
         self.simulated_data = simulated_data
 
-    def test_otherData(self):
+    def run_otherData(self):
         # load pH, ionic_strength, and temperature parameters
         other_data = thermodynamics_otherData()
         other_data.load_defaultData()
@@ -93,7 +93,7 @@ class TestThermodynamics():
         assert(other_data.temperature['p']['temperature_units'] == 'K')
         self.other_data = other_data
 
-    def test_dG_f_data(self):
+    def run_dG_f_data(self):
         # generate dG_f data for all model compounds
         # calculate the dG_f for each compound in each compartment
         # export/load and check the dG_f data
@@ -128,7 +128,7 @@ class TestThermodynamics():
         dG_f_data.check_data()
         self.dG_f_data = dG_f_data
 
-    def test_metabolomicsData(self):
+    def run_metabolomicsData(self):
         # load metabolomics data
         data_concentrations = data_dir_tests + '/test_geo01.json'
         metabolomics_data = thermodynamics_metabolomicsData()
@@ -152,7 +152,7 @@ class TestThermodynamics():
         assert(metabolomics_data.estimated_concentrations['pep_c']['concentration_units'] == 'M')  
         self.metabolomics_data = metabolomics_data
 
-    def test_dG_r_data(self):
+    def run_dG_r_data(self):
         # calculate dG_r and perform a consistency check based on model simulations
         data_ta = data_dir_tests + '/test_ta.csv'
         data_dG0 = data_dir_tests + '/test_dG0.json'
@@ -202,7 +202,7 @@ class TestThermodynamics():
         assert(tcc.dG_r_coverage['ENO'] == 1.0)
         self.tcc = tcc
 
-    def test_dG_p_data(self):        
+    def run_dG_p_data(self):        
         # calculate the dG for biosynthetic pathways
         tccp = thermodynamics_dG_p_data()
         assert(tccp.pathways['Glycolysis']['reactions'] == ['PGI', 'PFK', 'FBA', 'TPI', 'GAPD', 'PGK', 'PGM', 'ENO'])
@@ -220,7 +220,7 @@ class TestThermodynamics():
         assert(tccp.dG_p['Glycolysis']['dG_p_units'] == 'kJ/mol')
         self.tccp = tccp    
     
-    def test_tfba_constraints(self):
+    def run_tfba_constraints(self):
         # Diagnose model variables and constraints prior to FBA, FVA
 
         # identified inconsistent concentrations/dG_f/tcc values
@@ -257,7 +257,7 @@ class TestThermodynamics():
         assert(thermodynamic_constraints_check['ATPM'])
         assert('ENO' in inconsistent_tcc)  
     
-    def test_tfba(self):
+    def run_tfba(self):
         #perform thermodynamic FBA
         tfba = thermodynamics_tfba()
 
@@ -286,7 +286,7 @@ class TestThermodynamics():
         assert(cobra_model_copy.objective.value == 30.0)
         assert(tfba.tfba_data['ENO'] < 21 or tfba.tfba_data['ENO'] > 20) #exact solution varies
     
-    def test_tfva(self):
+    def run_tfva(self):
         # run TFVA
         tfba = thermodynamics_tfba()
 
@@ -332,7 +332,7 @@ class TestThermodynamics():
         assert(tfba.tfva_concentrations_data['conc_lnv_pep_c']['flux_lb'] == -10.50862385577336)
         tfba.export_tfva_concentrations_data(data_tfva_concentrations)
     
-    def test_tsampling(self):
+    def run_tsampling(self):
         tfba = thermodynamics_tfba()
         cobra_model_copy = self.cobra_model.copy()
         tfba._add_dG_r_constraints(cobra_model_copy,
@@ -357,7 +357,7 @@ class TestThermodynamics():
             n_steps_I = 5000,
             n_threads_I = 2)
     
-    # def test_tsampling_analysis(self):
+    # def run_tsampling_analysis(self):
     #     tfba = thermodynamics_tfba()
     #     cobra_model_copy = self.cobra_model.copy()
     #     tfba._add_dG_r_constraints(cobra_model_copy,

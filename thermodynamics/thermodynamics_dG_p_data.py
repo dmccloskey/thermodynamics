@@ -88,13 +88,13 @@ class thermodynamics_dG_p_data():
         """calculate the Gibbs free energy of an entire pathway
 
         Args:
-            dG0_r
-            dG_r
+            dG0_r (dict)
+            dG_r (dict)
 
         Returns:
-            dG0_p
-            dG_p
-            thermodynamic_consistency_check
+            dict: dG0_p
+            dict: dG_p
+            dict: thermodynamic_consistency_check
 
         """
 

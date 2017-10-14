@@ -148,20 +148,18 @@ class thermodynamics_tfba(thermodynamics_io):
         return concentrations;
 
     def _add_dG_r_constraints(self, cobra_model_irreversible, dG_r, dG_r_coverage, thermodynamic_consistency_check,
-                              use_measured_dG_r=True, return_dG_r_variables=False, verbose_I=False):
+                              use_measured_dG_r=True, return_dG_r_variables=False, verbose_I=False, break_threshold_I = 0.9):
         """add constraints for dG_r to the model
 
         Args:
             cobra_model_irreversible (cobra.Model): irreversible cobra model
-            measured_concentrations (dict): dictionary of measured concentrations
-            estimated_concentrations(dict): dictionary of estimated concentrations
             dG_r (dict): dictionary of calculated dG_r values
             dG_r_coverage (dict): dictionary of reaction-specific dG_r coverage values
             thermodynamics_consistency_check (dict): dictionary of reaction-specific thermodynamics consistency values
             measured_dG_r_coverage_criteria (float): minimum cutoff for experimentally determined dG_r coverage
-            use_measured_concentrations (boolean): 
             use_measured_dG_r (boolean): 
             return_dG_r_variables (boolean)  False add dG0_r variables?
+            break_threshold_I (float): % of the optimal solution to consider that the variable breaks the model
 
         Returns:
             cobra.Model: cobra_model_irreversible: irreversible cobra model with dG0r and conc_ln constraints added
@@ -175,6 +173,9 @@ class thermodynamics_tfba(thermodynamics_io):
         system_boundaries = [x.id for x in cobra_model_irreversible.reactions if x.boundary == 'system_boundary'];
         objectives = [x.id for x in cobra_model_irreversible.reactions if x.objective_coefficient == 1];
         transporters = find_transportRxns(cobra_model_irreversible);
+        # find the original solution
+        sol = cobra_model_irreversible.optimize() 
+        original_sol = sol.objective_value
         # add variables and constraints to model for tfba
         reactions = [r for r in cobra_model_irreversible.reactions];
         dG_r_variables = {};
@@ -228,7 +229,8 @@ class thermodynamics_tfba(thermodynamics_io):
             cobra_model_irreversible.solver = 'glpk'
             cobra_model_irreversible.optimize()
             if not cobra_model_irreversible.objective.value\
-                or cobra_model_irreversible.solver.status == 'infeasible':
+                or cobra_model_irreversible.solver.status == 'infeasible'\
+                or cobra_model_irreversible.objective.value < break_threshold_I*original_sol:
                 if verbose_I: print(dG_rv.id + ' broke the model!');
                 variables_break.append(dG_rv.id);
                 #cobra_model_irreversible.remove_reactions(indicator)
@@ -335,7 +337,7 @@ class thermodynamics_tfba(thermodynamics_io):
         """
         reaction_list = [r for r in cobra_model_irreversible.reactions]
         # add dG_r constraints: # adding constraints here is slower!
-        self._add_dG_r_constraints(cobra_model_irreversible,dG_r, dG_r_coverage, thermodynamic_consistency_check, use_measured_dG_r);
+        self._add_dG_r_constraints(cobra_model_irreversible,dG_r, dG_r_coverage, thermodynamic_consistency_check, use_measured_dG_r, verbose_I = True);
 
         from cobra.flux_analysis import flux_variability_analysis
         fva_data = flux_variability_analysis(cobra_model_irreversible, fraction_of_optimum=1.0,

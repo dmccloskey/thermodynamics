@@ -180,7 +180,7 @@ class thermodynamics_tfba(thermodynamics_io):
         reactions = [r for r in cobra_model_irreversible.reactions];
         dG_r_variables = {};
         variables_break = []
-        for i,r in enumerate(reactions):
+        for i,r in enumerate(reactions[:]):
             # ignore system_boundary, objective, and transport reactions
             if r.id in system_boundaries or r.id in objectives or r.id in transporters:
                 continue;
@@ -227,11 +227,15 @@ class thermodynamics_tfba(thermodynamics_io):
             cobra_model_irreversible.reactions.get_by_id('dG_rv_' + r.id).objective_coefficient = 0
             # check to see if the model broke
             cobra_model_irreversible.solver = 'glpk'
+            cobra_model_irreversible.solver.configuration.timeout = 30
             cobra_model_irreversible.optimize()
             if not cobra_model_irreversible.objective.value\
                 or cobra_model_irreversible.solver.status == 'infeasible'\
                 or cobra_model_irreversible.objective.value < break_threshold_I*original_sol:
                 if verbose_I: print(dG_rv.id + ' broke the model!');
+                #DEBUG:
+                if dG_rv.id == 'dG_rv_GUAPRT':
+                    print('check')
                 variables_break.append(dG_rv.id);
                 #cobra_model_irreversible.remove_reactions(indicator)
                 cobra_model_irreversible.remove_reactions(dG_rv)
@@ -242,6 +246,8 @@ class thermodynamics_tfba(thermodynamics_io):
                 #indicator.add_metabolites({dG_r_constraint: self.K})
                 dG_rv.add_metabolites({dG_r_constraint: 1.0})
                 cobra_model_irreversible.add_reaction(dG_rv);
+            else: 
+                if verbose_I: print(dG_rv.id + ' added to the model.');
             # record dG_rv variables
             dG_r_variables[r.id] = dG_rv;
         if return_dG_r_variables:

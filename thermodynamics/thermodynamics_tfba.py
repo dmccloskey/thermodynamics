@@ -228,26 +228,37 @@ class thermodynamics_tfba(thermodynamics_io):
             # check to see if the model broke
             cobra_model_irreversible.solver = 'glpk'
             cobra_model_irreversible.solver.configuration.timeout = 30
-            cobra_model_irreversible.optimize()
-            if not cobra_model_irreversible.objective.value\
-                or cobra_model_irreversible.solver.status == 'infeasible'\
-                or cobra_model_irreversible.objective.value < break_threshold_I*original_sol:
+            try:
+                cobra_model_irreversible.optimize()
+                if not cobra_model_irreversible.objective.value\
+                    or cobra_model_irreversible.solver.status == 'infeasible'\
+                    or cobra_model_irreversible.objective.value < break_threshold_I*original_sol:
+                    if verbose_I: print(dG_rv.id + ' broke the model!');
+                    ##DEBUG:
+                    #if dG_rv.id == 'dG_rv_GUAPRT':
+                    #    print('check')
+                    variables_break.append(dG_rv.id);
+                    #cobra_model_irreversible.remove_reactions(indicator)
+                    cobra_model_irreversible.remove_reactions(dG_rv)
+                    #cobra_model_irreversible.reactions.get_by_id(r.id).subtract_metabolites({indicator_plus:1})
+                    #indicator.subtract_metabolites({dG_r_constraint: self.K})
+                    dG_rv.lower_bound = self.dG_r_min;
+                    dG_rv.upper_bound = self.dG_r_max;
+                    #indicator.add_metabolites({dG_r_constraint: self.K})
+                    dG_rv.add_metabolites({dG_r_constraint: 1.0})
+                    cobra_model_irreversible.add_reaction(dG_rv);
+                else: 
+                    if verbose_I: print(dG_rv.id + ' added to the model.');
+            except Exception as e:
+                print(e)
                 if verbose_I: print(dG_rv.id + ' broke the model!');
-                #DEBUG:
-                if dG_rv.id == 'dG_rv_GUAPRT':
-                    print('check')
                 variables_break.append(dG_rv.id);
-                #cobra_model_irreversible.remove_reactions(indicator)
                 cobra_model_irreversible.remove_reactions(dG_rv)
-                #cobra_model_irreversible.reactions.get_by_id(r.id).subtract_metabolites({indicator_plus:1})
-                #indicator.subtract_metabolites({dG_r_constraint: self.K})
                 dG_rv.lower_bound = self.dG_r_min;
                 dG_rv.upper_bound = self.dG_r_max;
-                #indicator.add_metabolites({dG_r_constraint: self.K})
                 dG_rv.add_metabolites({dG_r_constraint: 1.0})
                 cobra_model_irreversible.add_reaction(dG_rv);
-            else: 
-                if verbose_I: print(dG_rv.id + ' added to the model.');
+
             # record dG_rv variables
             dG_r_variables[r.id] = dG_rv;
         if return_dG_r_variables:
